@@ -9,7 +9,7 @@ main:
   - title: "Examples"
     url: /docs/examples    
   
-  - title: "Reference"
+  - title: "Commands"
     url: /docs/tutorials
   
   - title: "Solvers"
