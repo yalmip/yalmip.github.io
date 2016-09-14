@@ -1,6 +1,7 @@
 ---
 layout: single
 title: You're up and running!
+tags: [Release]
 comments: true
 ---
 
