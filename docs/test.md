@@ -15,8 +15,8 @@ Hej
 
 Some basic Git commands are:
 
-```
-git status
-git add
-git commit
+```matlab
+for i = 1:10
+ y = f
+end
 ```
