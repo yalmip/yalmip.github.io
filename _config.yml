@@ -227,3 +227,12 @@ compress_html:
   clippings: all
   ignore:
     envs: development
+
+defaults:
+  # _docs
+  - scope:
+      path: ""
+      type: docs
+    values:
+      sidebar:
+        nav: "docs"
