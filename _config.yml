@@ -10,7 +10,7 @@ locale                   : "en"
 title                    : "YALMIP"
 title_separator          : "-"
 name                     : "Johan Löfberg"
-description              : "An amazing website."
+description              : "YALMIP A toolbox for modelling and optimization"
 url                      : "https://johanlofberg.github.io"
 baseurl                  : # ""
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -77,11 +77,11 @@ analytics:
 
 # Site Author
 author:
-  name             : "Your Name"
-  avatar           : "bio-photo.jpg"
-  bio              : "I am an amazing person."
-  location         : "Somewhere"
-  email            :
+  name             : "Johan Löfberg"
+  avatar           : "lofberg.jpg"
+  bio              : "Yep."
+  location         : "Linköping University"
+  email            : "johan.lofberg@liu.se"
   uri              :
   bitbucket        :
   codepen          :
