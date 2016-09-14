@@ -15,6 +15,6 @@ YALMIP is free of charge to use and is openly distributed, but note that
 
 5. Forks or versions of YALMIP must include, and follow, this license in any distribution.
 
-# Latest relase
+## Latest relase
 
-# Old releases
+## Old releases
