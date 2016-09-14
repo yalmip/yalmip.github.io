@@ -5,6 +5,9 @@ main:
 
   - title: "Tutorials"
     url: /docs/tutorials
+    
+  - title: "Examples"
+    url: /docs/examples    
   
   - title: "Reference"
     url: /docs/tutorials
