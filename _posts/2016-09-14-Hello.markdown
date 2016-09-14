@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: archive
 title: You're up and running!
 ---
 
