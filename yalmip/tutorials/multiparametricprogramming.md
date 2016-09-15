@@ -85,7 +85,7 @@ plot(Optimizer(1));
 
 ### Simple MPC example
 
-Define numerical data for a linear system, prediction matrices, and variables for current state **x** and the future control sequence **U**, for an MPC problem with horizon 5 (**create_CHS** is a cheat function that creates the numerical matrices to describe the linear relation between current state **x** and future input sequence **U**, to the predicted outputs. See the [MPC examples] to see how you would do this in a more generic fashion for an actual application)
+Define numerical data for a linear system, prediction matrices, and variables for current state \\(x\\) and the future control sequence \\( U(x)\\), for an MPC problem with horizon 5 (**create_CHS** is a cheat function that creates the numerical matrices to describe the linear relation between current state \\( x\\) and future input sequence \\( x\\), to the predicted outputs. See the [MPC examples] to see how you would do this in a more generic fashion for an actual application)
 
 ````matlab
 N = 5;
@@ -122,7 +122,7 @@ We seek the explicit solution \\( U(x)\\) over the exploration set \\( \left \lv
 F = [F, 5 >= x >= -5];
 ````
 
-The explicit solution \\( U(x)\\) is obtained by calling [solvemp] with the parametric variable\\( x \\) as the fourth argument. Additionally, since we only are interested in the first element of the solution\\( U(x)\\), we use a fifth input to communicate this.
+The explicit solution \\( U(x)\\) is obtained by calling [solvemp] with the parametric variable \\( x \\) as the fourth argument. Additionally, since we only are interested in the first element of the solution \\( U(x)\\), we use a fifth input to communicate this.
 
 ````matlab
 [sol,diagnostics,aux,Valuefunction,Optimizer] = solvemp(F,objective,[],x,U(1));
@@ -166,7 +166,7 @@ We will now solve this problem under the additional constraints that the input i
 F = [F, ismember(U,[-1:1/3:1])];
 ````
 
-Same commands as before to solve the problem and plot the optimal solution **U(1)**
+Same commands as before to solve the problem and plot the optimal solution
 
 ````matlab
 [sol,diagnostics,aux,Valuefunction,Optimizer] = solvemp(F,objective,[],x,U(1));
