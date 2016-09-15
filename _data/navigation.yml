@@ -144,6 +144,16 @@ commands:
         url: /yalmip/commands/robustmodel        
       - title: "sosmodel"
         url: /yalmip/commands/sosmodel
+  - title: Auxilliary
+    children:
+      - title: "saveampl"
+        url: /yalmip/commands/saveampl 
+      - title: "savecplexfile"
+        url: /yalmip/commands/savecplexfile 
+      - title: "savesdpafile"
+        url: /yalmip/commands/savesdpafile 
+      - title: "yalmiptest"
+        url: /yalmip/commands/yalmiptest        
   - title: Variable manipulations
     children:
       - title: "assign"
@@ -238,13 +248,3 @@ commands:
         url: /yalmip/commands/ismember   
       - title: "sosd"
         url: /yalmip/commands/sosd        
-  - title: Auxilliary
-    children:
-      - title: "saveampl"
-        url: /yalmip/commands/saveampl 
-      - title: "savecplexfile"
-        url: /yalmip/commands/savecplexfile 
-      - title: "savesdpafile"
-        url: /yalmip/commands/savesdpafile 
-      - title: "yalmiptest"
-        url: /yalmip/commands/yalmiptest        
