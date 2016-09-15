@@ -7,7 +7,7 @@ sidebar:
 
 One of the core ideas in YALMIP is to rely on external solvers for the low-level numerical solution of optimization problem. YALMIP concentrates on efficient modeling and high-level algorithms.
 
-## Recommended installation
+### Recommended installation
 
 Linear programming can be solved by quadratic programming which can be solved by second-order cone programming which can be solved by semidefinite programming. Hence, in theory, you only need a semidefinite programming solver if you only solve linear problems.
 
@@ -20,30 +20,32 @@ If you intend to solve large problems or other problem classes, you are advised 
 
 And finally, there are no free lunches and you get what you pay for, most often...
 
+### Available solvers by problem class
+
 A simple categorization is as follows (the definitions of free and commercial depends slightly on the solver, please see the specific comments in the solver description)
 
-## Linear programming (free)
+### Linear programming (free)
 [CDD](/), [CLP](/), [GLPK](/), [LPSOLVE](/), [QSOPT](/), [SCIP](/)
 
-## Mixed Integer Linear programming (free)
+### Mixed Integer Linear programming (free)
 [CBC](/), [GLPK](/), [LPSOLVE](/), [SCIP](/)
 
-## Linear programming (commercial)
+### Linear programming (commercial)
 [CPLEX](cplex/) (free for academia), [GUROBI](gurobi/) (free for academia), [LINPROG](/), [MOSEK](mosek/) (free for academia), [XPRESS](/) (free for academia)
 
-## Mixed Integer Linear programming (commercial)
+### Mixed Integer Linear programming (commercial)
 [CPLEX](cplex/) (free for academia), [GUROBI](gurobi/) (free for academia), [MOSEK](mosek/) (free for academia), [XPRESS](/) (free for academia)
 
-## Quadratic programming (free)
+### Quadratic programming (free)
 [BPMPD](/), [CLP](/), [OOQP](/), [QPC](/), [qpOASES](/), [quadprogBB](/) (nonconvex QP)
 
-## Quadratic programming (commercial)
+### Quadratic programming (commercial)
 [CPLEX](cplex/) (free for academia), [GUROBI](gurobi/) (free for academia), [MOSEK](mosek/) (free for academia), [NAG](/), [QUADPROG](/), [XPRESS](/) (free for academia)
 
-## Mixed Integer Quadratic programming (commercial)
+### Mixed Integer Quadratic programming (commercial)
 [CPLEX](cplex/) (free for academia), [GUROBI](gurobi/) (free for academia), [MOSEK](mosek/) (free for academia), [XPRESS](/) (free for academia)
 
-## Second-order cone programming (free)
+### Second-order cone programming (free)
 
 [ECOS](/), [SDPT3](/), [SEDUMI](/)
 
@@ -51,19 +53,19 @@ A simple categorization is as follows (the definitions of free and commercial de
 
 [CPLEX](cplex/) (free for academia), [GUROBI](gurobi/) (free for academia), [MOSEK](mosek/) (free for academia)
 
-## Mixed Integer Second-order cone programming (commercial)
+### Mixed Integer Second-order cone programming (commercial)
 
 [CPLEX](cplex/) (free for academia), [GUROBI](gurobi/) (free for academia), [MOSEK](mosek/) (free for academia)
 
-## Semidefinite programming (free)
+### Semidefinite programming (free)
 
 [CSDP](/), [DSDP](/), [LOGDETPPA](/), [PENLAB](/), [SDPA](/), [SDPLR](/), [SDPT3](/), [SDPNAL](/), [SEDUMI](/)
 
-## Semidefinite programming (commercial)
+### Semidefinite programming (commercial)
 
 [LMILAB](/), [MOSEK](mosek/) (free for academia), [PENBMI](/), [PENSDP](/) (free for academia)
 
-## General nonlinear programming and other solvers
+### General nonlinear programming and other solvers
 
 [BARON](/), [FILTERSD](/), [FMINCON](/), [GPPOSY](/), [IPOPT](/), [KNITRO](/), [KYPD](/), [LMIRANK](/), [MPT](/), [NOMAD](/), [PENLAB](/), [SNOPT](/), [STRUL](/), [VSDP](/), [SparsePOP](/)
 
