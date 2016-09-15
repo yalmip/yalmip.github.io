@@ -160,7 +160,31 @@ commands:
         url: /yalmip/commands/sdpvar                
   - title: Variable operators
     children:
-      - title: "Variable operators"
+      - title: "abs"
+        url: /yalmip/commands/sdpvar
+      - title: "crossentropy"
+        url: /yalmip/commands/sdpvar
+      - title: "entropy"
+        url: /yalmip/commands/sdpvar
+      - title: "geomean"
+        url: /yalmip/commands/sdpvar
+      - title: "iff"
+        url: /yalmip/commands/sdpvar
+      - title: "implies"
+        url: /yalmip/commands/sdpvar
+      - title: "logdet"
+        url: /yalmip/commands/sdpvar
+      - title: "logistic"
+        url: /yalmip/commands/sdpvar
+      - title: "logsumexp"
+        url: /yalmip/commands/sdpvar
+      - title: "median"
+        url: /yalmip/commands/sdpvar
+      - title: "nnz"
+        url: /yalmip/commands/sdpvar
+      - title: "sdpfun"
+        url: /yalmip/commands/sdpvar
+      - title: "sort"
         url: /yalmip/commands/sdpvar
   - title: Constraints
     children:
