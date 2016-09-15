@@ -64,7 +64,7 @@ optimize([-1 <= x <= 1, [1 x';x X]>=0],trace(Q*X))
 Now, three things can happen
 
 1. The problem is unbounded from below. The semidefinite relaxation is thus useless and gives no information.
-2.The problem is bounded and computes a lower bound. The semidefinite relaxation does however not give any solution since '''X''' does not equal '''xx'^T^''''.
+2.The problem is bounded and computes a lower bound. The semidefinite relaxation does however not give any solution since \\(X\\) does not equal \\(xx'^T\\).
 3. The problem is  bounded and computes a lower bound. In addition to this \\(X\\) equals \\(xx'^T\\), and the lower bound is thus tight and the computed value on \\(x\\) is a solution to the original problem.
 
 For the particular problem we address here, the first-order relaxation is unbounded. Hence, it is useless and a stronger relaxation is required. 
