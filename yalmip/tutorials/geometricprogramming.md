@@ -12,7 +12,7 @@ Nonlinear terms can be defined also with negative and non-integer powers. This c
 ![Geometric program]({{ site.url }}/images/gemoetric.gif){: .center-image }
 
 
-Geometric programming solvers are capable of solving a sub-class of geometric problems where \\(c\geq 0\\) with the additional constraint \\(t\geq 0\\), so called posynomial geometric programming. The following example is taken from the [MOSEK](/yalmip/solvers/mosek) manual. (note that there has to be explicit positivity constraint on all involved variables in the model)
+Geometric programming solvers are capable of solving a sub-class of geometric problems where \\(c\geq 0\\) with the additional constraint \\(t\geq 0\\), so called posynomial geometric programming. The following example is taken from the [MOSEK](/yalmip/solvers/mosek) manual. Note that there has to be explicit positivity constraint on all involved variables in the model.
 
 ````matlab
 sdpvar t1 t2 t3
@@ -79,7 +79,7 @@ optimize(C,obj);
 To understand how a generalized geometric program can be converted to a standard geometric program, the reader is referred to [Boyd et al 2007].
 
 ### Comments
-The posynomial geometric programming problem is not convex in its standard formulation. Hence, if a general nonlinear solver is applied to the problem, it will typically fail. However, by performing a suitable logarithmic variable transformation, the problem is rendered convex. YALMIP has built-in support for performing this variable change, and solve the problem using the nonlinear solver [FMINCON](/yalmip/solvers/fmincon). To invoke this module in YALMIP, use the solver tag `'fmincon-geometric'`.
+The posynomial geometric programming problem is not convex in its standard formulation. Hence, if a general nonlinear solver is applied to the problem, it will typically fail. However, by performing a suitable logarithmic variable transformation, the problem is rendered convex. YALMIP has built-in support for performing this variable change, and solve the problem using a nonlinear solver such as [FMINCON](/yalmip/solvers/fmincon). To invoke this module in YALMIP, use the solver tag `'fmincon-geometric'`.
 
 ````matlab
 sdpvar t1 t2 t3
@@ -90,11 +90,11 @@ optimize(C,obj,sdpsettings('solver','fmincon-geometric'));
 
 The current version of YALMIP has a bug that may cause problems if you have convex quadratic constraints. To avoid this problem, use `sdpsettings('convertconvexquad',0)`. To avoid some other known issues, it is advised to explicitly tell YALMIP that the problem is a geometric problem by specifying the solver to `'gpposy'`, `'mosek-geometric'` or `'fmincon-geometric'`.
 
-Never use the commands [sqrt] and [cpower] when working with geometric programs, i.e. always use the ^ operator. The reason is implementation issues in YALMIP. The commands sqrt and cpower are meant to be used in optimization problems where a conic model is derived using convexity propagation, see nonlinear operators.
+Never use the commands [sqrt] and [cpower] when working with geometric programs, i.e. always use the ^ operator. The reason is implementation issues in YALMIP. The commands [sqrt] and [cpower] are meant to be used in optimization problems where a conic model is derived using convexity propagation, see [nonlinear operators](/yalmip/tutorials/nonlinearoperators).
 
 ### Mixed integer geometric programming
 
-The [mixed-integer branch and bound solver in YALMIP](/yalmip/solvers/bnb) is built in a modular fashion that makes it possible to solve almost arbitrary convex mixed integer programs. The following example is taken from [Boyd et al.:2007]. To begin with, define the data for the example.
+The [mixed-integer branch and bound solver in YALMIP](/yalmip/solvers/bnb) is built in a modular fashion that makes it possible to solve almost arbitrary convex mixed integer programs. The following example is taken from [Boyd et al 2007]. To begin with, define the data for the example.
 
 ````matlab
 a     = ones(7,1);

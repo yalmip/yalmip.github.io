@@ -5,14 +5,15 @@ sidebar:
   nav: "tutorials"
 ---
 
-Global solutions! Well, almost... don't expect too much at this stage. The solver used here, [[Solvers.BMIBNB | bmibnb]], is under development. The code is fairly robust on small problems (solves 180 of the globlib problems in under 8 minutes total), and a couple of small real-world problems with bilinear matrix inequalities have been solved successfully.
+Global solutions! Well, almost... don't expect too much at this stage. The solver used here, [bmibnb](/yalmip/solvers/bmibnb), is under development. The code is fairly robust on small problems (solves 180 of the globlib problems in under 8 minutes total), and a couple of small real-world problems with bilinear matrix inequalities have been solved successfully.
 
-The [[Solvers.BMIBNBTheory | algorithm]] is based on a simple spatial branch-and-bound strategy, using McCormick's convex envelopes for bounding bilinear terms, and general convex envelope approximations for other nonlinear operators. LP-based bound tightening is applied iteratively to improve variable bounds together with some additional techniques to, e.g., exploit complementary constraints etc. See the [[Solvers.BMIBNBTheory | solver description]] for some details.
+The [BMIBNBTheory] is based on a simple spatial branch-and-bound strategy, using McCormick's convex envelopes for bounding bilinear terms, and general convex envelope approximations for other nonlinear operators. LP-based bound tightening is applied iteratively to improve variable bounds together with some additional techniques to, e.g., exploit complementary constraints etc. See the [[BMIBNBTheory] for some details.
 
-Relaxed problems are solved using either an [[Category.LinearProgrammingSolver | LP]] solver, [[Category.QuadraticProgrammingSolver | QP]], or an [[Category.SemidefiniteProgrammingSolver | SDP]] solver, depending on the problem, while upper bounds are found using a local nonlinear solver such as [[FMINCON]](/yalmip/solvers/fmincon),  [[Solvers.SNOPT| SNOPT]] and [[Solvers.IPOPT | IPOPT]], or [[Solvers.PENBMI | PENBMI]] for nonlinear semidefinite problems.
+Relaxed problems are solved using either an [LP solver], [QP solver], or an [SDP solver] solver, depending on the problem, while upper bounds are found using a local nonlinear solver such as [FMINCON](/yalmip/solvers/fmincon),  [SNOPT](/yalmip/solvers/snopt) and [IPOPT](/yalmip/solvers/ipopt), or [PENBMI/PENLAB](/yalmip/solvers/penbmi) for nonlinear semidefinite problems.
 
-!! Nonconvex quadratic programming
-The first example is a problem with a concave quadratic constraint (this is the example addressed in the moment relaxation section). Three different optimization problems are solved during the branching: Upper bounds using a local nonlinear solver (bmibnb.uppersolver), lower bounds (bmibnb.lowersolver) and bound tightening using linear programming (bmibnb.lpsolver).
+### Nonconvex quadratic programming
+The first example is a problem with a concave quadratic constraint (this is the example addressed in the moment relaxation section). Three different optimization problems are solved during the branching: Upper bounds using a local nonlinear solver (`'bmibnb.uppersolver'`), lower bounds (`'bmibnb.lowersolver'`) and bound tightening using linear programming (`'bmibnb.lpsolver'`).
+
 ````matlab
 clear all
 x1 = sdpvar(1,1);
@@ -49,6 +50,7 @@ optimize(F,p,options);
 ````
 
 The second example is a slightly larger problem indefinite quadratic programming problem. The problem is easily solved to a gap of less than 1%.
+
 ````matlab
 clear all
 x1 = sdpvar(1,1);
@@ -73,6 +75,7 @@ optimize(F,p,options);
 ````
 
 Quadratic equality constraints is a common reason for nonconvexity, but can also be dealt with using the global solver. This can be used for, e.g., boolean programming (this is a very inefficient way to solve this simple MIQP and is only shown here to illustrate nonconvex equality constraints).
+
 ````matlab
 n = 10;
 x = sdpvar(n,1);
@@ -94,9 +97,10 @@ optimize(F,objective,options);
 +   1 Finishing.  Cost: -2.9671 Gap: 2.5207e-009%
 ````
 
-!! Nonconvex polynomial programming
+### Nonconvex polynomial programming
 
-The global solver in YALMIP primarily meant for bilinear programs, but a pre-processor is capable of transforming higher order problems to bilinear programs. As an example, the variable '''x'^3^'y'^2^'''' will be replaced with the the variable '''w''' and the constraints '''w == uv''', '''u == zx''', '''z == x'^2^'''', '''v == y'^2^''''. This is done automatically if the global solver is called with a higher order polynomial problem. Note that this conversion is rather inefficient, and only very small problems can be addressed using this simple approach.
+Polynomial programs are transformed to to bilinear programs. As an example, the variable '''x'^3^'y'^2^'''' will be replaced with the the variable '''w''' and the constraints '''w == uv''', '''u == zx''', '''z == x'^2^'''', '''v == y'^2^''''. This is done automatically if the global solver is called with a higher order polynomial problem. With this transformation, standard bilinear envelopes can be used in the creation of the relaxations for computing lower bounds.
+
 ````matlab
 sdpvar x y
 F = [x^3+y^5 <= 5, y >= 0];
@@ -121,9 +125,10 @@ optimize(F,-x,options)
 +  11 Finishing.  Cost: -1.71 Gap: 1.247e-005%
 ````
 
-!! Nonconvex semidefinite programming
+### Nonconvex semidefinite programming
 
 The following problem is a classical BMI problem
+
 ````matlab
 yalmip('clear')
 x = sdpvar(1,1);
@@ -135,7 +140,7 @@ A2 = [-1.8 -0.1 -0.4;-0.1 1.2 -1;-0.4 -1 0];
 K12 = [0 0 2;0 -5.5 3;2 3 0];
 F = [x>=-0.5, x<=2, y>=-3, y<=7];
 F = [F, A0+x*A1+y*A2+x*y*K12-t*eye(3)<=0];
-options = sdpsettings('bmibnb.lowersolver','pensdp','bmibnb.uppersolver','penbmi');
+options = sdpsettings('bmibnb.lowersolver','pensdp','bmibnb.uppersolver','penlab');
 options = sdpsettings(options,'solver','bmibnb','bmibnb.lpsolver','glpk');
 options = sdpsettings(options,'verbose',2,'solver','bmibnb');
 optimize(F,t,options);
@@ -151,8 +156,8 @@ optimize(F,t,options);
 +   5 Finishing.  Cost: -0.95653 Gap: 0.24126%
 ````
 
-[[#decayexample]]
-As a second BMI problem, we will solve a constrained LQR problem. For the global code to work, global lower and upper and bound on all complicating variables (involved in nonlinear terms) must be supplied, either explicitly or implicitly in the linear constraints. This was the case for all problems above. In this example, the variable '''K''' is already bounded in the original problem, but the elements in '''P''' have to be bounded artificially.
+As a second BMI problem, we will solve a constrained LQR problem. For the global code to work, global lower and upper and bound on all complicating variables (involved in nonlinear terms) must be supplied, either explicitly or implicitly in the linear constraints. This was the case for all problems above. In this example, the variable **K** is already bounded in the original problem, but the elements in **P** have to be bounded artificially.
+
 ````matlab
 yalmip('clear')
 A = [-1 2;-3 -4];B = [1;1];
@@ -175,7 +180,8 @@ optimize(F,trace(P),options);
 +   5 Finishing.  Cost: 0.48341 Gap: 0.25032%
 ````
 
-Beware, the BMI solver is absolutely not that efficient in general, this was just a lucky case. Here is the decay-rate example instead (with some additional constraints on the elements in '''P''' to bound the feasible set).
+Beware, the BMI solver is absolutely not that efficient in general, this was just a lucky case. Here is the decay-rate example instead (with some additional constraints on the elements in **P** to bound the feasible set).
+
 ````matlab
 yalmip('clear');
 A = [-1 2;-3 -4];
@@ -205,7 +211,8 @@ optimize(F,-t,options);
 +  95 Finishing.  Cost: -2.5 Gap: 0.46843%
 ````
 
-The linear relaxations give very poor lower bounds on this problem, leading to poor convergence of the branching process. However, for this particular problem, the reason is easy to find. The original BMI is homogeneous w.r.t P, and to guarantee a somewhat reasonable solution, we artificially added the constraint '''P&#8805;I'''. A better model is obtained if we instead fix the trace of '''P'''. This will make the feasible set w.r.t '''P''' much smaller, but the problems are equivalent. Note also that we no longer need any artificial constraints on the elements in '''P'''.
+The linear relaxations give very poor lower bounds on this problem, leading to poor convergence of the branching process. However, for this particular problem, the reason is easy to find. The original BMI is homogeneous w.r.t **P**, and to guarantee a somewhat reasonable solution, we artificially added the constraint **P>=I**. A better model is obtained if we instead fix the trace of **P**. This will make the feasible set w.r.t **P** much smaller, but the problems are equivalent. Note also that we no longer need any artificial constraints on the elements in **P**.
+
 ````matlab
 F = [P>=0, A'*P+P*A <= -2*t*P, 100 >= t >= 0];
 F = [F, trace(P)==1];
@@ -222,7 +229,8 @@ optimize(F,-t,options);
 +   5 Finishing.  Cost: -2.5 Gap: 0.1746%
 ````
 
-For this problem, we can easily find a very efficient additional cutting plane. The decay-rate BMI together with the constant trace on '''P''' implies '''trace(ATP+PA)&#8804;-2t'''. Adding this cut reduce the number of iterations needed.
+For this problem, we can easily find a very efficient additional cutting plane. The decay-rate BMI together with the constant trace on **P** implies **trace(A'*P+P*A)<=-2t**. Adding this cut reduce the number of iterations needed.
+
 ````matlab
 F = [P>0,A'*P+P*A <= -2*t*P,100 >= t >= 0];
 F = [F, trace(P)==1];
@@ -239,6 +247,7 @@ optimize(F,-t,options);
 ````
 
 A Schur complement on the decay-rate BMI gives us yet another cut which improves the node relaxation even more.
+
 ````matlab
 F = [P>0,A'*P+P*A <= -2*t*P,100 >= t >= 0];
 F = [F, trace(P)==1];
@@ -255,7 +264,8 @@ optimize(F,-t,options);
 +   3 Finishing.  Cost: -2.5 Gap: 0.55275%
 ````
 
-By adding valid cuts, the relaxations are possibly tighter, leading to better lower bounds. A problem however is that we add additional burden to the local solver used for the upper bounds. The additional cuts are redundant for the local solver, and most likely detoriate the performance. To avoid this, cuts can be exlicitely specified by using the command [[Commands.cut | cut]]. Constraints defined using this command (instead of [[Commands.set | set]]) will only be used in the solution of relaxations, and omitted when the local solver is called.
+By adding valid cuts, the relaxations are possibly tighter, leading to better lower bounds. A problem however is that we add additional burden to the local solver used for the upper bounds. The additional cuts are redundant for the local solver, and most likely detoriate the performance. To avoid this, cuts can be explicitly specified by using the command [cut](/yalmip/commands/cut). Constraints defined using this command will only be used in the solution of relaxations, and omitted when the local solver is called.
+
 ````matlab
 F = [P>=0,A'*P+P*A <= -2*t*P,100 >= t >= 0];
 F = [F, trace(P)==1];
@@ -272,7 +282,8 @@ optimize(F,-t,options);
 +   3 Finishing.  Cost: -2.5 Gap: 0.55275%
 ````
 
-Upper bounds were obtained above by solving the BMI locally using [[Solvers.PENBMI | PENBMI]]. If no local BMI solver is available, an alternative is to check if the relaxed solution is a feasible solution. If so, the upper bound can be updated. This scheme can be obtained by specifying 'none' as the upper bound solver.
+Upper bounds were obtained above by solving the BMI locally using [PENBMI/PENLAB](/yalmip/solvers/penbmi). If no local BMI solver is available, an alternative is to check if the relaxed solution is a feasible solution. If so, the upper bound can be updated. This scheme can be obtained by specifying 'none' as the upper bound solver.
+
 ````matlab
 options = sdpsettings(options,'bmibnb.uppersolver','none');
 F = [P>=0,A'*P+P*A <= -2*t*P,100 >= t >= 0];
