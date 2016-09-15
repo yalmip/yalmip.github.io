@@ -71,7 +71,7 @@ For the particular problem we address here, the first-order relaxation is unboun
 
 ### Stronger semidefinite relaxations
 
-Stronger relaxations can be constructed manually fairly easily in YALMIP, but it is much easier to use ready-made software to perform this. One option is the separate package  [GloptiPoly]. Another alternative is the sparsity exploiting semidefinite relaxation code [SPARSEPOP] which is interfaced in YALMIP. Here, we will use the built-in semidefinite relaxation module (called [moment]) in YALMIP.
+Stronger relaxations can be constructed manually fairly easily in YALMIP, but it is much easier to use ready-made software to perform this. One option is the separate package  [GloptiPoly]. Another alternative is the sparsity exploiting semidefinite relaxation code [SPARSEPOP] which is interfaced in YALMIP. Here, we will use the built-in [semidefinite relaxation module](/yalmip/tutorials/momentrelaxations) in YALMIP.
 
 The simple semidefinite relaxation above, can be solved using the built-in semidefinite relaxation module using two different calls
 
@@ -80,7 +80,7 @@ sol = optimize([-1 <= x <= 1],x'*Q*x,sdpsettings('solver','moment'));
 sol = solvemoment([-1 <= x <= 1],x'*Q*x);
 ````
 
-Note that the switch from a local approach to a semidefinite relaxation thus can be done by simply telling YALMIP to use another solver.
+Note that a switch from a local approach to a semidefinite relaxation thus can be done by simply telling YALMIP to use another solver.
 
 With the call above, we solve exactly the same semidefinite relaxation as before, and the lower bound is of course still unbounded. In order to solve a stronger semidefinite relaxation, we tell the moment module to use a second-order relaxation.
 
@@ -99,7 +99,8 @@ sol = optimize([-1 <= x <= 1],x'*Q*x,ops)
 YALMIP manages to extract two solutions, and we can check the objective value of these solutions, and compare with the lower bound
 
 ````matlab
-relaxdouble(x'*Q*x)
+relaxvalue(x'*Q*x)
+value(x'*Q*x)
 assign(x,sol.xoptimal{1})
 value(x'*Q*x)
 assign(x,sol.xoptimal{2})
@@ -116,7 +117,7 @@ ops = sdpsettings('solver','bmibnb')
 sol = optimize([-1 <= x <= 1],x'*Q*x,ops)
 ````
 
-In contrast to what many people think, a global approach can be computationally more efficient than a semidefinite relaxation, if a tight solution is required. To illustrate this, let us solve our indefinite QP for growing dimensions (note that this code will take a long time to complete)
+In contrast to what many people think, a global approach can be much more efficient than a semidefinite relaxation, if a tight solution is required. To illustrate this, let us solve our indefinite QP for growing dimensions (note that this code will take a long time to complete)
 
 ````matlab
 ops1 = sdpsettings('solver','bmibnb','bmibnb.maxiter',1000);
@@ -131,7 +132,7 @@ for n = 1:10
     comptimes(n,2) = sol.solvertime;
 end
 semilogy(1:10,comptimes)
-````matlab
+````
 
 As one can see in the figure below, the semidefinite relaxations are extremely slow to compute compared to a vanilla branch & bound solver, already for modest problem sizes (the semidefinite relaxations were solved using [SEDUMI] while the global solver used [FMINCON] and [GUROBI])
 
