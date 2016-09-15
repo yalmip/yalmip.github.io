@@ -248,7 +248,3 @@ commands:
         url: /yalmip/commands/savesdpafile 
       - title: "yalmiptest"
         url: /yalmip/commands/yalmiptest        
-        
-
-
-
