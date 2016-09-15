@@ -5,7 +5,7 @@ layout: single
 
 YALMIP is free of charge to use and is openly distributed, but note that 
 
-{:1. Copyright owned by Johan Löfberg.
+[1. Copyright owned by Johan Löfberg.
 
 2. YALMIP must be referenced when used in a published work (give me some credit for saving your valuable time!)
  
@@ -13,7 +13,7 @@ YALMIP is free of charge to use and is openly distributed, but note that
 
 4. YALMIP is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY, without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE (if your satellite crash or you fail your Phd due to a bug in YALMIP, your loss!).
 
-5. Forks or versions of YALMIP must include, and follow, this license in any distribution. .notice}
+5. Forks or versions of YALMIP must include, and follow, this license in any distribution.]{: .notice}
 
 ## Latest relase
 
