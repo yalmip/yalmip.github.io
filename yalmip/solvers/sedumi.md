@@ -16,6 +16,5 @@ SeDuMi is invoked by using `sdpsettings('solver','sedumi')`.
 [Implementation of Interior Point Methods for Mixed Semidefinite and Second Order Cone Optimization Problems](http://www.optimization-online.org/DB_HTML/2002/08/518.html)
 
 ### Comments
-SeDuMi is the most commonly used solver among YALMIP users.
 
 Please note that there are issues with recent versions of MATLAB and 64-bit SeDuMi. Before you use SeDuMi with YALMIP, make sure that your SeDuMi installation actually works, by running some of the examples included in the SeDuMi distribution.
