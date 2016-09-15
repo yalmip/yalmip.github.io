@@ -10,7 +10,7 @@ main:
     url: /yalmip/examples
 
   - title: "Commands"
-    url: /yalmip/tutorials
+    url: /yalmip/commands
 
   - title: "Solvers"
     url: /yalmip/solvers
@@ -89,3 +89,44 @@ tutorials:
         url: /yalmip/tutorials/automaticdualization
       - title: "Complex problems"
         url: /yalmip/tutorials/complexproblems
+        
+
+commands:
+  - title: Most common
+    children:
+      - title: "sdpvar"
+        url: /yalmip/commands/sdpvar
+      - title: "optimize"
+        url: /yalmip/commands/optimize
+      - title: "value"
+        url: /yalmip/commands/value
+      - title: "sdpsettings"
+        url: /yalmip/commands/sdpsettings
+              
+  - title: Standard problem classes
+    children:
+      - title: "Variable declaration"
+        url: /yalmip/commands/sdpvar
+  - title: Variable manipulations
+    children:
+      - title: "sdpvar"
+        url: /yalmip/commands/sdpvar
+  - title: Variable operators
+    children:
+      - title: "Variable operators"
+        url: /yalmip/commands/sdpvar
+  - title: Constraints
+    children:
+      - title: "Variable declaration"
+        url: /yalmip/commands/sdpvar        
+  - title: Optimization
+    children:
+      - title: "Variable declaration"
+        url: /yalmip/commands/sdpvar        
+  - title: Auxilliary
+    children:
+      - title: "Variable declaration"
+        url: /yalmip/commands/sdpvar        
+
+
+
