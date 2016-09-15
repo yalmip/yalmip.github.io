@@ -65,8 +65,8 @@ tutorials:
         url: /yalmip/tutorials/integerprogramming
       - title: "Global optimization"
         url: /yalmip/tutorials/globaloptimization
-    - title: Advanced problem classes
-      children:
+  - title: Advanced problem classes
+    children:
       - title: "Robust optimization"
         url: /yalmip/tutorials/robustoptimization
       - title: "Automatic dualization"
@@ -80,7 +80,7 @@ tutorials:
       - title: "Moment relaxations"
         url: /yalmip/tutorials/momentrelaxations
   - title: Auxilliary
-     children:
+    children:
       - title: "Nonlinear operators"
       url: /yalmip/tutorials/nonlinearoperators
       - title: "Big-M and convex hulls"
