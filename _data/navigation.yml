@@ -35,3 +35,21 @@ solvers:
         url: /yalmip/solvers/solvemoment
       - title: "SOS"
         url: /yalmip/solvers/solvesos        
+
+
+tutorials:
+  - title: Introduction
+    children:
+      - title: "Installation"
+        url: /yalmip/tutorials/installation
+      - title: "Getting started!"
+        url: /yalmip/tutorials/basics
+  
+  - title: Standard problems
+    children:
+      - title: "Linear programming"
+        url: /yalmip/tutorials/linearprogramming
+      - title: "Quadratic programming"
+        url: /yalmip/tutorials/linearprogramming
+      - title: "Second order cone programming"
+        url: /yalmip/tutorials/socpprogramming
