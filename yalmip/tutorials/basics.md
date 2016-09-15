@@ -2,7 +2,7 @@
 title: "Basics"
 layout: single
 sidebar:
-  nav: "solvers"
+  nav: "tutorials"
 ---
 
 The following piece of code introduces essentially  everything you ever need to learn. It defines variables, constraints, objectives, options, checks result and extracts solution (Note that the code specifies the solver to [CPLEX](/yalmip/solvers/cplex). If you don't have [CPLEX](/yalmip/solvers/cplex) installed, simply remove that solver selection in the definition of options. YALMIP will pick some other solver it finds installed)
