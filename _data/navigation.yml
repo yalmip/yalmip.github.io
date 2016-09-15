@@ -79,3 +79,15 @@ tutorials:
         url: /yalmip/tutorials/sumofsquaresprogramming
       - title: "Moment relaxations"
         url: /yalmip/tutorials/momentrelaxations
+  - title: Auxilliary
+    children:
+      - title: "Nonlinear operators"
+        url: /yalmip/tutorials/nonlinearoperators
+      - title: "Big-M and convex hulls"
+        url: /yalmip/tutorials/bigmandconvexhulls
+      - title: "Automatic dualizations"
+        url: /yalmip/tutorials/automaticdualization
+      - title: "Complex problems"
+        url: /yalmip/tutorials/complexproblems
+      - title: "Duality"
+        url: /yalmip/tutorials/duality        
