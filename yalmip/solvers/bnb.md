@@ -5,9 +5,9 @@ sidebar:
   nav: "solvers"
 ---
 
-Built-in mixed-integer solver forconvex problems.
+Built-in mixed-integer solver for convex problems.
 
-!YALMIP
+### YALMIP
 BNB is invoked using `sdpsettings('solver','bnb')`.
 
 Available options : see `help bnb` in MATLAB
