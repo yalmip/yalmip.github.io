@@ -1,3 +1,10 @@
+---
+title: "BMIBNB"
+layout: single
+sidebar:
+  nav: "solvers"
+---
+
 Built-in global solver for nonconvex problems.
 
 ### Availability
