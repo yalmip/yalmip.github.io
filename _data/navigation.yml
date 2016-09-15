@@ -50,7 +50,7 @@ tutorials:
       - title: "Linear programming"
         url: /yalmip/tutorials/linearprogramming
       - title: "Quadratic programming"
-        url: /yalmip/tutorials/linearprogramming
+        url: /yalmip/tutorials/quadraticprogramming
       - title: "Second order cone programming"
         url: /yalmip/tutorials/socpprogramming
       - title: "Semidefinite programming"
