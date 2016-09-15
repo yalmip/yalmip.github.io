@@ -1,5 +1,5 @@
 ---
-title: "Second order cone programming"
+title: "Determinant maximization"
 layout: single
 sidebar:
   nav: "tutorials"
