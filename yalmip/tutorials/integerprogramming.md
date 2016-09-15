@@ -6,23 +6,26 @@ sidebar:
 ---
 
 
-YALMIP supports several [[Category.IntegerProgrammingSolver | mixed integer programming solvers]], but also comes with a very simple [[Solvers.BNB | built-in solver for mixed integer programming]] (which you shouldn't use unless you absolutely have to), based on a simple standard branch-and-bound algorithm.
+YALMIP supports several [mixed integer programming solvers], but also comes with a very simple [built-in solver for mixed integer programming (BNB)](/yalmip/solvers/bnb) (which you shouldn't use unless you absolutely have to), based on a simple standard branch-and-bound algorithm.
 
-!! Integer and binary variables
+### Integer and binary variables
 
-Defining binary and integer variables is done with the commands [[Commands.binvar | binvar]] and [[Commands.intvar | intvar]]. The resulting objects are essentially [[Commands.sdpvar| sdpvar]] objects with implicit constraints.
+Defining binary and integer variables is done with the commands [binvar] and [intvar]. The resulting objects are essentially [sdpvar] objects with implicit constraints.
+
 ````matlab
 x = intvar(n,m);
 y = binvar(n,m);
 ````
 
-Objects with integer variables are manipulated as standard [[Commands.sdpvar| sdpvar]] objects.
+Objects with integer variables are manipulated as standard [sdpvar] objects.
+
 ````matlab
 z = x + y + trace(x) + sum(sum(y));
 F = [z >= 0, x <= 0];
 ````
 
 In the code above, integrality was imposed by using integer and binary variables. An equivalent alternative is to use explicit constraints.
+
 ````matlab
 x = sdpvar(n,m);
 y = sdpvar(n,m);
@@ -31,11 +34,12 @@ F = [z >= 0, x <= 0, integer(x), binary(y)];
 ````
 
 
-!! Mixed integer conic programming
+### Mixed integer conic programming
 
-The global integer solver can be applied to any kind of conic program that can be defined within the YALMIP framework, and defining integer programs is as simple as defining standard problems. In addition to the external supported mixed integer solvers, YALMIP comes with an internal branch-and-bound solver, called [[Solvers.BNB | bnb]], to be used together with any continuous solver. Hence, it is possible to solve mixed integer linear/quadratic/second order cone/semidefinite/geometric programs in YALMIP. Note that the internal branch-and-bound algorithm is rudimentary and useful only for small problems.
+The global integer solver can be applied to any kind of conic program that can be defined within the YALMIP framework, and defining integer programs is as simple as defining standard problems. In addition to the external supported mixed integer solvers, YALMIP comes with an internal branch-and-bound solver, called [BNB], to be used together with any continuous solver. Hence, it is possible to solve mixed integer linear/quadratic/second order cone/semidefinite/geometric programs in YALMIP. Note that the internal branch-and-bound algorithm is rudimentary and useful only for small problems.
 
-As an example, let us return to the [[Tutorials.LinearAndQuadraticProgramming | linear regression problem]]. Solving the same problems, but looking for integer solutions can be done by changing one line of code
+As an example, let us return to the [linear regression problem](/yalmip/tutorials/linearprogramming). Solving the same problems, but looking for integer solutions can be done by changing one line of code
+
 ````matlab
 x = [1 2 3 4 5 6]';
 t = (0:0.02:2*pi)';
@@ -57,18 +61,20 @@ optimize(F,bound);
 x_Linf = value(x_hat);
 ````
 
-Since [[Solvers.BNB | bnb]] supports mixed integer semidefinite programming, we can easily solve the problems above with semidefinite constraints.
+Since [bnb] supports mixed integer semidefinite programming, we can easily solve the problems above with semidefinite constraints.
+
 ````matlab
 F = [toeplitz(x_hat) > 0];
 optimize(F,residuals'*residuals);
 x_L2_toep = value(x_hat);
 ````
 
-Note that [[Solvers.BNB | bnb]]  not should be used if you have simple mixed integer linear programs. In that case, you can just as well download a much faster free specialized MILP solver, such as [[Solvers.GLPK | GLPK]] or academic license version of [[Solvers.GUROBI | Gurobi]].
+Note that [BNB]  not should be used if you have simple mixed integer linear programs. In that case, you can just as well download a much faster free specialized MILP solver, such as [GLPK] or academic license version of [GUROBI].
 
 !! General mixed integer programming
 
 The mixed integer programming solvers discussed above are all guaranteed to find a globally optimal solution, if one exists. The built-in branch-and-bound module can be applied also to general nonlinear programs with discrete data. The difference is that there is no guarantee on global optimality for these problems. It can however be a useful strategy for finding reasonably good feasible solutions to mixed integer nonlinear programs.
+
 ````matlab
 x = sdpvar(5,1);
 A = randn(15,5);
@@ -113,7 +119,8 @@ invalid. Hence, do not trust the bound or the gap...
 +  23 Finishing.  Cost: 107
 ````
 
-If globality is desired, and the problem is nonconvex (for relaxed integers), the [[Tutorials.GlobalOptimization  | global]] solver [[Solvers.BMIBNB | bmibnb]] does actually support integer variables. However, [[Solvers.BMIBNB | bmibnb]] is only intended for a few number of variables, and is much slower, since it performs branching not only in the integer variables, but also in the continuous variables.
+If globality is desired, and the problem is nonconvex (for relaxed integers), the [global optimization](/yalmip/tutorials/globaloptimization) solver [BMIBNB] does actually support integer variables. However, [BMIBNB] is only intended for a few number of variables, and is much slower, since it performs branching not only in the integer variables, but also in the continuous variables.
+
 ````matlab
 ops = sdpsettings('solver','bmibnb','bmibnb.upper','fmincon');
 optimize([A*x <= b, integer(x)],obj,ops)
@@ -139,7 +146,6 @@ optimize([A*x <= b, integer(x)],obj,ops)
    94 :   1.070E+002     8.66     9.765E+001   1  Infeasible  
    95 :   1.070E+002     0.00     1.210E+002   0  Poor bound  
 + 95 Finishing.  Cost: 107 Gap: 0%
-
 ````
 
-For an additional example, check out the [[Tutorials.Geometric | mixed integer geometric programming example]].
+For an additional example, check out the [mixed integer geometric programming example](/yalmip/tutorials/geometricprogramming).
