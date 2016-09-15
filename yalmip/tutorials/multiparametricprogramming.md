@@ -8,7 +8,7 @@ sidebar:
 
 This tutorial requires [MPT] or [POP]
 
-YALMIP can be used to calculate explicit solutions of linear and quadratic programs by interfacing the [Multi-Parametric Toolbox MPT] (or [POP]). This tutorial assumes that the reader is familiar with parametric programming and the basics of [MPT].
+YALMIP can be used to calculate explicit solutions of parametric linear and quadratic programs by interfacing the [Multi-Parametric Toolbox MPT] (or [POP]). This tutorial assumes that the reader is familiar with parametric programming and the basics of [MPT].
 
 ### Generic example.
 
@@ -76,15 +76,16 @@ plot(Optimizer);
 ![Value function]({{ site.url }}/images/valuefunction1.png){: .center-image }
 
 and plot the piecewise affine optimizer
+
 ````matlab
 figure
 plot(Optimizer(1));
 ````
 ![PWA solution]({{ site.url }}/images/pwasolution1.png){: .center-image }
 
-###Simple MPC example
+### Simple MPC example
 
-Define numerical data for a linear system, prediction matrices, and variables for current state **x** and the future control sequence **U**, for an MPC problem with horizon 5 (**create_CHS** is a function that creates the numerical matrices to describe the linear relation between current state **x** and future input sequence **U**, to the predicted outputs)
+Define numerical data for a linear system, prediction matrices, and variables for current state **x** and the future control sequence **U**, for an MPC problem with horizon 5 (**create_CHS** is a cheat function that creates the numerical matrices to describe the linear relation between current state **x** and future input sequence **U**, to the predicted outputs. See the [MPC examples] to see how you would do this in a more generic fashion for an actual application)
 
 ````matlab
 N = 5;
@@ -115,13 +116,13 @@ F = [1 >= U >= -1];
 F = [F, 1 >= Y(N) >= -1];
 ````  
 
-We seek the explicit solution **U(x)** over the exploration set **|x|<5**.
+We seek the explicit solution \\( U(x)\\) over the exploration set \\( \left \lvert x\right \rvert \leq 5\\)
 
 ````matlab
 F = [F, 5 >= x >= -5];
 ````
 
-The explicit solution **U(x)** is obtained by calling [solvemp] with the parametric variable **x** as the fourth argument. Additionally, since we only are interested in the first element of the solution **U**, we use a fifth input to communicate this.
+The explicit solution \\( U(x)\\) is obtained by calling [solvemp] with the parametric variable\\( x \\) as the fourth argument. Additionally, since we only are interested in the first element of the solution\\( U(x)\\), we use a fifth input to communicate this.
 
 ````matlab
 [sol,diagnostics,aux,Valuefunction,Optimizer] = solvemp(F,objective,[],x,U(1));
