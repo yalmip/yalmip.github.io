@@ -7,7 +7,7 @@ sidebar:
 
 One of the core ideas in YALMIP is to rely on external solvers for the low-level numerical solution of optimization problem. YALMIP concentrates on efficient modeling and high-level algorithms.
 
-### Recommended installation
+## Recommended installation
 
 Linear programming can be solved by quadratic programming which can be solved by second-order cone programming which can be solved by semidefinite programming. Hence, in theory, you only need a semidefinite programming solver if you only solve linear problems.
 
@@ -20,7 +20,7 @@ If you intend to solve large problems or other problem classes, you are advised 
 
 And finally, there are no free lunches and you get what you pay for, most often...
 
-### Available solvers by problem class
+## Available solvers by problem class
 
 A simple categorization is as follows (the definitions of free and commercial depends slightly on the solver, please see the specific comments in the solver description)
 
