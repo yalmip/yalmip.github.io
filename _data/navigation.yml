@@ -69,8 +69,6 @@ tutorials:
     children:
       - title: "Robust optimization"
         url: /yalmip/tutorials/robustoptimization
-      - title: "Automatic dualization"
-        url: /yalmip/tutorials/automaticdualization
       - title: "Multiparametric programming"
         url: /yalmip/tutorials/multiparametricprogramming
       - title: "Bilevel programming"
