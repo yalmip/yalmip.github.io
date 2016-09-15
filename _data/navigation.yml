@@ -85,9 +85,9 @@ tutorials:
         url: /yalmip/tutorials/nonlinearoperators
       - title: "Big-M and convex hulls"
         url: /yalmip/tutorials/bigmandconvexhulls
+      - title: "Duality"
+        url: /yalmip/tutorials/duality
       - title: "Automatic dualizations"
         url: /yalmip/tutorials/automaticdualization
       - title: "Complex problems"
         url: /yalmip/tutorials/complexproblems
-      - title: "Duality"
-        url: /yalmip/tutorials/duality        
