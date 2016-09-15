@@ -7,10 +7,6 @@ sidebar:
 
 Built-in global solver for nonconvex problems.
 
-### Availability
-
-BMIBNB is shipped with YALMIP.
-
 ### YALMIP
 BMIBNB is invoked by using `sdpsettings('solver','bmibnb')`
 
