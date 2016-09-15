@@ -31,11 +31,12 @@ solvers:
         url: /yalmip/solvers/bmibnb
       - title: "CUTSDP"
         url: /yalmip/solvers/cutsdp
+      - title: "KKTQP"
+        url: /yalmip/solvers/kktqp        
       - title: "MOMENT"
         url: /yalmip/solvers/solvemoment
       - title: "SOS"
         url: /yalmip/solvers/solvesos
-
 
 tutorials:
   - title: Introduction
