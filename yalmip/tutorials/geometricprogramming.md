@@ -5,7 +5,7 @@ sidebar:
   nav: "tutorials"
 ---
 
-The following example requires [MOSEK](/yalmip/solvers/mosek) or [GPPOSY](/yalmip/solvers/gpposy), or any nonlinear solver such as [FMINCON](/yalmip/solvers/fmincon), [[Solvers.SNOPT| SNOPT]] or [[Solvers.IPOPT | IPOPT]]. (The solvers [[MOSEK]](/yalmip/solvers/mosek) and [GPPOSY](/yalmip/solvers/gpposy) are dedicated geometric programming solvers, but for small to medium-scale problems, comparable performance is obtained by simply letting YALMIP convert the problem to the convex form and solve the problem using a general nonlinear solver.)
+The following example requires [MOSEK](/yalmip/solvers/mosek) or [GPPOSY](/yalmip/solvers/gpposy), or any nonlinear solver such as [FMINCON](/yalmip/solvers/fmincon), [SNOPT](/yalmip/solvers/snopt) or [IPOPT](/yalmip/solvers/ipopt). (The solvers [MOSEK](/yalmip/solvers/mosek) and [GPPOSY](/yalmip/solvers/gpposy) are dedicated geometric programming solvers, but for small to medium-scale problems, comparable performance is obtained by simply letting YALMIP convert the problem to the convex form and solve the problem using a general nonlinear solver.)
 
 Nonlinear terms can be defined also with negative and non-integer powers. This can be used to define geometric programming problems.
 
@@ -34,7 +34,7 @@ Warning: Solver not applicable
   problem: -4
 ````
 
-YALMIP will automatically convert some simple violations of the posynomial assumptions, such as lower bounds on monomial terms and maximization of negative monomials. The following small program maximizes the volume of a box, under constraints on the floor and wall area, and constraints on the relation between the height, width and depth (example from [Boyd et al.:2007]).
+YALMIP will automatically convert some simple violations of the posynomial assumptions, such as lower bounds on monomial terms and maximization of negative monomials. The following small program maximizes the volume of a box, under constraints on the floor and wall area, and constraints on the relation between the height, width and depth (example from [Boyd et al. 2007]).
 
 ````matlab
 sdpvar h w d
@@ -76,7 +76,7 @@ C = [C, (2*t1+3*t2^-1)^0.5 <= 2, t1>=0, t2>=0, t3>=0];
 optimize(C,obj);
 ````
 
-To understand how a generalized geometric program can be converted to a standard geometric program, the reader is referred to {[reference.bib,Boyd et al.:2007]}.
+To understand how a generalized geometric program can be converted to a standard geometric program, the reader is referred to [Boyd et al 2007].
 
 ### Comments
 The posynomial geometric programming problem is not convex in its standard formulation. Hence, if a general nonlinear solver is applied to the problem, it will typically fail. However, by performing a suitable logarithmic variable transformation, the problem is rendered convex. YALMIP has built-in support for performing this variable change, and solve the problem using the nonlinear solver [FMINCON](/yalmip/solvers/fmincon). To invoke this module in YALMIP, use the solver tag `'fmincon-geometric'`.
@@ -94,7 +94,7 @@ Never use the commands [sqrt] and [cpower] when working with geometric programs,
 
 ### Mixed integer geometric programming
 
-The [[Solvers.BNB | mixed-integer branch and bound solver in YALMIP]] is built in a modular fashion that makes it possible to solve almost arbitrary convex mixed integer programs. The following example is taken from [Boyd et al.:2007]. To begin with, define the data for the example.
+The [mixed-integer branch and bound solver in YALMIP](/yalmip/solvers/bnb) is built in a modular fashion that makes it possible to solve almost arbitrary convex mixed integer programs. The following example is taken from [Boyd et al.:2007]. To begin with, define the data for the example.
 
 ````matlab
 a     = ones(7,1);
