@@ -72,4 +72,5 @@ plot(greens(1,:),greens(2,:),'g*')
 plot(blues(1,:),blues(2,:),'b*')
 ````
 
-%center%%width=550px%Images:bluegreendatapartioned.png
+![Separated with linear classifier]({{ site.url }}/images/bluegreendatapartioned.png)
+
