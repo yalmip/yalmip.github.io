@@ -13,7 +13,7 @@ Linear programming can be solved by quadratic programming which can be solved by
 
 A recommended installation if you mainly intend to solve SDPs and perhaps some small to medium sized LPs and QPs is [SEDUMI](sedumi/) and [SDPT3](sdpt3/) (these solvers are by no means the best solvers, but they support second order cones which makes them fairly efficient also for QPs).
 
-If you solve non-trivial linear and quadratic programs (and nonconvex problems via [BMIBNB](/)(bminb/), a dedicated LP/QP solver is recommended. Most examples in this Wiki have been generated using [GUROBI](gurobi/).
+If you solve non-trivial linear and quadratic programs (and nonconvex problems via [BMIBNB](bminb/), a dedicated LP/QP solver is recommended. Most examples in this Wiki have been generated using [GUROBI](gurobi/).
 
 If you are in academia, [MOSEK](mosek/) is convenient since it gives you a very competetive MILP, MIQP, MISOCP and SDP solver in one package. 
 If you intend to solve large problems or other problem classes, you are advised to download several solvers to find one that works best for your problem class.
