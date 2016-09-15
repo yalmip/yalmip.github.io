@@ -5,7 +5,7 @@ sidebar:
   nav: "solvers"
 ---
 
-The following piece of code introduces essentially  everything you ever need to learn. It defines variables, constraints, objectives, options, checks result and extracts solution (Note that the code specifies the solver to [[Solvers.CPLEX | CPLEX]]. If you don't have [[Solvers.CPLEX | CPLEX]] installed, simply remove that solver selection in the definition of options. YALMIP will pick some other solver it finds installed)
+The following piece of code introduces essentially  everything you ever need to learn. It defines variables, constraints, objectives, options, checks result and extracts solution (Note that the code specifies the solver to [CPLEX](/solvers/cplex). If you don't have [CPLEX](/solvers/cplex) installed, simply remove that solver selection in the definition of options. YALMIP will pick some other solver it finds installed)
 
 ````matlab
 % Define variables
