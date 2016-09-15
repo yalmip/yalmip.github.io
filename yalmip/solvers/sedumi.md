@@ -5,7 +5,7 @@ sidebar:
   nav: "solvers"
 ---
 
-SeDuMi is freely distributed and available with source and binaries from [github](https://github.com/SQLP/SeDuMi). The official site is [http://sedumi.ie.lehigh.edu](http://sedumi.ie.lehigh.edu) but it lacks some binaries and does not necessarily include the latest bug fixes.
+SeDuMi is freely distributed and available with source and binaries from [github](https://github.com/SQLP/SeDuMi). The official site is <http://sedumi.ie.lehigh.edu> but it lacks some binaries and does not necessarily include the latest bug fixes.
 
 ### YALMIP
 SeDuMi is invoked with @@sdpsettings('solver','sedumi')@@.
