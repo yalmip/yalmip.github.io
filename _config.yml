@@ -13,7 +13,7 @@ name                     : "Johan Löfberg"
 description              : "YALMIP A toolbox for modelling and optimization"
 url                      : "https://johanlofberg.github.io"
 baseurl                  : # ""
-repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+repository               : "johanlofberg/yalmip" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
