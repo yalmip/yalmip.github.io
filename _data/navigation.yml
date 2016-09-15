@@ -128,108 +128,127 @@ commands:
         url: /yalmip/commands/solvemp
       - title: "solvesos"
         url: /yalmip/commands/solvesos
+ - title: Optimization model manipulations
+    children:
+      - title: "dualize"
+        url: /yalmip/commands/dualize  
+      - title: "export"
+        url: /yalmip/commands/export  
+      - title: "kkt"
+        url: /yalmip/commands/kkt        
+      - title: "momentmodel"
+        url: /yalmip/commands/momentmodel        
+      - title: "primalize"
+        url: /yalmip/commands/primalize        
+      - title: "robustmodel"
+        url: /yalmip/commands/robustmodel        
+      - title: "sosmodel"
+        url: /yalmip/commands/sosmodel
   - title: Variable manipulations
     children:
       - title: "assign"
-        url: /yalmip/commands/sdpvar
+        url: /yalmip/commands/assign
+     - title: "binmodel"
+        url: /yalmip/commands/binmodel         
       - title: "coefficients"
-        url: /yalmip/commands/sdpvar
+        url: /yalmip/commands/coefficients
       - title: "degree"
-        url: /yalmip/commands/sdpvar
+        url: /yalmip/commands/degree
       - title: "dissect"
-        url: /yalmip/commands/sdpvar        
+        url: /yalmip/commands/dissect        
       - title: "hessian"
-        url: /yalmip/commands/sdpvar
+        url: /yalmip/commands/hessian
       - title: "int"
-        url: /yalmip/commands/sdpvar
+        url: /yalmip/commands/int
       - title: "is"
-        url: /yalmip/commands/sdpvar
+        url: /yalmip/commands/is
       - title: "jacobian"
-        url: /yalmip/commands/sdpvar                
+        url: /yalmip/commands/jacobian                
       - title: "linearize"
-        url: /yalmip/commands/sdpvar
+        url: /yalmip/commands/linearize
       - title: "monolist"
-        url: /yalmip/commands/sdpvar
+        url: /yalmip/commands/monolist
       - title: "polynomial"
-        url: /yalmip/commands/sdpvar
+        url: /yalmip/commands/polynomial
       - title: "sdisplay"
-        url: /yalmip/commands/sdpvar                
+        url: /yalmip/commands/sdisplay                
       - title: "unblkdiag"
-        url: /yalmip/commands/sdpvar                
+        url: /yalmip/commands/unblkdiag                
       - title: "value"
-        url: /yalmip/commands/sdpvar                
-  - title: Variable operators
+        url: /yalmip/commands/value                
+  - title: Variable operators (selected)
     children:
       - title: "abs"
         url: /yalmip/commands/sdpvar
       - title: "crossentropy"
-        url: /yalmip/commands/sdpvar
+        url: /yalmip/commands/crossentropy
       - title: "entropy"
-        url: /yalmip/commands/sdpvar
+        url: /yalmip/commands/entropy
       - title: "geomean"
-        url: /yalmip/commands/sdpvar
-      - title: "iff"
-        url: /yalmip/commands/sdpvar
-      - title: "implies"
-        url: /yalmip/commands/sdpvar
+        url: /yalmip/commands/geomean
       - title: "logdet"
-        url: /yalmip/commands/sdpvar
+        url: /yalmip/commands/logdet
       - title: "logistic"
-        url: /yalmip/commands/sdpvar
+        url: /yalmip/commands/logistic
       - title: "logsumexp"
-        url: /yalmip/commands/sdpvar
+        url: /yalmip/commands/logsumexp
       - title: "median"
-        url: /yalmip/commands/sdpvar
+        url: /yalmip/commands/median
       - title: "nnz"
-        url: /yalmip/commands/sdpvar
+        url: /yalmip/commands/nnz
       - title: "sdpfun"
-        url: /yalmip/commands/sdpvar
+        url: /yalmip/commands/sdpfun
       - title: "sort"
-        url: /yalmip/commands/sdpvar
+        url: /yalmip/commands/sort
   - title: Constraints
     children:
       - title: "alldifferent"
-        url: /yalmip/commands/sdpvar        
+        url: /yalmip/commands/alldifferent        
       - title: "binary"
-        url: /yalmip/commands/sdpvar        
-      - title: "check"
-        url: /yalmip/commands/sdpvar        
+        url: /yalmip/commands/binary        
       - title: "cone"
-        url: /yalmip/commands/sdpvar        
+        url: /yalmip/commands/cone        
       - title: "cut"
-        url: /yalmip/commands/sdpvar   
-      - title: "dilate"
-        url: /yalmip/commands/sdpvar        
-      - title: "dual"
-        url: /yalmip/commands/sdpvar        
-      - title: "dualize"
-        url: /yalmip/commands/sdpvar        
-      - title: "hull"
-        url: /yalmip/commands/sdpvar        
-      - title: "imagemodel"
-        url: /yalmip/commands/sdpvar        
+        url: /yalmip/commands/cut   
+      - title: "iff"
+        url: /yalmip/commands/iff
+      - title: "implies"
+        url: /yalmip/commands/implies        
       - title: "integer"
-        url: /yalmip/commands/sdpvar        
-      - title: "is"
-        url: /yalmip/commands/sdpvar        
-      - title: "ismember"
-        url: /yalmip/commands/sdpvar        
-      - title: "primalize"
-        url: /yalmip/commands/sdpvar        
+        url: /yalmip/commands/integer        
       - title: "rank"
-        url: /yalmip/commands/sdpvar        
+        url: /yalmip/commands/rank        
       - title: "rcone"
-        url: /yalmip/commands/sdpvar        
-      - title: "robustify"
-        url: /yalmip/commands/sdpvar        
+        url: /yalmip/commands/rcone        
       - title: "sos"
-        url: /yalmip/commands/sdpvar        
+        url: /yalmip/commands/sos        
+  - title: Constraint manipulation
+    children:
+      - title: "check"
+        url: /yalmip/commands/check         
+      - title: "dilate"
+        url: /yalmip/commands/dilate        
+      - title: "dual"
+        url: /yalmip/commands/dual        
+      - title: "hull"
+        url: /yalmip/commands/hull    
+      - title: "is"
+        url: /yalmip/commands/is        
+      - title: "ismember"
+        url: /yalmip/commands/ismember   
       - title: "sosd"
-        url: /yalmip/commands/sdpvar        
+        url: /yalmip/commands/sosd        
   - title: Auxilliary
     children:
-      - title: "Variable declaration"
-        url: /yalmip/commands/sdpvar        
+      - title: "saveampl"
+        url: /yalmip/commands/saveampl 
+      - title: "savecplexfile"
+        url: /yalmip/commands/savecplexfile 
+      - title: "savesdpafile"
+        url: /yalmip/commands/savesdpafile 
+      - title: "yalmiptest"
+        url: /yalmip/commands/yalmiptest        
+        
 
 
 
