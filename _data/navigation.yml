@@ -102,15 +102,28 @@ commands:
         url: /yalmip/commands/value
       - title: "sdpsettings"
         url: /yalmip/commands/sdpsettings
-              
-  - title: Standard problem classes
+  - title: Variable declaration
     children:
-      - title: "Variable declaration"
+      - title: "binvar"
+        url: /yalmip/commands/binvar
+      - title: "blkvar"
+        url: /yalmip/commands/blkvar
+      - title: "intvar"
+        url: /yalmip/commands/intvar
+      - title: "sdpvar"
         url: /yalmip/commands/sdpvar
+      - title: "semivar"
+        url: /yalmip/commands/semivar
   - title: Variable manipulations
     children:
       - title: "sdpvar"
         url: /yalmip/commands/sdpvar
+      - title: "sdpvar"
+        url: /yalmip/commands/sdpvar
+      - title: "sdpvar"
+        url: /yalmip/commands/sdpvar
+      - title: "sdpvar"
+        url: /yalmip/commands/sdpvar        
   - title: Variable operators
     children:
       - title: "Variable operators"
