@@ -220,7 +220,7 @@ commands:
     children:
       - title: "assign"
         url: /yalmip/commands/assign
-     - title: "binmodel"
+      - title: "binmodel"
         url: /yalmip/commands/binmodel         
       - title: "coefficients"
         url: /yalmip/commands/coefficients
