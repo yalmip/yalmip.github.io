@@ -101,5 +101,6 @@ X(:,:,1,1)
 Linear matrix variable 3x3 (full, real, 9 variables)
 ````
 
-!!Related commands 
+### See also
+
 [[binvar]], [[intvar]], [[semivar]], [[blkvar]]
