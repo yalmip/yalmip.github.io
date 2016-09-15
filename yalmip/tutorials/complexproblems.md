@@ -9,6 +9,7 @@ sidebar:
 YALMIP supports complex-valued constraints for all solvers by automatically converting complex-valued problems to real-valued problems.
 
 To begin with, let us just define a simple linear complex problem to illustrate how complex variables and constraints are generated and interpreted.
+
 ````matlab
 p = sdpvar(1,1,'full','complex');      % A complex scalar (4 arguments necessary)
 s = sdpvar(1,1)+sqrt(-1)*sdpvar(1,1);  % Alternative definition
@@ -26,16 +27,19 @@ P = [4 1+2*i 3-i;1-2*i 3.5 0.8+2.3*i;3+i 0.8-2.3*i 4];
 ````
 
 We define a complex-valued Toeplitz matrix of the corresponding dimension
+
 ````matlab
 Z = sdpvar(3,3,'toeplitz','complex')
 ````
 
 A complex Toeplitz matrix is not Hermitian, but we can make it Hermitian if we remove the imaginary part on the diagonal.
+
 ````matlab
 Z = Z-diag(imag(diag(Z)))*sqrt(-1);
 ````
 
 Minimizing the Frobenious norm of **P-Z** can be cast as minimizing the Euclidean norm of the vectorized difference **P(:)-Z(:)**. By using a Schur complement, we see that this can be written as the following SDP.
+
 ````matlab
 e = P(:)-Z(:)
 t = sdpvar(1,1);
@@ -45,6 +49,7 @@ optimize(F,t);
 ````
 
 The problem can be implemented more efficiently using a second order cone constraint.
+
 ````matlab
 e = Z(:)-P(:)
 t = sdpvar(1,1);
@@ -54,6 +59,7 @@ optimize(F,t);
 ````
 
 ...with a second order cone constraint that we let YALMIP model automatically
+
 ````matlab
 e = Z(:)-P(:)
 F = [Z>=0];
@@ -61,6 +67,7 @@ optimize(F,norm(e,2));
 ````
 
 ...or by using a quadratic objective function
+
 ````matlab
 e = Z(:)-P(:)
 F = [Z>=0];
@@ -68,6 +75,7 @@ optimize(F,e'*e);
 ````
 
 ...or by simply using the nonlinear operator framework which supports matrix norms
+
 ````matlab
 F = [Z>=0];
 optimize(F,norm(P-Z,'fro'));
