@@ -29,8 +29,17 @@ F = [cone(y-A*xhat,u), cone(xhat,v)];
 solvesdp(F,u + v);
 ````
 
-By using the automatic modelling support in the [nonlinear operator framework](/yalmip/tutorials/nonlinearoperator), we can alternatively write
+By using the automatic modelling support in the [nonlinear operator framework](/yalmip/tutorials/nonlinearoperator), we can alternatively write it in the following epigraph form
 
+````matlab
+xhat = sdpvar(6,1);
+sdpvar u v
+
+F = [norm(y-A*xhat,2) <= u, norm(xhat,2) <= v];
+solvesdp(F,u + v);
+````
+
+Of course, we can write it in the most natural form (and YALMIP will automatically perform the epigraph reformulation and represent the model using second order cone operators)
 ````matlab
 solvesdp([],norm(y-A*xhat,2) + norm(xhat,2));
 ````
