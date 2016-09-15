@@ -59,7 +59,7 @@ Hence, the final trick is to simply remove the rank constraint, and arrive at a 
 ````matlab
 X = sdpvar(5);
 optimize([-1 <= x <= 1, [1 x';x X]>=0],trace(Q*X))
-````matlab
+````
 
 Now, three things can happen
 1. The problem is unbounded from below. The semidefinite relaxation is thus useless and gives no information.
