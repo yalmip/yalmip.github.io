@@ -1,19 +1,19 @@
 # main links links
 main:
   - title: "Download"
-    url: /docs/download
+    url: /yalmip/download
 
   - title: "Tutorials"
-    url: /docs/tutorials
+    url: /yalmip/tutorials
     
   - title: "Examples"
-    url: /docs/examples    
+    url: /yalmip/examples    
   
   - title: "Commands"
-    url: /docs/tutorials
+    url: /yalmip/tutorials
   
   - title: "Solvers"
-    url: /docs/solvers
+    url: /yalmip/solvers
     
     
 docs:
