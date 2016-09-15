@@ -8,7 +8,6 @@ sidebar:
 
 Problems in YALMIP are internally written (interpreted) in the following format (this will be referred to the dual form, or dual type representation)
 
-%center%Images:dualform.gif
 ![Dual form]({{ site.url }}/images/dualform.gif){: .center-image }
 
 The dual to this problem is (called the primal form)
