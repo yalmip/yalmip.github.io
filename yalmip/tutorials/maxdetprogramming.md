@@ -12,9 +12,9 @@ E_1 &= \{x ~|~ x^TP_1x \leq 1\}\\
 E_2 &= \{x ~|~ x^TP_2x \leq 1\}\\
 \end{align}$$
 
-Find the ellipsoid \\(E = \left\{x ~|~ x^TPx \leq 1\right\}\\) with smallest possible volume that contains the union of \\(E_1\\) and \\(E_2\\). By using the fact that the volume of the ellipsoid is proportional to \\(\det(P)\\) and applying the S-procedure {[reference.bib,Polik and Terlaky:2007]}, it can be shown that this problem can be written as
+Find the ellipsoid \\(x^TPx \leq 1\\) with smallest possible volume that contains the union of \\(E_1\\) and \\(E_2\\). By using the fact that the volume of the ellipsoid is proportional to \\(\det(P)\\) and applying the S-procedure, it can be shown that this problem can be written as
 
-%center%Images:ellips5.gif
+![Ellipsoid]({{ site.url }}/images/ellips5.gif)
 
 The objective function \\(-\det(P)\\) (which is minimized) is not convex, but monotonic transformations can render this problem convex. One alternative is the logarithmic transform, leading to minimization of\\(-\log(\det(P))\\) instead, which only is supported if you use [[Solvers.SDPT3 | SDPT3 version 4]] (see below).
 
