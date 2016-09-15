@@ -24,7 +24,7 @@ If **M** is chosen sufficiently large and **m** is sufficiently small (i.e., neg
 
 Hence, for a big-M reformulation to work, the modeling language has to be able to derive these constants, or conservative approximations, from the complete model. YALMIP derives these constants from the model automatically by searching for simple variable bound constraints and using these bound constraints to compute conservative bounds on the expressions involved in the big-M constraint. Consequently, you have to add explicit bounds on all variables that are involved in logic constraints or constraints involving nonconvex instances of operators such as **max**, **min** etc.
 
-> The term big-M is however devastatingly misleading, a better term would be "sufficiently-large-small-M". A naive (and sadly commonly used) approach is to add very big constraints without any thought, such as M=1e6 and m=-1e6. This works in theory, but will give extremely bad and essentially useless models. The big-M reformulations will feature terrible numerical behavior, and the relaxations that are used in the mixed integer solver will be very weak, leading to excessive branching and thus increased computation time.
+> The term big-M is however devastatingly misleading, a better term would be **sufficiently-large-small-M**. A naive (and sadly commonly used) approach is to add very big constraints without any thought, such as **M**=1e6 and **m**=-1e6. This works in theory, but will give extremely bad and essentially useless models. The big-M reformulations will feature terrible numerical behavior, and the relaxations that are used in the mixed integer solver will be very weak, leading to excessive branching and thus increased computation time.
 
 ### Nonconvex polytope constraints
 
@@ -153,6 +153,7 @@ plot(A4*x<=b4)
 The goal in a big-M model is to create a model whose relaxation is as close as possible to the convex hull of the original constraint, i.e. the best possible convex approximation of the original feasible set. Clearly, from the figures above, this was not successful. In many cases, good variable bounds lead to reasonably good approximations of the convex hull, and for some models, the convex hull will be recovered.
 
 It is possible to directly generate the convex hull in YALMIP, by using the command [hull].
+
 ````matlab
 F = hull(A1*x <= b1,A2*x <= b2,A3*x <= b3,A4*x <= b4)
 clf
