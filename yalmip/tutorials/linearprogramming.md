@@ -1,5 +1,5 @@
 ---
-title: "Getting started"
+title: "Linear programming"
 layout: single
 sidebar:
   nav: "tutorials"
