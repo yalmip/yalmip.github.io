@@ -77,4 +77,4 @@ F = [P >= 0, A'*P+P*A <= 0, trace(P)==1, P([2 3 6])>=0];
 optimize(F,P(1,1));
 ````
 
-Since the variable **P([2 3 6])** is a vector, the constraint is interpreted as a standard linear inequality, according to the rules introduced in the [basic tutorial]].
+Since the variable **P([2 3 6])** is a vector, the constraint is interpreted as a standard linear inequality, according to the rules introduced in the [basic tutorial].

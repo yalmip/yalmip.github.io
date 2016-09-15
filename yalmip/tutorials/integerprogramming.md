@@ -71,7 +71,7 @@ x_L2_toep = value(x_hat);
 
 Note that [BNB]  not should be used if you have simple mixed integer linear programs. In that case, you can just as well download a much faster free specialized MILP solver, such as [GLPK] or academic license version of [GUROBI].
 
-!! General mixed integer programming
+### General mixed integer programming
 
 The mixed integer programming solvers discussed above are all guaranteed to find a globally optimal solution, if one exists. The built-in branch-and-bound module can be applied also to general nonlinear programs with discrete data. The difference is that there is no guarantee on global optimality for these problems. It can however be a useful strategy for finding reasonably good feasible solutions to mixed integer nonlinear programs.
 
