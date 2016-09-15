@@ -128,7 +128,7 @@ commands:
         url: /yalmip/commands/solvemp
       - title: "solvesos"
         url: /yalmip/commands/solvesos
- - title: Optimization model manipulations
+  - title: Optimization model manipulations
     children:
       - title: "dualize"
         url: /yalmip/commands/dualize  
