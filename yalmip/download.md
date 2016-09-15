@@ -17,6 +17,6 @@ YALMIP is free of charge to use and is openly distributed, but note that
 
 ## Latest relase
 
-[YALMIP R20160916](https://johanlofberg.github.com/yalmip/master.zip){: .btn .btn--success}
+[Download YALMIP R20160916](https://johanlofberg.github.com/yalmip/master.zip){: .btn .btn--success}
 
 ## Old releases
