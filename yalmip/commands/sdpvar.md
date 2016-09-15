@@ -1,0 +1,102 @@
+---
+title: "sdpvar"
+layout: single
+sidebar:
+  nav: "commands"
+---
+
+````sdpvar```` is used to define YALMIPs symbolic decision variables. 
+
+### Syntax
+````matlab
+x = sdpvar(n) 
+x = sdpvar(n,m) 
+x = sdpvar(n,m,'type') 
+x = sdpvar(n,m,'type','field') 
+x = sdpvar(dim1,dim2,dim3,...,dimn,'type','field') 
+sdpvar x
+````
+
+### Examples
+
+A square real-valued '''symmetric''' matrix is obtained with 
+````matlab
+P = sdpvar(n,n) % SYMMETRIC!
+````
+
+The command above can be simplified by only giving one argument when defining a symmetric matrix or a scalar (this might not work on MATLAB 5.3 and earlier version). 
+
+````matlab
+P = sdpvar(n) % SYMMETRIC!
+````
+
+We can also define the same matrix using a more verbose notation. 
+
+````matlab
+P = sdpvar(n,n,'symmetric')
+````
+
+A fully parameterized (i.e., not necessarily symmetric)  square matrix requires a third argument.
+
+````matlab
+P = sdpvar(n,n,'full')
+````
+
+A square complex-valued fully parameterized matrix is obtained with 
+
+````matlab
+P = sdpvar(n,n,'full','complex')
+````
+
+YALMIP tries to complete the third and fourth argument, so an equivalent command is 
+
+````matlab
+P = sdpvar(n,n,'sy','co')
+````
+
+Variables can alternatively be defined using command line syntax (although this sometimes can be dangerous inside functions due to a bug in some versions of MATLAB.)
+
+````matlab
+sdpvar x y z(1,1) u(2,2) v(2,3,'full','complex')
+```` 
+
+A lot of users seem to get stuck initially on simple things such as defining a diagonal matrix. The most important thing to remember when working with YALMIP is that almost all MATLAB operators can be applied also on sdpvar objects. Hence, we create diagonal matrices with 
+
+````matlab
+X = diag(sdpvar(n,1));
+````
+
+Or Hankel...
+
+````matlab
+X = hankel(sdpvar(n,1));
+````
+
+A typical situation is that several identical variables are needed, and a natural way to implement this is to use a loop.
+````matlab
+for i = 1:100; X{i} = sdpvar(5,5);end
+````
+
+A more convenient way to implement this is to use vector valued dimensions (this currently only works if all matrices are symmetric or full)
+
+````matlab
+X = sdpvar(5*ones(1,100),5*ones(1,100));
+````
+ 
+We define a 3D variable, where each slice in the first two dimensions is symmetric.
+````matlab
+X = sdpvar(3,3,3)
+X(:,:,1)
+Linear matrix variable 3x3 (symmetric, real, 6 variables)
+````
+
+The following command defines a 4D variable, where each slice in the first two dimensions is fully parametrized.
+
+````matlab
+X = sdpvar(3,3,3,3,'full')
+X(:,:,1,1)
+Linear matrix variable 3x3 (full, real, 9 variables)
+````
+
+!!Related commands 
+[[binvar]], [[intvar]], [[semivar]], [[blkvar]]
