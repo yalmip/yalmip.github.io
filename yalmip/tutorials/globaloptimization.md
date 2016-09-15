@@ -12,7 +12,7 @@ The [BMIBNBTheory] is based on a simple spatial branch-and-bound strategy, using
 Relaxed problems are solved using either an [LP solver], [QP solver], or an [SDP solver] solver, depending on the problem, while upper bounds are found using a local nonlinear solver such as [FMINCON](/yalmip/solvers/fmincon),  [SNOPT](/yalmip/solvers/snopt) and [IPOPT](/yalmip/solvers/ipopt), or [PENBMI/PENLAB](/yalmip/solvers/penbmi) for nonlinear semidefinite problems.
 
 ### Nonconvex quadratic programming
-The first example is a problem with a concave quadratic constraint (this is the example addressed in the moment relaxation section). Three different optimization problems are solved during the branching: Upper bounds using a local nonlinear solver (`'bmibnb.uppersolver'`), lower bounds (`'bmibnb.lowersolver'`) and bound tightening using linear programming (`'bmibnb.lpsolver'`).
+The first example is a problem with a concave quadratic constraint (this is the example addressed in the moment relaxation section). Three different optimization problems are solved during the branching: Upper bounds using a local nonlinear solver `'bmibnb.uppersolver'`, lower bounds with `'bmibnb.lowersolver'` and bound tightening using a linear programming solver (`'bmibnb.lpsolver'`).
 
 ````matlab
 clear all
@@ -29,7 +29,7 @@ F = [x1*(4*x1-4*x2+4*x3-20)+x2*(2*x2-2*x3+9)+x3*(2*x3-13)+24>=0,
                x3>=0,
              3-x3>=0]
 
-options = sdpsettings('verbose',1,'solver','bmibnb');
+options = sdpsettings('solver','bmibnb');
 optimize(F,p,options);
 * Starting YALMIP bilinear branch & bound.
 * Lower solver   : glpk
@@ -63,7 +63,7 @@ p = -25*(x1-2)^2-(x2-2)^2-(x3-1)^2-(x4-4)^2-(x5-1)^2-(x6-4)^2;
 F = [(x3-3)^2+x4>=4,(x5-3)^2+x6>=4,x1-3*x2<=2, -x1+x2<=2,
      x1-3*x2<=2, x1+x2>=2,6>=x1+x2>=2,1<=x3<=5, 0<=x4<=6, 1<=x5<=5, 0<=x6<=10, x1>=0,x2>=0];
 
-options = sdpsettings('verbose',1,'solver','bmibnb');
+options = sdpsettings('solver','bmibnb');
 optimize(F,p,options);
 * Starting YALMIP bilinear branch & bound.
 * Lower solver   : glpk
@@ -87,7 +87,7 @@ objective = x'*Q*x+c'*x;
 
 F = [x.*(x-1)==0, 0<=x<=1];
 
-options = sdpsettings('verbose',1,'solver','bmibnb');
+options = sdpsettings('solver',bmibnb');
 optimize(F,objective,options);
 * Starting YALMIP bilinear branch & bound.
 * Lower solver   : glpk
@@ -99,7 +99,7 @@ optimize(F,objective,options);
 
 ### Nonconvex polynomial programming
 
-Polynomial programs are transformed to to bilinear programs. As an example, the variable '''x'^3^'y'^2^'''' will be replaced with the the variable '''w''' and the constraints '''w == uv''', '''u == zx''', '''z == x'^2^'''', '''v == y'^2^''''. This is done automatically if the global solver is called with a higher order polynomial problem. With this transformation, standard bilinear envelopes can be used in the creation of the relaxations for computing lower bounds.
+Polynomial programs are transformed to to bilinear programs. As an example, the variable \\(x^3y^2\\) will be replaced with the the variable \\(w\\) and the constraints \\(w = uv\\), \\(u = zx\\), \\(z = x^2\\), \\(v == y^2\\). This is done automatically if the global solver is called with a higher order polynomial problem. With this transformation, standard bilinear envelopes can be used in the creation of the relaxations for computing lower bounds.
 
 ````matlab
 sdpvar x y
