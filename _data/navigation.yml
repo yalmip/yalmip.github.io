@@ -114,6 +114,20 @@ commands:
         url: /yalmip/commands/sdpvar
       - title: "semivar"
         url: /yalmip/commands/semivar
+  - title: Optimization
+    children:
+      - title: "optimize"
+        url: /yalmip/commands/optimize
+      - title: "optimizer"
+        url: /yalmip/commands/optimizer
+      - title: "solvebilevel"
+        url: /yalmip/commands/solvebilevel
+      - title: "solvemoment"
+        url: /yalmip/commands/solvemoment
+      - title: "solvemp"
+        url: /yalmip/commands/solvemp
+      - title: "solvesos"
+        url: /yalmip/commands/solvesos
   - title: Variable manipulations
     children:
       - title: "sdpvar"
@@ -129,10 +143,6 @@ commands:
       - title: "Variable operators"
         url: /yalmip/commands/sdpvar
   - title: Constraints
-    children:
-      - title: "Variable declaration"
-        url: /yalmip/commands/sdpvar        
-  - title: Optimization
     children:
       - title: "Variable declaration"
         url: /yalmip/commands/sdpvar        
