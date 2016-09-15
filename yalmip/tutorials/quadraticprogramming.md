@@ -19,7 +19,7 @@ y = A*x+e;
 plot(t,y);
 ````
 
-%center%%width=500px%Images:regressdata.png
+![Data for regression problem]({{ site.url }}/images/regressdata.png)
 
 Define the variable we are looking for
 
@@ -86,7 +86,7 @@ We plot the solutions, and notice that the 1-norm estimate worked very well and 
 plot(t,[y a*x_L1 a*x_L2 a*x_Linf]);
 ````
 
-%center%%width=500px%Images:regresssolution.png
+![Solution to regression problem]({{ site.url }}/images/regresssolution.png)
 
 Let us finally state that some of the manipulations here can be performed much easier by using the [nonlinear operator framework](/yalmip/tutorials/nonlinearoperator) in YALMIP.
 
