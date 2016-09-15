@@ -107,7 +107,7 @@ ans =
     0.7358
 ````
 
-!! More general models
+### More general models
 
 Mixed problems can be dualized also, i.e. problems involving constraints of both dual and primal form. Constraint in dual form {$S(y)\succeq 0$} are automatically changed to {$S(y)-X=0, X\succeq 0$}, and the dualization algorithm is applied to this new problem. Note that problems involving dual form semidefinite constraints typically not gain from being dualized, unless the dual form constraints are few and small compared to the primal form constraints.
 
@@ -121,13 +121,13 @@ F = [cone(x(2:end),x(1))];
 
 is a second order constraint in standard primal form. If your cone constraint violates this form, slacks will be introduced, except for translated second order cones, just as in the semidefinite case. Note that you need a primal-dual solver that can solve second order cone constraints natively in order to recover the original variables (currently [Solvers.SEDUMI | SeDuMi] and [Solvers.SDPT3 | SDPT3] for mixed semidefinite second order cone problems, or [Solvers.MOSEK | Mosek] for pure second order cone problems).
 
-!! Comments
+### Comments
 
 Your solver has to be able to return both primal and dual variables for the reconstruction of variables to work. All SDP solvers support this, except [Solvers.LMILAB | LMILAB].
 
 Primal matrices ('''X''' and '''Y''' in the examples above) must be defined in one simple call in order to enable detection of the primal structure. In other words, a constraint '''[X>=0]''' where '''X''' is defined with the code '''x = sdpvar(10,1);X = [x(1) x(6);x(6) x(2)]''' will not be categorized as a primal matrix, but as matrix constraint in dual form with three free variables.
 
-!! Primalize
+### Primalize
 
 For completeness, a functionality called primalize is available. This function takes an optimization problem in dual form and returns a YALMIP model in primal form. Consider the following SDP with 3 free variables, 1 equality constraint, and 1 SDP constraint of dimension 2.
 ````matlab

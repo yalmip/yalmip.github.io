@@ -108,7 +108,7 @@ X = sdpvar(2,2,2,2,'full');
 For an illustration of multi/dimensional variables, check out the [Sudoku example](/yalmip/examples/sudoku).
 
 
-!! Constraints
+### Constraints
 
 To define a collection of constraints, we simply define and concatenate them. The meaning of a constraint is context-dependent. If the left-hand side and right-hand side are Hermitian, the constraint is interpreted in terms of positive definiteness, otherwise element-wise. Hence, declaring a symmetric matrix and a positive definiteness constraint is done with
 
