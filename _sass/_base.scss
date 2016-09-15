@@ -261,7 +261,11 @@ svg:not(:root) {
   overflow: hidden;
 }
 
-
+.center-image
+{
+    margin: 0 auto;
+    display: block;
+}
 /*
    Navigation lists
    ========================================================================== */
