@@ -8,7 +8,7 @@ sidebar:
 SeDuMi is freely distributed and available with source and binaries from [github](https://github.com/SQLP/SeDuMi). The official site is <http://sedumi.ie.lehigh.edu> but it lacks some binaries and does not necessarily include the latest bug fixes.
 
 ### YALMIP
-SeDuMi is invoked with @@sdpsettings('solver','sedumi')@@.
+SeDuMi is invoked with `sdpsettings('solver','sedumi')`.
 
 ### Solver & algorithm documentation
 [USING SEDUMI 1.02, A MATLAB TOOLBOX FOR OPTIMIZATION OVER SYMMETRIC CONES](http://www.optimization-online.org/DB_HTML/2001/10/395.html)
