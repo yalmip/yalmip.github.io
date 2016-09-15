@@ -94,4 +94,4 @@ Note that this whole discussion here only is relevant if you absolutely have to 
 
 ### Suitable reading
 
-[Parrilo 2003], [Löfberg 2009], [Introduction to sum-of-squares in YALMIP](/yalmip/tutorials/sumofsquaresprogramming), [Advanced sum-of-squares in YALMIP](/yalmip/examples/moresos)
+[Parrilo 2003](), [Löfberg 2009](), [Introduction to sum-of-squares in YALMIP](/yalmip/tutorials/sumofsquaresprogramming), [Advanced sum-of-squares in YALMIP](/yalmip/examples/moresos)
