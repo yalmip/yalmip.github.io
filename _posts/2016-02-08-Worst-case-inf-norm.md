@@ -1,6 +1,6 @@
 ---
 layout: single
-excerpt: "Worst-case norms of matrices"
+excerpt: "Hard but let's try anyway."
 title: Worst-case norms of matrices
 tags: [Robust optimization]
 comments: true
