@@ -85,7 +85,7 @@ plot(Optimizer(1));
 
 ### Simple MPC example
 
-Define numerical data for a linear system, prediction matrices, and variables for current state \\(x\\) and the future control sequence \\( U(x)\\), for an MPC problem with horizon 5 (**create_CHS** is a cheat function that creates the numerical matrices to describe the linear relation between current state \\( x\\) and future input sequence \\( x\\), to the predicted outputs. See the [MPC examples] to see how you would do this in a more generic fashion for an actual application)
+Define numerical data for a linear system, prediction matrices, and variables for current state \\(x\\) and the future control sequence \\( U(x)\\), for an MPC problem with horizon 5 (**create_CHS** is a cheat function that creates the numerical matrices to describe the linear relation between current state \\( x\\) and future input sequence \\( U\\), to the predicted outputs. See the [MPC examples] to see how you would do this in a more generic fashion for an actual application)
 
 ````matlab
 N = 5;
@@ -112,8 +112,7 @@ objective = Y'*Y+U'*U;
 The input variable has a hard constraint, and so does the output at the terminal state.
 
 ````matlab
-F = [1 >= U >= -1];
-F = [F, 1 >= Y(N) >= -1];
+F = [1 >= U >= -1, 1 >= Y(N) >= -1];
 ````  
 
 We seek the explicit solution \\( U(x)\\) over the exploration set \\( \left \lvert x\right \rvert \leq 5\\)

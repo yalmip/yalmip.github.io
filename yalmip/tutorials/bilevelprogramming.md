@@ -7,15 +7,14 @@ sidebar:
 
 
 
-A recent addition to YALMIP is built-in support for definition, setup, and [Commands.solvebilevel | solution of bilevel programming] problems. The code here concentrates on the built-in support for bilevel problems. You can of course set them up yourself, by manually deriving the KKT conditions and solving them using various techniques in YALMIP, as illustrated in the [Examples.BilevelProgramming | bilevel example].
+YALMIP has built-in support for definition, setup, and [solution of bilevel programming] problems. The code here concentrates on the built-in solver for bilevel problems. You can of course set them up yourself, by manually deriving the KKT conditions and solving them using various techniques in YALMIP, or by using YALMIPs high-level [KKT] operators, as illustrated in the [bilevel example].
 
-
-For an introduction to bilevel optimization, see [http://books.google.com/books?id=3T9LZreZshUC&printsec=frontcover | Practical Bilevel Optimization: algorithms and Applications by J. F. Bard].
+For an introduction to bilevel optimization, see [Practical Bilevel Optimization: algorithms and Applications by J. F. Bard](http://books.google.com/books?id=3T9LZreZshUC&printsec=frontcover)
 
 ### KKT conditions in bilevel programming
 
 The class of bilevel problems that can be adressed natively by YALMIP has to have the following leader-follower (outer-inner) structure
-\\($
+$$
 \begin{aligned}
 \text{minimize} & f(x,y^*)\\
 \text{subject to} & (x,y^*) \in \mathcal{C}\\
@@ -24,35 +23,40 @@ y^* = & \arg \min \frac{1}{2}\begin{bmatrix}x\\y\end{bmatrix}^T\begin{bmatrix}H_
 & \text{subject to } \, \begin{bmatrix}F_1 & F_2\end{bmatrix}\begin{bmatrix}x\\y\end{bmatrix}\leq h
 \end{aligned}
 \end{aligned}
-$\\)
+$$
 
 The inner problem constraining the follower \\(y\\), is limited to convex quadratic programming problems. The outer problem is allowed to be essentially anything that YALMIP can handle.
 
-The bilevel solver that is available in YALMIP replaces the optimality condition on \\(y^*\\) with the KKT conditions.
-\\($
+The bilevel solver that is available in YALMIP replaces the optimality condition on \\(y^{\star}\\) with the KKT conditions.
+$$
 \begin{aligned}
 H_3y + H_2^Tx + e_2 - F_2^T\lambda &=0\\
 \lambda &\geq 0\\
 h-F_1x-F_2y & \geq 0\\
 \lambda^T(h-F_1x-F_2y) & = 0
 \end{aligned}
-$\\)
+$$
 
-This is precisely what is done in the manually derived bilevel solution methods in [Examples.BilevelProgramming | bilevel example], but the benefit of using YALMIPs native support is that this solver branches directly on the complementarity conditions, and thus avoids to introduce any numerically dangerous [Tutorials.Big-M | big-M] constants.
+This is precisely what is done in the manually derived bilevel solution methods in [bilevel example], but the benefit of using YALMIPs native support is that this solver branches directly on the complementarity conditions, and thus avoids to introduce any numerically dangerous [big-M] constants.
 
 ### Bilevel linear and quadratic programming
 
 Let us start with a simple bilevel linear programming problem. Start by defining the outer (leader) variables \\(x\\) and inner (follower) variables \\(y\\).
+
 ````matlab
 sdpvar x1 x2
 sdpvar y1 y2 y3
 ````
+
 Using standard notation, we define the outer constraints and objective
+
 ````matlab
 OO = -8*x1 - 4*x2 + 4*y1 - 40*y2 + 4*y3;
 CO = [y1 y2 y3]>=0,[x1 x2]>=0];
 ````
+
 followed by the inner constraints and objective
+
 ````matlab
 OI = x1 + 2*x2 + y1 + y2 + 2*y3;
 CI = [-y1 + y2 + y3 <= 1,
@@ -61,7 +65,9 @@ CI = [-y1 + y2 + y3 <= 1,
                      [y1 y2 y3] >= 0,
                         [x1 x2] >= 0];
 ````
-Having defined the optimization structures, we call the bilevel solver with the constraints and objectives, and the variables y in order to tell the solver which variables are the inner variables.
+
+Having defined the optimization structures, we call the bilevel solver with the constraints and objectives, and the variables \\(y\\) in order to tell the solver which variables are the inner variables.
+
 ````matlab
 solvebilevel(CO,OO,CI,OI,[y1 y2 y3]);
 
@@ -77,7 +83,9 @@ solvebilevel(CO,OO,CI,OI,[y1 y2 y3]);
     5 :   -6.000E+00    62.50     -2.600E+01   2  Solved to optimality
     6 :   -2.600E+01     0.00     -2.600E+01   0  Solved to optimality
 ````
-As you hopefully have noticed, completely standard YALMIP code is used to setup and manipulate the model. Hence, to obtain the final solution, we use [Commands.value| value].
+
+As you hopefully have noticed, completely standard YALMIP code is used to setup and manipulate the model. Hence, to obtain the final solution, we use [value].
+
 ````matlab
 >> value([y1 y2 y3])
 ans =
@@ -85,11 +93,13 @@ ans =
 ````
 
 Adding additional complicating constraints is allowed, as long as YALMIP can identify a solver which is capable of solving the outer problem appended with the KKT conditions, excluding the nonconvex complementary slackness constraint. Hence, we can add integrality constraints easily to our model
+
 ````matlab
 solvebilevel([CO, integer(y2)],OO,CI,OI,[y1 y2 y3]);
 ````
 
 In the same sense, convex quadratic problems are dealt with straightforwardly
+
 ````matlab
 solvebilevel(CO,OO+OO^2,CI,OI^2,[y1 y2 y3]);
 ````
@@ -98,6 +108,7 @@ solvebilevel(CO,OO+OO^2,CI,OI^2,[y1 y2 y3]);
 ### Bilevel programming with general outer problem
 
 A strong feature of the built-in solver is that it builds upon the infrastructure in YALMIP, and easily hooks up to almost any kind of outer problem. Hence, we can take the problem above, and append a semidefinite constraint to the outer problem. The only difference is that during the branching of the complementary conditions, semidefinite programs have to be solved in each node.
+
 ````matlab
 CO = [y1 y2 y3]>0,[x1 x2] >= 0];
 CO = [CO, [1 x1+x2;x1+x2 1/2] >= 0];
@@ -121,9 +132,10 @@ solvebilevel(CO,OO,CI,OI,[y1 y2 y3]);
    11 :  -1.940E+001     0.00    -1.940E+001   2  Infeasible in solver
 ````
 
-The bilevel solver is restricted to convex quadratic inner problems, but convexity is not a requirement on the outer problems. The bilevel solver solves the outer problem repeatedly in a branch-and-bound procedure, with additional equality constraints derived from complementary slackness appended. Hence, we have to make a choice between global solution of the outer problem, or a simple local solution. If we go for a local solution (using, e.g, [Solvers.FMINCON | fmincon]), we have no guarantees (except that the inner optimality constraint is satisfied). If we use a global outer solver ([Solvers.BMIBNB | bmibnb]), a globally optimal bilevel solution follows.
+The bilevel solver is restricted to convex quadratic inner problems, but convexity is not a requirement on the outer problems. The bilevel solver solves the outer problem repeatedly in a branch-and-bound procedure, with additional equality constraints derived from complementary slackness appended. Hence, we have to make a choice between global solution of the outer problem, or a simple local solution. If we go for a local solution (using, e.g, [Solvers.FMINCON | fmincon]), we have no guarantees (except that the inner optimality constraint is satisfied). If we use a global outer solver (such as [BMIBNB]), a globally optimal bilevel solution follows.
 
-As an illustration, we solve the original problem, but append a nonconvex quadratic term to the outer problem. To ensure a globally optimal solution, we use the global solver [Solvers.BMIBNB | bmibnb] as the outer solver.
+As an illustration, we solve the original problem, but append a nonconvex quadratic term to the outer problem. To ensure a globally optimal solution, we use the global solver [BMIBNB] as the outer solver.
+
 ````matlab
 OO = -8*x1 - 4*x2 + 4*y1 - 40*y2 + 4*y3;
 CO = [y1 y2 y3] >= 0,[x1 x2] >= 0];
