@@ -31,15 +31,13 @@ end
 Having seen that, let us start from the beginning.
 
 ### YALMIPs symbolic variable
-The most important command in YALMIP is [sdpvar](/commands/sdpvar). This command is used to the define decision variables. To define a matrix (or scalar) `P` with `n` rows and `m` columns, we write
+The most important command in YALMIP is [sdpvar](/commands/sdpvar). This command is used to the define decision variables. To define a matrix (or scalar) **P** with **n** rows and **m** columns, we write
 
 ````matlab
 P = sdpvar(n,m)
 ````
 
-A square matrix is symmetric by default!{: style="color:red"}
-
-To obtain a fully parameterized (i.e. not necessarily symmetric) square matrix, a third argument is needed.
+Note that a square matrix is symmetric by default! To obtain a fully parameterized (i.e. not necessarily symmetric) square matrix, a third argument is needed.
 
 ````matlab
 P = sdpvar(3,3,'full')
