@@ -12,7 +12,7 @@ E_1 &= \{x ~|~ x^TP_1x \leq 1\}\\
 E_2 &= \{x ~|~ x^TP_2x \leq 1\}\\
 \end{align}$$
 
-Find the ellipsoid \\(E = \{x ~|~ x^TPx \leq 1\}\\) with smallest possible volume that contains the union of \\(E_1\\) and \\(E_2\\). By using the fact that the volume of the ellipsoid is proportional to \\(\det(P)\\) and applying the S-procedure {[reference.bib,Polik and Terlaky:2007]}, it can be shown that this problem can be written as
+Find the ellipsoid \\(E = \left{x ~|~ x^TPx \leq 1\right}\\) with smallest possible volume that contains the union of \\(E_1\\) and \\(E_2\\). By using the fact that the volume of the ellipsoid is proportional to \\(\det(P)\\) and applying the S-procedure {[reference.bib,Polik and Terlaky:2007]}, it can be shown that this problem can be written as
 
 %center%Images:ellips5.gif
 
