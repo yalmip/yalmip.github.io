@@ -14,12 +14,13 @@ For an introduction to bilevel optimization, see [Practical Bilevel Optimization
 ### KKT conditions in bilevel programming
 
 The class of bilevel problems that can be adressed natively by YALMIP has to have the following leader-follower (outer-inner) structure
+
 $$
 \begin{aligned}
-\text{minimize} & f(x,y^*)\\
-\text{subject to} & (x,y^*) \in \mathcal{C}\\
+\text{minimize } & f(x,y^{\star})\\
+\text{subject to } & (x,y^{\star}) \in \mathcal{C}\\
 &\begin{aligned}
-y^* = & \arg \min \frac{1}{2}\begin{bmatrix}x\\y\end{bmatrix}^T\begin{bmatrix}H_1 & H_2\\H_2^T & H_3\end{bmatrix}\begin{bmatrix}x\\y\end{bmatrix} + \begin{bmatrix}e_1^T&e_2^T\end{bmatrix}\begin{bmatrix}x\\y\end{bmatrix}\\
+y^{\star} = & \arg \min \frac{1}{2}\begin{bmatrix}x\\y\end{bmatrix}^T\begin{bmatrix}H_1 & H_2\\H_2^T & H_3\end{bmatrix}\begin{bmatrix}x\\y\end{bmatrix} + \begin{bmatrix}e_1^T&e_2^T\end{bmatrix}\begin{bmatrix}x\\y\end{bmatrix}\\
 & \text{subject to } \, \begin{bmatrix}F_1 & F_2\end{bmatrix}\begin{bmatrix}x\\y\end{bmatrix}\leq h
 \end{aligned}
 \end{aligned}
@@ -28,6 +29,7 @@ $$
 The inner problem constraining the follower \\(y\\), is limited to convex quadratic programming problems. The outer problem is allowed to be essentially anything that YALMIP can handle.
 
 The bilevel solver that is available in YALMIP replaces the optimality condition on \\(y^{\star}\\) with the KKT conditions.
+
 $$
 \begin{aligned}
 H_3y + H_2^Tx + e_2 - F_2^T\lambda &=0\\
@@ -37,7 +39,7 @@ h-F_1x-F_2y & \geq 0\\
 \end{aligned}
 $$
 
-This is precisely what is done in the manually derived bilevel solution methods in [bilevel example], but the benefit of using YALMIPs native support is that this solver branches directly on the complementarity conditions, and thus avoids to introduce any numerically dangerous [big-M] constants.
+This is precisely what is done in the manually derived bilevel solution methods in [bilevel example], but the benefit of using YALMIPs native support as we will do here is that this solver branches directly on the complementarity conditions, and thus avoids to introduce any numerically dangerous [big-M] constants.
 
 ### Bilevel linear and quadratic programming
 
@@ -87,7 +89,7 @@ solvebilevel(CO,OO,CI,OI,[y1 y2 y3]);
 As you hopefully have noticed, completely standard YALMIP code is used to setup and manipulate the model. Hence, to obtain the final solution, we use [value].
 
 ````matlab
->> value([y1 y2 y3])
+value([y1 y2 y3])
 ans =
          0    0.6000    0.4000
 ````
@@ -132,7 +134,7 @@ solvebilevel(CO,OO,CI,OI,[y1 y2 y3]);
    11 :  -1.940E+001     0.00    -1.940E+001   2  Infeasible in solver
 ````
 
-The bilevel solver is restricted to convex quadratic inner problems, but convexity is not a requirement on the outer problems. The bilevel solver solves the outer problem repeatedly in a branch-and-bound procedure, with additional equality constraints derived from complementary slackness appended. Hence, we have to make a choice between global solution of the outer problem, or a simple local solution. If we go for a local solution (using, e.g, [Solvers.FMINCON | fmincon]), we have no guarantees (except that the inner optimality constraint is satisfied). If we use a global outer solver (such as [BMIBNB]), a globally optimal bilevel solution follows.
+The bilevel solver is restricted to convex quadratic inner problems, but convexity is not a requirement on the outer problems. The bilevel solver solves the outer problem repeatedly in a branch-and-bound procedure, with additional equality constraints derived from complementary slackness appended. Hence, we have to make a choice between global solution of the outer problem, or a simple local solution. If we go for a local solution (using, e.g, [FMINCON]), we have no guarantees (except that the inner optimality constraint is satisfied). If we use a global outer solver (such as [BMIBNB]), a globally optimal bilevel solution follows.
 
 As an illustration, we solve the original problem, but append a nonconvex quadratic term to the outer problem. To ensure a globally optimal solution, we use the global solver [BMIBNB] as the outer solver.
 
