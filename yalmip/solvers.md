@@ -9,7 +9,7 @@ One of the core ideas in YALMIP is to rely on external solvers for the low-level
 
 Linear programming can be solved by quadratic programming which can be solved by second-order cone programming which can be solved by semidefinite programming. Hence, in theory, you only need a semidefinite programming solver if you only solve linear problems.
 
-A recommended installation if you mainly intend to solve SDPs and perhaps some small to medium sized LPs and QPs is [SEDUMI](./solvers/sedumi.md) and [SDPT3](solvers/sdpt3) (these solvers are by no means the best solvers, but they support second order cones which makes them fairly efficient also for QPs).
+A recommended installation if you mainly intend to solve SDPs and perhaps some small to medium sized LPs and QPs is [SEDUMI](sedumi.md) and [SDPT3](solvers/sdpt3) (these solvers are by no means the best solvers, but they support second order cones which makes them fairly efficient also for QPs).
 
 If you solve non-trivial linear and quadratic programs (and nonconvex problems via [[Solvers.BMIBNB | BMIBNB]]), a dedicated LP/QP solver is recommended. Most examples in this Wiki have been generated using [[GUROBI]].
 
