@@ -1,6 +1,6 @@
 ---
 title: "Solvers"
-layout: splash
+layout: single
 sidebar:
   nav: "solvers"
 ---
