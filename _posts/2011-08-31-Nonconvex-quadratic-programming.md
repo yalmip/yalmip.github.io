@@ -145,7 +145,7 @@ ops2 = sdpsettings('solver','moment','moment.order',2);
 sol = optimize([-1 <= x <= 1,x x.*x <= 1],x'*Q*x,ops2);
 ````
 
-Still, we have alternative, possibly even faster, ways to solve the problem. By reformulating the nonconvex QP to a mixed-integer linear program, the problem can be solved in a fraction of a second. A KKT based indefinite QP solver is available in YALMIP (assuming you have an efficient MILP solver installed)
+Still, we have alternative, possibly even faster, ways to solve the problem. By reformulating the nonconvex QP to a mixed-integer linear program, the problem can be solved in a fraction of a second. A [KKT based indefinite QP solver](/yalmip/solvers/kktqp) is available in YALMIP (assuming you have an efficient MILP solver installed)
 
 ````matlab
 ops= sdpsettings('solver','kktqp');
