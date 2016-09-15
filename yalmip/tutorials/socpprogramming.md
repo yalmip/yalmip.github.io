@@ -7,7 +7,7 @@ sidebar:
 
 Let us continue with our regression problem from the linear and quadratic programming tutorials.
 
-The problem boiled down to solving the problem minimize \\(\left\lVert Ax - y\right\rVert \\) for some suitable norm. Let us select the 2-norm, but this time solve the extension where we minimize the worst-case cost, under the assumption that the matrix A is uncertain,\\(A=A+d\\), where \\(d_2 \leq 1\\). This can be shown to be equivalent to minimizing \\(Ax-y + x\\).
+The problem boiled down to solving the problem minimize \\(\left\lVert Ax - y\right\rVert \\) for some suitable norm. Let us select the 2-norm, but this time solve the extension where we minimize the worst-case cost, under the assumption that the matrix A is uncertain,\\(A=A+d\\), where \\(\left\lVert d\right\rVert_2 \leq 1 \\) . This can be shown to be equivalent to minimizing \\(\\(\left\lVert Ax - y\right\rVert_2 \\) + \\(\left\lVert x\right\rVert_2 \\)\\).
 
 This problem can easily be solved using YALMIP. Begin by defining the data.
 
