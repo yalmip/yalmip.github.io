@@ -114,7 +114,7 @@ ans =
 
 Mixed problems can be dualized also, i.e. problems involving constraints of both dual and primal form. Constraint in dual form \\(S(y)\succeq 0\\) are automatically changed to \\(S(y)-X=0, X \succeq 0\\), and the dualization algorithm is applied to this new problem. Note that problems involving dual form semidefinite constraints typically not gain from being dualized, unless the dual form constraints are few and small compared to the primal form constraints.
 
-A problem involving translated cones \\(X \succeq C\\) where \\(C\\) is a symmetric constant is automatically converted to a problem in standard primal form, with no additional slacks variables. Hence, a lower bound on a variable will typically reduce the size of a dualized problem, since no free variables or slacks will be needed to model this cone. Practice has shown that simple bound constraints of the type \\(x \geq L\\) where \\(L\\) is a large negative number can lead to problems if one tries to perform the associated variable change in order to write it as a simple LP cone. Essentially, the dual cost will contain large numbers. With a primal problem \\( \textbf{min} c^Tx, Ax=b, x \geq-L\\) will be converted to \\(\textbf{min}  c^Tz, Az=b+AL, z\geq 0\\) with the dual \\( \textbf{min}  (b+AL)Ty, A^Ty\leq c\\). If you want to avoid detection of translated LP cones (and thus treat the involved variables as free variables), set the 4th argument in [dualize].
+A problem involving translated cones \\(X \succeq C\\) where \\(C\\) is a symmetric constant is automatically converted to a problem in standard primal form, with no additional slacks variables. Hence, a lower bound on a variable will typically reduce the size of a dualized problem, since no free variables or slacks will be needed to model this cone. Practice has shown that simple bound constraints of the type \\(x \geq L\\) where \\(L\\) is a large negative number can lead to problems if one tries to perform the associated variable change in order to write it as a simple LP cone. Essentially, the dual cost will contain large numbers. A primal problem \\( \textbf{min } c^Tx, Ax=b, x \geq-L\\) will be converted to \\(\textbf{min }  c^Tz, Az=b+AL, z\geq 0\\) with the dual \\( \textbf{min }  (b+AL)Ty, A^Ty\leq c\\). If you want to avoid detection of translated LP cones (and thus treat the involved variables as free variables), set the 4th argument in [dualize].
 
 Problems involving second order cone constraints can also be dualized. A constraint of the type
 
@@ -127,7 +127,7 @@ is a second order constraint in standard primal form. If your cone constraint vi
 
 ### Comments
 
-Your solver has to be able to return both primal and dual variables for the reconstruction of variables to work. All SDP solvers support this, except [LMILAB].
+Your solver has to be able to return both primal and dual variables for the reconstruction of variables to work. All SDP solvers do this, except [LMILAB].
 
 Primal matrices (\\(X\\) and \\(Y\\) in the examples above) must be defined in one simple call in order to enable detection of the primal structure. In other words, a constraint **[X>=0]** where **X** is defined with the code **x = sdpvar(10,1);X = [x(1) x(6);x(6) x(2)]** will not be categorized as a primal matrix, but as matrix constraint in dual form with three free variables.
 
@@ -179,7 +179,7 @@ Why not dualize the primalized model!
 
 The model obtained from the primalization is most often more complex than the original model, so there is typically no reason to primalize a model.
 
-There are however some cases where it may make sense. Consider the problem in the KYP example
+There are however some cases where it may make sense. Consider the following problem from control theory
 
 ````matlab
 n = 50;
