@@ -188,7 +188,43 @@ commands:
         url: /yalmip/commands/sdpvar
   - title: Constraints
     children:
-      - title: "Variable declaration"
+      - title: "alldifferent"
+        url: /yalmip/commands/sdpvar        
+      - title: "binary"
+        url: /yalmip/commands/sdpvar        
+      - title: "check"
+        url: /yalmip/commands/sdpvar        
+      - title: "cone"
+        url: /yalmip/commands/sdpvar        
+      - title: "cut"
+        url: /yalmip/commands/sdpvar   
+      - title: "dilate"
+        url: /yalmip/commands/sdpvar        
+      - title: "dual"
+        url: /yalmip/commands/sdpvar        
+      - title: "dualize"
+        url: /yalmip/commands/sdpvar        
+      - title: "hull"
+        url: /yalmip/commands/sdpvar        
+      - title: "imagemodel"
+        url: /yalmip/commands/sdpvar        
+      - title: "integer"
+        url: /yalmip/commands/sdpvar        
+      - title: "is"
+        url: /yalmip/commands/sdpvar        
+      - title: "ismember"
+        url: /yalmip/commands/sdpvar        
+      - title: "primalize"
+        url: /yalmip/commands/sdpvar        
+      - title: "rank"
+        url: /yalmip/commands/sdpvar        
+      - title: "rcone"
+        url: /yalmip/commands/sdpvar        
+      - title: "robustify"
+        url: /yalmip/commands/sdpvar        
+      - title: "sos"
+        url: /yalmip/commands/sdpvar        
+      - title: "sosd"
         url: /yalmip/commands/sdpvar        
   - title: Auxilliary
     children:
