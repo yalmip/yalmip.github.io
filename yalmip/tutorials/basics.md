@@ -43,7 +43,7 @@ Note that a square matrix is symmetric by default! To obtain a fully parameteriz
 P = sdpvar(3,3,'full')
 ```` 
 
-The third argument can be used to obtain a number of pre-defined types of variables, such as Toeplitz, Hankel, diagonal, symmetric and skew-symmetric matrices. See the help text on [[Commands.sdpvar | sdpvar]] for details. Alternatively, the associated MATLAB commands can be applied to a vector.
+The third argument can be used to obtain a number of pre-defined types of variables, such as Toeplitz, Hankel, diagonal, symmetric and skew-symmetric matrices. See the help text on [sdpvar](/commands/sdpvar) for details. Alternatively, standard MATLAB commands can be applied to a vector.
 
 ````matlab
 x = sdpvar(n,1);
@@ -58,11 +58,9 @@ Scalars can be defined in three different ways.
 x = sdpvar(1,1); y = sdpvar(1,1);
 x = sdpvar(1);   y = sdpvar(1);
 sdpvar x y
-```` 
+````
 
-Note that due to a bug in MATLAB, the last command-line syntax fails in some cases (inside functions), if the variable name is the same as some built-in function or variable (i, j, e, beta, gamma).
-
-The [[Commands.sdpvar | sdpvar]] objects are manipulated in MATLAB as any other variable and most functions are overloaded. Hence, the following commands are valid
+The [sdpvar](/commands/sdpvar) objects are manipulated in MATLAB as any other variable and most functions are overloaded. Hence, the following commands are valid
 
 ````matlab
 P = sdpvar(3,3) + diag(sdpvar(3,1));
@@ -70,9 +68,9 @@ X = [P P;P eye(length(P))] + 2*trace(P);
 Y = X + sum(sum(P*rand(length(P)))) + P(end,end)+hankel(X(:,1));
 ```` 
 
-In some situations, coding is simplified with a multi-dimensional variable. This is supported in YALMIP with two different constructs, cell arrays and multi-dimensional [[Commands.sdpvar  | sdpvar]] objects.
+In some situations, coding is simplified with a multi-dimensional variable. This is supported in YALMIP with two different constructs, cell arrays and multi-dimensional [sdpvar](/commands/sdpvar) objects.
 
-The cell array is nothing but an abstraction of the following code
+The cell array format is nothing but an abstraction of the following code
 
 ````matlab
 for i = 1:5
@@ -80,7 +78,7 @@ for i = 1:5
 end
 ````
 
-By using vector dimensions in [[Commands.sdpvar | sdpvar]], the same cell array can be setup as follows
+By using vector dimensions in [sdpvar](/commands/sdpvar), the same cell array can be setup as follows
 
 ````matlab
 X = sdpvar([2 2 2 2 2],[3 3 3 3 3]);
@@ -88,7 +86,7 @@ X = sdpvar([2 2 2 2 2],[3 3 3 3 3]);
 
 The cell array can now be used as usual in MATLAB.
 
-The drawback with the approach above is that the variable X not can be used directly, as a standard [[Commands.sdpvar |sdpvar]] object. As an alternative, a completely general multi-dimensional [[Commands.sdpvar |sdpvar]] is available. We can create an essentially equivalent object with this call. 
+The drawback with the approach above is that the variable **X** cannot be used directly, as a standard [sdpvar](/commands/sdpvar) object (operations such as plus etc are not overloaded on cells in MATLAB). As an alternative, a completely general multi-dimensional [sdpvar](/commands/sdpvar) is available. We can create an essentially equivalent object with this call. 
 
 ````matlab
 X = sdpvar(2,3,5);
@@ -107,7 +105,7 @@ Note that the two first slices are symmetric (if the two first dimensions are th
 X = sdpvar(2,2,2,2,'full');
 ````
 
-For an illustration of multi/dimensional variables, check out the [[Examples.Sudoku | Sudoku example]].
+For an illustration of multi/dimensional variables, check out the [SuDoKu example](/examples/sudoku).
 
 
 !! Constraints
@@ -137,7 +135,7 @@ or
 C = [P(find(triu(ones(n))))>=0];
 ```` 
 
-According to the rules above, a non-square matrix (or generally a non-symmetric) with positive elements can be defined using the '''>=''' operator immediately
+According to the rules above, a non-square matrix (or generally a non-symmetric) with positive elements can be defined using the **>=** operator immediately
 
 ````matlab
 P = sdpvar(n,2*n);
@@ -159,7 +157,7 @@ C = [P>=0] + [P(1,1)>=2];
 C = [P>=0, P(1,1)>=2];
 ```` 
 
-Of course, the involved expressions can be arbitrary [[Commands.sdpvar | sdpvar]] objects, and equality constraints ('''==''') can be defined, as well as constraints using '''<='''.
+Of course, the involved expressions can be arbitrary [sdpvar](/commands/sdpvar) objects, and equality constraints (**==**) can be defined, as well as constraints using **<=**.
 
 ````matlab
 C = [P>=0, P(1,1)<=2, sum(sum(P))==10];
