@@ -5,16 +5,16 @@ main:
 
   - title: "Tutorials"
     url: /yalmip/tutorials
-    
+
   - title: "Examples"
-    url: /yalmip/examples    
-  
+    url: /yalmip/examples
+
   - title: "Commands"
     url: /yalmip/tutorials
-  
+
   - title: "Solvers"
     url: /yalmip/solvers
-    
+
 solvers:
   - title: External solvers
     children:
@@ -22,7 +22,7 @@ solvers:
         url: /yalmip/solvers/sedumi
       - title: "SDPT3"
         url: /yalmip/solvers/sdpt3
-  
+
   - title: Internal solvers
     children:
       - title: "BNB"
@@ -34,7 +34,7 @@ solvers:
       - title: "MOMENT"
         url: /yalmip/solvers/solvemoment
       - title: "SOS"
-        url: /yalmip/solvers/solvesos        
+        url: /yalmip/solvers/solvesos
 
 
 tutorials:
@@ -44,7 +44,7 @@ tutorials:
         url: /yalmip/tutorials/installation
       - title: "Getting started!"
         url: /yalmip/tutorials/basics
-  
+
   - title: Standard problems
     children:
       - title: "Linear programming"
@@ -56,4 +56,8 @@ tutorials:
       - title: "Semidefinite programming"
         url: /yalmip/tutorials/semidefiniteprogramming
       - title: "Determinant optimization"
-        url: /yalmip/tutorials/maxdetprogramming        
+        url: /yalmip/tutorials/maxdetprogramming
+      - title: "Geometric programming"
+        url: /yalmip/tutorials/geometricprogramming
+      - title: "General convex programming"
+        url: /yalmip/tutorials/generalconvexprogramming
