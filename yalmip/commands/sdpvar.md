@@ -19,7 +19,8 @@ sdpvar x
 
 ### Examples
 
-A square real-valued '''symmetric''' matrix is obtained with 
+A square real-valued **symmetric** matrix is obtained with 
+
 ````matlab
 P = sdpvar(n,n) % SYMMETRIC!
 ````
@@ -42,7 +43,7 @@ A fully parameterized (i.e., not necessarily symmetric)  square matrix requires 
 P = sdpvar(n,n,'full')
 ````
 
-A square complex-valued fully parameterized matrix is obtained with 
+A square [complex-valued](/yalmip/tutorials/complexproblems) fully parameterized matrix is obtained with 
 
 ````matlab
 P = sdpvar(n,n,'full','complex')
@@ -60,7 +61,7 @@ Variables can alternatively be defined using command line syntax (although this 
 sdpvar x y z(1,1) u(2,2) v(2,3,'full','complex')
 ```` 
 
-A lot of users seem to get stuck initially on simple things such as defining a diagonal matrix. The most important thing to remember when working with YALMIP is that almost all MATLAB operators can be applied also on sdpvar objects. Hence, we create diagonal matrices with 
+A lot of users seem to get stuck initially on simple things such as defining a diagonal matrix. The most important thing to remember when working with YALMIP is that **almost all MATLAB operators can be applied also on sdpvar objects**. Hence, we create diagonal matrices with 
 
 ````matlab
 X = diag(sdpvar(n,1));
@@ -73,6 +74,7 @@ X = hankel(sdpvar(n,1));
 ````
 
 A typical situation is that several identical variables are needed, and a natural way to implement this is to use a loop.
+
 ````matlab
 for i = 1:100; X{i} = sdpvar(5,5);end
 ````
@@ -84,6 +86,7 @@ X = sdpvar(5*ones(1,100),5*ones(1,100));
 ````
  
 We define a 3D variable, where each slice in the first two dimensions is symmetric.
+
 ````matlab
 X = sdpvar(3,3,3)
 X(:,:,1)
