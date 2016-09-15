@@ -4,7 +4,6 @@ excerpt: "Worst-case norms of matrices"
 title: Worst-case norms of matrices
 tags: [Robust optimization]
 comments: true
-date: '2011-02-08'
 ---
 
 I was asked by a colleague today on how to compute the worst-case \\(\infty\\)-norm of a matrix \\(A(p)\\) linearly parameterized in an uncertainty \\(p\\) constrained to a polytope.
