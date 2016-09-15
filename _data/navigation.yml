@@ -130,14 +130,34 @@ commands:
         url: /yalmip/commands/solvesos
   - title: Variable manipulations
     children:
-      - title: "sdpvar"
+      - title: "assign"
         url: /yalmip/commands/sdpvar
-      - title: "sdpvar"
+      - title: "coefficients"
         url: /yalmip/commands/sdpvar
-      - title: "sdpvar"
+      - title: "degree"
         url: /yalmip/commands/sdpvar
-      - title: "sdpvar"
+      - title: "dissect"
         url: /yalmip/commands/sdpvar        
+      - title: "hessian"
+        url: /yalmip/commands/sdpvar
+      - title: "int"
+        url: /yalmip/commands/sdpvar
+      - title: "is"
+        url: /yalmip/commands/sdpvar
+      - title: "jacobian"
+        url: /yalmip/commands/sdpvar                
+      - title: "linearize"
+        url: /yalmip/commands/sdpvar
+      - title: "monolist"
+        url: /yalmip/commands/sdpvar
+      - title: "polynomial"
+        url: /yalmip/commands/sdpvar
+      - title: "sdisplay"
+        url: /yalmip/commands/sdpvar                
+      - title: "unblkdiag"
+        url: /yalmip/commands/sdpvar                
+      - title: "value"
+        url: /yalmip/commands/sdpvar                
   - title: Variable operators
     children:
       - title: "Variable operators"
