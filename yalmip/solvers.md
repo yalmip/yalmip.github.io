@@ -9,11 +9,11 @@ One of the core ideas in YALMIP is to rely on external solvers for the low-level
 
 Linear programming can be solved by quadratic programming which can be solved by second-order cone programming which can be solved by semidefinite programming. Hence, in theory, you only need a semidefinite programming solver if you only solve linear problems.
 
-A recommended installation if you mainly intend to solve SDPs and perhaps some small to medium sized LPs and QPs is [SEDUMI](sedumi/) and [SDPT3](sdpt3.html) (these solvers are by no means the best solvers, but they support second order cones which makes them fairly efficient also for QPs).
+A recommended installation if you mainly intend to solve SDPs and perhaps some small to medium sized LPs and QPs is [SEDUMI](sedumi/) and [SDPT3](sdpt3/) (these solvers are by no means the best solvers, but they support second order cones which makes them fairly efficient also for QPs).
 
-If you solve non-trivial linear and quadratic programs (and nonconvex problems via [[Solvers.BMIBNB | BMIBNB]]), a dedicated LP/QP solver is recommended. Most examples in this Wiki have been generated using [[GUROBI]].
+If you solve non-trivial linear and quadratic programs (and nonconvex problems via [BMIBNB](bminb/), a dedicated LP/QP solver is recommended. Most examples in this Wiki have been generated using [GUROBI](gurobi/).
 
-If you are in academia, [[MOSEK]] is convenient since it gives you a very competetive MILP, MIQP, MISOCP and SDP solver in one package. 
+If you are in academia, [MOSEK](mosek/) is convenient since it gives you a very competetive MILP, MIQP, MISOCP and SDP solver in one package. 
 If you intend to solve large problems or other problem classes, you are advised to download several solvers to find one that works best for your problem class.
 
 And finally, there are no free lunches and you get what you pay for, most often...
@@ -21,7 +21,7 @@ And finally, there are no free lunches and you get what you pay for, most often.
 A simple categorization is as follows (the definitions of free and commercial depends slightly on the solver, please see the specific comments in the solver description)
 
 ## Linear programming (free)
-[[CDD]], [[CLP]], [[GLPK]], [[LPSOLVE]], [[QSOPT]], [[SCIP]]
+[CDD], [CLP], [GLPK], [LPSOLVE], [QSOPT], [SCIP]
 
 ## Mixed Integer Linear programming (free)
 [[CBC]], [[GLPK]], [[LPSOLVE]], [[SCIP]]
