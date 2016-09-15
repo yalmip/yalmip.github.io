@@ -27,13 +27,13 @@ Define the variable we are looking for
 xhat = sdpvar(6,1);
 ````
 
-By using '''xhat''' and the regressors in '''A''', we can define the residuals (which also will be an [[Commands.sdpvar | sdpvar]] object, parametrized in '''xhat''')
+By using **xhat** and the regressors in **A**, we can define the residuals (which also will be an [sdpvar](/yalmip/commands/sdpvar) object, parametrized in **xhat**)
 
 ````matlab
 residuals = y-A*xhat;
 ```` 
 
-To solve the 1-norm regression problem (minimize sum of absolute values of residuals), we can define a variable that will serve as a bound on the elements in '''|y-A*xhat|''' (we will solve this problem much more conveniently below by simply using the norm operator)
+To solve the 1-norm regression problem (minimize sum of absolute values of residuals), we can define a variable that will serve as a bound on the absolute values of **y-A*xhat** (we will solve this problem much more conveniently below by simply using the norm operator)
 
 ````matlab
 bound = sdpvar(length(residuals),1);
@@ -45,13 +45,13 @@ Express that the bound variables are larger than the absolute values of the resi
 Constraints = [-bound <= residuals <= bound];
 ```` 
  
-Call YALMIP to minimize the sum of the bounds subject to the constraints in '''Constraints '''. YALMIP will automatically detect that this is a linear program, and call any [[Solvers | LP solver]] available on your path.
+Call YALMIP to minimize the sum of the bounds subject to the constraints in **Constraints**. YALMIP will automatically detect that this is a linear program, and call any [LP solver](/yalmip/solvers) available on your path.
 
 ````matlab
 optimize(Constraints,sum(bound));
 ````  
 
-The optimal value is, as always, extracted using the overloaded [[Commands.value | value]] command.
+The optimal value is, as always, extracted using the overloaded [value](/yalmip/commands/value) command.
 
 ````matlab
 x_L1 = value(xhat);
@@ -64,9 +64,9 @@ optimize([],residuals'*residuals);
 x_L2 = value(xhat);
 ```` 
 
-YALMIP automatically detects that the objective is a convex quadratic function, and solves the problem using any installed [[Category.QuadraticProgrammingSolver | QP solver]]. If no QP solver is found, the problem is converted to an SOCP, and if no dedicated SOCP solver exist, the SOCP is converted to an SDP. 
+YALMIP automatically detects that the objective is a convex quadratic function, and solves the problem using any installed [QP solver](/yalmip/solvers). If no QP solver is found, the problem is converted to an SOCP, and if no dedicated SOCP solver exist, the SOCP is converted to an SDP. 
 
-Finally, we minimize the &infin;-norm. This corresponds to minimizing the largest (absolute value) residual. Introduce a scalar to bound the largest value in the vector residual (YALMIP uses MATLAB standard to compare scalars, vectors and matrices)
+Finally, we minimize the \\(\inf\))-norm. This corresponds to minimizing the largest (absolute value) residual. Introduce a scalar to bound the largest value in the vector residual (YALMIP uses MATLAB standard to compare scalars, vectors and matrices)
 
 ````matlab
 bound = sdpvar(1,1);
@@ -88,7 +88,7 @@ plot(t,[y a*x_L1 a*x_L2 a*x_Linf]);
 
 %center%%width=500px%Images:regresssolution.png
 
-Let us finally state that some of the manipulations here can be performed much easier by using the [[Tutorials.NonlinearOperators | nonlinear operator framework]] in YALMIP.
+Let us finally state that some of the manipulations here can be performed much easier by using the [nonlinear operator framework](/yalmip/tutorials/nonlinearoperator) in YALMIP.
 
 ````matlab
 optimize([],norm(residuals,1));
