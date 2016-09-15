@@ -13,12 +13,10 @@ A recommended installation if you mainly intend to solve SDPs and perhaps some s
 
 If you solve non-trivial linear and quadratic programs (and nonconvex problems via [[Solvers.BMIBNB | BMIBNB]]), a dedicated LP/QP solver is recommended. Most examples in this Wiki have been generated using [[GUROBI]].
 
-If you are in academia, [[MOSEK]] is convenient since it gives you a very competetive MILP, MIQP, MISOCP and SDP solver in one package.
-
+If you are in academia, [[MOSEK]] is convenient since it gives you a very competetive MILP, MIQP, MISOCP and SDP solver in one package. 
 If you intend to solve large problems or other problem classes, you are advised to download several solvers to find one that works best for your problem class.
 
 And finally, there are no free lunches and you get what you pay for, most often...
-
 
 A simple categorization is as follows (the definitions of free and commercial depends slightly on the solver, please see the specific comments in the solver description)
 
