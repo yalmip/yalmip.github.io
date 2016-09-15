@@ -21,7 +21,7 @@ YALMIP is entirely based on m-code, and is thus easy to install. Remove any old 
 
 A lazy way to do this is `addpath(genpath(yalmiprootdirectory))`
 
-If you have [MPT] installed, make sure that you delete the YALMIP distribution residing inside [MPT] and remove the old path definitions.
+If you have [MPT] installed, make sure that you delete the YALMIP distribution residing inside [MPT] and remove the old path definitions. Better, don't install YALMIP manually but use [MPTs toolbox manager](http://tbxmanager.com)
 
 If you have used YALMIP before, type `clear classes` or restart MATLAB before using the new version.
 
