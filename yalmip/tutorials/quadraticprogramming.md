@@ -1,0 +1,111 @@
+---
+title: "Quadratic programming"
+layout: single
+sidebar:
+  nav: "tutorials"
+---
+
+Let us assume that we have data generated from a noisy linear regression \\(y_t = a_tx + e_t\\). The goal is to estimate the parameter \\(x\\), given the measurements \\(y_t\\) and \\(a_t\\), and we will try 3 different approaches based on linear and quadratic programming.
+
+Create some noisy data with severe outliers to work with.
+
+````matlab
+x = [1 2 3 4 5 6]';
+t = (0:0.02:2*pi)';
+A = [sin(t) sin(2*t) sin(3*t) sin(4*t) sin(5*t) sin(6*t)];
+e = (-4+8*rand(length(t),1));
+e(100:115) = 30;
+y = A*x+e;
+plot(t,y);
+````
+
+%center%%width=500px%Images:regressdata.png
+
+Define the variable we are looking for
+
+````matlab
+xhat = sdpvar(6,1);
+````
+
+By using '''xhat''' and the regressors in '''A''', we can define the residuals (which also will be an [[Commands.sdpvar | sdpvar]] object, parametrized in '''xhat''')
+
+````matlab
+residuals = y-A*xhat;
+```` 
+
+To solve the 1-norm regression problem (minimize sum of absolute values of residuals), we can define a variable that will serve as a bound on the elements in '''|y-A*xhat|''' (we will solve this problem much more conveniently below by simply using the norm operator)
+
+````matlab
+bound = sdpvar(length(residuals),1);
+```` 
+
+Express that the bound variables are larger than the absolute values of the residuals (note the convenient definition of a double-sided constraint).
+
+````matlab
+Constraints = [-bound <= residuals <= bound];
+```` 
+ 
+Call YALMIP to minimize the sum of the bounds subject to the constraints in '''Constraints '''. YALMIP will automatically detect that this is a linear program, and call any [[Solvers | LP solver]] available on your path.
+
+````matlab
+optimize(Constraints,sum(bound));
+````  
+
+The optimal value is, as always, extracted using the overloaded [[Commands.value | value]] command.
+
+````matlab
+x_L1 = value(xhat);
+````  
+
+The 2-norm problem (least-squares) is easily solved as a QP problem without any constraints.
+
+````matlab
+optimize([],residuals'*residuals);
+x_L2 = value(xhat);
+```` 
+
+YALMIP automatically detects that the objective is a convex quadratic function, and solves the problem using any installed [[Category.QuadraticProgrammingSolver | QP solver]]. If no QP solver is found, the problem is converted to an SOCP, and if no dedicated SOCP solver exist, the SOCP is converted to an SDP. 
+
+Finally, we minimize the &infin;-norm. This corresponds to minimizing the largest (absolute value) residual. Introduce a scalar to bound the largest value in the vector residual (YALMIP uses MATLAB standard to compare scalars, vectors and matrices)
+
+````matlab
+bound = sdpvar(1,1);
+Constraints  = [-bound <= residuals <= bound];
+````  
+
+and minimize the bound.
+
+````matlab
+optimize(Constraints,bound);
+x_Linf = value(xhat);
+````
+
+We plot the solutions, and notice that the 1-norm estimate worked very well and essentially managed to capture the underlying harmonics despite the severe measurement error after 2 seconds, whereas the two other estimates perform badly on this data set.
+
+````matlab
+plot(t,[y a*x_L1 a*x_L2 a*x_Linf]);
+````
+
+%center%%width=500px%Images:regresssolution.png
+
+Let us finally state that some of the manipulations here can be performed much easier by using the [[Tutorials.NonlinearOperators | nonlinear operator framework]] in YALMIP.
+
+````matlab
+optimize([],norm(residuals,1));
+optimize([],norm(residuals,inf));
+````
+
+The 2-norm solution is most easily stated in the described QP formulation, although it in some cases is more efficient in YALMIP to express the problem using a 2-norm, which will lead to a second order cone problem. 
+
+````matlab
+optimize([],norm(residuals,2));
+````
+
+The reason is that a quadratic function with \\(n\\) variables can be composed of up to \\(n(n+1)/2\\) monomials, which YALMIP has to work with symbolically. If you absolutely need to solve a large-scale quadratic program with YALMIP using a QP solver, introduce an auxiliary variable and equality constraints. This will make the quadratic term sparse (not only YALMIP but many QP solvers will be significantly faster after this transformation)
+
+````matlab
+aux = sdpvar(length(residuals),1);
+optimize([aux == residuals],aux'*aux);
+````
+
+Of course, in this example, this makes no difference, as there only are 6 decision variables.
