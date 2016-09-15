@@ -15,7 +15,7 @@ BMIBNB is shipped with YALMIP.
 BMIBNB is invoked by using `sdpsettings('solver','bmibnb')`
 
 Most important options
- <table border="1" cellspacing="1" style="border-collapse: collapse" width="100%" bordercolor="#000000" bgcolor="#FFFFE0" id="table1">
+ <table border="1" cellspacing="1" style="border-collapse: collapse" width="100%" bordercolor="#000000" bgcolor="#FFFFFF" id="table1">
         <tr>
           <td width="310"><code>sdpsettings('bmibnb.roottight',[0|1])</code></td>
           <td>Improve variable bounds at root-node by performing bound 
