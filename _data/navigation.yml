@@ -154,38 +154,6 @@ commands:
         url: /yalmip/commands/savesdpafile 
       - title: "yalmiptest"
         url: /yalmip/commands/yalmiptest        
-  - title: Variable manipulations
-    children:
-      - title: "assign"
-        url: /yalmip/commands/assign
-     - title: "binmodel"
-        url: /yalmip/commands/binmodel         
-      - title: "coefficients"
-        url: /yalmip/commands/coefficients
-      - title: "degree"
-        url: /yalmip/commands/degree
-      - title: "dissect"
-        url: /yalmip/commands/dissect        
-      - title: "hessian"
-        url: /yalmip/commands/hessian
-      - title: "int"
-        url: /yalmip/commands/int
-      - title: "is"
-        url: /yalmip/commands/is
-      - title: "jacobian"
-        url: /yalmip/commands/jacobian                
-      - title: "linearize"
-        url: /yalmip/commands/linearize
-      - title: "monolist"
-        url: /yalmip/commands/monolist
-      - title: "polynomial"
-        url: /yalmip/commands/polynomial
-      - title: "sdisplay"
-        url: /yalmip/commands/sdisplay                
-      - title: "unblkdiag"
-        url: /yalmip/commands/unblkdiag                
-      - title: "value"
-        url: /yalmip/commands/value                
   - title: Variable operators (selected)
     children:
       - title: "abs"
@@ -248,3 +216,35 @@ commands:
         url: /yalmip/commands/ismember   
       - title: "sosd"
         url: /yalmip/commands/sosd        
+  - title: Variable manipulations
+    children:
+      - title: "assign"
+        url: /yalmip/commands/assign
+     - title: "binmodel"
+        url: /yalmip/commands/binmodel         
+      - title: "coefficients"
+        url: /yalmip/commands/coefficients
+      - title: "degree"
+        url: /yalmip/commands/degree
+      - title: "dissect"
+        url: /yalmip/commands/dissect        
+      - title: "hessian"
+        url: /yalmip/commands/hessian
+      - title: "int"
+        url: /yalmip/commands/int
+      - title: "is"
+        url: /yalmip/commands/is
+      - title: "jacobian"
+        url: /yalmip/commands/jacobian                
+      - title: "linearize"
+        url: /yalmip/commands/linearize
+      - title: "monolist"
+        url: /yalmip/commands/monolist
+      - title: "polynomial"
+        url: /yalmip/commands/polynomial
+      - title: "sdisplay"
+        url: /yalmip/commands/sdisplay                
+      - title: "unblkdiag"
+        url: /yalmip/commands/unblkdiag                
+      - title: "value"
+        url: /yalmip/commands/value                
