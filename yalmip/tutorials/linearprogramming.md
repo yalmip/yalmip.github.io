@@ -58,7 +58,7 @@ At last, we are ready to solve the problem
 optimize(Constraints,Objective)
 ````
 
-The values of the optimal \\(a\\) and \\(b\\) are obtained using [[Commands.value | value]]. To better illustrate the results, we use YALMIPs ability to [plot](/yalmip/commands/plot) constraint sets to lazily display the separating hyperplane.
+The values of the optimal \\(a\\) and \\(b\\) are obtained using [value](/yalmip/commands/value). To better illustrate the results, we use YALMIPs ability to [plot](/yalmip/commands/plot) constraint sets to lazily display the separating hyperplane.
 
 ````matlab
 x = sdpvar(2,1);
