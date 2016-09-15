@@ -45,7 +45,7 @@ The classification constraints are easily defined by exploiting MATLABs and YALM
 Constraints = [a'*greens+b >= 1-u, a'*blues+b <= -(1-v), u >= 0, v >= 0]
 ````
 
-We want \\(u\\) and \\(v\\) to be small, in some sense, as that indicates a good classification. A simple choice is to minimize the sum of all elements \\(u\\) and \\(v\\). However, the problem is ill-conditioned in that form, so we add the constraint that the absolute value of all elements in\\(a\\) are smaller than \\(1\\).
+We want \\(u\\) and \\(v\\) to be small, in some sense, as that indicates a good classification. A simple choice is to minimize the sum of all elements \\(u\\) and \\(v\\). However, the problem is ill-conditioned in that form, so we add the constraint that the absolute value of all elements in \\(a\\) are smaller than \\(1\\).
 
 ````matlab
 Objective = sum(u)+sum(v)
@@ -58,7 +58,7 @@ At last, we are ready to solve the problem
 optimize(Constraints,Objective)
 ````
 
-The values of the optimal \\(a\\) and \\(b\\) are obtained using [[Commands.value | value]]. To better illustrate the results, we use YALMIPs ability to [[Commands.plot | plot]] constraint sets to lazily display the separating hyperplane.
+The values of the optimal \\(a\\) and \\(b\\) are obtained using [[Commands.value | value]]. To better illustrate the results, we use YALMIPs ability to [plot](/yalmip/commands/plot) constraint sets to lazily display the separating hyperplane.
 
 ````matlab
 x = sdpvar(2,1);
