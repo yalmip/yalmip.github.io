@@ -19,7 +19,8 @@ plot(greens(1,:),greens(2,:),'g*')
 hold on
 plot(blues(1,:),blues(2,:),'b*')
 ````
-%center%%width=550px%Images:bluegreendata.png
+
+![Data to classify]({{ site.url }}/images/bluegreendata.png)
 
 A linear classifier means we want to find a vector \\(a\\) and scalar \\(b\\) such that \\(a^Tx + b \geq 0\\) for all the green points, and \\(a^Tx+b\leq 0\\) for all blue points (a separating hyperplane). By looking at the data, it should be clear that this is impossible. What one then would like to do, is to find a hyperplane which misclassifies as few points as possible. This is typically a very hard combinatorial problem, so we will work with an approximation instead.
 
