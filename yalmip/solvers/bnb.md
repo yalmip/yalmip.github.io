@@ -1,0 +1,18 @@
+---
+title: "BNB"
+layout: single
+sidebar:
+  nav: "solvers"
+---
+
+Built-in mixed-integer solver forconvex problems.
+
+!YALMIP
+BNB is invoked using `sdpsettings('solver','bnb')`.
+
+Available options : see `help bnb` in MATLAB
+
+### Comments
+BNB is a quick and dirty implementation of a standard branch & bound algorithm for mixed integer linear/quadratic/second order cone, semidefinite, geometric and convex nonlinear programming. However, if you have a MILP, MIQP or MISOCP, you should install a real solver such as [CPLEX], [GUROBI] or [MOSEK], since [BNB] is horribly slow compared to a dedicated implementation.
+
+The solver relies on external solvers for solving the node problems.
