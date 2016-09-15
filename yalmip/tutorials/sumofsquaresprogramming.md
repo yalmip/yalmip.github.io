@@ -6,7 +6,7 @@ sidebar:
 ---
 
 
-YALMIP has a built-in module for sum-of-squares calculations. In its most basic formulation, a sum-of-squares (SOS) problem takes a polynomial {$p(x)$} and tries to find a real-valued polynomial vector function {$h(x)$} such that {$p(x)=h^T(x)h(x)$} (or equivalently {$p(x)=v^T(x)Qv(x)$} where {$Q$} is positive semidefinite and {$v(x)$} is a vector of monomials), hence proving non-negativity of the polynomial {$p(x)$}. Read more about standard sum-of-squares decompositions in {[reference.bib,Parrilo:2003]}.
+YALMIP has a built-in module for sum-of-squares calculations. In its most basic formulation, a sum-of-squares (SOS) problem takes a polynomial \\(p(x)\\) and tries to find a real-valued polynomial vector function \\(h(x)\\) such that \\(p(x)=h^T(x)h(x)\\) (or equivalently \\(p(x)=v^T(x)Qv(x)\\) where \\(Q\\) is positive semidefinite and \\(v(x)\\) is a vector of monomials), hence proving non-negativity of the polynomial \\(p(x)\\). Read more about standard sum-of-squares decompositions in {[reference.bib,Parrilo:2003]}.
 
 In addition to standard SOS decompositions which we discuss below, YALMIP also supports linearly and nonlinearly parameterized problems, decomposition of matrix valued polynomials, [Examples.MoreSOS | symmetry reduction], [Examples.MoreSOS | pre- and post-processing],  and computation of low-rank decompositions. These extension are described in the following paper (which should be referenced if you use the sum-of-squares module)
 
@@ -22,7 +22,7 @@ x = sdpvar(1,1);y = sdpvar(1,1);
 p = (1+x)^4 + (1-y)^2;
 ````
 
-Introduce a decomposition {$p = v^TQv$}
+Introduce a decomposition \\(p = v^TQv\\)
 ````matlab
 v = monolist([x y],degree(p)/2);
 Q = sdpvar(length(v));
@@ -86,7 +86,7 @@ ans =
   '0.0010977+0.00036589x+0.0010977y-0.0018294x^2'
 ````
 
-To see if the decomposition was successful, we simply calculate the error {$p(x)-h^T(x)h(x)$} which should be 0. However, due to the way SDPs are solved, the difference will typically not be zero. A useful command then is [Commands.clean | clean]. Using [Commands.clean | clean], we remove all monomials with coefficients smaller than, e.g., 1e-6.
+To see if the decomposition was successful, we simply calculate the error \\(p(x)-h^T(x)h(x)\\) which should be 0. However, due to the way SDPs are solved, the difference will typically not be zero. A useful command then is [Commands.clean | clean]. Using [Commands.clean | clean], we remove all monomials with coefficients smaller than, e.g., 1e-6.
 ````matlab
 clean(p-h'*h,1e-6)
 
@@ -94,7 +94,7 @@ ans =
     0
 ````
 
-The decomposition {$p(x)=v^T(x)Qv(x)$} can also be obtained easily.
+The decomposition \\(p(x)=v^T(x)Qv(x)\\) can also be obtained easily.
 ````matlab
 x = sdpvar(1,1);y = sdpvar(1,1);
 p = (1+x)^4 + (1-y)^2;
@@ -105,9 +105,9 @@ clean(p-v{1}'*Q{1}*v{1},1e-6)
      0
 ````
 
-Note: Even though {$h^T(x)h(x)$}  and {$v^T(x)Qv(x)$}  should be the same in theory, they are typically not. The reason is partly numerical issues with floating point numbers, but more importantly due to the way YALMIP treats the case when {$Q$} not is positive definite (sometimes the case due to numerical issues in the SDP solver). The decomposition is in theory typically defined as {$h(x)=\text{chol}(Q)v(x)$}. YALMIP however uses a decomposition based on a singular value decomposition to avoid problems in the singular and numerically indefinite case. If {$Q$} is positive definite the two expressions coincide.
+Note: Even though \\(h^T(x)h(x)\\)  and \\(v^T(x)Qv(x)\\)  should be the same in theory, they are typically not. The reason is partly numerical issues with floating point numbers, but more importantly due to the way YALMIP treats the case when \\(Q\\) not is positive definite (sometimes the case due to numerical issues in the SDP solver). The decomposition is in theory typically defined as \\(h(x)=\text{chol}(Q)v(x)\\). YALMIP however uses a decomposition based on a singular value decomposition to avoid problems in the singular and numerically indefinite case. If \\(Q\\) is positive definite the two expressions coincide.
 
-The quality of the decomposition can alternatively be evaluated using [Commands.checkset | checkset]. The value reported is the largest coefficient in the polynomial  {$p(x)-v^T(x)Qv(x)$}
+The quality of the decomposition can alternatively be evaluated using [Commands.checkset | checkset]. The value reported is the largest coefficient in the polynomial  \\(p(x)-v^T(x)Qv(x)\\)
 ````matlab
 checkset(F)
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -128,7 +128,7 @@ res =
   7.3674e-012
 ````
 
-It is very rare (except in contrived academic examples) that one finds a decomposition with a positive definite {$Q$} and zero mismatch between {$v^T(x)Qv(x)$}  and the polynomial {$p(x)$}. The reason is simply that all SDP solver use floating-point arithmetics. Hence, in principle, the decomposition has no theoretical value as a certificate for non-negativity unless additional post-analysis is performed (relating the size of the residual with the eigenvalues of the Gramian).
+It is very rare (except in contrived academic examples) that one finds a decomposition with a positive definite \\(Q\\) and zero mismatch between \\(v^T(x)Qv(x)\\)  and the polynomial \\(p(x)\\). The reason is simply that all SDP solver use floating-point arithmetics. Hence, in principle, the decomposition has no theoretical value as a certificate for non-negativity unless additional post-analysis is performed (relating the size of the residual with the eigenvalues of the Gramian).
 
 ### Parameterized problems
 
@@ -153,7 +153,7 @@ value(lower)
      0.75
 ````
 
-Multiple SOS constraints can also be used. Consider the following problem of finding the smallest possible {$t$} such that the polynomials {$t(1+xy)^2-xy+(1-y)^2$} and {$(1-xy)^2+xy+t(1+y)^2$} are both sum-of-squares.
+Multiple SOS constraints can also be used. Consider the following problem of finding the smallest possible \\(t\\) such that the polynomials \\(t(1+xy)^2-xy+(1-y)^2\\) and \\((1-xy)^2+xy+t(1+y)^2\\) are both sum-of-squares.
 ````matlab
 sdpvar x y t
 p1 = t*(1+x*y)^2-x*y+(1-y)^2;
@@ -184,7 +184,7 @@ One of the most common mistake people make when using the sum-of-squares module 
 
 ### Constrained polynomial optimization
 
-The sum-of-squares module in YALMIP only deals with the most basic problem; proving positivity of a polynomial over {$\mathbf{R}^n$}. If you want to check positivity over a semi-algebraic set, you have to formulate the suitable sum-of-squares formulation. The trick to do that is sometimes variable transformations (such as defining $x = u^2$ when optimizing over non-negative numbers), but in most cases application of the positivstellensatz, which can be seen as a generalization of the S-procedure. Roughly speaking, to show that {$p(x)$} is positive on the set {$g(x)\geq 0$}, we can search for a non-negative polynomial {$s(x)$} such that {$p(x)\geq g(x)s(x)$}, a trivially sufficient condition. To get a tractable problem, we replace non-negativity with sum-of-squares conditions. Let us use this technique to solve the simple lower bound computation from above, but this time constrained to the unit-box. Define the variables from before, and the constraints defining the unit-box.
+The sum-of-squares module in YALMIP only deals with the most basic problem; proving positivity of a polynomial over \\(\mathbf{R}^n\\). If you want to check positivity over a semi-algebraic set, you have to formulate the suitable sum-of-squares formulation. The trick to do that is sometimes variable transformations (such as defining $x = u^2$ when optimizing over non-negative numbers), but in most cases application of the positivstellensatz, which can be seen as a generalization of the S-procedure. Roughly speaking, to show that \\(p(x)\\) is positive on the set \\(g(x)\geq 0\\), we can search for a non-negative polynomial \\(s(x)\\) such that \\(p(x)\geq g(x)s(x)\\), a trivially sufficient condition. To get a tractable problem, we replace non-negativity with sum-of-squares conditions. Let us use this technique to solve the simple lower bound computation from above, but this time constrained to the unit-box. Define the variables from before, and the constraints defining the unit-box.
 
 ````matlab
 sdpvar x y lower

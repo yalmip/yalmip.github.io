@@ -15,7 +15,7 @@ For an introduction to bilevel optimization, see [http://books.google.com/books?
 ### KKT conditions in bilevel programming
 
 The class of bilevel problems that can be adressed natively by YALMIP has to have the following leader-follower (outer-inner) structure
-{$$
+\\($
 \begin{aligned}
 \text{minimize} & f(x,y^*)\\
 \text{subject to} & (x,y^*) \in \mathcal{C}\\
@@ -24,25 +24,25 @@ y^* = & \arg \min \frac{1}{2}\begin{bmatrix}x\\y\end{bmatrix}^T\begin{bmatrix}H_
 & \text{subject to } \, \begin{bmatrix}F_1 & F_2\end{bmatrix}\begin{bmatrix}x\\y\end{bmatrix}\leq h
 \end{aligned}
 \end{aligned}
-$$}
+$\\)
 
-The inner problem constraining the follower {$y$}, is limited to convex quadratic programming problems. The outer problem is allowed to be essentially anything that YALMIP can handle.
+The inner problem constraining the follower \\(y\\), is limited to convex quadratic programming problems. The outer problem is allowed to be essentially anything that YALMIP can handle.
 
-The bilevel solver that is available in YALMIP replaces the optimality condition on {$y^*$} with the KKT conditions.
-{$$
+The bilevel solver that is available in YALMIP replaces the optimality condition on \\(y^*\\) with the KKT conditions.
+\\($
 \begin{aligned}
 H_3y + H_2^Tx + e_2 - F_2^T\lambda &=0\\
 \lambda &\geq 0\\
 h-F_1x-F_2y & \geq 0\\
 \lambda^T(h-F_1x-F_2y) & = 0
 \end{aligned}
-$$}
+$\\)
 
 This is precisely what is done in the manually derived bilevel solution methods in [Examples.BilevelProgramming | bilevel example], but the benefit of using YALMIPs native support is that this solver branches directly on the complementarity conditions, and thus avoids to introduce any numerically dangerous [Tutorials.Big-M | big-M] constants.
 
 ### Bilevel linear and quadratic programming
 
-Let us start with a simple bilevel linear programming problem. Start by defining the outer (leader) variables {$x$} and inner (follower) variables {$y$}.
+Let us start with a simple bilevel linear programming problem. Start by defining the outer (leader) variables \\(x\\) and inner (follower) variables \\(y\\).
 ````matlab
 sdpvar x1 x2
 sdpvar y1 y2 y3

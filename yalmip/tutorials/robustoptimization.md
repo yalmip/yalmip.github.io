@@ -13,7 +13,7 @@ sidebar:
 
 In a general setting, robust optimization deals with optimization problems with two sets of variables, decision variables (here denoted **x**) and uncertain variables (**w**). The goal in deterministic worst-case robust optimization is to find a solution on the decision variables such that the worst-case cost is minimized and the constraints are robustly feasible, when the uncertainty is allowed to take arbitrary values in a defined uncertainty set.
 
-![Minmax problem]({{ site.url }}/images/minimax.png){: .center-image }
+![Minmax problem]({{ site.url }}/images/minmax.png){: .center-image }
 
 YALMIP cannot deal with arbitrary uncertain problems (it is in general an intractable problem), but focus on special cases.
 
