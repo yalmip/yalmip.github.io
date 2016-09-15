@@ -6,11 +6,12 @@ sidebar:
 ---
 
 
-YALMIP comes with a built-in module for polynomial programming using moment relaxations. This can be used for finding lower bounds on constrained polynomial programs (inequalities and equalities, element-wise and semidefinite), and to extract the optimizers in case the relaxation is tight. The implementation is entirely based on high-level YALMIP code, and can be somewhat inefficient for large problems (the inefficiency would then show in the setup of the problem, not actually solving the semidefinite resulting program). For the underlying theory of moment relaxations, the reader is referred to {[reference.bib,Lasserre:2001]}.
+YALMIP comes with a built-in module for polynomial programming using moment relaxations. This can be used for finding lower bounds on constrained polynomial programs (inequalities and equalities, element-wise and semidefinite), and to extract the optimizers in case the relaxation is tight. The implementation is entirely based on high-level YALMIP code, and can be somewhat inefficient for large problems (the inefficiency would then show in the setup of the problem, not actually solving the semidefinite resulting program). For the underlying theory of moment relaxations, the reader is referred to [Lasserre 2001].
 
 ### Solving polynomial problems by relaxations
 
-The following code calculates a lower bound on a concave quadratic optimization problem. As you can see, the only difference compared to solving the problem using a standard solver, such as [Solvers.FMINCON | fmincon] or [Solvers.SNOPT | SNOPT], or the global solver [Solvers.BMIBNB | BMIBNB], is that we call [Commands.solvemoment | solvemoment] instead of [Commands.optimize | optimize] (an alternative is to call [Commands.optimize | optimize ] and specify ''''moment'''' as the solver in [Commands.sdpsettings | sdpsettings options]).
+The following code calculates a lower bound on a concave quadratic optimization problem. As you can see, the only difference compared to solving the problem using a standard solver, such as [FMINCON] or [SNOPT], or the global solver [BMIBNB], is that we call [solvemoment] instead of [optimize] (an alternative is to call [optimize] and specify `'moment'` as the solver in [sdpsettings]).
+
 ````matlab
 sdpvar x1 x2 x3
 obj = -2*x1+x2-x3;
@@ -25,7 +26,8 @@ value(obj)
      -6.0000
 ````
 
-Notice that YALMIP does not recover variables by default, a fact showing up in the difference between lifted variables and actual nonlinear variables (lifted variables are the variables used in the semidefinite relaxation to model nonlinear variables). The linear variables coincide with the relaxed linear variables, hence the relaxed value of the linear objective can be checked directly through [Commands.value | value]. The lifted variables can be obtained by using the command [Commands.relaxdouble | relaxdouble]. The quadratic constraint above is satisfied in the lifted variables, but not in the true variables, as the following code illustrates.
+Notice that YALMIP does not recover variables by default, a fact showing up in the difference between lifted variables and actual nonlinear variables (lifted variables are the variables used in the semidefinite relaxation to model nonlinear variables). The linear variables coincide with the relaxed linear variables, hence the relaxed value of the linear objective can be checked directly through [Commands.value | value]. The lifted variables can be obtained by using the command [relaxdouble]. The quadratic constraint above is satisfied in the lifted variables, but not in the true variables, as the following code illustrates.
+
 ````matlab
 relaxdouble(x1*(4*x1-4*x2+4*x3-20)+x2*(2*x2-2*x3+9)+x3*(2*x3-13)+24)
 
@@ -40,6 +42,7 @@ value(x1*(4*x1-4*x2+4*x3-20)+x2*(2*x2-2*x3+9)+x3*(2*x3-13)+24)
 ````
 
 A tighter relaxation can be obtained by using a higher order relaxation (the lowest possible is used if it is not specified).
+
 ````matlab
 solvemoment(F,obj,[],2);
 value(obj)
@@ -49,6 +52,7 @@ value(obj)
 ````
 
 On this particular problem, the obtained bound can be used iteratively to improve the bound by adding dynamically generated cuts.
+
 ````matlab
 solvemoment([F, obj>=value(obj)],obj,[],2);
 value(obj)
@@ -64,6 +68,7 @@ value(obj)
 ````
 
 The known true minima, -4, is found in the fourth order relaxation.
+
 ````matlab
 solvemoment(F,obj,[],4);
 value(obj)
@@ -73,6 +78,7 @@ value(obj)
 ````
 
 The true global minima is however not recovered with the lifted variables, as we can see if we check the current solution (still violates the nonlinear constraint).
+
 ````matlab
 check(F)
 
@@ -93,6 +99,7 @@ check(F)
 ### Extracting solutions
 
 To extract a (or several) globally optimal solution, we need two output arguments. The first output is a diagnostic structure (standard solution structure from the semidefinite solver), the second output is the (hopefully, it is not always to extract solutions, even though the bound is tight) extracted globally optimal solutions and the third output is a data structure containing all data that was needed to extract the solution.
+
 ````matlab
 [sol,x,momentdata] = solvemoment(F,obj,[],4);
 x{1}
@@ -112,6 +119,7 @@ ans =
 ````
 
 Assigning any of the extracted solutions should yield a feasible set of constraint, and an objective which achieves the lower bound -4 that we just computed. Too avoid any confusion about the ordering of variables, we use the third output to make sure we assign the solution to the correct variables.
+
 ````matlab
 assign(momentdata.x,x{1});
 check(F)
@@ -131,6 +139,7 @@ check(F)
 
 
 Since we know in what order the variables were defined, we could have used the following version too
+
 ````matlab
 assign([x1;x2;x3],x{1});
 
