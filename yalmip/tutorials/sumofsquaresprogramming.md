@@ -1,5 +1,5 @@
 ---
-title: "Geometric programming"
+title: "Sum-of-squares programming"
 layout: single
 sidebar:
   nav: "tutorials"
