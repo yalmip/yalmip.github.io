@@ -59,9 +59,7 @@ Most important options
 ### Comments
 BMIBNB is an implementation of a standard [BMIBNBTheory branch & bound algorithm for nonconvex problems], based on linear programming relaxations and convex envelope approximations.
 
-Polynomial problems are automatically converted to bilinear problems, but note that this easily leads to very large problems.
-
-The solver relies on external linear and quadratic programming solvers for solving the lower bounding relaxation problems, and nonlinear solvers for the upper bound computations (currently only [PENBMI], [SNOPT] and [FMINCON]).
+The solver relies on external linear and quadratic programming solvers for solving the lower bounding relaxation problems, and nonlinear solvers for the upper bound computations.
 
 Do not expect too much. Global solutions are extremely hard to compute, and this is a fairly simple implementation. Problems with more than 10 variables is often beyond the capabilities of this solver, although you might be lucky. 
 
