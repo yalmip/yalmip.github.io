@@ -25,7 +25,7 @@ A square real-valued **symmetric** matrix is obtained with
 P = sdpvar(n,n) % SYMMETRIC!
 ````
 
-The command above can be simplified by only giving one argument when defining a symmetric matrix or a scalar (this might not work on MATLAB 5.3 and earlier version). 
+The command above can be simplified by only giving one argument when defining a symmetric matrix or a scalar.
 
 ````matlab
 P = sdpvar(n) % SYMMETRIC!
@@ -37,7 +37,7 @@ We can also define the same matrix using a more verbose notation.
 P = sdpvar(n,n,'symmetric')
 ````
 
-A fully parameterized (i.e., not necessarily symmetric)  square matrix requires a third argument.
+A fully parameterized (i.e., not necessarily symmetric) square matrix requires a third argument.
 
 ````matlab
 P = sdpvar(n,n,'full')
