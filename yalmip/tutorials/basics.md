@@ -1,5 +1,5 @@
 ---
-title: "Basics"
+title: "Getting started"
 layout: single
 sidebar:
   nav: "tutorials"
