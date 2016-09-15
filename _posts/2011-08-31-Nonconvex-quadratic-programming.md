@@ -4,7 +4,7 @@ excerpt: "Common question: how can I solve a nonconvex QP using SeDuMi? Weird qu
 title: Nonconvex quadratic programming
 tags: [Release]
 comments: true
-date: '2016-09-16'
+date: '2011-08-31'
 image:
   feature: lofberg.jpg
   teaser: lofberg.jpg
