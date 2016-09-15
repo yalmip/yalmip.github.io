@@ -19,7 +19,7 @@ y = A*x+e;
 plot(t,y);
 ````
 
-![Data for regression problem]({{ site.url }}/images/regressdata.png)
+![Data for regression problem]({{ site.url }}/images/regressdata.png){: .center-image }
 
 Define the variable we are looking for
 
@@ -31,20 +31,20 @@ By using **xhat** and the regressors in **A**, we can define the residuals (whic
 
 ````matlab
 residuals = y-A*xhat;
-```` 
+````
 
 To solve the 1-norm regression problem (minimize sum of absolute values of residuals), we can define a variable that will serve as a bound on the absolute values of **y-A*xhat** (we will solve this problem much more conveniently below by simply using the norm operator)
 
 ````matlab
 bound = sdpvar(length(residuals),1);
-```` 
+````
 
 Express that the bound variables are larger than the absolute values of the residuals (note the convenient definition of a double-sided constraint).
 
 ````matlab
 Constraints = [-bound <= residuals <= bound];
-```` 
- 
+````
+
 Call YALMIP to minimize the sum of the bounds subject to the constraints in **Constraints**. YALMIP will automatically detect that this is a linear program, and call any [LP solver](/yalmip/solvers) available on your path.
 
 ````matlab
@@ -62,9 +62,9 @@ The 2-norm problem (least-squares) is easily solved as a QP problem without any 
 ````matlab
 optimize([],residuals'*residuals);
 x_L2 = value(xhat);
-```` 
+````
 
-YALMIP automatically detects that the objective is a convex quadratic function, and solves the problem using any installed [QP solver](/yalmip/solvers). If no QP solver is found, the problem is converted to an SOCP, and if no dedicated SOCP solver exist, the SOCP is converted to an SDP. 
+YALMIP automatically detects that the objective is a convex quadratic function, and solves the problem using any installed [QP solver](/yalmip/solvers). If no QP solver is found, the problem is converted to an SOCP, and if no dedicated SOCP solver exist, the SOCP is converted to an SDP.
 
 Finally, we minimize the \\(\infty\\)-norm. This corresponds to minimizing the largest (absolute value) residual. Introduce a scalar to bound the largest value in the vector residual (YALMIP uses MATLAB standard to compare scalars, vectors and matrices)
 
@@ -86,7 +86,7 @@ We plot the solutions, and notice that the 1-norm estimate worked very well and 
 plot(t,[y a*x_L1 a*x_L2 a*x_Linf]);
 ````
 
-![Solution to regression problem]({{ site.url }}/images/regresssolution.png)
+![Solution to regression problem]({{ site.url }}/images/regresssolution.png){: .center-image }
 
 Let us finally state that some of the manipulations here can be performed much easier by using the [nonlinear operator framework](/yalmip/tutorials/nonlinearoperator) in YALMIP.
 
@@ -95,7 +95,7 @@ optimize([],norm(residuals,1));
 optimize([],norm(residuals,inf));
 ````
 
-The 2-norm solution is most easily stated in the described QP formulation, although it in some cases is more efficient in YALMIP to express the problem using a 2-norm, which will lead to a second order cone problem. 
+The 2-norm solution is most easily stated in the described QP formulation, although it in some cases is more efficient in YALMIP to express the problem using a 2-norm, which will lead to a second order cone problem.
 
 ````matlab
 optimize([],norm(residuals,2));

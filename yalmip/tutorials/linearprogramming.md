@@ -20,7 +20,7 @@ hold on
 plot(blues(1,:),blues(2,:),'b*')
 ````
 
-![Data to classify]({{ site.url }}/images/bluegreendata.png)
+![Data to classify]({{ site.url }}/images/bluegreendata.png){: .center-image }
 
 A linear classifier means we want to find a vector \\(a\\) and scalar \\(b\\) such that \\(a^Tx + b \geq 0\\) for all the green points, and \\(a^Tx+b\leq 0\\) for all blue points (a separating hyperplane). By looking at the data, it should be clear that this is impossible. What one then would like to do, is to find a hyperplane which misclassifies as few points as possible. This is typically a very hard combinatorial problem, so we will work with an approximation instead.
 
@@ -31,14 +31,14 @@ We define the decision variables of interest
 ````matlab
 a = sdpvar(2,1);
 b = sdpvar(1);
-```` 
+````
 
 We will use one \\(u\\) and \\(v\\) variable for each point, hence we create two vectors of suitable length. It will be obvious below why we define them as row-vectors.
 
 ````matlab
 u = sdpvar(1,25);
 v = sdpvar(1,25);
-```` 
+````
 
 The classification constraints are easily defined by exploiting MATLABs and YALMIPs ability to add scalars and vectors
 
@@ -72,5 +72,4 @@ plot(greens(1,:),greens(2,:),'g*')
 plot(blues(1,:),blues(2,:),'b*')
 ````
 
-![Separated with linear classifier]({{ site.url }}/images/bluegreendatapartioned.png)
-
+![Separated with linear classifier]({{ site.url }}/images/bluegreendatapartioned.png){: .center-image }
