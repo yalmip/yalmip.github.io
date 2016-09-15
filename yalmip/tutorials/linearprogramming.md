@@ -21,7 +21,7 @@ plot(blues(1,:),blues(2,:),'b*')
 ````
 %center%%width=550px%Images:bluegreendata.png
 
-A linear classifier means we want to find a vector {$a$} and scalar {$b$} such that {$a^Tx + b \geq 0$} for all the green points, and {$a^Tx+b\leq 0$} for all blue points (a separating hyperplane). By looking at the data, it should be clear that this is impossible. What one then would like to do, is to find a hyperplane which misclassifies as few points as possible. This is typically a very hard combinatorial problem, so we will work with an approximation instead.
+A linear classifier means we want to find a vector \[a\] and scalar {$b$} such that {$a^Tx + b \geq 0$} for all the green points, and {$a^Tx+b\leq 0$} for all blue points (a separating hyperplane). By looking at the data, it should be clear that this is impossible. What one then would like to do, is to find a hyperplane which misclassifies as few points as possible. This is typically a very hard combinatorial problem, so we will work with an approximation instead.
 
 As a proxy for misclassification, we introduce positive numbers {$u$} and {$v$} and change the classification to {$a^Tx+b\geq 1-u$} and {$a^Tx+b\leq -(1-v)$}. If both {$u$} and {$v$} are small, we should obtain a good separation.
 
