@@ -66,7 +66,7 @@ x_L2 = value(xhat);
 
 YALMIP automatically detects that the objective is a convex quadratic function, and solves the problem using any installed [QP solver](/yalmip/solvers). If no QP solver is found, the problem is converted to an SOCP, and if no dedicated SOCP solver exist, the SOCP is converted to an SDP. 
 
-Finally, we minimize the \\($\infty$\))-norm. This corresponds to minimizing the largest (absolute value) residual. Introduce a scalar to bound the largest value in the vector residual (YALMIP uses MATLAB standard to compare scalars, vectors and matrices)
+Finally, we minimize the \\(\infty\\)-norm. This corresponds to minimizing the largest (absolute value) residual. Introduce a scalar to bound the largest value in the vector residual (YALMIP uses MATLAB standard to compare scalars, vectors and matrices)
 
 ````matlab
 bound = sdpvar(1,1);
