@@ -1,5 +1,5 @@
 ---
-title: "complex-valued problems"
+title: "Complex-valued problems"
 layout: single
 sidebar:
   nav: "tutorials"
