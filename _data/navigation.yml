@@ -53,3 +53,7 @@ tutorials:
         url: /yalmip/tutorials/linearprogramming
       - title: "Second order cone programming"
         url: /yalmip/tutorials/socpprogramming
+      - title: "Semidefinite programming"
+        url: /yalmip/tutorials/semidefiniteprogramming
+      - title: "Determinant optimization"
+        url: /yalmip/tutorials/maxdetprogramming        
