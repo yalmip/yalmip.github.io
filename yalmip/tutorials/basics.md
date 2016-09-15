@@ -37,7 +37,7 @@ The most important command in YALMIP is [sdpvar](/commands/sdpvar). This command
 P = sdpvar(n,m)
 ````
 
-A square matrix is symmetric by default!{: style="color:red}
+A square matrix is symmetric by default!{: style="color:red"}
 
 To obtain a fully parameterized (i.e. not necessarily symmetric) square matrix, a third argument is needed.
 
