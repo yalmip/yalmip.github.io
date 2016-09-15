@@ -1,22 +1,19 @@
 ---
-title: "Geometric programming"
+title: "Robust optimization"
 layout: single
 sidebar:
   nav: "tutorials"
 ---
 
+See also [Examples.RobustMPC Robust MPC], [Examples.LPV LPV control], [Examples.PolytopicGeometry  Polytopic geometry], [Worst-case matrix norm]
 
-'''See also:''' [Examples.RobustMPC | Robust MPC], [Examples.LPV| LPV control], [Examples.PolytopicGeometry | Polytopic geometry], [Blog.Worst-case-matrix-norm | Worst-case matrix norm]
-
-'''Related presentation:''' [Documents:robustposter.pdf | Poster presented at Reglermöte 2008]
-
-The module is described in the paper [Löfberg 2010] (which should be cited if you use this functionality). Small [errata](http://www.control.isy.liu.se/~johanl/errata.pdf).
+> The module is described in the paper [Löfberg 2010] (which should be cited if you use this functionality). Small [errata](http://www.control.isy.liu.se/~johanl/errata.pdf).
 
 ### Background
 
 In a general setting, robust optimization deals with optimization problems with two sets of variables, decision variables (here denoted '''x''') and uncertain variables ('''w'''). The goal in deterministic worst-case robust optimization is to find a solution on the decision variables such that the worst-case cost is minimized and the constraints are robustly feasible, when the uncertainty is allowed to take arbitrary values in a defined uncertainty set.
 
-%center%Images:minmax.png
+![Minmax problem]({{ site.url }}/images/minimax.png){: .center-image }
 
 YALMIP cannot deal with arbitrary uncertain problems (it is in general not a tractable problem), but focus on special cases.
 
@@ -24,9 +21,9 @@ YALMIP cannot deal with arbitrary uncertain problems (it is in general not a tra
 
 The different cases are called *scenarios* in the paper above, and they are converted to a robust counterpart using so called *filters*. There are three major scenarios with corresponding filters, all discussed in the paper referenced above.
 
-1. For elementwise constraints affinely (for fixed '''x''') parameterized  in the uncertainty, polytopic and general conic uncertainty sets are supported. The uncertainty is eliminated using either duality theory or enumeration. For the enumeration approach to work, you must have [Solvers.MPT | MPT] installed.
+1. For elementwise constraints affinely (for fixed *x*) parameterized  in the uncertainty, polytopic and general conic uncertainty sets are supported. The uncertainty is eliminated using either duality theory or enumeration. For the enumeration approach to work, you must have [MPT] installed.
 
-2. For elementwise constraints affinely parameterized in the uncertainty and the uncertainty constrained to a norm-ball (p=1,2,	&infin;), the uncertainty is removed by explicitly maximizing the expression w.r.t the uncertainty typically leading to a very efficient representation of the worst-case.
+2. For elementwise constraints affinely parameterized in the uncertainty and the uncertainty constrained to a norm-ball (\\(p=1,2,\infty\\)), the uncertainty is removed by explicitly maximizing the expression w.r.t the uncertainty typically leading to a very efficient representation of the worst-case.
 
 3. For conic constraints affinely parameterized in the uncertainty, polytopic uncertainty sets are supported. The uncertainty is removed using enumeration.
 

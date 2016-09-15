@@ -1,5 +1,5 @@
 ---
-title: "Geometric programming"
+title: "Multiparametric programming"
 layout: single
 sidebar:
   nav: "tutorials"
@@ -10,7 +10,7 @@ This tutorial requires the [Solvers.MPT | Multi-Parametric Toolbox (MPT)].
 
 YALMIP can be used to calculate explicit solutions of linear and quadratic programs by interfacing the [Solvers.MPT | Multi-Parametric Toolbox (MPT)]. This tutorial assumes that the reader is familiar with parametric programming and the basics of [Solvers.MPT | MPT].
 
-!!Generic example.
+###Generic example.
 
 Consider the following simple quadratic program in the decision variable '''z''', solved for a particular value on a ''parameter'' '''x'''.
 ````matlab
@@ -79,7 +79,7 @@ plot(Optimizer(1));
 %center%%width=500px%Images:pwasolution1.png
 
 
-!!Simple MPC example
+###Simple MPC example
 
 Define numerical data for a linear system, prediction matrices, and variables for current state '''x''' and the future control sequence '''U''', for an MPC problem with horizon 5 (create_CHS is a function that creates the numerical matrices to describe the linear relation between current state '''x''' and future input sequence '''U''', to the predicted outputs)
 ````matlab
@@ -127,7 +127,7 @@ plot(Optimizer)
 ````
 
 
-!!Mixed integer multiparametric programming
+###Mixed integer multiparametric programming
 
 YALMIP extends the multiparametric solvers in [Solvers.MPT  | MPT] by adding support for binary variables in the parametric problems.
 

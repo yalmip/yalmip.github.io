@@ -1,5 +1,5 @@
 ---
-title: "Geometric programming"
+title: "Moment relaxations"
 layout: single
 sidebar:
   nav: "tutorials"
@@ -8,7 +8,7 @@ sidebar:
 
 YALMIP comes with a built-in module for polynomial programming using moment relaxations. This can be used for finding lower bounds on constrained polynomial programs (inequalities and equalities, element-wise and semidefinite), and to extract the optimizers in case the relaxation is tight. The implementation is entirely based on high-level YALMIP code, and can be somewhat inefficient for large problems (the inefficiency would then show in the setup of the problem, not actually solving the semidefinite resulting program). For the underlying theory of moment relaxations, the reader is referred to {[reference.bib,Lasserre:2001]}.
 
-!! Solving polynomial problems by relaxations
+### Solving polynomial problems by relaxations
 
 The following code calculates a lower bound on a concave quadratic optimization problem. As you can see, the only difference compared to solving the problem using a standard solver, such as [Solvers.FMINCON | fmincon] or [Solvers.SNOPT | SNOPT], or the global solver [Solvers.BMIBNB | BMIBNB], is that we call [Commands.solvemoment | solvemoment] instead of [Commands.optimize | optimize] (an alternative is to call [Commands.optimize | optimize ] and specify ''''moment'''' as the solver in [Commands.sdpsettings | sdpsettings options]).
 ````matlab
@@ -90,7 +90,7 @@ check(F)
 +++++++++++++++++++++++++++++++++++++++++++++++++++
 ````
 
-!! Extracting solutions
+### Extracting solutions
 
 To extract a (or several) globally optimal solution, we need two output arguments. The first output is a diagnostic structure (standard solution structure from the semidefinite solver), the second output is the (hopefully, it is not always to extract solutions, even though the bound is tight) extracted globally optimal solutions and the third output is a data structure containing all data that was needed to extract the solution.
 ````matlab

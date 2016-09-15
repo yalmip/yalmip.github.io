@@ -1,5 +1,5 @@
 ---
-title: "Geometric programming"
+title: "Bilevel programming"
 layout: single
 sidebar:
   nav: "tutorials"
@@ -12,7 +12,7 @@ A recent addition to YALMIP is built-in support for definition, setup, and [Comm
 
 For an introduction to bilevel optimization, see [http://books.google.com/books?id=3T9LZreZshUC&printsec=frontcover | Practical Bilevel Optimization: algorithms and Applications by J. F. Bard].
 
-!! KKT conditions in bilevel programming
+### KKT conditions in bilevel programming
 
 The class of bilevel problems that can be adressed natively by YALMIP has to have the following leader-follower (outer-inner) structure
 {$$
@@ -40,7 +40,7 @@ $$}
 
 This is precisely what is done in the manually derived bilevel solution methods in [Examples.BilevelProgramming | bilevel example], but the benefit of using YALMIPs native support is that this solver branches directly on the complementarity conditions, and thus avoids to introduce any numerically dangerous [Tutorials.Big-M | big-M] constants.
 
-!! Bilevel linear and quadratic programming
+### Bilevel linear and quadratic programming
 
 Let us start with a simple bilevel linear programming problem. Start by defining the outer (leader) variables {$x$} and inner (follower) variables {$y$}.
 ````matlab
@@ -95,7 +95,7 @@ solvebilevel(CO,OO+OO^2,CI,OI^2,[y1 y2 y3]);
 ````
 
 
-!! Bilevel programming with general outer problem
+### Bilevel programming with general outer problem
 
 A strong feature of the built-in solver is that it builds upon the infrastructure in YALMIP, and easily hooks up to almost any kind of outer problem. Hence, we can take the problem above, and append a semidefinite constraint to the outer problem. The only difference is that during the branching of the complementary conditions, semidefinite programs have to be solved in each node.
 ````matlab
