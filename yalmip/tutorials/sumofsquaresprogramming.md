@@ -80,7 +80,7 @@ F = sos(p);
 solvesos(F);
 ````
 
-The sum-of-squares decomposition is extracted with the command [Commands.sosd | sosd].
+The sum-of-squares decomposition is extracted with the command [sosd].
 
 ````matlab
 h = sosd(F);

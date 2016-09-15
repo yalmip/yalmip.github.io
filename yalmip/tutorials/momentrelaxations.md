@@ -26,10 +26,10 @@ value(obj)
      -6.0000
 ````
 
-Notice that YALMIP does not recover variables by default, a fact showing up in the difference between lifted variables and actual nonlinear variables (lifted variables are the variables used in the semidefinite relaxation to model nonlinear variables). The linear variables coincide with the relaxed linear variables, hence the relaxed value of the linear objective can be checked directly through [Commands.value | value]. The lifted variables can be obtained by using the command [relaxdouble]. The quadratic constraint above is satisfied in the lifted variables, but not in the true variables, as the following code illustrates.
+Notice that YALMIP does not recover variables by default, a fact showing up in the difference between lifted variables and actual nonlinear variables (lifted variables are the variables used in the semidefinite relaxation to model nonlinear variables). The linear variables coincide with the relaxed linear variables, hence the relaxed value of the linear objective can be checked directly through [value]. The lifted variables can be obtained by using the command [relaxvalue]. The quadratic constraint above is satisfied in the lifted variables, but not in the true variables, as the following code illustrates.
 
 ````matlab
-relaxdouble(x1*(4*x1-4*x2+4*x3-20)+x2*(2*x2-2*x3+9)+x3*(2*x3-13)+24)
+relaxvalue(x1*(4*x1-4*x2+4*x3-20)+x2*(2*x2-2*x3+9)+x3*(2*x3-13)+24)
 
  ans =
 
