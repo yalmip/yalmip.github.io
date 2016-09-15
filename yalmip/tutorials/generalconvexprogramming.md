@@ -5,7 +5,7 @@ sidebar:
   nav: "tutorials"
 ---
 
-YALMIP is foremost meant to be used as a modelling tool for conic optimization problems, or problems that can be converted to conic optimization problems. However, by using the [evaluation based nonlinear operator] framework, it is possible to solve also general convex optimization problems (and nonconvex). At the moment, this feature adds support for most operators available in MATLAB, such as logarithms and exponentials, and can easily be extended, as explained in the [nonlinear operators tutorial](/yalmip/tutorials/nonlinearoperators).
+YALMIP was initially developed as a modelling tool for conic optimization problems, or problems that can be converted to conic optimization problems. However, today it is a rather general modelling tool with support for most functions and operators.
 
 You are advised to read the [nonlinear operators tutorial](/yalmip/tutorials/nonlinearoperators) before reading this tutorial.
 
