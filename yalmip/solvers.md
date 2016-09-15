@@ -1,6 +1,8 @@
 ---
 title: "Solvers"
 layout: splash
+sidebar:
+  nav: "solvers"
 ---
 
 One of the core ideas in YALMIP is to rely on external solvers for the low-level numerical solution of optimization problem. YALMIP concentrates on efficient modeling and high-level algorithms.
