@@ -16,9 +16,9 @@ The answer to the questions is a bit tricky, since it depends on what the user m
 
 Some key-points 
 
-1. Nonconvex QPs can not be solved directly using [[Solvers.SEDUMI | SeDuMi]].
-2. Nonconvex QPs are [[http://en.wikipedia.org/wiki/NP-hard | NP-hard]], and thus intractable (practically impossible to solve) in the general (non-trivially sized) case.
-3. Semidefinite relaxations (and thus [[Solvers.SEDUMI | SeDuMi]]) can be used to compute lower bounds on the achievable objective.
+1. Nonconvex QPs can not be solved directly using [SEDUMI].
+2. Nonconvex QPs are [NP-hard](http://en.wikipedia.org/wiki/NP-hard), and thus intractable (practically impossible to solve) in the general (non-trivially sized) case.
+3. Semidefinite relaxations (and thus [SEDUMI]) can be used to compute lower bounds on the achievable objective.
 4. Sometimes the semidefinite relaxation is tight and a solution can be recovered.
 5. There are stronger semidefinite relaxations than the standard relaxation (based on the so called method of moments).
 6. Adding redundant constraints can improve performance tremendously.
@@ -27,6 +27,7 @@ Some key-points
 ### Semidefinite relaxations
 
 To begin with, let us define a simple bound-constrained indefinite QP, and throw it at YALMIP.
+
 ````matlab
 Q = magic(5);
 x = sdpvar(5,1);
