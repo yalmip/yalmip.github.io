@@ -5,23 +5,23 @@ sidebar:
   nav: "tutorials"
 ---
 
-See also [Examples.RobustMPC Robust MPC], [Examples.LPV LPV control], [Examples.PolytopicGeometry  Polytopic geometry], [Worst-case matrix norm]
+> See also [Examples.RobustMPC Robust MPC], [Examples.LPV LPV control], [Examples.PolytopicGeometry  Polytopic geometry], [Worst-case matrix norm]
 
-> The module is described in the paper [Löfberg 2010] (which should be cited if you use this functionality). Small [errata](http://www.control.isy.liu.se/~johanl/errata.pdf).
+> The robust optimization module is described in the paper [Löfberg 2010] (which should be cited if you use this functionality). Small [errata](http://www.control.isy.liu.se/~johanl/errata.pdf).
 
 ### Background
 
-In a general setting, robust optimization deals with optimization problems with two sets of variables, decision variables (here denoted '''x''') and uncertain variables ('''w'''). The goal in deterministic worst-case robust optimization is to find a solution on the decision variables such that the worst-case cost is minimized and the constraints are robustly feasible, when the uncertainty is allowed to take arbitrary values in a defined uncertainty set.
+In a general setting, robust optimization deals with optimization problems with two sets of variables, decision variables (here denoted **x**) and uncertain variables (**w**). The goal in deterministic worst-case robust optimization is to find a solution on the decision variables such that the worst-case cost is minimized and the constraints are robustly feasible, when the uncertainty is allowed to take arbitrary values in a defined uncertainty set.
 
 ![Minmax problem]({{ site.url }}/images/minimax.png){: .center-image }
 
-YALMIP cannot deal with arbitrary uncertain problems (it is in general not a tractable problem), but focus on special cases.
+YALMIP cannot deal with arbitrary uncertain problems (it is in general an intractable problem), but focus on special cases.
 
 ### Supported scenarios
 
 The different cases are called *scenarios* in the paper above, and they are converted to a robust counterpart using so called *filters*. There are three major scenarios with corresponding filters, all discussed in the paper referenced above.
 
-1. For elementwise constraints affinely (for fixed *x*) parameterized  in the uncertainty, polytopic and general conic uncertainty sets are supported. The uncertainty is eliminated using either duality theory or enumeration. For the enumeration approach to work, you must have [MPT] installed.
+1. For elementwise constraints affinely (for fixed **x**) parameterized  in the uncertainty, polytopic and general conic uncertainty sets are supported. The uncertainty is eliminated using either duality theory or enumeration. For the enumeration approach to work, you must have [MPT] installed.
 
 2. For elementwise constraints affinely parameterized in the uncertainty and the uncertainty constrained to a norm-ball (\\(p=1,2,\infty\\)), the uncertainty is removed by explicitly maximizing the expression w.r.t the uncertainty typically leading to a very efficient representation of the worst-case.
 
@@ -29,9 +29,9 @@ The different cases are called *scenarios* in the paper above, and they are conv
 
 In addition to these three major scenarios, there are some less general approaches.
 
-4. If the uncertainty enters polynomially and the uncertainty lives on a standard simplex, a ''conservative'' robust counterpart, based on Polya's relaxation, is used.
+4. If the uncertainty enters polynomially and the uncertainty lives on a standard simplex, a *conservative* robust counterpart, based on Polya's relaxation, is used.
 
-5. If the uncertainty enters quadratically and the uncertainty is constrained by a single quadratic inequality, a tight sum-of-squares approach is used (i.e. the S-procedure).
+5. If the uncertainty enters affinely (for fixed **x**) and the uncertainty is constrained by a conic set, a conservative sum-of-squares based approach is used.
 
 
 ### Simple linear programming examples
@@ -45,7 +45,7 @@ W = [-0.5 <= w <= 0.5, uncertain(w)];
 objective = -x;
 ````
 
-Obviously, the optimal **x** is 0.5, since if **x** is larger, there exist a **w** such that the uncertain constraint is violated.
+Obviously, the optimal maximal **x** is 0.5, since if **x** is larger, there exist a **w** such that the uncertain constraint is violated.
 
 To solve the problem, we call [optimize]. A robust counterpart will automatically be derived and solved (generally, linear constraints with polytopic uncertainty is dealt with using the enumeration approach referenced above, however, for simple box uncertainty as in this case, YALMIP explictly performs the maximization, leading to a more efficient worst-case model)
 
