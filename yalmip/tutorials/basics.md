@@ -37,65 +37,65 @@ P = sdpvar(n,m)
 ````
 
 **A square matrix is symmetric by default!**. To obtain a fully parameterized (i.e. not necessarily symmetric) square matrix, a third argument is needed.
-(:source lang=matlab:)
+````matlab
 P = sdpvar(3,3,'full')
-(:sourceend:) 
+```` 
 
 The third argument can be used to obtain a number of pre-defined types of variables, such as Toeplitz, Hankel, diagonal, symmetric and skew-symmetric matrices. See the help text on [[Commands.sdpvar | sdpvar]] for details. Alternatively, the associated MATLAB commands can be applied to a vector.
-(:source lang=matlab:)
+````matlab
 x = sdpvar(n,1);
 D = diag(x) ;    % Diagonal matrix
 H = hankel(x);   % Hankel matrix
 T = toeplitz(x); % Hankel matrix
-(:sourceend:) 
+```` 
 
 Scalars can be defined in three different ways.
-(:source lang=matlab:)
+````matlab
 x = sdpvar(1,1); y = sdpvar(1,1);
 x = sdpvar(1);   y = sdpvar(1);
 sdpvar x y
-(:sourceend:) 
+```` 
 
 Note that due to a bug in MATLAB, the last command-line syntax fails in some cases (inside functions), if the variable name is the same as some built-in function or variable (i, j, e, beta, gamma).
 
 The [[Commands.sdpvar | sdpvar]] objects are manipulated in MATLAB as any other variable and most functions are overloaded. Hence, the following commands are valid
-(:source lang=matlab:)
+````matlab
 P = sdpvar(3,3) + diag(sdpvar(3,1));
 X = [P P;P eye(length(P))] + 2*trace(P);
 Y = X + sum(sum(P*rand(length(P)))) + P(end,end)+hankel(X(:,1));
-(:sourceend:) 
+```` 
 
 In some situations, coding is simplified with a multi-dimensional variable. This is supported in YALMIP with two different constructs, cell arrays and multi-dimensional [[Commands.sdpvar  | sdpvar]] objects.
 
 The cell array is nothing but an abstraction of the following code
-(:source lang=matlab:)
+````matlab
 for i = 1:5
   X{i} = sdpvar(2,3);
 end
-(:sourceend:)
+````
 
 By using vector dimensions in [[Commands.sdpvar | sdpvar]], the same cell array can be setup as follows
-(:source lang=matlab:)
+````matlab
 X = sdpvar([2 2 2 2 2],[3 3 3 3 3]);
-(:sourceend:)
+````
 
 The cell array can now be used as usual in MATLAB.
 
 The drawback with the approach above is that the variable X not can be used directly, as a standard [[Commands.sdpvar |sdpvar]] object. As an alternative, a completely general multi-dimensional [[Commands.sdpvar |sdpvar]] is available. We can create an essentially equivalent object with this call. 
-(:source lang=matlab:)
+````matlab
 X = sdpvar(2,3,5);
-(:sourceend:)
+````
 
 The difference is that we can operate directly on this object, using standard MATLAB code.
-(:source lang=matlab:)
+````matlab
 Y = sum(X,3)
 X((:,:,2)
-(:sourceend:)
+````
 
 Note that the two first slices are symmetric (if the two first dimensions are the same), according to standard YALMIP syntax. To create a fully paramterized higher-dimensional, use trailing flags as in the standard case.
-(:source lang=matlab:)
+````matlab
 X = sdpvar(2,2,2,2,'full');
-(:sourceend:)
+````
 
 For an illustration of multi/dimensional variables, check out the [[Examples.Sudoku | Sudoku example]].
 
@@ -103,53 +103,53 @@ For an illustration of multi/dimensional variables, check out the [[Examples.Sud
 !! Constraints
 
 To define a collection of constraints, we simply define and concatenate them. The meaning of a constraint is context-dependent. If the left-hand side and right-hand side are Hermitian, the constraint is interpreted in terms of positive definiteness, otherwise element-wise. Hence, declaring a symmetric matrix and a positive definiteness constraint is done with
-(:source lang=matlab:)
+````matlab
 n = 3;
 P = sdpvar(n,n);
 C = [P>=0];
-(:sourceend:) 
+```` 
 
 while a symmetric matrix with positive elements is defined with, e.g.,
-(:source lang=matlab:)
+````matlab
 P = sdpvar(n,n);
 C = [P(:)>=0];
-(:sourceend:) 
+```` 
 Note that this defines the off-diagnoal constraints twice. A good SDP solver will perhaps detect this during preprocessing and reduce the model, but we can of-course define only the unique elements manually using standard MATLAB code
-(:source lang=matlab:)
+````matlab
 C = [triu(P)>=0];
-(:sourceend:) 
+```` 
 or
-(:source lang=matlab:)
+````matlab
 C = [P(find(triu(ones(n))))>=0];
-(:sourceend:) 
+```` 
 
 According to the rules above, a non-square matrix (or generally a non-symmetric) with positive elements can be defined using the '''>=''' operator immediately
-(:source lang=matlab:)
+````matlab
 P = sdpvar(n,2*n);
 C = [P>=0];
-(:sourceend:) 
+```` 
 
 and so can a fully parameterized square matrix with positive elements
-(:source lang=matlab:)
+````matlab
 P = sdpvar(n,n,'full');
 C = [P>=0];
-(:sourceend:) 
+```` 
 
 A list of several constraints is defined by just adding or, alternatively, concatenating them.
-(:source lang=matlab:)
+````matlab
 P = sdpvar(n,n);
 C = [P>=0] + [P(1,1)>=2];
 C = [P>=0, P(1,1)>=2];
-(:sourceend:) 
+```` 
 
 Of course, the involved expressions can be arbitrary [[Commands.sdpvar | sdpvar]] objects, and equality constraints ('''==''') can be defined, as well as constraints using '''<='''.
-(:source lang=matlab:)
+````matlab
 C = [P>=0, P(1,1)<=2, sum(sum(P))==10];
-(:sourceend:) 
+```` 
 
 A convenient way to define several constraints is to use double-sided constraints.
-(:source lang=matlab:)
+````matlab
 F = [0 <= P(1,1) <= 2];
-(:sourceend:) 
+```` 
 
 After having defined variables and constraints, you are ready to solve problems. Check out the remaining tutorials to learn this.
