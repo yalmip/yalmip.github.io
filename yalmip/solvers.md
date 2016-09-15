@@ -1,11 +1,11 @@
 ---
-title: "Download"
+title: "Solvers"
 layout: single
 ---
 
 One of the core ideas in YALMIP is to rely on external solvers for the low-level numerical solution of optimization problem. YALMIP concentrates on efficient modeling and high-level algorithms.
 
-!!! Recommended installation
+## Recommended installation
 
 Linear programming can be solved by quadratic programming which can be solved by second-order cone programming which can be solved by semidefinite programming. Hence, in theory, you only need a semidefinite programming solver if you only solve linear problems.
 
@@ -22,51 +22,51 @@ And finally, there are no free lunches and you get what you pay for, most often.
 
 A simple categorization is as follows (the definitions of free and commercial depends slightly on the solver, please see the specific comments in the solver description)
 
-!!! Linear programming (free)
+## Linear programming (free)
 [[CDD]], [[CLP]], [[GLPK]], [[LPSOLVE]], [[QSOPT]], [[SCIP]]
 
-!!! Mixed Integer Linear programming (free)
+## Mixed Integer Linear programming (free)
 [[CBC]], [[GLPK]], [[LPSOLVE]], [[SCIP]]
 
-!!! Linear programming (commercial)
+## Linear programming (commercial)
 [[CPLEX]] (free for academia), [[GUROBI]] (free for academia), [[LINPROG]], [[MOSEK]] (free for academia), [[XPRESS]] (free for academia)
 
-!!! Mixed Integer Linear programming (commercial)
+## Mixed Integer Linear programming (commercial)
 [[CPLEX]] (free for academia), [[GUROBI]] (free for academia), [[MOSEK]] (free for academia), [[XPRESS]] (free for academia)
 
-!!! Quadratic programming (free)
+## Quadratic programming (free)
 [[BPMPD]], [[CLP]], [[OOQP]], [[QPC]], [[qpOASES]], [[quadprogBB]] (nonconvex QP)
 
-!!! Quadratic programming (commercial)
+## Quadratic programming (commercial)
 [[CPLEX]] (free for academia), [[GUROBI]] (free for academia), [[MOSEK]] (free for academia), [[NAG]], [[QUADPROG]], [[XPRESS]] (free for academia)
 
-!!! Mixed Integer Quadratic programming (commercial)
+## Mixed Integer Quadratic programming (commercial)
 [[CPLEX]] (free for academia), [[GUROBI]] (free for academia), [[MOSEK]] (free for academia), [[XPRESS]] (free for academia)
 
-!!! Second-order cone programming (free)
+## Second-order cone programming (free)
 
 [[ECOS]], [[SDPT3]], [[SEDUMI]]
 
-!!! Second-order cone programming (commercial)
+## Second-order cone programming (commercial)
 
 [[CPLEX]] (free for academia), [[GUROBI]] (free for academia), [[MOSEK]] (free for academia)
 
-!!! Mixed Integer Second-order cone programming (commercial)
+## Mixed Integer Second-order cone programming (commercial)
 
 [[CPLEX]] (free for academia), [[GUROBI]] (free for academia), [[MOSEK]] (free for academia)
 
-!!! Semidefinite programming (free)
+## Semidefinite programming (free)
 
 [[CSDP]], [[DSDP]], [[LOGDETPPA]], [[PENLAB]], [[SDPA]], [[SDPLR]], [[SDPT3]], [[SDPNAL]], [[SEDUMI]]
 
-!!! Semidefinite programming (commercial)
+## Semidefinite programming (commercial)
 
 [[LMILAB]], [[MOSEK]] (free for academia), [[PENBMI]], [[PENSDP]] (free for academia)
 
-!!! General nonlinear programming and other solvers
+## General nonlinear programming and other solvers
 
 [[BARON]], [[FILTERSD]], [[FMINCON]], [[GPPOSY]], [[IPOPT]], [[KNITRO]], [[KYPD]], [[LMIRANK]], [[MPT]], [[NOMAD]], [[PENLAB]], [[SNOPT]], [[STRUL]], [[VSDP]], [[SparsePOP]]
 
-!!Internal solvers
+## Internal solvers
 
-By exploiting the optimization infrastructure in YALMIP, it is fairly easy to develop algorithms based on the external solvers. This has motivated development of mixed integer conic solvers ([[Solvers.BNB |bnb]], [[CUTSDP | cutsdp]]), global solvers for general nonlinear problems ([[Solvers.BMIBNB| bmibnb]]), indefinite quadratic programming ([[Solvers.BMIBNB| bmibnb]], [[Solvers.KKTQP| kktqp]] ), sum-of-squares modules ([[Tutorials.SumOfSquares | solvesos]]), just to mention some of the most important contributions in YAL
+By exploiting the optimization infrastructure in YALMIP, it is fairly easy to develop algorithms based on the external solvers. This has motivated development of mixed integer conic solvers ([[Solvers.BNB |bnb]], [[CUTSDP | cutsdp]]), global solvers for general nonlinear problems ([[Solvers.BMIBNB| bmibnb]]), indefinite quadratic programming ([[Solvers.BMIBNB| bmibnb]], [[Solvers.KKTQP| kktqp]] ), sum-of-squares modules ([[Tutorials.SumOfSquares | solvesos]]), just to mention some of the most important contributions in YALMIP.
