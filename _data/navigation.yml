@@ -45,7 +45,7 @@ tutorials:
       - title: "Getting started!"
         url: /yalmip/tutorials/basics
 
-  - title: Standard problems
+  - title: Standard problem classes
     children:
       - title: "Linear programming"
         url: /yalmip/tutorials/linearprogramming
@@ -61,3 +61,33 @@ tutorials:
         url: /yalmip/tutorials/geometricprogramming
       - title: "General convex programming"
         url: /yalmip/tutorials/generalconvexprogramming
+      - title: "Integer programming"
+        url: /yalmip/tutorials/integerprogramming
+      - title: "Global optimization"
+        url: /yalmip/tutorials/globaloptimization
+    - title: Advanced problem classes
+      children:
+      - title: "Robust optimization"
+        url: /yalmip/tutorials/robustoptimization
+      - title: "Automatic dualization"
+        url: /yalmip/tutorials/automaticdualization
+      - title: "Multiparametric programming"
+        url: /yalmip/tutorials/multiparametricprogramming
+      - title: "Bilevel programming"
+        url: /yalmip/tutorials/bilevelprogramming
+      - title: "Sum-of-squares programming"
+        url: /yalmip/tutorials/sumofsquaresprogramming
+      - title: "Moment relaxations"
+        url: /yalmip/tutorials/momentrelaxations
+  - title: Auxilliary
+     children:
+      - title: "Nonlinear operators"
+      url: /yalmip/tutorials/nonlinearoperators
+      - title: "Big-M and convex hulls"
+      url: /yalmip/tutorials/bigmandconvexhulls
+      - title: "Automatic dualizations"
+      url: /yalmip/tutorials/automaticdualization
+      - title: "Complex problems"
+      url: /yalmip/tutorials/complexproblems
+      - title: "Duality"
+      url: /yalmip/tutorials/duality
