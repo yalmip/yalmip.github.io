@@ -10,7 +10,6 @@ YALMIP is entirely based on m-code, and is thus easy to install. Remove any old 
 ````
 ->/yalmip
 ->/yalmip/extras
-->/yalmip/demos
 ->/yalmip/solvers
 ->/yalmip/modules
 ->/yalmip/modules/parametric
@@ -26,7 +25,7 @@ If you have [MPT] installed, make sure that you delete the YALMIP distribution r
 
 If you have used YALMIP before, type `clear classes` or restart MATLAB before using the new version.
 
-[Solvers](/yalmip/solvers) should be installed as described in the solver manuals. Make sure to add required paths.
+YALMIP is not shipped with any low-level solvers. [Solvers](/yalmip/solvers) should be installed as described in the solver manuals. Make sure to add required paths. Your MATLAB installation might already have solvers available that YALMIP will interface, but make sure you understand which solvers you are using, and read about their expected performance [here](/yalmip/solvers).
 
 To test your installation, run the command [yalmiptest]. For further examples and tests, run code from this manual!
 
