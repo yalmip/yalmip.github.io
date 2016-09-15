@@ -212,14 +212,15 @@ whitelist:
 tag_archive:
   type: liquid
   path: /tags/
+  
 # https://github.com/jekyll/jekyll-archives
-jekyll-archives:
-  enabled:
-    - tags
-  layouts:
-    tag: tag_index
-  permalinks:
-    tag: /tag/:name/
+#jekyll-archives:
+#  enabled:
+#    - tags
+#  layouts:
+#    tag: tag_index
+#  permalinks:
+#    tag: /tag/:name/
     
 # jekyll-archives:
 #   enabled:
