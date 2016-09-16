@@ -1,7 +1,7 @@
 ---
 layout: single
 excerpt: "Annoyingly hard to do nicely with a nice theoretical framework. Let's try dynamic programming."
-title: Model predictive control - LPV models
+title: Model predictive control - LPV models I
 tags: [MPC, Dynamic programming]
 comments: true
 date: '2016-09-16'
