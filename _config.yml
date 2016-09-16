@@ -113,6 +113,7 @@ include:
   - _pages
   - _posts
   - _examples
+  - _tutorials
   - docs
 exclude:
   - "*.sublime-project"
@@ -247,6 +248,9 @@ collections:
   examples:
     output: true
     permalink: /:collection/:path/
+  tutorials:
+    output: true
+    permalink: /:collection/:path/    
 
 defaults:
   # _posts
@@ -266,8 +270,19 @@ defaults:
       type: examples
     values:
       layout: single
-      author_profile: true
+      author_profile: false
       read_time: false
       comments: true
       share: false
       related: true      
+  # _tutorials
+  - scope:
+      path: ""
+      type: tutorials
+    values:
+      layout: single
+      author_profile: false
+      read_time: false
+      comments: true
+      share: false
+      related: true    
