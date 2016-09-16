@@ -251,7 +251,10 @@ collections:
   tutorials:
     output: true
     permalink: /:collection/:path/    
-
+  references:
+    output: true
+    permalink: /:collection/:path/    
+    
 defaults:
   # _posts
   - scope:
@@ -286,4 +289,16 @@ defaults:
       read_time: false
       comments: true
       share: false
-      related: true    
+      related: true 
+  # references
+  - scope:
+      path: ""
+      type: tutorials
+    values:
+      layout: single
+      author_profile: false
+      read_time: false
+      comments: true
+      share: false
+      related: true       
+      
