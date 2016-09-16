@@ -23,11 +23,12 @@ The max-plus algebra is an algebra where there are two operators, tropical addit
 
 For scalar arguments, the tropical addition is nothing but the maximum of its arguments, and tropical multiplication is standard addition.
 
-%center%Images:scalarmaxplus.png
+![pwasol]({{ site.url }}/images/scalarmaxplus.png){: .center-image }
+
 
 The generalization to the matrix case is defined as follows.
 
-%center%Images:matrixmaxplus.png
+![pwasol]({{ site.url }}/images/matrixmaxplus.png){: .center-image }
 
 We note that tropical addition already is available in YALMIP, since the '''max''' operator, with convexity and monotonicity knowledge, is overloaded on matrix variables, via the [nonlinear operator framework]. The tropical multiplication however requires some code for the matrix case. To simplify coding, a command **ttimes** is available.
 
@@ -61,7 +62,7 @@ Since YALMIP automatically propagates convexity knowledge, convex cases are auto
 
 A linear max-plus system is obtained by simply changing addition and multiplication to the tropical counterparts.
 
-%center%Images:maxplussystem.png
+![pwasol]({{ site.url }}/images/maxplussystem.png){: .center-image }
 
 It follows directly from [Tutorials NonlinearOperators  convexity rules and properties of \\(max\\)] that future states and outputs are convex in the current state  and control inputs, if the \\(A\\), \\(B\\) and \\(C\\) matrices only have non-negative elements.
 
@@ -76,9 +77,10 @@ The issue we want to emphasize here is that YALMIP automatically detects these p
 
 ### Convex max-plus control example
 
-To illustrate the simple implementation of convex max-plus in YALMIP, we solve the example in the |max-plus control paper](http://citeseer.ist.psu.edu/cache/papers/cs/28870/http:zSzzSzdutera.et.tudelft.nlzSz~bdeschutterzSzpubzSzreportszSz99_10a.pdf/deschutter01model.pdf)
+To illustrate the simple implementation of convex max-plus in YALMIP, we solve the example in the |max-plus control paper]((http://www.dcsc.tudelft.nl/~bdeschutter/pub/rep/99_10a.pdf)
 
 Define the system dynamics
+
 ````matlab
 clear all
 A = [11 -inf -inf;-inf 12 -inf;23 24 7];
@@ -143,9 +145,9 @@ Since the whole max-plus logic in YALMIP builds entirely on the built-in convexi
 
 Solving robust max-plus control problems is also a easy in YALMIP. By relying on the [robust optimization framework], simple robust problems are readily constructed and solved. Consider the case when there is an external disturbance acting on the system
 
-%center%Images:maxplusuncertain.png
+![pwasol]({{ site.url }}/images/maxplusuncertain.png){: .center-image }
 
-Changing the example above to solving the robust minimax problem is straightforward. Let us assume there is an external bounded disturbance '''-20<w<20''' acting on the max-plus dynamics.
+Changing the example above to solving the robust minimax problem is straightforward. Let us assume there is an external bounded disturbance **w** acting on the max-plus dynamics.
 
 ````matlab
 G = [0.1;0.2;0.3];
@@ -231,4 +233,4 @@ plot(domain(Jopt))
 ![pwasol]({{ site.url }}/images/dppwavalue.png){: .center-image }
 
 
-By using parametric solutions on uncertain max-plus models, various minimax schemes can easily be developed. See the [dynamic programming example] and [Examples RobustMPC | robust MPC example] for details.
+By using parametric solutions on uncertain max-plus models, various minimax schemes can easily be developed. See the [dynamic programming example] and [Examples RobustMPC robust MPC example] for details.
