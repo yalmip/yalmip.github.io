@@ -1,3 +1,17 @@
+---
+layout: single
+excerpt: "Solving MPC problems explicitly using various strategies, including dyanamic programming."
+title: Model predictive control - Explicit multi-parametric solution
+tags: [MPC, Multi-parametric programming]
+comments: true
+date: '2016-09-16'
+header:
+  teaser:
+image:
+  feature: lofberg.jpg
+  teaser: lofberg.jpg
+  thumb: lofberg.jpg
+---
 
 YALMIP extends the parametric algorithms in [[Solvers.MPT | MPT]] by adding a layer to enable binary variables and equality constraints. We can use this to find explicit solutions to, e.g., predictive control of PWA (piecewise affine) systems. Explicit solutions to MPC problems are solved using either one-shot approaches, or dynamic programming approaches.
 
