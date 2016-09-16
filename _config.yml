@@ -112,6 +112,7 @@ include:
   - .htaccess
   - _pages
   - _posts
+  - _examples
   - docs
 exclude:
   - "*.sublime-project"
