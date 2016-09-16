@@ -1,5 +1,6 @@
 ---
 title: "Integer programming"
+excerpt: "Undisciplined programming often leads to integer models, but in some cases you have no option."
 layout: single
 sidebar:
   nav: "tutorials"
