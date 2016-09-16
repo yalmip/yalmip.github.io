@@ -8,7 +8,7 @@ permalink: /yalmip/examples/
 
 <h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent examples" }}</h3>
 
-{% for post in site.posts %}
+{% for examples in site.examples %}
   {% include archive-single.html type="grid" %}
 {% endfor %}
 
