@@ -4,10 +4,10 @@ main:
     url: /yalmip/download
 
   - title: "Tutorials"
-    url: /yalmip/tutorials
+    url: /tutorials
 
   - title: "Examples"
-    url: /yalmip/examples
+    url: /examples
 
   - title: "Commands"
     url: /yalmip/commands
