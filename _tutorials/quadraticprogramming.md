@@ -2,6 +2,7 @@
 title: "Quadratic programming"
 excerpt: "Almost as easy as linear programming. Be careful though, symbolics might start to cause overhead."
 layout: single
+level: 2
 sidebar:
   nav: "tutorials"
 ---
