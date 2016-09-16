@@ -1,7 +1,7 @@
 ---
 layout: single
 excerpt: "Robust optimization in MPC, a perfect case for YALMIP"
-title: PModel predictive control - robust solutions
+title: Model predictive control - robust solutions
 tags: [Portfolio, Quadratic programming, Integer programming]
 comments: true
 date: '2016-09-16'

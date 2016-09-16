@@ -6,7 +6,7 @@ tags: [MPC, Quadratic programming]
 comments: true
 date: '2016-09-16'
 header:
-  teaser: 
+  teaser:
 ---
 
 To prepare for the hybrid, explicit and robust MPC examples, we solve some standard MPC examples. As we will see, MPC problems can be formulated in various ways in YALMIP.
@@ -30,11 +30,11 @@ N = 7;
 
 % Initial state
 x0 = [3;1];
-```` 
+````
 
 Our optimization problem is to minimize a finite horizon cost of the state and control trajectory, while satisfying constraints.
 
-### Explicit prediction form 
+### Explicit prediction form
 The first version  we implement (we will propose an often better approaches below) explicitly expresses the predicted states as a function of a given current state and the future control sequence. We simply loop the simulation equations and gather constraints and objective terms along the horizon. Notice the quick definition of a list of control inputs.
 
 ````matlab
@@ -48,14 +48,14 @@ for k = 1:N
  objective = objective + norm(Q*x,1) + norm(R*u{k},1);
  constraints = [constraints, -1 <= u{k}<= 1, -5<=x<=5];
 end
-```` 
+````
 
-Once the constraints and objective function have been generated, we can solve the optimization problem (in this case, a linear programming problem in the decision variable '''u''' and variables required to [Tutorials.GraphRepresentations | model the norms]).
+Once the constraints and objective function have been generated, we can solve the optimization problem (in this case, a linear programming problem in the decision variable **u** and variables required to [Tutorials.GraphRepresentations  model the norms]).
 
 ````matlab
 optimize(constraints,objective);
 value(u{1})
-```` 
+````
 
 Setting up a problem like this every time we have a new initial state is a waste of computational effort. Almost all CPU time will be spent in YALMIPs overhead to define the model and convert the model to solver specific format, and not in the actual solution of the optimization problem.
 
@@ -73,23 +73,23 @@ for k = 1:N
  objective = objective + norm(Q*x,1) + norm(R*u{k},1);
  constraints = [constraints, -1 <= u{k}<= 1, -5<=x<=5];
 end
-```` 
+````
 
-We can now obtain a solution from an arbitrary initial state, by simply constraining the initial state. The benefit now is that we do not have to redefine the compleyte model everytime the initial state changes, but simply make a small addition to it. The overhead in YALMIP to convert to solver specific format remains though. Of course, the draw-back is that there are some extra variables and constraints, but the computational impact of this is absolutely minor. 
+We can now obtain a solution from an arbitrary initial state, by simply constraining the initial state. The benefit now is that we do not have to redefine the compleyte model everytime the initial state changes, but simply make a small addition to it. The overhead in YALMIP to convert to solver specific format remains though. Of course, the draw-back is that there are some extra variables and constraints, but the computational impact of this is absolutely minor.
 
 ````matlab
 optimize([constraints, x0 == [3;1],objective);
 value(u{1})
-```` 
+````
 
 ### Improving simulation performance
 
-A large amount of time is still spent in [Commands.optimize | optimize] to convert from the YALMIP model to the numerical format used by the solver. If we want to, e.g., simulate the closed-loop system, this is problematic. To avoid this, we compile the numerical model once by using the [Commands.Optimizer | optimizer] command. For illustrative purposes, we allow the solver to print its output. Normally, this would be turned of when using [Commands.Optimizer | optimizer] (once we know everything works, never turn off display until everything works as expected)
+A large amount of time is still spent in [optimize] to convert from the YALMIP model to the numerical format used by the solver. If we want to, e.g., simulate the closed-loop system, this is problematic. To avoid this, we compile the numerical model once by using the [optimizer] command. For illustrative purposes, we allow the solver to print its output. Normally, this would be turned of when using [optimizer] (once we know everything works, never turn off display until everything works as expected)
 
 ````matlab
 ops = sdpsettings('verbose',2);
 controller = optimizer(constraints,objective,ops,x0,u{1});
-```` 
+````
 
 We can now simulate the system using very simple code (notice that an optimization problem still is solved every time the controller object is referenced, but most of YALMIPs overhead is avoided)
 
@@ -101,7 +101,7 @@ for i = 1:5
 end
 ````
 
-Of course, we can extract additional variables from the solution by requesting these. Here, we output the whole control ''predicted'' sequence and iteratively plot this
+Of course, we can extract additional variables from the solution by requesting these. Here, we output the whole predicted control sequence and iteratively plot this
 
 ````matlab
 ops = sdpsettings('verbose',2);
@@ -121,7 +121,7 @@ end
 
 ### Implicit prediction form
 
-The optimization problem generated by the formulation above is a problem in the control variables (and the initial state). This is typically the approach used in standard introductory texts on MPC. However, in many cases, it is both convenient and more numerically sound to optimize over both the control input and the state predictions, and model the system dynamics using equality constraints instead of assignments. Although this yields a larger optimization problem, it has a lot of structure and sparsity, which typically is very well exploited by the solver. 
+The optimization problem generated by the formulation above is a problem in the control variables (and the initial state). This is typically the approach used in standard introductory texts on MPC. However, in many cases, it is both convenient and more numerically sound to optimize over both the control input and the state predictions, and model the system dynamics using equality constraints instead of assignments. Although this yields a larger optimization problem, it has a lot of structure and sparsity, which typically is very well exploited by the solver.
 
 An implicit form is easily coded in YALMIP with minor changes to the code above. We skip the options now as we do not need the print-out any longer
 
@@ -221,4 +221,3 @@ for i = 1:150
     disturbance = 0.9*disturbance + 0.1*randn(1)*.1;
 end
 ````
-
