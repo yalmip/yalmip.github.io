@@ -8,7 +8,7 @@ permalink: /tutorials/
 
 <h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Available tutorials" }}</h3>
 
-{% for post in site.tutorials %}
+{% for post in site.tutorials reversed %}
   {% include archive-single.html type="grid" %}
 {% endfor %}
 
