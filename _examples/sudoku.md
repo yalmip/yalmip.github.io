@@ -6,7 +6,7 @@ tags: [Integer programming]
 comments: true
 date: '2016-09-16'
 header:
-  teaser: "sudoku.png"
+  teaser: "sudoku.gif"
 image:
   feature: lofberg.jpg
   teaser: lofberg.jpg
