@@ -13,17 +13,18 @@ image:
   thumb: lofberg.jpg
 ---
 
-This example illustrates an application of the [Tutorials.RobustOptimization | robust optimization feature]. The main focus of this example is uncertain semidefinite constraints.
+This example illustrates an application of the [robust optimization module]. The main focus of this example is uncertain semidefinite constraints.
 
-For the example to work, you must have [Solvers.MPT | MPT] installed.
+For the example to work, you must have [MPT] installed.
 
-
-In addition to the robustification of linear constraints, introduced in the [Examples.RobustMPC | robust MPC example], YALMIP can also robustify SOCP and SDP constraints bilinear in the decision variable and the uncertainty. However, it is required that the uncertainty description is polytopic, since the robustification is done using vertex enumeration. Uncertain SOCP and SDP constraints with general conic uncertainty models are typically not tractable, i.e., they can at best be dealt with using approximations.
+In addition to the robustification of linear constraints, introduced in the [robust MPC example], YALMIP can also robustify SOCP and SDP constraints bilinear in the decision variable and the uncertainty. However, it is required that the uncertainty description is polytopic, since the robustification is done using vertex enumeration. Uncertain SOCP and SDP constraints with general conic uncertainty models are typically not tractable, i.e., they can at best be dealt with using approximations.
 
 ### Robust control
-Our goal is to compute a controller '''u=Kx''' for an uncertain linear system.
 
-%center%Images:polytopicsystem.png
+Our goal is to compute a controller \\(u=Kx\\) for an uncertain linear system.
+
+![polytopicsystem]({{ site.url }}/images/polytopicsystem.png){: .center-image }
+
 
 The performance measure is given by the standard infinite horizon quadratic cost
 
@@ -31,13 +32,14 @@ The performance measure is given by the standard infinite horizon quadratic cost
 
 A controller which minimizes the worst case cost is given by solving the following semidefinite programming problem.
 
-%center%Images:lqr1.png
+![polytopicsystem]({{ site.url }}/images/lqr1.png){: .center-image }
 
-This is a nonconvex problem, but a standard trick in control  {[reference.bib,Boyd et al.:1994]} is to perform a congruence transformation with '''Y=P'^-1^'''', introduce '''L=KY''', and apply a Schur complement. Instead of solving the nonconvex problem, the following problem is solved instead (never mind the odd change of objective)
+This is a nonconvex problem, but a standard trick in control  [Boyd et al. 1994]} is to perform a congruence transformation with \\(Y=P^-1\\), introduce \\(L=KY\\), and apply a Schur complement. Instead of solving the nonconvex problem, the following problem is solved instead (never mind the odd change of objective)
 
-%center%Images:lqrlmi2.png
+![polytopicsystem]({{ site.url }}/images/lqrlmi2.png){: .center-image }
 
-Let us now solve a problem of this type for a system with a polytopic '''A''' matrix. Define the nominal model.
+Let us now solve a problem of this type for a system with a polytopic \\(A\\) matrix. Define the nominal model.
+
 ````matlab
 Anominal = [0 1 0;0 0 1;0 0 0];
 B = [0;0;1];
@@ -53,7 +55,8 @@ A1 = Anominal;A1(1,3) = -0.1;
 A2 = Anominal;A2(1,3) =  0.1;
 ````
 
-Before we employ the automatic support for robust semidefinite programming, note that this is the manually derived worst-case problem and solution '-(The tag 'full' is used here to remind novel users that for variables that should be fully parameterized, use the tag. It is a common mistake to copy code and then all of a sudden when the matrix is square, you forget to add the tag 'full' and get a symmetric matrix. See [Tutorials.Basics | the basics].)-'.
+Before we employ the automatic support for robust semidefinite programming, note that this is the manually derived worst-case problem and solution *(The tag 'full' is used here to remind novel users that for variables that should be fully parameterized, use the tag. It is a common mistake to copy code and then all of a sudden when the matrix is square, you forget to add the tag 'full' and get a symmetric matrix. See [basic].)*
+
 ````matlab
 Y = sdpvar(3,3);
 L = sdpvar(1,3,'full');
@@ -68,28 +71,33 @@ K = value(L)*inv(value(Y));
 ### Semi-manual implementation
 
 Now let us do this using the robust optimization module. Define the uncertain system,
+
 ````matlab
 sdpvar t1 t2
 A = A1*t1 + A2*t2;
 ````
 
-the uncertain semidefinite constraint (note that it is parameterized in the uncertain variables '''t1''' and '''t2'''),
+the uncertain semidefinite constraint (note that it is parameterized in the uncertain variables **t1** and **t2**),
+
 ````matlab
 F = [Y >=0];
 F = [F, [-A*Y-B*L + (-A*Y-B*L)' Y L';Y inv(Q) zeros(3,1);L zeros(1,3) inv(R)] > 0];
 ````
 
 and the uncertainty description
+
 ````matlab
 F = [F, 0 <= [t1 t2] < 1, t1+t2 == 1, uncertain([t1 t2])];
 ````
 
-Finally, we solve the uncertain problem using [Commands.optimize | optimize].
+Finally, we solve the uncertain problem using [optimize].
+
 ````matlab
 optimize(F,-trace(Y))
 ````
 
 The optimal feedback can be recovered
+
 ````matlab
 K = value(L)*inv(value(Y))
 ````
@@ -101,6 +109,7 @@ For this simple case with only two vertices, and with the two vertices given, th
 The model above is derived semi-manually, since we worked explicitly with the vertices of the A matrix. An alternative approach is to simply parameterize the matrix.
 
 What we would like to do is the following:
+
 ````matlab
 alpha = sdpvar(1);
 A = Anomial;
@@ -108,12 +117,14 @@ Anominal(1,3) = alpha;
 ````
 
 Unfortunately, this will fail, due to limitations in MATLABs overloading of assignment of user-defined classes. Instead, we have to use the following approach
+
 ````matlab
 alpha = sdpvar(1);
 A = [0 1 alpha;0 0 1;0 0 0];
 ````
 
 We have now created a parameterized system, and can proceed as before.
+
 ````matlab
 F = [Y >=0];
 F = [F, [-A*Y-B*L + (-A*Y-B*L)' Y L';Y inv(Q) zeros(3,1);L zeros(1,3) inv(R)] > 0]
@@ -132,7 +143,8 @@ As a second slightly more advanced example, we extend the problem to gain schedu
 
 ### Parameterized feedback matrix
 
-Since there is no uncertainty in '''B''', and '''L''' only enter linearly or in products with '''B''', we can parameterize '''L'''.
+Since there is no uncertainty in \\(B\\), and \\(L\\) only enter linearly or in products with \\(B\\), we can parameterize \\(L\\).
+
 ````matlab
 L0 = sdpvar(1,3);
 L1 = sdpvar(1,3);
@@ -141,6 +153,7 @@ L = L0 + alpha*L1;
 ````
 
 The constraints are still bilinear in uncertainty and decision variables, i.e. linear in the uncertainty, so we can solve the worst-case problem in the same way as above.
+
 ````matlab
 F = [Y >=0];
 F = [F, [-A*Y-B*L + (-A*Y-B*L)' Y L';Y inv(Q) zeros(3,1);L zeros(1,3) inv(R)] >= 0)];
@@ -152,9 +165,10 @@ You should notice that the objective value is not improved, hence the parameteri
 
 ### Parameterized feedback matrix and Lyapunov matrix
 
-As a final example, let us try to make the controller less conservative by parameterizing also the Lyapunov matrix '''Y'''. Unfortunately, this is a bit trickier. Since there are products between the uncertain matrix '''A''' and the '''Y''', the uncertainty will possibly enter the problem nonlinearly.
+As a final example, let us try to make the controller less conservative by parameterizing also the Lyapunov matrix \\(Y\\). Unfortunately, this is a bit trickier. Since there are products between the uncertain matrix \\(A\\) and the \\(Y\\), the uncertainty will possibly enter the problem nonlinearly.
 
-However, since the uncertainty only enter '''A''' in the (1,3) element, it is easily seen that the following parameterization will yield no nonlinear uncertainties terms in the product between '''A''' and '''Y'''.
+However, since the uncertainty only enter \\(A\\) in the (1,3) element, it is easily seen that the following parameterization will yield no nonlinear uncertainties terms in the product between \\(A\\) and \\(Y\\).
+
 ````matlab
 Y0 = sdpvar(3,3);
 Y1 = sdpvar(3,3);
@@ -166,6 +180,7 @@ Y = Y0 + alpha*Y1;
 ````
 
 this can easily be checked
+
 ````matlab
 degree(A*Y,alpha)
 
@@ -175,6 +190,7 @@ ans =
 ````
 
 Solve the problem once again, now with parameterized feedback matrix and Lyapunov matrix (notice the larger objective value, which is a result of a less conservative problem formulation)
+
 ````matlab
 F = [Y >=0];
 F = [F, [-A*Y-B*L + (-A*Y-B*L)' Y L';Y inv(Q) zeros(3,1);L zeros(1,3) inv(R)] >= 0]
@@ -183,6 +199,7 @@ optimize(F,-trace(Y))
 ````
 
 This step where we used a reduced parameterization to avoid products between uncertainties can easily be automated, and this is actually implemented in YALMIP. Hence, we can define a full parameterization, and YALMIP will automatically derive constraints on the decision variables such that no nonlinear uncertainty terms occur, if possible.
+
 ````matlab
 Y0 = sdpvar(3,3);
 Y1 = sdpvar(3,3);
