@@ -8,7 +8,7 @@ permalink: /examples/
 
 <h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent examples" }}</h3>
 
-{% assign items = site.tutorials | sort: 'title' %}
+{% assign items = site.examples | sort: 'title' %}
 {% for post in items %}
   {% include archive-single.html type="grid" %}
 {% endfor %}
