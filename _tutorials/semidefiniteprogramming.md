@@ -3,6 +3,7 @@ title: "Semidefinite programming"
 excerpt: "Ice-cream cone. Yummy."
 excerpt: "Who wudda thought? Optimization positive definite symmetric matrices is easy."
 layout: single
+level: 2
 sidebar:
   nav: "tutorials"
 ---
