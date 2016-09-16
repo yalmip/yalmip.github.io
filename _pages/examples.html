@@ -6,7 +6,7 @@ permalink: /examples/
 
 {% include base_path %}
 
-<h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Examples from various domains" }}</h3>
+<h3 class="archive__subtitle">Examples from various domains</h3>
 
 {% assign items = site.examples | sort: 'title' %}
 {% for post in items %}
