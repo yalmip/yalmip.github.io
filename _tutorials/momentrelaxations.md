@@ -1,5 +1,6 @@
 ---
 title: "Moment relaxations"
+excerpt: "Moment relaxations allows us to find lower bounds on polynomial optimization problems using semidefinite programming"
 layout: single
 sidebar:
   nav: "tutorials"
