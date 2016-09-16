@@ -2,6 +2,7 @@
 title: "Installation"
 excerpt: "If it's hard, you're doing it wrong."
 layout: single
+level: 0
 sidebar:
   nav: "tutorials"
 ---
