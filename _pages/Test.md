@@ -3,7 +3,7 @@ title: "Ny sida"
 layout: single
 excerpt: "Page not found. Your pixels are in another canvas."
 sitemap: false
-permalink: /404.html
+permalink: /yalmip/test/
 ---
 
 Sorry, but the page you were trying to view does not exist --- perhaps you can try searching for it below.
