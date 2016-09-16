@@ -6,11 +6,7 @@ tags: [MPC, Dynamic programming]
 comments: true
 date: '2016-09-16'
 header:
-  teaser: "costs_LPVMPC.jpg"
-image:
-  feature: lofberg.jpg
-  teaser: lofberg.jpg
-  thumb: lofberg.jpg
+  teaser: costs_LPVMPC.jpg
 ---
 
 This example, contributed by Thomas Besselmann, accompanies the following paper
