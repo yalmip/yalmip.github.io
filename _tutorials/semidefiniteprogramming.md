@@ -1,5 +1,6 @@
 ---
 title: "Semidefinite programming"
+excerpt: "Who wudda thought? Optimization positive definite symmetric matrices is easy."
 layout: single
 sidebar:
   nav: "tutorials"
