@@ -1,7 +1,7 @@
 ---
 layout: single
 excerpt: "Dynamic programming based LPV control of the Henon attractor."
-title: Model predictive control - LPV models II
+title: Model predictive control - LPV models redux
 tags: [MPC, Dynamic programming]
 comments: true
 date: '2016-09-16'
