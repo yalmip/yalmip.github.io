@@ -194,6 +194,6 @@ end
 Finally the control performance of the Explicit LPV-MPC controller is compared to robust control and the truely optimal solution for a certain scheduling parameter trajectory (for details see the above mentioned paper).
 The actual costs of the closed-loop system over a grid of initial points are depicted in the following Figure. While Explicit LPV-MPC performs in average only 0.4 % worse than the truely optimal solution, robust MPC leads to an average of 23.3 % increase of the actual costs.
 
-![costs_LPVMPC]({{ site.url }}/images/costs_LPVMPC.png){: .center-image }
+![costs_LPVMPC]({{ site.url }}/images/costs_LPVMPC.jpg){: .center-image }
 
 The resulting explicit LPV-MPC controller takes the scheduling parameter into account, and thus outperforms robust MPC. Nevertheless, it is an explicit MPC controller, and enables constrained gain-scheduling control at high sampling rates, which is not possible for the truely optimal solution.
