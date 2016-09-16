@@ -1,8 +1,8 @@
 ---
-title: "utomatic dualization"
+title: "automatic dualization"
 excerpt: "Primal or dual arbitrary in primal-dual solver? No, but YALMIP can help you reformulate your model."
 layout: single
-header.teaser: "lofberg.jpg"
+header.teaser: lofberg.jpg
 sidebar:
   nav: "tutorials"
 ---
