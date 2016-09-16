@@ -1,5 +1,6 @@
 ---
 title: "Geometric programming"
+excerpt: "Geometric programming. Not about geometry."
 layout: single
 sidebar:
   nav: "tutorials"
