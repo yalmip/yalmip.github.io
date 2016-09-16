@@ -1,6 +1,7 @@
 ---
 title: "Second order cone programming"
 layout: single
+level: 2
 sidebar:
   nav: "tutorials"
 ---
