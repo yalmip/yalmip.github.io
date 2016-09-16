@@ -205,7 +205,7 @@ Alternatively, we can eliminate x(1) from the problem, and plot the 2D polytope 
 plot(replace(H*x,x(1),0.2) <= k)
 ````
 
-!! Convex hull
+### Convex hull
 
 Both [MPT] and YALMIP can be used to obtain the convex hull of the union of polytopes. Using [MPT], we quickly define two cubes and plot them and their convex hull
 
