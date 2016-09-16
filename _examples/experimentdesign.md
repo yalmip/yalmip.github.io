@@ -31,7 +31,7 @@ To define an optimal covariance matrix, a scalar measure on the matrix has to be
 
 Let \\(Q\\) denote the total number of possible configurations and \\(H_i\\) the 12-by-12 inverse covariance matrices from each configuration. Our goal is to perform \\(M\\) experiments. The D-optimal design problem can be written as
 
-%center%Images:design1.png
+![Robot]({{ site.url }}/images/design1.jpg){: .center-image }
 
 This problem can be solved using YALMIPs internal mixed integer conic solver [BNB]. Due to the [logdet], you are advised to solve the problem using [SDPT] as the lower bound solver.
 
@@ -61,7 +61,7 @@ Although the combinatorial D-optimal design problem can be solved using YALMIP f
 
 A relaxed problem is obtained by simply skipping the integrality constraint. When the integrality constraint is removed, the problem can be thought of as finding the time ratio spent in each configuration. For that purpose, a normalized problem is solved.
 
-%center%Images:design2.png
+![Robot]({{ site.url }}/images/design2.jpg){: .center-image }
 
 We now solve a larger problem using this initial form of the problem. First, to speed up the construction of the \\(H\\) matrix, we vectorize the code.
 
@@ -89,9 +89,9 @@ However, with some knowledge on how SDP problems are solved, this low limit on t
 
 Since the optimization problem is small when interpreted in a primal sense, but YALMIP always interprets problems in a dual sense, we can trick YALMIP by deriving and stating the dual problem instead.
 
-Manual derivation of the dual problem leads to the following determinant maximization problem (\\(d\\) denotes the dimension of the \\(H\\() matrix).
+Manual derivation of the dual problem leads to the following determinant maximization problem (\\(d\\) denotes the dimension of the \\(H\\) matrix).
 
-%center%Images:design3.png
+![Robot]({{ site.url }}/images/design3.jpg){: .center-image }
 
 Whereas the original problem had \\(Q\\) variables when interpreted in a dual sense, the new problem only has 78 variables (the variables needed to parametrize the 12-by-12 symmetric matrix \\(W\\). The large amount of variables in the original problem now leads to a large amount of linear inequalities. However, complexity with respect to the number of linear inequalities in the dual, is much better than complexity with respect to the number of variables.
 
