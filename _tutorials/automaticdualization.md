@@ -1,5 +1,6 @@
 ---
 title: "Automatic dualization"
+excerp: "Primal or dual arbitrary in primal-dual solver?"
 layout: single
 sidebar:
   nav: "tutorials"
