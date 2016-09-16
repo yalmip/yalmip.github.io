@@ -1,5 +1,6 @@
 ---
 title: "Robust optimization"
+excerpt: "The only thing we can be sure of is the lack of certainty."
 layout: single
 sidebar:
   nav: "tutorials"
