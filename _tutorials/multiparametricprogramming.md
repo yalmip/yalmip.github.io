@@ -1,5 +1,6 @@
 ---
 title: "Multiparametric programming"
+except: "Solve your optimization problem for once and for all. "
 layout: single
 sidebar:
   nav: "tutorials"
