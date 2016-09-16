@@ -1,5 +1,19 @@
+---
+layout: single
+excerpt: "Let YALMIP do the hard work"
+title: State feedback design for LPV system
+tags: [Robust optimization, Semidefinite programming]
+comments: true
+date: '2016-09-16'
+header:
+  teaser: "polytopicsystem.png"
+image:
+  feature: lofberg.jpg
+  teaser: lofberg.jpg
+  thumb: lofberg.jpg
+---
 
-This example illustrates an application of the [Tutorials.RobustOptimization | robust optimization feature]. The main focus of this example is uncertain semidefinite constraints. 
+This example illustrates an application of the [Tutorials.RobustOptimization | robust optimization feature]. The main focus of this example is uncertain semidefinite constraints.
 
 For the example to work, you must have [Solvers.MPT | MPT] installed.
 
@@ -29,7 +43,7 @@ Anominal = [0 1 0;0 0 1;0 0 0];
 B = [0;0;1];
 Q = eye(3)
 R = 1;
-```` 
+````
 
 ### Manual implementation
 
@@ -37,7 +51,7 @@ The uncertainty we will address is a perturbation in the (1,3) element. We creat
 ````matlab
 A1 = Anominal;A1(1,3) = -0.1;
 A2 = Anominal;A2(1,3) =  0.1;
-```` 
+````
 
 Before we employ the automatic support for robust semidefinite programming, note that this is the manually derived worst-case problem and solution '-(The tag 'full' is used here to remind novel users that for variables that should be fully parameterized, use the tag. It is a common mistake to copy code and then all of a sudden when the matrix is square, you forget to add the tag 'full' and get a symmetric matrix. See [Tutorials.Basics | the basics].)-'.
 ````matlab
@@ -49,7 +63,7 @@ F = [F, [-A1*Y-B*L + (-A1*Y-B*L)' Y L';Y inv(Q) zeros(3,1);L zeros(1,3) inv(R)] 
 F = [F, [-A2*Y-B*L + (-A2*Y-B*L)' Y L';Y inv(Q) zeros(3,1);L zeros(1,3) inv(R)] >= 0];
 optimize(F,-trace(Y))
 K = value(L)*inv(value(Y));
-```` 
+````
 
 ### Semi-manual implementation
 
@@ -57,28 +71,28 @@ Now let us do this using the robust optimization module. Define the uncertain sy
 ````matlab
 sdpvar t1 t2
 A = A1*t1 + A2*t2;
-```` 
+````
 
 the uncertain semidefinite constraint (note that it is parameterized in the uncertain variables '''t1''' and '''t2'''),
 ````matlab
 F = [Y >=0];
 F = [F, [-A*Y-B*L + (-A*Y-B*L)' Y L';Y inv(Q) zeros(3,1);L zeros(1,3) inv(R)] > 0];
-```` 
+````
 
-and the uncertainty description 
+and the uncertainty description
 ````matlab
 F = [F, 0 <= [t1 t2] < 1, t1+t2 == 1, uncertain([t1 t2])];
-```` 
+````
 
 Finally, we solve the uncertain problem using [Commands.optimize | optimize].
 ````matlab
 optimize(F,-trace(Y))
-```` 
+````
 
 The optimal feedback can be recovered
 ````matlab
 K = value(L)*inv(value(Y))
-```` 
+````
 
 ### Fully automatic implementation
 
@@ -91,13 +105,13 @@ What we would like to do is the following:
 alpha = sdpvar(1);
 A = Anomial;
 Anominal(1,3) = alpha;
-```` 
+````
 
 Unfortunately, this will fail, due to limitations in MATLABs overloading of assignment of user-defined classes. Instead, we have to use the following approach
 ````matlab
 alpha = sdpvar(1);
 A = [0 1 alpha;0 0 1;0 0 0];
-```` 
+````
 
 We have now created a parameterized system, and can proceed as before.
 ````matlab
@@ -109,11 +123,11 @@ F = [F, -0.1 <= alpha <= 0.1, uncertain(alpha)];
 optimize(F,-trace(Y))
 
 K = value(L)*inv(value(Y))
-```` 
+````
 
 ### Gain scheduling control
 
-As a second slightly more advanced example, we extend the problem to gain scheduling. We now assume that the uncertain parameter is unknown at design time, but known on-line. This means we can make the controller depend on the uncertainty. 
+As a second slightly more advanced example, we extend the problem to gain scheduling. We now assume that the uncertain parameter is unknown at design time, but known on-line. This means we can make the controller depend on the uncertainty.
 
 
 ### Parameterized feedback matrix
@@ -132,7 +146,7 @@ F = [Y >=0];
 F = [F, [-A*Y-B*L + (-A*Y-B*L)' Y L';Y inv(Q) zeros(3,1);L zeros(1,3) inv(R)] >= 0)];
 F = [F, -0.1 <= alpha <= 0.1, uncertain(alpha)];
 optimize(F,-trace(Y))
-```` 
+````
 
 You should notice that the objective value is not improved, hence the parameterization did not help.
 
@@ -179,6 +193,3 @@ F = [F, [-A*Y-B*L + (-A*Y-B*L)' Y L';Y inv(Q) zeros(3,1);L zeros(1,3) inv(R)] >=
 F = [F, -0.1 <= alpha <= 0.1, uncertain(alpha)];
 optimize(F,-trace(Y))
 ````
-
-
-
