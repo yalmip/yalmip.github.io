@@ -15,18 +15,16 @@
 <div class="{{ include.type | default: "list" }}__item">
   <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
     {% if include.type == "grid" and teaser %}
-    <h2>Gallery!</h2>
       <div class="archive__item-teaser">
         <img src=
           {% if teaser contains "://" %}
             "{{ teaser }}"
-            <h2>Gallery!</h2>
           {% else %}
+          <h2>Gallery!</h2>
             "{{ teaser | prepend: "/images/" | prepend: base_path }}"
           {% endif %}
           alt="">
       </div>
-      <h2>Gallery!</h2>
     {% endif %}
     <h2 class="archive__item-title" itemprop="headline">
       {% if post.link %}
