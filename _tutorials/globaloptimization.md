@@ -1,6 +1,6 @@
 ---
 title: "Global optimization"
-excerpt: "The holy grail! 60% of the time it works all the time."
+excerpt: "The holy grail! 60% of the time it works every time."
 layout: single
 sidebar:
   nav: "tutorials"
