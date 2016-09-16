@@ -246,7 +246,7 @@ compress_html:
 collections:
   examples:
     output: true
-    permalink: /yalmip/:collection/:path/
+    permalink: /:collection/:path/
 
 defaults:
   # _posts
