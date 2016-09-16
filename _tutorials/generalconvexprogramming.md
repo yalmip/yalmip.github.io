@@ -1,6 +1,6 @@
 ---
 title: "General convex programming"
-excerpt: "YALMIP was initially developed as a modelling tool for conic optimization problems, or problems that can be converted to conic optimization problems. However, today it is a rather general modelling tool with support for most functions and operators."
+excerpt: "YALMIP does not care, but for your own good, think about convexity also in general nonlinear programs."
 layout: single
 sidebar:
   nav: "tutorials"
