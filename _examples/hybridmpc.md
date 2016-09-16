@@ -6,7 +6,7 @@ tags: [MPC, Integer programming]
 comments: true
 date: '2016-09-16'
 header:
-  teaser: "sudoku.gif"
+  teaser: 
 image:
   feature: lofberg.jpg
   teaser: lofberg.jpg
