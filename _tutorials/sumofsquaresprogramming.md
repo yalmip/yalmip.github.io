@@ -1,5 +1,6 @@
 ---
 title: "Sum-of-squares programming"
+excerpt: "Almost nothing is a sum-of-squares, but let's hope yours is."
 layout: single
 sidebar:
   nav: "tutorials"
