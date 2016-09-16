@@ -1,5 +1,6 @@
 ---
 title: "Quadratic programming"
+exerpt: "Almost as easy as linear programming. Be careful though, symbolics might start to cause overhead."
 layout: single
 sidebar:
   nav: "tutorials"
