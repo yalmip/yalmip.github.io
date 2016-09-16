@@ -1,6 +1,6 @@
 ---
 title: "Big-M and convex hulls"
-excerpt: "Learn how nonconvex models are written as integer programs using big-M strategies."
+excerpt: "Learn how nonconvex models are written as integer programs using big-M strategies, and why it should be called small-M."
 layout: single
 sidebar:
   nav: "tutorials"
