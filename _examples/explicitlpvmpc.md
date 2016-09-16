@@ -1,3 +1,17 @@
+---
+layout: single
+excerpt: "Annoyingly hard to do nicely with a nice theoretical framework. Let's try dynamic programming."
+title: Model predictive control - Linear parameter varying models
+tags: [MPC, Dynamic programming]
+comments: true
+date: '2016-09-16'
+header:
+  teaser: "costs_LPVMPC.jpg"
+image:
+  feature: lofberg.jpg
+  teaser: lofberg.jpg
+  thumb: lofberg.jpg
+---
 
 This example, contributed by Thomas Besselmann, accompanies the following paper
 
