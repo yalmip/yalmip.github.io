@@ -92,7 +92,7 @@ To derive a mixed integer programming model of the logic condition, bounds on al
 
 ````matlab
 KKT = [KKT, lambda <= 100, -100 <= [x;z] <= 100];
- ````
+````
 
 Collect all constraints, and solve the outer problem (Note that the problem can be infeasible. If so, simply generate a new problem instance)
 
