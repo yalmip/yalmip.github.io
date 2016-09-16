@@ -1,5 +1,6 @@
 ---
 title: "Complex-valued problems"
+excerpt: "Complex data in optimization models. No problem in reality."
 layout: single
 sidebar:
   nav: "tutorials"
