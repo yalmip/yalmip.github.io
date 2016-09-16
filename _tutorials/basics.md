@@ -1,5 +1,6 @@
 ---
 title: "Getting started"
+excerpt: "Start here! Tutorial introduces essentially everything you ever need to learn. It defines variables, constraints, objectives, options, checks result and extracts solution. We focus on defining variables and constraints."
 layout: single
 sidebar:
   nav: "tutorials"
