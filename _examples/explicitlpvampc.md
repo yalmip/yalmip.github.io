@@ -19,8 +19,7 @@ As long as there are no efficient tools to compute explicit control laws for non
 We consider linear discrete-time LPV-A systems with a
 parameter-varying state transition matrix and a constant input matrix
 
-
-![LPVA]({{ site.url }}/images/lpvasystem.jpg){: .center-image }
+![LPVA]({{ site.url }}/images/lpvasystem.png){: .center-image }
 
 This allows one to model systems, where the system dynamics depend on scheduling signals, and this scheduling signal is measurable, but not known in advance.
 
@@ -30,20 +29,20 @@ An example for the computation of explicit MPC control laws for general LPV syst
 
 The Hénon map is a nonlinear second-order system and a popular example for chaotic systems. It is defined as
 
-![Henonmap]({{ site.url }}/images/Henonmap.jpg){: .center-image }
+![Henonmap]({{ site.url }}/images/Henonmap.png){: .center-image }
 
 where the elements in the superscript indicate the element of the state vector. When the coefficients are \\(a = 1.4\\), \\(b = 0.3\\), the system has an unstable fix point at
 
-![Henonfixpoint]({{ site.url }}/images/Henonfixpoint.jpg){: .center-image }
+![Henonfixpoint]({{ site.url }}/images/Henonfixpoint.png){: .center-image }
 
 In the following we will denote the fix point by \\(xref\\).
 Already small deviations from this fix point lead to chaotic behavior and the system moves along a so-called chaotic attractor:
 
-![Henonattractor]({{ site.url }}/images/Henonattractor.jpg){: .center-image }
+![Henonattractor]({{ site.url }}/images/Henonattractor.png){: .center-image }
 
 In order to stabilize the Hénon map to the fix point, we introduce an input to obtain the controlled Hénon map
 
-![henonmap2]({{ site.url }}/images/henonmap2.jpg){: .center-image }
+![henonmap2]({{ site.url }}/images/henonmap2.png){: .center-image }
 
 where the input coefficient is set to \\(c = 0.1\\).
 
@@ -57,7 +56,7 @@ to systems with affine terms in the state prediction. The
 Hénon map can thus be written as
 
 %center%Images:HenonLPVA.png
-![HenonLPVA]({{ site.url }}/images/HenonLPVA.jpg){: .center-image }
+![HenonLPVA]({{ site.url }}/images/HenonLPVA.png){: .center-image }
 
 Here the scheduling parameter is an affine function of the first state and varies within [-1.5,1.5], like the state does on the chaotic attractor.
 
@@ -199,6 +198,7 @@ obj = w;
 ### Final step
 
 In the last step we use the uncontrolled successor step to improve control performance. The code snip inserted into the iteration is:
+
 ````matlab
 % Get the hyperplanes for cost-to-go
 S = unique(([reshape([sol{k+1}{1}.Bi{:}]',nx,[])' reshape([sol{k+1}{1}.Ci{:}]',[],nu)]),'rows');
@@ -233,7 +233,6 @@ Finally the control performance of the Explicit LPV-MPC controller is compared t
 
 The actual costs of the closed-loop system over a grid of initial points are depicted in the following Figure. Both the Explicit LPV-MPC controller as well as the PWA MPC controller achieve close to optimal performance (the average cost increase is 2.3 % vs. 3.9 %).
 
-Images:costs_LPVAMPC.png
-![LPVMPC]({{ site.url }}/images/LPVMPC.jpg){: .center-image }
+![LPVMPC]({{ site.url }}/images/LPVMPC.png){: .center-image }
 
 Thus both approaches seem to be reasonable ways to achieve constrained control at high sampling rates. It is worth noting that the LPV-MPC controller required 93 regions, while the PWA-MPC controller consists of 344 regions, which is a factor of more than 3 difference.

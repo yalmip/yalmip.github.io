@@ -9,11 +9,7 @@ header:
   teaser: lpv1.png
 ---
 
-This example, contributed by Thomas Besselmann, accompanies the following paper
-
->>paper fullwidth<<
-bibtexsummary:[reference.bib,Bes:2008]
->><<
+> This example, contributed by Thomas Besselmann, accompanies the following paper [Bes:2008]
 
 Note that the code below uses some awkward, no longer necessary, reformulations in order to cope with uncertainty in linear programming representable nonlinear terms.
 
@@ -22,15 +18,15 @@ Note that the code below uses some awkward, no longer necessary, reformulations 
 We consider linear discrete-time LPV systems with a
 parameter-varying state transition and parameter-varying input matrix
 
-%center%Images:lpv1.png
+![LPVMPC]({{ site.url }}/images/lpv1.png){: .center-image }
 
-This allows one to model systems, where the system dynamics depend on scheduling signals, and this scheduling signal is measurable, but not known in advance. 
+This allows one to model systems, where the system dynamics depend on scheduling signals, and this scheduling signal is measurable, but not known in advance.
 
-When the input matrix B is constant, a simpler scheme can be used, which is demonstrated in the example [Examples.LPVMPCHenon| Explicit LPVA-MPC].
+When the input matrix B is constant, a simpler scheme can be used, which is demonstrated in the example [Explicit LPVA-MPC].
 
 ### Explicit MPC for LPV systems
 
-Let us find the explicit solution to a variant of the MPC problem for LPV systems. This will be a pretty advanced example, so let us start slowly by defining some data. 
+Let us find the explicit solution to a variant of the MPC problem for LPV systems. This will be a pretty advanced example, so let us start slowly by defining some data.
 
 ````matlab
 % YALMIP options
@@ -40,7 +36,7 @@ yopts = sdpsettings('robust.polya',1);
 % Model data
 A1 = [0.85 0;0.25 0.65];
 A2 = [0.85 0;-0.3 0.65];
-B1 = [1;-1]; 
+B1 = [1;-1];
 B2 = [1;1];
 B{1} = B1;
 B{2} = B2;
@@ -62,10 +58,9 @@ R   = 0.01;
 N   = 3;
 nrm = inf;
 xref = [0;0];
-
 ````
 
-With '''robust.polya''', the degree of the Pólya relaxation is defined. It converges asymptotically to the true problem with increasing Pólya degree. The used norm in this example is the infinity-norm. To simplify the code and the notation, we create state, control and scheduling parameters in cell arrays. 
+With **robust.polya**, the degree of the Pólya relaxation is defined. It converges asymptotically to the true problem with increasing Pólya degree. The used norm in this example is the infinity-norm. To simplify the code and the notation, we create state, control and scheduling parameters in cell arrays.
 
 ````matlab
 % States x(k), ..., x(k+N)
@@ -80,7 +75,7 @@ sdpvar w;
 
 ### Dynamic Programming Iterations
 
-Now, instead of setting up the problem for the whole prediction horizon, we only set it up for one step, solve the problem parametrically, take one step back, and perform a standard dynamic programming value iteration. 
+Now, instead of setting up the problem for the whole prediction horizon, we only set it up for one step, solve the problem parametrically, take one step back, and perform a standard dynamic programming value iteration.
 
 ````matlab
 for k = N:-1:1   % shifted: N-1:-1:0
@@ -88,13 +83,13 @@ for k = N:-1:1   % shifted: N-1:-1:0
     % Parameter simplex
     F = [uncertain(th{k}), sum(th{k}) == 1, 0 <= th{k} <= 1];
     F = [F, 0 <= w <= 10000];
-    
+
     % Uncertain predictions and control
-    uth = kron(th{k},eye(nu))'*u{k};    % u(th) 
+    uth = kron(th{k},eye(nu))'*u{k};    % u(th)
     Ath = [A1 A2]*kron(th{k},eye(nx));  % A(th) = A1*th1 + A2*th2 + ...
     Bth = [B1 B2]*kron(th{k},eye(nu));  % B(th)    
     xp  = Ath*x{k} + Bth*uth;
-    
+
     % Input constraints
     F = [F, repmat(umin,ndyn,1) <= u{k} <=  repmat(umax,ndyn,1)];
 
@@ -117,7 +112,7 @@ In the first and the last step of the iteration, some parts of the code differ f
 
 ### First step
 
-In the first step we rewrite the inf-norm into an epigraph formulation, and add constraints for the final state. Note that we have to manually derive the epigraph models of the sum-of-inf-norms, due to the [Extra.Robust | issues described here].
+In the first step we rewrite the inf-norm into an epigraph formulation, and add constraints for the final state. Note that we have to manually derive the epigraph models of the sum-of-inf-norms, due to the [Extra Robust issues described here].
 
 ````matlab
 % |x| written as max(a[x;u]+b)
@@ -156,7 +151,7 @@ bb = repmat(b,2*nu,1) + kron(d,ones(size(a,1),1));
 % Constrain predicted state
 [H,K] = value(sol{k+1}{1}.Pfinal);
 F     = [F, H*xp <= K];
-        
+
 % Cost function
 F   = [F, aa*[xp;R*uth]+bb <= w];
 obj = norm(Q*(x{k}-xref),nrm) + w;
@@ -164,7 +159,8 @@ obj = norm(Q*(x{k}-xref),nrm) + w;
 
 ### Final step
 
-In the last step we use the uncontrolled successor step to improve control performance. The code snip inserted into the iteration is: 
+In the last step we use the uncontrolled successor step to improve control performance. The code snip inserted into the iteration is:
+
 ````matlab
 % Get the hyperplanes for cost-to-go
 S = unique(([reshape([sol{k+1}{1}.Bi{:}]',nx,[])' reshape([sol{k+1}{1}.Ci{:}]',[],nu)]),'rows');
@@ -187,16 +183,17 @@ F   = [F, aa*[xp;R*uth]+bb <= w];
 obj = w;
 
 % add eps-penalty on vertex predictions
-for v = 1:ndyn 
+for v = 1:ndyn
     xpv{v} = x{k} + B{v}*u{k}(v);
     obj = obj + 0.001*norm(Q*xpv{v},inf);
 end
 ````
 
 ### Results
+
 Finally the control performance of the Explicit LPV-MPC controller is compared to robust control and the truely optimal solution for a certain scheduling parameter trajectory (for details see the above mentioned paper).
 The actual costs of the closed-loop system over a grid of initial points are depicted in the following Figure. While Explicit LPV-MPC performs in average only 0.4 % worse than the truely optimal solution, robust MPC leads to an average of 23.3 % increase of the actual costs.
 
-%center%Images:costs_LPVMPC.png
+![costs_LPVMPC]({{ site.url }}/images/costs_LPVMPC.png){: .center-image }
 
 The resulting explicit LPV-MPC controller takes the scheduling parameter into account, and thus outperforms robust MPC. Nevertheless, it is an explicit MPC controller, and enables constrained gain-scheduling control at high sampling rates, which is not possible for the truely optimal solution.
