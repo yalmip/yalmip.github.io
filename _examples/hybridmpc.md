@@ -1,3 +1,17 @@
+---
+layout: single
+excerpt: "Hybrid and nonconvex models in model predictive control simplified by general high-level operators in YALMIP"
+title: Model predictive control - Hybrid models
+tags: [MPC, Integer programming]
+comments: true
+date: '2016-09-16'
+header:
+  teaser: "sudoku.gif"
+image:
+  feature: lofberg.jpg
+  teaser: lofberg.jpg
+  thumb: lofberg.jpg
+---
 
 In the [[StandardMPC | standard MPC example]], we illustrated some alternative approaches to setup and solve MPC problems in YALMIP. We will now use approximately the same code to solve hybrid MPC problems, i.e., problems involving piecewise affine and hybrid models.
 
