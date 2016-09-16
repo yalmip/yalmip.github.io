@@ -104,11 +104,11 @@ value(lambda)
 value(slack)
 ````
 
-Note that YALMIP has a built-in command for generating [Commands.Kkt | KKT conditions], hence, the manually implemented model above can be simplified significantly.
+Note that YALMIP has a built-in command for generating [kkt], hence, the manually implemented model above can be simplified significantly.
 
 ### Nonlinear solver for complementary constraints
 
-A more direct approach to handle the complementary constraints is to simply solve the nonlinear nonconvex problem that arise. To do this in YALMIP, we use the built-in global solver [Solvers.BMIBNB | BMIBNB]. As before, the only addition compared to the theoretical KKT system is that we have to add explicit constraints in order to bound the search-space.
+A more direct approach to handle the complementary constraints is to simply solve the nonlinear nonconvex problem that arise. To do this in YALMIP, we use the built-in global solver [BMIBNB]. As before, the only addition compared to the theoretical KKT system is that we have to add explicit constraints in order to bound the search-space.
 
 ````matlab
 KKT = [H*z + e + F'*lambda == 0,
@@ -142,7 +142,7 @@ optimize([KKT, A*x <= b + E*z], 0.5*x'*Q*x + c'*x + d'*z,ops)
 
 A more advanced way in YALMIP to solve this problem, is to explicitly compute a parametrized solution \\(z(x)\\) by using multiparametric programming. This will lead to a piecewise affine description of the optimizer, and when this expression is plugged into the outer problem, a mixed integer quadratic programming problem arise.
 
-Hence, we solve the inner program multiparametrically w.r.t. \\(x\\). Notice that we add bounds on \\(x\\), to limit the region where we are interested in a parametric solution (this is required for the parametric solver in [Solvers.MPT | MPT] to perform well.)
+Hence, we solve the inner program multiparametrically w.r.t. \\(x\\). Notice that we add bounds on \\(x\\), to limit the region where we are interested in a parametric solution (this is required for the parametric solver in [MPT] to perform well.)
 
 ````matlab
 obj_inner = 0.5*z'*H*z + e'*z + f'*x;
@@ -150,7 +150,7 @@ cst_inner = [F*z <= h + G*x, -100 <= x <= 100];
 [aux1,aux2,aux3,OptVal,OptZ] = solvemp(cst_inner,obj_inner,[],x);
 ````
 
-At this point, the variable '''OptZ''' defines a piecewise affine function corresponding to the optimizing '''z'''. We use this variable in our outer problem
+At this point, the variable **OptZ** defines a piecewise affine function corresponding to the optimizing **z**. We use this variable in our outer problem
 
 ````matlab
 obj_outer = 0.5*x'*Q*x + c'*x + d'*OptZ;
@@ -183,7 +183,7 @@ end
 
 ### Using the built-in bilevel solver
 
-As we mentioned above, YALMIP has a [Commands.solvebilevel | built-in bilevel solver] which applies to this problem.
+As we mentioned above, YALMIP has a [solvebilevel built-in bilevel solver] which applies to this problem.
 
 ````matlab
 con_inner = F*z <=  h + G*x;
