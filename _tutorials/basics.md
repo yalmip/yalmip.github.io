@@ -1,6 +1,6 @@
 ---
 title: "Getting started"
-excerpt: "Tutorial introduces essentially everything you'll ever need. Defining variables, constraints, objectives, options, solving, checking result solution."
+excerpt: "Tutorial introduces essentially everything you'll ever need. The remaining 95% is syntactic sugar"
 layout: single
 sidebar:
   nav: "tutorials"
