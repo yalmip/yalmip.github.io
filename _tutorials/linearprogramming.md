@@ -2,6 +2,7 @@
 title: "Linear programming"
 excerpt: "As easy as it gets. Linear separation with linear norms."
 layout: single
+level: 2
 sidebar:
   nav: "tutorials"
 ---
