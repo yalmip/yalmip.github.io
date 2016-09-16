@@ -1,5 +1,6 @@
 ---
 title: "Geometric programming"
+excerpt: "Why did your computations slow down when you changed **max(x)** to **-max(x)**?"
 layout: single
 sidebar:
   nav: "tutorials"
