@@ -1,5 +1,6 @@
 ---
 title: "Installation"
+excerpt: "Get things right first."
 layout: single
 sidebar:
   nav: "tutorials"
