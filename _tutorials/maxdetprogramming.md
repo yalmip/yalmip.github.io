@@ -1,5 +1,6 @@
 ---
 title: "Determinant maximization"
+title: "Optimization with ellipsoids and likelihood functions are typical applications of determinant maximization."
 layout: single
 sidebar:
   nav: "tutorials"
