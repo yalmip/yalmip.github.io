@@ -2,6 +2,7 @@
 title: "Getting started"
 excerpt: "Tutorial introduces essentially everything you'll ever need. The remaining 95% is syntactic sugar"
 layout: single
+level: 1
 sidebar:
   nav: "tutorials"
 ---
