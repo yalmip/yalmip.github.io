@@ -16,7 +16,7 @@ Nevertheless, let us write some YALMIP code to compute it, and then generalize t
 
 Unfortunately, worst-case 1-norm is one of the hard cases in [Mangasarian 1986] . Even worse from our perspective, due to this intractability, it is [UncertainEpigraphs not possible] to simply plug an uncertain expression involving a 1-norm into the [robust optimization framework](/yalmip/tutorials/tobustoptimization) of YALMIP 
 
-For this particular application, the matrix dimension is reasonably small but the parametric space is large, so we explicitly generate the linear programming formulation of the 1-norm by looking at all combinations of positive and negative terms in the absolute values, i.e. we write \\(|x(p)|+|y(p)| \leq t\)) as \\(x(p)+y(p)\leq t\\), \\(-x(p)+y(p) \leq t\\), \\(x(p)-y(p)\leq t\\) and \\(-x(p)-y(p)\leq t\\). Once we have all these constraints for all rows, we use YALMIPs [robust optimization framework]/yalmip/tutorials/tobustoptimization) to compute the worst-case \\(t\\) over the uncertain parameter \\(p\\).
+For this particular application, the matrix dimension is reasonably small but the parametric space is large, so we explicitly generate the linear programming formulation of the 1-norm by looking at all combinations of positive and negative terms in the absolute values, i.e. we write \\(\left\lvert x(p)\right\rvert +\left\lvert y(p)\right\rvert \leq t\)) as \\(x(p)+y(p)\leq t\\), \\(-x(p)+y(p) \leq t\\), \\(x(p)-y(p)\leq t\\) and \\(-x(p)-y(p)\leq t\\). Once we have all these constraints for all rows, we use YALMIPs [robust optimization framework]/yalmip/tutorials/tobustoptimization) to compute the worst-case \\(t\\) over the uncertain parameter \\(p\\).
 
 To begin with, define a linearly parametrized matrix
 
