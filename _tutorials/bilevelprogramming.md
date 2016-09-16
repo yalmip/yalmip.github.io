@@ -1,5 +1,6 @@
 ---
 title: "Bilevel programming"
+excerpt: "Bilevel programming using the built-in bilevel solver"
 layout: single
 sidebar:
   nav: "tutorials"
