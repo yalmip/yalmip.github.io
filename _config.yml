@@ -240,6 +240,12 @@ compress_html:
   clippings: all
   ignore:
     envs: development
+    
+# Collections
+collections:
+  examples:
+    output: true
+    permalink: /:collection/:path/
 
 defaults:
   # _posts
@@ -253,3 +259,14 @@ defaults:
       comments: true
       share: false
       related: true
+  # _examples
+  - scope:
+      path: ""
+      type: examples
+    values:
+      layout: single
+      author_profile: true
+      read_time: false
+      comments: true
+      share: false
+      related: true      
