@@ -1,3 +1,17 @@
+---
+layout: single
+excerpt: "Model predictive control, receding horizon control, discrete-time dynamic planning, or what ever you want to call it."
+title: Model predictive control - Basics
+tags: [MPC, Quadratic programming]
+comments: true
+date: '2016-09-16'
+header:
+  teaser: 
+image:
+  feature: lofberg.jpg
+  teaser: lofberg.jpg
+  thumb: lofberg.jpg
+---
 
 To prepare for the hybrid, explicit and robust MPC examples, we solve some standard MPC examples. As we will see, MPC problems can be formulated in various ways in YALMIP.
 
