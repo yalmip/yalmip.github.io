@@ -233,6 +233,6 @@ Finally the control performance of the Explicit LPV-MPC controller is compared t
 
 The actual costs of the closed-loop system over a grid of initial points are depicted in the following Figure. Both the Explicit LPV-MPC controller as well as the PWA MPC controller achieve close to optimal performance (the average cost increase is 2.3 % vs. 3.9 %).
 
-![LPVMPC]({{ site.url }}/images/LPVMPC.png){: .center-image }
+![LPVMPC]({{ site.url }}/images/LPVAMPC.png){: .center-image }
 
 Thus both approaches seem to be reasonable ways to achieve constrained control at high sampling rates. It is worth noting that the LPV-MPC controller required 93 regions, while the PWA-MPC controller consists of 344 regions, which is a factor of more than 3 difference.
