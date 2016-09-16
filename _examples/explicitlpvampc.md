@@ -15,7 +15,7 @@ This example, contributed by Thomas Besselmann, accompanies the following paper
 bibtexsummary:[reference.bib,Bes:2008b]
 >><<
 
-!! Introduction
+### Introduction
 This example demonstrates an indirect approach for the computation of explicit MPC control laws for nonlinear discrete-time systems.
 As long as there are no efficient tools to compute explicit control laws for nonlinear discrete-time systems directly, the control engineer is often left with the choice of either approximating a nonlinear system by a PWA model or to embed it in an LPV model, and use the techniques available for these systems. In the following we will describe the embedding of the popular Hénon map as LPV-A model and show the computation of explicit control laws for this special class of LPV systems.
 
@@ -26,9 +26,9 @@ parameter-varying state transition matrix and a constant input matrix
 
 This allows one to model systems, where the system dynamics depend on scheduling signals, and this scheduling signal is measurable, but not known in advance.
 
-An example for the computation of explicit MPC control laws for general LPV systems is shown in the example [[Examples/LPVMPC | Explicit LPV-MPC ]]. The subclass of LPV-A systems allows for simpler computations, which will be presented in the following.
+An example for the computation of explicit MPC control laws for general LPV systems is shown in the example [Examples/LPVMPC | Explicit LPV-MPC ]. The subclass of LPV-A systems allows for simpler computations, which will be presented in the following.
 
-!! The nonlinear Hénon map
+### The nonlinear Hénon map
 
 The Hénon map is a nonlinear second-order system and a popular example for chaotic systems. It is defined as 
 
@@ -50,7 +50,7 @@ In order to stabilize the Hénon map to the fix point, we introduce an input to 
 where the input coefficient is set to ''c = 0.1''.
 
 
-!! LPV-A model of the Hénon map
+### LPV-A model of the Hénon map
 
 If we want to compute an explicit controller with the
 proposed method, we have to embed the Hénon map into an LPV-A model. Due to the affine term in the Hénon map, this is not directly
@@ -65,14 +65,14 @@ Here the scheduling parameter is an affine function of the first state and varie
 
 
 
-!! Explicit MPC for LPV-A systems
+### Explicit MPC for LPV-A systems
 
 
 
 Let us find the explicit solution to a variant of the MPC problem for LPV-A systems. This will be a pretty advanced example, so let us start slowly by defining some data. 
 
-!! The example system
-(:source lang=matlab:)
+### The example system
+````matlab
 % YALMIP options
 yalmip('clear')
 
@@ -101,11 +101,11 @@ Q   = eye(nx);
 R   = 0.1;
 N   = 4;
 nrm = 1;
-(:sourceend:)
+````
 
 The used norm in this example is the 1-norm. To simplify the code and the notation, we create state, control and scheduling parameters in cell arrays. 
 
-(:source lang=matlab:)
+````matlab
 % States x(k), ..., x(k+N)
 x  = sdpvar(repmat(nx,1,N),repmat(1,1,N));
 % Inputs u(k), ..., u(k+N) (last one not used)
@@ -114,13 +114,13 @@ u  = sdpvar(repmat(nu*ndyn,1,N),repmat(1,1,N));
 th = binvar(repmat(ndyn,1,N),repmat(1,1,N));
 % Epigraph variable
 sdpvar w
-(:sourceend:)
+````
 
-!! Dynamic Programming Iterations
+### Dynamic Programming Iterations
 
 Now, instead of setting up the problem for the whole prediction horizon, we only set it up for one step, solve the problem parametrically, take one step back, and perform a standard dynamic programming value iteration. 
 
-(:source lang=matlab:)
+````matlab
 for k = N:-1:1   % shifted: N-1:-1:0
 
     % Parameter simplex
@@ -145,15 +145,15 @@ for k = N:-1:1   % shifted: N-1:-1:0
     % Solve multi-parametric problem
     [sol{k},diagnost{k},Uz{k},J{k},Optimizer{k}] = solvemp(F,obj,[],x{k},u{k});
 end
-(:sourceend:)
+````
 
 In the first and the last step of the iteration, some parts of the code differ from the remaining steps. The common parts are the definition of the parameter simplex, the state update equation, the state and input constraints, the robust counterpart and the solution of the resulting multi-parametric program. In the following the step dependent code snips are listed.
 
-!! First step
+### First step
 
-In the first step we rewrite the 1-norm into an epigraph formulation, and add constraints for the final state. Note that we have to manually derive the epigraph models of the sum-of-1-norms, due to the [[Extra.Robust | issues described here]].
+In the first step we rewrite the 1-norm into an epigraph formulation, and add constraints for the final state. Note that we have to manually derive the epigraph models of the sum-of-1-norms, due to the [Extra.Robust | issues described here].
 
-(:source lang=matlab:)
+````matlab
 % |x| written as max(a[x;u]+b)
 a = [-1+2*dec2decbin(0:2^nx-1,nx) zeros(2^nx,nu)];
 b = zeros(2*nx,1);
@@ -174,13 +174,13 @@ obj = w;
 
 % Determine robust counterpart
 [F,obj] = robustify(F,obj,[],th{k});
-(:sourceend:)
+````
 
-!! Intermediate steps
+### Intermediate steps
 
 In the following steps we get the hyperplanes from the previous solution for the cost-to-go. We constrain the predicted states to be a feasible state for the preceding step of the DP iteration.
 
-(:source lang=matlab:)
+````matlab
 % Get the hyperplanes for cost-to-go
 S = unique(([reshape([sol{k+1}{1}.Bi{:}]' ,nx,[])'  reshape([sol{k+1}{1}.Ci{:}]' ,[],nu)]),'rows');
 a = [S(:,1:nx) zeros(size(S,1),nu)];
@@ -200,12 +200,12 @@ obj = w;
 
 % Determine robust counterpart
 [F,obj] = robustify(F,obj,[],th{k});
-(:sourceend:)
+````
 
-!! Final step
+### Final step
 
 In the last step we use the uncontrolled successor step to improve control performance. The code snip inserted into the iteration is: 
-(:source lang=matlab:)
+````matlab
 % Get the hyperplanes for cost-to-go
 S = unique(([reshape([sol{k+1}{1}.Bi{:}]',nx,[])' reshape([sol{k+1}{1}.Ci{:}]',[],nu)]),'rows');
 a = [S(:,1:nx) zeros(size(S,1),nu)];
@@ -231,9 +231,9 @@ F     = [F, H*xp <= K];
 % Cost function
 F   = [F, aa*[xp;R*u{1}]+bb <= w];
 obj = w;
-(:sourceend:)
+````
 
-!! Results
+### Results
 Finally the control performance of the Explicit LPV-MPC controller is compared to a PWA approach and the truely optimal solution for a certain scheduling parameter trajectory (for details see the above mentioned paper). Note that a robust MPC controller '''failed''' to stabilize the system.
 
 The actual costs of the closed-loop system over a grid of initial points are depicted in the following Figure. Both the Explicit LPV-MPC controller as well as the PWA MPC controller achieve close to optimal performance (the average cost increase is 2.3 % vs. 3.9 %).
@@ -243,5 +243,5 @@ Images:costs_LPVAMPC.png
 Thus both approaches seem to be reasonable ways to achieve constrained control at high sampling rates. It is worth noting that the LPV-MPC controller required 93 regions, while the PWA-MPC controller consists of 344 regions, which is a factor of more than 3 difference.
 
 >>seeright fullwidth<<
-[[Examples/LPVMPC | Explicit LPV-MPC ]]
+[Examples/LPVMPC | Explicit LPV-MPC ]
 >><<

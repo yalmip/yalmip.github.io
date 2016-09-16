@@ -17,7 +17,7 @@ bibtexsummary:[reference.bib,Bes:2008]
 
 Note that the code below uses some awkward, no longer necessary, reformulations in order to cope with uncertainty in linear programming representable nonlinear terms.
 
-!! Introduction
+### Introduction
 
 We consider linear discrete-time LPV systems with a
 parameter-varying state transition and parameter-varying input matrix
@@ -26,13 +26,13 @@ parameter-varying state transition and parameter-varying input matrix
 
 This allows one to model systems, where the system dynamics depend on scheduling signals, and this scheduling signal is measurable, but not known in advance. 
 
-When the input matrix B is constant, a simpler scheme can be used, which is demonstrated in the example [[Examples.LPVMPCHenon| Explicit LPVA-MPC]].
+When the input matrix B is constant, a simpler scheme can be used, which is demonstrated in the example [Examples.LPVMPCHenon| Explicit LPVA-MPC].
 
-!! Explicit MPC for LPV systems
+### Explicit MPC for LPV systems
 
 Let us find the explicit solution to a variant of the MPC problem for LPV systems. This will be a pretty advanced example, so let us start slowly by defining some data. 
 
-(:source lang=matlab:)
+````matlab
 % YALMIP options
 yalmip('clear')
 yopts = sdpsettings('robust.polya',1);
@@ -63,11 +63,11 @@ N   = 3;
 nrm = inf;
 xref = [0;0];
 
-(:sourceend:)
+````
 
 With '''robust.polya''', the degree of the Pólya relaxation is defined. It converges asymptotically to the true problem with increasing Pólya degree. The used norm in this example is the infinity-norm. To simplify the code and the notation, we create state, control and scheduling parameters in cell arrays. 
 
-(:source lang=matlab:)
+````matlab
 % States x(k), ..., x(k+N)
 x = sdpvar(repmat(nx,1,N),repmat(1,1,N));
 % Inputs u(k), ..., u(k+N) (last one not used)
@@ -76,13 +76,13 @@ u = sdpvar(repmat(nu*ndyn,1,N),repmat(1,1,N));
 th = binvar(repmat(ndyn,1,N),repmat(1,1,N));
 % Epigraph variable
 sdpvar w;
-(:sourceend:)
+````
 
-!! Dynamic Programming Iterations
+### Dynamic Programming Iterations
 
 Now, instead of setting up the problem for the whole prediction horizon, we only set it up for one step, solve the problem parametrically, take one step back, and perform a standard dynamic programming value iteration. 
 
-(:source lang=matlab:)
+````matlab
 for k = N:-1:1   % shifted: N-1:-1:0
 
     % Parameter simplex
@@ -111,15 +111,15 @@ for k = N:-1:1   % shifted: N-1:-1:0
     % Solve multi-parametric problem
     [sol{k},diagnost{k},Uz{k},J{k},Optimizer{k}] = solvemp(F,obj,yopts,x{k},u{k});
 end
-(:sourceend:)
+````
 
 In the first and the last step of the iteration, some parts of the code differ from the remaining steps. The common parts are the definition of the parameter simplex, the state update equation, the state and input constraints, the robust counterpart and the solution of the resulting multi-parametric program. In the following the step dependent code snips are listed.
 
-!! First step
+### First step
 
-In the first step we rewrite the inf-norm into an epigraph formulation, and add constraints for the final state. Note that we have to manually derive the epigraph models of the sum-of-inf-norms, due to the [[Extra.Robust | issues described here]].
+In the first step we rewrite the inf-norm into an epigraph formulation, and add constraints for the final state. Note that we have to manually derive the epigraph models of the sum-of-inf-norms, due to the [Extra.Robust | issues described here].
 
-(:source lang=matlab:)
+````matlab
 % |x| written as max(a[x;u]+b)
 a = [kron(eye(nx),[1 -1]') zeros(2*nx,nu)];
 b = zeros(2*nx,1);
@@ -137,13 +137,13 @@ F = [F, xmin  <= xp   <= xmax];
 % Cost function
 F   = [F, aa*[Q*(xp-xref);R*uth]+bb + norm(Q*(x{k}-xref),nrm) <= w];
 obj = w;
-(:sourceend:)
+````
 
-!! Intermediate steps
+### Intermediate steps
 
 In the following steps we get the hyperplanes from the previous solution for the cost-to-go. We constrain the predicted states to be a feasible state for the preceding step of the DP iteration.
 
-(:source lang=matlab:)
+````matlab
 % Get the hyperplanes for cost-to-go
 S = unique(([reshape([sol{k+1}{1}.Bi{:}]' ,nx,[])'  reshape([sol{k+1}{1}.Ci{:}]' ,[],nu)]),'rows');
 a = [S(:,1:nx) zeros(size(S,1),nu)];
@@ -160,12 +160,12 @@ F     = [F, H*xp <= K];
 % Cost function
 F   = [F, aa*[xp;R*uth]+bb <= w];
 obj = norm(Q*(x{k}-xref),nrm) + w;
-(:sourceend:)
+````
 
-!! Final step
+### Final step
 
 In the last step we use the uncontrolled successor step to improve control performance. The code snip inserted into the iteration is: 
-(:source lang=matlab:)
+````matlab
 % Get the hyperplanes for cost-to-go
 S = unique(([reshape([sol{k+1}{1}.Bi{:}]',nx,[])' reshape([sol{k+1}{1}.Ci{:}]',[],nu)]),'rows');
 a = [S(:,1:nx) zeros(size(S,1),nu)];
@@ -191,9 +191,9 @@ for v = 1:ndyn
     xpv{v} = x{k} + B{v}*u{k}(v);
     obj = obj + 0.001*norm(Q*xpv{v},inf);
 end
-(:sourceend:)
+````
 
-!! Results
+### Results
 Finally the control performance of the Explicit LPV-MPC controller is compared to robust control and the truely optimal solution for a certain scheduling parameter trajectory (for details see the above mentioned paper).
 The actual costs of the closed-loop system over a grid of initial points are depicted in the following Figure. While Explicit LPV-MPC performs in average only 0.4 % worse than the truely optimal solution, robust MPC leads to an average of 23.3 % increase of the actual costs.
 

@@ -14,8 +14,8 @@ image:
 ---
 
 
-In case you have missed out on the [[http://en.wikipedia.org/wiki/Sudoku | Sudoku]] hype, the goal is to fill in unspecified elements in a matrix with numbers between 1 to 9, keeping elements in all rows and columns different, and keeping all elements in the 9 3x3 blocks different. Unspecified elements are indicated by zeros here.
-(:source lang=matlab:)
+In case you have missed out on the [http://en.wikipedia.org/wiki/Sudoku | Sudoku] hype, the goal is to fill in unspecified elements in a matrix with numbers between 1 to 9, keeping elements in all rows and columns different, and keeping all elements in the 9 3x3 blocks different. Unspecified elements are indicated by zeros here.
+````matlab
 S = [0,0,1,9,0,0,0,0,8;6,0,0,0,8,5,0,3,0;0,0,7,0,6,0,1,0,0;...
      0,3,4,0,9,0,0,0,0;0,0,0,5,0,4,0,0,0;0,0,0,0,1,0,4,2,0;...
      0,0,5,0,7,0,9,0,0;0,1,0,8,4,0,0,0,7;7,0,0,0,0,9,2,0,0];
@@ -30,22 +30,22 @@ ans =
 0  0  5  0  7  0  9  0  0
 0  1  0  8  4  0  0  0  7
 7  0  0  0  0  9  2  0  0
-(:sourceend:)
+````
 
-!! High-level model
+### High-level model
 
-In this example, we will first use the logic constraint [[Commands.alldifferent | alldifferent]] to pose and solve this problem. Note that this operator introduces (a lot of) binary variables, hence you need to have an efficient integer linear programming solver installed.
+In this example, we will first use the logic constraint [Commands.alldifferent | alldifferent] to pose and solve this problem. Note that this operator introduces (a lot of) binary variables, hence you need to have an efficient integer linear programming solver installed.
 
 We begin by creating our 9x9 integer decision variable and the basic constraint structure.
-(:source lang=matlab:)
+````matlab
 M = intvar(9,9,'full');
 
 fixed = find(S);
 F = [1 <= M <= 9, M(fixed) == S(fixed)];
-(:sourceend:)
+````
 
-We add the logic constraints using some MATLAB indexing tricks, add some redundant cuts, and solve the problem (The solution time depends highly on your MILP solver. [[Solvers.CPLEX | CPLEX]], [[Solvers.GUROBI | Gurobi]] and [[Solvers.MOSEK | Mosek]] solve this problem in roughly 0 seconds, while [[Solvers.GLPK | GLPK]] and [[Solvers.LPSOLVE | LPSOLVE]] fail to solve the problem in reasonable time.)
-(:source lang=matlab:)
+We add the logic constraints using some MATLAB indexing tricks, add some redundant cuts, and solve the problem (The solution time depends highly on your MILP solver. [Solvers.CPLEX | CPLEX], [Solvers.GUROBI | Gurobi] and [Solvers.MOSEK | Mosek] solve this problem in roughly 0 seconds, while [Solvers.GLPK | GLPK] and [Solvers.LPSOLVE | LPSOLVE] fail to solve the problem in reasonable time.)
+````matlab
 for i = 1:3
  for j = 1:3
   block = M((i-1)*3+(1:3),(j-1)*3+(1:3))
@@ -60,18 +60,18 @@ end
 
 F = [F, sum(M,1) == 45, sum(M,2) == 45];
 optimize(F);
-(:sourceend:)
+````
 
 Note that this model of the Sudoku game is pretty weak due to the simple implementation of the alldifferent operator in YALMIP!
 
-!! Binary model
+### Binary model
 
-An alternative model can be created by using the support for multi-dimensional [[Commands.sdpvar | sdpvar]] variables. We will use a binary three-dimensional variable '''A(i,j,k)''' to indicate that element '''(i,j)''' has value '''k'''.
+An alternative model can be created by using the support for multi-dimensional [Commands.sdpvar | sdpvar] variables. We will use a binary three-dimensional variable '''A(i,j,k)''' to indicate that element '''(i,j)''' has value '''k'''.
 
-This model is much stronger, in the sense that it is easily solved using any MILP solver (even YALMIPs native solver [[Solvers.BNB | BNB]] solves the problem in no time, indicating how simple this problem actually is). The drawback is that the model is much less intuitive, since it doesn't use the simple [[Commands.alldifferent | alldifferent]] operator, but instead relies on pure binary constraints.
+This model is much stronger, in the sense that it is easily solved using any MILP solver (even YALMIPs native solver [Solvers.BNB | BNB] solves the problem in no time, indicating how simple this problem actually is). The drawback is that the model is much less intuitive, since it doesn't use the simple [Commands.alldifferent | alldifferent] operator, but instead relies on pure binary constraints.
 
 We begin by creating the variable, and define the basic Sudoku constraints (unique values in each row and column)
-(:source lang=matlab:)
+````matlab
 S = [0,0,1,9,0,0,0,0,8;6,0,0,0,8,5,0,3,0;0,0,7,0,6,0,1,0,0;...
      0,3,4,0,9,0,0,0,0;0,0,0,5,0,4,0,0,0;0,0,0,0,1,0,4,2,0;...
      0,0,5,0,7,0,9,0,0;0,1,0,8,4,0,0,0,7;7,0,0,0,0,9,2,0,0];
@@ -79,10 +79,10 @@ S = [0,0,1,9,0,0,0,0,8;6,0,0,0,8,5,0,3,0;0,0,7,0,6,0,1,0,0;...
 p = 3;
 A = binvar(p^2,p^2,p^2,'full');
 F = [sum(A,1) == 1, sum(A,2) == 1, sum(A,3) == 1];
-(:sourceend:)
+````
 
 Setting up the constraints for each 3x3 block is a bit messier.
-(:source lang=matlab:)
+````matlab
 for m = 1:p
     for n = 1:p
         for k = 1:p^2
@@ -91,10 +91,10 @@ for m = 1:p
         end
     end
 end
-(:sourceend:)
+````
 
 Define constraints for the specified elements 
-(:source lang=matlab:)
+````matlab
 for i = 1:p^2 
     for j = 1:p^2 
         if S(i,j)
@@ -102,29 +102,29 @@ for i = 1:p^2
         end
     end
 end
-(:sourceend:)
+````
 
 Note that the loop alternatively could have been simplified to a vectorized expression.
-(:source lang=matlab:)
+````matlab
 [i,j,k] = find(S);
 F = [F, A(sub2ind([p^2 p^2 p^2],i,j,k)) == 1];
-(:sourceend:)
+````
 
 We are ready to invoke the solver.
-(:source lang=matlab:)
+````matlab
 diagnostics = optimize(F);
-(:sourceend:)
+````
 
 The integer solution is finally recovered from the binary indicators.
-(:source lang=matlab:)
+````matlab
 Z = 0;
 for i = 1:p^2
       Z = Z  + i*value(A(:,:,i));
 end
 Z
-(:sourceend:)
+````
 
 The loop can alternatively be vectorized.
-(:source lang=matlab:)
+````matlab
 Z = value(reshape(A,p^2,p^4)*kron((1:p^2)',eye(p^2)))
-(:sourceend:)
+````
