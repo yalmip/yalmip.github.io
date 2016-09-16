@@ -1,7 +1,7 @@
 ---
 layout: single
 excerpt: "Using YALMIPs symmetry reduction to reduce size of sum-of-squares problems"
-title: Pre- and post-processing sum-of-squares
+title: Pre- and post-processing sum-of-squares programs
 tags: [Sum-of-squares, Semidefnite programming, Polynomial programming]
 comments: true
 date: '2016-09-16'
