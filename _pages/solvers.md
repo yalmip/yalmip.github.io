@@ -1,6 +1,7 @@
 ---
 title: "Solvers"
 layout: single
+permalink: /solvers/
 sidebar:
   nav: "solvers"
 ---
