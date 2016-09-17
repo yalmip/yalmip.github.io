@@ -2,7 +2,7 @@
 layout: single
 type: example
 author_profile: false
-excerpt: "Solving mixed-integer maxdet problems"
+excerpt: "Solving mixed-integer maxdet problems and exploiting duality"
 title: Experiment design in system identification
 tags: [Semidefinite programming, Determinant maximization, Integer programming, Duality]
 comments: true
@@ -13,9 +13,7 @@ header:
   teaser: "robot.jpg"
 ---
 
->>paper fullwidth<<
-bibtexsummary:[reference.bib,Wernholt and Löfberg:2007]
->><<
+> This article accompanies the paper [Wernholt and Löfberg 2007]
 
 The problem has its origin in an optimal experiment design problem for identification of physical parameters of an industrial robot with significant nonlinear and flexible behaviour.
 
