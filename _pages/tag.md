@@ -1,6 +1,6 @@
 ---
 layout: archive
-permalink: /tag/
+permalink: /tags/
 title: "Tag Index"
 excerpt: "An archive of posts sorted by tag frequency."
 share: false
