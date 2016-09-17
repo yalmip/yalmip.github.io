@@ -8,11 +8,7 @@ date: '2016-09-16'
 sidebar:
   nav: "examples"
 header:
-  teaser: "maxplussystem.png"
-image:
-  feature: lofberg.jpg
-  teaser: lofberg.jpg
-  thumb: lofberg.jpg
+  teaser: "tropical.jpg"
 ---
 
 This example illustrates how control based on max-plus algebra can be implemented in YALMIP, by relying on automatic convexity analysis and the overloaded max operator.
@@ -21,7 +17,7 @@ If you are unfamiliar with max-plus control and tropical algebra, an introductio
 
 ### Max-plus algebra
 
-The max-plus algebra is an algebra where there are two operators, tropical addition and tropical multiplication.
+The max-plus, or tropical, algebra is an algebra where there are two operators, tropical addition and tropical multiplication.
 
 For scalar arguments, the tropical addition is nothing but the maximum of its arguments, and tropical multiplication is standard addition.
 
