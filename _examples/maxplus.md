@@ -1,6 +1,6 @@
 ---
 layout: single
-excerpt: "Tropical algebra, esotheric but easily solved in YALMIP"
+excerpt: "Tropical algebra, esotheric but easily modelled and solved in YALMIP."
 title: MAXPLUS control
 tags: [Integer programming]
 comments: true
