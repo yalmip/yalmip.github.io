@@ -1,6 +1,7 @@
 ---
 title: "KKTQP"
 layout: single
+permalink: /solvers/kktqp/
 sidebar:
   nav: "solvers"
 ---
