@@ -1,6 +1,6 @@
 ---
 layout: archive
-permalink: /dtags/
+permalink: /tags/
 title: "Tag Index"
 excerpt: "An archive of posts sorted by tag frequency."
 share: false
@@ -10,10 +10,39 @@ share: false
 
 <ul class="tag__list">
 
-  {% assign sorted_tags = site.tags | sort_tags_by_name %}
-  {% for tag in sorted_tags %}
+{% capture site_tags %}{% for tag in site.tags %}{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
+{% assign tag_words = site_tags | split:',' | sort %}
+<ul class="tags">
+  {% for item in (0..site.tags.size) %}{% unless forloop.last %}
+    {% capture this_word %}{{ tag_words[item] }}{% endcapture %}
+    <li>
+      <a href="#{{ this_word | cgi_escape }}" class="tag">{{ this_word }}
+        <span>({{ site.tags[this_word].size }})</span>
+      </a>
+    </li>
+  {% endunless %}{% endfor %}
+</ul>
+<div>
+  {% for item in (0..site.tags.size) %}{% unless forloop.last %}
+    {% capture this_word %}{{ tag_words[item] }}{% endcapture %}
+    <h2 id="{{ this_word | cgi_escape }}">{{ this_word }}</h2>
+    {% for post in site.tags[this_word] %}{% if post.title != null %}
+      <div>
+        <span style="float: left;">
+          <a href="{{ post.url }}">{{ post.title }}</a>
+        </span>
+        <span style="float: right;">
+          {{ post.date | date_to_string }}
+        </span>
+      </div>
+      <div style="clear: both;"></div>
+    {% endif %}{% endfor %}
+  {% endunless %}{% endfor %}
+</div>
 
-  <li><a href="{{ site.url }}/tag/{{ tag[0] | replace:' ','-' | downcase }}/" class="tag__item"><span class="tag__name">{{ tag[0] }}</span> <span class="tag__count">{{ tag[1] }}</span></a></li> 
+<!--  {% assign sorted_tags = site.tags | sort_tags_by_name %}
+  {% for tag in sorted_tags %}
+  <li><a href="{{ site.url }}/tag/{{ tag[0] | replace:' ','-' | downcase }}/" class="tag__item"><span class="tag__name">{{ tag[0] }}</span> <span class="tag__count">{{ tag[1] }}</span></a></li> -->
   
   {% endfor %}
 </ul>
