@@ -8,7 +8,7 @@ date: '2016-09-16'
 sidebar:
   nav: "examples"
 header:
-  teaser: "tropical.jpg"
+  teaser: "tropical-paradise.jpg"
 ---
 
 This example illustrates how control based on max-plus algebra can be implemented in YALMIP, by relying on automatic convexity analysis and the overloaded max operator.
