@@ -5,6 +5,8 @@ title: Model predictive control - LPV models redux
 tags: [MPC, Dynamic programming]
 comments: true
 date: '2016-09-16'
+sidebar:
+  nav: "examples"
 header:
   teaser: Henonattractor.png
 ---

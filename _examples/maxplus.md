@@ -5,6 +5,8 @@ title: MAXPLUS control
 tags: [Integer programming]
 comments: true
 date: '2016-09-16'
+sidebar:
+  nav: "examples"
 header:
   teaser: "maxplussystem.png"
 image:

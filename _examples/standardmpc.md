@@ -5,6 +5,8 @@ title: Model predictive control - Basics
 tags: [MPC, Quadratic programming]
 comments: true
 date: '2016-09-16'
+sidebar:
+  nav: "examples"
 header:
   teaser:
 ---

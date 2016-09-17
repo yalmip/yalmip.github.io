@@ -7,10 +7,8 @@ comments: true
 date: '2016-09-16'
 header:
   teaser: "portfolio.png"
-image:
-  feature: lofberg.jpg
-  teaser: lofberg.jpg
-  thumb: lofberg.jpg
+sidebar:
+  nav: "examples"
 ---
 
 ### Standard Markowitz portfolio

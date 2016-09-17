@@ -5,6 +5,8 @@ title: Experiment design in system identification
 tags: [Semidefinite programming, Determinant maximization, Integer programming]
 comments: true
 date: '2016-09-16'
+sidebar:
+  nav: "examples"
 header:
   teaser: "robot.jpg"
 image:

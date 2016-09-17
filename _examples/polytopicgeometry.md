@@ -7,6 +7,8 @@ comments: true
 date: '2016-09-16'
 header:
   teaser: "mptyalmip9.png"
+sidebar:
+  nav: "examples"
 image:
   feature: lofberg.jpg
   teaser: lofberg.jpg

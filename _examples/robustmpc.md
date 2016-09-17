@@ -5,12 +5,10 @@ title: Model predictive control - robust solutions
 tags: [Portfolio, Quadratic programming, Integer programming]
 comments: true
 date: '2016-09-16'
+sidebar:
+  nav: "examples"
 header:
   teaser: "robust_openloop.png"
-image:
-  feature: lofberg.jpg
-  teaser: lofberg.jpg
-  thumb: lofberg.jpg
 ---
 
 This example illustrates an application of the [robust optimization framework].

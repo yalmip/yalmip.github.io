@@ -5,6 +5,8 @@ title: Model predictive control - Explicit multi-parametric solution
 tags: [MPC, Multi-parametric programming]
 comments: true
 date: '2016-09-16'
+sidebar:
+  nav: "examples"
 header:
   teaser:
 ---
