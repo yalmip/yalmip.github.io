@@ -8,7 +8,7 @@ date: '2016-09-16'
 sidebar:
   nav: "examples"
 header:
-  teaser:
+  teaser: dppwasol.png
 ---
 
 YALMIP extends the parametric algorithms in [MPT] by adding a layer to enable binary variables and equality constraints. We can use this to find explicit solutions to, e.g., predictive control of PWA (piecewise affine) systems. Explicit solutions to MPC problems are solved using either one-shot approaches, or dynamic programming approaches.
