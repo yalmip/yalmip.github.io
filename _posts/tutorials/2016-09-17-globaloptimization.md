@@ -1,5 +1,5 @@
 ---
-title: "Global optimization tutorial"
+title: "Global optimization"
 type: tutorial
 author_profile: false
 level: 4
