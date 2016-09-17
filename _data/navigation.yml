@@ -61,14 +61,14 @@ examples:
         url: /examples/decayrate
   - title: Other
     children:
-      - title: "Portfolio allocation"
-        url: /examples/portfolio
+      - title: "Bilevel programming"
+        url: /examples/bilevelprogramming    
       - title: "Experiment design"
         url: /examples/experimentdesign
       - title: "Polytopic geometry"
-        url: /examples/polytopicgeometry
-      - title: "Bilevel programming"
-        url: /examples/bilevelprogramming
+        url: /examples/polytopicgeometry        
+      - title: "Portfolio allocation"
+        url: /examples/portfolio
       - title: "Sudoku solver"
         url: /examples/sudoku
       - title: "Sum-of-squares processing"
