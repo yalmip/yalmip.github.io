@@ -1,5 +1,7 @@
 ---
 layout: single
+type: example
+author_profile: false
 excerpt: "Solving MPC problems explicitly using various strategies, including dyanamic programming."
 title: Model predictive control - Explicit multi-parametric solution
 tags: [MPC, Multi-parametric programming]

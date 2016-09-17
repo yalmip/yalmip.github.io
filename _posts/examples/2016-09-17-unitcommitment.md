@@ -1,5 +1,7 @@
 ---
 layout: single
+type: example
+author_profile: false
 excerpt: "Mixed-integer optmization with logical modelling"
 title: Unit commitment
 tags: [Integer programming, Logic programming, Simulation, Planning]

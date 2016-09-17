@@ -1,5 +1,7 @@
 ---
 layout: single
+type: example
+author_profile: false
 excerpt: "Markowitz classical portfoilos and beyond via integer programming."
 title: Portfolio optimization
 tags: [Portfolio, Quadratic programming, Integer programming]
