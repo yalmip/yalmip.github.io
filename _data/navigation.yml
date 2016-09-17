@@ -41,17 +41,17 @@ solvers:
 examples:
   - title: Control applications
     children:
-      - title: "Model predictive control - basics"
+      - title: "MPC - basics"
         url: /examples/standardmpc
-      - title: "Model predictive control - explicit solution"
+      - title: "MPC - explicit solution"
         url: /examples/explicitmpc
-      - title: "Model predictive control - robust solutions"
+      - title: "MPC - robust solutions"
         url: /examples/robustmpc
-      - title: "Model predictive control - hybrid models"
+      - title: "MPC - hybrid models"
         url: /examples/hybridmpc
-      - title: "Model predictive control - LPV models I"
+      - title: "MPC - LPV models I"
         url: /examples/explicitlpvmpc
-      - title: "Model predictive control - LPV models II"
+      - title: "MPC - LPV models II"
         url: /examples/explicitlpvampc
       - title: "LPV state feedback"
         url: /examples/lpvstatefeedback
