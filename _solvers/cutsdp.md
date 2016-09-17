@@ -1,6 +1,7 @@
 ---
 title: "CUTSDP"
 layout: single
+permalink: /solvers/cutsdp/
 sidebar:
   nav: "solvers"
 ---
