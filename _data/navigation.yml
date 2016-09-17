@@ -33,8 +33,6 @@ solvers:
         url: /solvers/kktqp
       - title: "MOMENT"
         url: /solvers/solvemoment
-      - title: "SOS"
-        url: /solvers/solvesos
   - title: External solvers
     children:
       - title: "BARON"
