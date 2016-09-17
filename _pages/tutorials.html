@@ -8,9 +8,11 @@ permalink: /tutorials/
 
 <!-- <h3 class="archive__subtitle">Available tutorial topics test</h3> destroys grid view-->
 
-{% assign items = site.tutorials | sort: 'level' %}
+{% assign items = site.posts | sort: 'title' %}
 {% for post in items %}
-  {% include archive-single.html type="grid" %}
+{% if post.type == "tutorial" %}
+  {% include archive-single.html type="grid" %}      
+{% endif %}
 {% endfor %}
 
 {% include paginator.html %}
