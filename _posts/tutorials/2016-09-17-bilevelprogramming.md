@@ -1,5 +1,5 @@
 ---
-title: "Bilevel programming"
+title: "Bilevel programming tutorial"
 type: tutorial
 author_profile: false
 level: 4
