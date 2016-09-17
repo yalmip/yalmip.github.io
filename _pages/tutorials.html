@@ -4,9 +4,9 @@ author_profile: false
 permalink: /tutorials/
 ---
 
-<h3 class="archive__subtitle">Available tutorial topics test</h3>
-
 {% include base_path %}
+
+<!-- <h3 class="archive__subtitle">Available tutorial topics test</h3> destroys grid view-->
 
 {% assign items = site.tutorials | sort: 'level' %}
 {% for post in items %}
