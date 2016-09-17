@@ -1,5 +1,8 @@
 ---
 title: "Complex-valued problems"
+type: tutorial
+author_profile: false
+tags: [Complex data]
 excerpt: "Complex data in optimization models. No problem in reality."
 layout: single
 sidebar:
