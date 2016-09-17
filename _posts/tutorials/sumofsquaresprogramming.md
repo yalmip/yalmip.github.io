@@ -1,5 +1,8 @@
 ---
 title: "Sum-of-squares programming"
+type: tutorial
+author_profile: false
+tags: [Sum-of-squares programming, Semidfinite programming, Polynomials]
 excerpt: "Almost nothing is a sum-of-squares, but let's hope yours is."
 layout: single
 sidebar:
