@@ -41,26 +41,38 @@ solvers:
 examples:
   - title: Control applications
     children:
-      - title: "Standard Model predictive control"
-        url: ./standardmpc
-      - title: "SDPT3"
-        url: /yalmip/solvers/sdpt3
-
+      - title: "Model predictive control - basics"
+        url: /examples/standardmpc
+      - title: "Model predictive control - explicit solution"
+        url: /examples/explicitmpc
+      - title: "Model predictive control - robust solutions"
+        url: /examples/robustmpc
+      - title: "Model predictive control - hybrid models"
+        url: /examples/hybridmpc
+      - title: "Model predictive control - LPV models I"
+        url: /examples/explicitlpvmpc
+      - title: "Model predictive control - LPV models II"
+        url: /examples/explicitlpvampc
+      - title: "LPV state feedback"
+        url: /examples/lpvstatefeedback
+      - title: "Unit commitment planning"
+        url: /examples/unitcommitment
+      - title: "Decay rate estimation"
+        url: /examples/decayrate
   - title: Other
     children:
-      - title: "BNB"
-        url: /yalmip/solvers/bnb
-      - title: "BMIBNB"
-        url: /yalmip/solvers/bmibnb
-      - title: "CUTSDP"
-        url: /yalmip/solvers/cutsdp
-      - title: "KKTQP"
-        url: /yalmip/solvers/kktqp        
-      - title: "MOMENT"
-        url: /yalmip/solvers/solvemoment
-      - title: "SOS"
-        url: /yalmip/solvers/solvesos
-        
+      - title: "Portfolio allocation"
+        url: /examples/portfolio
+      - title: "Experiment design"
+        url: /examples/experimentdesign
+      - title: "Polytopic geometry"
+        url: /examples/polytopicgeometry
+      - title: "Bilevel programming"
+        url: /examples/bilevelprogramming
+      - title: "Sudoku solver"
+        url: /examples/sudoku
+      - title: "Sum-of-squares processing"
+        url: /examples/moresos
 tutorials:
   - title: Introduction
     children:
