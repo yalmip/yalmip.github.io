@@ -37,7 +37,30 @@ solvers:
         url: /yalmip/solvers/solvemoment
       - title: "SOS"
         url: /yalmip/solvers/solvesos
+        
+examples:
+  - title: Control applications
+    children:
+      - title: "SEDUMI"
+        url: /yalmip/solvers/sedumi
+      - title: "SDPT3"
+        url: /yalmip/solvers/sdpt3
 
+  - title: Other
+    children:
+      - title: "BNB"
+        url: /yalmip/solvers/bnb
+      - title: "BMIBNB"
+        url: /yalmip/solvers/bmibnb
+      - title: "CUTSDP"
+        url: /yalmip/solvers/cutsdp
+      - title: "KKTQP"
+        url: /yalmip/solvers/kktqp        
+      - title: "MOMENT"
+        url: /yalmip/solvers/solvemoment
+      - title: "SOS"
+        url: /yalmip/solvers/solvesos
+        
 tutorials:
   - title: Introduction
     children:
