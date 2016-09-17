@@ -1,6 +1,6 @@
 ---
 layout: single
-excerpt: "Neither convex nor nonconvex. Bisection to the rescue for quasi-convex semidefinite program"
+excerpt: "Neither convex nor nonconvex. Bisection to the rescue for quasi-convex semidefinite program."
 title: Decay rate computation in LTI system
 tags: [Integer programming]
 comments: true
