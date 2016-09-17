@@ -2,7 +2,8 @@
 layout: single
 excerpt: "Optimization over optimization problems in three different ways."
 title: Bilevel programming
-tags: [Integer programming]
+tags:
+ - Bilevel programming"
 comments: true
 date: '2016-09-16'
 sidebar:
