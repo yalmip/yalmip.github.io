@@ -9,10 +9,6 @@ sidebar:
   nav: "examples"
 header:
   teaser: "robot.jpg"
-image:
-  feature: lofberg.jpg
-  teaser: lofberg.jpg
-  thumb: lofberg.jpg
 ---
 
 >>paper fullwidth<<
