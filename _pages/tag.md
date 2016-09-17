@@ -39,6 +39,4 @@ share: false
     {% endif %}{% endfor %}
   {% endunless %}{% endfor %}
 </div>
-
-  {% endfor %}
 </ul>
