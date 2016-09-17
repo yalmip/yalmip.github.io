@@ -1,5 +1,8 @@
 ---
 title: "Getting started"
+type: tutorial
+author_profile: false
+tags:
 excerpt: "Tutorial introduces essentially everything you'll ever need. The remaining 95% is syntactic sugar."
 layout: single
 level: 1
