@@ -1,6 +1,7 @@
 ---
 title: "SeDuMi"
 layout: single
+permalink: /solvers/sedumi/
 sidebar:
   nav: "solvers"
 ---
