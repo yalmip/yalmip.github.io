@@ -30,11 +30,9 @@ The problem is not linear, but it is easily seen to be quasi-convex. Hence we ca
 
 Simple description of a bisection approach
 
-'''1.''' Find a lower bound on optimal \\(t\\) (any feasible \\(t\\) you can compute)
-
-'''2.''' Find an upper bound on optimal \\(t\\) (e.g., increase the lower bound until a feasibility problem for fixed \\(t\\) is infeasible).
-
-'''3.''' Start bisection, i.e., check value between lower and upper bound. If feasible, update lower bound, if infeasible update upper bound. Repeat until bounds are sufficiently close.
+1. Find a lower bound on optimal \\(t\\) (any feasible \\(t\\) you can compute)
+2. Find an upper bound on optimal \\(t\\) (e.g., increase the lower bound until a feasibility problem for fixed \\(t\\) is infeasible).
+3. Start bisection, i.e., check value between lower and upper bound. If feasible, update lower bound, if infeasible update upper bound. Repeat until bounds are sufficiently close.
 
 Define the variables.
 
