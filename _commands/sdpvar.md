@@ -1,6 +1,7 @@
 ---
 title: "sdpvar"
 layout: single
+permalink: /commands/sdpvar/
 sidebar:
   nav: "commands"
 ---
