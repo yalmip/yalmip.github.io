@@ -1,5 +1,8 @@
 ---
 title: "Geometric programming"
+type: tutorial
+author_profile: false
+tags: [Geometric programming]
 excerpt: "Geometric programming. Not about geometry."
 layout: single
 sidebar:
