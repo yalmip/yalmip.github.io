@@ -20,7 +20,7 @@ solvers:
     children:
       - title: "BISECTION"
         url: /solvers/bisection
-        - title: "BNB"
+      - title: "BNB"
         url: /solvers/bnb
       - title: "BMIBNB"
         url: /solvers/bmibnb
