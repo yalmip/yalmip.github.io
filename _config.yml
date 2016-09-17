@@ -113,6 +113,8 @@ include:
   - _pages
   - _posts
   - _posts/examples
+  - _posts/tutorials
+  - _posts/solvers
   - _examples
   - _tutorials
   - _commands
