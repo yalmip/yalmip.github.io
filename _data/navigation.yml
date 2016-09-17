@@ -14,6 +14,9 @@ main:
 
   - title: "Solvers"
     url: /allsolvers
+    
+  - title: "Index"
+    url: /tags    
 
 solvers:
   - title: Internal solvers
