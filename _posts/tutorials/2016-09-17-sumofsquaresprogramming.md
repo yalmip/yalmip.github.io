@@ -2,6 +2,7 @@
 title: "Sum-of-squares programming"
 type: tutorial
 author_profile: false
+level: 4
 tags: [Sum-of-squares programming, Semidfinite programming, Polynomials]
 excerpt: "Almost nothing is a sum-of-squares, but let's hope yours is."
 layout: single

@@ -2,6 +2,7 @@
 title: "Geometric programming"
 type: tutorial
 author_profile: false
+level: 4
 tags: [Geometric programming]
 excerpt: "Geometric programming. Not about geometry."
 layout: single

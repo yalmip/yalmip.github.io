@@ -2,6 +2,7 @@
 title: "Geometric programming"
 type: tutorial
 author_profile: false
+level: 4
 tags:
 excerpt: "Why did your computations slow down when you changed **max(x)** to **-max(x)**?"
 layout: single

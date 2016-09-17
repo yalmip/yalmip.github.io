@@ -2,6 +2,7 @@
 title: "Robust optimization"
 type: tutorial
 author_profile: false
+level: 4
 tags: [Robust optimization]
 excerpt: "The only thing we can be sure of is the lack of certainty."
 layout: single

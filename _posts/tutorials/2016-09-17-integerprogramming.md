@@ -2,6 +2,7 @@
 title: "Integer programming"
 type: tutorial
 author_profile: false
+level: 4
 tags: [Integer programming]
 excerpt: "Undisciplined programming often leads to integer models, but in some cases you have no option."
 layout: single

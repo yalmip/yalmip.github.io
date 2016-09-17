@@ -2,6 +2,7 @@
 title: "Bilevel programming"
 type: tutorial
 author_profile: false
+level: 4
 tags: [Bilevel programming]
 excerpt: "Bilevel programming using the built-in bilevel solver"
 layout: single
