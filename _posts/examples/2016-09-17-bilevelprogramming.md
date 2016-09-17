@@ -10,7 +10,7 @@ date: '2016-09-17'
 sidebar:
   nav: "examples"
 header:
-  teaser: "bilevel1.png"
+  teaser: "bilevel.png"
 ---
 
 YALMIP supports [solvebilevel bilevel programming natively], but this example shows how simple bilevel problems can be solved by using other standard modules in YALMIP. We will illustrate three different ways to solve bilevel quadratic optimization problems exactly; a multiparametric programming approach (which boils down to a mixed integer quadratic programming approach), a direct mixed integer quadratic programming approach, and a global nonlinear programming approach.
