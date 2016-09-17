@@ -41,8 +41,8 @@ solvers:
 examples:
   - title: Control applications
     children:
-      - title: "SEDUMI"
-        url: /yalmip/solvers/sedumi
+      - title: "Standard Model predictive control"
+        url: standardmpc
       - title: "SDPT3"
         url: /yalmip/solvers/sdpt3
 
