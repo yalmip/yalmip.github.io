@@ -29,7 +29,7 @@ To define an optimal covariance matrix, a scalar measure on the matrix has to be
 
 Let \\(Q\\) denote the total number of possible configurations and \\(H_i\\) the 12-by-12 inverse covariance matrices from each configuration. Our goal is to perform \\(M\\) experiments. The D-optimal design problem can be written as
 
-![Robot]({{ site.url }}/images/design1.jpg){: .center-image }
+![Robot]({{ site.url }}/images/design1.png){: .center-image }
 
 This problem can be solved using YALMIPs internal mixed integer conic solver [BNB]. Due to the [logdet], you are advised to solve the problem using [SDPT] as the lower bound solver.
 
