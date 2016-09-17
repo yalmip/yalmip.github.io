@@ -18,7 +18,7 @@ If you solve non-trivial linear and quadratic programs (and nonconvex problems v
 
 If you are in academia, [MOSEK] is convenient since it gives you a very competetive MILP, MIQP, MISOCP and SDP solver in one package.
 
-If you intend to solve large problems or other problem classes, you are advised to download several solvers to find one that works best for your problem class.
+If you intend to solve large problems or other problem classes, you are advised to download several solvers to find one that works best for your problem.
 
 And finally, there are no free lunches and you get what you pay for (unless you're in academia!).
 
