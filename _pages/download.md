@@ -1,6 +1,7 @@
 ---
 title: "Download"
 layout: splash
+permalink: /download
 ---
 
 YALMIP is free of charge to use and is openly distributed, but note that 
