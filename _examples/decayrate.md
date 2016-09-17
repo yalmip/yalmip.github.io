@@ -9,10 +9,6 @@ sidebar:
   nav: "examples"
 header:
   teaser: "gevp.gif"
-image:
-  feature: lofberg.jpg
-  teaser: lofberg.jpg
-  thumb: lofberg.jpg
 ---
 
 This example is motivated by one of the most asked question: *How can I do GEVP optimization?*
@@ -23,7 +19,7 @@ However, luckily this is not entirely true, and the long answer is given by this
 
 The problem we will solve is to estimate the decay-rate of a linear system  \\(\dot{x}= Ax\\). This can be formulated as a generalized eigenvalue problem.
 
-![GEVP problem]({{ site.url }}/images/gevp.h4.gif){: .center-image }
+![GEVP problem]({{ site.url }}/images/gevp.gif){: .center-image }
 
 Due to the product between \\(t\\) and \\(P\\), the problem cannot be solved directly using linear semidefinite programming.
 
