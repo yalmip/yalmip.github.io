@@ -10,7 +10,7 @@ One of the core ideas in YALMIP is to rely on external solvers for the low-level
 
 ## Recommended installation
 
-Linear programming can be solved by quadratic programming which can be solved by second-order cone programming which can be solved by semidefinite programming. Hence, in theory, you only need a semidefinite programming solver if you only solve linear problems. In practice thouh, dedicated solvers are recommended.
+Linear programming can be solved by quadratic programming which can be solved by second-order cone programming which can be solved by semidefinite programming. Hence, in theory, you only need a semidefinite programming solver if you only solve linear problems. In practice though, dedicated solvers are recommended.
 
 A recommended installation if you mainly intend to solve SDPs and LPs and QPs is [MOSEK], [SEDUMI] or [SDPT3].
 
