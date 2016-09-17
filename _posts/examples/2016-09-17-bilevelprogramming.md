@@ -3,7 +3,7 @@ layout: single
 type: example
 author_profile: false
 excerpt: "Optimization over optimization problems in three different ways."
-title: Bilevel programming
+title: Bilevel programming alternatives
 tags: [Bilevel programming, Multi-parametric programming, kkt, solvebilevel]
 comments: true
 date: '2016-09-17'
