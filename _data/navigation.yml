@@ -16,6 +16,20 @@ main:
     url: /solvers
 
 solvers:
+  - title: Internal solvers
+    children:
+      - title: "BNB"
+        url: /solvers/bnb
+      - title: "BMIBNB"
+        url: /solvers/bmibnb
+      - title: "CUTSDP"
+        url: /solvers/cutsdp
+      - title: "KKTQP"
+        url: /solvers/kktqp
+      - title: "MOMENT"
+        url: /solvers/solvemoment
+      - title: "SOS"
+        url: /solvers/solvesos
   - title: External solvers
     children:
       - title: "BARON"
@@ -110,21 +124,7 @@ solvers:
         url: /solvers/SPARSEPOP
       - title: "XPRESS"
         url: /solvers/xpress
-  - title: Internal solvers
-    children:
-      - title: "BNB"
-        url: /solvers/bnb
-      - title: "BMIBNB"
-        url: /solvers/bmibnb
-      - title: "CUTSDP"
-        url: /solvers/cutsdp
-      - title: "KKTQP"
-        url: /solvers/kktqp
-      - title: "MOMENT"
-        url: /solvers/solvemoment
-      - title: "SOS"
-        url: /solvers/solvesos
-
+        
 examples:
   - title: Control applications
     children:
