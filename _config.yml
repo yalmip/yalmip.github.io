@@ -114,6 +114,8 @@ include:
   - _posts
   - _examples
   - _tutorials
+  - _commands
+  - _solvers
   - docs
 exclude:
   - "*.sublime-project"
