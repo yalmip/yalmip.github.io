@@ -8,8 +8,9 @@ author_profile: false
 <!-- <h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>-->
 
 {% for post in paginator.posts %}
-{% if post.type == empty %}
-  {% include archive-single.html type="grid" %}
+{% if post.type == "example" or post.type == "tutorial" or post.type == "solver" or post.type == "command" %}
+{% else %}
+{% include archive-single.html type="grid" %}
 {% endif %}
 {% endfor %}
 {% include paginator.html %}
