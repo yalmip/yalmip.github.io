@@ -71,6 +71,7 @@ G = randn(5,n);
 ````
 
 ### Direct mixed integer quadratic programming approach
+
 The complementary conditions simply say that the multiplier is zero, or the corresponding constraint is active. This can be modeled in YALMIP by using the logic programming module (or one can set this up manually using binary variables).
 
 ````matlab
@@ -120,7 +121,7 @@ KKT = [KKT, lambda <= 100, -100 <= [x;z] <= 100];
 ops = sdpsettings('solver','bmibnb');
 optimize([KKT, A*x <= b + E*z], 0.5*x'*Q*x + c'*x + d'*z,ops)
  ````
-
+ 
 The performance of the global solver is fairly poor on this formulation. The reason is that it does not detect the complementary structure, but simply treats the problem as a general problem with bilinear constraints. To improve performance, we introduce a new variable for the slack and obtain an easily detected complementary structure. YALMIP will exploit this complementary structure to improve the bound propagation and branching process.
 
 ````matlab
@@ -136,7 +137,6 @@ KKT = [KKT, lambda <= 100, -100 <= [x;z] <= 100];
 ops = sdpsettings('solver','bmibnb');
 optimize([KKT, A*x <= b + E*z], 0.5*x'*Q*x + c'*x + d'*z,ops)
 ````
-
 
 ### Multiparametric programming approach
 
