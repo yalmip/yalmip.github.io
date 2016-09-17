@@ -4,7 +4,8 @@ excerpt: "Optimization over optimization problems in three different ways."
 title: Bilevel programming
 tags: [Bilevel programming]
 comments: true
-date: '2016-09-16'
+date: '2016-09-17'
+author_profile: false
 sidebar:
   nav: "examples"
 header:
