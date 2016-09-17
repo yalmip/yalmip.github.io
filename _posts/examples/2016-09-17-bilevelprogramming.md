@@ -1,6 +1,6 @@
 ---
 layout: single
-area: example
+type: example
 excerpt: "Optimization over optimization problems in three different ways."
 title: Bilevel programming
 tags: [Bilevel programming]
