@@ -23,10 +23,9 @@ The problem we will solve is to estimate the decay-rate of a linear system  \\(\
 
 Due to the product between \\(t\\) and \\(P\\), the problem cannot be solved directly using linear semidefinite programming.
 
-
 ### Bisection algorithm
 
-The problem is not linear, but it is easily seen to be quasi-convex. Hence we can solve it by bisection in \\(t\\).
+The problem is not linear, but it is easily seen to be quasi-convex. Hence we can solve it by bisection in \\(t\\). Will will first implement a bisection manually, and then use the built-in YALMIP meta-solver [bisection].
 
 Simple description of a bisection approach
 
