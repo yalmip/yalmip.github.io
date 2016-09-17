@@ -19,4 +19,6 @@ YALMIP is free of charge to use and is openly distributed, but note that
 
 [Download YALMIP R20160916](https://johanlofberg.github.com/yalmip/master.zip){: .btn .btn--success}
 
+For installation, see the [installation tutorial](tutorials/installation), and get started coding [here](tutorials/basics)
+
 ## Old releases
