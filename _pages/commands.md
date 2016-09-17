@@ -1,6 +1,7 @@
 ---
 title: "Commands (reference manual)"
 layout: splash
+permalink: /commands
 ---
 
 ## Most common
