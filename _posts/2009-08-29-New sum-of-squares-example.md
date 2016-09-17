@@ -11,4 +11,4 @@ image:
   thumb: lofberg.jpg
 ---
 
-A new [sum-of-squares example](/yalmip/examples/moresos) has been made available. This example concentrates on the pre-processing capabilities of YALMIPs [sum-of-squares module](/yalmip/tutorials/sumofsquaresprogramming).
+A new [sum-of-squares example](/examples/moresos) has been made available. This example concentrates on the pre-processing capabilities of YALMIPs [sum-of-squares module](/tutorials/sumofsquaresprogramming).
