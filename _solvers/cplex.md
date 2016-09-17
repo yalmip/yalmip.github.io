@@ -1,0 +1,3 @@
+--
+permalink: /solvers/cplex
+--
