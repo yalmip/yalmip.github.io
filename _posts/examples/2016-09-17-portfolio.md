@@ -4,7 +4,7 @@ type: example
 author_profile: false
 excerpt: "Markowitz classical portfoilos and beyond via integer programming."
 title: Portfolio optimization
-tags: [Portfolio, Quadratic programming, Integer programming]
+tags: [Portfolio optimization, Finance, Quadratic programming, Integer programming]
 comments: true
 date: '2016-09-16'
 header:
