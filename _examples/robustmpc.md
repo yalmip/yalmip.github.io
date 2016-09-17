@@ -90,14 +90,13 @@ plot(C*xk)
 
 Indeed, the solution satisfies the hard constraint, but the steady-state level on \\(y\\) is far away from the desired level. The reason is the open-loop assumption in the problem. The input sequence computed at time \\(k\\) has to take all future disturbances into account, and does not use the fact that MPC is implemented in a receding horizon fashion.
 
-A better solution is a closed-loop assumption that exploits the fact that future inputs can be functions of future states. This gives a lot less conservative solution, but the solution is, if not intractable, very hard. Typical solution require dynamic programming strategies, or brute-force enumeration. A tractable alternative was introduced in [Löfberg 2003].
+A better solution is a closed-loop assumption that exploits the fact that future inputs effectively are functions of future states (we will solve MPC problems in the future over new prediction horizons with measured states). This gives a lot less conservative solution, but the solution is, if not unsolvable, very hard. Typical solution require dynamic programming strategies, or brute-force enumeration. A tractable alternative was introduced in [Löfberg 2003].
 
 ### Approximate closed-loop minimax solution
 
 The idea in [Löfberg 2003] was to parameterize future inputs as affine functions of past disturbances. This, in contrast to parameterization in past states, lead to convex and tractable problems.
 
 We create a causal feedback \\(U = LW + V\\) and derive the predicted states.
-
 
 ````matlab
 V = sdpvar(N,1);
@@ -143,14 +142,14 @@ Obviously, the performance is far better (although we admittedly used different 
 
 The robust optimization framework is integrated in the over-all infrastructure in YALMIP. Hence, a model can be robustified, and then sent to the multiparametric solver [MPT] in order to get a [tutorials.Multiparametric  multiparametric solution].
 
-In our case, we want to have a multi-parametric solution with respect to the state \\(x\\). One way to compute the parametric solution is to first derive the robustified model, and send this to the parametric solver.
+In our case, we want to have a multi-parametric solution with respect to the state \\(x_k\\). One way to compute the parametric solution is to first derive the robustified model, and send this to the parametric solver.
 
 ````matlab
 [Frobust,h] = robustify(F + G,objective,[],W);
 sol = solvemp(Frobust,h,[],x);
 ````
 
-Alternatively, we can send the uncertain model directly to [solvemp], but we then have declare the uncertain variables via the command [uncertain]
+Alternatively, we can send the uncertain model directly to [solvemp], but we then have to declare the uncertain variables via the command [uncertain]
 
 ````matlab
 sol = solvemp([F,G,uncertain(W)],objective,[],x);
@@ -158,7 +157,7 @@ sol = solvemp([F,G,uncertain(W)],objective,[],x);
 
 ### Dynamic programming solution to closed-loop minimax problem
 
-It should be mentioned that, for some problems, an exact closed-loop solution can probably be computed more efficiently with dynamic programming along the lines of [Examples.DP | the dynamic programming examples].
+It should be mentioned that, for some problems, an exact closed-loop solution can probably be computed more efficiently with dynamic programming along the lines of [Examples.DP the dynamic programming examples].
 
 Recall the DP code for the [Examples.DP#ltidp  dynamic programming example for LTI systems] to solve our problem without any uncertainty.
 
@@ -200,11 +199,11 @@ for k = N-1:-1:1
 end
 ````
 
-We will now make some small additions to solve this problem robustly, i.e. minimize worst-case cost and satisfy constraints for all disturbances.
+We will now make some small additions to solve this problem robustly, i.e., minimize worst-case cost and satisfy constraints for all disturbances.
 
 The first change is that we cannot work with equality constraints to define the state dynamics, since the dynamics are uncertain. Instead, we add constraints on the uncertain prediction equations.
 
-Furthermore, the value function *'J{k+1}** is defined in terms of the variable **x{k+1}**, but since we do not link **x{k+1}** with **x{k}** and **u{k}** with an equality constraint because of the uncertainty, we need to redefine the value function in terms of the uncertain prediction, to make sure that the objective function will be the worst-case cost.
+Furthermore, the value function **J{k+1}** is defined in terms of the variable **x{k+1}**, but since we do not link **x{k+1}** with **x{k}** and **u{k}** with an equality constraint because of the uncertainty, we need to redefine the value function in terms of the uncertain prediction, to make sure that the objective function will be the worst-case cost.
 
 ````matlab
 % Uncertainty w(k), ..., w(k+N) (last one not used)
@@ -236,4 +235,4 @@ for k = N-1:-1:1
 end
 ````
 
-Please note that this multiparametric problem seems to grow large, hence it will take a fair amount of time to compute. Rest assured though, we are constantly working on improving performance in both [MPT] and YALMIP.
+Note that this multiparametric problem seems to grow large, hence it will take a fair amount of time to compute it. Rest assured though, we are constantly working on improving performance in both [MPT] and YALMIP.
