@@ -20,6 +20,7 @@ For an introduction to bilevel optimization, see [Practical Bilevel Optimization
 ### Bilevel quadratic programming
 
 Our outer problem is a quadratic programming problem in the variables \\(x\\) and \\(z\\)
+
 $$
 \begin{aligned}
 \text{minimize} ~~& \frac{1}{2}x^TQx+c^Tx + d^Tz \\
@@ -28,6 +29,7 @@ $$
 $$
 
 The variable \\(z\\) is constrained to be the optimal solution of an inner quadratic programming problem
+
 $$
 \begin{aligned}
 z = \arg \min ~&\frac{1}{2}z^THz+e^Tz + f^Tx \\
