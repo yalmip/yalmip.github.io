@@ -4,7 +4,7 @@ type: example
 author_profile: false
 excerpt: "Solving mixed-integer maxdet problems"
 title: Experiment design in system identification
-tags: [Semidefinite programming, Determinant maximization, Integer programming]
+tags: [Semidefinite programming, Determinant maximization, Integer programming, Duality]
 comments: true
 date: '2016-09-16'
 sidebar:

@@ -4,7 +4,7 @@ type: example
 author_profile: false
 excerpt: "Neither convex nor nonconvex. Bisection to the rescue for quasi-convex semidefinite program."
 title: Decay rate computation in LTI system
-tags: [Semidefinite programming, Quasi-convex, Bisection]
+tags: [Semidefinite programming, Quasi-convex, Bisection, Control]
 comments: true
 date: '2016-09-16'
 sidebar:
