@@ -42,7 +42,7 @@ examples:
   - title: Control applications
     children:
       - title: "Standard Model predictive control"
-        url: standardmpc
+        url: ./standardmpc
       - title: "SDPT3"
         url: /yalmip/solvers/sdpt3
 
