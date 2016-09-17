@@ -5,7 +5,7 @@ permalink: /examples/
 ---
 
 {% include base_path %}
-<h3 class="archive__subtitle">Examples from various domains</h3>		
+<!-- <h3 class="archive__subtitle">Examples from various domains</h3>		This destroys lists -->
 {% assign items = site.examples | sort: 'title' %}
 {% for post in items %}
   {% include archive-single.html type="grid" %}
