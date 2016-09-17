@@ -23,6 +23,15 @@ YALMIP is entirely based on m-code, and is thus easy to install. Remove any old 
 
 A lazy way to do this is `addpath(genpath(yalmiprootdirectory))`
 
+
+If you want to be even lazier, simply run the following code in the directory where you want to install YALMIP
+````matlab
+urlwrite('https://github.com/johanlofberg/yalmip/archive/master.zip','yalmip.zip');
+unzip('yalmip.zip','yalmip')
+addpath(genpath([pwd filesep 'yalmip']);
+savepath
+````
+
 To test your installation, run the command [yalmiptest]. For further examples and tests, run code from this manual!
 
 ### Solvers
