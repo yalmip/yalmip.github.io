@@ -8,7 +8,7 @@ permalink: /tutorials/
 
 <!-- <h3 class="archive__subtitle">Available tutorial topics test</h3> destroys grid view-->
 
-{% assign items = site.posts | sort: 'level' %}
+{% assign items = site.posts | sort: 'level' | reverese %}
 {% for post in items %}
 {% if post.type == "tutorial" %}
   {% include archive-single.html type="grid" %}      
