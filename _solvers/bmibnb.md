@@ -1,6 +1,7 @@
 ---
 title: "BMIBNB"
 layout: single
+tags: [Global solver]
 permalink: /solvers/bmibnb/
 sidebar:
   nav: "solvers"
