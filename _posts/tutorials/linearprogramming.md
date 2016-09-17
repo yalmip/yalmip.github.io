@@ -1,5 +1,8 @@
 ---
 title: "Linear programming"
+type: tutorial
+author_profile: false
+tags: [Linear programming]
 excerpt: "As easy as it gets. Linear separation with linear norms."
 layout: single
 level: 2
