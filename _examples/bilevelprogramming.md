@@ -1,5 +1,5 @@
 ---
-layout: single
+layout: post
 excerpt: "Optimization over optimization problems in three different ways."
 title: Bilevel programming
 tag:
