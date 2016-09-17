@@ -5,7 +5,7 @@ author_profile: false
 tags: [Linear programming]
 excerpt: "As easy as it gets. Linear separation with linear norms."
 layout: single
-level: 2
+level: 1.5
 sidebar:
   nav: "tutorials"
 ---
