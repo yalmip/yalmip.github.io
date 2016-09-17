@@ -1,5 +1,8 @@
 ---
 title: "Duality"
+type: tutorial
+author_profile: false
+tags: 
 excerpt: "Extract dual solutions from conic optimization problems."
 layout: single
 sidebar:
