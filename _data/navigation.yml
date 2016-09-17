@@ -10,33 +10,33 @@ main:
     url: /examples
 
   - title: "Commands"
-    url: /yalmip/commands
+    url: /commands
 
   - title: "Solvers"
-    url: /yalmip/solvers
+    url: /solvers
 
 solvers:
   - title: External solvers
     children:
       - title: "SEDUMI"
-        url: /yalmip/solvers/sedumi
+        url: /solvers/sedumi
       - title: "SDPT3"
-        url: /yalmip/solvers/sdpt3
+        url: /solvers/sdpt3
 
   - title: Internal solvers
     children:
       - title: "BNB"
-        url: /yalmip/solvers/bnb
+        url: /solvers/bnb
       - title: "BMIBNB"
-        url: /yalmip/solvers/bmibnb
+        url: /solvers/bmibnb
       - title: "CUTSDP"
-        url: /yalmip/solvers/cutsdp
+        url: /solvers/cutsdp
       - title: "KKTQP"
-        url: /yalmip/solvers/kktqp        
+        url: /solvers/kktqp        
       - title: "MOMENT"
-        url: /yalmip/solvers/solvemoment
+        url: /solvers/solvemoment
       - title: "SOS"
-        url: /yalmip/solvers/solvesos
+        url: /solvers/solvesos
         
 examples:
   - title: Control applications
