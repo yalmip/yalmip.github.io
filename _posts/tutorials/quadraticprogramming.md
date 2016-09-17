@@ -1,5 +1,8 @@
 ---
 title: "Quadratic programming"
+type: tutorial
+author_profile: false
+tags: [Quadratic programming]
 excerpt: "Almost as easy as linear programming. Be careful though, symbolics might start to cause overhead."
 layout: single
 level: 2
