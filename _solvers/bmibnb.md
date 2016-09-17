@@ -1,6 +1,7 @@
 ---
 title: "BMIBNB"
 layout: single
+permalink: /solvers/bmibnb/
 sidebar:
   nav: "solvers"
 ---
