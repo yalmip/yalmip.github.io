@@ -25,6 +25,7 @@ A lazy way to do this is `addpath(genpath(yalmiprootdirectory))`
 
 
 If you want to be even lazier, simply run the following code in the directory where you want to install YALMIP
+
 ````matlab
 urlwrite('https://github.com/johanlofberg/yalmip/archive/master.zip','yalmip.zip');
 unzip('yalmip.zip','yalmip')
