@@ -10,7 +10,7 @@ permalink: /tutorials/
 
 {% assign items = site.posts | sort: 'level' %}
 {% for post in items %}
-{% if post.type == "tutorial" %}
+{% if post.category == "tutorial" %}
   {% include archive-single.html type="grid" %}      
 {% endif %}
 {% endfor %}
