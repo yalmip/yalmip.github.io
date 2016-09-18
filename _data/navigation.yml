@@ -14,363 +14,363 @@ main:
 
   - title: "Solvers"
     url: /allsolvers
-    
+
   - title: "Index"
-    url: /tags    
+    url: /tags
 
 solvers:
   - title: Internal solvers
     children:
       - title: "BISECTION"
-        url: /solvers/bisection
+        url: /solver/bisection
       - title: "BNB"
-        url: /solvers/bnb
+        url: /solver/bnb
       - title: "BMIBNB"
-        url: /solvers/bmibnb
+        url: /solver/bmibnb
       - title: "CUTSDP"
-        url: /solvers/cutsdp
+        url: /solver/cutsdp
       - title: "KKTQP"
-        url: /solvers/kktqp
+        url: /solver/kktqp
       - title: "MOMENT"
-        url: /solvers/solvemoment
+        url: /solver/solvemoment
   - title: External solvers
     children:
       - title: "BARON"
-        url: /solvers/baron
+        url: /solver/baron
       - title: "BINTPROG"
-        url: /solvers/bintprog
+        url: /solver/bintprog
       - title: "BONMIN"
-        url: /solvers/bonmin
+        url: /solver/bonmin
       - title: "BPMPD"
-        url: /solvers/BPMPD
+        url: /solver/BPMPD
       - title: "CBC"
-        url: /solvers/cbc
+        url: /solver/cbc
       - title: "CDD"
-        url: /solvers/cdd
+        url: /solver/cdd
       - title: "CPLEX"
-        url: /solvers/cplex
+        url: /solver/cplex
       - title: "CSDP"
-        url: /solvers/csdp
+        url: /solver/csdp
       - title: "DSDP"
-        url: /solvers/dsdp
+        url: /solver/dsdp
       - title: "ECOS"
-        url: /solvers/ecos
+        url: /solver/ecos
       - title: "FILTERSD"
-        url: /solvers/filtersd
+        url: /solver/filtersd
       - title: "FMINCON"
-        url: /solvers/fmincon
+        url: /solver/fmincon
       - title: "GUROBI"
-        url: /solvers/gurobi
+        url: /solver/gurobi
       - title: "GLPK"
-        url: /solvers/glpk
+        url: /solver/glpk
       - title: "GPPOSY"
-        url: /solvers/gpposy
+        url: /solver/gpposy
       - title: "GUROBI"
-        url: /solvers/gurobi
+        url: /solver/gurobi
       - title: "INTLINPROG"
-        url: /solvers/intlinprog
+        url: /solver/intlinprog
       - title: "KNITRO"
-        url: /solvers/knitro
+        url: /solver/knitro
       - title: "LINPROG"
-        url: /solvers/linprog
+        url: /solver/linprog
       - title: "LMILAB"
-        url: /solvers/lmilab
+        url: /solver/lmilab
       - title: "LMIRANK"
-        url: /solvers/lmirank
+        url: /solver/lmirank
       - title: "LOGDETPPA"
-        url: /solvers/logdetppa
+        url: /solver/logdetppa
       - title: "LPSOLVE"
-        url: /solvers/lpsolve
+        url: /solver/lpsolve
       - title: "LSQLIN"
-        url: /solvers/lsqlin
+        url: /solver/lsqlin
       - title: "LSQLINNONNEG"
-        url: /solvers/lsqlinnonneg
+        url: /solver/lsqlinnonneg
       - title: "MOSEK"
-        url: /solvers/mosek
+        url: /solver/mosek
       - title: "MPT"
-        url: /solvers/mpt
+        url: /solver/mpt
       - title: "NAG"
-        url: /solvers/nag
+        url: /solver/nag
       - title: "NOMAD"
-        url: /solvers/nomad
+        url: /solver/nomad
       - title: "OOQP"
-        url: /solvers/ooqp
+        url: /solver/ooqp
       - title: "PENBMI"
-        url: /solvers/penbmi
+        url: /solver/penbmi
       - title: "PENLAB"
-        url: /solvers/penlab
+        url: /solver/penlab
       - title: "PENSDP"
-        url: /solvers/pensdp
+        url: /solver/pensdp
       - title: "QPC"
-        url: /solvers/qpc
+        url: /solver/qpc
       - title: "QPOASES"
-        url: /solvers/qpoases
+        url: /solver/qpoases
       - title: "QSOPT"
-        url: /solvers/qsopt
+        url: /solver/qsopt
       - title: "QUADPROG"
-        url: /solvers/quadprog
+        url: /solver/quadprog
       - title: "QUADPROGBB"
-        url: /solvers/quadprogbb
+        url: /solver/quadprogbb
       - title: "SCIP"
-        url: /solvers/scip
+        url: /solver/scip
       - title: "SDPA"
-        url: /solvers/sdpa
+        url: /solver/sdpa
       - title: "SDPLR"
-        url: /solvers/sdplr
+        url: /solver/sdplr
       - title: "SDPT3"
-        url: /solvers/sdpt3
+        url: /solver/sdpt3
       - title: "SEDUMI"
-        url: /solvers/sedumi
+        url: /solver/sedumi
       - title: "SNOPT"
-        url: /solvers/snopt
+        url: /solver/snopt
       - title: "SPARSEPOP"
-        url: /solvers/SPARSEPOP
+        url: /solver/SPARSEPOP
       - title: "XPRESS"
-        url: /solvers/xpress
-        
+        url: /solver/xpress
+
 examples:
   - title: Control applications
     children:
       - title: "MPC - basics"
-        url: /examples/standardmpc
+        url: /example/standardmpc
       - title: "MPC - explicit solution"
-        url: /examples/explicitmpc
+        url: /example/explicitmpc
       - title: "MPC - robust solutions"
-        url: /examples/robustmpc
+        url: /example/robustmpc
       - title: "MPC - hybrid models"
-        url: /examples/hybridmpc
+        url: /example/hybridmpc
       - title: "MPC - LPV models I"
-        url: /examples/explicitlpvmpc
+        url: /example/explicitlpvmpc
       - title: "MPC - LPV models II"
-        url: /examples/explicitlpvampc
+        url: /example/explicitlpvampc
       - title: "LPV state feedback"
-        url: /examples/lpvstatefeedback
+        url: /example/lpvstatefeedback
       - title: "Unit commitment planning"
-        url: /examples/unitcommitment
+        url: /example/unitcommitment
       - title: "Decay rate estimation"
-        url: /examples/decayrate
+        url: /example/decayrate
   - title: Other
     children:
       - title: "Bilevel programming"
-        url: /examples/bilevelprogramming
+        url: /example/bilevelprogramming
       - title: "Experiment design"
-        url: /examples/experimentdesign
+        url: /example/experimentdesign
       - title: "Polytopic geometry"
-        url: /examples/polytopicgeometry
+        url: /example/polytopicgeometry
       - title: "Portfolio allocation"
-        url: /examples/portfolio
+        url: /example/portfolio
       - title: "Sudoku solver"
-        url: /examples/sudoku
+        url: /example/sudoku
       - title: "Sum-of-squares processing"
-        url: /examples/moresos
+        url: /example/moresos
 tutorials:
   - title: Introduction
     children:
       - title: "Installation"
-        url: /yalmip/tutorials/installation
+        url: /yalmip/tutorial/installation
       - title: "Getting started!"
-        url: /yalmip/tutorials/basics
+        url: /yalmip/tutorial/basics
 
   - title: Standard problem classes
     children:
       - title: "Linear programming"
-        url: /yalmip/tutorials/linearprogramming
+        url: /yalmip/tutorial/linearprogramming
       - title: "Quadratic programming"
-        url: /yalmip/tutorials/quadraticprogramming
+        url: /yalmip/tutorial/quadraticprogramming
       - title: "Second order cone programming"
-        url: /yalmip/tutorials/socpprogramming
+        url: /yalmip/tutorial/socpprogramming
       - title: "Semidefinite programming"
-        url: /yalmip/tutorials/semidefiniteprogramming
+        url: /yalmip/tutorial/semidefiniteprogramming
       - title: "Determinant optimization"
-        url: /yalmip/tutorials/maxdetprogramming
+        url: /yalmip/tutorial/maxdetprogramming
       - title: "Geometric programming"
-        url: /yalmip/tutorials/geometricprogramming
+        url: /yalmip/tutorial/geometricprogramming
       - title: "General convex programming"
-        url: /yalmip/tutorials/generalconvexprogramming
+        url: /yalmip/tutorial/generalconvexprogramming
       - title: "Integer programming"
-        url: /yalmip/tutorials/integerprogramming
+        url: /yalmip/tutorial/integerprogramming
       - title: "Global optimization"
-        url: /yalmip/tutorials/globaloptimization
+        url: /yalmip/tutorial/globaloptimization
   - title: Advanced problem classes
     children:
       - title: "Robust optimization"
-        url: /yalmip/tutorials/robustoptimization
+        url: /yalmip/tutorial/robustoptimization
       - title: "Multiparametric programming"
-        url: /yalmip/tutorials/multiparametricprogramming
+        url: /yalmip/tutorial/multiparametricprogramming
       - title: "Bilevel programming"
-        url: /yalmip/tutorials/bilevelprogramming
+        url: /yalmip/tutorial/bilevelprogramming
       - title: "Sum-of-squares programming"
-        url: /yalmip/tutorials/sumofsquaresprogramming
+        url: /yalmip/tutorial/sumofsquaresprogramming
       - title: "Moment relaxations"
-        url: /yalmip/tutorials/momentrelaxations
+        url: /yalmip/tutorial/momentrelaxations
   - title: Auxilliary
     children:
       - title: "Nonlinear operators"
-        url: /yalmip/tutorials/nonlinearoperators
+        url: /yalmip/tutorial/nonlinearoperators
       - title: "Big-M and convex hulls"
-        url: /yalmip/tutorials/bigmandconvexhulls
+        url: /yalmip/tutorial/bigmandconvexhulls
       - title: "Duality"
-        url: /yalmip/tutorials/duality
+        url: /yalmip/tutorial/duality
       - title: "Automatic dualizations"
-        url: /yalmip/tutorials/automaticdualization
+        url: /yalmip/tutorial/automaticdualization
       - title: "Complex problems"
-        url: /yalmip/tutorials/complexproblems
+        url: /yalmip/tutorial/complexproblems
 
 
 commands:
   - title: Most common
     children:
       - title: "sdpvar"
-        url: /yalmip/commands/sdpvar
+        url: /yalmip/command/sdpvar
       - title: "optimize"
-        url: /yalmip/commands/optimize
+        url: /yalmip/command/optimize
       - title: "value"
-        url: /yalmip/commands/value
+        url: /yalmip/command/value
       - title: "sdpsettings"
-        url: /yalmip/commands/sdpsettings
+        url: /yalmip/command/sdpsettings
   - title: Variable declaration
     children:
       - title: "binvar"
-        url: /yalmip/commands/binvar
+        url: /yalmip/command/binvar
       - title: "blkvar"
-        url: /yalmip/commands/blkvar
+        url: /yalmip/command/blkvar
       - title: "intvar"
-        url: /yalmip/commands/intvar
+        url: /yalmip/command/intvar
       - title: "sdpvar"
-        url: /yalmip/commands/sdpvar
+        url: /yalmip/command/sdpvar
       - title: "semivar"
-        url: /yalmip/commands/semivar
+        url: /yalmip/command/semivar
   - title: Optimization
     children:
       - title: "optimize"
-        url: /yalmip/commands/optimize
+        url: /yalmip/command/optimize
       - title: "optimizer"
-        url: /yalmip/commands/optimizer
+        url: /yalmip/command/optimizer
       - title: "solvebilevel"
-        url: /yalmip/commands/solvebilevel
+        url: /yalmip/command/solvebilevel
       - title: "solvemoment"
-        url: /yalmip/commands/solvemoment
+        url: /yalmip/command/solvemoment
       - title: "solvemp"
-        url: /yalmip/commands/solvemp
+        url: /yalmip/command/solvemp
       - title: "solvesos"
-        url: /yalmip/commands/solvesos
+        url: /yalmip/command/solvesos
   - title: Optimization model manipulations
     children:
       - title: "dualize"
-        url: /yalmip/commands/dualize
+        url: /yalmip/command/dualize
       - title: "export"
-        url: /yalmip/commands/export
+        url: /yalmip/command/export
       - title: "kkt"
-        url: /yalmip/commands/kkt
+        url: /yalmip/command/kkt
       - title: "momentmodel"
-        url: /yalmip/commands/momentmodel
+        url: /yalmip/command/momentmodel
       - title: "primalize"
-        url: /yalmip/commands/primalize
+        url: /yalmip/command/primalize
       - title: "robustmodel"
-        url: /yalmip/commands/robustmodel
+        url: /yalmip/command/robustmodel
       - title: "sosmodel"
-        url: /yalmip/commands/sosmodel
+        url: /yalmip/command/sosmodel
   - title: Variable manipulations
     children:
       - title: "assign"
-        url: /yalmip/commands/assign
+        url: /yalmip/command/assign
       - title: "binmodel"
-        url: /yalmip/commands/binmodel
+        url: /yalmip/command/binmodel
       - title: "coefficients"
-        url: /yalmip/commands/coefficients
+        url: /yalmip/command/coefficients
       - title: "degree"
-        url: /yalmip/commands/degree
+        url: /yalmip/command/degree
       - title: "dissect"
-        url: /yalmip/commands/dissect
+        url: /yalmip/command/dissect
       - title: "hessian"
-        url: /yalmip/commands/hessian
+        url: /yalmip/command/hessian
       - title: "int"
-        url: /yalmip/commands/int
+        url: /yalmip/command/int
       - title: "is"
-        url: /yalmip/commands/is
+        url: /yalmip/command/is
       - title: "jacobian"
-        url: /yalmip/commands/jacobian
+        url: /yalmip/command/jacobian
       - title: "linearize"
-        url: /yalmip/commands/linearize
+        url: /yalmip/command/linearize
       - title: "monolist"
-        url: /yalmip/commands/monolist
+        url: /yalmip/command/monolist
       - title: "polynomial"
-        url: /yalmip/commands/polynomial
+        url: /yalmip/command/polynomial
       - title: "sdisplay"
-        url: /yalmip/commands/sdisplay
+        url: /yalmip/command/sdisplay
       - title: "unblkdiag"
-        url: /yalmip/commands/unblkdiag
+        url: /yalmip/command/unblkdiag
       - title: "value"
-        url: /yalmip/commands/value
+        url: /yalmip/command/value
   - title: Variable operators (selected)
     children:
       - title: "abs"
-        url: /yalmip/commands/sdpvar
+        url: /yalmip/command/sdpvar
       - title: "crossentropy"
-        url: /yalmip/commands/crossentropy
+        url: /yalmip/command/crossentropy
       - title: "entropy"
-        url: /yalmip/commands/entropy
+        url: /yalmip/command/entropy
       - title: "geomean"
-        url: /yalmip/commands/geomean
+        url: /yalmip/command/geomean
       - title: "logdet"
-        url: /yalmip/commands/logdet
+        url: /yalmip/command/logdet
       - title: "logistic"
-        url: /yalmip/commands/logistic
+        url: /yalmip/command/logistic
       - title: "logsumexp"
-        url: /yalmip/commands/logsumexp
+        url: /yalmip/command/logsumexp
       - title: "median"
-        url: /yalmip/commands/median
+        url: /yalmip/command/median
       - title: "nnz"
-        url: /yalmip/commands/nnz
+        url: /yalmip/command/nnz
       - title: "sdpfun"
-        url: /yalmip/commands/sdpfun
+        url: /yalmip/command/sdpfun
       - title: "sort"
-        url: /yalmip/commands/sort
+        url: /yalmip/command/sort
   - title: Constraints
     children:
       - title: "alldifferent"
-        url: /yalmip/commands/alldifferent
+        url: /yalmip/command/alldifferent
       - title: "binary"
-        url: /yalmip/commands/binary
+        url: /yalmip/command/binary
       - title: "cone"
-        url: /yalmip/commands/cone
+        url: /yalmip/command/cone
       - title: "cut"
-        url: /yalmip/commands/cut
+        url: /yalmip/command/cut
       - title: "iff"
-        url: /yalmip/commands/iff
+        url: /yalmip/command/iff
       - title: "implies"
-        url: /yalmip/commands/implies
+        url: /yalmip/command/implies
       - title: "integer"
-        url: /yalmip/commands/integer
+        url: /yalmip/command/integer
       - title: "rank"
-        url: /yalmip/commands/rank
+        url: /yalmip/command/rank
       - title: "rcone"
-        url: /yalmip/commands/rcone
+        url: /yalmip/command/rcone
       - title: "sos"
-        url: /yalmip/commands/sos
+        url: /yalmip/command/sos
   - title: Constraint manipulation
     children:
       - title: "check"
-        url: /yalmip/commands/check
+        url: /yalmip/command/check
       - title: "dilate"
-        url: /yalmip/commands/dilate
+        url: /yalmip/command/dilate
       - title: "dual"
-        url: /yalmip/commands/dual
+        url: /yalmip/command/dual
       - title: "hull"
-        url: /yalmip/commands/hull
+        url: /yalmip/command/hull
       - title: "is"
-        url: /yalmip/commands/is
+        url: /yalmip/command/is
       - title: "ismember"
-        url: /yalmip/commands/ismember
+        url: /yalmip/command/ismember
       - title: "sosd"
-        url: /yalmip/commands/sosd
+        url: /yalmip/command/sosd
   - title: Auxilliary
     children:
       - title: "saveampl"
-        url: /yalmip/commands/saveampl
+        url: /yalmip/command/saveampl
       - title: "savecplexfile"
-        url: /yalmip/commands/savecplexfile
+        url: /yalmip/command/savecplexfile
       - title: "savesdpafile"
-        url: /yalmip/commands/savesdpafile
+        url: /yalmip/command/savesdpafile
       - title: "yalmiptest"
-        url: /yalmip/commands/yalmiptest
+        url: /yalmip/command/yalmiptest
