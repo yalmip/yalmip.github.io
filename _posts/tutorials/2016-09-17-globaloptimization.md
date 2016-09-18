@@ -54,7 +54,7 @@ optimize(F,p,options);
 +  11 Finishing.  Cost: -4 Gap: 0.06486%
 ````
 
-The second example is a slightly larger problem indefinite quadratic programming problem. The problem is easily solved to a gap of less than 1%.
+The second example is a slightly larger nonconvex quadratic programming problem. The problem is easily solved to a gap of less than 1%.
 
 ````matlab
 clear all
@@ -79,7 +79,7 @@ optimize(F,p,options);
 +   2 Finishing.  Cost: -310 Gap: 0.96463%
 ````
 
-Quadratic equality constraints is a common reason for nonconvexity, but can also be dealt with using the global solver. This can be used for, e.g., boolean programming (this is a very inefficient way to solve this simple MIQP and is only shown here to illustrate nonconvex equality constraints).
+Quadratic equality constraints is a common reason for nonconvexity, and can also be dealt with using the global solver. This can be used for, e.g., boolean programming (this is a very inefficient way to solve this simple MIQP and is only shown here to illustrate nonconvex equality constraints).
 
 ````matlab
 n = 10;
@@ -129,6 +129,29 @@ optimize(F,-x,options)
    11 :  -1.710E+000     0.00    -1.710E+000   2  Infeasible  
 +  11 Finishing.  Cost: -1.71 Gap: 1.247e-005%
 ````
+
+### General nonconvex programming
+
+The solver supports global optimization over almost all operators supported on decision variables in YALMIP, as most operators are equipped with convex envelope operators, and if not, they are generated on-the-fly using sample approximations. Hence, nothing prevents us from, e.g., nonconvex global trigonometric optimization
+
+````matlab
+sdpvar x y 
+p = sin(1+y*x)^2+cos(y*x);
+optimize([-1 <= [x y] <= 1],p,sdpsettings('solver','bmibnb'));
+* Starting YALMIP global branch & bound.
+* Branch-variables : 3
+* Upper solver     : fmincon
+* Lower solver     : SCIP
+* LP solver        : CDD
+ Node       Upper      Gap(%)       Lower    Open
+    1 :    5.403E-01     0.00      5.403E-01   2  Improved solution  
+* Finished.  Cost: 0.5403 Gap: 6.4922e-09
+* Timing: 62% spent in upper solver (1 problems solved)
+*         4% spent in lower solver (7 problems solved)
+*         7% spent in LP-based domain reduction (4 problems solved)
+````
+
+
 
 ### Nonconvex semidefinite programming
 
