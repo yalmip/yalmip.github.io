@@ -21,7 +21,7 @@ sidebar:
 
 ### Examples
 
-By default, the solver is based on a simple branching strategy, where branching is performed on complementarity of duals and slacks in the KKT conditions. Hence, the solver is only applicable to small academic examples. It has however been shown in experiments, that the solver performs fairly well in some cases compared to a big-M reformulation followed by a solution using a mixed-integer solver such as [Solvers.CPLEX CPLEX] or [Solvers.GUROBI Gurobi]. Since no big-M numbers are used, it is much more numerically robust in some cases where no reasonable bounds can be derived on dual variables.
+By default, the solver is based on a simple branching strategy, where branching is performed on complementarity of duals and slacks in the KKT conditions. Hence, the solver is only applicable to small academic examples. It has however been shown in experiments, that the solver performs fairly well in some cases compared to a big-M reformulation followed by a solution using a mixed-integer solver such as [CPLEX] or [GUROBI]. Since no big-M numbers are used, it is much more numerically robust in some cases where no reasonable bounds can be derived on dual variables.
 
 
 ````matlab
