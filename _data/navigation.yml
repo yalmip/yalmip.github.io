@@ -368,8 +368,8 @@ commands:
     children:
       - title: "saveampl"
         url: /command/saveampl
-      - title: "savecplexfile"
-        url: /command/savecplexfile
+      - title: "savecplexlp"
+        url: /command/savecplexlp
       - title: "savesdpafile"
         url: /command/savesdpafile
       - title: "yalmiptest"
