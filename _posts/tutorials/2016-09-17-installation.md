@@ -40,11 +40,11 @@ To test your installation, run the command [yalmiptest]. For further examples an
 
 ### Solvers
 
-YALMIP is not shipped with any low-level solvers. [Solvers](/yalmip/solvers) should be installed as described in the solver manuals. Make sure to add required paths. Your MATLAB installation might already have solvers available that YALMIP will interface, but make sure you understand which solvers you are using, and read about their expected performance [here](/yalmip/solvers).
+YALMIP is not shipped with any low-level solvers. [Solvers](/allsolvers) should be installed as described in the solver manuals. Make sure to add required paths. Your MATLAB installation might already have solvers available that YALMIP will interface, but make sure you understand which solvers you are using, and read about their expected performance [here](/allsolvers).
 
 ### Common issues
 
-If you have problems, please read the [FAQ](yalmip/faq).
+If you have problems, please read the [FAQ](/faq).
 
 If you have [MPT] installed, make sure that you delete the YALMIP distribution residing inside [MPT] and remove the old path definitions. Better, don't install YALMIP manually but use [MPTs toolbox manager](http://tbxmanager.com)
 
