@@ -2,16 +2,16 @@
 layout: single
 category: command
 author_profile: false
-excerpt: "Extract coefficients in expression"
+excerpt: "Extract coefficients in polynomial expression"
 title: coefficients
-tags:
+tags: [Polynomials]
 comments: true
 date: '2016-09-17'
 sidebar:
   nav: "commands"
 ---
 
-[coefficients] is used to extract the coefficients of a polynomial.
+[coefficients] is used to extract coefficients in a polynomial.
 
 ### Syntax
 
@@ -22,7 +22,7 @@ sidebar:
 
 ### Examples
 
-Define a polynomial in variables x and y, with coefficients parameterized by s and t.
+Define a polynomial in variables **x** and **y**, with coefficients parameterized by **s** and **t**.
 
 ````matlab
 sdpvar x y s t
