@@ -3,7 +3,7 @@ layout: single
 category: faq
 author_profile: false
 excerpt: 
-title: YALMIP does not work
+title: QUADPROG fails
 tags:
 comments: true
 date: '2016-09-17'
@@ -11,4 +11,4 @@ sidebar:
   nav: "commands"
 ---
 
-1. 
+ [QUADPROG] does not work if you have [GUROBI] installed (name conflict)
