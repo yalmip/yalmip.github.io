@@ -4,7 +4,7 @@ category: command
 author_profile: false
 excerpt: ""
 title: crossentropy
-tags:
+tags: [Exponential cone]
 comments: true
 date: '2016-09-17'
 sidebar:
@@ -14,7 +14,7 @@ sidebar:
 Images:mini-category.gif [!Evaluation-based nonlinear operators]
 
 ### Description
-[crossentropy] is defined as '''-sum(x.*log(y))'''. Read more on [http://en.wikipedia.org/wiki/Cross_entropy Wikipedias article on cross entropty].
+[crossentropy] is defined as \\(-\sum x_i.*log(y_i)\\). Read more on [Wikipedias article on cross entropty](http://en.wikipedia.org/wiki/Cross_entropy).
 
 ### Syntax
 
