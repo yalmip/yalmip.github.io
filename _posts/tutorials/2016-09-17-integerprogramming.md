@@ -11,7 +11,7 @@ sidebar:
 ---
 
 
-YALMIP supports several [mixed integer programming solvers], but also comes with a very simple [built-in solver for mixed integer programming (BNB)](/yalmip/solvers/bnb) (which you shouldn't use unless you absolutely have to), based on a simple standard branch-and-bound algorithm.
+YALMIP supports several [mixed integer programming solvers], but also comes with a very simple [built-in solver for mixed integer programming (BNB)](/yalmip/solver/bnb) (which you shouldn't use unless you absolutely have to), based on a simple standard branch-and-bound algorithm.
 
 ### Integer and binary variables
 
@@ -43,7 +43,7 @@ F = [z >= 0, x <= 0, integer(x), binary(y)];
 
 The global integer solver can be applied to any kind of conic program that can be defined within the YALMIP framework, and defining integer programs is as simple as defining standard problems. In addition to the external supported mixed integer solvers, YALMIP comes with an internal branch-and-bound solver, called [BNB], to be used together with any continuous solver. Hence, it is possible to solve mixed integer linear/quadratic/second order cone/semidefinite/geometric programs in YALMIP. Note that the internal branch-and-bound algorithm is rudimentary and useful only for small problems.
 
-As an example, let us return to the [linear regression problem](/yalmip/tutorials/linearprogramming). Solving the same problems, but looking for integer solutions can be done by changing one line of code
+As an example, let us return to the [linear regression problem](/tutorial/linearprogramming). Solving the same problems, but looking for integer solutions can be done by changing one line of code
 
 ````matlab
 x = [1 2 3 4 5 6]';
@@ -124,7 +124,7 @@ invalid. Hence, do not trust the bound or the gap...
 +  23 Finishing.  Cost: 107
 ````
 
-If globality is desired, and the problem is nonconvex (for relaxed integers), the [global optimization](/yalmip/tutorials/globaloptimization) solver [BMIBNB] does actually support integer variables. However, [BMIBNB] is only intended for a few number of variables, and is much slower, since it performs branching not only in the integer variables, but also in the continuous variables.
+If globality is desired, and the problem is nonconvex (for relaxed integers), the [global optimization](/tutorial/globaloptimization) solver [BMIBNB] does actually support integer variables. However, [BMIBNB] is only intended for a few number of variables, and is much slower, since it performs branching not only in the integer variables, but also in the continuous variables.
 
 ````matlab
 ops = sdpsettings('solver','bmibnb','bmibnb.upper','fmincon');
@@ -153,4 +153,4 @@ optimize([A*x <= b, integer(x)],obj,ops)
 + 95 Finishing.  Cost: 107 Gap: 0%
 ````
 
-For an additional example, check out the [mixed integer geometric programming example](/yalmip/tutorials/geometricprogramming).
+For an additional example, check out the [mixed integer geometric programming example](/tutorial/geometricprogramming).

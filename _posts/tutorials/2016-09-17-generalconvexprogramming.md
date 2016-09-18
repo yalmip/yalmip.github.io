@@ -12,7 +12,7 @@ sidebar:
 
 YALMIP was initially developed as a modelling tool for conic optimization problems, or problems that can be converted to conic optimization problems. However, today it is a rather general modelling tool with support for most functions and operators.
 
-You are advised to read the [nonlinear operators tutorial](/yalmip/tutorials/nonlinearoperators) before reading this tutorial.
+You are advised to read the [nonlinear operators tutorial](/tutorial/nonlinearoperators) before reading this tutorial.
 
 As an example, we will find the analytic center of a polytope \\(Ax \leq b\\). The analytic center is defined as the point which maximizes the expression \\( \sum \log(b-Ax)\\)
 

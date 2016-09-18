@@ -64,7 +64,7 @@ By using more outputs from [solvemp], it is possible to simplify things consider
 [sol,diagnostics,aux,Valuefunction,Optimal_z] = solvemp(F,obj,[],x);
 ````
 
-The function now returns solutions using YALMIPs [nonlinear operator framework](/yalmip/tutorials/nonlinearoperators). To retrieve the numerical solution for a particular parameter value, simply use [assign] and [value] in standard fashion.
+The function now returns solutions using YALMIPs [nonlinear operator framework](/tutorial/nonlinearoperators). To retrieve the numerical solution for a particular parameter value, simply use [assign] and [value] in standard fashion.
 
 ````matlab
 assign(x,[0.1;0.2]);

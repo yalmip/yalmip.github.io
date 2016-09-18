@@ -13,7 +13,7 @@ image:
 
 A question on the [YALMIP forum](http://sedumi.ie.lehigh.edu/index.php?option=com_kunena&Itemid=78&func=showcat&catid=19) on the SeDuMi homepage essentially boiled down to *how can I generate sum-of-squares solutions which really are feasible, i.e. true certificates?*
 
-This is partially answered and discussed in one of the [sum-of-squares examples](/examples/moresos) and the referenced paper [Löfberg 2009]. The problem boils down to the fact that semidefinite solvers typically work with infeasible methods. Hence, the optimal solution you obtain in the end is very often slightly infeasible.
+This is partially answered and discussed in one of the [sum-of-squares examples](/example/moresos) and the referenced paper [Löfberg 2009]. The problem boils down to the fact that semidefinite solvers typically work with infeasible methods. Hence, the optimal solution you obtain in the end is very often slightly infeasible.
 
 When YALMIP sets up a sum-of-squares problem, there are two alternative approaches. The first approach, which is used by default, is the kernel representation, sometimes called primal form in YALMIP. You can explicitly tell YALMIP to use this form by setting `'sos.model'` to 1 in [sdpsettings] when calling [solvesos].
 
@@ -31,7 +31,7 @@ In the dual form, the sum-of-squares certificate is really useless when the semi
 
 Hence, we would like to force the SDP solver to return a feasible solution, or even better, a significantly strictly feasible solution (assuming you have created a model for which such a solution really exists).
 
-As an example, consider the problem of finding a lower bound on \\(p(x,y) = (1+xy)^2-xy+(1-y)^2\\) over the box \\(-1\leq x\leq 1 \\) and \\(-1 \leq y\leq 1 \\) 
+As an example, consider the problem of finding a lower bound on \\(p(x,y) = (1+xy)^2-xy+(1-y)^2\\) over the box \\(-1\leq x\leq 1 \\) and \\(-1 \leq y\leq 1 \\)
 
 Define the polynomial \\(p(x,y)\\) and the constraints \\(g(x,y)\geq 0\\) defining the box
 
@@ -54,7 +54,7 @@ We apply stand sum-of-squares arguments and solve the following problem, for sim
 
 ````matlab
 sdpvar lower
-Constraints = [sos(p-lower-[s1 s2 s3 s4]*g), sos(s1), sos(s2), sos(s3), 
+Constraints = [sos(p-lower-[s1 s2 s3 s4]*g), sos(s1), sos(s2), sos(s3),
 sos(s4)];
 Params = [c1;c2;c3;c4;lower];
 ops = sdpsettings('sos.model',2);
@@ -94,4 +94,4 @@ Note that this whole discussion here only is relevant if you absolutely have to 
 
 ### Suitable reading
 
-[Parrilo 2003](), [Löfberg 2009](), [Introduction to sum-of-squares in YALMIP](/tutorials/sumofsquaresprogramming), [Advanced sum-of-squares in YALMIP](/examples/moresos)
+[Parrilo 2003](), [Löfberg 2009](), [Introduction to sum-of-squares in YALMIP](/tutorial/sumofsquaresprogramming), [Advanced sum-of-squares in YALMIP](/example/moresos)

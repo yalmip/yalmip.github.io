@@ -71,7 +71,7 @@ For the particular problem we address here, the first-order relaxation is unboun
 
 ### Stronger semidefinite relaxations
 
-Stronger relaxations can be constructed manually fairly easily in YALMIP, but it is much easier to use ready-made software to perform this. One option is the separate package  [GloptiPoly]. Another alternative is the sparsity exploiting semidefinite relaxation code [SPARSEPOP] which is interfaced in YALMIP. Here, we will use the built-in [semidefinite relaxation module](/tutorials/momentrelaxations) in YALMIP.
+Stronger relaxations can be constructed manually fairly easily in YALMIP, but it is much easier to use ready-made software to perform this. One option is the separate package  [GloptiPoly]. Another alternative is the sparsity exploiting semidefinite relaxation code [SPARSEPOP] which is interfaced in YALMIP. Here, we will use the built-in [semidefinite relaxation module](/tutorial/momentrelaxations) in YALMIP.
 
 The simple semidefinite relaxation above, can be solved using the built-in semidefinite relaxation module using two different calls
 
@@ -145,7 +145,7 @@ ops2 = sdpsettings('solver','moment','moment.order',2);
 sol = optimize([-1 <= x <= 1,x x.*x <= 1],x'*Q*x,ops2);
 ````
 
-Still, we have alternative, possibly even faster, ways to solve the problem. By reformulating the nonconvex QP to a mixed-integer linear program, the problem can be solved in a fraction of a second. A [KKT based indefinite QP solver](/solvers/kktqp) is available in YALMIP (assuming you have an efficient MILP solver installed)
+Still, we have alternative, possibly even faster, ways to solve the problem. By reformulating the nonconvex QP to a mixed-integer linear program, the problem can be solved in a fraction of a second. A [KKT based indefinite QP solver](/solver/kktqp) is available in YALMIP (assuming you have an efficient MILP solver installed)
 
 ````matlab
 ops= sdpsettings('solver','kktqp');
@@ -158,4 +158,4 @@ We repeat the experiments above, now with the strengthened second-order relaxati
 
 ### Suitable reading
 
-[Lasserre 2001], [Introduction to moment relaxations in YALMIP](/tutorials/momentrelaxations), [Introduction to global optimization in YALMIP](/tutorials/globaloptimization)
+[Lasserre 2001], [Introduction to moment relaxations in YALMIP](/tutorial/momentrelaxations), [Introduction to global optimization in YALMIP](/tutorial/globaloptimization)

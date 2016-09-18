@@ -2,7 +2,7 @@
 title: "SeDuMi"
 category: solver
 layout: single
-permalink: /solvers/
+permalink: /solver/
 sidebar:
   nav: "solvers"
 ---

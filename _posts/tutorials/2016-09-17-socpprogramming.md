@@ -34,7 +34,7 @@ F = [cone(y-A*xhat,u), cone(xhat,v)];
 solvesdp(F,u + v);
 ````
 
-By using the automatic modelling support in the [nonlinear operator framework](/yalmip/tutorials/nonlinearoperator), we can alternatively write it in the following epigraph form
+By using the automatic modelling support in the [nonlinear operator framework](/tutorial/nonlinearoperator), we can alternatively write it in the following epigraph form
 
 ````matlab
 xhat = sdpvar(6,1);

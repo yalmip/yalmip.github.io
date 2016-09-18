@@ -93,7 +93,7 @@ plot(t,[y a*x_L1 a*x_L2 a*x_Linf]);
 
 ![Solution to regression problem]({{ site.url }}/images/regresssolution.png){: .center-image }
 
-Let us finally state that some of the manipulations here can be performed much easier by using the [nonlinear operator framework](/yalmip/tutorials/nonlinearoperator) in YALMIP.
+Let us finally state that some of the manipulations here can be performed much easier by using the [nonlinear operator framework](/tutorial/nonlinearoperator) in YALMIP.
 
 ````matlab
 optimize([],norm(residuals,1));

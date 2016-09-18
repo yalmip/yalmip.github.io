@@ -11,4 +11,4 @@ image:
   thumb: lofberg.jpg
 ---
 
-Ever wondered how to compute the \\(L_1\\) Chebyshev ball? Check out the new article on [polytopic geometry using YALMIP and MPT](/examples/polytopicgeometry).
+Ever wondered how to compute the \\(L_1\\) Chebyshev ball? Check out the new article on [polytopic geometry using YALMIP and MPT](/example/polytopicgeometry).
