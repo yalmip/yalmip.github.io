@@ -21,7 +21,7 @@ y = logsumexp(x)
 
 ### Implementation
 
-The convex operator [logsumexp] is implemented using the [Tutorials.NonlinearOperators evaluation-based nonlinear operators] framework. exceptwhen [SCS] or [ECOS]  is used where the exponential cone property is used.
+The convex operator [logsumexp] is implemented using the [evaluation-based nonlinear operators] framework. except when [SCS] or [ECOS]  is used and the exponential cone property is used.
 
 ### See also
 [entropy], [crossentropy], [kullbackleibler]
