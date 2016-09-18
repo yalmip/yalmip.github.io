@@ -9,4 +9,4 @@ date: '2011-08-31'
 
 A common question I get is along the lines *how can I solve a nonconvex QP using SeDuMi*?
 
-A new [/example/nonconvexquadraticprogramming](example) dives into the issue.
+A new [example](/example/nonconvexquadraticprogramming) dives into the issue.
