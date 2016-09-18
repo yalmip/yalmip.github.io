@@ -221,9 +221,9 @@ commands:
   - title: Most common
     children:
       - title: "sdpvar"
-        url: /yalmip/command/sdpvar
+        url: /command/sdpvar
       - title: "optimize"
-        url: /yalmip/command/optimize
+        url: /command/optimize
       - title: "value"
         url: /yalmip/command/value
       - title: "sdpsettings"
