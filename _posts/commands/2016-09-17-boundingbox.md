@@ -37,7 +37,7 @@ By using more outputs, we can extract the numerical bounds also
 [Bound,L,U] = boundingbox(Ball);
 ````
 
-One can also compute the bounding box w.r.t a subset of the variables, i.e., the bounding box of a projection (this is the recommended way to use the command, since you will have no knowledge about the relation between your variables of interest and the ordering in '''L''' and '''U''' otherwise)
+One can also compute the bounding box w.r.t a subset of the variables, i.e., the bounding box of a projection (this is the recommended way to use the command, since you will have no knowledge about the relation between your variables of interest and the ordering in ***L*** and ***U*** otherwise)
 
 ````matlab
 sdpvar x y z
