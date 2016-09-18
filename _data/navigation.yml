@@ -306,6 +306,8 @@ commands:
     children:
       - title: "abs"
         url: /command/sdpvar
+      - title: "cpower"
+        url: /command/cpower
       - title: "crossentropy"
         url: /command/crossentropy
       - title: "entropy"
@@ -326,6 +328,10 @@ commands:
         url: /command/sdpfun
       - title: "sort"
         url: /command/sort
+      - title: "sqrt"
+        url: /command/sqrt
+      - title: "sqrtm"
+        url: /command/sqrtm
   - title: Constraints
     children:
       - title: "alldifferent"
