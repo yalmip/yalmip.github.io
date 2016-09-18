@@ -12,7 +12,7 @@ sidebar:
   nav: "tutorials"
 ---
 
-Operators and functions, such as [entropy] or [abs], areequipped with various properties, which allows YALMIP to, e.g., analyze the optimization problem with respect to convexity, select a suitable way to model the problem, or automatically compute gradients and jacobians. If the problem is convex, YALMIP can sometimes use a [graph representation], while a nonconvex problem might require the introduction of [mixed-integer representations] or a [callback approach].
+Operators and functions, such as [entropy] or [abs], are equipped with various properties, which allows YALMIP to, e.g., analyze the optimization problem with respect to convexity, select a suitable way to model the problem, or automatically compute gradients and jacobians. If the problem is convex, YALMIP can sometimes use a [graph representation], while a nonconvex problem might require the introduction of [mixed-integer representations] or a [callback approach].
 
 ### Graph-based representations
 
@@ -36,4 +36,4 @@ A third way to model operators in YALMIP is by using simple callback evaluations
 
 Most of MATLABs built-in nonlinear functions, such as [exp] and [sin], are available as evaluation-based representations in YALMIP, specialized commands such as [entropy] and [kullbackleibler] are added, and you can easily add your own.
 
-More information can be found [[Tutorials.EvaluationRepresentations  here]].
+More information can be found [Tutorials.EvaluationRepresentations  here].

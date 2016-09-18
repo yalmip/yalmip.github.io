@@ -12,33 +12,29 @@ sidebar:
   nav: "tutorials"
 ---
 
-YALMIP supports modeling of nonlinear, often non-differentiable, operators that typically occur in convex programming. Some examples are [[Commands.min | min]], [[Commands.max| max]], [[Commands.abs | abs]], [[Commands.geomean | geomean]], [[Commands.sumabsk| sumabsk]], and [[Commands.sqrt | sqrt]], and users can easily add their own (see the end of this page). The operators can be used intuitively, and YALMIP will automatically try to find out if they are used in a way that enables a convex representation. If a convex representation is impossible, YALMIP automatically tries to revert to a [[MixedIntegerRepresentations | mixed-integer representation]]. 
+YALMIP supports modeling of nonlinear, often non-differentiable, operators that typically occur in convex programming. Some examples are [min], [max], [abs], [geomean], [sumabsk], and [sqrt], and users can easily add their own (see the end of this page). The operators can be used intuitively, and YALMIP will automatically try to find out if they are used in a way that enables a convex representation. If a convex representation is impossible, YALMIP automatically tries to revert to a [mixed-integer representation].
 
-Although the automatic support for these operators can simplify the modeling phase significantly in some cases, it is recommended not to use these operators unless you know how to model them by your self using epigraphs and composition rules of convex and concave functions, why and when it can be done etc. The text-book {[reference.bib,Boyd and Vandenberghe:2004]} should be a suitable introduction for the beginner, and is consistent with the notation used here.
+Although the automatic support for these operators can simplify the modeling phase significantly in some cases, it is recommended not to use these operators unless you know how to model them by your self using epigraphs and composition rules of convex and concave functions, why and when it can be done etc. The text-book [Boyd and Vandenberghe 2004] should be a suitable introduction for the beginner, and is consistent with the notation used here.
 
-!!Convexity analysis
+### Convexity analysis
 
-Without going into theoretical details, the convexity analysis is based on epi- and hypograph formulations, and composition rules. For the composite expression '''f = h(g(x))''', it holds that (For simplicity, we write increasing, decreasing, convex and concave, but the correct notation would be nondecreasing, nonincreasing, convex or affine and concave or affine. This notation is used throughout this manual and inside YALMIP)
+Without going into theoretical details, the convexity analysis is based on epi- and hypograph formulations, and composition rules. For the composite expression \\(f = h(g(x))\\), it holds that (For simplicity, we write increasing, decreasing, convex and concave, but the correct notation would be nondecreasing, nonincreasing, convex or affine and concave or affine. This notation is used throughout this manual and inside YALMIP)
 
 
-'''f''' is convex if '''h''' is convex and increasing and '''g''' is convex
+1. \\(f\\) is convex if \\(h\\) is convex and increasing and \\(g\\) is convex
+2. \\(f\\) is convex if \\(h\\) is convex and decreasing and  \\(g\\) is concave
+3. \\(f\\) is concave if \\(h\\) is concave and increasing and \\(g\\) is concave
+4. \\(f\\) is concave if \\(h\\) is concave and decreasing and \\(g\\) is convex
 
-'''f''' is convex if '''h''' is convex and decreasing and '''g''' is concave 
+Based on this information, it is possible to recursively analyze convexity of a complex expression involving convex and concave functions. When [optimize] is called, YALMIP checks the convexity of objective function and constraints by using information about the properties of the operators. If YALMIP manage to prove convexity, graph formulations of the operators are automatically introduced. This means that the operator is replaced with a graph, i.e., a set of constraints.
 
-'''f''' is concave if '''h''' is concave and increasing and '''g''' is concave 
+**epigraph:**  \\(t\\) represents convex function \\(f(x)\\) : replace with \\(f(x)leq t\\)
 
-'''f''' is concave if''' h''' is concave and decreasing and '''g''' is convex
+**hypograph:** \\(t\\) represents concave function \\(f(x)\\) : replace with \\(f(x)geq t\\)
 
-Based on this information, it is possible to recursively analyze convexity of a complex expression involving convex and concave functions. When [[Commands.optimize | optimize]] is called, YALMIP checks the convexity of objective function and constraints by using information about the properties of the operators. If YALMIP manage to prove convexity, graph formulations of the operators are automatically introduced. This means that the operator is replaced with a graph, i.e., a set of constraints. 
+Of course, in order for this to be useful, the epigraph representation has to be possible to be represented using standard constraints, such as conic constraints.
 
-'''epigraph:''' t represents convex function f(x) : replace with t&#8805;f(x)
-
-'''hypograph:''' t represents concave function f(x) : replace with t&#8804;f(x)
-
-Of course, in order for this to be useful, the epigraph representation has to be represented using standard constraints, such as conic constraints.
-
-[[#operators]]
-!!The operators
+### The operators
 
 The operators defined in the current release are described in the table below. This information might be useful to understand how and when YALMIP can derive convexity.
 
@@ -61,104 +57,114 @@ geomean	concave	See comment	For vector arguments, the operator is increasing. Fo
 cpower	See comment	See comment	Convexity-aware version of power. For negative powers, the operator is convex and decreasing. For positive powers less than one, the operator is concave and increasing. Positive powers larger than 1 gives a convex increasing operator.
 sqrt	concave	increasing	Short for cpower(x,0.5)
 
-!!Standard use
+### Standard use
 
 Consider once again the linear regression problem.
-(:source lang=matlab:)
+
+````matlab
 a = [1 2 3 4 5 6]';
 t = (0:0.2:2*pi)';
 x = [sin(t) sin(2*t) sin(3*t) sin(4*t) sin(5*t) sin(6*t)];
 y = x*a+(-4+8*rand(length(x),1));
 a_hat = sdpvar(6,1);
 residuals = y-x*a_hat;
-(:sourceend:) 
+````
 
-Using '''abs''' and '''max''', we can easily solve the L'_1_' and the L'_&#8734;_' problem (Note that the '''abs''' operator currently has performance issues and should be avoided for large arguments. Moreover, explicitly creating absolute values when minimizing the L'_&#8734;_' error is unnecessarily complicated). 
-(:source lang=matlab:)
+Using **abs** and **max**, we can easily solve the \\(L_1\\) and the \\(L_{\infty}\\) regression problem (Note that the **abs** operator currently has performance issues and should be avoided for large arguments. Moreover, explicitly creating absolute values when minimizing the \\(L_1\\)  error is unnecessarily complicated).
+````matlab
 optimize([],sum(abs(residuals)));
 a_L1 = value(a_hat)
 optimize([],max(abs(residuals)));
 a_Linf = value(a_hat)
-(:sourceend:) 
+````
 
-YALMIP automatically concludes that the objective functions can be modeled using some additional linear inequalities, adds these, and solves the problems. We can simplify the code even more by using the [[Commands.norm | norm]] operator (this is much faster for large-scale problems due to implementation issues in YALMIP). Here we also compute the least-squares solution (note that this norm will generate a second-order cone constraint).
-(:source lang=matlab:)
+YALMIP automatically concludes that the objective functions can be modeled using some additional linear inequalities, adds these, and solves the problems. We can simplify the code even more by using the [norm] operator (this is much faster for large-scale problems due to implementation issues in YALMIP). Here we also compute the least-squares solution (note that this norm will generate a second-order cone constraint).
+
+````matlab
 optimize([],norm(residuals,1));
 a_L1 = value(a_hat)
 optimize([],norm(residuals,2));
 a_L2 = value(a_hat)
 optimize([],norm(residuals,inf));
 a_Linf = value(a_hat)
-(:sourceend:)
+````
 
 The following piece of code shows how we easily can solve a regularized problem.
-(:source lang=matlab:)
+
+````matlab
 optimize([],1e-3*norm(a_hat,2)+norm(residuals,inf));
 a_regLinf = value(a_hat)
-(:sourceend:) 
+````
 
-The norm operator is used exactly as the built-in '''norm''' function in MATLAB, both for vectors and matrices. Hence it can be used also to minimize the largest singular value (2-norm in matrix case), or the Frobenious norm of a matrix.
+The norm operator is used exactly as the built-in **norm** function in MATLAB, both for vectors and matrices. Hence it can be used also to minimize the largest singular value (2-norm in matrix case), or the Frobenious norm of a matrix.
 
-The [[Commands.value | value]] command applies also to nonlinear operators (value(OPERATOR(X)) returns OPERATOR(value(X)).
-(:source lang=matlab:)
+The [value] command applies also to nonlinear operators (value(OPERATOR(X)) returns OPERATOR(value(X)).
+
+````matlab
 value(1e-3*norm(a_hat,2)+norm(residuals,inf))
 ans =
     3.1175
-(:sourceend:) 
+````
 
-A construction useful for maximizing determinants of positive definite matrices is the function '''det (P)'^1/m^'''', for positive definite matrix '''P''', where '''m''' is the dimension of '''P'''. This concave function, called [[Commands.geomean | geomean]] in YALMIP, is supported as an extended operator. Note that the positive semidefiniteness constraint on '''P''' is added automatically by YALMIP.
-(:source lang=matlab:)
+A construction useful for maximizing determinants of positive definite matrices is the function \\( \det (P)^{1/m}\\), for positive definite matrix \\( P \\), where \\( m \\) is the dimension of \\(P\\). This concave function, called [geomean] in YALMIP, is supported as an operator. Note that the positive semidefiniteness constraint on \\( P \\) is added automatically by YALMIP.
+
+````matlab
 D = randn(5,5);
 P = sdpvar(5,5);
 optimize([P <= D*D'],-geomean(P));
-(:sourceend:) 
+````
 
 The command can be applied also on positive vectors, and will then model the geometric mean of the elements. We can use this to find the analytic center of a set of linear inequalities (note that this is absolutely not the recommended way to compute the analytic center.)
-(:source lang=matlab:)
+
+````matlab
 A = randn(15,2);
 b = rand(15,1)*5;
 x = sdpvar(2,1);
 optimize([],-geomean(b-A*x)); % Maximize product of elements in b-Ax, s.t Ax < b
-(:sourceend:) 
+````
 
 Rather advanced constructions are possible, and YALMIP will try derive an equivalent convex model.
-(:source lang=matlab:)
+
+````matlab
 sdpvar x y z
 F = [max(1,x)+max(y^2,z) <= 3, max(1,-min(x,y)) <= 5, norm([x;y],2) <= z];
 sol = optimize(F,max(x,z)-min(y,z)-z);
-(:sourceend:) 
+````
 
-!! Polynomial and sigmonial expressions
+### Polynomial and sigmonial expressions
 
-By default, polynomial expressions (except quadratics) are not analyzed with respect to convexity and conversion to a conic model is not performed. Hence, if you add a constraint such as @@x^4 + y^8-x^0.5 <= 10@@, YALMIP may complain about convexity, even though we can see that the expression is convex and can be represented using conic constraints. More importantly, YALMIP will not try to derive an equivalent conic model. However, by using the command [[Commands.cpower]] instead, (rational) powers can be used. 
+By default, polynomial expressions (except quadratics) are not analyzed with respect to convexity and conversion to a conic model is not performed. Hence, if you add a constraint such as \\(x^4 + y^8-x^0.5 <= 10\\), YALMIP may complain about convexity, even though we can see that the expression is convex and can be represented using conic constraints. More importantly, YALMIP will not try to derive an equivalent conic model. However, by using the command [cpower] instead, (rational) powers can be used.
 
-To illustrate this, first note the difference between a monomial generated using overloaded power and a variable generated using [[Commands.cpower | cpower]].
-(:source lang=matlab:)
+To illustrate this, first note the difference between a monomial generated using overloaded power and a variable generated using [cpower].
+
+````matlab
 sdpvar x
 x^4
 Polynomial scalar (real, homogeneous, 1 variable)
 cpower(x,4)
 Linear scalar (real, derived, 1 variable)
-(:sourceend:) 
+````
 
 The property derived indicates that YALMIP will try to replace the variable with its epigraph formulation when the problem is solved. Working with these convexity-aware monomials is no different than usual.
-(:source lang=matlab:)
+
+````matlab
 sdpvar x y
 F = [cpower(x,4) + cpower(y,4) <= 10, cpower(x,2/3) + cpower(y,2/3) >= 1];
 plot(F,[x y]);
-(:sourceend:) 
+````
 
 Note that when you plot sets with constraints involving nonlinear operators and polynomials, it is recommended that you specify the variables of interest in the second argument (YALMIP may otherwise plot the set with respect to auxiliary variables introduced during the construction of the conic model.)
 
 Do not use these operators unless you really need them. The conic representation of rational powers easily grow large.
 
 
-!! A look behind the scene
+### A look behind the scene
 
-If you want to look at the model that YALMIP generates, you can use the two commands '''model''' and '''expandmodel'''. Please note that these expanded models never should be used manually. The commands described below should only be used for illustrating the process that goes on behind the scenes.
+If you want to look at the model that YALMIP generates, you can use the two commands **model** and **expandmodel**. Please note that these expanded models never should be used manually. The commands described below should only be used for illustrating the process that goes on behind the scenes.
 
 With the command model, the epi- or hypograph model of the variable is returned together with a struct that describes the operator. As an example, to model the maximum of two scalars x and y, YALMIP generates two linear inequalities.
-(:source lang=matlab:)
+
+````matlab
 sdpvar x y
 t = max([x y]);
 [operator,F] = model(t)
@@ -171,7 +177,7 @@ sdisplay(sdpvar(F(1)))
 ans =
    '-x+t'    '-y+t'
 
-operator = 
+operator =
 
        convexity: 'convex'
     monotonicity: 'increasing'
@@ -184,10 +190,11 @@ operator =
           domain: [-Inf Inf]
       derivative: []
            model: 'graph'
-(:sourceend:) 
+````
 
-For more advanced models with recursively used nonlinear operators, the function model will not generate the complete model since it does not recursively expand the arguments. For this case, use the command '''expandmodel'''. This command takes two arguments, a set of constraints and an objective function. To expand an expression, just let the expression take the position as the objective function. Note that the command assumes that the expansion is performed in order to prove a convex function, hence if you expression is meant to be concave, you need to negate it. To illustrate this, let us expand the objective function in an extension of the geometric mean example above.
-(:source lang=matlab:)
+For more advanced models with recursively used nonlinear operators, the function model will not generate the complete model since it does not recursively expand the arguments. For this case, use the command **expandmodel**. This command takes two arguments, a set of constraints and an objective function. To expand an expression, just let the expression take the position as the objective function. Note that the command assumes that the expansion is performed in order to prove a convex function, hence if you expression is meant to be concave, you need to negate it. To illustrate this, let us expand the objective function in an extension of the geometric mean example above.
+
+````matlab
 A = randn(7,2);
 b = rand(7,1)*5;
 x = sdpvar(2,1);
@@ -204,14 +211,15 @@ expandmodel([],-geomean([b-A*x;min(x)]))
 |   #7|   Numeric value|   Second order cone constraint 3x1|   Expansion of geomean|
 |   #8|   Numeric value|   Second order cone constraint 3x1|   Expansion of geomean|
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-(:sourceend:) 
+````
 
 The result is two linear inequalities related to the min operator and 7 second order cone constraints used for the conic representation of the geometric mean.
 
-!! Adding new operators
+### Adding new operators
 
-If you want to add your own operator, all you need to do is to create 1 file. This file should be able to return the numerical value of the operator for a numerical input, and return the epigraph (or hypograph) and a descriptive structure of the operator when the first input is ''''graph''''. As an example, the following file implements the nonlinear operator tracenorm. This convex operator returns '''sum(svd(X))''' for matrices '''X'''. This value can also be described as the minimizing argument of the optimization problem '''min'_{t,A,B}_'''' subject to '''[A X;X' B] >= 0''' and '''trace(A)+trace(B) <= 2t'''.
-(:source lang=matlab:)
+If you want to add your own operator, all you need to do is to create 1 file. This file should be able to return the numerical value of the operator for a numerical input, and return the epigraph (or hypograph) and a descriptive structure of the operator when the first input is **'graph'**. As an example, the following file implements the nonlinear operator tracenorm. This convex operator returns **sum(svd(X))** for matrices **X**. This value can also be described as the minimizing argument of the optimization problem **min {t,A,B}_subject to [A X;X' B] >= 0, trace(A)+trace(B) <= 2t**.
+
+````matlab
 function varargout = tracenorm(varargin)
 
 switch class(varargin{1})    
@@ -255,8 +263,8 @@ switch class(varargin{1})
 
     otherwise
 end
-(:sourceend:) 
+````
 
-Additional properties of the operator can be assigned to guide YALMIP in various scenarios. However, most those additional properties are not of interest for graph-based implementations, but are meant for [[MixedIntegerRepresentations | mixed-integer]] and [[EvaluationRepresentations | evaluation]]-based representations.
+Additional properties of the operator can be assigned to guide YALMIP in various scenarios. However, most those additional properties are not of interest for graph-based implementations, but are meant for [mixed-integer] and [evaluation]-based representations.
 
-The function '''sumk''' in YALMIP is implemented using this framework and might serve as a good start for your own experiments.
+The function **sumk** in YALMIP is implemented using this framework and might serve as a good start for your own experiments.
