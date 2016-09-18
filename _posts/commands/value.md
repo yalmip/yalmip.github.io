@@ -1,3 +1,0 @@
----
-permalink: /commands/value/
----
