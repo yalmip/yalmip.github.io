@@ -12,7 +12,7 @@ sidebar:
 ---
 
 ### Description
-[crossentropy] is defined as \\(-\sum x_i.*\log(y_i)\\). Read more on [Wikipedias article on cross entropty](http://en.wikipedia.org/wiki/Cross_entropy).
+[crossentropy] is defined as \\(-\sum x_i\log(y_i)\\). Read more on [Wikipedias article on cross entropty](http://en.wikipedia.org/wiki/Cross_entropy).
 
 ### Syntax
 
