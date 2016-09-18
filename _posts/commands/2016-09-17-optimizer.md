@@ -11,7 +11,7 @@ sidebar:
   nav: "commands"
 ---
 
-[optimizer] creates an object with an exported optimization model which can be used to efficiently solve a series of similar problems.
+[optimizer] creates an object with an low-level numerical format which can be used to efficiently solve a series of similar problems (reduces YALMP analysis and compilation overhead)
 
 ### Syntax
 
