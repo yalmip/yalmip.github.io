@@ -3,7 +3,7 @@ layout: single
 category: faq
 author_profile: false
 excerpt: 
-title: YALMIP does not work
+title: What does YALMIP mean?
 tags:
 comments: true
 date: '2016-09-17'
@@ -11,4 +11,4 @@ sidebar:
   nav: "commands"
 ---
 
-1. 
+Nothing, you [decide](http://arthurdick.com/projects/backronym/)
