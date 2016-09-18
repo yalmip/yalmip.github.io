@@ -5,7 +5,7 @@ permalink: /allcommands
 ---
 
 ## Most common
-[sdpvar], [optimize], [sdpsettings], [value]
+[sdpvar](/commands/sdpvar), [optimize], [sdpsettings], [value]
 
 ## Variable declaration
 [binvar], [blkvar], [intvar], [sdpvar], [semivar]
