@@ -21,7 +21,7 @@ sidebar:
 
 ### Examples
 
-The command is used for finding lower bounds on a polynomial \\(h(x)\\), subject to constraints \\(F(x)\\), where \\(F(x)\\) is a collection of polynomial inequalities and equalities.
+The command is used for finding lower bounds on a polynomial \\(h(x)\\), subject to constraints \\(F(x)\succeq 0\\), where \\(F(x)\\) is a collection of polynomial scalar or matrix inequalities (and equalities).
 
 ````matlab
 x1 = sdpvar(1,1);x2 = sdpvar(1,1);x3 = sdpvar(1,1);
