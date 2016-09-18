@@ -29,7 +29,7 @@ p = sdpvar(2,1);
 A = A0 + A1*p(1) + A2*p(2);
 ````
 
-Define a matrix of size \\(2'^n \times  n\\) containing all combinations of summing up the elements in a row using \\(+1\\) and \\(-1\\).
+Define a matrix of size \\(2^n \times  n\\) containing all combinations of summing up the elements in a row using \\(+1\\) and \\(-1\\).
 
 ````matlab
 combs = [];
