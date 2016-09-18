@@ -32,7 +32,7 @@ solvers:
       - title: "KKTQP"
         url: /solver/kktqp
       - title: "MOMENT"
-        url: /solver/solvemoment
+        url: /solver/moment
   - title: External solvers
     children:
       - title: "BARON"
