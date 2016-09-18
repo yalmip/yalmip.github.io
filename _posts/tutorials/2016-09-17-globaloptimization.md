@@ -10,11 +10,11 @@ sidebar:
   nav: "tutorials"
 ---
 
-Global solutions! Well, almost... don't expect too much at this stage. The solver used here, [bmibnb](/yalmip/solver/bmibnb), is under development. The code is fairly robust on small problems (solves 180 of the globlib problems in under 8 minutes total), and a couple of small real-world problems with bilinear matrix inequalities have been solved successfully.
+Global solutions! Well, almost... don't expect too much at this stage. The solver used here, [bmibnb](/solver/bmibnb), is under development. The code is fairly robust on small problems (solves 180 of the globlib problems in under 8 minutes total), and a couple of small real-world problems with bilinear matrix inequalities have been solved successfully.
 
 The [BMIBNBTheory] is based on a simple spatial branch-and-bound strategy, using McCormick's convex envelopes for bounding bilinear terms, and general convex envelope approximations for other nonlinear operators. LP-based bound tightening is applied iteratively to improve variable bounds together with some additional techniques to, e.g., exploit complementary constraints etc. See the [BMIBNBTheory] for some details.
 
-Relaxed problems are solved using either an [LP solver], [QP solver], or an [SDP solver] solver, depending on the problem, while upper bounds are found using a local nonlinear solver such as [FMINCON](/yalmip/solver/fmincon),  [SNOPT](/yalmip/solver/snopt) and [IPOPT](/yalmip/solver/ipopt), or [PENBMI/PENLAB](/yalmip/solver/penbmi) for nonlinear semidefinite problems.
+Relaxed problems are solved using either an [LP solver], [QP solver], or an [SDP solver] solver, depending on the problem, while upper bounds are found using a local nonlinear solver such as [FMINCON](/solver/fmincon),  [SNOPT](/solver/snopt) and [IPOPT](/solver/ipopt), or [PENBMI/PENLAB](/solver/penbmi) for nonlinear semidefinite problems.
 
 ### Nonconvex quadratic programming
 The first example is a problem with a concave quadratic constraint (this is the example addressed in the moment relaxation section). Three different optimization problems are solved during the branching: Upper bounds using a local nonlinear solver `'bmibnb.uppersolver'`, lower bounds with `'bmibnb.lowersolver'` and bound tightening using a linear programming solver `'bmibnb.lpsolver'`.
@@ -287,7 +287,7 @@ optimize(F,-t,options);
 +   3 Finishing.  Cost: -2.5 Gap: 0.55275%
 ````
 
-Upper bounds were obtained above by solving the BMI locally using [PENBMI/PENLAB](/yalmip/solver/penbmi). If no local BMI solver is available, an alternative is to check if the relaxed solution is a feasible solution. If so, the upper bound can be updated. This scheme can be obtained by specifying 'none' as the upper bound solver.
+Upper bounds were obtained above by solving the BMI locally using [PENBMI/PENLAB](/solver/penbmi). If no local BMI solver is available, an alternative is to check if the relaxed solution is a feasible solution. If so, the upper bound can be updated. This scheme can be obtained by specifying 'none' as the upper bound solver.
 
 ````matlab
 options = sdpsettings(options,'bmibnb.uppersolver','none');

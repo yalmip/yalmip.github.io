@@ -11,7 +11,7 @@ sidebar:
 ---
 
 
-YALMIP supports several [mixed integer programming solvers], but also comes with a very simple [built-in solver for mixed integer programming (BNB)](/yalmip/solver/bnb) (which you shouldn't use unless you absolutely have to), based on a simple standard branch-and-bound algorithm.
+YALMIP supports several [mixed integer programming solvers], but also comes with a very simple [built-in solver for mixed integer programming (BNB)](/solver/bnb) (which you shouldn't use unless you absolutely have to), based on a simple standard branch-and-bound algorithm.
 
 ### Integer and binary variables
 

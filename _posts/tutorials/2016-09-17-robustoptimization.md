@@ -115,7 +115,7 @@ objective = -x;
 sol = optimize(F + W,objective)
 ````
 
-To illustrate even stronger how transparently integrated the robust optimization framework is, we solve an uncertain  [sum-of-squares] problem involving a [nonlinear operator] leading to integrality constraints, thus forcing the resulting SDP to be solved using the internal [mixed-integer SDP solver BNB](/yalmip/solver/bnb).
+To illustrate even stronger how transparently integrated the robust optimization framework is, we solve an uncertain  [sum-of-squares] problem involving a [nonlinear operator] leading to integrality constraints, thus forcing the resulting SDP to be solved using the internal [mixed-integer SDP solver BNB](/solver/bnb).
 
 We want to find an integer value \\(a\\), taking values in the range from 3 to 5, such that the polynomial \\(ax^4+y^4+uxy+1\\) has a lower bound larger than \\(t\\), for any \\(-1 \leq u\\). A trivial and contrived example of course, but here is the compact YALMIP model.
 
