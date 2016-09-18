@@ -2,12 +2,12 @@
 layout: single
 excerpt: "Name your constraints for easy reference"
 title: Tagging constraints
-tags:
+tags: [Tricks]
 comments: true
 date: '2009-08-29'
 ---
 
-When a list of constraint is generated, it is sometimes hard to remember which constraints model what. To alleviate this problem, you can tag your list of constraints easily with descriptions.
+When a list of constraints is generated, it is sometimes hard to remember which constraints model what. To alleviate this problem, you can tag your list of constraints easily with descriptions.
 
 The syntax is very easy, simply add a : followed by a string.
 
