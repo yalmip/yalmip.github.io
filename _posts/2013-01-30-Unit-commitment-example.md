@@ -12,3 +12,5 @@ A common application of integer programming is the unit commitment problem in po
 To see how such a problem is modeled in YALMIP, a [unit commitment example](/ylmip/examples/unitcommitment) is now available.
 
 If you would like to see how additional constraints or logic behaviour can be added to the model, let me know!
+
+> Take-away from example: Don't multiply binary variables and continuous varaibles unless you actually have to!
