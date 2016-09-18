@@ -4,17 +4,13 @@ category: example
 author_profile: false
 excerpt: "Hybrid and nonconvex models in model predictive control simplified by general high-level operators in YALMIP"
 title: Model predictive control - Hybrid models
-tags: [Control, MPC, Integer programming]
+tags: [Control, MPC, Integer programming, Avoidance constraints]
 comments: true
 date: '2016-09-16'
 sidebar:
   nav: "examples"
 header:
   teaser:
-image:
-  feature: lofberg.jpg
-  teaser: lofberg.jpg
-  thumb: lofberg.jpg
 ---
 
 In the [standard MPC example], we illustrated some alternative approaches to setup and solve MPC problems in YALMIP. We will now use approximately the same code to solve hybrid MPC problems, i.e., problems involving piecewise affine and hybrid models.
@@ -117,7 +113,7 @@ constraints = [constraints, -5<=x{k+1}<=5];
 controller = optimizer(constraints, objective,sdpsettings('verbose',1),x{1},u{1});
 ````
 
-The following model incorporates an avoidance constraint \\( \left\lvert x-r\right\rvert >0.1\\), i.e., a small region around some central point \\(r\\) is considered dangerous and may not be entered. This is a non-convex constraint, but YALMIP can model this using the  [nonlinear operator framework]. Hence we create a controller setup that takes the current state and the dangerous position \\(r\\), and returns a safe input.
+The following model incorporates an avoidance constraint \\( \left\lvert x-r\right\rvert \geq 0.1\\), i.e., a small region around some central point \\(r\\) is considered dangerous and may not be entered. This is a non-convex constraint, but YALMIP can model this using the  [nonlinear operator framework]. Hence we create a controller setup that takes the current state and the dangerous position \\(r\\), and returns a safe input.
 
 ````matlab
 u = sdpvar(repmat(nu,1,N),repmat(1,1,N));
@@ -137,10 +133,10 @@ for k = 1:N
  constraints = [constraints, implies(d{k}(1), Model1), implies(d{k}(2), Model2)];
 
  constraints = [constraints, sum(d{k}) >= 1, -1 <= u{k}<= 1, -5<=x{k}<=5];
- constraints = [constraints,norm(x{k} - r,1)>=0.1];
+ constraints = [constraints,norm(x{k} - r,1) >= 0.1];
 end
 
-constraints = [constraints, -5<= x{k+1} <=5];
-constraints = [constraints, -5<= r <=5];
+constraints = [constraints, -5 <= x{k+1} <=5];
+constraints = [constraints, -5 <= r <=5];
 controller = optimizer(constraints, objective,sdpsettings('verbose',1),[x{1};r],u{1});
 ````
