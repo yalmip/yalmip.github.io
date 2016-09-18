@@ -21,9 +21,9 @@ P = optimizer(Con,Obj,Options,Parameters,WantedVariables)
 
 ### Examples
 
-[optimizer] is used to simplify and speed up code where the almost the same model is setup and solved repeatedly. We will mainly consider the case here where the varying parameters enter the problem affinely. The more general case is discussed [Blog.Beta-version-of-a-more-general-optimizer in this article])
+[optimizer] is used to simplify and speed up code where the almost the same model is setup and solved repeatedly. 
 
-As a start, we create a simple linear programming model where a scalar decision variable is bounded from below by some value '''a+1'''. We create an optimizer object where the bound '''a''' is considered a parameter, and we are interested in the optimal value of '''x''' as this bound varies.
+As a start, we create a trivial linear programming model where a scalar decision variable is bounded from below by some value \\(a+1\\). We create an optimizer object where the bound \\(a\\) is considered a parameter, and we are interested in the minimal value of \\(x^2\\) as the parameter \\(a\\) varies.
 
 
 ````matlab
@@ -34,7 +34,7 @@ P = optimizer(Constraints,Objective,[],a,x)
 Optimizer object with 1 inputs and 1 outputs. Solver: MOSEK-LP/QP
 ````
 
-Solve the problem for the case when a=1.
+Solve the problem for the case when \\(a=1\\).
 
 
 ````matlab
@@ -50,6 +50,8 @@ Solve the problem for a range of parameters
 z = (-5:0.1:5);
 plot(z,P{z})
 ````
+
+Effectively, when the model is affinely parameterized in a parameter, a precompiled numerical model is created, and when a solution for a particular parameter value \\(a^{\star}\\) is requested, the precompiled model is appended with the constraint \\(a = a^{\star}\\) and sent to the solver.
 
 See more examples inn the [Examples.StandardMPC MPC example] and  [Examples.UnitCommitment unit commitment example].
 
