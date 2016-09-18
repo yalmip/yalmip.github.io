@@ -350,6 +350,8 @@ commands:
         url: /command/sos
   - title: Constraint manipulation
     children:
+      - title: "boundingbox"
+        url: /command/boundingbox
       - title: "check"
         url: /command/check
       - title: "dilate"
