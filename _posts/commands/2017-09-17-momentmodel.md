@@ -2,7 +2,7 @@
 layout: single
 category: command
 author_profile: false
-excerpt: "Derive semidefinite relaxation model of polynomial program"
+excerpt: "Derive semidefinite relaxation model of polynomial program without solving it"
 title: momentmodel
 tags: [Moment relaxations, Semidefinite relaxations]
 comments: true
