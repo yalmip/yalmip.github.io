@@ -27,14 +27,14 @@ Constraints = [x >= 1, y >= k*y + m]
 optimize(F,obj)
 ````
 
-When concatenating the constraints, MATLAB will first tell YALMIP to evaluate all the expressions. When doing so, YALMIP changes the expressions to {$x - 1\geq 0$} and {$y-ky-m\geq 0$}. The second expression will simply lead to the expression **0>=0**, i.e., standard MATLAB code without any YALMIP context, which evaluates to **logical(1)**. Hence, the model will be
+When concatenating the constraints, MATLAB will first tell YALMIP to evaluate all the expressions. When doing so, YALMIP changes the expressions to **x - 1>=0** and **y-ky-m\geq 0**. The second expression will simply lead to the expression **0>=0**, i.e., standard MATLAB code without any YALMIP context, which evaluates to **logical(1)**. Hence, the model will be
 
 ````matlab
 Constraints = [x-1 >= 0, logical(1)]
 optimize(F,obj)
 ````
 
-When encountering such a situation, YALMIP will issue a warning. An even worse case can occur if, e.g., **k=1** and **m = 1**. We then have the model
+When encountering such a situation, YALMIP will issue a warning to make the user aware of the situation. An even worse case can occur if, e.g., **k=1** and **m = 1**. We then have the model
 
 ````matlab
 Constraints = [x-1 >= 0, -1 >= 0]
