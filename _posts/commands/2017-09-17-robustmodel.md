@@ -4,14 +4,14 @@ category: command
 author_profile: false
 excerpt: "Derive robust counterpart model of uncertain program"
 title: robustmodel
-tags:
+tags: [Robust optimization]
 comments: true
 date: '2016-09-17'
 sidebar:
   nav: "commands"
 ---
 
-[robustify] is used to derive a robust counterpart of an uncertain optimization problem (constraints satisfied for all possible uncertainties, and worst-case objective).
+[robustmodel] is used to derive a robust counterpart of an uncertain optimization problem without solving it.
 
 ### Syntax
 
@@ -21,7 +21,7 @@ sidebar:
 
 ### Examples
 
-Consider the following uncertain problem ('''w''' is the uncertain variable)
+Consider the following uncertain problem (**w** is the uncertain variable)
 
 ````matlab
 sdpvar x w
@@ -39,7 +39,7 @@ optimize([F, W],objective);
 Alternatively, we can first derive a robust version.
 
 ````matlab
-[Frobust,robustobjective] = robustify(F + G,objective);
+[Frobust,robustobjective] = robustmodel(F + G,objective);
 ````
 
 This model does not involve the uncertain variable anymore, and corresponds to the worst-case scenario model. We can now solve the model.
@@ -49,4 +49,4 @@ optimize(Frobust,robustobjective,ops)
 ````
 
 ### See also
-[optimize], [uncertain], [sdpsettings], [Tutorials.RobustOptimization robust optimization tutorial], [Examples.RobustMPC robust MPC example]
+[optimize], [uncertain]
