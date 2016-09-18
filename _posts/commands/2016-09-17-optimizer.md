@@ -65,7 +65,7 @@ P = optimizer(Constraints,Objective,[],a,x)
 Optimizer object with 1 inputs and 1 outputs. Solver: FMINCON-STANDARD
 ````
 
-Note that YALMIP has picked a nonlinear solver. The reason is that YALMIP does not exploit the knowledge that a is a parameter, when the model is compiled. Hence, it thinks the objective is cubic and picks a general nonlinear solver.
+Note that YALMIP has picked a nonlinear solver. The reason is that YALMIP does not exploit the knowledge that \\(a\\) is a parameter, when the model is compiled. Hence, it thinks the objective is cubic and the constraints are quadratic, and picks a general nonlinear solver.
 
 To circumvent this, we have to tell YALMIP which solver we want to use, and thus promise YALMIP that this solver actually is capable of solving the problem once the parameters have been fixed.
 
