@@ -11,7 +11,7 @@ sidebar:
   nav: "commands"
 ---
 
-[logsumexp] is a convexity aware implementation of \\(\log(\sum e^{x})\\) 
+[logsumexp] is a convexity aware implementation of \\(\log(\sum_i e^{x_i})\\) 
 
 ### Syntax
 
