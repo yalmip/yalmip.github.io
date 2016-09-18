@@ -4,7 +4,7 @@ category: command
 author_profile: false
 excerpt: "Built-in bilevel optimization problem solver"
 title: solvebilevel
-tags:
+tags: [Bilevel programming]
 comments: true
 date: '2016-09-17'
 sidebar:
