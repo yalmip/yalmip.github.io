@@ -16,7 +16,7 @@ YALMIP is free of charge to use and is openly distributed, but note that
 
 5. Forks or versions of YALMIP must include, and follow, this license in any distribution.
 
-For installation, see the [installation tutorial](tutorial/installation), and get started coding [here](tutorial/basics)
+For installation, see the [installation tutorial](/tutorial/installation), and get started coding [here](/tutorial/basics)
 
 ## Latest relase
 
