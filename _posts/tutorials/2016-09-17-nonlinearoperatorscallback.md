@@ -12,19 +12,19 @@ sidebar:
   nav: "tutorials"
 ---
 
-The nonlinear operator framework was initially implemented for functions that can be modelled rigorously using conic constraints and additional variables, so called [GraphRepresentations | graph-representations].
+The nonlinear operator framework was initially implemented for functions that can be modelled rigorously using conic constraints and additional variables, so called [graph-representations].
 
-However, there are many functions that cannot be modelled using conic constraints, such as exponential functions and logarithms, but are convex or concave, and of course can be analyzed in terms of convexity preserving operations. These function (and any other nonlinear function) are supported in a framework called evaluation based nonlinear operators. Models using these general operators will still be analyzed with respect to convexity, but the resulting model requires a general nonlinear solver, such as [Solvers.FMINCON | fmincon] or [Solvers.SNOPT | SNOPT].
+However, there are many functions that cannot be modelled using conic constraints, such as exponential functions and logarithms, but are convex or concave, and of course can be analyzed in terms of convexity preserving operations. These function (and any other nonlinear function) are supported in a framework called evaluation based nonlinear operators. Models using these general operators will still be analyzed with respect to convexity, but the resulting model requires a general nonlinear solver, such as [fmincon] or [SNOPT].
 
-In addition to convexity properties, operators can be attributed with various other properties, and we will use this possibility here. Examples include derivate information and convex hull generators for the global solver [Solvers.BMIBNB | bmibnb].
+In addition to convexity properties, operators can be attributed with various other properties, and we will use this possibility here. Examples include derivate information and convex hull generators for the global solver [BMIBNB].
 
 Note that the framework currently is limited to elementwise functions and functions with vector input and scalar output. The tutorial here concentrates on the elementwise case. If you need more information concerning the general case, do not hesitate to contact me.
 
-!Standard use
+### Standard use
 
 Essentially all simple nonlinear functions in MATLAB are available as evaluation based operators in YALMIP.
 
-The following problem should return 2, if the nonlinear solver (probably [Solvers.FMINCON | fmincon]) performs well.
+The following problem should return 2, if the nonlinear solver (probably [fmincon]) performs well.
 
 ````matlab
 sdpvar x
@@ -43,12 +43,13 @@ ans =
  'Convexity check failed (Expected convexity in objective at level 1)'
 ````
 
-Since the problem is nonconvex, we cannot be sure that the computed solution actually is a global minimizer. An alternative then is to invoke the built-in global solver [Solvers.BMIBNB | bmibnb]. Global solutions are typically extremely time-consuming, but this trivial problem is solved immediately.
+Since the problem is nonconvex, we cannot be sure that the computed solution actually is a global minimizer. An alternative then is to invoke the built-in global solver [BMIBNB]. Global solutions are typically extremely time-consuming, but this trivial problem is solved immediately.
 
 ````matlab
 optimize([-5 <= x <= 5],-exp(-(x-2).^2),sdpsettings('solver','bmibnb'));
 ````
-The global solver [Solvers.BMIBNB | bmibnb] is based on the convex hull approximations discussed below. Note that the solver requires bounds (preferably explicit) on variables that are involved in nonconvex terms. The reason for this can be found in the [Solvers.BMIBNBTheory | bmibnb description] and the [Tutorials.Big-M | big-M tutorial]
+
+The global solver [BMIBNB] is based on the convex hull approximations discussed below. Note that the solver requires bounds (preferably explicit) on variables that are involved in nonconvex terms. The reason for this can be found in the [Solvers.BMIBNBTheory | bmibnb description] and the [big-M].
 
 In general, working with nonlinear evaluation-based operators in YALMIP requires no special code. It must however be kept in mind that they require general-purpose nonlinear solvers.
 
@@ -60,11 +61,11 @@ optimize([-5 <= x <= 5,y == -(x-2).^2],-exp(y),sdpsettings('solver','bmibnb'));
 ````
 
 
-! Adding new operators
+### Adding new operators
 
-Almost all built-in operators are already supported, but it might happen that you need to implement your own functionality (if you are lazy, you can often use the [Commands.sdpfun | sdpfun] functionality).
+Almost all built-in operators are already supported, but it might happen that you need to implement your own functionality (if you are lazy, you can often use the [sdpfun] functionality).
 
-To illustrate how this is done, we will work with the implementation of '''exp'''. Since almost all built-in functions in MATLAB behaves the same, the definition can almost always be done in the same way, and to simplify coding , the command '''InstantiateElementWise''' is available (which hides code very similiar to the code used in the [GraphRepresentations | graph-representations]. This sets up the logic in YALMIP for the definition of an operator that works element-wise. As in the other modelling approaches, three outputs are assumed; a set of constraints, typically domain constraints, an operator description, and the input arguments.
+To illustrate how this is done, we will work with the implementation of **exp**. Since almost all built-in functions in MATLAB behaves the same, the definition can almost always be done in the same way, and to simplify coding , the command **InstantiateElementWise** is available (which hides code very similiar to the code used in the [Ggraph-representations]. This sets up the logic in YALMIP for the definition of an operator that works element-wise. As in the other modelling approaches, three outputs are assumed; a set of constraints, typically domain constraints, an operator description, and the input arguments.
 
 ````matlab
 function varargout = exp(varargin)
@@ -97,13 +98,14 @@ end
 
 ````
 
-At this point we have a model that can be used in, e.g., [Solvers.FMINCON | fmincon]. The convexity information lets YALMIP perform convexity analysis of expressions involving the exponential function.
+At this point we have a model that can be used in, e.g., [FMINCON]. The convexity information lets YALMIP perform convexity analysis of expressions involving the exponential function.
 
-The function can also be used when using the global solver [Solvers.BMIBNB | bmibnb], as we did above. However, the global solver is based on function bounding, and approximating nonlinear expressions locally by convex hulls. To enable this, YALMIP must have more information. If no information is available, YALMIP uses an approximate sampled-based scheme, which is both slow and theoretically questionable.
+The function can also be used when using the global solver [BMIBNB], as we did above. However, the global solver is based on function bounding, and approximating nonlinear expressions locally by convex hulls. To enable this, YALMIP must have more information. If no information is available, YALMIP uses an approximate sampled-based scheme, which is both slow and theoretically questionable.
 
 Hence, we need to add two more properties to the operator. One function, the bounding operator, which returns lower and upper bounds on the nonlinear function, given lower and upper bounds on the argument, and a function that returns a convex hull (or outer approximation of it) in a particular form.
 
 The improved version is now
+
 ````matlab
 function varargout = exp(varargin)
 switch class(varargin{1})
@@ -152,11 +154,12 @@ dfU = exp(xU);
 
 ````
 
-The global solver [Solvers.BMIBNB | bmibnb] can now quickly obtain linear convex hulls approximations of the operator. The derivative information can be used by YALMIP to perform automatic differentiation when the nonlinear solver requests derivatives of objective functions and constraints.
+The global solver [BMIBNB] can now quickly obtain linear convex hulls approximations of the operator. The derivative information can be used by YALMIP to perform automatic differentiation when the nonlinear solver requests derivatives of objective functions and constraints.
 
 Note that some of the information is redundant. Since we have described that the operator is increasing, it immediately follows that YALMIP can derive lower and upper bounds over an interval. Like-wise, since we have defined the function as convex, and supply a callback for computing the derivative, YALMIP can automatically generate the convex hull approximation. It is however recommended to explicitly state as much as possible manually, since this will speed up the code, and avoid problem with, e.g., functions that are undefined or infinite  on the border of its domain.
 
-If you have [Solvers.MPT | MPT] installed, you can run the following code to plot the convex hull.
+If you have [MPT] installed, you can run the following code to plot the convex hull.
+
 ````matlab
 sdpvar x
 properties = model(exp(x))
