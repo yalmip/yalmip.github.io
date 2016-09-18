@@ -3,7 +3,7 @@ title: "Global optimization"
 category: tutorial
 author_profile: false
 level: 4
-tags: [Global optimization]
+tags: [Global optimization, Nonconvex quadratic programming, Nonconvex semidefinite programming, BMI]
 excerpt: "The holy grail! 60% of the time it works every time."
 layout: single
 sidebar:
