@@ -2,15 +2,15 @@
 layout: single
 category: example
 author_profile: false
-excerpt: "Optimization over optimization problems in three different ways."
-title: Bilevel programming alternatives
-tags: [Bilevel programming, Multi-parametric programming, kkt, solvebilevel]
+excerpt: "Common question: how can I solve a nonconvex QP using SeDuMi? Weird question, but interesting answer."
+title: Nonconvex quadratic programming comparisons
+tags: [Nonconvex quadratic programming, Semidefinite programming, Moment relaxations, kktqp, kkt]
 comments: true
-date: '2016-09-17'
+date: '2011-08-31'
 sidebar:
   nav: "examples"
 header:
-  teaser: "bilevel.png"
+  teaser: "nonconvexcomparetimes2.png"
 ---
 
 A common question I get is along the lines *how can I solve a nonconvex QP using SeDuMi*?
