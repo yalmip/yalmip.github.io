@@ -1,5 +1,5 @@
 ---
-title: "SeDuMi"
+title: "QUADPROGBB"
 category: solver
 layout: single
 permalink: /solver/

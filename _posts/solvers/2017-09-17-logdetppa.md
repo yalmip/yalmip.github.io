@@ -1,5 +1,5 @@
 ---
-title: "SeDuMi"
+title: "LOGDETPPA"
 category: solver
 layout: single
 permalink: /solver/

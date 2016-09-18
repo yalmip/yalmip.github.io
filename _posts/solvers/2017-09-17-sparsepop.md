@@ -1,5 +1,5 @@
 ---
-title: "SeDuMi"
+title: "SPARSEPOP"
 category: solver
 layout: single
 permalink: /solver/

@@ -1,5 +1,5 @@
 ---
-title: "SeDuMi"
+title: "INTLINPROG"
 category: solver
 layout: single
 permalink: /solver/
