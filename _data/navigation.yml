@@ -314,6 +314,8 @@ commands:
         url: /command/entropy
       - title: "geomean"
         url: /command/geomean
+      - title: "kullbackleibler"
+        url: /command/kullbackleibler
       - title: "logdet"
         url: /command/logdet
       - title: "logistic"
