@@ -2,7 +2,7 @@
 title: "SPARSEPOP"
 category: solver
 layout: single
-permalink: /solver/
+author_profile: false
 sidebar:
   nav: "solvers"
 ---
