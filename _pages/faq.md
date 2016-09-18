@@ -1,7 +1,7 @@
 ---
 layout: archive
 author_profile: false
-permalink: /tutorials/
+permalink: /faq/
 ---
 
 {% include base_path %}
