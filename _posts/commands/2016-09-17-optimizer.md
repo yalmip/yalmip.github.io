@@ -56,6 +56,7 @@ Effectively, when the model is affinely parameterized in a parameter, a precompi
 The case when the model is nonlinearly parameterized is handled in a different way. Since the precompiled model is nonlinear in the parameter, simply adding an equality constraint will not work, as the model then would be nonlinear. Instead, YALMIP performs a variable elimination on the precompiled model, and the reduced model is sent to the solver.
 
 Consider the following nonlinearly parameterized quadratic program
+
 ````matlab
 sdpvar a x
 Constraints = [-1 <= x <= -a^2/25];
