@@ -11,7 +11,7 @@ sidebar:
   nav: "commands"
 ---
 
-[momentmodel] derives the semidefinite relaxation of a polynomial program
+[momentmodel] derives the semidefinite relaxation model of a polynomial program without solving it.
 
 ### Syntax
 
