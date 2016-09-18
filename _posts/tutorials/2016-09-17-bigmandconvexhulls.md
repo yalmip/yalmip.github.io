@@ -1,6 +1,6 @@
 ---
 title: "Big-M and convex hulls"
-type: tutorial
+category: tutorial
 author_profile: false
 level: 4
 tags: [Big-M, Convex hull, Logic programming, Integer programming]

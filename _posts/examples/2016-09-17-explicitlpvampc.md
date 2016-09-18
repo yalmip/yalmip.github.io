@@ -1,6 +1,6 @@
 ---
 layout: single
-type: example
+category: example
 author_profile: false
 excerpt: "Dynamic programming based LPV control of the Henon attractor."
 title: Model predictive control - LPV models redux

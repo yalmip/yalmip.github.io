@@ -1,6 +1,6 @@
 ---
 title: "Installation"
-type: tutorial
+category: tutorial
 author_profile: false
 tags: 
 excerpt: "If it's hard, you're doing it wrong."

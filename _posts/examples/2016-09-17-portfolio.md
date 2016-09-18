@@ -1,7 +1,7 @@
 ---
 layout: single
 category: example
-type: example
+category: example
 author_profile: false
 excerpt: "Markowitz classical portfoilos and beyond via integer programming."
 title: Portfolio optimization

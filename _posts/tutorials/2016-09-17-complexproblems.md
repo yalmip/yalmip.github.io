@@ -1,6 +1,6 @@
 ---
 title: "Complex-valued problems"
-type: tutorial
+category: tutorial
 author_profile: false
 level: 4
 tags: [Complex data]

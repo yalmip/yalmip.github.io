@@ -1,6 +1,6 @@
 ---
 title: "Bilevel programming"
-type: tutorial
+category: tutorial
 author_profile: false
 level: 4
 tags: [Bilevel programming]

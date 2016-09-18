@@ -1,6 +1,6 @@
 ---
 title: "Semidefinite programming"
-type: tutorial
+category: tutorial
 author_profile: false
 tags: [Semidefinite programming]
 excerpt: "Who wudda thought? Optimization over positive definite symmetric matrices is easy."

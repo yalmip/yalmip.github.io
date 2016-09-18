@@ -1,6 +1,6 @@
 ---
 title: "Global optimization"
-type: tutorial
+category: tutorial
 author_profile: false
 level: 4
 tags: [Global optimization]

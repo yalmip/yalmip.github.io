@@ -1,6 +1,6 @@
 ---
 title: "Multiparametric programming"
-type: tutorial
+category: tutorial
 author_profile: false
 level: 4
 tags: [Multi-parametric programming]

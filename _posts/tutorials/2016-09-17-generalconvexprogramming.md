@@ -1,6 +1,6 @@
 ---
 title: "General convex programming"
-type: tutorial
+category: tutorial
 author_profile: false
 tags:
 level: 4

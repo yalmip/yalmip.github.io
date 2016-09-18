@@ -1,6 +1,6 @@
 ---
 layout: single
-type: example
+category: example
 author_profile: false
 excerpt: "Mixed-integer optmization with logical modelling"
 title: Unit commitment

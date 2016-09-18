@@ -1,6 +1,6 @@
 ---
 layout: single
-type: example
+category: example
 author_profile: false
 excerpt: "Hybrid and nonconvex models in model predictive control simplified by general high-level operators in YALMIP"
 title: Model predictive control - Hybrid models

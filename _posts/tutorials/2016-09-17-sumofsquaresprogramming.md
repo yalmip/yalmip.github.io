@@ -1,6 +1,6 @@
 ---
 title: "Sum-of-squares programming"
-type: tutorial
+category: tutorial
 author_profile: false
 level: 4
 tags: [Sum-of-squares, Semidefinite programming, Polynomials]

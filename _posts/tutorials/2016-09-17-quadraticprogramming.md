@@ -1,6 +1,6 @@
 ---
 title: "Quadratic programming"
-type: tutorial
+category: tutorial
 author_profile: false
 tags: [Quadratic programming]
 excerpt: "Almost as easy as linear programming. Be careful though, symbolics might start to cause overhead."

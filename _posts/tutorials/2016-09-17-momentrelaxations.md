@@ -1,6 +1,6 @@
 ---
 title: "Moment relaxations"
-type: tutorial
+category: tutorial
 author_profile: false
 level: 4
 tags: [Semidefinite programming, Moment relaxations]

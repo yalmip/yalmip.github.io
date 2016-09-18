@@ -1,6 +1,6 @@
 ---
 title: "Determinant maximization"
-type: tutorial
+category: tutorial
 author_profile: false
 tags: [Semidefinite programming, Determinant maximization]
 excerpt: "Optimization with ellipsoids and likelihood functions are typical applications of determinant maximization."

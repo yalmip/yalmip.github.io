@@ -1,6 +1,6 @@
 ---
 title: "Geometric programming"
-type: tutorial
+category: tutorial
 author_profile: false
 level: 4
 tags: [Geometric programming]

@@ -1,6 +1,6 @@
 ---
 layout: single
-type: example
+category: example
 author_profile: false
 excerpt: "Ever wondered how the L1 Chebyshev ball can be computed?"
 title: Polytopic geometry using YALMIP and MPT

@@ -1,6 +1,6 @@
 ---
 title: "Automatic dualization"
-type: tutorial
+category: tutorial
 author_profile: false
 level: 4
 tags: [Duality, Automatic dualization]

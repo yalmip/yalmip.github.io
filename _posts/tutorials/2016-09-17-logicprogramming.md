@@ -1,6 +1,6 @@
 ---
 title: "Logic programming"
-type: tutorial
+category: tutorial
 author_profile: false
 level: 4
 tags: [Logic programming]
