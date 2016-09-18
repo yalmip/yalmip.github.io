@@ -6,7 +6,7 @@ excerpt: "Solve bilevel optimization problem"
 title: solvebilevel
 tags:
 comments: true
-date: '2011-08-31'
+date: '2016-09-17'
 sidebar:
   nav: "commands"
 ---

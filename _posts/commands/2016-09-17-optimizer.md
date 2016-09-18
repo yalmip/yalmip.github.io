@@ -6,7 +6,7 @@ excerpt: "Create precompiled optimization model object"
 title: optimizer
 tags:
 comments: true
-date: '2011-08-31'
+date: '2016-09-17'
 sidebar:
   nav: "commands"
 ---

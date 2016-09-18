@@ -6,7 +6,7 @@ excerpt: "Derive robust counterpart model of uncertain program"
 title: robustmodel
 tags:
 comments: true
-date: '2011-08-31'
+date: '2016-09-17'
 sidebar:
   nav: "commands"
 ---

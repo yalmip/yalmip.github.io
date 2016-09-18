@@ -6,7 +6,7 @@ excerpt: "Options structure creation"
 title: sdpsettings
 tags:
 comments: true
-date: '2011-08-31'
+date: '2016-09-17'
 sidebar:
   nav: "commands"
 ---
