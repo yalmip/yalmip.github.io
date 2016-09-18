@@ -8,7 +8,7 @@ sidebar:
   nav: "solvers"
 ---
 
-Built-in mixed-integer meta-solver for some quasi-convex problems.
+Built-in meta-solver for some quasi-convex problems.
 
 ### YALMIP
 
