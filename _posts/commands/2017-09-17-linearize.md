@@ -11,7 +11,7 @@ sidebar:
   nav: "commands"
 ---
 
-[linearize] returns the linearization of the polynomial '''p(x)''' at the point value(x).
+[linearize] returns the linearization of the polynomial \\(p(x)\\) at the point **value(x)**.
 
 ### Syntax
 
@@ -21,8 +21,9 @@ h = linearize(p)
 
 ### Examples
 
-The linearization is performed at the current value of '''x'''
-````matlabb
+The linearization is performed at the current value of **x**
+
+````matlab
 x = sdpvar(1,1);
 f = x^2;
 assign(x,1);
@@ -37,7 +38,8 @@ ans =
 ````
 
 The command applies to matrices as well
-````matlabb
+
+````matlab
 p11 = sdpvar(1,1);p12 = sdpvar(1,1);
 P = [p11 p12;p12 1];
 assign(P,[3 2;2 1])
@@ -49,4 +51,4 @@ ans =
 ````
 
 ### See also
-[jacobian], [hessian], [assign], [value], [sdisplay], [sdpvar]
+[jacobian], [hessian], [assign], [value], [sdisplay]
