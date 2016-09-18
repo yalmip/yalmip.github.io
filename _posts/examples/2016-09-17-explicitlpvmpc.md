@@ -10,7 +10,7 @@ date: '2016-09-16'
 sidebar:
   nav: "examples"
 header:
-  teaser: lpv1.png
+  teaser: "costs_LPVMPC.jpg"
 ---
 
 > This example, contributed by Thomas Besselmann, accompanies the following paper [Bes:2008]
