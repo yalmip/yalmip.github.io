@@ -49,7 +49,7 @@ Since the problem is nonconvex, we cannot be sure that the computed solution act
 optimize([-5 <= x <= 5],-exp(-(x-2).^2),sdpsettings('solver','bmibnb'));
 ````
 
-The global solver [BMIBNB] is based on the convex hull approximations discussed below. Note that the solver requires bounds (preferably explicit) on variables that are involved in nonconvex terms. The reason for this can be found in the [Solvers.BMIBNBTheory | bmibnb description] and the [big-M].
+The global solver [BMIBNB] is based on the convex hull approximations discussed below. Note that the solver requires bounds (preferably explicit) on variables that are involved in nonconvex terms. The reason for this can be found in the [Solvers.BMIBNBTheory  bmibnb description] and the [big-M].
 
 In general, working with nonlinear evaluation-based operators in YALMIP requires no special code. It must however be kept in mind that they require general-purpose nonlinear solvers.
 
