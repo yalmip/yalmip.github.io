@@ -42,7 +42,7 @@ solvers:
       - title: "BONMIN"
         url: /solver/bonmin
       - title: "BPMPD"
-        url: /solver/BPMPD
+        url: /solver/bpmpd
       - title: "CBC"
         url: /solver/cbc
       - title: "CDD"
@@ -124,7 +124,7 @@ solvers:
       - title: "SNOPT"
         url: /solver/snopt
       - title: "SPARSEPOP"
-        url: /solver/SPARSEPOP
+        url: /solver/sparsepop
       - title: "XPRESS"
         url: /solver/xpress
 
