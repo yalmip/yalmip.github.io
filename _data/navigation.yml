@@ -232,8 +232,6 @@ commands:
     children:
       - title: "binvar"
         url: /command/binvar
-      - title: "blkvar"
-        url: /command/blkvar
       - title: "intvar"
         url: /command/intvar
       - title: "sdpvar"
@@ -276,6 +274,8 @@ commands:
         url: /command/assign
       - title: "binmodel"
         url: /command/binmodel
+      - title: "blkvar"
+        url: /command/blkvar        
       - title: "coefficients"
         url: /command/coefficients
       - title: "degree"
