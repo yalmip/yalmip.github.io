@@ -189,7 +189,7 @@ F = [F, hull(A1*x <= b1,A2*x <= b2,A3*x <= b3,A4*x <= b4)];
 
 The big-M part ensures the equivalence with the original model, while the convex hull part ensures that the integer relaxations are of good quality. Note that the convex hull part introduces more variables and constraints.
 
-Alternatively, and much more efficient, is to catch the second output from [hull] and constrain these to be binary. By doing so, a complete mixed-integer convex hull based model is defined easily.
+Alternatively, and much more efficient, is to catch the second output from (commands/hull) and constrain these to be binary. By doing so, a complete mixed-integer convex hull based model is defined easily.
 
 ````matlab
 [F,t] = hull(A1*x <= b1,A2*x <= b2,A3*x <= b3,A4*x <= b4);
