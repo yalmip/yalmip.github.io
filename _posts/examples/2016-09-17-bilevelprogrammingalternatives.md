@@ -1,5 +1,6 @@
 ---
 layout: single
+category: example
 type: example
 author_profile: false
 excerpt: "Optimization over optimization problems in three different ways."
