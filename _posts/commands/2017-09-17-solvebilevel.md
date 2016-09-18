@@ -2,7 +2,7 @@
 layout: single
 category: command
 author_profile: false
-excerpt: "Solve multi-parametric optimization problem"
+excerpt: "Solve bilevel optimization problem"
 title: solvebilevel
 tags:
 comments: true
