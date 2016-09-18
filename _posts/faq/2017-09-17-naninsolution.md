@@ -3,7 +3,7 @@ layout: single
 category: faq
 author_profile: false
 excerpt: 
-title: YALMIP does not work
+title: I get NaN in my solution, or YALMIP complains about NaN
 tags:
 comments: true
 date: '2016-09-17'
@@ -11,4 +11,4 @@ sidebar:
   nav: "commands"
 ---
 
-1. 
+[Read more about NaN in models]
