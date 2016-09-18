@@ -2,18 +2,16 @@
 layout: single
 category: command
 author_profile: false
-excerpt: "Solve polynomial optimization problem using semidefinite relaxations"
+excerpt: "Built-in solver for polynomial optimization problem using semidefinite relaxations"
 title: solvemoment
-tags:
+tags: [Semidefinite relaxation, Moment relaxations, Polynomial programming]
 comments: true
 date: '2016-09-17'
 sidebar:
   nav: "commands"
 ---
 
-Images:mini-category.gif  [!Semidefinite relaxations]
-
-[solvemoment]  computes lower bounds to polynomial programs using Lasserre's moment-method, i.e., semidefinite relaxations.
+[solvemoment]  computes lower bounds to polynomial programs using [Lasserre's moment-method](/reference/), i.e., semidefinite relaxations.
 
 ### Syntax
 
@@ -22,6 +20,7 @@ Images:mini-category.gif  [!Semidefinite relaxations]
 ````
 
 ### Examples
+
 The command is used for finding lower bounds on a polynomial \\(h(x)\\), subject to constraints \\(F(x)\\), where \\(F(x)\\) is a collection of polynomial inequalities and equalities.
 
 ````matlab
@@ -41,7 +40,7 @@ ans =
    -6.0000
 ````
 
-In the code above, we solved the problem with the lowest possible lifting (decided by YALMIP), and the lower bound turned out to be -6 (this value can be obtained using [value] since the objective is linear. In the general case, [relaxdouble] is required to retrieve relaxed values on expressions after solving relaxations). A higher order relaxation gives better bounds.
+In the code above, we solved the problem with the lowest possible lifting (decided by YALMIP), and the lower bound turned out to be -6 (this value can be obtained using [value] since the objective is linear. In the general case, [relaxvalue] is required to retrieve relaxed values on expressions after solving relaxations). A higher order relaxation gives better bounds.
 
 ````matlab
 solvemoment(F,h,[],2);
@@ -60,7 +59,7 @@ ans =
    -4.0000
 ````
 
-For a more complete introduction, please study the [Tutorials.MomentRelaxations moment tutorial], and the quick introduction to semidefinite relaxations in [relaxdouble].
+For a more complete introduction, please study the [moment tutorial](/tutorial/momentrelaxations), and the quick introduction to semidefinite relaxations in [relaxvalue].
 
 ### See also
-[solvesos], [sdpvar], [value], [relaxdouble]
+[solvesos], [sdpvar], [value], [relaxvalue]
