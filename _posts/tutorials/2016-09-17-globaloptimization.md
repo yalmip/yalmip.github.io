@@ -10,7 +10,7 @@ sidebar:
   nav: "tutorials"
 ---
 
-Global solutions! Well, almost... don't expect too much from global solvers. The built-in solver used here, [bmibnb](/solver/bmibnb), is under development. The code is fairly robust on small problems (solves 180 of the globlib problems in under 8 minutes total), and a couple of small real-world problems with bilinear matrix inequalities have been solved successfully.
+Global solutions! Well, don't expect too much from global solvers. The built-in solver used here, [bmibnb](/solver/bmibnb), is under development. The code is fairly robust on small problems (solves 180 of the globlib problems in under 8 minutes total), and a couple of small real-world problems with bilinear matrix inequalities have been solved successfully.
 
 The [BMIBNBTheory] is based on a simple spatial branch-and-bound strategy, using McCormick's convex envelopes for bounding bilinear terms, and general convex envelope approximations for other nonlinear operators. LP-based bound tightening is applied iteratively to improve variable bounds together with some additional techniques to, e.g., exploit complementary constraints etc. See the [BMIBNBTheory] for some details.
 
