@@ -1,7 +1,12 @@
 ---
-title: "sdpvar"
 layout: single
-permalink: /commands/sdpvar/
+category: command
+author_profile: false
+excerpt: "Variable creation"
+title: sdpvar
+tags:
+comments: true
+date: '2011-08-31'
 sidebar:
   nav: "commands"
 ---
