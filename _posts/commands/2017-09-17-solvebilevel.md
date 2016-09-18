@@ -2,7 +2,7 @@
 layout: single
 category: command
 author_profile: false
-excerpt: "Solve bilevel optimization problem"
+excerpt: "Built-in bilevel optimization problem solver"
 title: solvebilevel
 tags:
 comments: true
@@ -11,9 +11,7 @@ sidebar:
   nav: "commands"
 ---
 
-Images:mini-category.gif  [!Bilevel programming]
-
-[solvebilevel] calls the internal bilevel solver.
+[solvebilevel] is a built-in bilevel solver for problems with inner convex quadratic programs.
 
 ### Syntax
 
@@ -62,4 +60,5 @@ solvebilevel(CO,OO,CI,OI,[y1 y2 y3])
 If you would like to use this approach, you are however recommended to derive the problem by calling the [Commands.Kkt KKT ] operator and setup the problem manually, in order to have full control of the way you work with bounds on the dual variables.
 
 ### See also
-[Tutorials.BilevelProgramming Bilevel programming tutorial], [Examples.BilevelProgramming Bilevel programming example]
+
+[Bilevel programming tutorial](/tutorial/bilevelprogramming), [Bilevel programming example](/example/bilevelprogrammingalternatives)
