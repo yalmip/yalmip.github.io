@@ -13,7 +13,7 @@ header:
   teaser: "costs_LPVMPC.jpg"
 ---
 
-> This example, contributed by Thomas Besselmann, accompanies the following paper [Bes:2008]
+> This example, contributed by Thomas Besselmann, accompanies the paper [Besselmann and Löfberg 2008]
 
 Note that the code below uses some awkward, no longer necessary, reformulations in order to cope with uncertainty in linear programming representable nonlinear terms.
 
