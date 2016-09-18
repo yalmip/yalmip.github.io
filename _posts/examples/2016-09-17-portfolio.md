@@ -45,7 +45,7 @@ optimize(F,-mu*w)
 value(w)
 ````
 
-Yet another proposal is to maximize the Sharpe ratio \\(\frac{w^T(\mu-\mu_0)}{\sqrt{w^TSw}}\\) where \\(\mu_0\\) is the return of a risk-free asset, i.e., the excess return per unit standard deviation. A first sight, this is terribly nonlinear and can indeed also be non-convex. However, it can easily be converted to a quadratic program. In principle, we note that the normalization that the weights should sum to 1 is rather arbitrary, we just want it to be non-zero and the important result is the relative sizes. We can just as well use a new set of weights \\(z\\) with the constraint that \\(z^T(\mu-\mu_0)\\). With this, our objective is maximization of \\(\frac{1}{\sqrt{z^TSz}}\\), i.e., minimization of \\(z^TSz\\)
+Yet another proposal is to maximize the Sharpe ratio \\(\frac{w^T(\mu-\mu_0)}{\sqrt{w^TSw}}\\) where \\(\mu_0\\) is the return of a risk-free asset, i.e., the excess return per unit standard deviation. A first sight, this is terribly nonlinear and can indeed also be non-convex. However, it can easily be converted to a quadratic program. In principle, we note that the normalization that the weights should sum to 1 is rather arbitrary, we just want it to be non-zero and the important result is the relative sizes. We can just as well use a new set of weights \\(z\\) with the constraint that \\(z^T(\mu-\mu_0)=1\\). With this, our objective is maximization of \\(\frac{1}{\sqrt{z^TSz}}\\), i.e., minimization of \\(z^TSz\\)
 
 ````matlab
 mu0 = 0.001;
