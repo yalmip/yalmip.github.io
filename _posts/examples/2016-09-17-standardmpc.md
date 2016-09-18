@@ -11,8 +11,6 @@ header:
 date: '2016-09-16'
 sidebar:
   nav: "examples"
-header:
-  teaser:
 ---
 
 To prepare for the hybrid, explicit and robust MPC examples, we solve some standard MPC examples. As we will see, MPC problems can be formulated in various ways in YALMIP.
