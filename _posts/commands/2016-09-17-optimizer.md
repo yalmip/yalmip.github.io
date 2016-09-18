@@ -92,27 +92,29 @@ Error flags from the solutions can be extracted using a second argument
 ````
 
 
-See more examples inn the [Examples.StandardMPC MPC example] and  [Examples.UnitCommitment unit commitment example].
+See more examples in the [MPC example](/example/standardmpc) and  [unit commitment example](/example/unitcommitment).
 
 ### Comments
 
 Note that assigned values of [sdpvar] objects are not updated after the optimization problem is solved.
 
-[Tutorials.SumOfSquares Sum-of-squares] problems can be handled through optimizer also. Note though that parameters in the sum-of-squares problem cannot be explicitly defined in [Commands.Optimizer optimizer], but YALMIP has to deduce them from non-sos constraints, the objective, input parameters and output parameters. If you first manually apply [Commands.Compilesos compilesos] to extract an SDP representation, you must set the option '''sos.model''' to '''2''' (image representation, dual parameterization) to be able to return output values.
+ Sum-of-squares problems can be handled through optimizer also. Note though that parameters in the sum-of-squares problem cannot be explicitly defined in [optimizer], but YALMIP has to deduce them from non-sos constraints, the objective, input parameters and output parameters. 
 
-Variables involved in defining the geometry of an uncertainty set when using the [Tutorials.RobustOptimization robust optimization framework] cannot be a parameter (during compilation, YALMIP treats all parameters as  decision variables, and this effectively means that there is no description of the uncertainty set (the uncertainty set is defined as the constraints only involving uncertain variables). Hence, the following scaled box will not work
+Variables involved in defining the geometry of an uncertainty set when using the robust optimization framework cannot be parameters (during compilation, YALMIP treats all parameters asdecision variables, and this effectively means that there is no description of the uncertainty set (the uncertainty set is defined as the constraints only involving uncertain variables)). Hence, the following scaled uncertainty box will not work
 
 ````matlab
 sdpvar t U w
 P = optimizer([uncertain(w), -U <= w <= U , b*w <= t],t,[],U,t)
 ````
+
 Many times, this can be fixed by introducing normalized uncertainty sets and scaled uncertainties instead.
 
 ````matlab
-sdpvar t U wnorm
+sdpvar t U wnormalized
 w = wnorm*U:
-P = optimizer([uncertain(wnorm), -1 <= wnorm <= 1 , b*w <= t],t,[],U,t)
+P = optimizer([uncertain(wnormalized), -1 <= wnormalized <= 1 , b*w <= t],t,[],U,t)
 ````
 
 ### See also
+
 [optimize], [export], [solvemp]
