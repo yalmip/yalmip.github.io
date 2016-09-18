@@ -8,7 +8,7 @@ tags:
 comments: true
 date: '2016-09-17'
 sidebar:
-  nav: "commands"
+  nav:
 ---
 
 Send a mail to johanl@isy.liu.se. However, I only add new features when I need them my self, but if your idea is good enough, I might realize that I need it!

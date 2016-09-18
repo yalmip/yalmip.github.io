@@ -8,7 +8,7 @@ tags:
 comments: true
 date: '2016-09-17'
 sidebar:
-  nav: "commands"
+  nav:
 ---
 
  Yes, at least if you intend to solve anything but a few very simple problems.

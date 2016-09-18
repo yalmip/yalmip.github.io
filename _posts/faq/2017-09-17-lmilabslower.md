@@ -8,7 +8,7 @@ tags:
 comments: true
 date: '2016-09-17'
 sidebar:
-  nav: "commands"
+  nav:
 ---
 
 [Don't use LMILAB!](/solvers/lmilab)

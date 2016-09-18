@@ -2,13 +2,13 @@
 layout: single
 category: faq
 author_profile: false
-excerpt: 
+excerpt:
 title: YALMIP does not work
 tags:
 comments: true
 date: '2016-09-17'
 sidebar:
-  nav: "commands"
+  nav:
 ---
 
 1. Restart MATLAB.

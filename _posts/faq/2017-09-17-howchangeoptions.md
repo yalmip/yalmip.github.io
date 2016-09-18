@@ -8,7 +8,7 @@ tags:
 comments: true
 date: '2016-09-17'
 sidebar:
-  nav: "commands"
+  nav:
 ---
 
 All parameters and options in YALMIP and solvers are dealt with using [sdpsettings]
