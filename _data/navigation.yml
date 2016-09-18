@@ -167,54 +167,54 @@ tutorials:
   - title: Introduction
     children:
       - title: "Installation"
-        url: /yalmip/tutorial/installation
+        url: /tutorial/installation
       - title: "Getting started!"
-        url: /yalmip/tutorial/basics
+        url: /tutorial/basics
 
   - title: Standard problem classes
     children:
       - title: "Linear programming"
-        url: /yalmip/tutorial/linearprogramming
+        url: /tutorial/linearprogramming
       - title: "Quadratic programming"
-        url: /yalmip/tutorial/quadraticprogramming
+        url: /tutorial/quadraticprogramming
       - title: "Second order cone programming"
-        url: /yalmip/tutorial/socpprogramming
+        url: /tutorial/socpprogramming
       - title: "Semidefinite programming"
-        url: /yalmip/tutorial/semidefiniteprogramming
+        url: /tutorial/semidefiniteprogramming
       - title: "Determinant optimization"
-        url: /yalmip/tutorial/maxdetprogramming
+        url: /tutorial/maxdetprogramming
       - title: "Geometric programming"
-        url: /yalmip/tutorial/geometricprogramming
+        url: /tutorial/geometricprogramming
       - title: "General convex programming"
-        url: /yalmip/tutorial/generalconvexprogramming
+        url: /tutorial/generalconvexprogramming
       - title: "Integer programming"
-        url: /yalmip/tutorial/integerprogramming
+        url: /tutorial/integerprogramming
       - title: "Global optimization"
-        url: /yalmip/tutorial/globaloptimization
+        url: /tutorial/globaloptimization
   - title: Advanced problem classes
     children:
       - title: "Robust optimization"
-        url: /yalmip/tutorial/robustoptimization
+        url: /tutorial/robustoptimization
       - title: "Multiparametric programming"
-        url: /yalmip/tutorial/multiparametricprogramming
+        url: /tutorial/multiparametricprogramming
       - title: "Bilevel programming"
-        url: /yalmip/tutorial/bilevelprogramming
+        url: /tutorial/bilevelprogramming
       - title: "Sum-of-squares programming"
-        url: /yalmip/tutorial/sumofsquaresprogramming
+        url: /tutorial/sumofsquaresprogramming
       - title: "Moment relaxations"
-        url: /yalmip/tutorial/momentrelaxations
+        url: /tutorial/momentrelaxations
   - title: Auxilliary
     children:
       - title: "Nonlinear operators"
-        url: /yalmip/tutorial/nonlinearoperators
+        url: /tutorial/nonlinearoperators
       - title: "Big-M and convex hulls"
-        url: /yalmip/tutorial/bigmandconvexhulls
+        url: /tutorial/bigmandconvexhulls
       - title: "Duality"
-        url: /yalmip/tutorial/duality
+        url: /tutorial/duality
       - title: "Automatic dualizations"
-        url: /yalmip/tutorial/automaticdualization
+        url: /tutorial/automaticdualization
       - title: "Complex problems"
-        url: /yalmip/tutorial/complexproblems
+        url: /tutorial/complexproblems
 
 
 commands:
