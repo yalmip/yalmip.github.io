@@ -29,7 +29,7 @@ share: false
     {% for post in site.tags[this_word] %}{% if post.title != null %}
       <div>
         <span style="float: left;">
-          <a href="{{ post.url }}">{{ post.title }}({{post.category}})</a>
+          <a href="{{ post.url }}">{{ post.title }}  ({{post.category}})</a>
         </span>
         <span style="float: right;">
           {{ post.date | date_to_string }}
