@@ -16,7 +16,7 @@ share: false
   {% for item in (0..site.tags.size) %}{% unless forloop.last %}
     {% capture this_word %}{{ tag_words[item] }}{% endcapture %}
    <li>
-      <a href="#{{ this_word | cgi_escape | downcase}}" class="tag">{{ this_word }}
+      <a href="#{{ this_word | cgi_escape | downcase | replace: '+', '-' }}" class="tag">{{ this_word }}
         <span>({{ site.tags[this_word].size }})</span>
       </a>
   </li>  
@@ -25,7 +25,7 @@ share: false
 <div>
   {% for item in (0..site.tags.size) %}{% unless forloop.last %}
     {% capture this_word %}{{ tag_words[item] }}{% endcapture %}
-    <h2 id="{{ this_word | cgi_escape | downcase}}">{{ this_word | downcase}}</h2>
+    <h2 id="{{ this_word | cgi_escape | downcase | replace: '+', '-' }}">{{ this_word | downcase}}</h2>
     {% for post in site.tags[this_word] %}{% if post.title != null %}
       <div>
         <span style="float: left;">
