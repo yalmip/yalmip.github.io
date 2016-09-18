@@ -1,5 +1,6 @@
 ---
 layout: single
+permalink: /examples/:name/
 type: example
 author_profile: false
 excerpt: "Markowitz classical portfoilos and beyond via integer programming."
