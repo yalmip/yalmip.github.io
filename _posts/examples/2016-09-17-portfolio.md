@@ -1,6 +1,6 @@
 ---
 layout: single
-permalink: /examples/portfolio
+category: example
 type: example
 author_profile: false
 excerpt: "Markowitz classical portfoilos and beyond via integer programming."
