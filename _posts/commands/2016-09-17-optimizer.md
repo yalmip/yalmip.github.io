@@ -53,7 +53,7 @@ plot(z,P{z})
 
 Effectively, when the model is affinely parameterized in a parameter, a precompiled numerical model is created, and when a solution for a particular parameter value \\(a^{\star}\\) is requested, the precompiled model is appended with the constraint \\(a = a^{\star}\\) and sent to the solver.
 
-The case when the model is nonlinearly parameterized is handled in a different way. Since the precompiled model is nonlinear in the parameter, simply adding an equality constraint will not work, as the model then would be nonlinear. Instead, YALMIP perform a variable elimination on the precompiled model, and the reduced model is sent to the solver.
+The case when the model is nonlinearly parameterized is handled in a different way. Since the precompiled model is nonlinear in the parameter, simply adding an equality constraint will not work, as the model then would be nonlinear. Instead, YALMIP performs a variable elimination on the precompiled model, and the reduced model is sent to the solver.
 
 Consider the following nonlinearly parameterized quadratic program
 ````matlab
