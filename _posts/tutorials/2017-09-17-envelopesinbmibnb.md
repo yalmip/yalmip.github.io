@@ -14,11 +14,11 @@ The global solver [BMIBNB] is a YALMIP-based implementation of a standard spatia
 
 A spatial branch-and-bound algorithm for nonconvex programming typically relies on a few standard steps. 
 
-1. To begin with, in each node, a standard nonlinear solver is applied and a feasible, and hopefully locally optimal solution is computed. This gives an upper bound on the achievable objective (possibly infinite if the solver fails).  The local solver is specified with the option '''bmibnb.uppersolver'''.
-2.  As a second step, in each node, a convex relaxation of the model is derived (using the methods described below), and the resulting convex optimization problem is solved (typically a linear program, or if the original problem is a nonconvex semidefinite program, a semidefinite program). This gives a lower bound on the achievable objective. The lower bound solver is specified using the options '''bmibnb.lowersolver'''.
-3. Given these lower and upper bounds, a standard branch-and-bound procedure is used to select a branch variable, create two new nodes, branch, prune and navigate the global search.
+1. To begin with, in each node, a standard nonlinear solver is applied and a feasible, and hopefully locally optimal solution is computed. This gives an upper bound on the achievable objective (possibly infinite if the solver fails).  The local solver is specified with the option *'bmibnb.uppersolver'*.
+2.  As a second step, in each node, a convex relaxation of the model is derived (using the methods described below), and the resulting convex optimization problem is solved (typically a linear program, or if the original problem is a nonconvex semidefinite program, a semidefinite program). This gives a lower bound on the achievable objective. The lower bound solver is specified using the options **'bmibnb.lowersolver'**.
+3. Given these lower and upper bounds, a standard branch-and-bound logic is used to select a branch variable, create two new nodes, branch, prune and navigate the global search.
 
-In addition to these standard steps, a large amount of preprocessing and bound-propagation is performed, both in the root-node and along the branching. This is important in order to obtain stronger linear relaxations. The options controlling this can be found in the introduction to [BMIBNB].
+In addition to these standard steps, a large amount of preprocessing and bound-propagation is performed, both in the root-node and along the branching. This is important in order to obtain stronger linear relaxations. The options controlling this can be found in the description of [BMIBNB].
 
 ### Linear relaxation for bilinear and quadratic problems
 
@@ -40,7 +40,7 @@ xU = 2;
 constraints =[(xU-x)*(x-xL)>=0,(xU-x)*(xU-x)>=0,(x-xL)*(x-xL)>=0]
 ````
 
-A linear relaxation is obtained by introducing a new variable, and using this variable instead of '''x''''^2^'. This is essentially what happens when you use the option relax when you solve optimization problems. Any monomial term is treated as an independent variable. We use this trick to easily plot the linear relaxation.
+A linear relaxation is obtained by introducing a new variable, and using this variable instead of \\(x^2\\). This is essentially what happens when you use the option relax when you solve optimization problems. Any monomial term is treated as an independent variable. We use this trick to easily plot the linear relaxation.
 
 ````matlab
 plot(constraints,[x;x^2],[],[],sdpsettings('relax',1))
@@ -50,9 +50,9 @@ hold on;plot(t,t.^2);
 
 ![Quadratic hull]({{ site.url }}/images/hullsqr.png){: .center-image }
 
-The horizontal axis is the original variable '''x''', and the polytope shows the feasible region for the relaxed variable. Clearly, the approximation is perfect at the bounds, but fairly poor in the middle. It should be stated that positivity bounds on quadratic terms automatically are appended to relaxation.
+The horizontal axis is the original variable \\(x\\), and the polytope shows the feasible region for the relaxed variable. Clearly, the approximation is perfect at the bounds, but fairly poor in the middle. It should be stated that positivity bounds on quadratic terms automatically are appended to relaxation in the solver envelope definition, thus cutting off the lower portion of the polytope.
 
-By tightening the bounds during the branching process, the linear relaxation will become increasingly better. As an example, if the solver branches on the '''x''' variable at 0.5, two new nodes would be created with stronger relaxations.
+By tightening the bounds during the branching process, the linear relaxation will become increasingly better. As an example, if the solver branches on the \\(x\\) variable at 0.5, two new nodes would be created with stronger relaxations.
 
 ````matlab
 sdpvar x;
@@ -74,7 +74,7 @@ hold on;plot(t,t.^2);
 
 ![Quadratic hull]({{ site.url }}/images/xyhull2.png){: .center-image }
 
-Notice that the algorithm requires explicit bounds on the variables. If YALMIP fails to extract any explicit bounds from the model in the root-node, the code will terminate and an error message will be displayed.
+Notice that the algorithm requires explicit bounds on the variables. If YALMIP fails to extract any explicit bounds from the model in the root-node, the code will terminate and an error message will be displayed. Addionally, the tighter the bounds are, i.e., closer to the final optimal value, the smaller the envelope approximation will be.
 
 ### Linear relaxation for polynomial problems
 
