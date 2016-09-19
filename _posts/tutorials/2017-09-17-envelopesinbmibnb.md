@@ -108,7 +108,7 @@ hold on;plot(t,sqrt(t));
 
 ![Quadratic hull]({{ site.url }}/images/hullsqrtm.png){: .center-image }
 
-Explicit representations of the linear relaxation are implemented for most nonlinear operators, such as **exp**, **log** and **sqrtm**. For some other [evaluation based] and [sdpfun] based nonlinear operators, a sampling strategy is used to derive the linear relaxation (of course, exact convex envelopes can be developed if someone really needs it). As an example, the following code computes (an approximation of) a convex envelope relaxation of **sin**.
+Explicit representations of the linear relaxation are implemented for most nonlinear operators, such as **exp**, **log** and **sqrtm**. For some other [evaluation based] and [sdpfun] based nonlinear operators, a sampling strategy is used to derive the linear relaxation (of course, exact convex envelopes can be developed if someone really needs it). As an example, the following code computes an approximation of the convex envelope of **sin** with three facets.
 
 ````matlab
 xL = 0;
@@ -147,9 +147,9 @@ x = linspace(0,3*pi/2,100);
 plot(x,sin(x))
 ````
 
-Note that the envelope set still contains the **sin(x)** term (in practice it can be eliminated and replaced with **w**, but for implementation purposes it is kept in the form above with a trivial equality in the model), hence we must tell YALMIP to relax all variables.
+Note that the envelope set still contains the **sin(x)** variable (in practice it can be eliminated and replaced with **w**, but for implementation purposes it is kept in the form above with a trivial equality in the model), hence we must tell YALMIP to relax all variables.
 
-If you study the quadratic monomial from earlier, you'll see that YALMIP not only adds a positivity cut to the quadratic envelope, but also adds three tangency cuts. How many cuts [BMIBNB] is basically a trade-off between performance of the relaxations, and the computational effort needed in the lower bounds solvers with additional cuts.
+If you study the quadratic monomial from earlier, you will see that YALMIP not only adds a positivity cut to the quadratic envelope, but also adds three tangency cuts. How many cuts [BMIBNB] uses is basically a trade-off between tightness of the relaxations, and the computational effort needed in the lower bound solvers with additional cuts.
 
 ````matlab
 sdpvar w x
