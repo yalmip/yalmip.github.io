@@ -129,3 +129,21 @@ hold on;plot(t,sin(t));
 ````
 
 ![Quadratic hull]({{ site.url }}/images/hullsin.png){: .center-image }
+
+### Hooking up into YALMIPs framework
+
+In the code above, we generated the envelope approximations manually, but it is of course possible to hook into the inner workings of YALMIP to generate these sets. 
+
+Our **sin** example
+
+````matlab
+sdpvar w x
+Model = [0 <= x <= 3*pi/2];
+E = envelope([0 <= x <= 3*pi/2, w == sin(x)]);
+plot(E,[x;w],[],[],sdpsettings('relax',1));
+hold on
+x = linspace(0,3*pi/2,100);
+plot(x,sin(x))
+````
+
+Note that the envelope set still contains the **sin(x)** term (in practice it can be eliminated and replaced with **w**, but for implementation purposes it is kept in the form above with a trivial equality in the model), hence we must tell YALMIP to relax all variables.
