@@ -5,10 +5,12 @@ permalink: /references/
 ---
 
 {% include base_path %}
-
-{% assign items = site.references | sort: 'author' %}
+<!-- <h3 class="archive__subtitle">Examples from various domains</h3>		This destroys lists -->
+{% assign items = site.posts | sort: 'title' %}
 {% for post in items %}
-  {% include archive-single.html type="grid" %}
+{% if post.category == "reference" %}
+  {% include archive-single.html type="grid" %}      
+{% endif %}
 {% endfor %}
 
 {% include paginator.html %}
