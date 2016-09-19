@@ -366,6 +366,8 @@ commands:
         url: /command/rcone
       - title: "sos"
         url: /command/sos
+      - title: "sos2"
+        url: /command/sos2
   - title: Constraint manipulation
     children:
       - title: "boundingbox"
