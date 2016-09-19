@@ -82,7 +82,7 @@ Polynomials problems are treated by simply converting them to bilinear problems,
 
 ### Linear relaxation for general problems
 
-The global solver is mainly intended for polynomial problems, but does actually support also general nonlinear functions. Similar to the polynomial case, every nonlinear scalar term \\(f(x)\\) is replaced with a new variable \\(w\\), and linear inequalities on \\(x\\) and \\(w\\) are introduced to ensure that \\(w\\) approximates \\(f(x)\\) well. 
+TAs in the polynomial case, every nonlinear scalar term \\(f(x)\\) is replaced with a new variable \\(w\\), and linear inequalities on \\(x\\) and \\(w\\) are introduced to ensure that \\(w\\) approximates \\(f(x)\\) well, i.e., that the curve \\(w = f(x)\\) is contained in the polytopic region in \\(A_x + A_w w \leq b\\).
 
 As an example, for the **sqrtm** function, the following cut is used internally
 
