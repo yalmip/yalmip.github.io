@@ -4,29 +4,29 @@ layout: splash
 permalink: /allcommands
 ---
 
-## Most common
+### Most common
 [sdpvar](/command/sdpvar), [optimize], [sdpsettings], [value]
 
-## Variable declaration
+### Variable declaration
 [binvar], [blkvar], [intvar], [sdpvar], [semivar]
 
-## Optimization and solving problems
+### Optimization and solving problems
 [bisection], [optimize], [optimizer], [solvebilevel], [solvemoment], [solvemp], [solvesos]
 
-## Optimization model manipulations
+### Optimization model manipulations
 [dualize], [export], [kkt], [momentmodel], [primalize], [robustmodel], [sosmodel]
 
-## Variable manipulations
+### Variable manipulations
 [assign], [binmodel], [coefficients], [degree], [dissect], [hessian], [int], [is], [jacobian], [linearize], [monolist], [polynomial], [sdisplay], [unblkdiag], [value]
 
-## Variable operators (selected)
+### Variable operators (selected)
 [abs], [crossentropy], [entropy], [geomean], [logdet], [logistic], [logsumexp], [min], [max], [median], [nnz], [sdpfun], [sumk], [sumabsk], [sort]
 
-## Constraints (defining)
+### Constraints (defining)
 [alldifferent], [binary], [cone], [cut], [iff], [implies], [integer], [rank], [rcone], [sos]
 
-## Constraints (manipulating)
+### Constraints (manipulating)
 [check], [dilate],[dual], [hull], [is], [ismember], [sosd]
 
-## Auxilliary
+### Auxilliary
 [saveampl], [savecplexfile], [savesdpafile], [yalmiptest]
