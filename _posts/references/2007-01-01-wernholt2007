@@ -1,0 +1,26 @@
+---
+title: "Experiment Design for Identification of Nonlinear Gray-box Models with Application to Industrial Robots"
+author: "E. Wernholt & J. Löfberg"
+where: "46th IEEE Conference on Decision and Control"
+tags: [Experiment design, Determinant maximization]
+date: '2007-01-01'
+layout: single
+category: reference
+author_profile: false
+excerpt: 
+comments: false
+sidebar:
+  nav: 
+---
+
+````
+@InProceedings{Wernholt and Löfberg:2007,
+      author = {E. Wernholt and J. Löfberg},
+      title = {Experiment Design for Identification of Nonlinear Gray-box Models with Application to Industrial Robots},
+      note = {46th IEEE Conference on Decision and Control},
+      year = {2007},  
+       pdf = {2007_CDC_EXPERIMENT.pdf},
+       url = {http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=4434059},
+      address = {New Orleans, Louisiana}      
+}   
+````
