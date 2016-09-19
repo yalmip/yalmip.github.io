@@ -3,7 +3,7 @@ title: "Sum-of-squares programming"
 category: tutorial
 author_profile: false
 level: 4
-tags: [Sum-of-squares, Semidefinite programming, Polynomials]
+tags: [Sum-of-squares programming, Semidefinite programming, Polynomials]
 excerpt: "Almost nothing is a sum-of-squares, but let's hope yours is."
 layout: single
 sidebar:
