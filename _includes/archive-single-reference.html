@@ -28,6 +28,6 @@
  <h2 class="archive__item-title" itemprop="headline">    
     <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ title }}</a>
     </h2>
-    <p class="archive__item-excerpt" itemprop="description">{{ post.author | markdownify | strip_html}},{{ post.date | markdownify | strip_html | truncate: 160 }} </p>
+    <p class="archive__item-excerpt" itemprop="description">{{ post.author | markdownify | strip_html}}, {{ post.date | markdownify | strip_html | truncate: 160 }}</p>
   </article>
 </div>
