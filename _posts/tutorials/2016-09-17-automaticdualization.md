@@ -13,7 +13,7 @@ sidebar:
 ---
 
 
-> This tutorial is highly related to the following paper [Löfberg 2009b] (which should be referenced if you use the functionality)
+> This tutorial is highly related to the following paper [Löfberg 2009](/reference/lofberg2009b) (which should be referenced if you use the functionality)
 
 Important to know is that problems in YALMIP are modeled internally in the dual format (your problem is interpreted as a parametrization of the standard dual form). This means YALMIP by default matches your model description to the following form.
 
