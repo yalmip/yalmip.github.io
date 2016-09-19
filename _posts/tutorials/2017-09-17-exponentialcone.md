@@ -3,7 +3,7 @@ title: "Exponential cone programming"
 category: tutorial
 author_profile: false
 level: 4
-tags: [Geometric programming]
+tags: [Exponential cone programming]
 excerpt: "Convex conic optimization over exponentials and logarithms"
 layout: single
 sidebar:
