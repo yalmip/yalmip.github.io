@@ -10,7 +10,7 @@ sidebar:
   nav: "tutorials"
 ---
 
-> The robust optimization module is described in the paper [Löfberg 2010](/reference/lofberg2010) (which should be cited if you use this functionality). Small [errata](http://www.control.isy.liu.se/~johanl/errata.pdf).
+> The robust optimization module is described in the paper [Löfberg 2012](/reference/lofberg2012) (which should be cited if you use this functionality). Small [errata](http://www.control.isy.liu.se/~johanl/errata.pdf).
 
 ### Background
 
