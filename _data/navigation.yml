@@ -316,10 +316,14 @@ commands:
         url: /command/crossentropy
       - title: "entropy"
         url: /command/entropy
+      - title: "expy"
+        url: /command/exp
       - title: "geomean"
         url: /command/geomean
       - title: "kullbackleibler"
         url: /command/kullbackleibler
+      - title: "log"
+        url: /command/log
       - title: "logdet"
         url: /command/logdet
       - title: "logistic"
