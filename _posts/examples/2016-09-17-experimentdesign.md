@@ -13,7 +13,7 @@ header:
   teaser: "robot.jpg"
 ---
 
-> This article accompanies the paper [Wernholt and Löfberg 2007]
+> This article accompanies the paper [Wernholt and Löfberg 2007](/reference/wernholt2007).
 
 The problem has its origin in an optimal experiment design problem for identification of physical parameters of an industrial robot with significant nonlinear and flexible behaviour.
 
