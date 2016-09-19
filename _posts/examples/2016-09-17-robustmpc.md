@@ -15,7 +15,7 @@ header:
 
 This example illustrates an application of the [robust optimization framework].
 
-Robust optimization is a natural tool for robust control, i.e., derivation of control laws such that constraints are satisfied despite uncertainties in the system, and/or worst-case performance objectives. Various formulations for robust MPC were introduced in [Löfberg 2003]}, and we will use YALMIPs [Tutorials.RobustOptimization   robust optimization feature] to derive some of the robustified optimization problems automatically. The example will essentially solve various versions of Example (7.4) in [Löfberg 2003].
+Robust optimization is a natural tool for robust control, i.e., derivation of control laws such that constraints are satisfied despite uncertainties in the system, and/or worst-case performance objectives. Various formulations for robust MPC were introduced in [Löfberg 2003]}, and we will use YALMIPs [Tutorials.RobustOptimization   robust optimization feature] to derive some of the robustified optimization problems automatically. The example will essentially solve various versions of Example (7.4) in [Löfberg 2003](/reference/lofberg2003).
 
 
 The system description is \\(x_{k+1} = Ax_k + Bu_k+Ew_k, y_k = Cx_k\\)
