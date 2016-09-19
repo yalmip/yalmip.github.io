@@ -74,7 +74,7 @@ hold on;plot(t,t.^2);
 
 ![Quadratic hull]({{ site.url }}/images/xyhull2.png){: .center-image }
 
-Notice that the algorithm requires explicit bounds on the variables. If YALMIP fails to extract any explicit bounds from the model in the root-node, the code will terminate and an error message will be displayed. Addionally, the tighter the bounds are, i.e., closer to the final optimal value, the smaller the envelope approximation will be.
+Note that the algorithm requires bounds on the variables. If YALMIP fails to extract any explicit bounds from the model in the root-node, the code will terminate and an error message will be displayed. Addionally, the tighter the bounds are, i.e., closer to the final optimal value, the smaller the envelope approximation will be.
 
 ### Linear relaxation for polynomial problems
 
