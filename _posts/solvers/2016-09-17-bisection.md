@@ -1,22 +1,15 @@
 ---
 title: "BISECTION"
 category: solver
-layout: single
+layout: single-solver
 author_profile: false
 tags: [Semidefinite programming solver, Quasi-convex]
+excerpt: "Built-in solver for simple qusi-convex programs"
+available: "Built-in"
+developer: "J. Löfberg"
 sidebar:
   nav: "solvers"
 ---
-
-Built-in solver for some simple quasi-convex problems.
-
-### YALMIP
-
-BISECTION is invoked by running the command [bisection](/command/bisection)
-
-Future version might support  `sdpsettings('solver','bisection')`
-
-### Comments
 
 The solver relies on external solvers for solving the bounding problems during the bisection phase.
 
