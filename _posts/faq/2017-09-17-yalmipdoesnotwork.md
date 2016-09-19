@@ -23,6 +23,5 @@ sidebar:
 10. Compiled the solver (if needed)? 
 11. Compiled it for the correct MATLAB version?
 12. Does the solver even work (without using YALMIP)
-13. Using MATLAB 6 or later?
-14. Using advanced features such as nonlinear operators (exp, log, sin,...)? If so, you need MATLAB 7.0 or later
-15. Probably a PICNIC problem ;-P. Contact me for support.
+13. Using MATLAB 7 or later? Some parts work in earlier versions, but not all, and no testing is done on old versions.
+14. Probably a PICNIC problem ;-P. Contact me for support.
