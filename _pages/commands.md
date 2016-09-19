@@ -29,4 +29,4 @@ permalink: /allcommands
 [check], [dilate],[dual], [hull], [is], [ismember], [sosd]
 
 ### Auxilliary
-[saveampl], [savecplexfile], [savesdpafile], [yalmiptest]
+[saveampl], [savecplexlp], [savesdpafile], [yalmiperror], [yalmiptest]
