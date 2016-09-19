@@ -2,7 +2,7 @@
 layout: single
 excerpt: "Added a sum-of-squares example focusing on pre- and post-processing capabilities."
 title: New sum-of-squares example
-tags: [Sum-of-squares]
+tags: [Sum-of-squares programming]
 comments: true
 date: '2009-08-29'
 ---
