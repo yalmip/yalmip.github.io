@@ -2,7 +2,7 @@
 layout: single
 category: command
 author_profile: false
-excerpt: "Built-in solver for polynomial optimization problem using semidefinite relaxations"
+excerpt: "Built-in meta-solver for polynomial optimization problem using semidefinite relaxations"
 title: solvemoment
 tags: [Semidefinite relaxations, Moment relaxations, Polynomial programming]
 comments: true
