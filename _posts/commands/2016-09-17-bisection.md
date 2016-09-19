@@ -17,7 +17,7 @@ Assumed constraints quasi-convex in \\(x\\) and the scalar \\(t\\), and objectiv
 ### Syntax
 
 ````matlab
-diagnostics = bisection(F,t,options)
+diagnostics = bisection(Constraints,Objective,options)
 ````
 
 See [the decay-rate example](/examples/decayrate) 
