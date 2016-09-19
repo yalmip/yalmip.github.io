@@ -13,9 +13,9 @@ All files and models in this article are available in [yalmipsimulink.zip]
 
 To begin with, some parts of a Simulink model are compiled for performance, and this compiler does not support code which involves object oriented code. Hence, it fails when it encounters any kind of YALMIP related code. In practice, this means that all YALMIP code has to be placed in a so called *Interpreted MATLAB function*. This implies that you cannot compile Simulink with YALMIP to a target (such as a DSP or something similar). At least, I have come up with any way to do this.
 
-Secondly, since Simulink typically is used for simulations, the YALMIP code will most likely be called a large number of times. Hence, it is important to create efficient YALMIP code, minimizing overhead and unnecessary computations. In some cases this is possible, but sometimes it is hard and you simply have to accept that the simulations run slowly if you want to use YALMIP.
+Secondly, since Simulink typically is used for simulations, the YALMIP code will most likely be called a large number of times. Hence, it is important to create efficient YALMIP code, minimizing overhead and unnecessary computations by using an [optimizer] object. In many cases this is possible, but sometimes it is hard and you simply have to accept that the simulations run slowly if you want to use YALMIP.
 
-To illustrate YALMIP and Simulink, we will implement various MPC controllers using a couple of different strategies. 
+To illustrate YALMIP and Simulink, we will implement various [MPC controllers](/tutorials) using a couple of different strategies. 
 
 As a start, we create a basic Simulink model with a linear state-space model and an *Interpreted MATLAB function* which will hold the code to call the MPC controller. 
 
