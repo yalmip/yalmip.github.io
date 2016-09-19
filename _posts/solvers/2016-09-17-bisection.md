@@ -18,6 +18,6 @@ Future version might support  `sdpsettings('solver','bisection')`
 
 ### Comments
 
-The solver relies on external solvers for solving the bounding prolems during the bisection phase.
+The solver relies on external solvers for solving the bounding problems during the bisection phase.
 
 Note that the solver assumes you know what you are doing and actually have a problem which is quasi-convex in some variables \\(x\\) and a scalar \\(t\\), and that your objective is \\(t\\) or \\-t\\)
