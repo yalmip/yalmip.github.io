@@ -22,8 +22,9 @@ layout: default
         <header>
           {% if page.title %}<h1 class="page__title" itemprop="headline">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>{% endif %}
           
-          {{page.excerpt}}
-          
+          <p></p>{{page.excerpt}}</p>
+
+          <h2 class="page__title" itemprop="headline">YALMIP:</h2> 
           
           {% if page.read_time %}
             <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> {% include read-time.html %}</p>
