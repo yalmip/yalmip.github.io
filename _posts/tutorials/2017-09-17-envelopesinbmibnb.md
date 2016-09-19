@@ -79,7 +79,7 @@ Note that the algorithm requires bounds on the variables. If YALMIP fails to ext
 
 ### Linear relaxation for polynomial problems
 
-Polynomials problems are treated by simply converting them to bilinear problems, by introducing additional variables and constraints. As an example, the term \\(x^2y^2\\) can be written as \\(uv\\) with the new bilinear constraints \\(u=x^2\\) and \\(v=y^2\\). Once a bilinear model has been obtained, standard bilinear relaxations can be used.
+Polynomial problems are treated by simply converting them to bilinear problems, by introducing additional variables and constraints. As an example, the term \\(x^2y^2\\) can be written as \\(uv\\) with the new bilinear constraints \\(u=x^2\\) and \\(v=y^2\\). Once a bilinear model has been obtained, standard bilinear relaxations can be used.
 
 ### Linear relaxation for general problems
 
