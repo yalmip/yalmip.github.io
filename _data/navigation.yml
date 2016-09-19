@@ -156,7 +156,7 @@ examples:
   - title: Other
     children:
       - title: "Bilevel programming"
-        url: /example/bilevelprogramming
+        url: /example/bilevelprogrammingalternatives
       - title: "Experiment design"
         url: /example/experimentdesign
       - title: "Polytopic geometry"
