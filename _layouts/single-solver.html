@@ -27,7 +27,7 @@ layout: default
         {% if page.options %}
           <p>BMIBNB is invoked by using '{{page.options}}'</p>
         {% else %}
-          <p>BMIBNB is invoked by using '{{page.options | lowercase}}'</p>
+          <p>BMIBNB is invoked by using '{{page.title | lowercase}}'</p>
         {% endif %}
       {% endunless %}
  
