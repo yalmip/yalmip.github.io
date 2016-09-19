@@ -14,7 +14,7 @@ The global solver [BMIBNB] is a YALMIP-based implementation of a standard spatia
 
 A spatial branch-and-bound algorithm for nonconvex programming typically relies on a few standard steps. 
 
-1. To begin with, in each node, a standard nonlinear solver is applied and a feasible, and hopefully locally optimal solution is computed. This gives an upper bound on the achievable objective (possibly infinite if the solver fails).  The local solver is specified with the option *'bmibnb.uppersolver'*.
+1. To begin with, in each node, a standard nonlinear solver is applied and a feasible, and hopefully locally optimal solution is computed. This gives an upper bound on the achievable objective (possibly infinite if the solver fails).  The local solver is specified with the option **'bmibnb.uppersolver'**.
 2.  As a second step, in each node, a convex relaxation of the model is derived (using the methods described below), and the resulting convex optimization problem is solved (typically a linear program, or if the original problem is a nonconvex semidefinite program, a semidefinite program). This gives a lower bound on the achievable objective. The lower bound solver is specified using the options **'bmibnb.lowersolver'**.
 3. Given these lower and upper bounds, a standard branch-and-bound logic is used to select a branch variable, create two new nodes, branch, prune and navigate the global search.
 
