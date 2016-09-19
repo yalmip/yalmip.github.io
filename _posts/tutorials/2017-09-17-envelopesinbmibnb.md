@@ -14,11 +14,12 @@ The global solver [BMIBNB] is a YALMIP-based implementation of a standard spatia
 
 A spatial branch-and-bound algorithm for nonconvex programming typically relies on a few standard steps. 
 
-1. To begin with, in each node, a standard nonlinear solver is applied and a feasible, and hopefully locally optimal solution is computed. This gives an upper bound on the achievable objective (possibly infinite if the solver fails).  The local solver is specified with the option **'bmibnb.uppersolver'**.
-2.  As a second step, in each node, a convex relaxation of the model is derived (using the methods described below), and the resulting convex optimization problem is solved (typically a linear program, or if the original problem is a nonconvex semidefinite program, a semidefinite program). This gives a lower bound on the achievable objective. The lower bound solver is specified using the options **'bmibnb.lowersolver'**.
-3. Given these lower and upper bounds, a standard branch-and-bound logic is used to select a branch variable, create two new nodes, branch, prune and navigate the global search.
+0. The starting node is the original optimization problem.
+1. In an open node, a standard nonlinear solver is applied and a feasible, and hopefully locally optimal solution is computed. This gives an upper bound on the achievable objective (possibly infinite if the solver fails).  The local solver is specified with the option **'bmibnb.uppersolver'**.
+2.  As a second step a convex relaxation of the model in the node is derived (using the methods described below), and the resulting convex optimization problem is solved (typically a linear program, or if the original problem is a nonconvex semidefinite program, a semidefinite program). This gives a lower bound on the achievable objective for this node. The lower bound solver is specified using the options **'bmibnb.lowersolver'**.
+3. Given these lower and upper bounds, a standard branch-and-bound logic is used to select a branch variable, create two new nodes, branch, prune and navigate among the remaining nodes.
 
-In addition to these standard steps, a large amount of preprocessing and bound-propagation is performed, both in the root-node and along the branching. This is important in order to obtain stronger linear relaxations. The options controlling this can be found in the description of [BMIBNB].
+In addition to these standard steps, a large amount of preprocessing and bound-propagation is performed, both in the root-node and along the branching. This is important in order to obtain stronger linear relaxations. The options controlling this can be found in the description of [BMIBNB]. Nvertheless, the central object is the relaxation problem, and this model is built-up using convex envelope approximations.
 
 ### Linear relaxation for bilinear and quadratic problems
 
