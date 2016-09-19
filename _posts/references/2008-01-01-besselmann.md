@@ -1,0 +1,14 @@
+---
+layout: single
+category: reference
+author_profile: false
+excerpt: 
+title: "Besselmann & Löfberg 2008"
+tags: [Sum-of-squares]
+comments: false
+date: '2008-01-01'
+sidebar:
+  nav: 
+header:
+  teaser: "paper.png"
+---
