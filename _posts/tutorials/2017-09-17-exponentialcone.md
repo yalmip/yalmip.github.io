@@ -18,7 +18,7 @@ By simple variable transformations, the following functions are automatically de
 2. [log], [log2], log10], [slog], [plog]
 3. [entropy], [logsumeexp], [kullbackleibler]
 
-Note that YALMIP does not detect exponential cones when written in the canonical form \\( ye^{x/y}\leq z \\).
+Note that YALMIP does not detect exponential cones when written in the canonical form \\( ye^{x/y}\leq z \\), but instead you can use the perspective exponential, [pexp], which implements  \\( x_1e^{x_1/x_2} \\).
 
 The code below requires [SCS](/solver/scs) or [ECOS](/solver/ecos) to be relavant. If none of those solvers are installed, YALMIP will work with the nonlinear functions as written and treat the problem as a general nonlinear program.
 
