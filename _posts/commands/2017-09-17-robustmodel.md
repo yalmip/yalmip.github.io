@@ -39,13 +39,13 @@ optimize([F, W],objective);
 Alternatively, we can first derive a robust version.
 
 ````matlab
-[Frobust,robustobjective] = robustmodel(F + G,objective);
+[Frobust,robustobjective] = robustmodel(F + W,objective);
 ````
 
 This model does not involve the uncertain variable anymore, and corresponds to the worst-case scenario model. We can now solve the model.
 
 ````matlab
-optimize(Frobust,robustobjective,ops)
+optimize(Frobust,robustobjective)
 ````
 
 ### See also
