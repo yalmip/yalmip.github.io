@@ -16,7 +16,7 @@ sidebar:
 ### Syntax
 
 ````matlab
-[ConRelaxed, ObjRelaxed] = momentmodel(Con,Obj,options)
+[ConRelaxed, ObjRelaxed] = momentmodel(Con,Obj,RelaxationOrder)
 ````
 
 ### Example
@@ -29,10 +29,10 @@ Con = [x^4 + y^4 + x*y <= 1];
 Obj = x^2 +y^3;
 ````
 
-We can compute lower bounds using [solvemoment], or alternatively derive the semidefinite relaxation and proceed manually.
+We can compute lower bounds using [solvemoment], or alternatively derive the semidefinite relaxation (here lowest order possible) and proceed manually.
 
 ````matlab
-[ConRelaxed, ObjRelaxed,MomentMatrices] = momentmodel(Con,Obj,options)
+[ConRelaxed, ObjRelaxed,MomentMatrices] = momentmodel(Con,Obj)
 optimize(ConRelaxed,ObjRelaxed);
 value(MomentMatrices{3})
 ````
