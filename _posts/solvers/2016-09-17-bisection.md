@@ -12,7 +12,7 @@ Built-in solver for some simple quasi-convex problems.
 
 ### YALMIP
 
-BISECTION is invoked by running the command [bisection](/commands/bisection)
+BISECTION is invoked by running the command [bisection](/command/bisection)
 
 Future version might support  `sdpsettings('solver','bisection')`
 
