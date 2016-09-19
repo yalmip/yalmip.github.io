@@ -130,7 +130,7 @@ hold on;plot(t,sin(t));
 
 ![Quadratic hull]({{ site.url }}/images/hullsin.png){: .center-image }
 
-### Hooking up into YALMIPs framework
+### Exploiting YALMIPs internal framework
 
 In the code above, we generated the envelope approximations manually, but it is of course possible to hook into the inner workings of YALMIP to generate these sets. 
 
