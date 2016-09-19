@@ -26,8 +26,11 @@ layout: default
 
           <h3 class="page__title" itemprop="headline">YALMIP</h3> 
           
-          {% if page.read_time %}
-            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> {% include read-time.html %}</p>
+          <p>BMIBNB is invoked by using {{page.options}}</p>
+          
+          {% if page.content %}
+          <h3 class="page__title" itemprop="headline">Comments</h3> 
+          {{page.content}}
           {% endif %}
         </header>
       {% endunless %}
