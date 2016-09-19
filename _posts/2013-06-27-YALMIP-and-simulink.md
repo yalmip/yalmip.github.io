@@ -7,7 +7,7 @@ comments: true
 date: '2016-06-27'
 ---
 
-I have been asked frequently recently whether is is possible to have YALMIP code in Simulink simulations. The answer is yes, but there are some caveats.
+I have been asked frequently recently whether it is possible to have YALMIP code in Simulink simulations. The answer is yes, but there are some caveats.
 
 All files and models in this article are available in [yalmipsimulink.zip]
 
