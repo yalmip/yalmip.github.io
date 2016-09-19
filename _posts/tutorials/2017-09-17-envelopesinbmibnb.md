@@ -147,3 +147,15 @@ plot(x,sin(x))
 ````
 
 Note that the envelope set still contains the **sin(x)** term (in practice it can be eliminated and replaced with **w**, but for implementation purposes it is kept in the form above with a trivial equality in the model), hence we must tell YALMIP to relax all variables.
+
+If you study the quadratic monomial from earlier, you'll see that YALMIP not only adds a positivity cut to the quadratic envelope, but also adds three tangency cuts. How many cuts [BMIBNB] is basically a trade-off between performance of the relaxations, and the computational effort needed in the lower bounds solvers with additional cuts.
+
+````matlab
+sdpvar w x
+Model = [0 <= x <= 3*pi/2];
+E = envelope([0 <= x <= 3*pi/2, w == x^2]);
+plot(E,[x;w],[],[],sdpsettings('relax',1));
+hold on
+x = linspace(0,3*pi/2,100);
+plot(x,x.^2)
+````
