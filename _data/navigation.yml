@@ -244,6 +244,8 @@ commands:
         url: /command/semivar
   - title: Optimization
     children:
+      - title: "bisection"
+        url: /command/bisection
       - title: "optimize"
         url: /command/optimize
       - title: "optimizer"
