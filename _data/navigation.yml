@@ -10,7 +10,7 @@ main:
     url: /examples
 
   - title: "Commands"
-    url: /allcommands
+    url: /command
 
   - title: "Solvers"
     url: /allsolvers
