@@ -1,7 +1,7 @@
 ---
 layout: archive
 author_profile: false
-permalink: /references/
+permalink: /reference/
 ---
 
 {% include base_path %}
