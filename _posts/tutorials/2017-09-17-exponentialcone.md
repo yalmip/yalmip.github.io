@@ -12,8 +12,6 @@ sidebar:
 
 The exponential cone is defined as the set \\(  (ye^{x/y}\leq z, y>0) \\), see, e.g. [Chandrasekara and Shah 2015]. YALMIP is capable of detecting and calling specialized solvers for a variety of exponential cone representable function. 
 
-The code below requires [SCS](/solver/scs) or [ECOS](/solver/ecos) to be relavant. If none of those solvers are installed, YALMIP will work with the nonlinear functions as written and treat the problem as a general nonlinear program.
-
 By simple variable transformations, the following functions are automatically detected as exponential cone representable and suitably rewritten before calling an exponential cone capable solver
 
 1. [exp], [pexp]
@@ -22,6 +20,7 @@ By simple variable transformations, the following functions are automatically de
 
 Note that YALMIP does not detect exponential cones when written in the canonical form \\( ye^{x/y}\leq z \\).
 
+The code below requires [SCS](/solver/scs) or [ECOS](/solver/ecos) to be relavant. If none of those solvers are installed, YALMIP will work with the nonlinear functions as written and treat the problem as a general nonlinear program.
 
 ````matlab
 ````
