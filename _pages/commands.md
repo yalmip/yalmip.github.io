@@ -11,7 +11,7 @@ permalink: /allcommands
 [binvar], [blkvar], [intvar], [sdpvar], [semivar]
 
 ## Optimization and solving problems
-[optimize], [optimizer], [solvebilevel], [solvemoment], [solvemp], [solvesos]
+[bisection], [optimize], [optimizer], [solvebilevel], [solvemoment], [solvemp], [solvesos]
 
 ## Optimization model manipulations
 [dualize], [export], [kkt], [momentmodel], [primalize], [robustmodel], [sosmodel]
@@ -20,7 +20,7 @@ permalink: /allcommands
 [assign], [binmodel], [coefficients], [degree], [dissect], [hessian], [int], [is], [jacobian], [linearize], [monolist], [polynomial], [sdisplay], [unblkdiag], [value]
 
 ## Variable operators (selected)
-[abs], [crossentropy], [entropy], [geomean], [logdet], [logistic], [logsumexp], [median], [nnz], [sdpfun], [sort]
+[abs], [crossentropy], [entropy], [geomean], [logdet], [logistic], [logsumexp], [min], [max], [median], [nnz], [sdpfun], [sumk], [sumabsk], [sort]
 
 ## Constraints (defining)
 [alldifferent], [binary], [cone], [cut], [iff], [implies], [integer], [rank], [rcone], [sos]
