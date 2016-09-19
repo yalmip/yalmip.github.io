@@ -4,7 +4,7 @@ category: command
 author_profile: false
 excerpt: ""
 title: linearize
-tags:
+tags: [Polynomials]
 comments: true
 date: '2016-09-17'
 sidebar:
@@ -49,6 +49,3 @@ ans =
     '-13+6*p11+4*p12'    '-6+2*p11+4*p12'
     '-6+2*p11+4*p12'     '-3+4*p12'    
 ````
-
-### See also
-[jacobian], [hessian], [assign], [value], [sdisplay]

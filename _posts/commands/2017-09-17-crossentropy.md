@@ -23,7 +23,3 @@ z = crossentropy(x,y)
 ### Implementation
 
 [crossentropy] is implemented using the [evaluation-based nonlinear operators] framework.
-
-### See also
-
-[entropy], [kullbackleibler]

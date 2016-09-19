@@ -4,7 +4,7 @@ category: command
 author_profile: false
 excerpt: ""
 title: polynomial
-tags:
+tags: [Polynomials]
 comments: true
 date: '2016-09-17'
 sidebar:
@@ -35,6 +35,3 @@ v = monolist(x,4);
 c = sdpvar(length(v),1);
 p = c'*v;
 ````
-
-### See also
-[monolist], [coefficients], [degree]

@@ -70,7 +70,3 @@ ans =
     'x*y'     's'  
     '1'      's^2'
 ````
-
-
-### See also
-[degree], [monolist]

@@ -58,6 +58,3 @@ F = unblkdiag(F)
 |   #3|   Numeric value|        Element-wise 3x1|
 +++++++++++++++++++++++++++++++++++++++++++++++++
 ````
-
-### See also
-[dissect]

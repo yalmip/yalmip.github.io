@@ -60,6 +60,3 @@ yalmiperror(3)
  ans =
  Maximum iterations exceeded
 ````
-
-### See also
-[optimize]

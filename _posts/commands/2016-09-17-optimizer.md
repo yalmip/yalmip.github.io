@@ -21,7 +21,7 @@ P = optimizer(Con,Obj,Options,Parameters,WantedVariables)
 
 ### Examples
 
-[optimizer] is used to simplify and speed up code where the almost the same model is setup and solved repeatedly. 
+[optimizer] is used to simplify and speed up code where the almost the same model is setup and solved repeatedly.
 
 As a start, we create a trivial linear programming model where a scalar decision variable \\(x\\) is bounded from below by some value \\(a+1\\). We create an optimizer object where the bound \\(a\\) is considered a parameter, and we are interested in the minimizing argument of \\(x^2\\) as the parameter \\(a\\) varies.
 
@@ -98,7 +98,7 @@ See more examples in the [MPC example](/example/standardmpc) and  [unit commitme
 
 Note that assigned values of [sdpvar] objects are not updated after the optimization problem is solved.
 
- Sum-of-squares problems can be handled through optimizer also. Note though that parameters in the sum-of-squares problem cannot be explicitly defined in [optimizer], but YALMIP has to deduce them from non-sos constraints, the objective, input parameters and output parameters. 
+ Sum-of-squares problems can be handled through optimizer also. Note though that parameters in the sum-of-squares problem cannot be explicitly defined in [optimizer], but YALMIP has to deduce them from non-sos constraints, the objective, input parameters and output parameters.
 
 Variables involved in defining the geometry of an uncertainty set when using the robust optimization framework cannot be parameters (during compilation, YALMIP treats all parameters asdecision variables, and this effectively means that there is no description of the uncertainty set (the uncertainty set is defined as the constraints only involving uncertain variables)). Hence, the following scaled uncertainty box will not work
 
@@ -114,7 +114,3 @@ sdpvar t U wnormalized
 w = wnorm*U:
 P = optimizer([uncertain(wnormalized), -1 <= wnormalized <= 1 , b*w <= t],t,[],U,t)
 ````
-
-### See also
-
-[optimize], [export], [solvemp]

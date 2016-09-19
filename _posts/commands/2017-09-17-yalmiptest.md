@@ -37,6 +37,3 @@ To test a particular setup, provide an option structure.
 ````matlabb
 yalmiptest(sdpsettings('solver','sdpt3'))
 ````
-
-### Related commands
-[sdpsettings ]

@@ -47,6 +47,3 @@ This model does not involve the uncertain variable anymore, and corresponds to t
 ````matlab
 optimize(Frobust,robustobjective)
 ````
-
-### See also
-[optimize], [uncertain]

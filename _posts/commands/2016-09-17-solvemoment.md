@@ -60,6 +60,3 @@ ans =
 ````
 
 For a more complete introduction, please study the [moment tutorial](/tutorial/momentrelaxations), and the quick introduction to semidefinite relaxations in [relaxvalue].
-
-### See also
-[solvesos], [sdpvar], [value], [relaxvalue]

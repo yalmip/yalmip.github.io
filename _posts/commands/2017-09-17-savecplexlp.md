@@ -35,7 +35,3 @@ saveampl(F,c'*x,'mymodel');
 ### Comments
 
 This function has not been tested to any extent and is probably severely limited.
-
-### See also
-[saveampl], [savesdpafile], [export]
-

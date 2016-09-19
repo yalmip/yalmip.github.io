@@ -35,6 +35,3 @@ savesdpafile(F,trace(P),'mysdpamodel');
 The SDPA ASCII format is limited (equalities and second order cones are not supported), hence many YALMIP models will fail to be saved.
 
 If you have equalities in your model, you can circumvent this by telling YALMIP to eliminate them by using the option *removeequalities* (see details [sdpsettings])
-
-### See also
-[saveampl], [export]
