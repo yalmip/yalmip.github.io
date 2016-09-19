@@ -2,6 +2,7 @@
 layout: archive
 author_profile: false
 permalink: /faq/
+sidebar: false
 ---
 
 {% include base_path %}
