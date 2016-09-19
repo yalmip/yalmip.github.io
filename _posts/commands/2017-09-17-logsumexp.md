@@ -4,7 +4,7 @@ category: command
 author_profile: false
 excerpt: ""
 title: logsumexp
-tags:
+tags: [Exponential cone, Exponential and logarithmic functions]
 comments: true
 date: '2016-09-17'
 sidebar:
@@ -21,7 +21,7 @@ y = logsumexp(x)
 
 ### Implementation
 
-The convex operator [logsumexp] is implemented using the [evaluation-based nonlinear operators] framework. except when [SCS] or [ECOS]  is used and the exponential cone property is used.
+The convex operator [logsumexp] is implemented using the [evaluation-based nonlinear operators] framework except when [SCS] or [ECOS]  is used and the exponential cone property is used.
 
 ### See also
 [entropy], [crossentropy], [kullbackleibler]
