@@ -3,7 +3,7 @@ layout: single
 category: faq
 author_profile: false
 excerpt: 
-title: LMILAB is slower when I use it with YALMIP (^) 
+title: LMILAB is slower when I use it with YALMIP
 tags:
 comments: true
 date: '2016-09-17'
