@@ -4,7 +4,7 @@ category: solver
 layout: single-solver
 author_profile: false
 tags: [Semidefinite programming solver, Quasi-convex]
-excerpt: "Built-in solver for simple qusi-convex programs"
+excerpt: "Built-in solver for simple quasi-convex programs"
 available: "Built-in"
 developer: "J. Löfberg"
 sidebar:
