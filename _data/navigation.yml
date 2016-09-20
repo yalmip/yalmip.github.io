@@ -242,6 +242,8 @@ commands:
         url: /command/sdpvar
       - title: "semivar"
         url: /command/semivar
+      - title: "uncertain"
+        url: /command/uncertain
   - title: Optimization
     children:
       - title: "bisection"
@@ -368,6 +370,8 @@ commands:
         url: /command/sos
       - title: "sos2"
         url: /command/sos2
+      - title: "uncertain"
+        url: /command/uncertain
   - title: Constraint manipulation
     children:
       - title: "boundingbox"
