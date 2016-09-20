@@ -57,7 +57,7 @@ constraints = [constraints , -5<=x{k+1}<=5];
 controller = optimizer(constraints, objective,sdpsettings('verbose',1),x{1},u{1});
 ````
 
-All hybrid modelling will be done automatically by YALMIP, and the end result is a mixed integer linear program, compiled in the controller object.
+All hybrid modelling will be done automatically by YALMIP, and the end result is a mixed integer linear program, compiled in the controller object, which can be used for simulation, as described in the [standard MPC example](/example/standardmpc).
 
 ### Manual generation of logic constraints
 
@@ -84,6 +84,8 @@ end
 constraints = [constraints, -5 <= x{k+1} <= 5];
 controller = optimizer(constraints, objective,sdpsettings('verbose',1),x{1},u{1});
 ````
+
+Once again, we have created a controller object which can be used easily for simulation. 
 
 ### Beyond PWA models
 
