@@ -21,6 +21,7 @@ F = [x+w <= 1];
 W = [-0.5 <= w <= 0.5, uncertain(w)];
 objective = -x;
 ````
+
 ### Examples
 
 A simple [robust optimization](/tutorials/robustoptimization) problem can be implemented as
