@@ -23,7 +23,7 @@ The problem we will solve is to estimate the decay-rate of a linear system  \\(\
 
 ![GEVP problem]({{ site.url }}/images/gevp.gif){: .center-image }
 
-Due to the product between \\(t\\) and \\(P\\), the problem cannot be solved directly using linear semidefinite programming. Effectively it is a BMI (bilinear matrix inequality) where generically are intractable, but luckily it is not that bad.
+Due to the product between \\(t\\) and \\(P\\), the problem cannot be solved directly using linear semidefinite programming. Effectively it is a BMI (bilinear matrix inequality) which generically are intractable, but luckily it is not that bad here.
 
 ### Bisection algorithm
 
