@@ -19,8 +19,6 @@ image:
 
 This example illustrates an application of the [robust optimization module]. The main focus of this example is uncertain semidefinite constraints.
 
-For the example to work, you must have [MPT] installed.
-
 In addition to the robustification of linear constraints, introduced in the [robust MPC example], YALMIP can also robustify SOCP and SDP constraints bilinear in the decision variable and the uncertainty. However, it is required that the uncertainty description is polytopic, since the robustification is done using vertex enumeration. Uncertain SOCP and SDP constraints with general conic uncertainty models are typically not tractable, i.e., they can at best be dealt with using approximations.
 
 ### Robust control
@@ -92,7 +90,7 @@ F = [F, [-A*Y-B*L + (-A*Y-B*L)' Y L';Y inv(Q) zeros(3,1);L zeros(1,3) inv(R)] > 
 and the uncertainty description
 
 ````matlab
-F = [F, 0 <= [t1 t2] < 1, t1+t2 == 1, uncertain([t1 t2])];
+F = [F, 0 <= [t1 t2] <= 1, t1+t2 == 1, uncertain([t1 t2])];
 ````
 
 Finally, we solve the uncertain problem using [optimize].
