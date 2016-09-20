@@ -10,7 +10,7 @@ date: '2016-09-16'
 sidebar:
   nav: "examples"
 header:
-  teaser: "unitcommit1.png"
+  teaser: "powergeneration.jpg"
 ---
 
 
