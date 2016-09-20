@@ -139,7 +139,6 @@ Our **sin** example
 
 ````matlab
 sdpvar w x
-Model = [0 <= x <= 3*pi/2];
 E = envelope([0 <= x <= 3*pi/2, w == sin(x)]);
 plot(E,[x;w],[],[],sdpsettings('relax',1));
 hold on
@@ -153,7 +152,6 @@ If you study the quadratic monomial from earlier, you will see that YALMIP not o
 
 ````matlab
 sdpvar w x
-Model = [0 <= x <= 3*pi/2];
 E = envelope([0 <= x <= 3*pi/2, w == x^2]);
 plot(E,[x;w],[],[],sdpsettings('relax',1));
 hold on
