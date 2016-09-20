@@ -21,4 +21,4 @@ Assumed constraints quasi-convex in \\(x\\) and the scalar \\(t\\), and objectiv
 diagnostics = bisection(Constraints,Objective,options)
 ````
 
-See [the decay-rate example](/example/decayrate)and the [solver specification](/solver/bisection)
+See [the decay-rate example](/example/decayrate) and the [solver specification](/solver/bisection)
