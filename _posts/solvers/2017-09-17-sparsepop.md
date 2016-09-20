@@ -1,9 +1,9 @@
 ---
 title: "SPARSEPOP"
 category: solver
-layout: single
+layout: single-solver
 author_profile: false
-tags: 
+tags: [Global solver, Moement relaxations]
 sidebar:
   nav: "solvers"
 ---

@@ -1,9 +1,9 @@
 ---
 title: "QUADPROGBB"
 category: solver
-layout: single
+layout: single-solver
 author_profile: false
-tags: 
+tags: [Quadratic programming solver, Nonconvex quadratic programming solver, Global solver]
 sidebar:
   nav: "solvers"
 ---

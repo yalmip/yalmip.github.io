@@ -1,9 +1,9 @@
 ---
 title: "LOGDETPPA"
 category: solver
-layout: single
+layout: single-solver
 author_profile: false
-tags: 
+tags: [Semidefinite programming solver]
 sidebar:
   nav: "solvers"
 ---

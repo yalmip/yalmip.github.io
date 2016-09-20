@@ -1,7 +1,7 @@
 ---
 title: "LSQLINNONNEG"
 category: solver
-layout: single
+layout: single-solver
 author_profile: false
 tags: 
 sidebar:
