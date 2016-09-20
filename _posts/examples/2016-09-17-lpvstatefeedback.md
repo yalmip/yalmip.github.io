@@ -54,6 +54,7 @@ R = 1;
 ### Manual implementation
 
 The uncertainty we will address is a perturbation in the (1,3) element. We create two matrices to denote the two extreme values of the uncertain matrix.
+
 ````matlab
 A1 = Anominal;A1(1,3) = -0.1;
 A2 = Anominal;A2(1,3) =  0.1;
