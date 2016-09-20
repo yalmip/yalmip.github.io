@@ -1,6 +1,6 @@
 ---
 layout: archive
-permalink: /tags/
+permalink: /yalmip/
 author_profile: false
 header:
   overlay_image: autumn1.jpg
