@@ -11,7 +11,7 @@ sidebar:
   nav: "commands"
 ---
 
-[uncertain] is used to declare a set of variables as uncertain, or to simultanuously add a set of constraints to the uncertainty set, and the involved variables as uncertain.
+[uncertain] is used to declare a set of variables as uncertain, or to simultaneously add a set of constraints to the uncertainty set, and the involved variables as uncertain.
 
 ### Syntax
 
