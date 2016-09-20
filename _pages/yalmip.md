@@ -1,5 +1,6 @@
 ---
 layout: archive
+permalink: /tags/
 author_profile: false
 header:
   overlay_image: autumn1.jpg
