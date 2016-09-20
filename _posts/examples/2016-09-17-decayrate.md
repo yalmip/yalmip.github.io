@@ -133,19 +133,23 @@ The bisection algorithm above has been implemented in a high-level solver [bisec
 ````matlab
 sdpvar t
 Constraints = [P>=eye(2), A'*P+P*A <= -2*t*P];
-Objective = t;
-h_opt = bisection(Constraints, Objective,sdpsettings('solver','mosek'))
+Objective = -t;
+diagnostics = bisection(Constraints, Objective,sdpsettings('solver','mosek'))
 ````
+Alternatively, call as any other solver
 
+````matlab
+diagnostics = optimize(Constraints, Objective,sdpsettings('solver','bisection','bisection.solver','mosek'))
+````
 
 ### Nonlinear SDP solver
 
-An alternative way to solve the problem is to install the nonlinear semidefinite programming solvers [PENBMI] or [PENLAB]. These solvers will easily solve the problem, and is guaranteed to find the global optima due to the quasi-convexity.
+An alternative way to solve the problem is to install the nonlinear semidefinite programming solvers [PENBMI] or [PENLAB]. These solvers will easily solve the problem, and is guaranteed (in theory...) to find the global optima due to the quasi-convexity.
 
 ````matlab
 t = sdpvar(1);
 F = [P >= eye(2), A'*P+P*A <= -2*t*P];
-optimize(F,-t);
+optimize(F,-t,sdpsettings('solver','penlab'));
 ````
 
 ### Global SDP solver
