@@ -4,6 +4,7 @@ category: solver
 layout: single-solver
 author_profile: false
 tags: [Semidefinite programming solver]
+excerpt:
 sidebar:
   nav: "solvers"
 ---
