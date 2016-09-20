@@ -5,7 +5,7 @@ permalink: /allcommands
 ---
 
 ### Most common
-[sdpvar](/command/sdpvar), [optimize], [sdpsettings], [value]
+[sdpvar](/command/sdpvar), [optimize], [sdpsettings], [value], [uncertain]
 
 ### Variable declaration
 [binvar], [blkvar], [intvar], [sdpvar], [semivar]
@@ -20,13 +20,13 @@ permalink: /allcommands
 [assign], [binmodel], [coefficients], [degree], [dissect], [hessian], [int], [is], [jacobian], [linearize], [monolist], [polynomial], [sdisplay], [unblkdiag], [value]
 
 ### Variable operators (selected)
-[abs], [crossentropy], [entropy], [geomean], [kullbackleibler], [logdet], [logistic], [logsumexp], [min], [max], [median], [nnz], [sdpfun], [sumk], [sumabsk], [sort]
+[abs], [crossentropy], [entropy], [exp], [geomean], [kullbackleibler], [log], [logdet], [logistic], [logsumexp], [min], [max], [median], [nnz], [sdpfun], [sumk], [sumabsk], [sort]
 
 ### Constraints (defining)
-[alldifferent], [binary], [cone], [cut], [iff], [implies], [integer], [rank], [rcone], [sos]
+[alldifferent], [binary], [cone], [cut], [iff], [implies], [integer], [rank], [rcone], [sos], [uncertain]
 
 ### Constraints (manipulating)
-[check], [dilate],[dual], [hull], [is], [ismember], [sosd]
+[boundingbox], [check], [dilate],[dual], [hull], [is], [ismember], [sosd]
 
 ### Auxilliary
 [saveampl], [savecplexlp], [savesdpafile], [yalmiperror], [yalmiptest]
