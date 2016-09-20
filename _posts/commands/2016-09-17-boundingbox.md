@@ -11,7 +11,7 @@ sidebar:
   nav: "commands"
 ---
 
-[[boundingbox]] computes the smallest possible bounding box of a set.
+[boundingbox] computes the smallest possible bounding box of a set.
 
 ### Syntax
 
