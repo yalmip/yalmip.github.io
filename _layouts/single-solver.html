@@ -29,7 +29,7 @@ layout: default
         {% if page.options %}
           <p>{{page.title}} is invoked by using '{{page.options}}' as solver flag</p>
         {% else %}
-          <p>BMIBNB is invoked by using '{{page.title | downcase}}' as solver flag in sdpsettings</p>
+          <p>{{page.title}} is invoked by using '{{page.title | downcase}}' as solver flag in sdpsettings</p>
         {% endif %}
       {% endunless %}
  
