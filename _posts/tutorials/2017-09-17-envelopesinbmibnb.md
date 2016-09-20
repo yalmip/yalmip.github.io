@@ -166,7 +166,7 @@ sdpvar x
 optimize([x + x^2 + x^4 == 0,x,sdpsettings('solver','bmibnb'));
 ````
 
-You can see that the derived bound is \\(-1\leq x \ leq 0\\) by computing an envelope approximation. A bit silly plot, but you will get a line in \\x\\) here
+You can see that the derived bound is \\(-1 \leq x \leq 0\\) by computing an envelope approximation. A bit silly plot, but you will get a line in \\x\\) here
 
 ````matlab
 E = envelope([x + x^2 + x^4 == w, w == 0);
