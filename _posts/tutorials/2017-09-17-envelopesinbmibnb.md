@@ -159,21 +159,21 @@ x = linspace(0,3*pi/2,100);
 plot(x,x.^2)
 ````
 
-Finally, a comment on bounds. As a general rule of thumb, you have to bound all variables used in nonlinear epxressions when you use the global solver [BMIBNB] which is based on the envelope aproxmations. However, YALMIP performs various bound strengthening schemes to improve the bounds, and the same code is used in the [envelope] code  used above. In some cases, YALMIP can derive bounds, without any initial bounds being specified at all. As an example, the following problem is easily solved with nicelybehaved envelopes
+Finally, a comment on bounds. As a general rule of thumb, you have to bound all variables used in nonlinear epxressions when you use the global solver [BMIBNB] which is based on the envelope aproxmations. However, YALMIP performs various bound strengthening schemes to improve the bounds, and the same code is used in the [envelope] code  used above. In some cases, YALMIP can derive bounds, without any initial bounds being specified at all. As an example, the following problem is easily solved with nicely behaved envelopes
 
 ````matlab
 sdpvar x
 optimize([x + x^2 + x^4 == 0,x,sdpsettings('solver','bmibnb'));
 ````
 
-You can see that the derived bound is \\(-1 \leq x \leq 0\\) by computing an envelope approximation. A bit silly plot, but you will get a line in \\(x\\) here
+YALMIP easily derivs the initial bound \\(-1 \leq x \leq 0\\), and can use this when creating the cuts for the envelope approximation. A bit silly plot, but you will get a line in \\(x\\) here showing the feasible interval.
 
 ````matlab
 E = envelope([x + x^2 + x^4 == w, w == 0);
 plot(E,[x;w],[],[],sdpsettings('relax',1));
 ````
 
-Can you also derive the bounds?
+Can you also derive the interval from the nonlinear equation?
 
 
 
