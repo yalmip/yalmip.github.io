@@ -63,8 +63,6 @@ solvers:
         url: /solver/filtersd
       - title: "FMINCON"
         url: /solver/fmincon
-      - title: "GUROBI"
-        url: /solver/gurobi
       - title: "GLPK"
         url: /solver/glpk
       - title: "GPPOSY"
@@ -73,6 +71,8 @@ solvers:
         url: /solver/gurobi
       - title: "INTLINPROG"
         url: /solver/intlinprog
+      - title: "IPOPT"
+        url: /solver/ipopt
       - title: "KNITRO"
         url: /solver/knitro
       - title: "LINPROG"
