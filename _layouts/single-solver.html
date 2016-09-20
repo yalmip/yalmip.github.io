@@ -27,7 +27,7 @@ layout: default
          <p>{{page.available}}</p>
         <h3 class="page__title" itemprop="headline">In YALMIP</h3> 
         {% if page.options %}
-          <p>BMIBNB is invoked by using '{{page.options}}' as solver flag</p>
+          <p>{{page.title}} is invoked by using '{{page.options}}' as solver flag</p>
         {% else %}
           <p>BMIBNB is invoked by using '{{page.title | downcase}}' as solver flag in sdpsettings</p>
         {% endif %}
