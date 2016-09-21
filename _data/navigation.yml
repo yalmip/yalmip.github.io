@@ -313,7 +313,7 @@ commands:
   - title: Variable operators (selected)
     children:
       - title: "abs"
-        url: /command/sdpvar
+        url: /command/abs
       - title: "cpower"
         url: /command/cpower
       - title: "crossentropy"
