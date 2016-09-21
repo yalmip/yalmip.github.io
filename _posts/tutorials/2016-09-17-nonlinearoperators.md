@@ -13,7 +13,7 @@ sidebar:
   nav: "tutorials"
 ---
 
-Nonlinear functions and operators, such as [abs], [entropy] or [sort], are equipped with various properties, which allows YALMIP to, e.g., analyze the optimization problem with respect to convexity, select a suitable way to model the problem, or supply gradients and jacobians to nonlinear solvers. If the problem is convex and conic, YALMIP can sometimes use a [graph representation], while a nonconvex problem might require the introduction of [mixed-integer representations] or a [callback approach].
+Nonlinear functions and operators, such as [abs], [entropy] or [sort], are equipped with various properties, which allows YALMIP to, e.g., analyze the optimization problem with respect to convexity, select a suitable way to model the problem, or supply gradients and jacobians to nonlinear solvers. If the problem is convex and suitably structured, YALMIP can sometimes use a [graph representation], while a severly nonlinear or nonconvex problem might require the introduction of [mixed-integer representations] or a [callback approach].
 
 ### Graph-based representations
 
