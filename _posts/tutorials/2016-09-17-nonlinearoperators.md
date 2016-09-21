@@ -3,7 +3,6 @@ title: "Nonlinear operators"
 category: tutorial
 author_profile: false
 level: 4
-tags:
 excerpt: "Working with nonlinear operators in a structured and efficient fashion"
 layout: single
 header:
