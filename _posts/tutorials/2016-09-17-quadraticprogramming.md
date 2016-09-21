@@ -2,7 +2,7 @@
 title: "Quadratic programming"
 category: tutorial
 author_profile: false
-tags: [Quadratic programming]
+tags: [Quadratic programming, Large-scale quadratic programming]
 excerpt: "Almost as easy as linear programming. Be careful though, symbolics might start to cause overhead."
 layout: single
 level: 2
@@ -100,7 +100,9 @@ optimize([],norm(residuals,1));
 optimize([],norm(residuals,inf));
 ````
 
-The 2-norm solution is most easily stated in the described QP formulation, although it in some cases is more efficient in YALMIP to express the problem using a 2-norm, which will lead to a second order cone problem.
+### Large-scale quadratic programs
+
+The 2-norm solution is most easily stated in the described QP formulation, although it in some cases is more efficient in YALMIP to express the problem using a 2-norm, which will lead to a [second order cone problem](/tutorial/secondorderconeprogramming).
 
 ````matlab
 optimize([],norm(residuals,2));
@@ -113,4 +115,25 @@ aux = sdpvar(length(residuals),1);
 optimize([aux == residuals],aux'*aux);
 ````
 
-Of course, in this example, this makes no difference, as there only are 6 decision variables.
+Of course, in this example, this makes no difference, as there only are 6 decision variables but in scenarios where your objective is \\(x^TQx\\) and \\(Q\\) is large, a better model might be
+
+````matlab
+R = chol(Q);
+z = sdpvar(length(x),1);
+optimize([z = R*x],z'*z);
+````
+
+Even better, if you know \\(Q\\) is low-rank or there is some other structure that allows you to compute a low-rank possibly sparse factor, you should exploit that
+
+````matlab
+R = my_smart_factorization(Q);
+z = sdpvar(size(R,2),1);
+optimize([z = R*x],z'*z);
+````
+
+The archetypical example is **sum(x)^2** which leads to a completely dense quadratic model of rank 1. Absolutely catastrophical for large problems (it will most likely be indefinite for vectors of length larger than 10 in floating point numerics) and a waste of memory. The trivial model is
+
+````matlab
+z = sdpvar(1);
+optimize([z = sum(x)],z^2);
+````
