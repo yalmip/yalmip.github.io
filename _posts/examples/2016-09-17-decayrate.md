@@ -126,7 +126,7 @@ end
 ````
 
 
-### Bisection command
+### Built-in bisection solver
 
 The bisection algorithm above has been implemented in a high-level solver [bisection],
 
@@ -136,7 +136,7 @@ Constraints = [P>=eye(2), A'*P+P*A <= -2*t*P];
 Objective = -t;
 diagnostics = bisection(Constraints, Objective,sdpsettings('solver','mosek'))
 ````
-Alternatively, call as any other solver
+Alternatively, call it as any other solver
 
 ````matlab
 diagnostics = optimize(Constraints, Objective,sdpsettings('solver','bisection','bisection.solver','mosek'))
