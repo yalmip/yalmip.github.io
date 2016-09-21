@@ -320,7 +320,9 @@ commands:
         url: /command/crossentropy
       - title: "entropy"
         url: /command/entropy
-      - title: "expy"
+      - title: "erf"
+        url: /command/erf
+      - title: "exp"
         url: /command/exp
       - title: "geomean"
         url: /command/geomean
@@ -338,6 +340,8 @@ commands:
         url: /command/median
       - title: "nnz"
         url: /command/nnz
+      - title: "norm"
+        url: /command/norm
       - title: "sdpfun"
         url: /command/sdpfun
       - title: "sort"
