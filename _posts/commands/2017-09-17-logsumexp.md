@@ -11,6 +11,15 @@ sidebar:
   nav: "commands"
 ---
 
+
+
+{% note %}
+
+Something I want to emphasize
+
+{% endnote %}
+
+
 [logsumexp] is a convexity aware implementation of \\(\log(\sum_i e^{x_i})\\)
 
 ### Syntax
