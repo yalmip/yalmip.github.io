@@ -31,7 +31,7 @@ Based on this information, it is possible to recursively analyze convexity of a 
 
 **hypograph:** \\(t\\) represents concave function \\(f(x)\\) : replace with \\(f(x) \geq t\\)
 
-Of course, in order for this to be useful, the epigraph representation has to be possible to simply, preferable with a conic constraint,otherwise nothing is gained. As an example, given the model \\(\left\lvert x\right\rvert \leq 1\)), this passes convexity analysis, and a (redundant) equivalent model is  \\(\left\lvert x\right\rvert \leq t\, t\leq 1)), which can be represented using the linear constraints \\-t \leq  x \leq t\, t\leq 1)). Of course, the variable \\(t\\) can be eliminated from the model, but for more complex models it is preferable to keep the intermediate graph variables to obtain simple models. 
+Of course, in order for this to be useful, the epigraph representation has to be possible to simply, preferable with a conic constraint,otherwise nothing is gained. As an example, given the model \\( \left\lvert x \right\rvert \leq 1\\), this passes convexity analysis, and a (redundant) equivalent model is  \\(\left\lvert x\right\rvert \leq t\, t\leq 1\\), which can be represented using the linear constraints \\(-t \leq  x \leq t\, t\leq 1\\). Of course, the variable \\(t\\) can be eliminated from the model, but for more complex models it is preferable to keep the intermediate graph variables to simplify manipulations. 
 
 ### Standard use
 
