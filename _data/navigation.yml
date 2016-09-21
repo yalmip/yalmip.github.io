@@ -310,6 +310,8 @@ commands:
         url: /command/polynomial
       - title: "sdisplay"
         url: /command/sdisplay
+      - title: "sparse"
+        url: /command/sparse
       - title: "unblkdiag"
         url: /command/unblkdiag
       - title: "value"
