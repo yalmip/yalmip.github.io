@@ -37,7 +37,7 @@ The culprit for these are typically one out of four standard situations.
 
 ### Assigning sdpvar object to a double
 
-A common case is that a user defined a double, and then tries to insert an [[Commands.sdpvar | sdpvar]] object at some location using indexing
+A common case is that a user defined a double, and then tries to insert an [sdpvar] object at some location using indexing
 
 ````matlab
 sdpvar x
@@ -48,7 +48,7 @@ y =
    NaN     0     0     0     0
 ````
 
-Obviously not creating the vector one would think!. The reason is the precedence behavior of subsasgn (which performs this assignment) in MATLAB. Doubles have priority, hence, the right-hand-side is cast as a double when the assignment is performed. The code is thus equivalent to
+Obviously not creating the vector one would think!. The reason is the precedence behavior of **subsasgn** (which performs this operation) in MATLAB. Doubles have priority, hence, the right-hand-side is cast as a double when the assignment is performed. The code is thus equivalent to
 
 ````matlab
 sdpvar x
@@ -56,7 +56,7 @@ y = zeros(1,5);
 y(5) = value(x)
 ````
 
-you can see this more clearly by assigning a value to **x**
+You can see this more clearly by assigning a value to **x**
 
 ````matlab
 sdpvar x
@@ -85,7 +85,7 @@ Model = [x <= 1/woops-1/woops^2];
 
 ### The variable was never used in the optimization problem
 
-For a variable to have a value, it must have been visible to the optimization problem. Variables which haven't been optimized have the default value NaN. In the following model, although we see '''y''' in the model, it disappears since it is multiplied with 0, and is thus not part of the model sent to the solver.
+For a variable to have a value, it must have been visible to the optimization problem. Variables which have not been optimized have the default value NaN. In the following model, although we see **y** in the model, it disappears since it is multiplied with 0, and is thus not part of the model sent to the solver.
 
 ````matlab
 sdpvar x y
