@@ -6,7 +6,7 @@ level: 4
 excerpt: "Working with nonlinear operators in a structured and efficient fashion"
 layout: single
 header:
-tags: [Conic representable, Integer representable]
+tags: [Linear programming representable, Second-order cone programming representable, Semidefinite programming representable, Integer programming representable]
 header:
   teaser:
 sidebar:
