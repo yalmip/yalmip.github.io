@@ -55,7 +55,7 @@ optimize([],max(abs(residuals)));
 a_Linf = value(a_hat)
 ````
 
-YALMIP automatically concludes that the objective functions can be modeled using graph models based on linear inequalities, adds these, and solves the problems. We can simplify the code even more by using the [norm] operator. Here we also compute the least-squares solution (note that this norm, as written here, will generate a second-order cone constraint, ariing when the graph model for the second-order cone representable 2-norm is modeled).
+YALMIP automatically concludes that the objective functions can be modeled using graph models based on linear inequalities, adds these, and solves the problems. We can simplify the code even more by using the [norm] operator. Here we also compute the least-squares solution (note that this norm, as written here, will generate a second-order cone constraint, arising when the graph model for the second-order cone representable 2-norm is modeled).
 
 ````matlab
 optimize([],norm(residuals,1));
@@ -110,7 +110,7 @@ sol = optimize(F,max(x,z)-min(y,z)-z);
 
 ### Polynomial and sigmonial expressions
 
-By default, polynomial expressions (except quadratics) are not analyzed with respect to convexity and conversion to a conic model is not performed. Hence, if you add a constraint such as \\(x^4 + y^8-x^0.5 <= 10\\), YALMIP may complain about convexity, even though we can see that the expression is convex and can be represented using conic constraints. More importantly, YALMIP will not try to derive an equivalent conic model. However, by using the command [cpower] instead, (rational) powers can be used.
+By default, polynomial expressions (except quadratics) are not analyzed with respect to convexity and conversion to a conic model is not performed. Hence, if you add a constraint such as \\(x^4 + y^8-x^{0.5} \leq 10\\), YALMIP may complain about convexity, even though we can see that the expression is convex and can be represented using conic constraints. More importantly, YALMIP will not try to derive an equivalent conic model. However, by using the command [cpower] instead, (rational) powers can be used.
 
 To illustrate this, first note the difference between a monomial generated using overloaded power and a variable generated using [cpower].
 
@@ -119,10 +119,10 @@ sdpvar x
 x^4
 Polynomial scalar (real, homogeneous, 1 variable)
 cpower(x,4)
-Linear scalar (real, derived, 1 variable)
+Nonlinear scalar (real, 1 variable)
 ````
 
-The property derived indicates that YALMIP will try to replace the variable with its epigraph formulation when the problem is solved. Working with these convexity-aware monomials is no different than usual.
+Working with these convexity-aware monomials is no different than usual.
 
 ````matlab
 sdpvar x y
@@ -133,7 +133,6 @@ plot(F,[x y]);
 Note that when you plot sets with constraints involving nonlinear operators and polynomials, it is recommended that you specify the variables of interest in the second argument (YALMIP may otherwise plot the set with respect to auxiliary variables introduced during the construction of the conic model.)
 
 Do not use these operators unless you really need them. The conic representation of rational powers easily grow large.
-
 
 ### A look behind the scene
 
@@ -169,7 +168,7 @@ operator =
            model: 'graph'
 ````
 
-For more advanced models with recursively used nonlinear operators, the function model will not generate the complete model since it does not recursively expand the arguments. For this case, use the command **expandmodel**. This command takes two arguments, a set of constraints and an objective function. To expand an expression, just let the expression take the position as the objective function. Note that the command assumes that the expansion is performed in order to prove a convex function, hence if you expression is meant to be concave, you need to negate it. To illustrate this, let us expand the objective function in an extension of the geometric mean example above.
+For more advanced models with recursively used nonlinear operators, the function model will not generate the complete model since this low-level function does not expand the arguments. For this case, use the command **expandmodel**. This command takes two arguments, a set of constraints and an objective function. To expand an expression, just let the expression take the position as the objective function. Note that the command assumes that the expansion is performed in order to prove a convex function, hence if you expression is meant to be concave, you need to negate it. To illustrate this, let us expand the objective function in an extension of the geometric mean example above.
 
 ````matlab
 A = randn(7,2);
@@ -194,7 +193,7 @@ The result is two linear inequalities related to the min operator and 7 second o
 
 ### Adding new operators
 
-If you want to add your own operator, all you need to do is to create 1 file. This file should be able to return the numerical value of the operator for a numerical input, and return the epigraph (or hypograph) and a descriptive structure of the operator when the first input is **'graph'**. As an example, the following file implements the nonlinear operator tracenorm. This convex operator returns **sum(svd(X))** for matrices **X**. This value can also be described as the minimizing argument of the optimization problem **min {t,A,B}_subject to [A X;X' B] >= 0, trace(A)+trace(B) <= 2t**.
+If you want to add your own operator, all you need to do is to create 1 file. This file should be able to return the numerical value of the operator for a numerical input, and return the epigraph (or hypograph) and a descriptive structure of the operator when the first input is **'graph'**. As an example, the following file implements the nonlinear operator tracenorm. This convex operator returns **sum(svd(X))** for matrices **X**. This value can also be described as the minimizing argument of the optimization problem \\( \textbf{min}_{t,A,B} \textbf{ subject } to [A X;X' B] \geq 0, trace(A)+trace(B) \leq 2t\\).
 
 ````matlab
 function varargout = tracenorm(varargin)
