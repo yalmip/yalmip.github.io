@@ -20,7 +20,7 @@ permalink: /allcommands
 [assign], [binmodel], [coefficients], [degree], [dissect], [hessian], [int], [is], [jacobian], [linearize], [monolist], [polynomial], [sdisplay], [unblkdiag], [value]
 
 ### Variable operators (selected)
-[abs], [crossentropy], [entropy], [erf], [exp], [floor], [geomean], [kullbackleibler], [log], [logdet], [logistic], [logsumexp], [min], [max], [median], [nnz], [norm], [sdpfun], [sumk], [sumabsk], [sort]
+[abs], [crossentropy], [entropy], [erf], [exp], [floor], [geomean], [kullbackleibler], [log], [logdet], [logistic], [logsumexp], [min], [max], [median], [nnz], [norm], [pnorm], [sdpfun], [sumk], [sumabsk], [sort]
 
 ### Constraints (defining)
 [alldifferent], [binary], [cone], [cut], [iff], [implies], [integer], [rank], [rcone], [sos], [uncertain]
