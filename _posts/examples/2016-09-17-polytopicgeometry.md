@@ -17,8 +17,7 @@ image:
   thumb: lofberg.jpg
 ---
 
-
-The toolboxes YALMIP and [MPT] where initially developed independently, but have over the years seen more and more integration. Several functionalities in [MPT] require YALMIP, and several functionalities in YALMIP require [MPT].
+The toolboxes YALMIP and [MPT] were initially developed independently, but have over the years seen more and more integration. Several functionalities in [MPT] require YALMIP, and several functionalities in YALMIP require [MPT].
 
 In this article, we will look at some examples where we use a combination of YALMIP and [MPT] commands, and we will also illustrate how some operations in [MPT] can be done using YALMIP code only, and vice versa.
 
