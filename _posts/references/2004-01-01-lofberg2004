@@ -2,7 +2,7 @@
 title: "YALMIP : A Toolbox for Modeling and Optimization in MATLAB"
 author: "J. Löfberg"
 where: "In Proceedings of the CACSD Conference"
-tags:
+tags: [YALMIP]
 date: '2004-01-01'
 layout: single
 category: reference
