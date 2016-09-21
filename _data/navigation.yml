@@ -121,6 +121,8 @@ solvers:
         url: /solver/sdpa
       - title: "SDPLR"
         url: /solver/sdplr
+      - title: "SDPNAL"
+        url: /solver/sdpnal        
       - title: "SDPT3"
         url: /solver/sdpt3
       - title: "SEDUMI"
