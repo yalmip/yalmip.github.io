@@ -4,7 +4,7 @@ category: command
 author_profile: false
 excerpt: ""
 title: logsumexp
-tags: [Exponential cone programming, Exponential and logarithmic functions]
+tags: [Exponential cone programming representable, Exponential and logarithmic functions]
 comments: true
 date: '2016-09-17'
 sidebar:
