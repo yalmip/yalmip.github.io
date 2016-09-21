@@ -28,7 +28,7 @@ Read more about [graph models of conic representable function](/tutorial/nonline
 
 Mixed-integer representations are models that encode an exact representation of an operator by using integer and binary decision variables. The benefit of using such a representation is that the resulting nonconvex problem typically is a well structured problem, such as a mixed-integer linear program. Many of the conic representable operators that are implemented using linear programming graphs, are also available in a mixed integer representation. If YALMIP fails to propagate convexity, it will switch from graph-based modelling to mixed-integer modelling (unless the option *'allownonconvex'* is set to 0). Mixed-integer models are available for, e.g., [min], [max], [abs], but also for purely combinatorial operators operators and conditions such as [or], [ne], [iff], [implies], [nnz], [sort] and many more, and on a higher level, piecewise affine and quadratic functions in connection with [MPT].
 
-Read more about [integeger representable function](/tutorial/nonlinearoperatorsmixedinteger).
+Read more about [integer representable function](/tutorial/nonlinearoperatorsmixedinteger).
 
 ### Evaluation-based representations
 
