@@ -40,7 +40,7 @@ layout: default
         {% endif %}
       {% endunless %}
  
-      {% if page.content %}
+      {% if page.content.size > 2 %}
         <h3 class="page__title" itemprop="headline">Comments</h3> 
         <section class="page__content" itemprop="text">{{ content }}</section>
       {% endif %}
