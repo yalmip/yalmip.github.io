@@ -25,13 +25,13 @@ Without going into theoretical details, the convexity analysis is based on epi- 
 3. \\(f\\) is concave if \\(h\\) is concave and increasing and \\(g\\) is concave
 4. \\(f\\) is concave if \\(h\\) is concave and decreasing and \\(g\\) is convex
 
-Based on this information, it is possible to recursively analyze convexity of a complex expression involving convex and concave functions. When [optimize] is called, YALMIP checks the convexity of objective function and constraints by using information about the properties of the operators. If YALMIP manage to prove convexity, graph formulations of the operators are automatically introduced. This means that the operator is replaced with a graph, i.e., a set of constraints.
+Based on this information, it is possible to recursively analyze convexity of a complex expression involving convex and concave functions. When [optimize] is called, YALMIP checks the convexity of objective function and constraints by using information about the properties of the operators. If YALMIP manage to prove convexity, graph formulations of the operators are automatically introduced. This means that the operator is replaced with a new variable, and a set of constraints are added to the model.
 
-**epigraph:**  \\(t\\) represents convex function \\(f(x)\\) : replace with \\(f(x) \leq t\\)
+**epigraph:**  \\(t\\) replaces convex function \\(f(x)\\) : introduce with \\(f(x) \leq t\\)
 
-**hypograph:** \\(t\\) represents concave function \\(f(x)\\) : replace with \\(f(x) \geq t\\)
+**hypograph:** \\(t\\) replaces concave function \\(f(x)\\) : introduce with \\(f(x) \geq t\\)
 
-Of course, in order for this to be useful, the epigraph representation has to be possible to simply, preferable with a conic constraint,otherwise nothing is gained. As an example, given the model \\( \left\lvert x \right\rvert \leq 1\\), this passes convexity analysis, and a (redundant) equivalent model is  \\(\left\lvert x\right\rvert \leq t\, t\leq 1\\), which can be represented using the linear constraints \\(-t \leq  x \leq t\, t\leq 1\\). Of course, the variable \\(t\\) can be eliminated from the model, but for more complex models it is preferable to keep the intermediate graph variables to simplify manipulations. 
+Of course, in order for this to be useful, the epigraph representation has to be possible to simplify, preferably with a conic constraint, otherwise nothing is gained. As an example, given the model \\( \left\lvert x \right\rvert \leq 1\\), this passes convexity analysis, and a (redundantly large) equivalent model is  \\(\left\lvert x\right\rvert \leq t\, t\leq 1\\), which can be represented using the linear constraints \\(-t \leq  x \leq t\, t\leq 1\\). Of course, the variable \\(t\\) can be eliminated from the model, but for more complex models it is preferable to keep the intermediate graph variables to simplify manipulations. 
 
 ### Standard use
 
