@@ -46,7 +46,8 @@ a_hat = sdpvar(6,1);
 residuals = y-x*a_hat;
 ````
 
-Using **abs** and **max**, we can easily solve the \\(L_1\\) and the \\(L_{\infty}\\) regression problem (Note that the **abs** operator currently has performance issues and should be avoided for large arguments. Moreover, explicitly creating absolute values when minimizing the \\(L_1\\)  error is unnecessarily complicated).
+Using **abs** and **max**, we can easily solve the \\( L_1 \\) and the \\( L_{\infty} \\) regression problem (Note it is moch more efficient to use the **norm** operator than using the **abs** as YALMIP has to reason individually around every element in the absolute value whereas the **norm** operator only has one output). Explicitly creating absolute values when minimizing the \\(L_1\\)  error is simply unnecessarily complicated, but we use it here to illustrate the use of compund operations.
+
 ````matlab
 optimize([],sum(abs(residuals)));
 a_L1 = value(a_hat)
@@ -54,7 +55,7 @@ optimize([],max(abs(residuals)));
 a_Linf = value(a_hat)
 ````
 
-YALMIP automatically concludes that the objective functions can be modeled using some additional linear inequalities, adds these, and solves the problems. We can simplify the code even more by using the [norm] operator (this is much faster for large-scale problems due to implementation issues in YALMIP). Here we also compute the least-squares solution (note that this norm will generate a second-order cone constraint).
+YALMIP automatically concludes that the objective functions can be modeled using graph models based on linear inequalities, adds these, and solves the problems. We can simplify the code even more by using the [norm] operator. Here we also compute the least-squares solution (note that this norm, as written here, will generate a second-order cone constraint, ariing when the graph model for the second-order cone representable 2-norm is modeled).
 
 ````matlab
 optimize([],norm(residuals,1));
