@@ -20,4 +20,4 @@ z = kullbackleibler(x,y)
 
 ### Comments
 
-[kullbackleibler] is implemented using the [evaluation-based nonlinear operators] framework, unless [SCS] or [ECOS] is used and the exponential cone property is used.
+[kullbackleibler] is implemented using the [evaluation-based nonlinear operators] framework, unless [SCS] or [ECOS] is used and an exponential cone representation is used.
