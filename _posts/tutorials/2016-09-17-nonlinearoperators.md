@@ -35,7 +35,7 @@ Read more about [integer representable function](/tutorial/nonlinearoperatorsmix
 
 A third way to model operators in YALMIP is by using simple callback evaluations. This is the way a modelling normally works with nonlinear solver. The modelling layer simply creates a framework for computing function values and derivatives. Operators modelled this way in YALMIP can also be equipped with convexity information, and thus fit into YALMIPs convexity propagations, and for use in the built-in global solver [bmibnb] they can have convex envelope approximators attached.
 
-Since they are based on callbacks, they can only be used together with general purpose nonlinear solvers, such as [FMINCON], [SNOPT] or [IPOPT]. 
+Since they are based on callbacks, they can only be used with general purpose nonlinear solvers, such as [FMINCON], [SNOPT] or [IPOPT]. 
 
 Most of MATLABs built-in nonlinear functions, such as [exp] and [sin], are available as evaluation-based representations in YALMIP. There are also operators such as [entropy] and [kullbackleibler] which can be used both with graph representations in [exponentialconeprogramming](/tutorial/exponentialconeprogramming) and as callback operators in general nonlinear solvers.
 
