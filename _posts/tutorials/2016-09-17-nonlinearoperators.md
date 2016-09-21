@@ -17,7 +17,7 @@ Nonlinear functions and operators, such as [abs], [entropy] or [sort], are equip
 
 ### Graph-based representations
 
-Graph-based implementations model the operators by using additional variables and constraints, so called [epi-](http://en.wikipedia.org/wiki/Epigraph_%28mathematics%29) and [hypo-graphs](http://en.wikipedia.org/wiki/Hypograph_%28mathematics%29). The benefit of this modeling strategy is that YALMIP can derive simple optimization models, such as linear programs, instead of treating the operators as general nonlinearities and use a nonlinear solver. We say that the operator is *conic representable* if these reformulations are possible
+Graph-based implementations model the operators by using additional variables and constraints, so called [epi-](http://en.wikipedia.org/wiki/Epigraph_%28mathematics%29) and [hypo-graphs](http://en.wikipedia.org/wiki/Hypograph_%28mathematics%29). The benefit of this modeling strategy is that YALMIP can derive structured optimization models, such as a linear program or semidefinite, instead of treating the operators as general nonlinearities and use a nonlinear solver. Here, we say that the operator is *conic representable* if these reformulations are possible.
 
 These graph representations are only possible if the expressions satisfy certain convexity or concavity conditions. Hence, YALMIP has to analyze the problem to ensure that the representation actually can be used.
 
