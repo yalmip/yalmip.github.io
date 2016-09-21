@@ -4,7 +4,7 @@ category: command
 author_profile: false
 excerpt: "Convexity aware implementation of kullackleibler entropy"
 title: kullackleibler
-tags: [Expoenntial cone programming representable, Exponential cone programming, Exponential and logarithmic functions]
+tags: [Exponential cone programming representable, Exponential and logarithmic functions]
 comments: true
 date: '2016-09-17'
 sidebar:
@@ -20,4 +20,4 @@ z = kullbackleibler(x,y)
 
 ### Comments
 
-[kullbackleibler] is implemented using the [evaluation-based nonlinear operators]] framework, except for when [SCS] or [ECOS] is used and the exponential cone property is used.
+[kullbackleibler] is implemented using the [evaluation-based nonlinear operators] framework, unless [SCS] or [ECOS] is used and the exponential cone property is used.
