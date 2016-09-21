@@ -196,8 +196,10 @@ The result is two linear inequalities related to the min operator and 7 second o
 If you want to add your own operator, all you need to do is to create 1 file. This file should be able to return the numerical value of the operator for a numerical input, and return the epigraph (or hypograph) and a descriptive structure of the operator when the first input is **'graph'**. As an example, the following file implements the nonlinear operator tracenorm. This convex operator returns **sum(svd(X))** for matrices **X**. This value can also be described as the minimizing argument of the optimization problem
 
 $$
-\textbf{min}_{t,A,B} \textbf{ subject } to \begin{bmatrix}A & X\\X^T B\end{bmatrix}, \trace(A)+\trace(B) \leq 2t
+\textbf{min}_{t,A,B} \textbf{ subject to } \begin{bmatrix}A & X\\X^T B\end{bmatrix}, \trace(A)+\trace(B) \leq 2t
 $$
+
+The code looks essentially the same for all conic representable operators.
 
 ````matlab
 function varargout = tracenorm(varargin)
@@ -209,7 +211,7 @@ switch class(varargin{1})
 
     case 'char'   % YALMIP send 'graph' when it wants the epigraph or hypograph
         switch varargin{1}
-	 case 'graph'
+	  case 'graph'
             t = varargin{2}; % 2nd arg is always the extended operator variable
             X = varargin{3}; % 3rd arg and above are always arguments user used.
             A = sdpvar(size(X,1));
@@ -230,9 +232,9 @@ switch class(varargin{1})
          case 'exact'
             % Exact representation based on integer programming not available
             % We could add a callback logic, but we keep it simple
-	    varargout{1} = [];
-	    varargout{2} = [];
-	    varargout{3} = [];
+	          varargout{1} = [];
+	          varargout{2} = [];
+	          varargout{3} = [];
 
          otherwise
             error('Something is very wrong now...')
