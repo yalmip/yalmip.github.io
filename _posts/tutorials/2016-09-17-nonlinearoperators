@@ -7,6 +7,7 @@ excerpt: "Working with nonlinear operators in a structured and efficient fashion
 layout: single
 header:
 tags: [Conic representable, Integer representable]
+header:
   teaser:
 sidebar:
   nav: "tutorials"
