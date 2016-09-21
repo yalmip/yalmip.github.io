@@ -54,7 +54,7 @@ A final approach is to define the problem using YALMIP code, but convert it to a
 plot(polytope(A*x <= b));
 ````
 
-Note that the algorithm to plot the sets are completely different in YALMIP and [MPT]. [MPT] exploits the fact that the sets are polytopes (as that is the only set [MPT] can handle) and computes all vertices using a vertex enumeration algorithm. YALMIP on the other hand makes no assumption about the sets. To be able to handle arbitrary sets, it employs a ray-shooting strategy to generate points on the boundary of the feasible set, and then plot this (inner) approximation.
+Note that the algorithm to plot the sets are completely different in YALMIP and [MPT]. [MPT] explicitly works with the polytopic structure and computes all vertices using a vertex enumeration algorithm. YALMIP on the other hand makes no assumption about the sets. To be able to handle arbitrary sets, it employs a ray-shooting strategy to generate points on the boundary of the feasible set, and then plot this (inner) approximation.
 
 ### Minkowski difference
 
@@ -127,14 +127,14 @@ plot(norm(x-value(xc),2)<=value(r),x,'b')
 
 ![costs_LPVMPC]({{ site.url }}/images/mptyalmip8.png){: .center-image }
 
-In order to extend this concept, we first note that the Chebychev formulation can be interpreted as a robustness problem. Hence, we compute the Chebychev ball using the robust optimization module
+In order to extend this concept, we first note that the Chebychev formulation can be interpreted as a robustness problem. Hence, we can compute the Chebychev ball using the robust optimization module
 
 ````matlab
 d = sdpvar(2,1);
 optimize([A*(xc+r*d) <= b, uncertain(d), d'*d <= 1],-r)
 ````
 
-With this formulation at hand, we can generalize. The robust optimization module allows fairly general uncertainty descriptions when the uncertain constraint is elementwise. Hence, we can compute the 1-norm and infinity-norm Chebychev balls
+With this formulation at hand, we can generalize. The robust optimization module allows fairly general uncertainty descriptions when the uncertain constraint is elementwise. Let's compute the 1-norm and infinity-norm Chebychev balls!
 
 ````matlab
 plot(A*x < b);
@@ -153,7 +153,7 @@ plot((abs(x-value(xc)))<=value(r),x,'y')
 
 ### Projection
 
-Let us define a polytope in 3D, and project it two its two first coordinates.
+Define a polytope in 3D, and project it two its two first coordinates.
 
 ````matlab
 H = randn(10,3);
@@ -174,7 +174,7 @@ plot(H*x <= k);hold on
 plot(H*x <= k,x(1:2),'k');
 ````
 
-Crucial to understand is that YALMIP does not explicitly generate any projection. Instead, the general ray-shooting that is used in the plot command shoots rays only in the requested coordinates, which implicitly generates the projection for display.
+Crucial to understand is that YALMIP does not explicitly generate any projection but simply plots the projection of the results from the ray-shooting.
 
 However, if we want the explicit projection, the command projection is available on polytopic constraints. YALMIP will convert the constraints to an [MPT] polytope object, apply the projection, and the reconstruct a YALMIP constraint.
 
@@ -211,7 +211,7 @@ plot(replace(H*x,x(1),0.2) <= k)
 
 ### Convex hull
 
-Both [MPT] and YALMIP can be used to obtain the convex hull of the union of polytopes. Using [MPT], we quickly define two cubes and plot them and their convex hull
+Both [MPT] and YALMIP can be used to obtain the convex hull of the union of polytopes. Using [MPT], we quickly define two cubes and plot them and their [convex hull](/commands/hull)
 
 ````matlab
 P1 = unitbox(2,0.5)+[1;1];
@@ -233,4 +233,4 @@ plot(P1,x,'y');
 plot(P2,x,'b');
 ````
 
-Once again, note that [MPT] and YALMIP use different approaches to construct the convex hull. [MPT]  is based on a vertex enumeration of the individual polytopes. YALMIP on the other hand is based on a general lifting approach involving additional variables and constraints (this is the reason we explicitly tell YALMIP to plot the convex hull w.r.t. the original variables, since auxiliary variables have been introduced). The benefit of this approach is of course that the method applies to arbitrary conic-representable sets, see the [[Commands.Hull convex hull examples].
+Once again, note that [MPT] and YALMIP use different approaches to construct the convex hull. [MPT]  is based on a vertex enumeration of the individual polytopes. YALMIP on the other hand is based on a general lifting approach involving additional variables and constraints (this is the reason we explicitly tell YALMIP to plot the convex hull w.r.t. the original variables, since auxiliary variables have been introduced). The benefit of this approach is of course that the method applies to arbitrary conic-representable sets as described in the [convex hull command](/commands/hull)
