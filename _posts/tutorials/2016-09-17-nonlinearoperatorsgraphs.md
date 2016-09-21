@@ -27,34 +27,11 @@ Without going into theoretical details, the convexity analysis is based on epi- 
 
 Based on this information, it is possible to recursively analyze convexity of a complex expression involving convex and concave functions. When [optimize] is called, YALMIP checks the convexity of objective function and constraints by using information about the properties of the operators. If YALMIP manage to prove convexity, graph formulations of the operators are automatically introduced. This means that the operator is replaced with a graph, i.e., a set of constraints.
 
-**epigraph:**  \\(t\\) represents convex function \\(f(x)\\) : replace with \\(f(x)leq t\\)
+**epigraph:**  \\(t\\) represents convex function \\(f(x)\\) : replace with \\(f(x) \leq t\\)
 
-**hypograph:** \\(t\\) represents concave function \\(f(x)\\) : replace with \\(f(x)geq t\\)
+**hypograph:** \\(t\\) represents concave function \\(f(x)\\) : replace with \\(f(x) \geq t\\)
 
-Of course, in order for this to be useful, the epigraph representation has to be possible to be represented using standard constraints, such as conic constraints. As an example, given the model \\(\left\lvert x\right\rvert \leq 1\)), this passes convexity analysis, and a (redundant) equivalent model is  \\(\left\lvert x\right\rvert \leq t\, t\leq 1)), which can be represented using the linear constraints \\-t \leq  x \leq t\, t\leq 1)). Of course, the variable \\(t\\) can be eliminated from the model, but for more complex models it is preferable to keep the intermediate graph variables to obtain simple models. 
-
-### The operators
-
-The operators defined in the current release are described in the table below. This information might be useful to understand how and when YALMIP can derive convexity.
-
-Name
-
-Convex/Concave
-
-Monotinicity
-
-Comments
-
-abs	convex	none	 
-min	concave	increasing	 
-max	convex	increasing	 
-norm	convex	none	All standard norms (1,2, inf and Frobenius) can be used. In addition, nuclear norm and rational norms are supported.
-huber	convex	none	 
-sumk	convex	See comment	Defines the sum of the k largest elements of a vector, or the sum of the k largest eigenvalues of a symmetric matrix. Increasing for vector arguments, no monotinicity defined for eigenvalue operator.
-sumabsk	convex	none	Defines the sum of the k largest absolute value elements of a vector, or the sum of the k largest absolute value eigenvalues of a symmetric matrix.
-geomean	concave	See comment	For vector arguments, the operator is increasing. For symmetric matrix argument, the operator is defined as the geometric mean of the eigenvalues. No monotinicity defined for eigenvalue operator
-cpower	See comment	See comment	Convexity-aware version of power. For negative powers, the operator is convex and decreasing. For positive powers less than one, the operator is concave and increasing. Positive powers larger than 1 gives a convex increasing operator.
-sqrt	concave	increasing	Short for cpower(x,0.5)
+Of course, in order for this to be useful, the epigraph representation has to be possible to simply, preferable with a conic constraint,otherwise nothing is gained. As an example, given the model \\(\left\lvert x\right\rvert \leq 1\)), this passes convexity analysis, and a (redundant) equivalent model is  \\(\left\lvert x\right\rvert \leq t\, t\leq 1)), which can be represented using the linear constraints \\-t \leq  x \leq t\, t\leq 1)). Of course, the variable \\(t\\) can be eliminated from the model, but for more complex models it is preferable to keep the intermediate graph variables to obtain simple models. 
 
 ### Standard use
 
