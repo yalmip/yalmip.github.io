@@ -8,7 +8,7 @@ YALMIP is free of charge to use and is openly distributed, but note that
 
 1. Copyright owned by Johan Löfberg.
 
-2. YALMIP must be referenced ([general reference](/reference/lofberg2004), [robust optimization reference](/reference/lofberg2012), [sum-of-squares](/lofberg2009])) when used in a published work (give me some credit for saving your valuable time!)
+2. YALMIP must be referenced ([general reference](/reference/lofberg2004), [robust optimization reference](/reference/lofberg2012), [sum-of-squares reference](/lofberg2009])) when used in a published work (give me some credit for saving your valuable time!)
  
 3. YALMIP, or forks or versions of YALMIP, may not be re-distributed as a part of a commercial product unless agreed upon with the copyright owner (if you make money from YALMIP, let me in first!)
 
