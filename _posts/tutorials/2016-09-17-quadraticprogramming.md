@@ -115,7 +115,7 @@ aux = sdpvar(length(residuals),1);
 optimize([aux == residuals],aux'*aux);
 ````
 
-Of course, in this example, this makes no difference, as there only are 6 decision variables but in scenarios where your objective is \\(x^TQx\\) and \\(Q\\) is large, a better model might be
+Of course, in this example, this makes no difference, as there only are 6 decision variables but in scenarios where your objective is \\(x^TQx\\) and \\(Q=R^TR\\) is large, a better model might be
 
 ````matlab
 R = chol(Q);
