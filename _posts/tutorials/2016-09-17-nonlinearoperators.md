@@ -21,7 +21,7 @@ Graph-based implementations model the operators by using additional variables an
 
 These graph representations are only possible if the expressions satisfy certain convexity or concavity conditions. Hence, YALMIP has to analyze the problem to ensure that the representation actually can be used.
 
-Graph-based implementations are available for a large number of operators, such as the [linear programming representable](/tags/#linear-programming-representable) operators  [min], [max] and [abs], the [second-order cone representable](/tags/#second-order-cone-programming-representable)  [sqrt], [norm] and [geomean], semidefinite cone representable (/tags/#semidefinite-programming-representable) [nuclear norm], or [exponential cone representable](/tags/#exponential-programming-representable) such as [entropy]. Adding new operators is easy, and can be done almost entirely from template code.
+Graph-based implementations are available for a large number of operators, such as the [linear programming representable](/tags/#linear-programming-representable) operators  [min], [max] and [abs], the [second-order cone representable](/tags/#second-order-cone-programming-representable)  [sqrt], [norm] and [geomean], [semidefinite cone representable](/tags/#semidefinite-programming-representable) [nuclear norm], or [exponential cone representable](/tags/#exponential-programming-representable) such as [entropy]. Adding new operators is easy, and can be done almost entirely from template code.
 
 Read more about [graph models of conic representable function](/tutorial/nonlinearoperatorsgraphs).
 
