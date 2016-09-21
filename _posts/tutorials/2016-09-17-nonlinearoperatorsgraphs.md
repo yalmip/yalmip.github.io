@@ -12,14 +12,13 @@ sidebar:
   nav: "tutorials"
 ---
 
-YALMIP supports modeling of nonlinear, often non-differentiable, operators that typically occur in convex programming. Some examples are [min], [max], [abs], [geomean], [sumabsk], and [sqrt], and users can easily add their own (see the end of this page). The operators can be used intuitively, and YALMIP will automatically try to find out if they are used in a way that enables a convex representation. If a convex representation is impossible, YALMIP automatically tries to revert to a [mixed-integer representation].
+YALMIP supports modeling of nonlinear, often non-differentiable, operators that typically occur in convex programming. Some examples are [min], [max], [abs], [geomean], [sumabsk], and [sqrt], and users can easily add their own (see the end of this page). The operators can be used intuitively, and YALMIP will automatically try to find out if they are used in a way that enables a conic representation or graph representation. If such representation is impossible, YALMIP automatically tries to revert to a [mixed-integer representation].
 
-Although the automatic support for these operators can simplify the modeling phase significantly in some cases, it is recommended not to use these operators unless you know how to model them by your self using epigraphs and composition rules of convex and concave functions, why and when it can be done etc. The text-book [Boyd and Vandenberghe 2004] should be a suitable introduction for the beginner, and is consistent with the notation used here.
+Although the automatic support for these operators can simplify the modeling phase significantly in some cases, it is recommended to use these operators only when you know how to model them your self using epigraphs and composition rules of convex and concave functions, why and when it can be done etc. The text-book [Boyd and Vandenberghe 2004] should be a suitable introduction for the beginner, and is consistent with the notation used here.
 
 ### Convexity analysis
 
 Without going into theoretical details, the convexity analysis is based on epi- and hypograph formulations, and composition rules. For the composite expression \\(f = h(g(x))\\), it holds that (For simplicity, we write increasing, decreasing, convex and concave, but the correct notation would be nondecreasing, nonincreasing, convex or affine and concave or affine. This notation is used throughout this manual and inside YALMIP)
-
 
 1. \\(f\\) is convex if \\(h\\) is convex and increasing and \\(g\\) is convex
 2. \\(f\\) is convex if \\(h\\) is convex and decreasing and  \\(g\\) is concave
@@ -32,7 +31,7 @@ Based on this information, it is possible to recursively analyze convexity of a 
 
 **hypograph:** \\(t\\) represents concave function \\(f(x)\\) : replace with \\(f(x)geq t\\)
 
-Of course, in order for this to be useful, the epigraph representation has to be possible to be represented using standard constraints, such as conic constraints.
+Of course, in order for this to be useful, the epigraph representation has to be possible to be represented using standard constraints, such as conic constraints. As an example, given the model \\(\left\lvert x\right\rvert \leq 1\)), this passes convexity analysis, and a (redundant) equivalent model is  \\(\left\lvert x\right\rvert \leq t\, t\leq 1)), which can be represented using the linear constraints \\-t \leq  x \leq t\, t\leq 1)). Of course, the variable \\(t\\) can be eliminated from the model, but for more complex models it is preferable to keep the intermediate graph variables to obtain simple models. 
 
 ### The operators
 
