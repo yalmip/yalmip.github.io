@@ -9,7 +9,7 @@ date: '2016-06-27'
 
 I have been asked frequently recently whether it is possible to have YALMIP code in Simulink simulations. The answer is yes, but there are some caveats.
 
-All files and models in this article are available in [yalmipsimulink.zip]
+All files and models in this article are available in [yalmipsimulink.zip](/pub/yalmipsimulink)
 
 To begin with, some parts of a Simulink model are compiled for performance, and this compiler does not support code which involves object oriented code. Hence, it fails when it encounters any kind of YALMIP related code. In practice, this means that all YALMIP code has to be placed in a so called *Interpreted MATLAB function*. This implies that you cannot compile Simulink with YALMIP to a target (such as a DSP or something similar). At least, I have come up with any way to do this.
 
