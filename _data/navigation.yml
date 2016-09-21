@@ -326,6 +326,8 @@ commands:
         url: /command/exp
       - title: "geomean"
         url: /command/geomean
+      - title: "huber"
+        url: /command/huber        
       - title: "kullbackleibler"
         url: /command/kullbackleibler
       - title: "log"
