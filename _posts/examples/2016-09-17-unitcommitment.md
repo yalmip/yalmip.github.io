@@ -48,7 +48,7 @@ P     = sdpvar(Nunits,Horizon,'full');
 
 A typical mistake made now when modeling these things, is to start multiplying the **onoff** variables with the power variables, following the logic that the power from a plant is given by the product of **onoff**  and **P**. This is a very bad way to model these things, since they will move us outside the comfortable world of mixed integer linear and quadratic programming. Instead, the multiplication is done implicitly through logic constraints. If **onoff** is 0, **P** should be zero, and if **onoff** is one, **P** should be between lower and upper bounds.
 
-We can start building our model based on this logic (remember, this can be vectorized, we use for-loop only to make the model easier to understand)
+We can start building our model based on this logic (remember, this can be vectorized, we use for-loops only to make the model easier to understand)
 
 ````matlab
 Constraints = [];
