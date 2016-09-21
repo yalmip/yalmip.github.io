@@ -344,6 +344,10 @@ commands:
         url: /command/nnz
       - title: "norm"
         url: /command/norm
+      - title: "pnorm"
+        url: /command/pnorm
+      - title: "nnz"
+        url: /command/nnz
       - title: "sdpfun"
         url: /command/sdpfun
       - title: "sort"
