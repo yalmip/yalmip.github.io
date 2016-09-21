@@ -7,6 +7,7 @@ tags:
 excerpt: "Working with nonlinear operators in a structured and efficient fashion"
 layout: single
 header:
+tags: [Conic representable, Integer representable]
   teaser:
 sidebar:
   nav: "tutorials"
@@ -16,9 +17,9 @@ Operators and functions, such as [abs], [entropy] or [sort], are equipped with v
 
 ### Graph-based representations
 
-Graph-based implementations model the operators by using additional variables and constraints, so called [epi-](http://en.wikipedia.org/wiki/Epigraph_%28mathematics%29) and [hypo-graphs](http://en.wikipedia.org/wiki/Hypograph_%28mathematics%29). The benefit of this modeling strategy is that YALMIP can derive simple optimization models, such as linear programs, instead of treating the operators as general nonlinearities and use a nonlinear solver.
+Graph-based implementations model the operators by using additional variables and constraints, so called [epi-](http://en.wikipedia.org/wiki/Epigraph_%28mathematics%29) and [hypo-graphs](http://en.wikipedia.org/wiki/Hypograph_%28mathematics%29). The benefit of this modeling strategy is that YALMIP can derive simple optimization models, such as linear programs, instead of treating the operators as general nonlinearities and use a nonlinear solver. We say that the operator is *conic representable* if these reformulations are possible
 
-These graph representations are only possible if the expressions satisfy certain convexity and concavity conditions. Hence, YALMIP has to analyze the problem to ensure that the representation actually can be used.
+These graph representations are only possible if the expressions satisfy certain convexity or concavity conditions. Hence, YALMIP has to analyze the problem to ensure that the representation actually can be used.
 
 Graph-based implementations are available for a large number of operators, such as the linear programming representable operators  [min], [max] and [abs], the second-order cone representable  [sqrt], [norm] and [geomean], semidefinite cone representable [nuclear norm], or exponential cone representable such as [entropy]. Adding new operators is easy, and can be done almost entirely from template code.
 
