@@ -213,6 +213,8 @@ tutorials:
         url: /tutorial/nonlinearoperators
       - title: "Big-M and convex hulls"
         url: /tutorial/bigmandconvexhulls
+      - title: "Envelope approximations for global optimization"
+        url: /tutorial/envelopesinbmibnb
       - title: "Duality"
         url: /tutorial/duality
       - title: "Automatic dualizations"
