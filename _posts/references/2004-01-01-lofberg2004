@@ -1,0 +1,22 @@
+---
+title: "YALMIP : A Toolbox for Modeling and Optimization in MATLAB"
+author: "J. Löfberg"
+where: "In Proceedings of the CACSD Conference"
+tags:
+date: '2004-01-01'
+layout: single
+category: reference
+author_profile: false
+excerpt: 
+comments: false
+sidebar:
+  nav: 
+---
+
+@inproceedings{Lofberg2004,
+address = {Taipei, Taiwan},
+author = {L{\"{o}}fberg, J.},
+booktitle = {In Proceedings of the CACSD Conference},
+title = {{YALMIP : A Toolbox for Modeling and Optimization in MATLAB}},
+year = {2004}
+}
