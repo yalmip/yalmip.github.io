@@ -20,6 +20,10 @@ main:
     
   - title: "FAQ"
     url: /faq
+
+  - title: "Resources"
+    url: /reference
+    
     
 
 solvers:
