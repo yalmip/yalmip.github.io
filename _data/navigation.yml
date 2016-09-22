@@ -196,7 +196,7 @@ tutorials:
       - title: "Geometric programming"
         url: /tutorial/geometricprogramming
       - title: "Exponential cone programming"
-        url: /tutorial/exponentialconeprogramming
+        url: /tutorial/exponentialcone
       - title: "General convex programming"
         url: /tutorial/generalconvexprogramming
       - title: "Integer programming"
