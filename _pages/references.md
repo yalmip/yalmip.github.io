@@ -9,7 +9,7 @@ permalink: /reference/
 {% assign items = site.posts | sort: 'title' %}
 {% for post in items %}
 {% if post.category == "reference" %}
-{% if post.author = "J. Löfberg"
+{% if post.author == "J. Löfberg"
   {% include archive-single-reference.html type="grid" %}      
 {% endif %}
 {% endif %}
