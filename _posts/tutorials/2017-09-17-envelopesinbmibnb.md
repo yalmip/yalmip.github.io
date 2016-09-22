@@ -19,7 +19,7 @@ A spatial branch-and-bound algorithm for nonconvex programming typically relies 
 2.  As a second step a convex relaxation of the model in the node is derived (using the methods described below), and the resulting convex optimization problem is solved (typically a linear program, or if the original problem is a nonconvex semidefinite program, a semidefinite program). This gives a lower bound on the achievable objective for this node. The lower bound solver is specified using the options **'bmibnb.lowersolver'**.
 3. Given these lower and upper bounds, a standard branch-and-bound logic is used to select a branch variable, create two new nodes, branch, prune and navigate among the remaining nodes.
 
-In addition to these standard steps, a large amount of preprocessing and bound-propagation is performed, both in the root-node and along the branching. This is important in order to obtain stronger linear relaxations. The options controlling this can be found in the description of [BMIBNB]. Nvertheless, the central object is the relaxation problem, and this model is built-up using convex envelope approximations.
+In addition to these standard steps, a large amount of preprocessing and bound-propagation is performed, both in the root-node and along the branching. This is important in order to obtain stronger linear relaxations. The options controlling this can be found in the description of [BMIBNB]. Nvertheless, the central object is the relaxation problem, and this model is built-up using outer approimations of convex envelopes (the convex hull of the set \\(x,f(x))\\) on some interval in \\(x\\)).
 
 ### Linear relaxation for bilinear and quadratic problems
 
