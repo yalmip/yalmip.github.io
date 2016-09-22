@@ -7,7 +7,7 @@ comments: true
 date: '2016-09-16'
 ---
 
-Ok, so you've created your massive 5000 lines of code model, and when you run it, the solver claims it is infeasible
+You've created your massive 5000 lines of code model, and when you run it, the solver claims it is infeasible
 
 ````matlab
 
@@ -176,7 +176,7 @@ In the following example, we have a model with 11 constraints which is infeasibl
 ````matlab
 sol = optimize(Constraints(1:5));if sol.problem==0;display('Feasible');else;display('Infeasible');end
 Feasible
->> sol = optimize(Constraints(6:11));if sol.problem==0;display('Feasible');else;display('Infeasible');end
+sol = optimize(Constraints(6:11));if sol.problem==0;display('Feasible');else;display('Infeasible');end
 Feasible
 ````
 
@@ -189,14 +189,14 @@ sol = optimize(Constraints(1:10));if sol.problem==0;display('Feasible');else;dis
 Feasible
 ````
 
-From this we know that the problem occurs when the eleventh constraint is added to the model, in combination with the other. Now you just have to come up with strategies to dig further. Essentially some kind of bisection
+From this we know that the problem occurs when the eleventh constraint is added to the model, in combination with the other. Now you just have to come up with strategies to dig further. Essentially some kind of bisection.
 
 ````matlab
-sol = optimize(Constraints([1 5 11]));if sol.problem==0;display('Feasible');else;display('Infeasible');end
+sol = optimize(Constraints([1:5 11]));if sol.problem==0;display('Feasible');else;display('Infeasible');end
 Infeasible
-sol = optimize(Constraints([1 3 11]));if sol.problem==0;display('Feasible');else;display('Infeasible');end
+sol = optimize(Constraints([1:3 11]));if sol.problem==0;display('Feasible');else;display('Infeasible');end
 Feasible
-sol = optimize(Constraints([4 5 11]));if sol.problem==0;display('Feasible');else;display('Infeasible');end
+sol = optimize(Constraints([4:5 11]));if sol.problem==0;display('Feasible');else;display('Infeasible');end
 Infeasible
 sol = optimize(Constraints([5 11]));if sol.problem==0;display('Feasible');else;display('Infeasible');end
 Infeasible
