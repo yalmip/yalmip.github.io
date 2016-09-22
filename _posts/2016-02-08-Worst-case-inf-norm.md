@@ -6,7 +6,7 @@ tags: [Robust optimization]
 comments: true
 ---
 
-(*The robust optimization framework has been improved significantly since this post was written and simplifies the code below significantly. A new version of this article might be posted later*) 
+(*The robust optimization framework was improved significantly (graph models supported) right after this post was written and simplifies the code below significantly... A new version of this article might be posted later*) 
 
 I was asked by a colleague today on how to compute the worst-case \\(\infty\\)-norm of a matrix \\(A(p)\\) linearly parameterized in an uncertainty \\(p\\) constrained to a polytope.
 
@@ -14,9 +14,9 @@ No simple way came to mind, and using a result by [Mangasarian and Shiau 1986] t
 
 Nevertheless, let us write some YALMIP code to compute it, and then generalize the problem formulation. We first note that \\(\infty\\)-norm of a matrix corresponds to the largest 1-norm of the rows. Hence, all we have to do is to loop over all rows, and compute the worst-case 1-norm of each row.
 
-Unfortunately, worst-case 1-norm is one of the hard cases in [Mangasarian 1986] . Even worse from our perspective, due to this intractability, it is [UncertainEpigraphs not possible] to simply plug an uncertain expression involving a 1-norm into the [robust optimization framework](/tutorial/robustoptimization) of YALMIP 
+Unfortunately, worst-case 1-norm is one of the hard cases in [Mangasarian 1986](/reference/mangasarian1986). Even worse from our perspective, due to this intractability, adressing uncertain constraints represented using a [graph representations](/tutorial/nonlinearoperatorgraphs) and the [robust optimization framework](/tutorial/robustoptimization) of YALMIP is not supported.
 
-For this particular application, the matrix dimension is reasonably small but the parametric space is large, so we explicitly generate the linear programming formulation of the 1-norm by looking at all combinations of positive and negative terms in the absolute values, i.e. we write \\(\left\lvert x(p)\right\rvert +\left\lvert y(p)\right\rvert \leq t\\) as \\(x(p)+y(p)\leq t\\), \\(-x(p)+y(p) \leq t\\), \\(x(p)-y(p)\leq t\\) and \\(-x(p)-y(p)\leq t\\). Once we have all these constraints for all rows, we use YALMIPs [robust optimization framework](/tutorial/robustoptimization) to compute the worst-case \\(t\\) over the uncertain parameter \\(p\\).
+For this particular application, the matrix dimension is reasonably small, so we explicitly generate the linear programming formulation of the 1-norm by looking at all combinations of positive and negative terms in the absolute values, i.e. we write \\(\left\lvert x(p)\right\rvert +\left\lvert y(p)\right\rvert \leq t\\) as \\(x(p)+y(p)\leq t\\), \\(-x(p)+y(p) \leq t\\), \\(x(p)-y(p)\leq t\\) and \\(-x(p)-y(p)\leq t\\). Once we have all these constraints for all rows, we use YALMIPs [robust optimization framework](/tutorial/robustoptimization) to compute the worst-case \\(t\\) over the uncertain parameter \\(p\\).
 
 To begin with, define a linearly parametrized matrix
 
@@ -75,7 +75,7 @@ P = [uncertain(p), p'*p <= 1];
 optimize([P, Constraints],t)
 ````
 
-Finally, let us find a shift of the eigenvalues of '''A''', such that the worst-case infinity norm is minimized.
+Finally, let us find a shift of the eigenvalues of **A**, such that the worst-case infinity norm is minimized.
 
 ````matlab
 s = sdpvar(1);
@@ -89,7 +89,4 @@ P = [uncertain(p), 1 <= p <= 3, sum(p) <= 5];
 
 optimize([P, Constraints],t)
 ````
-
-### Suitable reading
-[Mangasarian:1986, Löfberg 2010]
 
