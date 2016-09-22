@@ -7,7 +7,7 @@ comments: true
 date: '2009-08-29'
 ---
 
-When a list of constraints is generated, it is sometimes hard to remember which constraints model what, which cancause problems if you need to debug or for some reason look at the constrants. To alleviate this problem, you can tag your list of constraints easily with descriptions.
+When a list of constraints is generated, it is sometimes hard to remember which constraints model what, which can cause problems if you need to debug or for some reason look at the constrants. To alleviate this problem, you can tag your list of constraints easily with descriptions.
 
 The syntax is very easy, simply add a : followed by a string.
 
