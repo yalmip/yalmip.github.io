@@ -14,6 +14,7 @@ permalink: /reference/
   {% include archive-single-reference.html type="grid" %}      
 {% endif %}
 {% endif %}
+{% endfor %}
 
 {% for post in items %}
 {% if post.category == "reference" %}
@@ -21,8 +22,6 @@ permalink: /reference/
   {% include archive-single-reference.html type="grid" %}      
 {% endif %}
 {% endif %}
-
-
 {% endfor %}
 
 {% include paginator.html %}
