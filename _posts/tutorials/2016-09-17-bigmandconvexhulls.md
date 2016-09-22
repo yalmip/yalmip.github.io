@@ -94,7 +94,7 @@ plot(A4*x<=b4)
 
 The relaxation is far from a good approximation of the true feasible set, indicating that a mixed integer solver may have problems solving this problem, since they rely on good quality relaxations.
 
-A better model is obtained by using a more reasonable big-M constant (In this example, it is hard to use good constant since the data is randomly generated. In practice, realistic bounds which is needed for YALMIPs derivation typically follow from model insight (When YALMIP performs the modeling internally, a considerable amount of preprocessing is performed in order to derive good bounds, based on supplied bounds on the involved variables)
+A better model is obtained by using a more reasonable big-M constant (In this example, it is hard to use a good constant since the data is randomly generated. In practice, realistic bounds which is needed for YALMIPs derivation typically follow from model insight (When YALMIP performs the modeling internally, a considerable amount of preprocessing is performed in order to derive good bounds, based on supplied bounds on the involved variables)
 
 ````matlab
 M1 = 50;
