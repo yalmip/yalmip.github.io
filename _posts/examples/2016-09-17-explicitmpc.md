@@ -13,7 +13,7 @@ header:
   teaser: dppwasol.png
 ---
 
-YALMIP extends the parametric algorithms in [MPT] by adding a layer to enable binary variables and equality constraints. We can use this to find explicit solutions to, e.g., predictive control of PWA (piecewise affine) systems. Explicit solutions to MPC problems are solved using either one-shot approaches, or dynamic programming approaches.
+YALMIP extends the parametric algorithms in [MPT](/solver/mpt) by adding a layer to enable binary variables and equality constraints. We can use this to find explicit solutions to, e.g., predictive control of PWA (piecewise affine) systems. Explicit solutions to MPC problems are solved using either one-shot approaches, or dynamic programming approaches.
 
 ### One-shot with PWA model
 
@@ -326,7 +326,7 @@ for k = N-1:-1:1
 end
 ````
 
-Note that quadratic objective functions not can be used for dynamic programming with polytopic systems in YALMIP. The reason is that the max operator applied to quadratic functions will generate quadratic constraints, which not is supported by the parametric solvers in [MPT]  .
+Note that quadratic objective functions not can be used for dynamic programming with polytopic systems in YALMIP. The reason is that the max operator applied to quadratic functions will generate quadratic constraints, which not is supported by the parametric solvers in [MPT](/solver/mpt)  .
 
 ### Behind the scenes and advanced use
 
@@ -350,7 +350,7 @@ Optimizer = pwf(sol,x,'general')
 ````
 
 
-A third important case is when the solution structure returned from solvemp is a cell with several [MPT] structures. This means that a multiparametric problem with binary variables was solved, and the different cells represent overlapping solutions. One way to get rid of the overlapping solutions is to use the MPT command **mpt_removeOverlaps.m** and create a PWA function based on the result. Since the resulting PWA function typically is nonconvex, we must create a general function.
+A third important case is when the solution structure returned from solvemp is a cell with several [MPT](/solver/mpt) structures. This means that a multiparametric problem with binary variables was solved, and the different cells represent overlapping solutions. One way to get rid of the overlapping solutions is to use the MPT command **mpt_removeOverlaps.m** and create a PWA function based on the result. Since the resulting PWA function typically is nonconvex, we must create a general function.
 
 ````matlab
 sol_single = mpt_removeOverlaps(sol);
@@ -363,4 +363,4 @@ This is only recommended if you just intend to plot or investigate the value fun
 Valuefunction = pwf(sol,x,'overlapping')
 ````
 
-As we have seen in the examples above, the PWA and PWQ functions can be plotted. This is currently nothing but a simple hack. Normally, when you apply the [plot] command to an [sdpvar](/command/sdpvar) object, the corresponding double values are plotted. However, if the input is a simple scalar PWA or PWQ variable, the underlying [MPT] structures will be extracted and the plot commands in [MPT] will be called.
+As we have seen in the examples above, the PWA and PWQ functions can be plotted. This is currently nothing but a simple hack. Normally, when you apply the [plot] command to an [sdpvar](/command/sdpvar) object, the corresponding double values are plotted. However, if the input is a simple scalar PWA or PWQ variable, the underlying [MPT](/solver/mpt) structures will be extracted and the plot commands in [MPT](/solver/mpt) will be called.

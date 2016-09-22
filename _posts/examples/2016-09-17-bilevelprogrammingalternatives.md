@@ -15,7 +15,7 @@ header:
 
 YALMIP supports [bilevel programming natively](/tutorial/bilevelprogramming), but this example shows how simple bilevel problems can be solved by using other standard modules in YALMIP. We will illustrate three different ways to solve bilevel quadratic optimization problems exactly; a [multi-parametric programming](/tutorial/multiparametricprogramming) approach (which boils down to a mixed integer quadratic programming approach), a direct mixed-integer quadratic programming approach, and a global nonlinear programming approach.
 
-The first part of this example requires linear and quadratic programming solvers, the second part a general nonlinear solver such as [FMINCON](/solver/fmincon), [SNOPT](/solver/snopt) or [IPOPT](/solver/ipopt), and the third part requires [mpt](/solver/mpt).
+The first part of this example requires linear and quadratic programming solvers, the second part a general nonlinear solver such as [FMINCON](/solver/fmincon), [SNOPT](/solver/snopt) or [IPOPT](/solver/ipopt), and the third part requires [MPT](/solver/mpt)(/solver/mpt).
 
 For an introduction to bilevel optimization, see [Bard 1999](/reference/bard1999).
 
@@ -160,7 +160,7 @@ optimize([KKT, A*x <= b + E*z], 0.5*x'*Q*x + c'*x + d'*z,ops)
 
 A more advanced way in YALMIP to solve this problem, is to explicitly compute a parametrized solution \\(z(x)\\) by using multiparametric programming. This will lead to a piecewise affine description of the optimizer, and when this expression is plugged into the outer problem, a mixed integer quadratic programming problem arise.
 
-Hence, we solve the inner program multiparametrically w.r.t. \\(x\\). Notice that we add bounds on \\(x\\), to limit the region where we are interested in a parametric solution (this is required for the parametric solver in [MPT] to perform well.)
+Hence, we solve the inner program multiparametrically w.r.t. \\(x\\). Notice that we add bounds on \\(x\\), to limit the region where we are interested in a parametric solution (this is required for the parametric solver in [MPT](/solver/mpt) to perform well.)
 
 ````matlab
 obj_inner = 0.5*z'*H*z + e'*z + f'*x;

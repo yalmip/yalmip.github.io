@@ -46,7 +46,7 @@ YALMIP is not shipped with any low-level solvers. [Solvers](/allsolvers) should 
 
 If you have problems, please read the [FAQ](/faq).
 
-If you have [MPT] installed, make sure that you delete the YALMIP distribution residing inside [MPT] and remove the old path definitions. Better, don't install YALMIP manually but use [MPTs toolbox manager](http://tbxmanager.com)
+If you have [MPT](/solver/mpt) installed, make sure that you delete the YALMIP distribution residing inside [MPT](/solver/mpt) and remove the old path definitions. Better, don't install YALMIP manually but use [MPTs toolbox manager](http://tbxmanager.com)
 
 If you have used YALMIP before, type `clear classes` or restart MATLAB before using the new version.
 

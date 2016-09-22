@@ -142,7 +142,7 @@ Obviously, the performance is far better (although we admittedly used different 
 
 (This feature is still not working well but require some additional work to improve performance. Coming soon though!)
 
-The robust optimization framework is integrated in the over-all infrastructure in YALMIP. Hence, a model can be robustified, and then sent to the multiparametric solver [MPT] in order to get a [tutorials.Multiparametric  multiparametric solution].
+The robust optimization framework is integrated in the over-all infrastructure in YALMIP. Hence, a model can be robustified, and then sent to the multiparametric solver [MPT](/solver/mpt) in order to get a [tutorials.Multiparametric  multiparametric solution].
 
 In our case, we want to have a multi-parametric solution with respect to the state \\(x_k\\). One way to compute the parametric solution is to first derive the robustified model, and send this to the parametric solver.
 
@@ -237,4 +237,4 @@ for k = N-1:-1:1
 end
 ````
 
-Note that this multiparametric problem seems to grow large, hence it will take a fair amount of time to compute it. Rest assured though, we are constantly working on improving performance in both [MPT] and YALMIP.
+Note that this multiparametric problem seems to grow large, hence it will take a fair amount of time to compute it. Rest assured though, we are constantly working on improving performance in both [MPT](/solver/mpt) and YALMIP.

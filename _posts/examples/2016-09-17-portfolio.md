@@ -127,7 +127,7 @@ plot(targets,solutions(1,:))
 
 ### Multiparametric approach
 
-We can alternatively compute and plot this curve, if [MPT] is installed.
+We can alternatively compute and plot this curve, if [MPT](/solver/mpt) is installed.
 
 ````matlab
 w = sdpvar(n,1);

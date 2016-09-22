@@ -11,9 +11,9 @@ sidebar:
 ---
 
 
-This tutorial requires [MPT] or [POP]
+This tutorial requires [MPT](/solver/mpt) or [POP]
 
-YALMIP can be used to calculate explicit solutions of parametric linear and quadratic programs by interfacing the [Multi-Parametric Toolbox MPT] (or [POP]). This tutorial assumes that the reader is familiar with parametric programming and the basics of [mpt](/solver/mpt).
+YALMIP can be used to calculate explicit solutions of parametric linear and quadratic programs by interfacing the [Multi-Parametric Toolbox MPT] (or [POP]). This tutorial assumes that the reader is familiar with parametric programming and the basics of [MPT](/solver/mpt)(/solver/mpt).
 
 ### Generic example.
 
@@ -46,7 +46,7 @@ F = [A*z <= b+E*x, -1 <= x <= 1];
 sol = solvemp(F,obj,[],x);
 ````
 
-The first output is an [MPT] structure. In accordance with [MPT] syntax, the optimizer for the parametric value (0.1,0.2) is given by the following code.
+The first output is an [MPT](/solver/mpt) structure. In accordance with [MPT](/solver/mpt) syntax, the optimizer for the parametric value (0.1,0.2) is given by the following code.
 
 ````matlab
 xx = [0.1;0.2];
@@ -71,7 +71,7 @@ assign(x,[0.1;0.2]);
 value(Optimal_z)
 ````
 
-Some of the plotting capabilities of [MPT] are overloaded for the piecewise functions. Hence, we can plot the piecewise quadratic value function
+Some of the plotting capabilities of [MPT](/solver/mpt) are overloaded for the piecewise functions. Hence, we can plot the piecewise quadratic value function
 
 ````matlab
 plot(Valuefunction);
@@ -144,7 +144,7 @@ plot(Optimizer)
 
 ### Mixed integer multiparametric programming
 
-YALMIP extends the multiparametric solvers in [MPT] by adding support for binary variables in the parametric problems.
+YALMIP extends the multiparametric solvers in [MPT](/solver/mpt) by adding support for binary variables in the parametric problems.
 
 Let us solve an extension of the MPC problem from the previous section. To begin with, we formulate a similar problem (shorter horizon and linear cost)
 

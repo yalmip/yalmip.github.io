@@ -13,7 +13,7 @@ sidebar:
 
 YALMIP has some support for logic programming ([implies](/command/implies), [nnz](/command/nnz), [sort](/command/sort), [alldifferent](/command/alldifferent) etc) and structured nonconvex programming (nonconvex use of operators such as [min](/command/min) , [max](/command/max), [norm], [abs] etc.) This feature relies on converting the user supplied model to an internal mixed-integer model, typically a mixed-integer linear program. The method used for performing this conversion is big-M reformulations.
 
-In most of the examples related to logic programming and nonconvex models, the importance of explicit bounds is stressed, and this example will try to motivate why this is important, describe the basics of big-M reformulations, and show how you manually can create stronger models by using the [hull] command.
+In most of the examples related to logic programming and nonconvex models, the importance of explicit bounds is stressed, and this example will try to motivate why this is important, describe the basics of big-M reformulations, and show how you manually can create stronger models by using the [hull](/command/hull) command.
 
 ### Big-M reformulation
 
@@ -157,7 +157,7 @@ plot(A4*x<=b4)
 
 The goal in a big-M model is to create a model whose relaxation is as close as possible to the convex hull of the original constraint, i.e. the best possible convex approximation of the original feasible set. Clearly, from the figures above, this was not successful. In many cases, good variable bounds lead to reasonably good approximations of the convex hull, and for some models, the convex hull will be recovered.
 
-It is possible to directly generate the convex hull in YALMIP, by using the command [hull].
+It is possible to directly generate the convex hull in YALMIP, by using the command [hull](/command/hull).
 
 ````matlab
 F = hull(A1*x <= b1,A2*x <= b2,A3*x <= b3,A4*x <= b4)
@@ -189,7 +189,7 @@ F = [F, hull(A1*x <= b1,A2*x <= b2,A3*x <= b3,A4*x <= b4)];
 
 The big-M part ensures the equivalence with the original model, while the convex hull part ensures that the integer relaxations are of good quality. Note that the convex hull part introduces more variables and constraints.
 
-Alternatively, and much more efficient, is to catch the second output from [hull] and constrain these to be binary. By doing so, a complete mixed-integer convex hull based model is defined easily.
+Alternatively, and much more efficient, is to catch the second output from [hull](/command/hull) and constrain these to be binary. By doing so, a complete mixed-integer convex hull based model is defined easily.
 
 ````matlab
 [F,t] = hull(A1*x <= b1,A2*x <= b2,A3*x <= b3,A4*x <= b4);

@@ -97,7 +97,7 @@ ans =
   '0.0010977+0.00036589x+0.0010977y-0.0018294x^2'
 ````
 
-To see if the decomposition was successful, we simply calculate the error \\(p(x)-h^T(x)h(x)\\) which should be 0. However, due to the way SDPs are solved, the difference will typically not be zero. A useful command then is [clean]. Using [clean], we remove all monomials with coefficients smaller than, e.g., 1e-6.
+To see if the decomposition was successful, we simply calculate the error \\(p(x)-h^T(x)h(x)\\) which should be 0. However, due to the way SDPs are solved, the difference will typically not be zero. A useful command then is [clean](/command/clean). Using [clean](/command/clean), we remove all monomials with coefficients smaller than, e.g., 1e-6.
 
 ````matlab
 clean(p-h'*h,1e-6)
