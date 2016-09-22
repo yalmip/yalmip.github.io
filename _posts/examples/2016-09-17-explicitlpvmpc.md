@@ -13,7 +13,7 @@ header:
   teaser: "costs_LPVMPC.jpg"
 ---
 
-> This example, contributed by Thomas Besselmann, accompanies the paper [Besselmann and Löfberg 2008]
+> This example, contributed by Thomas Besselmann, accompanies the paper [Besselmann and Löfberg 2008](/reference/besselmann2012))
 
 Note that the code below uses some awkward, no longer necessary, reformulations in order to cope with uncertainty in linear programming representable nonlinear terms.
 
@@ -26,7 +26,7 @@ parameter-varying state transition and parameter-varying input matrix
 
 This allows one to model systems, where the system dynamics depend on scheduling signals, and this scheduling signal is measurable, but not known in advance.
 
-When the input matrix B is constant, a simpler scheme can be used, which is demonstrated in the example [Explicit LPVA-MPC].
+When the input matrix B is constant, a simpler scheme can be used, which is demonstrated in the [LPVA-MPC example](/example/explicitlpvampc).
 
 ### Explicit MPC for LPV systems
 
@@ -116,7 +116,7 @@ In the first and the last step of the iteration, some parts of the code differ f
 
 ### First step
 
-In the first step we rewrite the inf-norm into an epigraph formulation, and add constraints for the final state. Note that we have to manually derive the epigraph models of the sum-of-inf-norms, due to the [Extra Robust issues described here].
+In the first step we rewrite the inf-norm into an epigraph formulation, and add constraints for the final state. Note that we have to manually derive the epigraph models of the sum-of-inf-norms (*this is no longer the case, this is from an old YALMIP version*)
 
 ````matlab
 % |x| written as max(a[x;u]+b)
