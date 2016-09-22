@@ -195,6 +195,8 @@ tutorials:
         url: /tutorial/maxdetprogramming
       - title: "Geometric programming"
         url: /tutorial/geometricprogramming
+      - title: "Exponential cone programming"
+        url: /tutorial/exponentialconeprogramming
       - title: "General convex programming"
         url: /tutorial/generalconvexprogramming
       - title: "Integer programming"
