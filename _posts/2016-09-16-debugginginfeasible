@@ -29,7 +29,7 @@ Code looks like this
 x = sdpvar(n,m);
 ````
 
-Works like a charm as long as n and m are different, but when they are equal, you don't want a symmetric matrix which this will create. Hence, you should have had
+Works like a charm as long as **n** and **m** are different, but when they are equal, you don't want a symmetric matrix which this will create. Hence, you should have had
 
 ````matlab
 x = sdpvar(n,m,'full');
