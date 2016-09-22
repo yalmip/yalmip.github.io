@@ -23,9 +23,9 @@ layout: default
           {% if page.title %}<h1 class="page__title" itemprop="headline">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>{% endif %}
         </header>
         
-        {% if page.available %}
+        {% if page.excerpt %}
          <p>{{page.excerpt}}</p>
-         {% endif %}
+        {% endif %}
          
          {% if page.available %}
          <h3 class="page__title" itemprop="headline">Availability</h3> 
