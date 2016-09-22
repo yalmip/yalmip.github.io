@@ -4,6 +4,7 @@ excerpt: "Hard? Let's try anyway."
 title: Worst-case norms of matrices
 tags: [Robust optimization]
 comments: true
+date: 2014-02-08
 ---
 
 (*The robust optimization framework was improved significantly (graph models supported) right after this post was written and simplifies the code below significantly... A new version of this article might be posted later*) 
