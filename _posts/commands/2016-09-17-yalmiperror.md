@@ -11,7 +11,7 @@ sidebar:
   nav: "commands"
 ---
 
-[yalmiperror] returns a description of the error codes used in [optimize] etc.
+[yalmiperror] returns a description of the error codes used in [optimize](/command/optimize) etc.
 
 ### Syntax
 

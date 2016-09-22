@@ -23,7 +23,7 @@ Find the ellipsoid \\(x^TPx \leq 1\\) with smallest possible volume that contain
 
 The objective function \\(-\det(P)\\) (which is minimized) is not convex, but monotonic transformations can render this problem convex. One alternative is the logarithmic transform, leading to minimization of\\(-\log(\det(P))\\) instead, which only is supported if you use [SDPT3 version 4] (see below).
 
-For other SDP solvers YALMIP uses \\(-\det(P)^{1/m}\\)  where \\(m\\) is dimension of \\(P\\) (in other words, the geometric mean of the eigenvalues). The concave function \\(\det(P)^{1/m}\\), available by applying [geomean] on a Hermitian matrix in YALMIP, can be modeled using semidefinite and second order cones, hence any SDP solver can be used for solving determinant maximization problems.
+For other SDP solvers YALMIP uses \\(-\det(P)^{1/m}\\)  where \\(m\\) is dimension of \\(P\\) (in other words, the geometric mean of the eigenvalues). The concave function \\(\det(P)^{1/m}\\), available by applying [geomean](/command/geomean) on a Hermitian matrix in YALMIP, can be modeled using semidefinite and second order cones, hence any SDP solver can be used for solving determinant maximization problems.
 
 ````matlab
 n = 2;
@@ -43,7 +43,7 @@ plot(x'*value(P2)*x <= 1,[],'y');
 
 ![Ellipsoid]({{ site.url }}/images/minellipsoid.png){: .center-image }
 
-If you have the dedicated solver [SDPT3] installed and want to use it to handle the logarithmic term directly, you must use the dedicated command [logdet] for the objective and explicitly select [SDPT3]. This command can not be used in any other construction than in the objective function, compared to the geomean operator that can be used as any other variable in YALMIP, since it a so called nonlinear operator.
+If you have the dedicated solver [sdpt3](/command/sdpt3) installed and want to use it to handle the logarithmic term directly, you must use the dedicated command [logdet](/command/logdet) for the objective and explicitly select [sdpt3](/command/sdpt3). This command can not be used in any other construction than in the objective function, compared to the geomean operator that can be used as any other variable in YALMIP, since it a so called nonlinear operator.
 
 ````matlab
 optimize(F,-logdet(P),sdpsettings('solver','sdpt3'));
@@ -53,4 +53,4 @@ plot(x'*value(P1)*x <= 1,[],'r');
 plot(x'*value(P2)*x <= 1,[],'y');
 ````
 
-Note that if you use the [logdet] command but not explicitly select a solver that supports logdet terms natively, YALMIP will use \\(-\det(P)^{1/m}\\) as objective function instead anyway. This will not cause any problems if your objective function is a simple logdet expression (since the two functions are monotonically related). However, if you have a mixed objective function such as \\(\operatorname{trace}(P)-\log(\det(P))\\), you can only use [SDPT3 version 4].
+Note that if you use the [logdet](/command/logdet) command but not explicitly select a solver that supports logdet terms natively, YALMIP will use \\(-\det(P)^{1/m}\\) as objective function instead anyway. This will not cause any problems if your objective function is a simple logdet expression (since the two functions are monotonically related). However, if you have a mixed objective function such as \\(\operatorname{trace}(P)-\log(\det(P))\\), you can only use [SDPT3 version 4].

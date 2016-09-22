@@ -11,4 +11,4 @@ sidebar:
   nav:
 ---
 
-Using the logical constraint [implies] with the first argument being a constraint is currently causing problems in some cases, and should thus be avoided.
+Using the logical constraint [implies](/command/implies) with the first argument being a constraint is currently causing problems in some cases, and should thus be avoided.

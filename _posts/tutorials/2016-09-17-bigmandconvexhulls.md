@@ -11,7 +11,7 @@ sidebar:
 ---
 
 
-YALMIP has some support for logic programming ([implies], [nnz], [sort], [alldifferent] etc) and structured nonconvex programming (nonconvex use of operators such as [min] , [max], [norm], [abs] etc.) This feature relies on converting the user supplied model to an internal mixed-integer model, typically a mixed-integer linear program. The method used for performing this conversion is big-M reformulations.
+YALMIP has some support for logic programming ([implies](/command/implies), [nnz](/command/nnz), [sort](/command/sort), [alldifferent](/command/alldifferent) etc) and structured nonconvex programming (nonconvex use of operators such as [min](/command/min) , [max](/command/max), [norm], [abs] etc.) This feature relies on converting the user supplied model to an internal mixed-integer model, typically a mixed-integer linear program. The method used for performing this conversion is big-M reformulations.
 
 In most of the examples related to logic programming and nonconvex models, the importance of explicit bounds is stressed, and this example will try to motivate why this is important, describe the basics of big-M reformulations, and show how you manually can create stronger models by using the [hull] command.
 

@@ -13,7 +13,7 @@ All files and models in this article are available in [yalmipsimulink.zip](/pub/
 
 To begin with, some parts of a Simulink model are compiled for performance, and this compiler does not support code which involves object oriented code. Hence, it fails when it encounters any kind of YALMIP related code. In practice, this means that all YALMIP code has to be placed in a so called *Interpreted MATLAB function*. This implies that you cannot compile Simulink with YALMIP to a target (such as a DSP or something similar). At least, I have come up with any way to do this.
 
-Secondly, since Simulink typically is used for simulations, the YALMIP code will most likely be called a large number of times. Hence, it is important to create efficient YALMIP code, minimizing overhead and unnecessary computations by using an [optimizer] object. In many cases this is possible, but sometimes it is hard and you simply have to accept that the simulations run slowly if you want to use YALMIP.
+Secondly, since Simulink typically is used for simulations, the YALMIP code will most likely be called a large number of times. Hence, it is important to create efficient YALMIP code, minimizing overhead and unnecessary computations by using an [optimizer](/command/optimizer) object. In many cases this is possible, but sometimes it is hard and you simply have to accept that the simulations run slowly if you want to use YALMIP.
 
 To illustrate YALMIP and Simulink, we will implement various [MPC controllers](/examples) using a couple of different strategies. 
 
@@ -105,7 +105,7 @@ toc
 Elapsed time is 0.719190 seconds.
 ```` 
 
-At this point, we could start working with global variables, or sending predefined data to the function. For instance, it is of course silly to discretize the system every call. However, the major problem is most likely the redefinition of variables and constraints, and calling [optimize] which involves a lot of high-level code.
+At this point, we could start working with global variables, or sending predefined data to the function. For instance, it is of course silly to discretize the system every call. However, the major problem is most likely the redefinition of variables and constraints, and calling [optimize](/command/optimize) which involves a lot of high-level code.
 
 ### Slightly less simple and slightly faster
 
@@ -178,11 +178,11 @@ tic;sim('MPCSimulationSlow');toc
 Elapsed time is 25.754945 seconds.
 ````
 
-However, significant overhead still remains, as [optimize] is called every iteration, requiring a lot of back-end code (modeling of operators, convexity analysis, choice of solver, compilation of numerical data etc etc). To avoid this, we implement the controller using an [optimizer] object.
+However, significant overhead still remains, as [optimize](/command/optimize) is called every iteration, requiring a lot of back-end code (modeling of operators, convexity analysis, choice of solver, compilation of numerical data etc etc). To avoid this, we implement the controller using an [optimizer](/command/optimizer) object.
 
 ### As fast as it gets
 
-Changing the slow MPC controller code to a version using an [optimizer] is trivial. The models are implemented in [MPCSimulation.mdl] and [MPCController.m]. Note that the only persistent variable now is the controller object, nothing else is used.
+Changing the slow MPC controller code to a version using an [optimizer](/command/optimizer) is trivial. The models are implemented in [MPCSimulation.mdl] and [MPCController.m]. Note that the only persistent variable now is the controller object, nothing else is used.
 
 ````
 function uout = MPCController(currentx,currentr,t)

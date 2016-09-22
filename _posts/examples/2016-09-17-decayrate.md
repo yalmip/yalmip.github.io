@@ -27,7 +27,7 @@ Due to the product between \\(t\\) and \\(P\\), the problem cannot be solved dir
 
 ### Bisection algorithm
 
-The problem is not linear, but it is easily seen to be quasi-convex (the feasible set scales monotonically in \\(t\\)). Hence we can solve it by bisection in \\(t\\). We will first implement a bisection manually, and then use the built-in YALMIP meta-solver [bisection].
+The problem is not linear, but it is easily seen to be quasi-convex (the feasible set scales monotonically in \\(t\\)). Hence we can solve it by bisection in \\(t\\). We will first implement a bisection manually, and then use the built-in YALMIP meta-solver [bisection](/command/bisection).
 
 Simple description of a bisection approach
 
@@ -95,7 +95,7 @@ Of course, in a real case, the code should be extended with more analysis of the
 
 ### Faster code through optimizer
 
-By using the [optimizer] construct, we can get rid of most of the YALMIP overhead. We create an [optimizer] object which solves the feasibility SDP for particular values of \\(t\\) (since the [optimizer] requires an explicit solver choice for nonlinearly parameterized models, the code below is hard-coded for [SEDUMI])
+By using the [optimizer](/command/optimizer) construct, we can get rid of most of the YALMIP overhead. We create an [optimizer](/command/optimizer) object which solves the feasibility SDP for particular values of \\(t\\) (since the [optimizer](/command/optimizer) requires an explicit solver choice for nonlinearly parameterized models, the code below is hard-coded for [SEDUMI])
 
 ````matlab
 t_lower = 0;
@@ -128,7 +128,7 @@ end
 
 ### Built-in bisection solver
 
-The bisection algorithm above has been implemented in a high-level solver [bisection],
+The bisection algorithm above has been implemented in a high-level solver [bisection](/command/bisection),
 
 ````matlab
 sdpvar t

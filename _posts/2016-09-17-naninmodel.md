@@ -37,7 +37,7 @@ The culprit for these are typically one out of four standard situations.
 
 ### Assigning sdpvar object to a double
 
-A common case is that a user defined a double, and then tries to insert an [sdpvar] object at some location using indexing
+A common case is that a user defined a double, and then tries to insert an [sdpvar](/command/sdpvar) object at some location using indexing
 
 ````matlab
 sdpvar x
@@ -72,7 +72,7 @@ sdpvar x
 y = [zeros(1,4) x];
 ````
 
-Alternatively, define **x** as an [sdpvar] vector and insert zeros, or use the sparse function, etc.
+Alternatively, define **x** as an [sdpvar](/command/sdpvar) vector and insert zeros, or use the sparse function, etc.
 
 ### Bad data to begin with
 

@@ -15,14 +15,14 @@ YALMIP supports several [mixed integer programming solvers], but also comes with
 
 ### Integer and binary variables
 
-Defining binary and integer variables is done with the commands [binvar] and [intvar]. The resulting objects are essentially [sdpvar] objects with implicit constraints.
+Defining binary and integer variables is done with the commands [binvar](/command/binvar) and [intvar]. The resulting objects are essentially [sdpvar](/command/sdpvar) objects with implicit constraints.
 
 ````matlab
 x = intvar(n,m);
 y = binvar(n,m);
 ````
 
-Objects with integer variables are manipulated as standard [sdpvar] objects.
+Objects with integer variables are manipulated as standard [sdpvar](/command/sdpvar) objects.
 
 ````matlab
 z = x + y + trace(x) + sum(sum(y));
@@ -74,7 +74,7 @@ optimize(F,residuals'*residuals);
 x_L2_toep = value(x_hat);
 ````
 
-Note that [BNB]  not should be used if you have simple mixed integer linear programs. In that case, you can just as well download a much faster free specialized MILP solver, such as [GLPK] or academic license version of [GUROBI].
+Note that [BNB]  not should be used if you have simple mixed integer linear programs. In that case, you can just as well download a much faster free specialized MILP solver, such as [GLPK] or academic license version of [GUROBI](/solver/gurobi).
 
 ### General mixed integer programming
 

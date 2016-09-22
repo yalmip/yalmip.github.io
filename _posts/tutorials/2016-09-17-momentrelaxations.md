@@ -15,7 +15,7 @@ YALMIP comes with a built-in module for polynomial programming using moment rela
 
 ### Solving polynomial problems by relaxations
 
-The following code calculates a lower bound on a concave quadratic optimization problem. As you can see, the only difference compared to solving the problem using a standard solver, such as [FMINCON] or [SNOPT], or the global solver [BMIBNB], is that we call [solvemoment] instead of [optimize] (an alternative is to call [optimize] and specify `'moment'` as the solver in [sdpsettings]).
+The following code calculates a lower bound on a concave quadratic optimization problem. As you can see, the only difference compared to solving the problem using a standard solver, such as [FMINCON](/solver/fmincon) or [SNOPT](/solver/snopt), or the global solver [BMIBNB], is that we call [solvemoment](/command/solvemoment) instead of [optimize](/command/optimize) (an alternative is to call [optimize](/command/optimize) and specify `'moment'` as the solver in [sdpsettings]).
 
 ````matlab
 sdpvar x1 x2 x3
@@ -31,7 +31,7 @@ value(obj)
      -6.0000
 ````
 
-Notice that YALMIP does not recover variables by default, a fact showing up in the difference between lifted variables and actual nonlinear variables (lifted variables are the variables used in the semidefinite relaxation to model nonlinear variables). The linear variables coincide with the relaxed linear variables, hence the relaxed value of the linear objective can be checked directly through [value]. The lifted variables can be obtained by using the command [relaxvalue]. The quadratic constraint above is satisfied in the lifted variables, but not in the true variables, as the following code illustrates.
+Notice that YALMIP does not recover variables by default, a fact showing up in the difference between lifted variables and actual nonlinear variables (lifted variables are the variables used in the semidefinite relaxation to model nonlinear variables). The linear variables coincide with the relaxed linear variables, hence the relaxed value of the linear objective can be checked directly through [value](/command/value). The lifted variables can be obtained by using the command [relaxvalue]. The quadratic constraint above is satisfied in the lifted variables, but not in the true variables, as the following code illustrates.
 
 ````matlab
 relaxvalue(x1*(4*x1-4*x2+4*x3-20)+x2*(2*x2-2*x3+9)+x3*(2*x3-13)+24)

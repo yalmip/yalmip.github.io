@@ -92,7 +92,7 @@ figure;plot(Optimizer)
 
 ![pwasol]({{ site.url }}/images/dppwasol.png){: .center-image }
 
-To obtain the optimal control input for a specific state, we use [value] and [assign] as usual.
+To obtain the optimal control input for a specific state, we use [value](/command/value) and [assign](/command/assign) as usual.
 
 ````matlab
 assign(x{1},[-1;1]);
@@ -330,7 +330,7 @@ Note that quadratic objective functions not can be used for dynamic programming 
 
 ### Behind the scenes and advanced use
 
-The first thing that might be a bit unusual to the advanced user is the piecewise functions that YALMIP returns in the fourth and fifth output from [solvemp]. In principle, they are specialized [pwf] objects. To create a PWA value function after solving a multi-parametric LP, the following command is used.
+The first thing that might be a bit unusual to the advanced user is the piecewise functions that YALMIP returns in the fourth and fifth output from [solvemp](/command/solvemp). In principle, they are specialized [pwf] objects. To create a PWA value function after solving a multi-parametric LP, the following command is used.
 
 ````matlab
 Valuefunction = pwf(sol,x,'convex')
@@ -363,4 +363,4 @@ This is only recommended if you just intend to plot or investigate the value fun
 Valuefunction = pwf(sol,x,'overlapping')
 ````
 
-As we have seen in the examples above, the PWA and PWQ functions can be plotted. This is currently nothing but a simple hack. Normally, when you apply the [plot] command to an [sdpvar] object, the corresponding double values are plotted. However, if the input is a simple scalar PWA or PWQ variable, the underlying [MPT] structures will be extracted and the plot commands in [MPT] will be called.
+As we have seen in the examples above, the PWA and PWQ functions can be plotted. This is currently nothing but a simple hack. Normally, when you apply the [plot] command to an [sdpvar](/command/sdpvar) object, the corresponding double values are plotted. However, if the input is a simple scalar PWA or PWQ variable, the underlying [MPT] structures will be extracted and the plot commands in [MPT] will be called.

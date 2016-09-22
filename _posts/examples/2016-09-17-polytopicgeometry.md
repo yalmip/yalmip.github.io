@@ -17,13 +17,13 @@ image:
   thumb: lofberg.jpg
 ---
 
-The toolboxes YALMIP and [MPT] were initially developed independently, but have over the years seen more and more integration. Several functionalities in [MPT] require YALMIP, and several functionalities in YALMIP require [MPT].
+The toolboxes YALMIP and [MPT] were initially developed independently, but have over the years seen more and more integration. Several functionalities in [MPT] require YALMIP, and several functionalities in YALMIP require [mpt](/solver/mpt).
 
 In this article, we will look at some examples where we use a combination of YALMIP and [MPT] commands, and we will also illustrate how some operations in [MPT] can be done using YALMIP code only, and vice versa.
 
 ### Plotting polytopes
 
-A cornerstone in [MPT] is the library for definition and manipulation of polytopes. Let us define a random polytope, and plot it using [MPT].
+A cornerstone in [MPT] is the library for definition and manipulation of polytopes. Let us define a random polytope, and plot it using [mpt](/solver/mpt).
 
 ````matlab
 A = randn(10,2);
@@ -41,7 +41,7 @@ x = sdpvar(2,1);
 plot(A*x <= b);
 ````
 
-Alternatively, we can use a combination of YALMIP and [MPT]. The result is the same YALMIP model as above.
+Alternatively, we can use a combination of YALMIP and [mpt](/solver/mpt). The result is the same YALMIP model as above.
 
 ````matlab
 plot(ismember(x,P));
@@ -53,11 +53,11 @@ A final approach is to define the problem using YALMIP code, but convert it to a
 plot(polytope(A*x <= b));
 ````
 
-Note that the algorithm to plot the sets are completely different in YALMIP and [MPT]. [MPT] explicitly works with the polytopic structure and computes all vertices using a vertex enumeration algorithm. YALMIP on the other hand makes no assumption about the sets. To be able to handle arbitrary sets, it employs a ray-shooting strategy to generate points on the boundary of the feasible set, and then plot this (inner) approximation.
+Note that the algorithm to plot the sets are completely different in YALMIP and [mpt](/solver/mpt). [MPT] explicitly works with the polytopic structure and computes all vertices using a vertex enumeration algorithm. YALMIP on the other hand makes no assumption about the sets. To be able to handle arbitrary sets, it employs a ray-shooting strategy to generate points on the boundary of the feasible set, and then plot this (inner) approximation.
 
 ### Minkowski difference
 
-Minkowski difference, or polytope substraction, is overloaded on polytope objects in [MPT]. We define a new polytope, and subtract it from our first polytope
+Minkowski difference, or polytope substraction, is overloaded on polytope objects in [mpt](/solver/mpt). We define a new polytope, and subtract it from our first polytope
 
 ````matlab
 E = randn(10,2);
@@ -210,7 +210,7 @@ plot(replace(H*x,x(1),0.2) <= k)
 
 ### Convex hull
 
-Both [MPT] and YALMIP can be used to obtain the convex hull of the union of polytopes. Using [MPT], we quickly define two cubes and plot them and their [convex hull](/commands/hull)
+Both [MPT] and YALMIP can be used to obtain the convex hull of the union of polytopes. Using [mpt](/solver/mpt), we quickly define two cubes and plot them and their [convex hull](/commands/hull)
 
 ````matlab
 P1 = unitbox(2,0.5)+[1;1];

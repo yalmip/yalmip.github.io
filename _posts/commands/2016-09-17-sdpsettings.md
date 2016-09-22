@@ -11,7 +11,7 @@ sidebar:
   nav: "commands"
 ---
 
-[sdpsettings] is used to communicate options to YALMIP and solvers. It is used as the third argument in commands such [optimize], [solvesos], [solvemoment] and [solvemp]. 
+[sdpsettings] is used to communicate options to YALMIP and solvers. It is used as the third argument in commands such [optimize](/command/optimize), [solvesos](/command/solvesos), [solvemoment](/command/solvemoment) and [solvemp](/command/solvemp). 
 
 ### Syntax
 
@@ -159,7 +159,7 @@ If debug is turned on, YALMIP will not try to catch errors, which will simplify 
 
 ### !cachesolvers
 
-Every time [optimize] is called, YALMIP checks for available solvers. This can take a while on some systems (some networks), so it is possible to avoid doing this check every call. Set cachesolvers to 1, and YALMIP will remember the solvers (using a persistent variable) found in the first call to [optimize]. If solvers are added to the path after the first call, YALMIP will not detect this. Hence, after adding a solver to the path the work-space must be cleared or [optimize] must be called once with cachesolvers set to 0. Only use this option if you absolutely need it.
+Every time [optimize](/command/optimize) is called, YALMIP checks for available solvers. This can take a while on some systems (some networks), so it is possible to avoid doing this check every call. Set cachesolvers to 1, and YALMIP will remember the solvers (using a persistent variable) found in the first call to [optimize](/command/optimize). If solvers are added to the path after the first call, YALMIP will not detect this. Hence, after adding a solver to the path the work-space must be cleared or [optimize](/command/optimize) must be called once with cachesolvers set to 0. Only use this option if you absolutely need it.
 
 ### !removeequalities
 
@@ -175,14 +175,14 @@ If the field saveduals is set to 0, the dual variables will not be saved in YALM
 
 ### !savesolverinput, savesolveroutput
 
-The fields savesolverinput and savesolveroutput can be used to see what is actually sent to and returned from the solver. This data will then be available in the output structure from [optimize].
+The fields savesolverinput and savesolveroutput can be used to see what is actually sent to and returned from the solver. This data will then be available in the output structure from [optimize](/command/optimize).
 
 ### !convertconvexquad
 
 With convertconvexquad set to 1, YALMIP will try to convert quadratic constraints to second order cones.
 
 ### !radius
-A constraint ||x||&#8804;radius on the vector of all involved decision variables can be added by changing the field radius to a finite positive value. This can improve numerical performance in some cases. In fact, the field radius may be an [sdpvar] object. If you work with semidefinite programs and standard convex programming, it is recommended to keep the feature on. However, if you work with more general nonlinear optimization problem, it is most often recommended to turn the conversion off.
+A constraint ||x||&#8804;radius on the vector of all involved decision variables can be added by changing the field radius to a finite positive value. This can improve numerical performance in some cases. In fact, the field radius may be an [sdpvar](/command/sdpvar) object. If you work with semidefinite programs and standard convex programming, it is recommended to keep the feature on. However, if you work with more general nonlinear optimization problem, it is most often recommended to turn the conversion off.
 
 ### !relax
 
@@ -190,7 +190,7 @@ If relax is set to 1, all nonlinearities and integrality constraints will be dis
 
 ### !usex0
 
-The current solution (the value returned from the [value] command) can be used as an initial guess when solving an optimization problem. Setting the field '''usex0''' to 1 tells YALMIP to supply the current values as an initial guess to the solver. You can manually specify a current value using [assign].
+The current solution (the value returned from the [value](/command/value) command) can be used as an initial guess when solving an optimization problem. Setting the field '''usex0''' to 1 tells YALMIP to supply the current values as an initial guess to the solver. You can manually specify a current value using [assign](/command/assign).
 
 ### !solver options
 

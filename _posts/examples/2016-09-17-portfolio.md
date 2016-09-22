@@ -36,7 +36,7 @@ optimize(F,w'*S*w)
 value(w)
 ````
 
-An alternative approach is to limit the variance, and maximize the expected return. Let us maximize the return while constraining the variance to be less than the variance for a  portfolio with equal positions in all assets (this model leads to a quadratically constrained problem, hence you need a QCQP or SOCP capable solver such as [SEDUMI], [SDPT3], [GUROBI], [MOSEK], or [CPLEX])
+An alternative approach is to limit the variance, and maximize the expected return. Let us maximize the return while constraining the variance to be less than the variance for a  portfolio with equal positions in all assets (this model leads to a quadratically constrained problem, hence you need a QCQP or SOCP capable solver such as [sedumi](/command/sedumi), [sdpt3](/command/sdpt3), [GUROBI](/solver/gurobi), [MOSEK](/solver/mosek), or [CPLEX])
 
 ````matlab
 F = [sum(w) == 1, w>=0];
@@ -58,7 +58,7 @@ The solutions to the problems above typically leads to a portfolio with shares i
 
 ### Cardinality & structurally constrained portfolios
 
-An alternative is to only allow a limited number of non-zero positions. This is easily modeled using the [nnz] operator, and leads to a mixed integer quadratic programming problem. Let us limit the number of positions to 4 (since [nnz] requires a MILP model, we explicitly upper bound the variable **w** to help the [Tutorials.Big-M  big-M] reformulation). Please note that cardinality constrained portfolio selection yields extremely hard problems.
+An alternative is to only allow a limited number of non-zero positions. This is easily modeled using the [nnz](/command/nnz) operator, and leads to a mixed integer quadratic programming problem. Let us limit the number of positions to 4 (since [nnz](/command/nnz) requires a MILP model, we explicitly upper bound the variable **w** to help the [Tutorials.Big-M  big-M] reformulation). Please note that cardinality constrained portfolio selection yields extremely hard problems.
 
 ````matlab
 mutarget = mean(mu);
@@ -108,7 +108,7 @@ A school-book example of parametric optimization is the efficient frontier in th
 
 !### Repeated solutions using the optimizer command
 
-Solving many problems with only a small change in the setup can in some cases be done efficiently using the [optimizer] command. This command allows us to create an object which takes the target return as input, and returns the variance and portfolio assignments as outputs. By using the [optimizer] command instead of explicitly setting up a new problem and calling [optimize], the overhead can be reduced drastically.
+Solving many problems with only a small change in the setup can in some cases be done efficiently using the [optimizer](/command/optimizer) command. This command allows us to create an object which takes the target return as input, and returns the variance and portfolio assignments as outputs. By using the [optimizer](/command/optimizer) command instead of explicitly setting up a new problem and calling [optimize](/command/optimize), the overhead can be reduced drastically.
 
 ````matlab
 w = sdpvar(n,1);

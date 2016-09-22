@@ -79,7 +79,7 @@ plot(C*xk)
 ![polytopicsystem]({{ site.url }}/images/robust_openloop.png){: .center-image }
 
 
-To speed up the simulation further, we can use the [optimizer] construction. It is applicable here since the changing part of the optimization problem is the current state, which enters affinely in the model.
+To speed up the simulation further, we can use the [optimizer](/command/optimizer) construction. It is applicable here since the changing part of the optimization problem is the current state, which enters affinely in the model.
 
 ````matlab
 controller = optimizer([F, G, uncertain(W)],objective,ops,x,U(1));
@@ -151,7 +151,7 @@ In our case, we want to have a multi-parametric solution with respect to the sta
 sol = solvemp(Frobust,h,[],x);
 ````
 
-Alternatively, we can send the uncertain model directly to [solvemp], but we then have to declare the uncertain variables via the command [uncertain]
+Alternatively, we can send the uncertain model directly to [solvemp](/command/solvemp), but we then have to declare the uncertain variables via the command [uncertain]
 
 ````matlab
 sol = solvemp([F,G,uncertain(W)],objective,[],x);

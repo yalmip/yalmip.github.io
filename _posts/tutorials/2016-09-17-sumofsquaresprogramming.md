@@ -76,7 +76,7 @@ Once again, this is the basic idea behind the SOS module in YALMIP. However, the
 
 The following lines of code presents some typical manipulations when working with SOS-calculations.
 
-The most important commands are [sos] (to define a SOS constraint) and [solvesos] (to solve the problem)
+The most important commands are [sos] (to define a SOS constraint) and [solvesos](/command/solvesos) (to solve the problem)
 .
 ````matlab
 x = sdpvar(1,1);y = sdpvar(1,1);

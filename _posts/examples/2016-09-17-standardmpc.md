@@ -88,7 +88,7 @@ value(u{1})
 
 ### Improving simulation performance
 
-A large amount of time is still spent in [optimize] to convert from the YALMIP model to the numerical format used by the solver. If we want to, e.g., simulate the closed-loop system, this is problematic. To avoid this, we compile the numerical model once by using the [optimizer] command. For illustrative purposes, we allow the solver to print its output. Normally, this would be turned of when using [optimizer] (once we know everything works, never turn off display until everything works as expected)
+A large amount of time is still spent in [optimize](/command/optimize) to convert from the YALMIP model to the numerical format used by the solver. If we want to, e.g., simulate the closed-loop system, this is problematic. To avoid this, we compile the numerical model once by using the [optimizer](/command/optimizer) command. For illustrative purposes, we allow the solver to print its output. Normally, this would be turned of when using [optimizer](/command/optimizer) (once we know everything works, never turn off display until everything works as expected)
 
 ````matlab
 ops = sdpsettings('verbose',2);

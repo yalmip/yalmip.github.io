@@ -11,4 +11,4 @@ sidebar:
   nav:
 ---
 
- [QUADPROG] does not work if you have [GUROBI] installed (name conflict)
+ [QUADPROG](/solver/quadprog) does not work if you have [GUROBI](/solver/gurobi) installed (name conflict)

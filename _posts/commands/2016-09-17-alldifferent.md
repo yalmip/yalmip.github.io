@@ -11,7 +11,7 @@ sidebar:
   nav: "commands"
 ---
 
-[alldifferent] implements the constraint that all elements are different
+[alldifferent](/command/alldifferent) implements the constraint that all elements are different
 
 ### Syntax
 
@@ -32,6 +32,6 @@ value(x)
 
 ### Comments
 
-Since [alldifferent] is implemented using a [big-M](/tutorial/bigmandconvexhulls) approach, it is crucial that all involved variables have explicit bound constraints. Additionally, it only makes numerical sense to apply the operator on integer valued variables.
+Since [alldifferent](/command/alldifferent) is implemented using a [big-M](/tutorial/bigmandconvexhulls) approach, it is crucial that all involved variables have explicit bound constraints. Additionally, it only makes numerical sense to apply the operator on integer valued variables.
 
-Applying [alldifferent] on a variable with \\(n\\) variables will introduce \\(n(n-1)/2\\) binary variables.
+Applying [alldifferent](/command/alldifferent) on a variable with \\(n\\) variables will introduce \\(n(n-1)/2\\) binary variables.

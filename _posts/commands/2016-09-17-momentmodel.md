@@ -29,7 +29,7 @@ Con = [x^4 + y^4 + x*y <= 1];
 Obj = x^2 +y^3;
 ````
 
-We can compute lower bounds using [solvemoment], or alternatively derive the semidefinite relaxation (here lowest order possible) and proceed manually.
+We can compute lower bounds using [solvemoment](/command/solvemoment), or alternatively derive the semidefinite relaxation (here lowest order possible) and proceed manually.
 
 ````matlab
 [ConRelaxed, ObjRelaxed,MomentMatrices] = momentmodel(Con,Obj)

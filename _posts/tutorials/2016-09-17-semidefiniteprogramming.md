@@ -48,7 +48,7 @@ F
 +++++++++++++++++++++++++++++++++++++++++++++++++++
 ````  
 
-We only need a feasible solution, so one argument is sufficient when we call [optimize] to solve the problem.
+We only need a feasible solution, so one argument is sufficient when we call [optimize](/command/optimize) to solve the problem.
 
 ````matlab
 optimize(F);

@@ -11,7 +11,7 @@ A question on the [YALMIP forum](http://sedumi.ie.lehigh.edu/index.php?option=co
 
 This is partially answered and discussed in one of the [sum-of-squares examples](/example/moresos) and the referenced paper [Löfberg 2009](/reference/lofberg2009). The problem boils down to the fact that semidefinite solvers typically work with infeasible methods. Hence, the optimal solution you obtain in the end is very often slightly infeasible.
 
-When YALMIP sets up a sum-of-squares problem, there are two alternative approaches. The first approach, which is used by default, is the kernel representation, sometimes called primal form in YALMIP. You can explicitly tell YALMIP to use this form by setting `'sos.model'` to 1 in [sdpsettings] when calling [solvesos].
+When YALMIP sets up a sum-of-squares problem, there are two alternative approaches. The first approach, which is used by default, is the kernel representation, sometimes called primal form in YALMIP. You can explicitly tell YALMIP to use this form by setting `'sos.model'` to 1 in [sdpsettings] when calling [solvesos](/command/solvesos).
 
 ![Primal form]({{ site.url }}/images/primalform.gif){: .center-image }
 
@@ -84,7 +84,7 @@ ans =
    1.2738e-007
 ````
 
-For the default case when the kernel model is used, the fourth argument from [solvesos], the residuals from the equality constraints, have to be involved in the analysis, see [Löfberg 2009].
+For the default case when the kernel model is used, the fourth argument from [solvesos](/command/solvesos), the residuals from the equality constraints, have to be involved in the analysis, see [Löfberg 2009].
 
 Note that this whole discussion here only is relevant if you absolutely have to have a true numerical certificate. In most cases, if the solver finishes without any complaints and the solution is slightly infeasible, it is up to your discretion to judge if it can be used anyway.
 

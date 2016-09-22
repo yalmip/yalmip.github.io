@@ -148,9 +148,9 @@ legend('Unit 1','Unit 2','Unit 3');
 
 ### Simulation
 
-As a finale, let us simulate this plant control strategy in closed-loop. To do this we have to make some changes. To begin with, we must introduce a history. The action we take at this very time instant depends on our past. If we turned on plant two 10 time units ago, we must still have it on, etc. The second thing we should do is to make the simulation efficient, by avoiding a complete redefinition of the whole optimization problem every time instant. To do so, we use the [optimizer] command. Finally, to make it realistic, we should have some disturbances on the power demand, and to cope with this, we add a simple slack on the power demand constraint, and penalize this slack in the objective function.
+As a finale, let us simulate this plant control strategy in closed-loop. To do this we have to make some changes. To begin with, we must introduce a history. The action we take at this very time instant depends on our past. If we turned on plant two 10 time units ago, we must still have it on, etc. The second thing we should do is to make the simulation efficient, by avoiding a complete redefinition of the whole optimization problem every time instant. To do so, we use the [optimizer](/command/optimizer) command. Finally, to make it realistic, we should have some disturbances on the power demand, and to cope with this, we add a simple slack on the power demand constraint, and penalize this slack in the objective function.
 
-In order to use the [optimizer] command, parameters that change in each iteration  must be declared as [sdpvar] objects. Things that change are the forecasts and the sliding history. As before, we use a forecast of 48 time units, and to cope with the up- and down-time constraints, we need a history of at least 30 time units.
+In order to use the [optimizer](/command/optimizer) command, parameters that change in each iteration  must be declared as [sdpvar](/command/sdpvar) objects. Things that change are the forecasts and the sliding history. As before, we use a forecast of 48 time units, and to cope with the up- and down-time constraints, we need a history of at least 30 time units.
 
 ````matlab
 Nhist = max([minup;mindown]);

@@ -11,7 +11,7 @@ sidebar:
   nav: "commands"
 ---
 
-[solvemoment]  computes lower bounds to polynomial programs using [Lasserre's moment-method](/reference/), i.e., semidefinite relaxations.
+[solvemoment](/command/solvemoment)  computes lower bounds to polynomial programs using [Lasserre's moment-method](/reference/), i.e., semidefinite relaxations.
 
 ### Syntax
 
@@ -40,7 +40,7 @@ ans =
    -6.0000
 ````
 
-In the code above, we solved the problem with the lowest possible lifting (decided by YALMIP), and the lower bound turned out to be -6 (this value can be obtained using [value] since the objective is linear. In the general case, [relaxvalue] is required to retrieve relaxed values on expressions after solving relaxations). A higher order relaxation gives better bounds.
+In the code above, we solved the problem with the lowest possible lifting (decided by YALMIP), and the lower bound turned out to be -6 (this value can be obtained using [value](/command/value) since the objective is linear. In the general case, [relaxvalue] is required to retrieve relaxed values on expressions after solving relaxations). A higher order relaxation gives better bounds.
 
 ````matlab
 solvemoment(F,h,[],2);

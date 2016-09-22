@@ -24,7 +24,7 @@ for i = 1:3
 end
 ````
 
-An alternative approach is to give several objective functions at once to YALMIP, and thus reduce the overhead from analyzing the problem and looking for suitable solvers etc. After solving the problem with 6 different objective functions, YALMIP will have 6 solutions available, and a particular solution is extracted by using a second argument in the [value] operator.
+An alternative approach is to give several objective functions at once to YALMIP, and thus reduce the overhead from analyzing the problem and looking for suitable solvers etc. After solving the problem with 6 different objective functions, YALMIP will have 6 solutions available, and a particular solution is extracted by using a second argument in the [value](/command/value) operator.
 
 ````
 optimize(Ball,[x;-x],ops);

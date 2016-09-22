@@ -12,9 +12,9 @@ sidebar:
   nav: "tutorials"
 ---
 
-In addition to modeling convex and concave operators and perform automatic analysis and derivation of equivalent conic programs, YALMIP uses the nonlinear operator framework for implementing logic and combinatorial expression involving commands such as [or], [and], [ne], [iff], [implies], [nnz], [alldifferent], [sort] and [ismember], and on a higher level, nonconvex piecewise functions in connection with [MPT]. The common feature among these operators is that they all require binary and integer variables to be represented in a structured way.
+In addition to modeling convex and concave operators and perform automatic analysis and derivation of equivalent conic programs, YALMIP uses the nonlinear operator framework for implementing logic and combinatorial expression involving commands such as [or], [and], [ne], [iff](/command/iff), [implies](/command/implies), [nnz](/command/nnz), [alldifferent], [sort](/command/sort) and [ismember], and on a higher level, nonconvex piecewise functions in connection with [mpt](/solver/mpt). The common feature among these operators is that they all require binary and integer variables to be represented in a structured way.
 
-The same framework is used also for alternatives to graph-based implementations. If the convexity propagation of an conic representable such as [min] or [max] fails, thus invalidating the use of graph-models, YALMIP can create an alternative model based on mixed-integer representations. This done for many of the [linear programming representable operators](/tags/#linear-programming-representable).
+The same framework is used also for alternatives to graph-based implementations. If the convexity propagation of an conic representable such as [min](/command/min) or [max](/command/max) fails, thus invalidating the use of graph-models, YALMIP can create an alternative model based on mixed-integer representations. This done for many of the [linear programming representable operators](/tags/#linear-programming-representable).
 
 Mixed-integer representations are also used to model discontinuous functions such as [floor], [ceil], [fix], [sign], [rem], and [mod].
 

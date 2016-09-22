@@ -14,7 +14,7 @@ sidebar:
 
 The nonlinear operator framework was initially implemented for functions that can be modelled rigorously using conic constraints and additional variables through [graph representations].
 
-However, there are many functions that cannot be modelled using conic constraints, such as exponential functions and logarithms, but are convex or concave, and of course can be analyzed in terms of convexity preserving operations. These function (and any other nonlinear function) are supported in a framework called evaluation based nonlinear operators. Models using these general operators will still be analyzed with respect to convexity, but the resulting model requires a general nonlinear solver, such as [FMINCON] or [SNOPT].
+However, there are many functions that cannot be modelled using conic constraints, such as exponential functions and logarithms, but are convex or concave, and of course can be analyzed in terms of convexity preserving operations. These function (and any other nonlinear function) are supported in a framework called evaluation based nonlinear operators. Models using these general operators will still be analyzed with respect to convexity, but the resulting model requires a general nonlinear solver, such as [FMINCON](/solver/fmincon) or [SNOPT](/solver/snopt).
 
 In addition to convexity properties and simple function values, operators can be attributed with various other properties, and we will use this possibility here. Examples include derivative information and envelope approximators for the global solver [BMIBNB].
 
@@ -100,7 +100,7 @@ end
 
 ````
 
-At this point we have a model that can be used in, e.g., [FMINCON]. The convexity information lets YALMIP perform convexity analysis of expressions involving the exponential function.
+At this point we have a model that can be used in, e.g., [FMINCON](/solver/fmincon). The convexity information lets YALMIP perform convexity analysis of expressions involving the exponential function.
 
 The function can also be used when using the global solver [BMIBNB], as we did above. However, the global solver is based on function bounding, and approximating nonlinear expressions locally by convex hulls. To enable this, YALMIP must have more information. If no information is available, YALMIP uses an approximate sampled-based scheme, which is both slow and theoretically questionable.
 

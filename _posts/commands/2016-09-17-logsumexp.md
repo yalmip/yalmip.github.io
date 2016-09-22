@@ -11,7 +11,7 @@ sidebar:
   nav: "commands"
 ---
 
-[logsumexp] is a convexity aware implementation of \\(\log(\sum_i e^{x_i})\\)
+[logsumexp](/command/logsumexp) is a convexity aware implementation of \\(\log(\sum_i e^{x_i})\\)
 
 ### Syntax
 
@@ -21,4 +21,4 @@ y = logsumexp(x)
 
 ### Implementation
 
-The convex operator [logsumexp] is implemented using the [evaluation-based nonlinear operators] framework unless [SCS] or [ECOS]  is used and an exponential cone representation is used.
+The convex operator [logsumexp](/command/logsumexp) is implemented using the [evaluation-based nonlinear operators] framework unless [SCS] or [ECOS]  is used and an exponential cone representation is used.

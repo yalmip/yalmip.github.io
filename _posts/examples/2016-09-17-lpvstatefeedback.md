@@ -93,7 +93,7 @@ and the uncertainty description
 F = [F, 0 <= [t1 t2] <= 1, t1+t2 == 1, uncertain([t1 t2])];
 ````
 
-Finally, we solve the uncertain problem using [optimize].
+Finally, we solve the uncertain problem using [optimize](/command/optimize).
 
 ````matlab
 optimize(F,-trace(Y))

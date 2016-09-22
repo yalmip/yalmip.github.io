@@ -12,7 +12,7 @@ sidebar:
   nav: "tutorials"
 ---
 
-YALMIP supports modeling of nonlinear, often non-differentiable, operators that typically occur in convex programming. Some examples are [min], [max], [abs], [geomean], [sumabsk], and [sqrt], and users can easily add their own (see the end of this page). The operators can be used intuitively, and YALMIP will automatically try to find out if they are used in a way that enables a conic representation or graph representation. If such representation is impossible, YALMIP automatically tries to revert to a [mixed-integer representation].
+YALMIP supports modeling of nonlinear, often non-differentiable, operators that typically occur in convex programming. Some examples are [min], [max](/command/max), [abs], [geomean](/command/geomean), [sumabsk], and [sqrt], and users can easily add their own (see the end of this page). The operators can be used intuitively, and YALMIP will automatically try to find out if they are used in a way that enables a conic representation or graph representation. If such representation is impossible, YALMIP automatically tries to revert to a [mixed-integer representation].
 
 Although the automatic support for these operators can simplify the modeling phase significantly in some cases, it is recommended to use these operators only when you know how to model them your self using epigraphs and composition rules of convex and concave functions, why and when it can be done etc. The text-book [Boyd and Vandenberghe 2004] should be a suitable introduction for the beginner, and is consistent with the notation used here.
 
@@ -25,7 +25,7 @@ Without going into theoretical details, the convexity analysis is based on epi- 
 3. \\(f\\) is concave if \\(h\\) is concave and increasing and \\(g\\) is concave
 4. \\(f\\) is concave if \\(h\\) is concave and decreasing and \\(g\\) is convex
 
-Based on this information, it is possible to recursively analyze convexity of a complex expression involving convex and concave functions. When [optimize] is called, YALMIP checks the convexity of objective function and constraints by using information about the properties of the operators. If YALMIP manage to prove convexity, graph formulations of the operators are automatically introduced. This means that the operator is replaced with a new variable, and a set of constraints are added to the model.
+Based on this information, it is possible to recursively analyze convexity of a complex expression involving convex and concave functions. When [optimize](/command/optimize) is called, YALMIP checks the convexity of objective function and constraints by using information about the properties of the operators. If YALMIP manage to prove convexity, graph formulations of the operators are automatically introduced. This means that the operator is replaced with a new variable, and a set of constraints are added to the model.
 
 **epigraph:**  \\(t\\) replaces convex function \\(f(x)\\) : introduce with \\(f(x) \leq t\\)
 
@@ -55,7 +55,7 @@ optimize([],max(abs(residuals)));
 a_Linf = value(a_hat)
 ````
 
-YALMIP automatically concludes that the objective functions can be modeled using graph models based on linear inequalities, adds these, and solves the problems. We can simplify the code even more by using the [norm] operator. Here we also compute the least-squares solution (note that this norm, as written here, will generate a second-order cone constraint, arising when the graph model for the second-order cone representable 2-norm is modeled).
+YALMIP automatically concludes that the objective functions can be modeled using graph models based on linear inequalities, adds these, and solves the problems. We can simplify the code even more by using the [norm](/command/norm) operator. Here we also compute the least-squares solution (note that this norm, as written here, will generate a second-order cone constraint, arising when the graph model for the second-order cone representable 2-norm is modeled).
 
 ````matlab
 optimize([],norm(residuals,1));
@@ -75,7 +75,7 @@ a_regLinf = value(a_hat)
 
 The norm operator is used exactly as the built-in **norm** function in MATLAB, both for vectors and matrices. Not only vector norms are conic representable, but also the largest singular value (2-norm in matrix case) and the Frobenious norm of a matrix are, to name a few.
 
-The [value] command applies also to nonlinear operators (value(OPERATOR(X)) returns OPERATOR(value(X)).
+The [value](/command/value) command applies also to nonlinear operators (value(OPERATOR(X)) returns OPERATOR(value(X)).
 
 ````matlab
 value(1e-3*norm(a_hat,2)+norm(residuals,inf))
@@ -83,7 +83,7 @@ ans =
     3.1175
 ````
 
-A construction useful for maximizing determinants of positive definite matrices is the function \\( \det (P)^{1/m}\\), for positive definite matrix \\( P \\), where \\( m \\) is the dimension of \\(P\\). This concave function, called [geomean] in YALMIP, is supported as an operator. Note that the positive semidefiniteness constraint on \\( P \\) is added automatically by YALMIP.
+A construction useful for maximizing determinants of positive definite matrices is the function \\( \det (P)^{1/m}\\), for positive definite matrix \\( P \\), where \\( m \\) is the dimension of \\(P\\). This concave function, called [geomean](/command/geomean) in YALMIP, is supported as an operator. Note that the positive semidefiniteness constraint on \\( P \\) is added automatically by YALMIP.
 
 ````matlab
 D = randn(5,5);

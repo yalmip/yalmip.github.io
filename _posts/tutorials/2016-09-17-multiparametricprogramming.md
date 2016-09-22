@@ -13,7 +13,7 @@ sidebar:
 
 This tutorial requires [MPT] or [POP]
 
-YALMIP can be used to calculate explicit solutions of parametric linear and quadratic programs by interfacing the [Multi-Parametric Toolbox MPT] (or [POP]). This tutorial assumes that the reader is familiar with parametric programming and the basics of [MPT].
+YALMIP can be used to calculate explicit solutions of parametric linear and quadratic programs by interfacing the [Multi-Parametric Toolbox MPT] (or [POP]). This tutorial assumes that the reader is familiar with parametric programming and the basics of [mpt](/solver/mpt).
 
 ### Generic example.
 
@@ -38,7 +38,7 @@ ans =
    -0.0388
 ````
 
-To obtain the parametric solution with respect to **x**, we call the function [solvemp], and tell the solver that **x** is a parametric variable. Moreover, we must add constraints on **x** to define the region where we want to compute the parametric solution, the so called exploration set.
+To obtain the parametric solution with respect to **x**, we call the function [solvemp](/command/solvemp), and tell the solver that **x** is a parametric variable. Moreover, we must add constraints on **x** to define the region where we want to compute the parametric solution, the so called exploration set.
 
 ````matlab
 x = sdpvar(2,1);
@@ -58,13 +58,13 @@ ans =
    -0.0388
 ````  
 
-By using more outputs from [solvemp], it is possible to simplify things considerably.
+By using more outputs from [solvemp](/command/solvemp), it is possible to simplify things considerably.
 
 ````matlab
 [sol,diagnostics,aux,Valuefunction,Optimal_z] = solvemp(F,obj,[],x);
 ````
 
-The function now returns solutions using YALMIPs [nonlinear operator framework](/tutorial/nonlinearoperators). To retrieve the numerical solution for a particular parameter value, simply use [assign] and [value] in standard fashion.
+The function now returns solutions using YALMIPs [nonlinear operator framework](/tutorial/nonlinearoperators). To retrieve the numerical solution for a particular parameter value, simply use [assign](/command/assign) and [value](/command/value) in standard fashion.
 
 ````matlab
 assign(x,[0.1;0.2]);
@@ -126,7 +126,7 @@ We seek the explicit solution \\( U(x)\\) over the exploration set \\( \left \lv
 F = [F, 5 >= x >= -5];
 ````
 
-The explicit solution \\( U(x)\\) is obtained by calling [solvemp] with the parametric variable \\( x \\) as the fourth argument. Additionally, since we only are interested in the first element of the solution \\( U(x)\\), we use a fifth input to communicate this.
+The explicit solution \\( U(x)\\) is obtained by calling [solvemp](/command/solvemp) with the parametric variable \\( x \\) as the fourth argument. Additionally, since we only are interested in the first element of the solution \\( U(x)\\), we use a fifth input to communicate this.
 
 ````matlab
 [sol,diagnostics,aux,Valuefunction,Optimizer] = solvemp(F,objective,[],x,U(1));

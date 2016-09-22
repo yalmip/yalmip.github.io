@@ -12,7 +12,7 @@ sidebar:
 
 
 
-YALMIP has built-in support for definition, setup, and [solution of bilevel programming] problems. The code here concentrates on the built-in solver for bilevel problems. You can of course set them up yourself, by manually deriving the KKT conditions and solving them using various techniques in YALMIP, or by using YALMIPs high-level [kkt] operator, as illustrated in the [bilevel example](/example/bilevelalternatives).
+YALMIP has built-in support for definition, setup, and [solution of bilevel programming] problems. The code here concentrates on the built-in solver for bilevel problems. You can of course set them up yourself, by manually deriving the KKT conditions and solving them using various techniques in YALMIP, or by using YALMIPs high-level [kkt](/command/kkt) operator, as illustrated in the [bilevel example](/example/bilevelalternatives).
 
 For an introduction to bilevel optimization, see [Bard 1999](/reference/bard1999).
 
@@ -91,7 +91,7 @@ solvebilevel(CO,OO,CI,OI,[y1 y2 y3]);
     6 :   -2.600E+01     0.00     -2.600E+01   0  Solved to optimality
 ````
 
-As you hopefully have noticed, completely standard YALMIP code is used to setup and manipulate the model. Hence, to obtain the final solution, we use [value].
+As you hopefully have noticed, completely standard YALMIP code is used to setup and manipulate the model. Hence, to obtain the final solution, we use [value](/command/value).
 
 ````matlab
 value([y1 y2 y3])

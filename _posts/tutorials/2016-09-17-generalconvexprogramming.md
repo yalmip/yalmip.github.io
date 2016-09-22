@@ -40,7 +40,7 @@ y = sdpvar(m,1);
 optimize(exp(y) <= b-A*x,-sum(y));
 ````
 
-Finally, note that we can solve the problem using the overloaded [geomean] operator. This will however lead to a second order cone problem.
+Finally, note that we can solve the problem using the overloaded [geomean](/command/geomean) operator. This will however lead to a second order cone problem.
 
 ````matlab
 optimize([],-geomean(b-A*x));
