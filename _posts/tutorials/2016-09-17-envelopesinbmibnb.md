@@ -51,7 +51,7 @@ hold on;plot(t,t.^2);
 
 ![Quadratic hull]({{ site.url }}/images/hullsqr.png){: .center-image }
 
-The horizontal axis is the original variable \\(x\\), and the polytope shows the feasible region for the relaxed variable. Clearly, the approximation is perfect at the bounds, but fairly poor in the middle. It should be stated that positivity bounds on quadratic terms automatically are appended to  in the solver envelope implementation, thus cutting off the lower negative portion of the polytope (see below)
+The horizontal axis is the original variable \\(x\\), and the polytope shows the feasible region for the relaxed variable. Clearly, the approximation is perfect at the bounds, but fairly poor in the middle. It should be stated that positivity bounds on quadratic terms automatically are appended  in the solver envelope implementation, thus cutting off the lower negative portion of the polytope (see below)
 
 By tightening the bounds during the branching process, the linear relaxation will become increasingly better. As an example, if the solver branches on the \\(x\\) variable at 0.5, two new nodes would be created with stronger relaxations.
 
@@ -75,11 +75,11 @@ hold on;plot(t,t.^2);
 
 ![Quadratic hull]({{ site.url }}/images/xyhull2.png){: .center-image }
 
-Note that the algorithm requires bounds on the variables. If YALMIP fails to extract any explicit bounds from the model in the root-node, the code will terminate and an error message will be displayed. Addionally, the tighter the bounds are, i.e., closer to the final optimal value, the smaller the envelope approximation will be.
+Note that the algorithm requires bounds on the variables. If YALMIP fails to extract any explicit bounds from the model in the root-node, the code will terminate and an error message will be displayed. Addionally, the tighter the bounds are, i.e., closer to the final optimal value, the better the envelope approximation will be.
 
 ### Linear relaxation for polynomial problems
 
-Polynomial problems are treated by simply converting them to bilinear problems, by introducing additional variables and constraints. As an example, the term \\(x^2y^2\\) can be written as \\(uv\\) with the new bilinear constraints \\(u=x^2\\) and \\(v=y^2\\). Once a bilinear model has been obtained, standard bilinear relaxations can be used.
+Multivariate polynomial problems are treated by simply converting them to bilinear problems, by introducing additional variables and constraints. As an example, the term \\(x^2y^2\\) can be written as \\(uv\\) with the new bilinear constraints \\(u=x^2\\) and \\(v=y^2\\). Once a bilinear model has been obtained, standard bilinear relaxations can be used. 
 
 ### Linear relaxation for general problems
 
@@ -108,7 +108,7 @@ hold on;plot(t,sqrt(t));
 
 ![Quadratic hull]({{ site.url }}/images/hullsqrtm.png){: .center-image }
 
-Explicit representations of the linear relaxation are implemented for most nonlinear operators, such as **exp**, **log** and **sqrtm**. For some other [evaluation based] and [sdpfun] based nonlinear operators, a sampling strategy is used to derive the linear relaxation (of course, exact convex envelopes can be developed if someone really needs it). As an example, the following code computes an approximation of the convex envelope of **sin** with three facets.
+Explicit representations of the envelopes are implemented for most nonlinear operators, such as **x^p**, **exp**, **log** and **sqrtm**. For convex and concave functions no dedicated envelope code is required as long derivatives are available, as an envelope approximation can be dervied from gradients. For some other [evaluation based] and [sdpfun] based nonlinear operators, a sampling strategy is used to derive the linear relaxation (of course, exact convex envelopes can be developed if someone really needs it). As an example, the following code computes an approximation of the convex envelope of **sin** with three facets.
 
 ````matlab
 xL = 0;
@@ -133,7 +133,7 @@ hold on;plot(t,sin(t));
 
 ### Exploiting YALMIPs internal framework
 
-In the code above, we generated the envelope approximations manually, but it is of course possible to hook into the inner workings of YALMIP to generate these sets. 
+In the code above, we generated the envelope approximations manually, but it is of course possible to hook into the inner workings of YALMIP to study these sets. 
 
 Our **sin** example
 
@@ -146,7 +146,7 @@ x = linspace(0,3*pi/2,100);
 plot(x,sin(x))
 ````
 
-Note that the envelope set still contains the **sin(x)** variable (in practice it can be eliminated and replaced with **w**, but for implementation purposes it is kept in the form above with a trivial equality in the model), hence we must tell YALMIP to relax all variables.
+Note that the envelope set still contains the **sin(x)** variable (in practice it can be eliminated and replaced with **w**, but for implementation purposes it is kept in the form above with a trivial equality in the model), hence we must tell YALMIP to relax all variables, and then plot the projection to the \\(x,w\\) plane.
 
 If you study the quadratic monomial from earlier, you will see that YALMIP not only adds a positivity cut to the quadratic envelope, but also adds three tangency cuts. How many cuts [BMIBNB] uses is basically a trade-off between tightness of the relaxations, and the computational effort needed in the lower bound solvers with additional cuts.
 
