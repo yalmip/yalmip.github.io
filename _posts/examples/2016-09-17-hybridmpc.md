@@ -13,7 +13,7 @@ header:
   teaser:
 ---
 
-In the [standard MPC example], we illustrated some alternative approaches to setup and solve MPC problems in YALMIP. We will now use approximately the same code to solve hybrid MPC problems, i.e., problems involving piecewise affine and hybrid models.
+In the [standard MPC example](/example/standardmpc), we illustrated some alternative approaches to setup and solve MPC problems in YALMIP. We will now use approximately the same code to solve hybrid MPC problems, i.e., problems involving piecewise affine and hybrid models.
 
 The model we start with is a PWA system where the input matrix B depends on the first state.
 
@@ -36,7 +36,7 @@ N = 4;
 
 ### High-level model
 
-Setting up the MPC problem for this PWA system is almost identical to the LTI case, except for the logic part. The perhaps most high-level and natural way to model this in YALMIP is by using the or operator. Note the additional constraint added on the last state prediction. This is done to ensure that all expressions that are involved in logic expressions are explicitly bounded in the [big-M] modeling phase.
+Setting up the MPC problem for this PWA system is almost identical to the LTI case, except for the logic part. The perhaps most high-level and natural way to model this in YALMIP is by using the or operator. Note the additional constraint added on the last state prediction. This is done to ensure that all expressions that are involved in logic expressions are explicitly bounded in the [big-M](/tutorial/bigmandconvexhulls) modeling phase.
 
 ````matlab
 u = sdpvar(repmat(nu,1,N),repmat(1,1,N));
