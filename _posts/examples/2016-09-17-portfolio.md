@@ -58,7 +58,7 @@ The solutions to the problems above typically leads to a portfolio with shares i
 
 ### Cardinality & structurally constrained portfolios
 
-An alternative is to only allow a limited number of non-zero positions. This is easily modeled using the [nnz](/command/nnz) operator, and leads to a mixed integer quadratic programming problem. Let us limit the number of positions to 4 (since [nnz](/command/nnz) requires a MILP model, we explicitly upper bound the variable **w** to help the [Tutorials.Big-M  big-M] reformulation). Please note that cardinality constrained portfolio selection yields extremely hard problems.
+An alternative is to only allow a limited number of non-zero positions. This is easily modeled using the [nnz](/command/nnz) operator, and leads to a mixed integer quadratic programming problem. Let us limit the number of positions to 4 (since [nnz](/command/nnz) requires a MILP model, we explicitly upper bound the variable **w** to help the [big-M reformulation](/tutorial/bigmandconvexhulls)). Please note that cardinality constrained portfolio selection yields extremely hard problems.
 
 ````matlab
 mutarget = mean(mu);
@@ -81,7 +81,7 @@ optimize(F,w'*S*w)
 value(w)
 ````
 
-An equivalent model can be obtained by using the command [semivar]. The drawback with the following code is that it can be slightly less efficient since it introduce separate binary variables for the cardinality constraint and the semi-continuous position vector. An efficient pre-solve in the integer solver should be able to detect these redundant variables though.
+An equivalent model can be obtained by using the command [semivar](/command/semivar). The drawback with the following code is that it can be slightly less efficient since it introduce separate binary variables for the cardinality constraint and the semi-continuous position vector. An efficient pre-solve in the integer solver should be able to detect these redundant variables though.
 
 ````matlab
 w = semivar(n,1);      % Either 0...
@@ -106,7 +106,7 @@ value(w)
 
 A school-book example of parametric optimization is the efficient frontier in the Markowitz portfolio. This is the lowest possible variance \\(w'^TSw\\) achievable, when striving for a particular profit.
 
-!### Repeated solutions using the optimizer command
+### Repeated solutions using the optimizer command
 
 Solving many problems with only a small change in the setup can in some cases be done efficiently using the [optimizer](/command/optimizer) command. This command allows us to create an object which takes the target return as input, and returns the variance and portfolio assignments as outputs. By using the [optimizer](/command/optimizer) command instead of explicitly setting up a new problem and calling [optimize](/command/optimize), the overhead can be reduced drastically.
 
