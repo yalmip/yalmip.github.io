@@ -180,7 +180,7 @@ Feasible
 Feasible
 ````
 
-Nsty, there is a combination of some of the first 5 constraints (which are feasible) which combined with the last 6 constraints (which are feasible) causing infeasibility.
+Nasty, there is a combination of some of the first 5 constraints (which are feasible on their own) which combined with the last 6 constraints (which are feasible on their own) causing infeasibility.
 
 ````matlab
 sol = optimize(Constraints(1:8));if sol.problem==0;display('Feasible');else;display('Infeasible');end
