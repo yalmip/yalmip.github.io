@@ -108,7 +108,7 @@ hold on;plot(t,sqrt(t));
 
 ![Quadratic hull]({{ site.url }}/images/hullsqrtm.png){: .center-image }
 
-Explicit representations of the envelopes are implemented for most nonlinear operators, such as **x^p**, **exp**, **log** and **sqrtm**. For convex and concave functions no dedicated envelope code is required as long derivatives are available, as an envelope approximation can be dervied from gradients. For some other [evaluation based] and [sdpfun] based nonlinear operators, a sampling strategy is used to derive the linear relaxation (of course, exact convex envelopes can be developed if someone really needs it). As an example, the following code computes an approximation of the convex envelope of **sin** with three facets.
+Explicit representations of the envelopes are implemented for most nonlinear operators, such as **x^p**, **exp**, **log** and **sqrtm**. For convex and concave functions no dedicated envelope code is required as long derivatives are available, as an envelope approximation can be dervied from gradients. For some other functions, and [sdpfun] based operators, a sampling strategy is used to derive the linear relaxation. As an example, the following code computes an approximation of the convex envelope of **sin** with three facets.
 
 ````matlab
 xL = 0;
@@ -159,14 +159,14 @@ x = linspace(0,3*pi/2,100);
 plot(x,x.^2)
 ````
 
-Finally, a comment on bounds. As a general rule of thumb, you have to bound all variables used in nonlinear epxressions when you use the global solver [BMIBNB] which is based on the envelope aproxmations. However, YALMIP performs various bound strengthening schemes to improve the bounds, and the same code is used in the [envelope] code  used above. In some cases, YALMIP can derive bounds, without any initial bounds being specified at all. As an example, the following problem is easily solved with nicely behaved envelopes
+Finally, a comment on bounds. As a general rule of thumb, you have to bound all variables used in nonlinear epxressions when you use the global solver [BMIBNB] which is based on the envelope aproxmations. However, YALMIP performs various bound strengthening schemes to improve the bounds, and the same code is used in the [envelope] code  used above. In some cases, YALMIP can derive bounds, without any initial bounds being specified at all. As an example, the following problem is easily solved with nicely behaved envelopes despite supplying no bounds
 
 ````matlab
 sdpvar x
 optimize([x + x^2 + x^4 == 0,x,sdpsettings('solver','bmibnb'));
 ````
 
-YALMIP easily derivs the initial bound \\(-1 \leq x \leq 0\\), and can use this when creating the cuts for the envelope approximation. A bit silly plot, but you will get a line in \\(x\\) here showing the feasible interval.
+YALMIP easily derivs the initial bound \\(-1 \leq x \leq 0\\) and then improves it furter to \\(-0.6875 \leq x \leq 0\\) (the optimal olution is \\(x=-0.6823\\, so the lower bound is essentially tight), and can use this when creating the cuts for the envelope approximation. A bit silly plot, but you will get a line in \\(x\\) here showing the feasible interval.
 
 ````matlab
 E = envelope([x + x^2 + x^4 == w, w == 0);
