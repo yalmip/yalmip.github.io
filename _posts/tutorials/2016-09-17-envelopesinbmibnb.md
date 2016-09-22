@@ -10,7 +10,7 @@ sidebar:
   nav: "tutorials"
 ---
 
-The global solver [BMIBNB] is a YALMIP-based implementation of a standard spatial branch-and-bound strategy. If you are unfamiliar with the basic ideas in a branch-and-bound solver, you should try to find an introduction, such as [Lawler1966], before reading this text.
+The global solver [BMIBNB] is a YALMIP-based implementation of a standard spatial branch-and-bound strategy. If you are unfamiliar with the basic ideas in a branch-and-bound solver, you should try to find an [introduction](https://en.wikipedia.org/wiki/Branch_and_bound) first.
 
 A spatial branch-and-bound algorithm for nonconvex programming typically relies on a few standard steps. 
 
