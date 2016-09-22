@@ -15,7 +15,7 @@ header:
 
 This example illustrates an application of the [robust optimization framework].
 
-Robust optimization is a natural tool for robust control, i.e., derivation of control laws such that constraints are satisfied despite uncertainties in the system, and/or worst-case performance objectives. Various formulations for robust MPC were introduced in [Löfberg 2003]}, and we will use YALMIPs [Tutorials.RobustOptimization   robust optimization feature] to derive some of the robustified optimization problems automatically. The example will essentially solve various versions of Example (7.4) in [Löfberg 2003](/reference/lofberg2003).
+Robust optimization is a natural tool for robust control, i.e., derivation of control laws such that constraints are satisfied despite uncertainties in the system, and/or worst-case performance objectives. Various formulations for robust MPC were introduced in [Löfberg 2003](/reference/lofberg2003), and we will use YALMIPs [robust optimization framework](/tutorial/robustoptimization) to derive some of the robustified optimization problems automatically. The example will essentially solve various versions of Example (7.4) in [Löfberg 2003](/reference/lofberg2003).
 
 
 The system description is \\(x_{k+1} = Ax_k + Bu_k+Ew_k, y_k = Cx_k\\)
@@ -29,7 +29,7 @@ E = [0.0625;0;0];
 
 ### Open-loop minimax solution
 
-A prediction horizon N=10 is used. We first derive a symbolic expression of the future outputs by symbolically simulating the predictions. Note that we use an explicit representation of the predictions. In the [Examples.DP dynamic programming] example, we used an implicit representation by declaring the state updates via equality constraints. This does not make sense here, since we want the model to hold robustly. An uncertain equality constraint does not make sense.
+A prediction horizon N=10 is used. We first derive a symbolic expression of the future outputs by symbolically simulating the predictions. Note that we use an explicit representation of the predictions. In the [explicit MPC](/example/explicitmpc) example, we used an implicit representation by declaring the state updates via equality constraints. This does not make sense here, since we want the model to hold robustly. An uncertain equality constraint does not make sense. Instead, we explicitly express future states as a function of the current state, and the control and disturbance sequence.
 
 ````matlab
 N = 10;
@@ -58,7 +58,7 @@ The uncertainty is known to be bounded.
 G = [-1 <= W <= 1]
 ````
 
-To speed up the simulations (the code is still pretty slow), the robustfied model is derived once without solving it using [robustify]
+To speed up the simulations (the code is still pretty slow), the robustfied model is derived once without solving it using [robustmodel](/command/robustmodel)
 
 ````matlab
 [Frobust,h] = robustify(F + G,objective,[],W);
@@ -92,11 +92,11 @@ plot(C*xk)
 
 Indeed, the solution satisfies the hard constraint, but the steady-state level on \\(y\\) is far away from the desired level. The reason is the open-loop assumption in the problem. The input sequence computed at time \\(k\\) has to take all future disturbances into account, and does not use the fact that MPC is implemented in a receding horizon fashion.
 
-A better solution is a closed-loop assumption that exploits the fact that future inputs effectively are functions of future states (we will solve MPC problems in the future over new prediction horizons with measured states). This gives a lot less conservative solution, but the solution is, if not unsolvable, very hard. Typical solution require dynamic programming strategies, or brute-force enumeration. A tractable alternative was introduced in [Löfberg 2003].
+A better solution is a closed-loop assumption that exploits the fact that future inputs effectively are functions of future states (we will solve MPC problems in the future over new prediction horizons with measured states). This gives a lot less conservative solution, but the solution is, if not unsolvable, very hard. Typical solution require dynamic programming strategies, or brute-force enumeration. A tractable alternative was introduced in [Löfberg 2003](/reference/lofberg2003).
 
 ### Approximate closed-loop minimax solution
 
-The idea in [Löfberg 2003] was to parameterize future inputs as affine functions of past disturbances. This, in contrast to parameterization in past states, lead to convex and tractable problems.
+The idea in [Löfberg 2003](/reference/lofberg2003) was to parameterize future inputs as affine functions of past disturbances. This, in contrast to parameterization in past states, lead to convex and tractable problems.
 
 We create a causal feedback \\(U = LW + V\\) and derive the predicted states.
 
@@ -140,9 +140,7 @@ Obviously, the performance is far better (although we admittedly used different 
 
 ### Multiparametric solution of approximate closed-loop minimax problem
 
-(This feature is still not working well but require some additional work to improve performance. Coming soon though!)
-
-The robust optimization framework is integrated in the over-all infrastructure in YALMIP. Hence, a model can be robustified, and then sent to the multiparametric solver [MPT](/solver/mpt) in order to get a [tutorials.Multiparametric  multiparametric solution].
+The robust optimization framework is integrated in the over-all infrastructure in YALMIP. Hence, a model can be robustified, and then sent to the multiparametric solver [MPT](/solver/mpt) in order to get a [multi-parametric solution](/tutorial/multiparametricprogramming).
 
 In our case, we want to have a multi-parametric solution with respect to the state \\(x_k\\). One way to compute the parametric solution is to first derive the robustified model, and send this to the parametric solver.
 
@@ -151,7 +149,7 @@ In our case, we want to have a multi-parametric solution with respect to the sta
 sol = solvemp(Frobust,h,[],x);
 ````
 
-Alternatively, we can send the uncertain model directly to [solvemp](/command/solvemp), but we then have to declare the uncertain variables via the command [uncertain]
+Alternatively, we can send the uncertain model directly to [solvemp](/command/solvemp), but we then have to declare the uncertain variables via the command [uncertain](/command/uncertain)
 
 ````matlab
 sol = solvemp([F,G,uncertain(W)],objective,[],x);
@@ -159,9 +157,9 @@ sol = solvemp([F,G,uncertain(W)],objective,[],x);
 
 ### Dynamic programming solution to closed-loop minimax problem
 
-It should be mentioned that, for some problems, an exact closed-loop solution can probably be computed more efficiently with dynamic programming along the lines of [Examples.DP the dynamic programming examples].
+It should be mentioned that, for some problems, an exact closed-loop solution can probably be computed more efficiently with dynamic programming along the lines of [dynamic programming version of explicit mpc](/example/explicitmpc)
 
-Recall the DP code for the [Examples.DP#ltidp  dynamic programming example for LTI systems] to solve our problem without any uncertainty.
+Recall the DP code for the [dynamic programming example for LTI systems](/example/explicitmpc) to solve our problem without any uncertainty.
 
 ````matlab
 % Model data
