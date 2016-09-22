@@ -83,7 +83,7 @@ Multivariate polynomial problems are treated by simply converting them to biline
 
 ### Linear relaxation for general problems
 
-As in the polynomial case, every nonlinear scalar term \\(f(x)\\) is replaced with a new variable \\(w\\), and linear inequalities on \\(x\\) and \\(w\\) are introduced to ensure that \\(w\\) approximates \\(f(x)\\) well, i.e., that the curve \\(w = f(x)\\) is contained in the polytopic region in \\(A_x + A_w w \leq b\\).
+As in the polynomial case, every nonlinear scalar term \\(f(x)\\) is replaced with a new variable \\(w\\), and linear inequalities on \\(x\\) and \\(w\\) are introduced to ensure that \\(w\\) approximates \\(f(x)\\) well, i.e., that the curve \\(w = f(x)\\) is contained in the polytopic region in \\(A_x x + A_w w \leq b\\).
 
 As an example, for the **sqrtm** function, the following cut is used internally
 
