@@ -36,7 +36,7 @@ x = sdpvar(n,m,'full');
 ````
 
 
-### Is it really infeasible
+### Is it really infeasible?
 
 To begin with, get rid of the objective function. An objective function cannot generate any infeaibility, but in the feasibility analysis, it is just unnecessary to keep it. You might have stumbled into a bug in the solver presolve code or something, which causes it to make an incorrect statement. Some solvers mess up infeasibility with unbounded objective.
 
@@ -49,6 +49,10 @@ optimize(Constraints)
 ````
 
 Nope, not that simple...
+
+### Clean up and simplify your model
+
+Searching for a needle is easier in a clean small room, than a messy huge room. You don't have to debug your complete model, if the feasibility remains when you remove most parts of it. Make a quick effort to remove stuff. You might find the bug by simply cleaning up the code...
 
 ### Get a second opinion
 
