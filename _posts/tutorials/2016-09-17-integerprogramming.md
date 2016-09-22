@@ -15,7 +15,7 @@ YALMIP supports several [mixed integer programming solvers], but also comes with
 
 ### Integer and binary variables
 
-Defining binary and integer variables is done with the commands [binvar](/command/binvar) and [intvar]. The resulting objects are essentially [sdpvar](/command/sdpvar) objects with implicit constraints.
+Defining binary and integer variables is done with the commands [binvar](/command/binvar) and [intvar](/command/intvar). The resulting objects are essentially [sdpvar](/command/sdpvar) objects with implicit constraints.
 
 ````matlab
 x = intvar(n,m);
