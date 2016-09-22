@@ -139,7 +139,8 @@ diagnostics = bisection(Constraints, Objective,sdpsettings('solver','mosek'))
 Alternatively, call it as any other solver
 
 ````matlab
-diagnostics = optimize(Constraints, Objective,sdpsettings('solver','bisection','bisection.solver','mosek'))
+opssdpsettings('solver','bisection','bisection.solver','mosek');
+diagnostics = optimize(Constraints, Objective,ops)
 ````
 
 ### Nonlinear SDP solver
