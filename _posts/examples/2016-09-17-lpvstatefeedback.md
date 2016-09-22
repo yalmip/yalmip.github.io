@@ -29,7 +29,7 @@ Our goal is to compute a controller \\(u=Kx\\) for an uncertain linear system.
 
 The performance measure is given by the standard infinite horizon quadratic cost
 
-%center%Images:lqrintegral.png
+![lqr]({{ site.url }}/images/lqrintegral.png){: .center-image }
 
 A controller which minimizes the worst case cost is given by solving the following semidefinite programming problem.
 
@@ -83,7 +83,7 @@ the uncertain semidefinite constraint (note that it is parameterized in the unce
 
 ````matlab
 F = [Y >=0];
-F = [F, [-A*Y-B*L + (-A*Y-B*L)' Y L';Y inv(Q) zeros(3,1);L zeros(1,3) inv(R)] > 0];
+F = [F, [-A*Y-B*L + (-A*Y-B*L)' Y L';Y inv(Q) zeros(3,1);L zeros(1,3) inv(R)] >= 0];
 ````
 
 and the uncertainty description
