@@ -25,7 +25,7 @@ In addition to these standard steps, a large amount of preprocessing and bound-p
 
 The solver implements a standard relaxation strategy where all bilinear and quadratic terms are replaced with new linear variables. Based on bounds on the variables in the term, constraints are added to relate the new linear variable with the original nonlinear term, in order to make the relaxation as tight as possible. 
 
-Given two variables \\(x\\) and \\(y\\), and lower and upper bounds \\(x_L\\), \\(x_U\\), \\(y_L\\), \\(y_U\\), the following inequalities trivially hold [McCormick1976]
+Given two variables \\(x\\) and \\(y\\), and lower and upper bounds \\(x_L\\), \\(x_U\\), \\(y_L\\), \\(y_U\\), the following inequalities trivially hold [McCormick 1976](/reference/mccormick1976)
 
 
 ![Bilinear hull]({{ site.url }}/images/xyhull.png){: .center-image }
