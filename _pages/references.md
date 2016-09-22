@@ -12,6 +12,7 @@ permalink: /reference/
 {% if post.author = "J. Löfberg"
   {% include archive-single-reference.html type="grid" %}      
 {% endif %}
+{% endif %}
 {% endfor %}
 
 {% include paginator.html %}
