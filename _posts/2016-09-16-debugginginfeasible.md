@@ -90,7 +90,7 @@ check(Constraints)
 
 If this would have shown all constraints feasible, you would have found a bug in both YALMIP and all solvers you've tested. Most likely it will show that some constrant is infeasible, as in this case where contraint 5 is violated.
 
-So, constraint 5? With the set of constraint as listed above, it might be a nightmare to figure out which constraint this actually is. This is where [tagging constraints](/taggingconstraints)) might help. Add some nice tags in your code that defines the constraints, and it might look like this instead
+So, constraint 5? With the set of constraints listed above, it might be a nightmare to figure out which constraint this actually is. This is where [tagging constraints](/taggingconstraints)) might help. Add some nice tags in your code that defines the constraints, and it might look like this instead
 
 ````matlab
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
