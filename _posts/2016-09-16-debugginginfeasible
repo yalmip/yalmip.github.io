@@ -1,1 +1,190 @@
+---
+layout: single
+excerpt: "sqrt, sqrtm, power or cpower?"
+title: Debugging infeasible models
+tags: [Typical problems, Tricks]
+comments: true
+date: '2016-09-16'
+---
+
+Ok, so you've created your massive 5000 lines of code model, and when you run it, the solver claims it is infeasible
+
+````matlab
+
+sol = optimize(Constraints,Objective)
+
+    yalmiptime: 0.2192
+    solvertime: 0.2498
+          info: 'Infeasible problem (MOSEK)'
+       problem: 1
+````
+
+Where to start...
+
+### Absolutely most common mistake
+
+Code looks like this
+
+````matlab
+x = sdpvar(n,m);
+````
+
+Works like a charm as long as n and m are different, but when they are equal, you don't want a symmetric matrix which this will create. Hence, you should have had
+
+````matlab
+x = sdpvar(n,m,'full');
+````
+
+
+### Is it really infeasible
+
+To begin with, get rid of the objective function. An objective function cannot generate any infeaibility, but in the feasibility analysis, it is just unnecessary to keep it. You might have stumbled into a bug in the solver presolve code or something, which causes it to make an incorrect statement. Some solvers mess up infeasibility with unbounded objective.
+
+````matlab
+optimize(Constraints)
+    yalmiptime: 0.1859
+    solvertime: 0.2381
+          info: 'Infeasible problem (MOSEK)'
+       problem: 1
+````
+
+Nope, not that simple...
+
+### Get a second opinion
+
+Solvers can fail, so try another solver.
+
+````matlab
+optimize(Constraints,[],sdpsettings('solver','gurobi'))
+    yalmiptime: 0.3514
+    solvertime: 0.2166
+          info: 'Infeasible problem (GUROBI)'
+       problem: 1
+````
+
+
+### Do you have a known feasible solution?
+
+If you have a known feasible solution, use that and see if your model actually is feasible when you use it. Simply assign the solution and check the constraints
+
+````matlab
+assign(x,claimedfeasible);
+check(Constraints)
++++++++++++++++++++++++++++++++++++++++++++++++++++++
+|    ID|               Constraint|   Primal residual|
++++++++++++++++++++++++++++++++++++++++++++++++++++++
+|    #1|   Elementwise inequality|                 1|
+|    #2|   Elementwise inequality|                 0|
+|    #3|   Elementwise inequality|                 1|
+|    #4|   Elementwise inequality|                 0|
+|    #5|   Elementwise inequality|                -1|
+|    #6|   Elementwise inequality|                 0|
+|    #7|   Elementwise inequality|                 1|
+|    #8|   Elementwise inequality|                 0|
+|    #9|   Elementwise inequality|                 1|
+|   #10|   Elementwise inequality|                 0|
+|   #11|      Equality constraint|                 0|
++++++++++++++++++++++++++++++++++++++++++++++++++++++
+````
+
+If this would have shown all constraints feasible, you would have found a bug in both YALMIP and all solvers you've tested. Most likely it will show that some constrant is infeasible, as in this case where contraint 5 is violated.
+
+So, constraint 5? With the set of constraint as listed above, it might be a nightmare to figure out which constraint this actually is. This is where [tagging constraints](/taggingconstraints)) might help. Add some nice tags in your code that defines the constraints, and it might look like this instead
+
+````matlab
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+|    ID|                    Constraint|                   Tag|
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+|    #1|   Element-wise inequality 1x1|   Fubar constraints 1|
+|    #2|   Element-wise inequality 1x1|     Foo constraints 1|
+|    #3|   Element-wise inequality 1x1|   Fubar constraints 2|
+|    #4|   Element-wise inequality 1x1|     Foo constraints 2|
+|    #5|   Element-wise inequality 1x1|   Fubar constraints 3|
+|    #6|   Element-wise inequality 1x1|     Foo constraints 3|
+|    #7|   Element-wise inequality 1x1|   Fubar constraints 4|
+|    #8|   Element-wise inequality 1x1|     Foo constraints 4|
+|    #9|   Element-wise inequality 1x1|   Fubar constraints 5|
+|   #10|   Element-wise inequality 1x1|     Foo constraints 5|
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+````
+
+Hence, the Fubar constraint you setup in iteration 3, is not correct, or at least not consistent with the solution that you claim is infeasible.
+
+
+# Solve a model with slacked constraints
+
+Try to add slacks on constraints, and minimize the slack. Very often, you will see non-zero slacks on a very few constraints, and they are often the guilty ones. At least it helps you to hone in on problematic constraints.
+
+Hence, we replace
+
+````matlab
+Constraints = []
+for i = 1:N
+ Constraints = [Constraints, something1 <= 0];
+ Constraints = [Constraints, something2 == 0];
+end
+````
+
+with some slacked variant, such as
+
+````matlab
+Constraints = [slack1>=0]
+for i = 1:N
+ Constraints = [Constraints, something1 <= slack1(i)];
+ Constraints = [Constraints, something2 == slack2];
+end
+````
+
+and solve the problem while trying to drive the slacks to zero
+
+````matlab
+optimize(Constraints, sum(slack1) + sum(abs(slacks))
+````
+
+Checking the values of the slacks could reveal something
+````matlab
+value(slack1)
+ans =
+  0  0  0   0.0230  0.5000
+````
+
+The fourth and/or fifth constraint appears to be problematic, as we cannot find a solution where they both are feasible.
+
+
+### Bisect you constraints
+
+Remove constraints, and see when it becomes feasible. In the end, this might be your only option to hone in on the problems in your code. You can do this either by commenting out parts in your code, or by indexing from the full set
+
+In the following example, we have a model with 11 constraints which is infeasible
+
+````matlab
+sol = optimize(Constraints(1:5));if sol.problem==0;display('Feasible');else;display('Infeasible');end
+Feasible
+>> sol = optimize(Constraints(6:11));if sol.problem==0;display('Feasible');else;display('Infeasible');end
+Feasible
+````
+
+Nsty, there is a combination of some of the first 5 constraints (which are feasible) which combined with the last 6 constraints (which are feasible) causing infeasibility.
+
+````matlab
+sol = optimize(Constraints(1:8));if sol.problem==0;display('Feasible');else;display('Infeasible');end
+Feasible
+sol = optimize(Constraints(1:10));if sol.problem==0;display('Feasible');else;display('Infeasible');end
+Feasible
+````
+
+From this we know that the problem occurs when the eleventh constraint is added to the model, in combination with the other. Now you just have to come up with strategies to dig further. Essentially some kind of bisection
+
+````matlab
+sol = optimize(Constraints([1 5 11]));if sol.problem==0;display('Feasible');else;display('Infeasible');end
+Infeasible
+sol = optimize(Constraints([1 3 11]));if sol.problem==0;display('Feasible');else;display('Infeasible');end
+Feasible
+sol = optimize(Constraints([4 5 11]));if sol.problem==0;display('Feasible');else;display('Infeasible');end
+Infeasible
+sol = optimize(Constraints([5 11]));if sol.problem==0;display('Feasible');else;display('Infeasible');end
+Infeasible
+````
+
+There we have it. Constraint 5 and 11 are inconsistent.
 
