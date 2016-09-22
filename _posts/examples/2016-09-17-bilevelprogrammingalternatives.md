@@ -15,7 +15,7 @@ header:
 
 YALMIP supports [bilevel programming natively](/tutorial/bilevelprogramming), but this example shows how simple bilevel problems can be solved by using other standard modules in YALMIP. We will illustrate three different ways to solve bilevel quadratic optimization problems exactly; a [multi-parametric programming](/tutorial/multiparametricprogramming) approach (which boils down to a mixed integer quadratic programming approach), a direct mixed-integer quadratic programming approach, and a global nonlinear programming approach.
 
-The first part of this example requires linear and quadratic programming solvers, the second part a general nonlinear solver such as [FMINCON](/solver/fmincon), [SNOPT](/solver/snopt) or [IPOPT](/solver/ipopt), and the third part requires [MPT](/solver/mpt)(/solver/mpt).
+The first part of this example requires linear and quadratic programming solvers, the second part a general nonlinear solver such as [FMINCON](/solver/fmincon), [SNOPT](/solver/snopt) or [IPOPT](/solver/ipopt), and the third part requires [MPT](/solver/mpt).
 
 For an introduction to bilevel optimization, see [Bard 1999](/reference/bard1999).
 
