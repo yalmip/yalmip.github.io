@@ -57,3 +57,23 @@ The tag is useful not only for displays, but can also be used as an index.
 |   #1|   Numeric value|   Element-wise 1x1|   Bounded|
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ````
+
+Add an index too in case needed
+````matlab
+x = sdpvar(5,1);
+Constraints = [];
+for i = 1:5
+ Constraints = [Constraints, (x(i) >= 0):['Cool iteration ' num2str(i)]];
+end
+Constraints
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+|   ID|                    Constraint|                Tag|
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+|   #1|   Element-wise inequality 1x1|   Cool iteration 1|
+|   #2|   Element-wise inequality 1x1|   Cool iteration 2|
+|   #3|   Element-wise inequality 1x1|   Cool iteration 3|
+|   #4|   Element-wise inequality 1x1|   Cool iteration 4|
+|   #5|   Element-wise inequality 1x1|   Cool iteration 5|
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ````
+
