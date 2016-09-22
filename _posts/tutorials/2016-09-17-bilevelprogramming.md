@@ -12,9 +12,9 @@ sidebar:
 
 
 
-YALMIP has built-in support for definition, setup, and [solution of bilevel programming] problems. The code here concentrates on the built-in solver for bilevel problems. You can of course set them up yourself, by manually deriving the KKT conditions and solving them using various techniques in YALMIP, or by using YALMIPs high-level [kkt] operator, as illustrated in the [bilevel example](/example/bilevelaternatives).
+YALMIP has built-in support for definition, setup, and [solution of bilevel programming] problems. The code here concentrates on the built-in solver for bilevel problems. You can of course set them up yourself, by manually deriving the KKT conditions and solving them using various techniques in YALMIP, or by using YALMIPs high-level [kkt] operator, as illustrated in the [bilevel example](/example/bilevelalternatives).
 
-For an introduction to bilevel optimization, see [Practical Bilevel Optimization: algorithms and Applications by J. F. Bard](http://books.google.com/books?id=3T9LZreZshUC&printsec=frontcover)
+For an introduction to bilevel optimization, see [Bard 1999](/reference/bard1999).
 
 ### KKT conditions in bilevel programming
 
@@ -44,7 +44,7 @@ h-F_1x-F_2y & \geq 0\\
 \end{aligned}
 $$
 
-This is precisely what is done in the manually derived bilevel solution methods in [bilevel example], but the benefit of using YALMIPs native support as we will do here is that this solver branches directly on the complementarity conditions, and thus avoids to introduce any numerically dangerous [big-M] constants.
+This is precisely what is done in the manually derived bilevel solution methods in [bilevel example](/example/bilevelalternatives), but the possible benefit of using YALMIPs native support as we will do here is that this solver branches directly on the complementarity conditions, and thus avoids to introduce any numerically dangerous [big-M](/tutorial/bigmandconvexhulls) constants.
 
 ### Bilevel linear and quadratic programming
 
