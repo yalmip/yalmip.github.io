@@ -17,7 +17,7 @@ image:
   thumb: lofberg.jpg
 ---
 
-The toolboxes YALMIP and [MPT](/solver/mpt) were initially developed independently, but have over the years seen more and more integration. Several functionalities in [MPT](/solver/mpt) require YALMIP, and several functionalities in YALMIP require [MPT](/solver/mpt)(/solver/mpt).
+The toolboxes YALMIP and [MPT](/solver/mpt) were initially developed independently, but have over the years seen more and more integration. Several functionalities in [MPT](/solver/mpt) require YALMIP, and several functionalities in YALMIP require [MPT](/solver/mpt).
 
 In this article, we will look at some examples where we use a combination of YALMIP and [MPT](/solver/mpt) commands, and we will also illustrate how some operations in [MPT](/solver/mpt) can be done using YALMIP code only, and vice versa.
 
@@ -41,7 +41,7 @@ x = sdpvar(2,1);
 plot(A*x <= b);
 ````
 
-Alternatively, we can use a combination of YALMIP and [MPT](/solver/mpt)(/solver/mpt). The result is the same YALMIP model as above.
+Alternatively, we can use a combination of YALMIP and [MPT](/solver/mpt). The result is the same YALMIP model as above.
 
 ````matlab
 plot(ismember(x,P));
@@ -53,11 +53,11 @@ A final approach is to define the problem using YALMIP code, but convert it to a
 plot(polytope(A*x <= b));
 ````
 
-Note that the algorithm to plot the sets are completely different in YALMIP and [MPT](/solver/mpt)(/solver/mpt). [MPT](/solver/mpt) explicitly works with the polytopic structure and computes all vertices using a vertex enumeration algorithm. YALMIP on the other hand makes no assumption about the sets. To be able to handle arbitrary sets, it employs a ray-shooting strategy to generate points on the boundary of the feasible set, and then plot this (inner) approximation.
+Note that the algorithm to plot the sets are completely different in YALMIP and [MPT](/solver/mpt). [MPT](/solver/mpt) explicitly works with the polytopic structure and computes all vertices using a vertex enumeration algorithm. YALMIP on the other hand makes no assumption about the sets. To be able to handle arbitrary sets, it employs a ray-shooting strategy to generate points on the boundary of the feasible set, and then plot this (inner) approximation.
 
 ### Minkowski difference
 
-Minkowski difference, or polytope substraction, is overloaded on polytope objects in [MPT](/solver/mpt)(/solver/mpt). We define a new polytope, and subtract it from our first polytope
+Minkowski difference, or polytope substraction, is overloaded on polytope objects in [MPT](/solver/mpt). We define a new polytope, and subtract it from our first polytope
 
 ````matlab
 E = randn(10,2);
@@ -210,7 +210,7 @@ plot(replace(H*x,x(1),0.2) <= k)
 
 ### Convex hull
 
-Both [MPT](/solver/mpt) and YALMIP can be used to obtain the convex hull of the union of polytopes. Using [MPT](/solver/mpt)(/solver/mpt), we quickly define two cubes and plot them and their [convex hull](/commands/hull)
+Both [MPT](/solver/mpt) and YALMIP can be used to obtain the convex hull of the union of polytopes. Using [MPT](/solver/mpt), we quickly define two cubes and plot them and their [convex hull](/commands/hull)
 
 ````matlab
 P1 = unitbox(2,0.5)+[1;1];
