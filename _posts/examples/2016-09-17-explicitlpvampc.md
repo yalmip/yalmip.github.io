@@ -13,7 +13,7 @@ header:
   teaser: Henonattractor.png
 ---
 
-> This example, contributed by Thomas Besselmann, accompanies the  paper [Bes:2008b]
+> This example, contributed by Thomas Besselmann, accompanies the  paper [Besselmann and Löfberg 2012](/reference/besselmann2012).
 
 ### Introduction
 
@@ -27,7 +27,7 @@ parameter-varying state transition matrix and a constant input matrix
 
 This allows one to model systems, where the system dynamics depend on scheduling signals, and this scheduling signal is measurable, but not known in advance.
 
-An example for the computation of explicit MPC control laws for general LPV systems is shown in the example [Explicit LPV-MPC ]. The subclass of LPV-A systems allows for simpler computations, which will be presented in the following.
+An example for the computation of explicit MPC control laws for general LPV systems is shown in the [LPV-MPC example](/example/explicitlpvmpc). The subclass of LPV-A systems allows for simpler computations, which will be presented in the following.
 
 ### The nonlinear Hénon map
 
@@ -70,7 +70,6 @@ Here the scheduling parameter is an affine function of the first state and varie
 Let us find the explicit solution to a variant of the MPC problem for LPV-A systems. This will be a pretty advanced example, so let us start slowly by defining some data.
 
 ````matlab
-% YALMIP options
 yalmip('clear')
 
 % Model data
@@ -148,7 +147,7 @@ In the first and the last step of the iteration, some parts of the code differ f
 
 ### First step
 
-In the first step we rewrite the 1-norm into an epigraph formulation, and add constraints for the final state. Note that we have to manually derive the epigraph models of the sum-of-1-norms, due to the [Extra Robust issues described here].
+In the first step we rewrite the 1-norm into an epigraph formulation, and add constraints for the final state. Note that we have to manually derive the epigraph models of the sum-of-1-norms (*note true any longer, example written for old version*)
 
 ````matlab
 % |x| written as max(a[x;u]+b)
