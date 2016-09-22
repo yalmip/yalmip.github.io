@@ -11,7 +11,7 @@ A question on the [YALMIP forum](http://sedumi.ie.lehigh.edu/index.php?option=co
 
 This is partially answered and discussed in one of the [sum-of-squares examples](/example/moresos) and the referenced paper [Löfberg 2009](/reference/lofberg2009). The problem boils down to the fact that semidefinite solvers typically work with infeasible methods. Hence, the optimal solution you obtain in the end is very often slightly infeasible.
 
-When YALMIP sets up a sum-of-squares problem, there are two alternative approaches. The first approach, which is used by default, is the kernel representation, sometimes called primal form in YALMIP. You can explicitly tell YALMIP to use this form by setting `'sos.model'` to 1 in [sdpsettings] when calling [solvesos](/command/solvesos).
+When YALMIP sets up a sum-of-squares problem, there are two alternative approaches. The first approach, which is used by default, is the kernel representation, sometimes called primal form in YALMIP. You can explicitly tell YALMIP to use this form by setting `'sos.model'` to 1 in [sdpsettings](/command/sdpsettings) when calling [solvesos](/command/solvesos).
 
 ![Primal form]({{ site.url }}/images/primalform.gif){: .center-image }
 

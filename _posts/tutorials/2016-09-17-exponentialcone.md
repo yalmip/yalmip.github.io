@@ -16,7 +16,7 @@ By simple variable transformations, the following functions are automatically de
 
 1. [exp](/command/exp), [pexp]
 2. [log](/command/log), [log2], log10], [slog], [plog]
-3. [entropy](/command/entropy), [logsumeexp], [kullbackleibler]
+3. [entropy](/command/entropy), [logsumexp], [kullbackleibler]
 
 Note that YALMIP does not detect exponential cones when written in the canonical form \\( ye^{x/y}\leq z \\), but instead you can use the perspective exponential, [pexp], which implements  \\( x_1e^{x_1/x_2} \\).
 

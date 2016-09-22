@@ -57,7 +57,7 @@ t_lower = -max(eig(inv(P0)*(A'*P0+P0*A)))/2;
 ````
 Alternatively, we could just as well have picked the lower bound as 0, it would only mean that we would have to run the bisection algorithm for a couple more iterations.
 
-We now find an upper bound on the decay-rate by doubling \\(t\\) until the problem is infeasible. To find out if the problem is infeasible, we check the field **problem** in the solution structure. The meaning of this variable is explained in the help text for the command [yalmiperror]. Infeasibility has been detected by the solver if the value is 1. To reduce the amount of information written on the screen, we run the solver in a completely silent mode. This can be accomplished by using the verbose and warning options in [sdpsettings].
+We now find an upper bound on the decay-rate by doubling \\(t\\) until the problem is infeasible. To find out if the problem is infeasible, we check the field **problem** in the solution structure. The meaning of this variable is explained in the help text for the command [yalmiperror]. Infeasibility has been detected by the solver if the value is 1. To reduce the amount of information written on the screen, we run the solver in a completely silent mode. This can be accomplished by using the verbose and warning options in [sdpsettings](/command/sdpsettings).
 
 ````matlab
 t_upper = t_lower*2;
@@ -145,7 +145,7 @@ diagnostics = optimize(Constraints, Objective,ops)
 
 ### Nonlinear SDP solver
 
-An alternative way to solve the problem is to install the nonlinear semidefinite programming solvers [PENBMI] or [PENLAB]. These solvers will easily solve the problem, and is guaranteed (in theory...) to find the global optima due to the quasi-convexity.
+An alternative way to solve the problem is to install the nonlinear semidefinite programming solvers [PENBMI](/solver/penbmi) or [PENLAB](/solver/penlab). These solvers will easily solve the problem, and is guaranteed (in theory...) to find the global optima due to the quasi-convexity.
 
 ````matlab
 t = sdpvar(1);
@@ -155,7 +155,7 @@ optimize(F,-t,sdpsettings('solver','penlab'));
 
 ### Global SDP solver
 
-If [PENBMI] or [SPENLAB] is installed, the decay-rate problem should easily be solved, in theory. In practice, the solver may encounter numerical problems. An alternative then is to run YALMIPs internal global SDP solver [BMIBNB]. This is a bit of an over-kill, but it is convenient, compared to writing the script above, and is actually just as fast.
+If [PENBMI](/solver/penbmi) or [SPENLAB] is installed, the decay-rate problem should easily be solved, in theory. In practice, the solver may encounter numerical problems. An alternative then is to run YALMIPs internal global SDP solver [BMIBNB]. This is a bit of an over-kill, but it is convenient, compared to writing the script above, and is actually just as fast.
 
 ````matlab
 F = [P>=0, A'*P+P*A <= -2*t*P, trace(P)== 1, 100 >= t >= 0];

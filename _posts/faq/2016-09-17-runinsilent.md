@@ -11,4 +11,4 @@ sidebar:
   nav:
 ---
 
-Use the option 'verbose' in [sdpsettings].
+Use the option 'verbose' in [sdpsettings](/command/sdpsettings).

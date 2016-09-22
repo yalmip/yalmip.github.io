@@ -11,7 +11,7 @@ sidebar:
   nav: "commands"
 ---
 
-[sdpsettings] is used to communicate options to YALMIP and solvers. It is used as the third argument in commands such [optimize](/command/optimize), [solvesos](/command/solvesos), [solvemoment](/command/solvemoment) and [solvemp](/command/solvemp). 
+[sdpsettings](/command/sdpsettings) is used to communicate options to YALMIP and solvers. It is used as the third argument in commands such [optimize](/command/optimize), [solvesos](/command/solvesos), [solvemoment](/command/solvemoment) and [solvemp](/command/solvemp). 
 
 ### Syntax
 
@@ -135,7 +135,7 @@ ans =
 
 ### !solver
 
-In the code above, we told YALMIP to use the solver DSDP, and to run in silent mode. The possible values to give to the field solver can be found in the solver documentation, or simply study the structure returned by [sdpsettings]. If the solver DSDP not is found, an error message will be reported. To let YALMIP select the solver, use the default solver tag ''. If you give a comma-separated list of solvers such as 'dsdp,csdp,sdpa', YALMIP will select based on this preference. If you add a wildcard in the end 'dsdp,csdp,sdpa,*', YALMIP will select another solver if none of the solvers in the list were found. 
+In the code above, we told YALMIP to use the solver DSDP, and to run in silent mode. The possible values to give to the field solver can be found in the solver documentation, or simply study the structure returned by [sdpsettings](/command/sdpsettings). If the solver DSDP not is found, an error message will be reported. To let YALMIP select the solver, use the default solver tag ''. If you give a comma-separated list of solvers such as 'dsdp,csdp,sdpa', YALMIP will select based on this preference. If you add a wildcard in the end 'dsdp,csdp,sdpa,*', YALMIP will select another solver if none of the solvers in the list were found. 
 
 ### !verbose
 
