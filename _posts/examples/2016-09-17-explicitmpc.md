@@ -17,7 +17,7 @@ YALMIP extends the parametric algorithms in [MPT](/solver/mpt) by adding a layer
 
 ### One-shot with PWA model
 
-Let us find the explicit solution to a variant of the MPC problem introduced in the [hybrid MPC example]. This will be a pretty advanced example, so let us start slowly by defining the some data.
+Let us find the explicit solution to a variant of the MPC problem introduced in the [hybrid MPC example](/example/hybridmpc). This will be a pretty advanced example, so let us start slowly by defining the some data.
 
 ````matlab
 yalmip('clear')
@@ -45,7 +45,7 @@ u = sdpvar(repmat(nu,1,N),repmat(1,1,N));
 d = binvar(repmat(2,1,N),repmat(1,1,N));
 ````
 
-We now run a loop to add constraints on all states and inputs. For the logic constraints to work well, it is extremely important that all variables are explicitly bounded. Read more about this in the [logic programming] and the [big-M] tutorial. To prepare for the dynamic programming code later on, we setup the constraints back-wards in time.
+We now run a loop to add constraints on all states and inputs. For the logic constraints to work well, it is extremely important that all variables are explicitly bounded. Read more about this in the [logic programming](/tutorial/logicprogramming)) and the [big-M](/tutorialbigmandconvexhull) tutorial. To prepare for the dynamic programming code later on, we setup the constraints back-wards in time.
 
 ````matlab
 constraints = [];
@@ -102,6 +102,7 @@ ans =
 ````
 
 The optimal cost at this state is available in the value function
+
 ````matlab
 value(Valuefunction)
 ans =
@@ -122,7 +123,7 @@ ans =
 
 ### Dynamic programming with LTI systems
 
-The capabilities in YALMIP to work with piecewise functions and parametric programs enables easy coding of dynamic programming algorithms. The value function with respect to the parametric variable for a parametric linear program is a convex PWA function, and this is the function returned in the fourth output. YALMIP creates this function internally, and also saves information about convexity etc, and uses it as any other [nonlinear operator] (see more details below). For binary parametric linear programs, the value function is no longer convex, but a so called overlapping PWA function. This means that, at each point, it is defined as the minimum of a set of convex PWA function. This information is also handled transparently in YALMIP, it is simply another type of [nonlinear operator]. The main difference between the two function classes is that the second class requires introduction of binary variables when used.
+The capabilities in YALMIP to work with piecewise functions and parametric programs enables easy coding of dynamic programming algorithms. The value function with respect to the parametric variable for a parametric linear program is a convex PWA function, and this is the function returned in the fourth output. YALMIP creates this function internally, and also saves information about convexity etc, and uses it as any other [nonlinear operator](/tutorial/nonlinearoperators) (see more details below). For binary parametric linear programs, the value function is no longer convex, but a so called overlapping PWA function. This means that, at each point, it is defined as the minimum of a set of convex PWA function. This information is also handled transparently in YALMIP, it is simply another type of [nonlinear operator](/tutorial/nonlinearoperators). The main difference between the two function classes is that the second class requires introduction of [binary variables](/tutorial/nonlinearoperatorsmixedinteger) when used.
 
 Note, the algorithms described in the following sections are mainly intended for (piecewise) linear objectives. Dynamic programming with quadratic objective functions give rise to problems that are much harder to solve, although it is supported.
 
@@ -171,7 +172,7 @@ for k = N-1:-1:1
 end
 ````
 
-Notice the minor changes needed compared to the one-shot solution. Important to understand is that the value function at step k will be a function in '''x{k}''', hence when it is used at k-1, it will be a function penalizing the predicted state. Note that YALMIP automatically keeps track of convexity of the value function. Hence, for this example, no binary variables are introduced along the solution process.
+Notice the minor changes needed compared to the one-shot solution. Important to understand is that the value function at step k will be a function in **x{k}**, hence when it is used at k-1, it will be a function penalizing the predicted state. Note that YALMIP automatically keeps track of convexity of the value function. Hence, for this example, no binary variables are introduced along the solution process.
 
 To study the development of the value function, we can plot them.
 
