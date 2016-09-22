@@ -17,16 +17,15 @@ image:
   thumb: lofberg.jpg
 ---
 
-This example illustrates an application of the [robust optimization module]. The main focus of this example is uncertain semidefinite constraints.
+This example illustrates an application of the [robust optimization module](/tutorial/robustoptimization). The main focus of this example is uncertain semidefinite constraints.
 
-In addition to the robustification of linear constraints, introduced in the [robust MPC example], YALMIP can also robustify SOCP and SDP constraints bilinear in the decision variable and the uncertainty. However, it is required that the uncertainty description is polytopic, since the robustification is done using vertex enumeration. Uncertain SOCP and SDP constraints with general conic uncertainty models are typically not tractable, i.e., they can at best be dealt with using approximations.
+In addition to the robustification of linear constraints, introduced in the [robust MPC example](/eample/robustmpc), YALMIP can also robustify second-order cone and semdefinite constraints bilinear in the decision variable and the uncertainty.
 
 ### Robust control
 
 Our goal is to compute a controller \\(u=Kx\\) for an uncertain linear system.
 
 ![polytopicsystem]({{ site.url }}/images/polytopicsystem.png){: .center-image }
-
 
 The performance measure is given by the standard infinite horizon quadratic cost
 
@@ -36,7 +35,7 @@ A controller which minimizes the worst case cost is given by solving the followi
 
 ![polytopicsystem]({{ site.url }}/images/lqr1.png){: .center-image }
 
-This is a nonconvex problem, but a standard trick in control  [Boyd et al. 1994]} is to perform a congruence transformation with \\(Y=P^-1\\), introduce \\(L=KY\\), and apply a Schur complement. Instead of solving the nonconvex problem, the following problem is solved instead (never mind the odd change of objective)
+This is a nonconvex problem, but a standard trick in control  [Boyd et al. 1994](/reference/boyd1994) is to perform a congruence transformation with \\(Y=P^-1\\), introduce \\(L=KY\\), and apply a Schur complement. Instead of solving the nonconvex problem, the following problem is solved instead (never mind the odd change of objective)
 
 ![polytopicsystem]({{ site.url }}/images/lqrlmi2.png){: .center-image }
 
@@ -58,7 +57,7 @@ A1 = Anominal;A1(1,3) = -0.1;
 A2 = Anominal;A2(1,3) =  0.1;
 ````
 
-Before we employ the automatic support for robust semidefinite programming, note that this is the manually derived worst-case problem and solution *(The tag 'full' is used here to remind novel users that for variables that should be fully parameterized, use the tag. It is a common mistake to copy code and then all of a sudden when the matrix is square, you forget to add the tag 'full' and get a symmetric matrix. See [basic].)*
+Before we employ the automatic support for robust semidefinite programming, note that this is the manually derived worst-case problem and solution *(The tag 'full' is used here to remind novel users that for variables that should be fully parameterized, use the tag. It is a common mistake to copy code and then all of a sudden when the matrix is square, you forget to add the tag 'full' and get a symmetric matrix. See [basic](/tutorials/basics).)*
 
 ````matlab
 Y = sdpvar(3,3);
