@@ -25,7 +25,7 @@ b = rand(m,1)*m;
 x = sdpvar(n,1);
 ````
 
-Solve the problem using the overloaded concave [log] (for this to work, you need to have a general purpose nonlinear solver installed)
+Solve the problem using the overloaded concave [log](/command/log) (for this to work, you need to have a general purpose nonlinear solver installed)
 
 ````matlab
 optimize(A*x <= b,-sum(log(b-A*x)))
