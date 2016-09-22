@@ -93,24 +93,37 @@ If this would have shown all constraints feasible, you would have found a bug in
 So, constraint 5? With the set of constraint as listed above, it might be a nightmare to figure out which constraint this actually is. This is where [tagging constraints](/taggingconstraints)) might help. Add some nice tags in your code that defines the constraints, and it might look like this instead
 
 ````matlab
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-|    ID|                    Constraint|                   Tag|
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-|    #1|   Element-wise inequality 1x1|   Fubar constraints 1|
-|    #2|   Element-wise inequality 1x1|     Foo constraints 1|
-|    #3|   Element-wise inequality 1x1|   Fubar constraints 2|
-|    #4|   Element-wise inequality 1x1|     Foo constraints 2|
-|    #5|   Element-wise inequality 1x1|   Fubar constraints 3|
-|    #6|   Element-wise inequality 1x1|     Foo constraints 3|
-|    #7|   Element-wise inequality 1x1|   Fubar constraints 4|
-|    #8|   Element-wise inequality 1x1|     Foo constraints 4|
-|    #9|   Element-wise inequality 1x1|   Fubar constraints 5|
-|   #10|   Element-wise inequality 1x1|     Foo constraints 5|
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+|    ID|               Constraint|   Primal residual|                   Tag|
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+|    #1|   Elementwise inequality|                 1|   Fubar constraints 1|
+|    #2|   Elementwise inequality|                 0|     Foo constraints 1|
+|    #3|   Elementwise inequality|                 1|   Fubar constraints 2|
+|    #4|   Elementwise inequality|                 0|     Foo constraints 2|
+|    #5|   Elementwise inequality|                -1|   Fubar constraints 3|
+|    #6|   Elementwise inequality|                 0|     Foo constraints 3|
+|    #7|   Elementwise inequality|                 1|   Fubar constraints 4|
+|    #8|   Elementwise inequality|                 0|     Foo constraints 4|
+|    #9|   Elementwise inequality|                 1|   Fubar constraints 5|
+|   #10|   Elementwise inequality|                 0|     Foo constraints 5|
+|   #11|      Equality constraint|                 0|                      |
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ````
 
 Hence, the Fubar constraint you setup in iteration 3, is not correct, or at least not consistent with the solution that you claim is infeasible.
 
+An alternative is to modularize your code a bit and create sub-components
+
+````
+% Create The Fubar constraints
+Fubar = ...
+
+% Create The Foo constraints
+Foo = ...
+
+optimize([Fubar,Foo])
+check(Fubar)
+check(Foo)
 
 # Solve a model with slacked constraints
 
