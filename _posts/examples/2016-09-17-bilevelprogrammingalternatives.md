@@ -13,11 +13,11 @@ header:
   teaser: "bilevel.png"
 ---
 
-YALMIP supports [solvebilevel bilevel programming natively], but this example shows how simple bilevel problems can be solved by using other standard modules in YALMIP. We will illustrate three different ways to solve bilevel quadratic optimization problems exactly; a multiparametric programming approach (which boils down to a mixed integer quadratic programming approach), a direct mixed integer quadratic programming approach, and a global nonlinear programming approach.
+YALMIP supports [bilevel programming natively](/tutorial/bilevelprogramming), but this example shows how simple bilevel problems can be solved by using other standard modules in YALMIP. We will illustrate three different ways to solve bilevel quadratic optimization problems exactly; a [multi-parametric programming](/tutorial/multiparametricprogramming) approach (which boils down to a mixed integer quadratic programming approach), a direct mixed-integer quadratic programming approach, and a global nonlinear programming approach.
 
 The first part of this example requires linear and quadratic programming solvers, the second part a general nonlinear solver such as [FMINCON], [SNOPT] or [IPOPT], and the third part requires [MPT].
 
-For an introduction to bilevel optimization, see [Practical Bilevel Optimization: algorithms and Applications by J. F. Bard]
+For an introduction to bilevel optimization, see [Bard 1999](/reference/bard1999).
 
 ### Bilevel quadratic programming
 
@@ -40,6 +40,7 @@ z = \arg \min ~&\frac{1}{2}z^THz+e^Tz + f^Tx \\
 $$
 
 The three approaches we will use all rely on the KKT conditions for the inner problem, but address this condition in different ways.
+
 $$
 \begin{aligned}
 Hz+e+F^T\lambda &=0\\
@@ -140,6 +141,21 @@ ops = sdpsettings('solver','bmibnb');
 optimize([KKT, A*x <= b + E*z], 0.5*x'*Q*x + c'*x + d'*z,ops)
 ````
 
+Alternatively, write the KKT using the built-in [complements]
+
+````matlab
+slack = sdpvar(length(h),1);
+
+KKT = [H*z + e + F'*lambda == 0,
+                     slack ==  h + G*x - F*z,
+                     complements(slack >= 0,lambda >= 0),
+KKT = [KKT, lambda <= 100, -100 <= [x;z] <= 100];
+
+ops = sdpsettings('solver','bmibnb');
+optimize([KKT, A*x <= b + E*z], 0.5*x'*Q*x + c'*x + d'*z,ops)
+````
+
+
 ### Multiparametric programming approach
 
 A more advanced way in YALMIP to solve this problem, is to explicitly compute a parametrized solution \\(z(x)\\) by using multiparametric programming. This will lead to a piecewise affine description of the optimizer, and when this expression is plugged into the outer problem, a mixed integer quadratic programming problem arise.
@@ -185,7 +201,7 @@ end
 
 ### Using the built-in bilevel solver
 
-As we mentioned above, YALMIP has a [solvebilevel built-in bilevel solver] which applies to this problem.
+As we mentioned above, YALMIP has a [built-in bilevel solver](/solver/solvebilevel) which applies to this problem.
 
 ````matlab
 con_inner = F*z <=  h + G*x;
