@@ -62,6 +62,7 @@ optimize(Constraints,[],sdpsettings('solver','gurobi'))
        problem: 1
 ````
 
+OK, unlikely that two solvers make the same incorrect judgement.
 
 ### Do you have a known feasible solution?
 
