@@ -90,7 +90,7 @@ check(Constraints)
 
 If this would have shown all constraints feasible, you would have found a bug in both YALMIP and all solvers you've tested. Most likely it will show that some constrant is infeasible, as in this case where contraint 5 is violated.
 
-So, constraint 5? With the set of constraints listed above, it might be a nightmare to figure out which constraint this actually is. This is where [tagging constraints](/taggingconstraints)) might help. Add some nice tags in your code that defines the constraints, and it might look like this instead
+So, constraint 5? With the set of constraints listed above, it might be a nightmare to figure out which constraint this actually is. This is where [tagging constraints](/taggingconstraints) might help. Add some nice tags in your code that defines the constraints, and it might look like this instead
 
 ````matlab
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -110,7 +110,7 @@ So, constraint 5? With the set of constraints listed above, it might be a nightm
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ````
 
-Hence, the Fubar constraint you setup in iteration 3, is not correct, or at least not consistent with the solution that you claim is infeasible.
+Hence, the Fubar constraint you setup in iteration 3, is not correct, or at least not consistent with the solution that you claim is valid.
 
 An alternative is to modularize your code a bit and create sub-components
 
@@ -124,8 +124,9 @@ Foo = ...
 optimize([Fubar,Foo])
 check(Fubar)
 check(Foo)
+````
 
-# Solve a model with slacked constraints
+### Solve a model with slacked constraints
 
 Try to add slacks on constraints, and minimize the slack. Very often, you will see non-zero slacks on a very few constraints, and they are often the guilty ones. At least it helps you to hone in on problematic constraints.
 
@@ -145,17 +146,18 @@ with some slacked variant, such as
 Constraints = [slack1>=0]
 for i = 1:N
  Constraints = [Constraints, something1 <= slack1(i)];
- Constraints = [Constraints, something2 == slack2];
+ Constraints = [Constraints, something2 == slack2(i)];
 end
 ````
 
 and solve the problem while trying to drive the slacks to zero
 
 ````matlab
-optimize(Constraints, sum(slack1) + sum(abs(slacks))
+optimize(Constraints, sum(slack1) + sum(abs(slack2))
 ````
 
 Checking the values of the slacks could reveal something
+
 ````matlab
 value(slack1)
 ans =
@@ -167,7 +169,7 @@ The fourth and/or fifth constraint appears to be problematic, as we cannot find 
 
 ### Bisect you constraints
 
-Remove constraints, and see when it becomes feasible. In the end, this might be your only option to hone in on the problems in your code. You can do this either by commenting out parts in your code, or by indexing from the full set
+Remove constraints, and see when it becomes feasible. In the end, this might be your only option to hone in on the problems in your code. You can do this either by commenting out parts in your code, or by indexing from the full set.
 
 In the following example, we have a model with 11 constraints which is infeasible
 
