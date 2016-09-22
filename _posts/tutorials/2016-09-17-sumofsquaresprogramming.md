@@ -76,8 +76,8 @@ Once again, this is the basic idea behind the SOS module in YALMIP. However, the
 
 The following lines of code presents some typical manipulations when working with SOS-calculations.
 
-The most important commands are [sos] (to define a SOS constraint) and [solvesos](/command/solvesos) (to solve the problem)
-.
+The most important commands are [sos](/command/sos) (to define a SOS constraint) and [solvesos](/command/solvesos) (to solve the problem)
+
 ````matlab
 x = sdpvar(1,1);y = sdpvar(1,1);
 p = (1+x)^4 + (1-y)^2;
@@ -85,7 +85,7 @@ F = sos(p);
 solvesos(F);
 ````
 
-The sum-of-squares decomposition is extracted with the command [sosd].
+The sum-of-squares decomposition is extracted with the command [sosd](/command/sosd).
 
 ````matlab
 h = sosd(F);
@@ -120,7 +120,7 @@ clean(p-v{1}'*Q{1}*v{1},1e-6)
 
 Note: Even though \\(h^T(x)h(x)\\)  and \\(v^T(x)Qv(x)\\)  should be the same in theory, they are typically not. The reason is partly numerical issues with floating point numbers, but more importantly due to the way YALMIP treats the case when \\(Q\\) not is positive definite (sometimes the case due to numerical issues in the SDP solver). The decomposition is in theory typically defined as \\(h(x)=\text{chol}(Q)v(x)\\). YALMIP however uses a decomposition based on a singular value decomposition to avoid problems in the singular and numerically indefinite case. If \\(Q\\) is positive definite the two expressions coincide.
 
-The quality of the decomposition can alternatively be evaluated using [checkset]. The value reported is the largest coefficient in the polynomial  \\(p(x)-v^T(x)Qv(x)\\)
+The quality of the decomposition can alternatively be evaluated using [check](/command/check). The value reported is the largest coefficient in the polynomial  \\(p(x)-v^T(x)Qv(x)\\)
 
 ````matlab
 checkset(F)
@@ -135,7 +135,7 @@ e =
   7.3674e-012
 ````
 
-Easiest way however is to use a fourth output in the call to [solvesos]
+Easiest way however is to use a fourth output in the call to [solvesos](/command/solvesos)
 
 ````matlab
 [sol,v,Q,res] = solvesos(F);
@@ -195,7 +195,7 @@ ans =
 ````
 
 
-If you have parametric variables, bounding the feasible region typically improves numerical behavior. Having lower bounds will additionally decrease the size of the optimization problem (variables bounded from below can be treated as translated cone variables in [dualization], which is used by [solvesos]).
+If you have parametric variables, bounding the feasible region typically improves numerical behavior. Having lower bounds will additionally decrease the size of the optimization problem (variables bounded from below can be treated as translated cone variables in [dualization], which is used by [solvesos](/command/solvesos)).
 
 One of the most common mistake people make when using the sum-of-squares module is to forget to declare some parametric variables. This will typically lead to a (of course erroneous) huge sum-of-squares problem which easily freezes MATLAB and/or give strange error.
 
