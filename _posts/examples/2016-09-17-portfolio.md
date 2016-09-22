@@ -36,7 +36,7 @@ optimize(F,w'*S*w)
 value(w)
 ````
 
-An alternative approach is to limit the variance, and maximize the expected return. Let us maximize the return while constraining the variance to be less than the variance for a  portfolio with equal positions in all assets (this model leads to a quadratically constrained problem, hence you need a QCQP or SOCP capable solver such as [sedumi](/command/sedumi), [sdpt3](/command/sdpt3), [GUROBI](/solver/gurobi), [MOSEK](/solver/mosek), or [CPLEX])
+An alternative approach is to limit the variance, and maximize the expected return. Let us maximize the return while constraining the variance to be less than the variance for a  portfolio with equal positions in all assets (this model leads to a quadratically constrained problem, hence you need a QCQP or SOCP capable solver such as [sedumi](/command/sedumi), [sdpt3](/command/sdpt3), [GUROBI](/solver/gurobi), [MOSEK](/solver/mosek), or [CPLEX](/solver/cplex))
 
 ````matlab
 F = [sum(w) == 1, w>=0];
