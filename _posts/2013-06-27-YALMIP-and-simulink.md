@@ -4,7 +4,7 @@ excerpt: "Using YALMIP objects and code in Simulink models, easy or fast, your c
 title: YALMIP and Simulink
 tags: [Simulink]
 comments: true
-date: '2016-06-27'
+date: '2013-06-27'
 ---
 
 I have been asked frequently recently whether it is possible to have YALMIP code in Simulink simulations. The answer is yes, but there are some caveats.
