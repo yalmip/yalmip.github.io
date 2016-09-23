@@ -66,7 +66,7 @@ optimize(F,bound);
 x_Linf = value(x_hat);
 ````
 
-Since [bnb] supports mixed integer semidefinite programming, we can easily solve the problems above with semidefinite constraints.
+Since [BNB](/solver/bnb) supports mixed integer semidefinite programming, we can easily solve the problems above with semidefinite constraints.
 
 ````matlab
 F = [toeplitz(x_hat) > 0];
@@ -74,7 +74,7 @@ optimize(F,residuals'*residuals);
 x_L2_toep = value(x_hat);
 ````
 
-Note that [BNB]  not should be used if you have simple mixed integer linear programs. In that case, you can just as well download a much faster free specialized MILP solver, such as [GLPK] or academic license version of [GUROBI](/solver/gurobi).
+Note that [BNB](/solver/bnb)  not should be used if you have simple mixed integer linear programs. In that case, you can just as well download a much faster free specialized MILP solver, such as [GLPK] or academic license version of [GUROBI](/solver/gurobi).
 
 ### General mixed integer programming
 
@@ -124,7 +124,7 @@ invalid. Hence, do not trust the bound or the gap...
 +  23 Finishing.  Cost: 107
 ````
 
-If globality is desired, and the problem is nonconvex (for relaxed integers), the [global optimization](/tutorial/globaloptimization) solver [BMIBNB] does actually support integer variables. However, [BMIBNB] is only intended for a few number of variables, and is much slower, since it performs branching not only in the integer variables, but also in the continuous variables.
+If globality is desired, and the problem is nonconvex (for relaxed integers), the [global optimization](/tutorial/globaloptimization) solver [BMIBNB](/solver/bmibnb) does actually support integer variables. However, [BMIBNB](/solver/bmibnb) is only intended for a few number of variables, and is much slower, since it performs branching not only in the integer variables, but also in the continuous variables.
 
 ````matlab
 ops = sdpsettings('solver','bmibnb','bmibnb.upper','fmincon');

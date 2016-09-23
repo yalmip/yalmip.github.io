@@ -113,7 +113,7 @@ value(x'*Q*x)
 
 ### Comparison with Global solver
 
-Although semidefinite relaxations have had a huge impact on the field of nonconvex optimization, it must not be forgotten that standard global optimization often is competitive, at least when a solution is required and a lower bound not is sufficient. Switching to YALMIPs built-in global solver [BMIBNB] is trivial
+Although semidefinite relaxations have had a huge impact on the field of nonconvex optimization, it must not be forgotten that standard global optimization often is competitive, at least when a solution is required and a lower bound not is sufficient. Switching to YALMIPs built-in global solver [BMIBNB](/solver/bmibnb) is trivial
 
 ````
 ops = sdpsettings('solver','bmibnb')

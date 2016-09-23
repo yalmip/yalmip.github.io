@@ -112,7 +112,7 @@ Note that YALMIP has a built-in command for generating [kkt](/command/kkt), henc
 
 ### Nonlinear solver for complementary constraints
 
-A more direct approach to handle the complementary constraints is to simply solve the nonlinear nonconvex problem that arise. To do this in YALMIP, we use the built-in global solver [BMIBNB]. As before, the only addition compared to the theoretical KKT system is that we have to add explicit constraints in order to bound the search-space.
+A more direct approach to handle the complementary constraints is to simply solve the nonlinear nonconvex problem that arise. To do this in YALMIP, we use the built-in global solver [BMIBNB](/solver/bmibnb). As before, the only addition compared to the theoretical KKT system is that we have to add explicit constraints in order to bound the search-space.
 
 ````matlab
 KKT = [H*z + e + F'*lambda == 0,

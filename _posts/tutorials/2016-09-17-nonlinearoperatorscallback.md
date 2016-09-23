@@ -16,7 +16,7 @@ The nonlinear operator framework was initially implemented for functions that ca
 
 However, there are many functions that cannot be modelled using conic constraints, such as exponential functions and logarithms, but are convex or concave, and of course can be analyzed in terms of convexity preserving operations. These function (and any other nonlinear function) are supported in a framework called evaluation based nonlinear operators. Models using these general operators will still be analyzed with respect to convexity, but the resulting model requires a general nonlinear solver, such as [FMINCON](/solver/fmincon) or [SNOPT](/solver/snopt).
 
-In addition to convexity properties and simple function values, operators can be attributed with various other properties, and we will use this possibility here. Examples include derivative information and envelope approximators for the global solver [BMIBNB].
+In addition to convexity properties and simple function values, operators can be attributed with various other properties, and we will use this possibility here. Examples include derivative information and envelope approximators for the global solver [BMIBNB](/solver/bmibnb).
 
 Note that the framework currently is focused on elementwise functions or functions with vector input and scalar output. The tutorial here concentrates on the elementwise case. 
 
@@ -43,13 +43,13 @@ ans =
  'Convexity check failed (Expected convexity in objective at level 1)'
 ````
 
-Since the problem is nonconvex, we cannot be sure that the computed solution actually is a global minimizer. An alternative then is to invoke the built-in global solver [BMIBNB] (or an external global solver such as [BARON] or [SCIP]). Global solutions are typically extremely time-consuming, but this trivial problem is solved immediately.
+Since the problem is nonconvex, we cannot be sure that the computed solution actually is a global minimizer. An alternative then is to invoke the built-in global solver [BMIBNB](/solver/bmibnb) (or an external global solver such as [BARON] or [SCIP]). Global solutions are typically extremely time-consuming, but this trivial problem is solved immediately.
 
 ````matlab
 optimize([-5 <= x <= 5],-exp(-(x-2).^2),sdpsettings('solver','bmibnb'));
 ````
 
-The global solver [BMIBNB] is based on the envelope outer approximations discussed below. Note that the solver requires bounds (preferably explicit) on variables that are involved in nonconvex terms. The reason for this can be found in the [tutorial on envelopes and global optimization](/tutorial/envelopesinbmibnb) and the [big-M].
+The global solver [BMIBNB](/solver/bmibnb) is based on the envelope outer approximations discussed below. Note that the solver requires bounds (preferably explicit) on variables that are involved in nonconvex terms. The reason for this can be found in the [tutorial on envelopes and global optimization](/tutorial/envelopesinbmibnb) and the [big-M].
 
 In general, working with nonlinear evaluation-based operators in YALMIP requires no special code. It must however be kept in mind that they require general-purpose nonlinear solvers.
 
@@ -102,7 +102,7 @@ end
 
 At this point we have a model that can be used in, e.g., [FMINCON](/solver/fmincon). The convexity information lets YALMIP perform convexity analysis of expressions involving the exponential function.
 
-The function can also be used when using the global solver [BMIBNB], as we did above. However, the global solver is based on function bounding, and approximating nonlinear expressions locally by convex hulls. To enable this, YALMIP must have more information. If no information is available, YALMIP uses an approximate sampled-based scheme, which is both slow and theoretically questionable.
+The function can also be used when using the global solver [BMIBNB](/solver/bmibnb), as we did above. However, the global solver is based on function bounding, and approximating nonlinear expressions locally by convex hulls. To enable this, YALMIP must have more information. If no information is available, YALMIP uses an approximate sampled-based scheme, which is both slow and theoretically questionable.
 
 Hence, we need to add two more properties to the operator. One function, the bounding operator, which returns lower and upper bounds on the nonlinear function, given lower and upper bounds on the argument, and a function that returns the envelope (or outer approximation of it) in a particular form.
 
@@ -156,6 +156,6 @@ dfU = exp(xU);
 
 ````
 
-The global solver [BMIBNB] can now quickly obtain linear envelope approximations of the operator. The derivative information can be used by YALMIP to perform automatic differentiation when the nonlinear solver requests derivatives of objective functions and constraints.
+The global solver [BMIBNB](/solver/bmibnb) can now quickly obtain linear envelope approximations of the operator. The derivative information can be used by YALMIP to perform automatic differentiation when the nonlinear solver requests derivatives of objective functions and constraints.
 
 Note that some of the information is redundant. Since we have described that the operator is increasing, it immediately follows that YALMIP can derive lower and upper bounds over an interval. Likewise, since we have defined the function as convex, and supply a callback for computing the derivative, YALMIP can automatically generate the convex hull approximation. It is however recommended to explicitly state as much as possible manually, since this will speed up the code, and avoid problem with, e.g., functions that are undefined or infinite  on the border of its domain.

@@ -10,7 +10,7 @@ sidebar:
   nav: "tutorials"
 ---
 
-The global solver [BMIBNB] is a YALMIP-based implementation of a standard spatial branch-and-bound strategy. If you are unfamiliar with the basic ideas in a branch-and-bound solver, you should try to find an [introduction](https://en.wikipedia.org/wiki/Branch_and_bound) first.
+The global solver [BMIBNB](/solver/bmibnb) is a YALMIP-based implementation of a standard spatial branch-and-bound strategy. If you are unfamiliar with the basic ideas in a branch-and-bound solver, you should try to find an [introduction](https://en.wikipedia.org/wiki/Branch_and_bound) first.
 
 A spatial branch-and-bound algorithm for nonconvex programming typically relies on a few standard steps. 
 
@@ -19,7 +19,7 @@ A spatial branch-and-bound algorithm for nonconvex programming typically relies 
 2.  As a second step a convex relaxation of the model in the node is derived (using the methods described below), and the resulting convex optimization problem is solved (typically a linear program, or if the original problem is a nonconvex semidefinite program, a semidefinite program). This gives a lower bound on the achievable objective for this node. The lower bound solver is specified using the options **'bmibnb.lowersolver'**.
 3. Given these lower and upper bounds, a standard branch-and-bound logic is used to select a branch variable, create two new nodes, branch, prune and navigate among the remaining nodes.
 
-In addition to these standard steps, a large amount of preprocessing and bound-propagation is performed, both in the root-node and along the branching. This is important in order to obtain stronger linear relaxations. The options controlling this can be found in the description of [BMIBNB]. Nvertheless, the central object is the relaxation problem, and this model is built-up using outer approimations of convex envelopes (the convex hull of the set \\( (x,f(x)) \\) on some interval in \\(x\\)).
+In addition to these standard steps, a large amount of preprocessing and bound-propagation is performed, both in the root-node and along the branching. This is important in order to obtain stronger linear relaxations. The options controlling this can be found in the description of [BMIBNB](/solver/bmibnb). Nvertheless, the central object is the relaxation problem, and this model is built-up using outer approimations of convex envelopes (the convex hull of the set \\( (x,f(x)) \\) on some interval in \\(x\\)).
 
 ### Linear relaxation for bilinear and quadratic problems
 
@@ -148,7 +148,7 @@ plot(x,sin(x))
 
 Note that the envelope object **E** still contains the **sin(x)** variable (in practice it can be eliminated and replaced with **w**, but for implementation purposes it is kept in the form above with a trivial equality in the model), hence we must tell YALMIP to relax all variables, and then plot the projection to the \\(x,w\\) plane.
 
-If you study the quadratic monomial from earlier, you will see that YALMIP not only adds a positivity cut to the quadratic envelope, but also adds three tangency cuts. How many cuts [BMIBNB] uses is basically a trade-off between tightness of the relaxations, and the computational effort needed in the lower bound solvers with additional cuts.
+If you study the quadratic monomial from earlier, you will see that YALMIP not only adds a positivity cut to the quadratic envelope, but also adds three tangency cuts. How many cuts [BMIBNB](/solver/bmibnb) uses is basically a trade-off between tightness of the relaxations, and the computational effort needed in the lower bound solvers with additional cuts.
 
 ````matlab
 sdpvar w x
@@ -159,7 +159,7 @@ x = linspace(0,3*pi/2,100);
 plot(x,x.^2)
 ````
 
-Finally, a comment on bounds. As a general rule of thumb, you have to bound all variables used in nonlinear epxressions when you use the global solver [BMIBNB] which is based on the envelope aproxmations. However, YALMIP performs various bound strengthening schemes to improve the bounds, and the same code is used in the [envelope] code  used above. In some cases, YALMIP can derive bounds, without any initial bounds being specified at all. As an example, the following problem is easily solved with nicely behaved envelopes despite supplying no bounds
+Finally, a comment on bounds. As a general rule of thumb, you have to bound all variables used in nonlinear epxressions when you use the global solver [BMIBNB](/solver/bmibnb) which is based on the envelope aproxmations. However, YALMIP performs various bound strengthening schemes to improve the bounds, and the same code is used in the [envelope] code  used above. In some cases, YALMIP can derive bounds, without any initial bounds being specified at all. As an example, the following problem is easily solved with nicely behaved envelopes despite supplying no bounds
 
 ````matlab
 sdpvar x

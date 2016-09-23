@@ -33,7 +33,7 @@ Read more about [integer representable function](/tutorial/nonlinearoperatorsmix
 
 ### Evaluation-based representations
 
-A third way to model operators in YALMIP is by using simple callback evaluations. This is the way a modelling normally works with nonlinear solver. The modelling layer simply creates a framework for computing function values and derivatives. Operators modelled this way in YALMIP can also be equipped with convexity information, and thus fit into YALMIPs convexity propagations, and for use in the built-in global solver [bmibnb] they can have convex envelope approximators attached.
+A third way to model operators in YALMIP is by using simple callback evaluations. This is the way a modelling normally works with nonlinear solver. The modelling layer simply creates a framework for computing function values and derivatives. Operators modelled this way in YALMIP can also be equipped with convexity information, and thus fit into YALMIPs convexity propagations, and for use in the built-in global solver [BMIBNB](/solver/bmibnb) they can have convex envelope approximators attached.
 
 Since they are based on callbacks, they can only be used with general purpose nonlinear solvers, such as [FMINCON](/solver/fmincon), [SNOPT](/solver/snopt) or [IPOPT](/solver/ipopt). 
 

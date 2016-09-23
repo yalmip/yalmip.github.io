@@ -14,7 +14,7 @@ Linear programming can be solved by quadratic programming which can be solved by
 
 A recommended installation if you mainly intend to solve SDPs and LPs and QPs is [MOSEK], [SEDUMI] or [SDPT3].
 
-If you solve non-trivial linear and quadratic programs (and nonconvex problems via [BMIBNB], a dedicated LP/QP solver is recommended. Most examples in this Wiki have been generated using [MOSEK], [GUROBI] and [CPLEX].
+If you solve non-trivial linear and quadratic programs (and nonconvex problems via [BMIBNB](/solver/bmibnb), a dedicated LP/QP solver is recommended. Most examples in this Wiki have been generated using [MOSEK], [GUROBI] and [CPLEX].
 
 If you are in academia, [MOSEK] is convenient since it gives you a very competetive MILP, MIQP, MISOCP and SDP solver in one package.
 
@@ -61,7 +61,7 @@ A simple categorization is as follows (the definitions of free and commercial de
 
 ### Semidefinite programming (free)
 
-[CSDP], [DSDP], [LOGDETPPA], [PENLAB], [SDPA], [SDPLR], [SDPT3], [SDPNAL], [SEDUMI]
+[CSDP], [DSDP], [LOGDETPPA], [PENLAB](/solver/penlab), [SDPA], [SDPLR], [SDPT3], [SDPNAL], [SEDUMI]
 
 ### Semidefinite programming (commercial)
 
@@ -69,8 +69,8 @@ A simple categorization is as follows (the definitions of free and commercial de
 
 ### General nonlinear programming and other solvers
 
-[BARON], [FILTERSD], [FMINCON], [GPPOSY], [IPOPT], [KNITRO], [KYPD], [LMIRANK], [MPT], [NOMAD], [PENLAB], [SNOPT], [STRUL], [VSDP], [SparsePOP]
+[BARON], [FILTERSD], [FMINCON](/solver/fmincon), [GPPOSY](/solver/gpposy), [IPOPT](/solver/ipopt), [KNITRO](/solver/knitro), [KYPD], [LMIRANK], [MPT], [NOMAD], [PENLAB](/solver/penlab), [SNOPT](/solver/snopt), [STRUL], [VSDP], [SparsePOP]
 
 ## Internal solvers
 
-By exploiting the optimization infrastructure in YALMIP, it is fairly easy to develop algorithms based on the external solvers. This has motivated development of mixed integer conic solvers ([BNB], [CUTSDP]), global solvers for general nonlinear problems ([BMIBNB]), indefinite quadratic programming ([BMIBNB], [KKTQP] ), simple quasi-convex problems ([bisection]), sum-of-squares modules ([solvesos]), just to mention some of the most important modules in YALMIP.
+By exploiting the optimization infrastructure in YALMIP, it is fairly easy to develop algorithms based on the external solvers. This has motivated development of mixed integer conic solvers ([BNB], [CUTSDP]), global solvers for general nonlinear problems ([BMIBNB]), indefinite quadratic programming ([BMIBNB](/solver/bmibnb), [KKTQP](/solver/kktqp) ), simple quasi-convex problems ([bisection]), sum-of-squares modules ([solvesos]), just to mention some of the most important modules in YALMIP.
