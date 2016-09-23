@@ -12,7 +12,7 @@ One of the core ideas in YALMIP is to rely on external solvers for the low-level
 
 Linear programming can be solved by quadratic programming which can be solved by second-order cone programming which can be solved by semidefinite programming. Hence, in theory, you only need a semidefinite programming solver if you only solve linear problems. In practice though, dedicated solvers are recommended.
 
-A recommended installation if you mainly intend to solve SDPs and LPs and QPs is [MOSEK](/solver/mosek), [SEDUMI] or [SDPT3].
+A recommended installation if you mainly intend to solve SDPs and LPs and QPs is [MOSEK](/solver/mosek), [SEDUMI](/solver/sedumi) or [SDPT3](/solver/sdpt3).
 
 If you solve non-trivial linear and quadratic programs (and nonconvex problems via [BMIBNB](/solver/bmibnb), a dedicated LP/QP solver is recommended. Most examples in this Wiki have been generated using [MOSEK](/solver/mosek), [GUROBI](/solver/gurobi) and [CPLEX].
 
@@ -33,10 +33,10 @@ A simple categorization is as follows (the definitions of free and commercial de
 [CBC](solver/cbc), [GLPK](solver/glpk), [LPSOLVE](/solver/lpsolve), [SCIP](/solver/scip)
 
 ### Linear programming (commercial)
-[CPLEX](/solver/cplex) (free for academia), [GUROBI](/solver/gurobi) (free for academia), [LINPROG], [MOSEK](/solver/mosek) (free for academia), [XPRESS](/solver/xpress) (free for academia)
+[CPLEX](/solver/cplex) (free for academia), [GUROBI](/solver/gurobi) (free for academia), [LINPROG](/solver/linprog), [MOSEK](/solver/mosek) (free for academia), [XPRESS](/solver/xpress) (free for academia)
 
 ### Mixed Integer Linear programming (commercial)
-[CPLEX](/solver/cplex) (free for academia), [GUROBI](/solver/gurobi) (free for academia), [MOSEK](/solver/mosek) (free for academia), [XPRESS](/solver/xpress) (free for academia)
+[CPLEX](/solver/cplex) (free for academia), [GUROBI](/solver/gurobi) (free for academia), [INTLINPROG](/solver/intlinprog), [MOSEK](/solver/mosek) (free for academia), [XPRESS](/solver/xpress) (free for academia)
 
 ### Quadratic programming (free)
 [BPMPD](/solver/bpmpd), [CLP](/solver/clp), [OOQP](/solver/ooqp), [QPC](/solver/qpc), [QPOASES](/solver/qpoases), [QUADPROGBB](solver/quadprogbb) (nonconvex QP)
@@ -49,7 +49,7 @@ A simple categorization is as follows (the definitions of free and commercial de
 
 ### Second-order cone programming (free)
 
-[ECOS](/solver/ecos), [SDPT3], [SEDUMI]
+[ECOS](/solver/ecos), [SDPT3](/solver/sdpt3), [SEDUMI](/solver/sedumi)
 
 ## Second-order cone programming (commercial)
 
@@ -61,16 +61,16 @@ A simple categorization is as follows (the definitions of free and commercial de
 
 ### Semidefinite programming (free)
 
-[CSDP](/solver/csdp), [DSDP](/solver/dsdp), [LOGDETPPA](/solver/logdetppa), [PENLAB](/solver/penlab), [SDPA](/solver/sdpa), [SDPLR](/solver/sdplr), [SDPT3], [SDPNAL], [SEDUMI]
+[CSDP](/solver/csdp), [DSDP](/solver/dsdp), [LOGDETPPA](/solver/logdetppa), [PENLAB](/solver/penlab), [SDPA](/solver/sdpa), [SDPLR](/solver/sdplr), [SDPT3](/solver/sdpt3), [SDPNAL](/solver/sdpnal), [SEDUMI](/solver/sedumi)
 
 ### Semidefinite programming (commercial)
 
-[LMILAB], [MOSEK](/solver/mosek) (free for academia), [PENBMI](/solver/penbmi), [PENSDP] (free for academia)
+[LMILAB](/solver/lmilab), [MOSEK](/solver/mosek) (free for academia), [PENBMI](/solver/penbmi), [PENSDP](/solver/pensdp) (free for academia)
 
 ### General nonlinear programming and other solvers
 
-[BARON](/solver/baron), [FILTERSD](/solver/filtersd), [FMINCON](/solver/fmincon), [GPPOSY](/solver/gpposy), [IPOPT](/solver/ipopt), [KNITRO](/solver/knitro), [KYPD], [LMIRANK](/solver/lmirank), [MPT](/solver/mpt), [NOMAD], [PENLAB](/solver/penlab), [SNOPT](/solver/snopt), [STRUL], [VSDP], [SPARSEPOP](/solver/sparsepop)
+[BARON](/solver/baron), [FILTERSD](/solver/filtersd), [FMINCON](/solver/fmincon), [GPPOSY](/solver/gpposy), [IPOPT](/solver/ipopt), [KNITRO](/solver/knitro), [LMIRANK](/solver/lmirank), [MPT](/solver/mpt), [NOMAD](/solver/nomad), [PENLAB](/solver/penlab), [SNOPT](/solver/snopt), [SPARSEPOP](/solver/sparsepop)
 
 ## Internal solvers
 
-By exploiting the optimization infrastructure in YALMIP, it is fairly easy to develop algorithms based on the external solvers. This has motivated development of mixed integer conic solvers ([BNB], [CUTSDP]), global solvers for general nonlinear problems ([BMIBNB]), indefinite quadratic programming ([BMIBNB](/solver/bmibnb), [KKTQP](/solver/kktqp) ), simple quasi-convex problems ([bisection]), sum-of-squares modules ([solvesos]), just to mention some of the most important modules in YALMIP.
+By exploiting the optimization infrastructure in YALMIP, it is fairly easy to develop algorithms based on the external solvers. This has motivated development of mixed integer conic solvers ([BNB](/solver/bnb), [CUTSDP](/solver/cutsdp)), indefinite quadratic programming ([BMIBNB](/solver/bmibnb), [KKTQP](/solver/kktqp) ), simple quasi-convex problems ([bisection]), sum-of-squares modules ([solvesos]) and a global solver for pretty much any nonlinear problem ([BMIBNB](/solver/bmibnb)), just to mention some of the most important modules in YALMIP.
