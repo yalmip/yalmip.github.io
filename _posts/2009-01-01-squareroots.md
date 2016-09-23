@@ -2,7 +2,7 @@
 layout: single
 excerpt: "sqrt, sqrtm, power or cpower?"
 title: Working with square roots
-tags: [Second-order cone programming, Typical problems]
+tags: [Second-order cone programming representable, Typical problems]
 comments: true
 date: '2009-08-29'
 ---
