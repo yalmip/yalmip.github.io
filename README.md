@@ -1,7 +1,7 @@
 YALMIP homepage
 ---
 
-## License
+## License (for Jenkins homepage template)
 
 The MIT License (MIT)
 
