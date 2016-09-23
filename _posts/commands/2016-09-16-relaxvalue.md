@@ -11,7 +11,7 @@ sidebar:
   nav: "commands"
 ---
 
-[value](/command/value) is used to extract the numerical value of an expression after solving a relaxation.
+[value](/command/value) is used to extract the relaxed numerical value of an expression after solving a relaxation.
 
 ### Syntax
 
@@ -31,9 +31,8 @@ Objective = x + x^2
 optimize(Model,Objective,sdpsettings('relax',1))
 ````
 
-The variable \\x\\) and the relaxed variable of \\(x^2\\) will both have the value 2 at the optimum.
+The variable \\(x\\) and the relaxed variable of \\(x^2\\) which will be independent in the problem will both have the value 2 at the optimum.
 
-The optimal value of the relaxed problem is 
 ````matlab
 value(x)
 value(x^2)
