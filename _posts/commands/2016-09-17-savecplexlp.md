@@ -4,14 +4,14 @@ category: command
 author_profile: false
 excerpt: ""
 title: savecplexlp
-tags: [Export]
+tags: [Export and import]
 comments: true
 date: '2016-09-17'
 sidebar:
   nav: "commands"
 ---
 
-[savecplexlp] exports a YALMIP model to a cplex lp format file
+[savecplexlp](/command/savecplexlp) exports a YALMIP model to a cplex lp format file
 
 ### Syntax
 
