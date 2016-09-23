@@ -174,7 +174,7 @@ ans =
   
 ````
 
-The fifth constraints combined in the two model appears to be problematic, as we cannot find a solution where they both are feasible.
+The fifth constraints combined in the two sets of constraints appear to be problematic, as we cannot find a solution where they both are feasible.
 
 
 ### Bisect you constraints
