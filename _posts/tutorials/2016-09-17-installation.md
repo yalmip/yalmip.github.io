@@ -13,30 +13,34 @@ sidebar:
 YALMIP is entirely based on m-code, and is thus easy to install. Remove any old version of YALMIP, unzip the downloaded zip-file  and **add the following directories to your MATLAB path**
 
 ````
-->/yalmip
-->/yalmip/extras
-->/yalmip/solvers
-->/yalmip/modules
-->/yalmip/modules/parametric
-->/yalmip/modules/moment
-->/yalmip/modules/global
-->/yalmip/modules/sos
-->/yalmip/operators
+->/YALMIP-master
+->/YALMIP-master/extras
+->/YALMIP-master/solvers
+->/YALMIP-master/modules
+->/YALMIP-master/modules/parametric
+->/YALMIP-master/modules/moment
+->/YALMIP-master/modules/global
+->/YALMIP-master/modules/sos
+->/YALMIP-master/operators
 ````
 
-A lazy way to do this is `addpath(genpath(yalmiprootdirectory))`
+Of course, you do not have to call the directory YALMIP-master, that just happens to be the name of the zip that Github generates.
 
+A lazy way to do this is `addpath(genpath(yalmiprootdirectory))`
 
 If you want to be even lazier, simply run the following code in the directory where you want to install YALMIP.
 
 ````matlab
-urlwrite('https://github.com/johanlofberg/yalmip/archive/master.zip','yalmip.zip');
+cd YALMIPfolderShouldbeHere
+urlwrite('https://github.com/yalmip/yalmip/archive/master.zip','yalmip.zip');
 unzip('yalmip.zip','yalmip')
-addpath(genpath([pwd filesep 'yalmip']);
+addpath(genpath([pwd filesep 'yalmip']));
 savepath
 ````
 
 To test your installation, run the command [yalmiptest](/command/yalmiptest). For further examples and tests, run code from this manual!
+
+Another approach is to handle your installation using [www.tbxmanager.com](/www.tbxmanager.com).
 
 ### Solvers
 
