@@ -12,7 +12,7 @@ sidebar:
   nav: "tutorials"
 ---
 
-The nonlinear operator framework was initially implemented for functions that can be modelled rigorously using conic constraints and additional variables through [graph representations].
+The nonlinear operator framework was initially implemented for functions that can be modelled rigorously using conic constraints and additional variables through [graph representations](/tutorial/nonlinearoperatorsgraphs).
 
 However, there are many functions that cannot be modelled using conic constraints, such as exponential functions and logarithms, but are convex or concave, and of course can be analyzed in terms of convexity preserving operations. These function (and any other nonlinear function) are supported in a framework called evaluation based nonlinear operators. Models using these general operators will still be analyzed with respect to convexity, but the resulting model requires a general nonlinear solver, such as [FMINCON](/solver/fmincon) or [SNOPT](/solver/snopt).
 
