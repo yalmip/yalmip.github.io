@@ -414,6 +414,10 @@ commands:
         url: /command/sosd
   - title: Auxilliary
     children:
+      - title: "loadsdpafile"
+        url: /command/loadsdpafile
+      - title: "loadsedumidata"
+        url: /command/loadsedumidata
       - title: "saveampl"
         url: /command/saveampl
       - title: "savecplexlp"
