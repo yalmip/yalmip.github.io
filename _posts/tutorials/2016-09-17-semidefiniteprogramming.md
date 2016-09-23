@@ -35,7 +35,7 @@ Note that we have defined non-strict inequalities, although our theoretical prob
 
 If you want to satisfy a strict inequality, you simply have to define a non-strict inequality with a margin.
 
-To avoid the zero solution on this homogeneous problem, we constrain the trace of the matrix (Of course, this is not the only way. We could have used, e.g., the dehomogenizing constraint \\(P \succeq I \\) instead)
+To avoid the zero solution on this homogeneous problem can for instance add a margin and use \\(P \succeq I \\) (which will give us a strict solution also), or as we do here, constrain the trace of the matrix to dehomogenize the solution.
 
 ````matlab
 F = [F, trace(P) == 1];
