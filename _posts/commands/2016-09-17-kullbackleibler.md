@@ -20,4 +20,4 @@ z = kullbackleibler(x,y)
 
 ### Comments
 
-[kullbackleibler](/command/kullbackleibler) is implemented as a [callback operator](/tutorial/nonlinearoperatorscallback]), except when [SCS](/solver/scs) or [ECOS](/solver/ecos) are used and the exponential cone description is exploited in a [graph representation](/tutorial/nonlinearoperatorsgraphs).
+[kullbackleibler](/command/kullbackleibler) is implemented as a [callback operator](/tutorial/nonlinearoperatorscallback), except when [SCS](/solver/scs) or [ECOS](/solver/ecos) are used and the exponential cone description is exploited in a [graph representation](/tutorial/nonlinearoperatorsgraphs).
