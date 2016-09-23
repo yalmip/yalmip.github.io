@@ -14,7 +14,7 @@ sidebar:
 
 The nonlinear operator framework was initially implemented for functions that can be modelled rigorously using conic constraints and additional variables through [graph representations](/tutorial/nonlinearoperatorsgraphs).
 
-However, there are many functions that cannot be modelled using conic constraints, such as exponential functions and logarithms, but are convex or concave, and of course can be analyzed in terms of convexity preserving operations. These function (and any other nonlinear function) are supported in a framework called evaluation based nonlinear operators. Models using these general operators will still be analyzed with respect to convexity, but the resulting model requires a general nonlinear solver, such as [FMINCON](/solver/fmincon) or [SNOPT](/solver/snopt).
+However, there are many functions that cannot be modelled using conic constraints, such as exponential functions and logarithms, but are convex or concave, and of course can be analyzed in terms of convexity preserving operations. These function (and any other nonlinear function) are supported in a framework called callback nonlinear operators. Models using these general operators will still be analyzed with respect to convexity, but the resulting model requires a general nonlinear solver, such as [FMINCON](/solver/fmincon) or [SNOPT](/solver/snopt).
 
 In addition to convexity properties and simple function values, operators can be attributed with various other properties, and we will use this possibility here. Examples include derivative information and envelope approximators for the global solver [BMIBNB](/solver/bmibnb).
 
@@ -51,7 +51,7 @@ optimize([-5 <= x <= 5],-exp(-(x-2).^2),sdpsettings('solver','bmibnb'));
 
 The global solver [BMIBNB](/solver/bmibnb) is based on the envelope outer approximations discussed below. Note that the solver requires bounds (preferably explicit) on variables that are involved in nonconvex terms. The reason for this can be found in the [tutorial on envelopes and global optimization](/tutorial/envelopesinbmibnb) and the [big-M].
 
-In general, working with nonlinear evaluation-based operators in YALMIP requires no special code. It must however be kept in mind that they require general-purpose nonlinear solvers.
+In general, working with nonlinear callback-based operators in YALMIP requires no special code. It must however be kept in mind that they require general-purpose nonlinear solvers.
 
 Another issue to keep in mind is that the operators typically normalize the problem in some sense. Operators are only applied to simple variables. In other words, auxiliary variables are introduced to put the model in a canonical form. Hence, the problem that is solved above, will internally be converted to the following model.
 
