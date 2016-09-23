@@ -11,7 +11,7 @@ sidebar:
 ---
 
 
-This tutorial requires [MPT](/solver/mpt) or [POP]
+This tutorial requires [MPT](/solver/mpt).
 
 YALMIP can be used to calculate explicit solutions of parametric linear and quadratic programs by interfacing the [Multi-Parametric Toolbox MPT] (or [POP]). This tutorial assumes that the reader is familiar with parametric programming and the basics of [MPT](/solver/mpt)(/solver/mpt).
 
