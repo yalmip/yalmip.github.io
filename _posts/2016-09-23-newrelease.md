@@ -15,7 +15,7 @@ Ouch, over a year since last release. Definitely overdue.
 ### Major changes, fixes and improvements
 
 * [uncertain](/command/uncertain) is now overloaded on constraints for easy definition of uncertain variables and constraints at the same time.
-* [bisection](/command/bisection) can now be used as a solver, i.e., called via [optimize](/command/tutorial).
+* [bisection](/command/bisection) can now be used as a solver, i.e., called via [optimize](/command/optimize).
 * Early experimental support for multi-parametric solver [POP](/solver/pop).
 * [sort](/command/sort) now supports matrix argument.
 * [max](/command/max) and [min](/command/min) now support location output in their [mixed-integer versions](/tutorial/nonlinearoperatorsmixedinteger).
