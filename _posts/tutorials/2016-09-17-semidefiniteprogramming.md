@@ -55,10 +55,10 @@ optimize(F);
 Pfeasible = value(P);
 ````  
 
-The resulting constraint satisfaction is easily investigated with [checkset].
+The resulting constraint satisfaction is easily investigated with [check](/command/check).
 
 ````matlab
-checkset(F)
+check(F)
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 |   ID|      Constraint|                  Type|   Primal residual|   Dual residual|
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
