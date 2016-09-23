@@ -60,7 +60,7 @@ sdpvar x y
 optimize([-5 <= x <= 5,y == -(x-2).^2],-exp(y),sdpsettings('solver','bmibnb'));
 ````
 
-This can cause problems for some solvers if they might perform badly on nonconvex equalities.
+This can cause problems for some solvers if they perform badly on nonconvex equalities.
 
 
 ### Adding new operators
