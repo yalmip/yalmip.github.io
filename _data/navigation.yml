@@ -283,8 +283,6 @@ commands:
         url: /command/kkt
       - title: "momentmodel"
         url: /command/momentmodel
-      - title: "primalize"
-        url: /command/primalize
       - title: "robustmodel"
         url: /command/robustmodel
       - title: "sosmodel"
