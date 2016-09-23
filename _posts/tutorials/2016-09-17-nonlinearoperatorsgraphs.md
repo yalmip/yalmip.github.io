@@ -247,6 +247,6 @@ switch class(varargin{1})
 end
 ````
 
-Additional properties of the operator can be assigned to guide YALMIP in various scenarios. However, most those additional properties are not of interest for graph-based implementations, but are meant for [mixed-integer] and [evaluation]-based representations.
+Additional properties of the operator can be assigned to guide YALMIP in various scenarios. However, most those additional properties are not of interest for graph-based implementations, but are meant for [mixed-integer](/tutorial/nonlinearoperatorsgraphs) and [callback-based](tutorial/nonlinearoperatorscallback) representations.
 
 The function **sumk** in YALMIP is implemented using this framework and might serve as a good start for your own experiments.
