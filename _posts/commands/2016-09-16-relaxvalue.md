@@ -11,7 +11,7 @@ sidebar:
   nav: "commands"
 ---
 
-[value](/command/value) is used to extract the relaxed numerical value of an expression after solving a relaxation.
+[relaxvalue](/command/relaxvalue) is used to extract the relaxed numerical value of an expression after solving a relaxation.
 
 ### Syntax
 
