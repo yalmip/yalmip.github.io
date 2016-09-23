@@ -14,7 +14,7 @@ This example illustrates the definition and solution of a simple semidefinite pr
 
 Given a linear dynamic system \\(\dot{x} = Ax\\), our goal is to prove stability by finding a symmetric matrix \\(P\\) satisfying
 
-$$\begin{align}A^TP + PA &\preceq 0\\P &\succeq 0\end{align}$$
+$$\begin{align}A^TP + PA &\prec 0\\P &\succ 0\end{align}$$
 
 Define a stable matrix \\(A\\) and symmetric matrix \\(P\\) (remember: square matrices are symmetric by default)
 
@@ -28,6 +28,12 @@ Having defined \\(P\\), we are ready to define the semidefinite constraints.
 ````matlab
 F = [P >= 0, A'*P+P*A <= 0];
 ````
+
+Note that we have defined non-strict inequalities, although our theoretical problem involves strict inequalities. YALMIP will warn or submit and error if you use strict inequalities. 
+
+> Strict inequalities simply does not make much sense in continuous numerical optimization. 
+
+If you want to satisfy a strict inequality, you simply have to define a non-strict inequality with a margin.
 
 To avoid the zero solution on this homogeneous problem, we constrain the trace of the matrix (Of course, this is not the only way. We could have used, e.g., the dehomogenizing constraint \\(P \succeq I \\) instead)
 
