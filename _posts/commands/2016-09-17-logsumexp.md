@@ -21,4 +21,4 @@ y = logsumexp(x)
 
 ### Implementation
 
-The convex operator [logsumexp](/command/logsumexp) is implemented as [callback operator](/tutorial/nonlinearoperatorscallback]), except when [SCS](/solver/scs) or [ECOS](/solver/ecos) are used and the exponential cone description is exploited in a [graph representation](/tutorial/nonlinearoperatorsgraphs).
+The convex operator [logsumexp](/command/logsumexp) is implemented as [callback operator](/tutorial/nonlinearoperatorscallback), except when [SCS](/solver/scs) or [ECOS](/solver/ecos) are used and the exponential cone description is exploited in a [graph representation](/tutorial/nonlinearoperatorsgraphs).
