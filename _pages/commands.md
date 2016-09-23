@@ -26,7 +26,7 @@ permalink: /allcommands
 [alldifferent](/command/alldifferent), [binary](/command/binary), [cone](/command/cone), [cut](/command/cut)(/command/cut), [iff](/command/iff), [implies](/command/implies), [integer](/command/integer), [rank](/command/rank), [rcone](/command/rcone), [sos](/command/sos), [uncertain](/command/uncertain)
 
 ### Constraints (manipulating)
-[boundingbox](/command/boundingbox), [check](/command/check), [dilate](/command/dilate), [dual](/command/dual), [hull](/command/hull), [is](/command/is), [ismember](/command/ismember)(/command/ismember), [sosd](/command/sosd)
+[boundingbox](/command/boundingbox), [check](/command/check), [dilate](/command/dilate), [dual](/command/dual), [hull](/command/hull), [is](/command/is), [ismember](/command/ismember), [sosd](/command/sosd)
 
 ### Auxilliary
 [loadsdpafile](/command/loadsdpafile), [loadsedumidata](/command/loadsedumidata),[saveampl](/command/saveampl), [savecplexlp](/command/savecplexlp), [savesdpafile](/command/savesdpafile), [yalmiperror](/command/yalmiperror), [yalmiptest](/command/yalmiptest)
