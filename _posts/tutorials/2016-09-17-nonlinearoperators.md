@@ -35,8 +35,29 @@ Read more about [integer representable function](/tutorial/nonlinearoperatorsmix
 
 A third way to model operators in YALMIP is by using simple callback evaluations. This is the way a modelling layer normally works with nonlinear solver. The modelling layer simply creates a framework for computing function values and derivatives. Operators modelled this way in YALMIP can also be equipped with convexity information, and thus fit into YALMIPs convexity propagations, and for use in the built-in global solver [BMIBNB](/solver/bmibnb) they can have more information attached such as envelope approximators, bound generators, and inverse functions.
 
+````matlab
+yalmip('clear');
+sdpvar x;y = exp(x);
+aux = model(y);aux{1}
+
+ans = 
+
+       convexity: 'convex'
+    monotonicity: 'increasing'
+    definiteness: 'positive'
+           model: 'callback'
+      convexhull: @convexhull
+          bounds: @bounds
+      derivative: @(x)exp(x)
+         inverse: @(x)log(x)
+           range: [0 Inf]
+            name: 'exp'
+          models: 2
+          domain: [-Inf Inf]
+````          
+
 Since they are based on callbacks, they can only be used with general purpose nonlinear solvers, such as [FMINCON](/solver/fmincon), [SNOPT](/solver/snopt) or [IPOPT](/solver/ipopt). 
 
-Most of MATLABs built-in nonlinear functions, such as [erf] and [sin], are available as evaluation-based representations in YALMIP. There are also operators such as [exp](/command/exp) and [kullbackleibler](/command/kullbackleibler) which can be used both with graph representations in [exponentialconeprogramming](/tutorial/exponentialconeprogramming) and as callback operators in general nonlinear solvers.
+Most of MATLABs built-in nonlinear functions, such as [erf](/command/erf) and [sin](/command/sin)), are available as callback operators in YALMIP. There are also operators such as [exp](/command/exp) and [kullbackleibler](/command/kullbackleibler) which can be used both with graph representations in [exponentialconeprogramming](/tutorial/exponentialconeprogramming) and as callback operators in general nonlinear solvers.
 
 Read more about [callback operators](/tutorial/nonlinearoperatorscallback).
