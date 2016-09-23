@@ -14,7 +14,7 @@ permalink: /allcommands
 [bisection](/command/bisection), [optimize](/command/optimize), [optimizer](/command/optimizer), [solvebilevel](/command/solvebilevel), [solvemoment](/command/solvemoment), [solvemp](/command/solvemp), [solvesos](/command/solvesos)
 
 ### Optimization model manipulations
-[dualize](/command/dualize), [export](/command/export), [kkt](/command/kkt), [momentmodel](/command/momentmodel), [primalize](/command/primalize), [robustmodel](/command/robustmodel), [sosmodel](/command/sosmodel)
+[dualize](/command/dualize), [export](/command/export), [kkt](/command/kkt), [momentmodel](/command/momentmodel), [robustmodel](/command/robustmodel), [sosmodel](/command/sosmodel)
 
 ### Variable manipulations
 [assign](/command/assign), [binmodel](/command/binmodel), [coefficients](/command/coefficients), [degree](/command/), [dissect](/command/), [hessian](/command/hessian), [int](/command/int), [is](/command/is), [jacobian](/command/jacobian), [linearize](/command/linearize), [monolist](/command/monolist), [polynomial](/command/polynomial), [sdisplay](/command/sdisplay), [unblkdiag](/command/unblkdiag), [value](/command/value)
