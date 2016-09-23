@@ -15,7 +15,7 @@ YALMIP comes with a built-in module for polynomial programming using moment rela
 
 ### Solving polynomial problems by relaxations
 
-The following code calculates a lower bound on a concave quadratic optimization problem. As you can see, the only difference compared to solving the problem using a standard solver, such as [FMINCON](/solver/fmincon) or [SNOPT](/solver/snopt), or the global solver [BMIBNB](/solver/bmibnb), is that we call [solvemoment](/command/solvemoment) instead of [optimize](/command/optimize) (an alternative is to call [optimize](/command/optimize) and specify `'moment'` as the solver in [sdpsettings]).
+The following code calculates a lower bound on a concave quadratic optimization problem. As you can see, the only difference compared to solving the problem using a standard solver, such as [FMINCON](/solver/fmincon) or [SNOPT](/solver/snopt), or the global solver [BMIBNB](/solver/bmibnb), is that we call [solvemoment](/command/solvemoment) instead of [optimize](/command/optimize) (an alternative is to call [optimize](/command/optimize) and specify **'moment'** as the solver in [sdpsettings](/command/sdpsettings)).
 
 ````matlab
 sdpvar x1 x2 x3
