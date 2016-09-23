@@ -38,7 +38,7 @@ x = sdpvar(n,m,'full');
 
 ### Is it really infeasible?
 
-To begin with, get rid of the objective function. An objective function cannot generate any infeaibility, but in the feasibility analysis, it is just unnecessary to keep it. You might have stumbled into a bug in the solver presolve code or something, which causes it to make an incorrect statement. Some solvers mess up infeasibility with unbounded objective.
+To begin with, get rid of the objective function. An objective function cannot generate any infeasibility, but in the feasibility analysis, it is just unnecessary to keep it. You might have stumbled into a bug in the solver presolve code or something, which causes it to make an incorrect statement. Some solvers mess up infeasibility with unbounded objective.
 
 ````matlab
 optimize(Constraints)
@@ -49,10 +49,6 @@ optimize(Constraints)
 ````
 
 Nope, not that simple...
-
-### Clean up and simplify your model
-
-Searching for a needle is easier in a clean small room, than a messy huge room. You don't have to debug your complete model, if the feasibility remains when you remove most parts of it. Make a quick effort to remove stuff. You might find the bug by simply cleaning up the code...
 
 ### Get a second opinion
 
@@ -67,6 +63,10 @@ optimize(Constraints,[],sdpsettings('solver','gurobi'))
 ````
 
 OK, unlikely that two solvers make the same incorrect judgement.
+
+### Clean up and simplify your model
+
+Searching for a needle is easier in a clean small room, than a messy huge room. You don't have to debug your complete model, if the feasibility remains when you remove most parts of it. Make a quick effort to remove stuff. You might find the bug by simply looking at the condensed code...
 
 ### Do you have a known feasible solution?
 
@@ -114,7 +114,7 @@ So, constraint 5? With the set of constraints listed above, it might be a nightm
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ````
 
-Hence, the Fubar constraint you setup in iteration 3, is not correct, or at least not consistent with the solution that you claim is valid.
+Hence, the *Fubar* constraint you setup in iteration 3, is not correct, or at least not consistent with the solution that you claim is valid.
 
 An alternative is to modularize your code a bit and create sub-components
 
@@ -125,7 +125,7 @@ Fubar = ...
 % Create The Foo constraints
 Foo = ...
 
-optimize([Fubar,Foo])
+optimize([Fubar, Foo])
 check(Fubar)
 check(Foo)
 ````
@@ -147,6 +147,8 @@ end
 with some slacked variant, such as
 
 ````matlab
+slack1 = sdpvar(N,1);
+slack2 = sdpvar(N,1);
 Constraints = [slack1>=0]
 for i = 1:N
  Constraints = [Constraints, something1 <= slack1(i)];
@@ -165,10 +167,14 @@ Checking the values of the slacks could reveal something
 ````matlab
 value(slack1)
 ans =
-  0  0  0   0.0230  0.5000
+  0  0  0   0  0.5000
+value(slack2)
+ans =
+  0  0  0   0  0.5000
+  
 ````
 
-The fourth and/or fifth constraint appears to be problematic, as we cannot find a solution where they both are feasible.
+The fifth constraints combined in the two model appears to be problematic, as we cannot find a solution where they both are feasible.
 
 
 ### Bisect you constraints
@@ -206,5 +212,5 @@ sol = optimize(Constraints([5 11]));if sol.problem==0;display('Feasible');else;d
 Infeasible
 ````
 
-There we have it. Constraint 5 and 11 are inconsistent.
+There we have it. Constraint 5 and 11 are inconsistent. Figure out why!
 
