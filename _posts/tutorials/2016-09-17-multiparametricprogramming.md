@@ -13,7 +13,7 @@ sidebar:
 
 This tutorial requires [MPT](/solver/mpt).
 
-YALMIP can be used to calculate explicit solutions of parametric linear and quadratic programs by interfacing the [Multi-Parametric Toolbox MPT] (or [POP]). This tutorial assumes that the reader is familiar with parametric programming and the basics of [MPT](/solver/mpt)(/solver/mpt).
+YALMIP can be used to calculate explicit solutions of parametric linear and quadratic programs by interfacing the [Multi-Parametric Toolbox MPT]. This tutorial assumes that the reader is familiar with parametric programming and the basics of [MPT](/solver/mpt).
 
 ### Generic example.
 
@@ -90,7 +90,7 @@ plot(Optimizer(1));
 
 ### Simple MPC example
 
-Define numerical data for a linear system, prediction matrices, and variables for current state \\(x\\) and the future control sequence \\( U(x)\\), for an MPC problem with horizon 5 (**create_CHS** is a cheat function that creates the numerical matrices to describe the linear relation between current state \\( x\\) and future input sequence \\( U\\), to the predicted outputs. See the [MPC examples] to see how you would do this in a more generic fashion for an actual application)
+Define numerical data for a linear system, prediction matrices, and variables for current state \\(x\\) and the future control sequence \\( U(x)\\), for an MPC problem with horizon 5 (**create_CHS** is a cheat function that creates the numerical matrices to describe the linear relation between current state \\( x\\) and future input sequence \\( U\\), to the predicted outputs. See the [standard MPC example](/tutorial/standardmpc) to see how you would do this in a more generic fashion in an actual application)
 
 ````matlab
 N = 5;
