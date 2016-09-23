@@ -11,7 +11,7 @@ sidebar:
   nav: "commands"
 ---
 
-[loadsedumidata] imports [SEDUMI](/solver/sedumi) data from a **.mat** file to a YALMIP model.
+[loadsedumidata](/command/loadsedumidata) imports [SEDUMI](/solver/sedumi) data from a **.mat** file to a YALMIP model.
 
 ### Syntax
 
