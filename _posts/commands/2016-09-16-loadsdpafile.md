@@ -11,7 +11,7 @@ sidebar:
   nav: "commands"
 ---
 
-[loadsdpafile] imports a YALMIP model from an SDPA ASCII format file.
+[loadsdpafile](/command/loadsdpafile) imports a YALMIP model from an SDPA ASCII format file.
 
 ### Syntax
 
