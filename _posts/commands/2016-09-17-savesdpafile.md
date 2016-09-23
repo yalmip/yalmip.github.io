@@ -24,9 +24,9 @@ savesdpafile(F,h,filename)
 Export SDP problem to ASCII file
 
 ````matlab
-A = randn(3,3);A = -A*A';
+A = randn(3,3);
 P = sdpvar(3,3);
-F = [P>0, A'*P+P*A <= -eye(3)];
+F = [P>=0, A'*P+P*A <= -eye(3)];
 savesdpafile(F,trace(P),'mysdpamodel');
 ````
 
