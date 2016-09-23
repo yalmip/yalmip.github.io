@@ -10,7 +10,7 @@ date: '2016-09-23'
 
 Ouch, over a year since last release. Definitely overdue.
 
-[Latest release](/download)
+[Download latest release](/download)
 
 ### Major changes, fixes and improvements
 
