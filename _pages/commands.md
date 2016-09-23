@@ -17,7 +17,7 @@ permalink: /allcommands
 [dualize](/command/dualize), [export](/command/export), [kkt](/command/kkt), [momentmodel](/command/momentmodel), [robustmodel](/command/robustmodel), [sosmodel](/command/sosmodel)
 
 ### Variable manipulations
-[assign](/command/assign), [binmodel](/command/binmodel), [coefficients](/command/coefficients), [degree](/command/), [dissect](/command/), [hessian](/command/hessian), [int](/command/int), [is](/command/is), [jacobian](/command/jacobian), [linearize](/command/linearize), [monolist](/command/monolist), [polynomial](/command/polynomial), [sdisplay](/command/sdisplay), [unblkdiag](/command/unblkdiag), [value](/command/value)
+[assign](/command/assign), [binmodel](/command/binmodel), [coefficients](/command/coefficients), [degree](/command/degree), [dissect](/command/dissect), [hessian](/command/hessian), [int](/command/int), [is](/command/is), [jacobian](/command/jacobian), [linearize](/command/linearize), [monolist](/command/monolist), [polynomial](/command/polynomial), [sdisplay](/command/sdisplay), [unblkdiag](/command/unblkdiag), [value](/command/value)
 
 ### Variable operators (selected)
 [abs](/command/abs), [crossentropy](/command/crossentropy), [entropy](/command/entropy), [erf](/command/erf), [exp](/command/exp), [floor](/command/floor), [geomean](/command/geomean), [kullbackleibler](/command/kullbackleibler), [log](/command/log), [logdet](/command/logdet), [logistic](/command/logistic), [logsumexp](/command/logsumexp), [min](/command/min), [max](/command/max), [median](/command/median), [nnz](/command/nnz), [norm](/command/norm), [pnorm](/command/pnorm), [sdpfun](/command/sdpfun), [sumk](/command/sumk), [sumabsk](/command/sumabsk), [sort](/command/sort)
