@@ -33,7 +33,7 @@ Read more about [integer representable function](/tutorial/nonlinearoperatorsmix
 
 ### Call-based representations
 
-A third way to model operators in YALMIP is by using simple callback evaluations. This is the way a modelling layer normally works with nonlinear solver. The modelling layer simply creates a framework for computing function values and derivatives. Operators modelled this way in YALMIP can also be equipped with convexity information, and thus fit into YALMIPs convexity propagations, and for use in the built-in global solver [BMIBNB](/solver/bmibnb) they can have more information attached such as envelope approximators, bound generators, and inverse functions.
+A third way to model operators in YALMIP is by using simple callbacks. This is the way a modelling layer normally works with nonlinear solver. The modelling layer simply creates a framework for computing function values and derivatives. Operators modelled this way in YALMIP can also be equipped with convexity information, and thus fit into YALMIPs convexity propagations, and for use in the built-in global solver [BMIBNB](/solver/bmibnb) they can have more information attached such as envelope approximators, bound generators, and inverse functions.
 
 ````matlab
 yalmip('clear');
