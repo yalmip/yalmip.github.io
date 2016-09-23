@@ -4,14 +4,14 @@ category: command
 author_profile: false
 excerpt: "Export model to SDPA ASCII file"
 title: savesdpafile
-tags: [Export]
+tags: [Export and import]
 comments: true
 date: '2016-09-17'
 sidebar:
   nav: "commands"
 ---
 
-[savesdpafile] exports a YALMIP model to SDPA ASCII format
+[savesdpafile](/command/savesdpafile) exports a YALMIP model to SDPA ASCII format
 
 ### Syntax
 
