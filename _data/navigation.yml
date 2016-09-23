@@ -24,6 +24,9 @@ main:
   - title: "Resources"
     url: /reference
     
+  - title: "Forum"
+    url: "https://groups.google.com/forum/#!forum/yalmip"
+    
     
 
 solvers:
