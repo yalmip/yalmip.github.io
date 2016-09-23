@@ -43,7 +43,7 @@ ans =
  'Convexity check failed (Expected convexity in objective at level 1)'
 ````
 
-Since the problem is nonconvex, we cannot be sure that the computed solution actually is a global minimizer. An alternative then is to invoke the built-in global solver [BMIBNB](/solver/bmibnb) (or an external global solver such as [BARON] or [SCIP]). Global solutions are typically extremely time-consuming, but this trivial problem is solved immediately.
+Since the problem is nonconvex, we cannot be sure that the computed solution actually is a global minimizer. An alternative then is to invoke the built-in global solver [BMIBNB](/solver/bmibnb) (or an external global solver such as [BARON](/solver/baron) or [SCIP](/solver/scip)). Global solutions are typically extremely time-consuming, but this trivial problem is solved immediately.
 
 ````matlab
 optimize([-5 <= x <= 5],-exp(-(x-2).^2),sdpsettings('solver','bmibnb'));

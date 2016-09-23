@@ -74,7 +74,7 @@ For the particular problem we address here, the first-order relaxation is unboun
 
 ### Stronger semidefinite relaxations
 
-Stronger relaxations can be constructed manually fairly easily in YALMIP, but it is much easier to use ready-made software to perform this. One option is the separate package  [GloptiPoly]. Another alternative is the sparsity exploiting semidefinite relaxation code [SPARSEPOP] which is interfaced in YALMIP. Here, we will use the built-in [semidefinite relaxation module](/tutorial/momentrelaxations) in YALMIP.
+Stronger relaxations can be constructed manually fairly easily in YALMIP, but it is much easier to use ready-made software to perform this. One option is the separate package  [GloptiPoly]. Another alternative is the sparsity exploiting semidefinite relaxation code [SPARSEPOP](/solver/sparsepop) which is interfaced in YALMIP. Here, we will use the built-in [semidefinite relaxation module](/tutorial/momentrelaxations) in YALMIP.
 
 The simple semidefinite relaxation above, can be solved using the built-in semidefinite relaxation module using two different calls
 
