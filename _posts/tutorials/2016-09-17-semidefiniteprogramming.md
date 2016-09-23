@@ -35,7 +35,7 @@ Note that we have defined non-strict inequalities, although our theoretical prob
 
 If you want to satisfy a strict inequality, you simply have to define a non-strict inequality with a margin.
 
-To avoid the zero solution on this homogeneous problem can for instance add a margin and use \\(P \succeq I \\) (which will give us a strict solution also), or as we do here, constrain the trace of the matrix to dehomogenize the solution.
+To avoid the zero solution on this homogeneous problem we can for instance add a margin and use \\(P \succeq I \\) (which additionally ensures we obtain a strictly feasible solution), or as we do here, constrain the trace of the matrix to dehomogenize the solution.
 
 ````matlab
 F = [F, trace(P) == 1];
@@ -45,13 +45,13 @@ At this point, we are ready to solve our problem. But first, we display the coll
 
 ````matlab
 F
-+++++++++++++++++++++++++++++++++++++++++++++++++++
-|   ID|      Constraint|                      Type|
-+++++++++++++++++++++++++++++++++++++++++++++++++++
-|   #1|   Numeric value|     Matrix inequality 3x3|
-|   #2|   Numeric value|     Matrix inequality 3x3|
-|   #3|   Numeric value|   Equality constraint 1x1|
-+++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++
+|   ID|                 Constraint|
++++++++++++++++++++++++++++++++++++
+|   #1|      Matrix inequality 3x3|
+|   #2|      Matrix inequality 3x3|
+|   #3|    Equality constraint 1x1|
++++++++++++++++++++++++++++++++++++
 ````  
 
 We only need a feasible solution, so one argument is sufficient when we call [optimize](/command/optimize) to solve the problem.
@@ -65,13 +65,13 @@ The resulting constraint satisfaction is easily investigated with [check](/comma
 
 ````matlab
 check(F)
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-|   ID|      Constraint|                  Type|   Primal residual|   Dual residual|
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-|   #1|   Numeric value|     Matrix inequality|           0.20138|     8.2785e-016|
-|   #2|   Numeric value|     Matrix inequality|            1.1397|     3.6687e-016|
-|   #3|   Numeric value|   Equality constraint|       -2.276e-015|    -8.1801e-016|
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+|   ID|            Constraint|   Primal residual|   Dual residual|
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+|   #1|     Matrix inequality|           0.20138|     8.2785e-016|
+|   #2|     Matrix inequality|            1.1397|     3.6687e-016|
+|   #3|   Equality constraint|       -2.276e-015|    -8.1801e-016|
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ````  
 
 Minimizing, e.g., the top-left element of \\(P\\) is done by specifying an objective function.
