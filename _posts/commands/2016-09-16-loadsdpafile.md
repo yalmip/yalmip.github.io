@@ -2,7 +2,7 @@
 layout: single
 category: command
 author_profile: false
-excerpt: "Export model to SDPA ASCII file"
+excerpt: "Import model deom SDPA ASCII file"
 title: loadsdpafile
 tags: [Export and import]
 comments: true
@@ -11,7 +11,7 @@ sidebar:
   nav: "commands"
 ---
 
-[loadsdpafile] imports an YALMIP model from an SDPA ASCII format file.
+[loadsdpafile] imports a YALMIP model from an SDPA ASCII format file.
 
 ### Syntax
 
