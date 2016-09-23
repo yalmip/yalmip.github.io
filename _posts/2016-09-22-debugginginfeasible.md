@@ -4,7 +4,7 @@ excerpt: "Where to start?"
 title: Debugging infeasible models
 tags: [Typical problems, Tricks]
 comments: true
-date: '2016-09-16'
+date: '2016-09-22'
 ---
 
 You've created your massive 5000 lines of code model, and when you run it, the solver claims it is infeasible
@@ -132,7 +132,7 @@ check(Foo)
 
 ### Solve a model with slacked constraints
 
-Try to add slacks on constraints, and minimize the slack. Very often, you will see non-zero slacks on a very few constraints, and they are often the guilty ones. At least it helps you to hone in on problematic constraints.
+Try to add slacks on constraints, and minimize the slack. Very often, you will see non-zero slacks just a few constraints, and they are often the guilty ones. At least it helps you to hone in on problematic constraints.
 
 Hence, we replace
 
