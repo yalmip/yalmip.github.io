@@ -1,5 +1,6 @@
 ---
 layout: single
+permalink: /R20160923
 excerpt: "It's been a while..."
 title: "New release R20160923"
 tags: [Release]
