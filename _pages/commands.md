@@ -5,28 +5,28 @@ permalink: /allcommands
 ---
 
 ### Most common
-[sdpvar](/command/sdpvar), [optimize](/), [sdpsettings](/), [value](/), [uncertain](/)
+[sdpvar](/command/sdpvar), [optimize](/command/optimize), [sdpsettings](/command/sdpsettings), [value](/command/value), [uncertain](/command/uncertain)
 
 ### Variable declaration
-[binvar](/), [blkvar](/), [intvar](/), [sdpvar](/), [semivar](/)
+[binvar](/command/binvar), [blkvar](/command/blkvar), [intvar](/command/intvar), [sdpvar](/command/sdpvar), [semivar](/command/semivar)
 
 ### Optimization and solving problems
-[bisection](/), [optimize](/), [optimizer](/), [solvebilevel](/), [solvemoment](/), [solvemp](/), [solvesos](/)
+[bisection](/command/bisection), [optimize](/command/optimize), [optimizer](/command/optimizer), [solvebilevel](/command/solvebilevel), [solvemoment](/command/solvemoment), [solvemp](/command/solvemp), [solvesos](/command/solvesos)
 
 ### Optimization model manipulations
-[dualize](/), [export](/), [kkt](/), [momentmodel](/), [primalize](/), [robustmodel](/), [sosmodel](/)
+[dualize](/command/dualize), [export](/command/export), [kkt](/command/kkt), [momentmodel](/command/momentmodel), [primalize](/command/primalize), [robustmodel](/command/robustmodel), [sosmodel](/command/sosmodel)
 
 ### Variable manipulations
-[assign](/), [binmodel](/), [coefficients](/), [degree](/), [dissect](/), [hessian](/), [int](/), [is](/), [jacobian](/), [linearize](/), [monolist](/), [polynomial](/), [sdisplay](/), [unblkdiag](/), [value](/)
+[assign](/command/assign), [binmodel](/command/binmodel), [coefficients](/command/coefficients), [degree](/command/), [dissect](/command/), [hessian](/command/hessian), [int](/command/int), [is](/command/is), [jacobian](/command/jacobian), [linearize](/command/), [monolist](/command/), [polynomial](/command/polynomial), [sdisplay](/command/sdisplay), [unblkdiag](/command/unblkdiag), [value](/command/value)
 
 ### Variable operators (selected)
-[abs](/), [crossentropy](/), [entropy](/), [erf](/), [exp](/), [floor](/), [geomean](/), [kullbackleibler](/), [log](/), [logdet](/), [logistic](/), [logsumexp](/), [min](/), [max](/), [median](/), [nnz](/), [norm](/), [pnorm](/), [sdpfun](/), [sumk](/), [sumabsk](/), [sort](/)
+[abs](/command/abs), [crossentropy](/command/crossentropy), [entropy](/command/entropy), [erf](/command/erf), [exp](/command/exp), [floor](/command/floor), [geomean](/command/geomean), [kullbackleibler](/command/), [log](/command/), [logdet](/command/logdet), [logistic](/command/logistic), [logsumexp](/command/logsumexp), [min](/command/min), [max](/command/max), [median](/command/median), [nnz](/command/nnz), [norm](/command/norm), [pnorm](/command/pnorm), [sdpfun](/command/sdpfun), [sumk](/command/sumk), [sumabsk](/command/sumabsk), [sort](/command/sort)
 
 ### Constraints (defining)
-[alldifferent](/), [binary](/), [cone](/), [cut](/), [iff](/), [implies](/), [integer](/), [rank](/), [rcone](/), [sos](/), [uncertain](/)
+[alldifferent](/command/alldifferent), [binary](/command/binary), [cone](/command/cone), [cut](/command/cut), [iff](/command/iff), [implies](/command/implies), [integer](/command/integer), [rank](/command/rank), [rcone](/command/rcone), [sos](/command/sos), [uncertain](/command/uncertain)
 
 ### Constraints (manipulating)
-[boundingbox](/), [check](/), [dilate](/), [dual](/), [hull](/), [is](/), [ismember](/), [sosd](/)
+[boundingbox](/command/boundingbox), [check](/command/check), [dilate](/command/dilate), [dual](/command/dual), [hull](/command/hull), [is](/command/is), [ismember](/command/ismember), [sosd](/command/sosd)
 
 ### Auxilliary
-[saveampl](/), [savecplexlp](/), [savesdpafile](/), [yalmiperror](/), [yalmiptest](/)
+[loadsdpafile](/command/loadsdpafile), [loadsedumidata](/command/loadsedumidata),[saveampl](/command/saveampl), [savecplexlp](/command/savecplexlp), [savesdpafile](/command/savesdpafile), [yalmiperror](/command/yalmiperror), [yalmiptest](/command/yalmiptest)
