@@ -31,7 +31,7 @@ Objective = x + x^2
 optimize(Model,Objective,sdpsettings('relax',1))
 ````
 
-The variable \\(x\\) and the relaxed variable of \\(x^2\\) which will be independent in the problem will both have the value 2 at the optimum.
+The variable \\(x\\) and the relaxed variable of \\(x^2\\) which will be independent in the problem will both be 2 at the optimum.
 
 ````matlab
 value(x)
