@@ -23,7 +23,7 @@ permalink: /allcommands
 [abs](/command/abs), [crossentropy](/command/crossentropy), [entropy](/command/entropy), [erf](/command/erf), [exp](/command/exp), [floor](/command/floor), [geomean](/command/geomean), [kullbackleibler](/command/), [log](/command/), [logdet](/command/logdet), [logistic](/command/logistic), [logsumexp](/command/logsumexp), [min](/command/min), [max](/command/max), [median](/command/median), [nnz](/command/nnz), [norm](/command/norm), [pnorm](/command/pnorm), [sdpfun](/command/sdpfun), [sumk](/command/sumk), [sumabsk](/command/sumabsk), [sort](/command/sort)
 
 ### Constraints (defining)
-[alldifferent](/command/alldifferent), [binary](/command/binary), [cone](/command/cone), [cut](/command/cut)(/command/cut), [iff](/command/iff), [implies](/command/implies), [integer](/command/integer), [rank](/command/rank), [rcone](/command/rcone), [sos](/command/sos), [uncertain](/command/uncertain)
+[alldifferent](/command/alldifferent), [binary](/command/binary), [cone](/command/cone), [cut](/command/cut), [iff](/command/iff), [implies](/command/implies), [integer](/command/integer), [rank](/command/rank), [rcone](/command/rcone), [sos](/command/sos), [uncertain](/command/uncertain)
 
 ### Constraints (manipulating)
 [boundingbox](/command/boundingbox), [check](/command/check), [dilate](/command/dilate), [dual](/command/dual), [hull](/command/hull), [is](/command/is), [ismember](/command/ismember), [sosd](/command/sosd)
