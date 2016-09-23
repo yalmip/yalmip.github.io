@@ -2,6 +2,8 @@
 title: "Commands (reference manual)"
 layout: splash
 permalink: /allcommands
+sidebar:
+  nav: "commands"
 ---
 
 ### Most common
