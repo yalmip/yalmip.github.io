@@ -164,7 +164,7 @@ F = [1 >= U >= -1];
 F = [F, 5 >= x >= -5];
 ````
 
-We will now solve this problem under the additional constraints that the input is quantized in steps of 1/3. This can easily be modelled in YALMIP using [ismember](/command/ismember). Note that this nonconvex operator introduces a lot of binary variables, and the MPC problem is most likely solved more efficiently using a [dynamic programming approach].
+We will now solve this problem under the additional constraints that the input is quantized in steps of 1/3. This can easily be modelled in YALMIP using [ismember](/command/ismember). Note that this nonconvex operator introduces a lot of binary variables, and the MPC problem is most likely solved more efficiently using a [dynamic programming approach](/tutorial/explicitmpc).
 
 ````matlab
 F = [F, ismember(U,[-1:1/3:1])];
@@ -179,4 +179,4 @@ plot(Optimizer);
 
 ![Quantized PWA solution]({{ site.url }}/images/pwaquantsolution1.png){: .center-image }
 
-For more examples, see the [dynamic programming example], the [robust MPC example], the [portfolio example], and the [MAXPLUS control example].
+For more examples, see the [dynamic programming example](/example/explicitmpc), the [robust MPC example](/example/robustmpc), the [portfolio example](/example/portfolio), and the [MAXPLUS control example](/example/maxplus).
