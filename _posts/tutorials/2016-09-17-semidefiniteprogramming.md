@@ -33,7 +33,7 @@ Note that we have defined non-strict inequalities, although our theoretical prob
 
 > Strict inequalities simply does not make much sense in continuous numerical optimization. 
 
-If you want to satisfy a strict inequality, you simply have to define a non-strict inequality with a margin.
+If you want to satisfy a strict inequality, you have to define a non-strict inequality with a margin.
 
 To avoid the zero solution on this homogeneous problem we can for instance add a margin and use \\(P \succeq I \\) (which additionally ensures we obtain a strictly feasible solution), or as we do here, constrain the trace of the matrix to dehomogenize the solution.
 
