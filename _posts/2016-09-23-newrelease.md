@@ -26,5 +26,5 @@ Ouch, over a year since last release. Definitely overdue.
 * compilesos is now called [sosmodel](/command/sosmodel). 
 * Performance improvements in nonlinear manipulations supplied by Ingmar Gundlach.
 * Performance improvements in variable indexing supplied by J.D. Bancal.
-* **Breaking:** [bisection](/commands/bisection) now assumes minimization (to be consistent with all other commands).
+* **Breaking:** [bisection](/command/bisection) now assumes minimization (to be consistent with all other commands).
 
