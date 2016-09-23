@@ -41,7 +41,7 @@ F = [coefficients(p-p_sos,[x y]) == 0, Q >= 0];
 optimize(F)
 ````
 
-The problem above is typically more efficiently solved when interpreted in primal form, hence we [dualize] it.
+The problem above is typically more efficiently solved when interpreted in primal form, hence we [dualize](/command/dualize) it.
 
 ````matlab
 F = [coefficients(p-p_sos,[x y]) == 0, Q >= 0];

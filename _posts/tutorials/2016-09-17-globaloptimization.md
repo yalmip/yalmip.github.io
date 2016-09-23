@@ -338,7 +338,7 @@ optimize(F,-t,options);
 *         2% spent in LP-based domain reduction (83 problems solved)
 ````
 
-By adding valid cuts, the relaxations are possibly tighter, leading to better lower bounds. A problem however is that we add additional burden to the local solver used for the upper bounds. The additional cuts are redundant for the local solver, and most likely detoriate the performance. To avoid this, cuts can be explicitly specified by using the command [cut](/command/cut). Constraints defined using this command will only be used in the solution of relaxations, and omitted when the local solver is called. Does not seem to make any difference here though.
+By adding valid cuts, the relaxations are possibly tighter, leading to better lower bounds. A problem however is that we add additional burden to the local solver used for the upper bounds. The additional cuts are redundant for the local solver, and most likely detoriate the performance. To avoid this, cuts can be explicitly specified by using the command [cut](/command/cut)(/command/cut). Constraints defined using this command will only be used in the solution of relaxations, and omitted when the local solver is called. Does not seem to make any difference here though.
 
 ````matlab
 F = [P>=0,A'*P+P*A <= -2*t*P,100 >= t >= 0];

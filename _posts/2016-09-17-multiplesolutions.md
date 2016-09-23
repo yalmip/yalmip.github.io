@@ -9,7 +9,7 @@ date: '2009-08-29'
 
 The overhead from YALMIPs symbolic manipulations and generation of numerical data for a solver can in some cases be severe. A typical case is when we want to solve an optimization problem for a series of objective functions. In some cases, this can be reduced significantly by using YALMIP support for multiple objectives and associated multiple solutions. Note that this functionality currently only works for linear objectives.
 
-Consider a manual implementation of the [boundingbox] command
+Consider a manual implementation of the [boundingbox](/command/boundingbox) command
 
 ````matlab
 x = sdpvar(3,1);

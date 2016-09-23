@@ -11,7 +11,7 @@ sidebar:
   nav: "commands"
 ---
 
-[polynomial] is used to generate a parametrized polynomial.
+[polynomial](/command/polynomial) is used to generate a parametrized polynomial.
 
 ### Syntax  
 
@@ -20,7 +20,7 @@ sidebar:
 ````
 
 ### Examples
-[polynomial] is a convenient way to define parametrized polynomials in one command. The following example defines a quartic in 2 variables.
+[polynomial](/command/polynomial) is a convenient way to define parametrized polynomials in one command. The following example defines a quartic in 2 variables.
 ````matlabb
 x = sdpvar(2,1);
 [p,c,v] = polynomial(x,4);

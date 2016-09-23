@@ -12,7 +12,7 @@ sidebar:
   nav: "tutorials"
 ---
 
-YALMIP supports modeling of nonlinear, often non-differentiable, operators that typically occur in convex programming. Some examples are [min], [max](/command/max), [abs], [geomean](/command/geomean), [sumabsk], and [sqrt], and users can easily add their own (see the end of this page). The operators can be used intuitively, and YALMIP will automatically try to find out if they are used in a way that enables a conic representation or graph representation. If such representation is impossible, YALMIP automatically tries to revert to a [mixed-integer representation].
+YALMIP supports modeling of nonlinear, often non-differentiable, operators that typically occur in convex programming. Some examples are [min], [max](/command/max), [abs](/command/abs), [geomean](/command/geomean), [sumabsk], and [sqrt](/command/sqrt), and users can easily add their own (see the end of this page). The operators can be used intuitively, and YALMIP will automatically try to find out if they are used in a way that enables a conic representation or graph representation. If such representation is impossible, YALMIP automatically tries to revert to a [mixed-integer representation].
 
 Although the automatic support for these operators can simplify the modeling phase significantly in some cases, it is recommended to use these operators only when you know how to model them your self using epigraphs and composition rules of convex and concave functions, why and when it can be done etc. The text-book [Boyd and Vandenberghe 2004] should be a suitable introduction for the beginner, and is consistent with the notation used here.
 
@@ -110,9 +110,9 @@ sol = optimize(F,max(x,z)-min(y,z)-z);
 
 ### Polynomial and sigmonial expressions
 
-By default, polynomial expressions (except quadratics) are not analyzed with respect to convexity and conversion to a conic model is not performed. Hence, if you add a constraint such as \\(x^4 + y^8-x^{0.5} \leq 10\\), YALMIP may complain about convexity, even though we can see that the expression is convex and can be represented using conic constraints. More importantly, YALMIP will not try to derive an equivalent conic model. However, by using the command [cpower] instead, (rational) powers can be used.
+By default, polynomial expressions (except quadratics) are not analyzed with respect to convexity and conversion to a conic model is not performed. Hence, if you add a constraint such as \\(x^4 + y^8-x^{0.5} \leq 10\\), YALMIP may complain about convexity, even though we can see that the expression is convex and can be represented using conic constraints. More importantly, YALMIP will not try to derive an equivalent conic model. However, by using the command [cpower](/command/cpower) instead, (rational) powers can be used.
 
-To illustrate this, first note the difference between a monomial generated using overloaded power and a variable generated using [cpower].
+To illustrate this, first note the difference between a monomial generated using overloaded power and a variable generated using [cpower](/command/cpower).
 
 ````matlab
 sdpvar x

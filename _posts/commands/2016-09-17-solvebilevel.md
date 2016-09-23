@@ -11,7 +11,7 @@ sidebar:
   nav: "commands"
 ---
 
-[solvebilevel] is a built-in bilevel solver for problems with inner convex quadratic programs.
+[solvebilevel](/command/solvebilevel) is a built-in bilevel solver for problems with inner convex quadratic programs.
 
 ### Syntax
 

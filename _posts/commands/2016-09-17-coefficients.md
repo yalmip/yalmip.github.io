@@ -11,7 +11,7 @@ sidebar:
   nav: "commands"
 ---
 
-[coefficients] is used to extract coefficients in a polynomial.
+[coefficients](/command/coefficients) is used to extract coefficients in a polynomial.
 
 ### Syntax
 

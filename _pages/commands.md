@@ -17,16 +17,16 @@ permalink: /allcommands
 [dualize](/command/dualize), [export](/command/export), [kkt](/command/kkt), [momentmodel](/command/momentmodel), [primalize](/command/primalize), [robustmodel](/command/robustmodel), [sosmodel](/command/sosmodel)
 
 ### Variable manipulations
-[assign](/command/assign), [binmodel](/command/binmodel), [coefficients](/command/coefficients), [degree](/command/), [dissect](/command/), [hessian](/command/hessian), [int](/command/int), [is](/command/is), [jacobian](/command/jacobian), [linearize](/command/), [monolist](/command/), [polynomial](/command/polynomial), [sdisplay](/command/sdisplay), [unblkdiag](/command/unblkdiag), [value](/command/value)
+[assign](/command/assign), [binmodel](/command/binmodel), [coefficients](/command/coefficients), [degree](/command/), [dissect](/command/), [hessian](/command/hessian), [int](/command/int), [is](/command/is), [jacobian](/command/jacobian), [linearize](/command/), [monolist](/command/monolist), [polynomial](/command/polynomial), [sdisplay](/command/sdisplay), [unblkdiag](/command/unblkdiag), [value](/command/value)
 
 ### Variable operators (selected)
 [abs](/command/abs), [crossentropy](/command/crossentropy), [entropy](/command/entropy), [erf](/command/erf), [exp](/command/exp), [floor](/command/floor), [geomean](/command/geomean), [kullbackleibler](/command/), [log](/command/), [logdet](/command/logdet), [logistic](/command/logistic), [logsumexp](/command/logsumexp), [min](/command/min), [max](/command/max), [median](/command/median), [nnz](/command/nnz), [norm](/command/norm), [pnorm](/command/pnorm), [sdpfun](/command/sdpfun), [sumk](/command/sumk), [sumabsk](/command/sumabsk), [sort](/command/sort)
 
 ### Constraints (defining)
-[alldifferent](/command/alldifferent), [binary](/command/binary), [cone](/command/cone), [cut](/command/cut), [iff](/command/iff), [implies](/command/implies), [integer](/command/integer), [rank](/command/rank), [rcone](/command/rcone), [sos](/command/sos), [uncertain](/command/uncertain)
+[alldifferent](/command/alldifferent), [binary](/command/binary), [cone](/command/cone), [cut](/command/cut)(/command/cut), [iff](/command/iff), [implies](/command/implies), [integer](/command/integer), [rank](/command/rank), [rcone](/command/rcone), [sos](/command/sos), [uncertain](/command/uncertain)
 
 ### Constraints (manipulating)
-[boundingbox](/command/boundingbox), [check](/command/check), [dilate](/command/dilate), [dual](/command/dual), [hull](/command/hull), [is](/command/is), [ismember](/command/ismember), [sosd](/command/sosd)
+[boundingbox](/command/boundingbox), [check](/command/check), [dilate](/command/dilate), [dual](/command/dual), [hull](/command/hull), [is](/command/is), [ismember](/command/ismember)(/command/ismember), [sosd](/command/sosd)
 
 ### Auxilliary
 [loadsdpafile](/command/loadsdpafile), [loadsedumidata](/command/loadsedumidata),[saveampl](/command/saveampl), [savecplexlp](/command/savecplexlp), [savesdpafile](/command/savesdpafile), [yalmiperror](/command/yalmiperror), [yalmiptest](/command/yalmiptest)

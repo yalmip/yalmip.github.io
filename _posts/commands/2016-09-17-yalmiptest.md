@@ -12,7 +12,7 @@ sidebar:
 ---
 
 
-[yalmiptest] runs a set of test examples to test the installation.
+[yalmiptest](/command/yalmiptest) runs a set of test examples to test the installation.
 
 ### Syntax
 

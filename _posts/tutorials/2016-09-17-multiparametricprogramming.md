@@ -164,7 +164,7 @@ F = [1 >= U >= -1];
 F = [F, 5 >= x >= -5];
 ````
 
-We will now solve this problem under the additional constraints that the input is quantized in steps of 1/3. This can easily be modelled in YALMIP using [ismember]. Note that this nonconvex operator introduces a lot of binary variables, and the MPC problem is most likely solved more efficiently using a [dynamic programming approach].
+We will now solve this problem under the additional constraints that the input is quantized in steps of 1/3. This can easily be modelled in YALMIP using [ismember](/command/ismember). Note that this nonconvex operator introduces a lot of binary variables, and the MPC problem is most likely solved more efficiently using a [dynamic programming approach].
 
 ````matlab
 F = [F, ismember(U,[-1:1/3:1])];

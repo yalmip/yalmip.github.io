@@ -65,7 +65,7 @@ This can cause problems for some solvers if they might perform badly on nonconve
 
 ### Adding new operators
 
-Almost all built-in operators are already supported, but it might happen that you need to implement your own functionality (if you are lazy, you can often use the [sdpfun] functionality).
+Almost all built-in operators are already supported, but it might happen that you need to implement your own functionality (if you are lazy, you can often use the [sdpfun](/command/sdpfun) functionality).
 
 To illustrate how this is done, we will work with the implementation of **exp**. Since almost all built-in functions in MATLAB behaves the same, the definition can almost always be done in the same way, and to simplify coding , the command **InstantiateElementWise** is available (which hides code very similiar to the code used in the [graph representations]. This sets up the logic in YALMIP for the definition of an operator that works element-wise. As in the other modelling approaches, three outputs are assumed; a set of constraints, typically domain constraints, an operator description, and the input arguments.
 

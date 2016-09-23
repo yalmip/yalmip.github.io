@@ -57,7 +57,7 @@ t_lower = -max(eig(inv(P0)*(A'*P0+P0*A)))/2;
 ````
 Alternatively, we could just as well have picked the lower bound as 0, it would only mean that we would have to run the bisection algorithm for a couple more iterations.
 
-We now find an upper bound on the decay-rate by doubling \\(t\\) until the problem is infeasible. To find out if the problem is infeasible, we check the field **problem** in the solution structure. The meaning of this variable is explained in the help text for the command [yalmiperror]. Infeasibility has been detected by the solver if the value is 1. To reduce the amount of information written on the screen, we run the solver in a completely silent mode. This can be accomplished by using the verbose and warning options in [sdpsettings](/command/sdpsettings).
+We now find an upper bound on the decay-rate by doubling \\(t\\) until the problem is infeasible. To find out if the problem is infeasible, we check the field **problem** in the solution structure. The meaning of this variable is explained in the help text for the command [yalmiperror](/command/yalmiperror). Infeasibility has been detected by the solver if the value is 1. To reduce the amount of information written on the screen, we run the solver in a completely silent mode. This can be accomplished by using the verbose and warning options in [sdpsettings](/command/sdpsettings).
 
 ````matlab
 t_upper = t_lower*2;

@@ -95,7 +95,7 @@ optimize(C,obj,sdpsettings('solver','fmincon-geometric'));
 
 The current version of YALMIP has a bug that may cause problems if you have convex quadratic constraints. To avoid this problem, use `sdpsettings('convertconvexquad',0)`. To avoid some other known issues, it is advised to explicitly tell YALMIP that the problem is a geometric problem by specifying the solver to `'gpposy'`, `'mosek-geometric'` or `'fmincon-geometric'`.
 
-Never use the commands [sqrt] and [cpower] when working with geometric programs, i.e. always use the ^ operator. The reason is implementation issues in YALMIP. The commands [sqrt] and [cpower] are meant to be used in optimization problems where a conic model is derived using convexity propagation, see [nonlinear operators](/tutorial/nonlinearoperators).
+Never use the commands [sqrt](/command/sqrt) and [cpower](/command/cpower) when working with geometric programs, i.e. always use the ^ operator. The reason is implementation issues in YALMIP. The commands [sqrt](/command/sqrt) and [cpower](/command/cpower) are meant to be used in optimization problems where a conic model is derived using convexity propagation, see [nonlinear operators](/tutorial/nonlinearoperators).
 
 ### Mixed integer geometric programming
 

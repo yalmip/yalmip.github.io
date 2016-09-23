@@ -36,7 +36,7 @@ addpath(genpath([pwd filesep 'yalmip']);
 savepath
 ````
 
-To test your installation, run the command [yalmiptest]. For further examples and tests, run code from this manual!
+To test your installation, run the command [yalmiptest](/command/yalmiptest). For further examples and tests, run code from this manual!
 
 ### Solvers
 

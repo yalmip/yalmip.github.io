@@ -11,7 +11,7 @@ sidebar:
   nav: "commands"
 ---
 
-[unblkdiag] is used to detect and extract block-diagonal terms (typically used to reduce size of a semidefinite program)
+[unblkdiag](/command/unblkdiag) is used to detect and extract block-diagonal terms (typically used to reduce size of a semidefinite program)
 
 ### Syntax
 

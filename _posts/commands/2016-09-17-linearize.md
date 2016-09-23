@@ -11,7 +11,7 @@ sidebar:
   nav: "commands"
 ---
 
-[linearize] returns the linearization of the polynomial \\(p(x)\\) at the point **value(x)**.
+[linearize](/command/linearize) returns the linearization of the polynomial \\(p(x)\\) at the point **value(x)**.
 
 ### Syntax
 

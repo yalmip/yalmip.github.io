@@ -11,7 +11,7 @@ sidebar:
   nav: "commands"
 ---
 
-[robustmodel] is used to derive a robust counterpart of an uncertain optimization problem without solving it.
+[robustmodel](/command/robustmodel) is used to derive a robust counterpart of an uncertain optimization problem without solving it.
 
 ### Syntax
 

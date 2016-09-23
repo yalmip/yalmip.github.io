@@ -108,7 +108,7 @@ hold on;plot(t,sqrt(t));
 
 ![Quadratic hull]({{ site.url }}/images/hullsqrtm.png){: .center-image }
 
-Explicit representations of the envelopes are implemented for most nonlinear operators, such as **x^p**, **exp**, **log** and **sqrtm**. For convex and concave functions no dedicated envelope code is required as long derivatives are available, as an envelope approximation can be dervied from gradients. For some other functions, and [sdpfun] based operators, a sampling strategy is used to derive the linear relaxation. As an example, the following code computes an approximation of the convex envelope of **sin** with three facets.
+Explicit representations of the envelopes are implemented for most nonlinear operators, such as **x^p**, **exp**, **log** and **sqrtm**. For convex and concave functions no dedicated envelope code is required as long derivatives are available, as an envelope approximation can be dervied from gradients. For some other functions, and [sdpfun](/command/sdpfun) based operators, a sampling strategy is used to derive the linear relaxation. As an example, the following code computes an approximation of the convex envelope of **sin** with three facets.
 
 ````matlab
 xL = 0;

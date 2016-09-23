@@ -12,11 +12,11 @@ sidebar:
   nav: "tutorials"
 ---
 
-In addition to modeling convex and concave operators and perform automatic analysis and derivation of equivalent conic programs, YALMIP uses the nonlinear operator framework for implementing logic and combinatorial expression involving commands such as [or], [and], [ne], [iff](/command/iff), [implies](/command/implies), [nnz](/command/nnz), [alldifferent], [sort](/command/sort) and [ismember], and on a higher level, nonconvex piecewise functions in connection with [MPT](/solver/mpt)(/solver/mpt). The common feature among these operators is that they all require binary and integer variables to be represented in a structured way.
+In addition to modeling convex and concave operators and perform automatic analysis and derivation of equivalent conic programs, YALMIP uses the nonlinear operator framework for implementing logic and combinatorial expression involving commands such as [or], [and], [ne], [iff](/command/iff), [implies](/command/implies), [nnz](/command/nnz), [alldifferent], [sort](/command/sort) and [ismember](/command/ismember), and on a higher level, nonconvex piecewise functions in connection with [MPT](/solver/mpt)(/solver/mpt). The common feature among these operators is that they all require binary and integer variables to be represented in a structured way.
 
 The same framework is used also for alternatives to graph-based implementations. If the convexity propagation of an conic representable such as [min](/command/min) or [max](/command/max) fails, thus invalidating the use of graph-models, YALMIP can create an alternative model based on mixed-integer representations. This done for many of the [linear programming representable operators](/tags/#linear-programming-representable).
 
-Mixed-integer representations are also used to model discontinuous functions such as [floor], [ceil], [fix], [sign], [rem], and [mod].
+Mixed-integer representations are also used to model discontinuous functions such as [floor](/command/floor), [ceil](/command/ceil), [fix](/command/fix), [sign](/command/sign), [rem](/command/rem), and [mod](/command/mod).
 
 ### Working with mixed-integer representations
 
@@ -110,7 +110,7 @@ end
 
 ### Mixed-integer models as default
 
-Some operators, such as [sign], does not have a graph-representation, but must be modelled using an integer representation (or a [callback approach]).
+Some operators, such as [sign](/command/sign), does not have a graph-representation, but must be modelled using an integer representation (or a [callback approach]).
 
 In these cases, we create an operator that always returns the mixed-integer model, even though YALMIP asks for a graph-model. We communicate the fact that we returned a mixed-integer model via the model field in the properties. By returning an integer model directly instead of simply returning an empty model when YALMIP asks for a graph-model, we reduce the work-load for YALMIP (if YALMIP fails to get a graph model, it will make a second call and ask for an exact model, unless an exact model was returned anyway).
 
