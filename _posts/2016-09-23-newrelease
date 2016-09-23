@@ -4,20 +4,26 @@ excerpt: "It's been a while..."
 title: "New release R20160923"
 tags: [Release]
 comments: true
-date: '2009-08-29'
+date: '2016-09-23'
 ---
 
 Ouch, over a year since last release. Definitely overdue.
 
+[Latest release](/download)
+
 ### Major changes, fixes and improvements
 
-* Performance improvements in nonlinear manipulations supplied by Ingmar Gundlach and performance improvements in variable indexing by J.D. Bancal. 
-* [buncertain](/commands/uncertain) is now overloaded on constraints for easy definition of uncertain variables and constraints at the same time.
+* [uncertain](/commands/uncertain) is now overloaded on constraints for easy definition of uncertain variables and constraints at the same time.
 * [bisection](/commands/bisection) can now be used as a solver, i.e., called via [optimize](/command/tutorial).
 * Early experimental support for multi-parametric solver [POP](/solver/pop).
-* Added [momentmodel](/command/momentmodel) to create moment relaxation without solving it. 
 * [sort](/command/sort) now supports matrix argument.
 * [max](/command/max) and [min](/command/min) now support location output in their [mixed-integer versions](/tutorial/nonlinearoperatorsmixedinteger).
 * [interp1](/command/interp1) overloaded as a [callback operator](/tutorial/nonlinearoperatorscallback).
 * Rotated second-order cones detected from model.
+* Added [momentmodel](/command/momentmodel) to create a moment relaxation model without solving it. 
+* robustify is now called [robustmodel](/command/robustmodel).
+* compilesos is now called [sosmodel](/command/sosmodel). 
+* Performance improvements in nonlinear manipulations supplied by Ingmar Gundlach.
+* Performance improvements in variable indexing supplied by J.D. Bancal.
 * **Breaking:** [bisection](/commands/bisection) now assumes minimization (to be consistent with all other commands).
+
