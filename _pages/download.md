@@ -20,6 +20,6 @@ For installation, see the [installation tutorial](/tutorial/installation), and g
 
 ## Latest relase
 
-[Download YALMIP R20160916](https://johanlofberg.github.com/yalmip/master.zip){: .btn .btn--success}
+[Download YALMIP R20160916](https://github.com/yalmip/YALMIP/archive/master.zip){: .btn .btn--success}
 
 ## Old releases
