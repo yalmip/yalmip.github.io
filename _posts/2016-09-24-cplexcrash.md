@@ -1,6 +1,5 @@
 ---
 layout: single
-permalink: /R20160923
 excerpt: "Boom!"
 title: "MATLAB 2016 + CPLEX crash"
 tags: 
