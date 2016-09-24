@@ -11,7 +11,7 @@ sidebar:
   nav: "commands"
 ---
 
-[polynomial](/command/polynomial) is used to generate a parametrized polynomial.
+[polynomial](/command/polynomial) is used to generate a parameterized polynomial.
 
 ### Syntax  
 
