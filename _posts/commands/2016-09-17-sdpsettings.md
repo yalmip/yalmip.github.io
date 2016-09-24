@@ -26,7 +26,7 @@ optimize(Constraints, Objective, options)
 Creating an options structure with non-default values is easily done.
 
 ````matlab
-ops = sdpsettings('solver','dsdp','verbose',0)
+ops = sdpsettings('solver','mosek','verbose',0)
 ```` 
 
 A convenient way to alter many options is to send an existing options structure as the first input argument.
