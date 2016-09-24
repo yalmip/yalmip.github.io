@@ -22,4 +22,4 @@ z = crossentropy(x,y)
 
 ### Implementation
 
-[crossentropy](/command/crossentropy) is implemented using the [callback-based nonlinear operators] framework.
+The operator is implemented as a [callback operator](/tutorial/nonlinearoperatorscallback).
