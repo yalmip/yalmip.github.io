@@ -133,35 +133,35 @@ ans =
     maxradius: Inf
 ```` 
 
-### !solver
+#### solver
 
 In the code above, we told YALMIP to use the solver DSDP, and to run in silent mode. The possible values to give to the field solver can be found in the solver documentation, or simply study the structure returned by [sdpsettings](/command/sdpsettings). If the solver DSDP not is found, an error message will be reported. To let YALMIP select the solver, use the default solver tag ''. If you give a comma-separated list of solvers such as 'dsdp,csdp,sdpa', YALMIP will select based on this preference. If you add a wildcard in the end 'dsdp,csdp,sdpa,*', YALMIP will select another solver if none of the solvers in the list were found. 
 
-### !verbose
+### verbose
 
 By setting verbose to 0, the solvers will run with minimal display. By increasing the value, the display level is controlled (typically 1 gives modest display level while 2 gives an awful amount of information printed). 
 
-### !warning
+### warning
 
 The warning option can be used to get a warning displayed when a solver has run into some kind of problem (recommended to be used if the solver is run in silent mode).  
 
-### !beeponproblem
+### beeponproblem
 
 The field beeponproblem contains a list of error codes (see yalmiperror). YALMIP will beep if any of these errors occurs (nice feature if you're taking a coffee break during heavy calculations).
 
-### !showprogress
+### showprogress
 
 When the field showprogress is set to 1, the user can see what YALMIP currently is doing (might be a good idea for large-scale problems). 
 
-### !debug
+### debug
 
 If debug is turned on, YALMIP will not try to catch errors, which will simplify finding out where and why YALMIP failed  unexpectedly
 
-### !cachesolvers
+### cachesolvers
 
 Every time [optimize](/command/optimize) is called, YALMIP checks for available solvers. This can take a while on some systems (some networks), so it is possible to avoid doing this check every call. Set cachesolvers to 1, and YALMIP will remember the solvers (using a persistent variable) found in the first call to [optimize](/command/optimize). If solvers are added to the path after the first call, YALMIP will not detect this. Hence, after adding a solver to the path the work-space must be cleared or [optimize](/command/optimize) must be called once with cachesolvers set to 0. Only use this option if you absolutely need it.
 
-### !removeequalities
+### removeequalities
 
 When the field removeequalities is set to 1, YALMIP removes equality constraints using a QR decomposition and reformulates the problem using a smaller set of variables.
 
@@ -169,30 +169,27 @@ If removeequalities is set to 2, YALMIP removes equality constraints using a bas
 
 With removeequalities set to -1, equalities are removed by YALMIP by converting them to double-sided inequalities. When set to 0 (default), YALMIP does nothing if the solver supports equalities. If the solver does not support equalities, YALMIP uses double-sided inequalities.
 
-### !saveduals
+### saveduals
 
 If the field saveduals is set to 0, the dual variables will not be saved in YALMIP. This might be useful for large sparse problems with a dense dual variable. Setting the field to 0 will then save some memory.
 
-### !savesolverinput, savesolveroutput
+### savesolverinput, savesolveroutput
 
 The fields savesolverinput and savesolveroutput can be used to see what is actually sent to and returned from the solver. This data will then be available in the output structure from [optimize](/command/optimize).
 
-### !convertconvexquad
+### convertconvexquad
 
 With convertconvexquad set to 1, YALMIP will try to convert quadratic constraints to second order cones.
 
-### !radius
-A constraint ||x||&#8804;radius on the vector of all involved decision variables can be added by changing the field radius to a finite positive value. This can improve numerical performance in some cases. In fact, the field radius may be an [sdpvar](/command/sdpvar) object. If you work with semidefinite programs and standard convex programming, it is recommended to keep the feature on. However, if you work with more general nonlinear optimization problem, it is most often recommended to turn the conversion off.
-
-### !relax
+### relax
 
 If relax is set to 1, all nonlinearities and integrality constraints will be disregarded. Integer variables are relaxed to continuous variables and nonlinear variables are treated as independent variables (i.e., x and x'^2^' will be treated as two separate variables). If set to 2, only integrality constraints are relaxed, while set to 3 only nonlinearities are relaxed.
 
-### !usex0
+### usex0
 
 The current solution (the value returned from the [value](/command/value) command) can be used as an initial guess when solving an optimization problem. Setting the field '''usex0''' to 1 tells YALMIP to supply the current values as an initial guess to the solver. You can manually specify a current value using [assign](/command/assign).
 
-### !solver options
+### solver options
 
 The options structure also contains a number of structures with parameters used in the specific solver. As an example, the following parameters can be tuned for [Solvers.SEDUMI SeDuMi] (for details, the user is referred to the manual of the specific solver).
 
