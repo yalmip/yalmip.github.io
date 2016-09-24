@@ -11,7 +11,7 @@ sidebar:
   nav: "commands"
 ---
 
-[sdpsettings](/command/sdpsettings) is used to communicate options to YALMIP and solvers. It is used as the third argument in commands such [optimize](/command/optimize), [solvesos](/command/solvesos), [solvemoment](/command/solvemoment) and [solvemp](/command/solvemp). 
+[sdpsettings](/command/sdpsettings) is used to communicate options to YALMIP and solvers. It is used as the third argument in commands such [optimize](/command/optimize), [optimizer](/command/optimizer), [solvesos](/command/solvesos), [solvemoment](/command/solvemoment) and [solvemp](/command/solvemp). 
 
 ### Syntax
 
