@@ -13,7 +13,7 @@ The crash apears inside [sdpsettings](/command/sdpsettings) which crashes violen
 
 Possible work-arounds
 
-* Edit **sdpsettings.m** and change **cplex = cplexoptimset('cplex');** to **cplex = cplexoptimset;**. The drawback is that the options structure is reduced, i.e., this call does not create a complete set of options
+* Edit **sdpsettings.m** ans **prunecplexoptions.m** (only necessary if you are doing sum-of-squares computations or using export) and change **cplex = cplexoptimset('cplex');** to **cplex = cplexoptimset;**. The drawback is that the options structure is reduced, i.e., this call does not create a complete set of options
 
 * Alternatively, look around for another solver. [GUROBI](/solver/gurobi) and [MOSEK](/solver/mosek) has a much better history of fixing their critical bugs rapidly.
 
