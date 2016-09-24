@@ -16,7 +16,7 @@ In addition to modeling convex and concave operators and perform automatic analy
 
 The same framework is used also for alternatives to graph-based implementations. If the convexity propagation of an conic representable such as [min](/command/min) or [max](/command/max) fails, thus invalidating the use of graph-models, YALMIP can create an alternative model based on mixed-integer representations. This done for many of the [linear programming representable operators](/tags/#linear-programming-representable).
 
-Mixed-integer representations are also used to model discontinuous functions such as [floor](/command/floor), [ceil](/command/ceil), [fix](/command/fix), [sign](/command/sign), [rem](/command/rem), and [mod](/command/mod).
+Mixed-integer representations are also used to model discontinuous functions such as [floor](/command/floor), [ceil](/command/ceil), [fix](/command/fix), [round](/command/round), [sign](/command/sign), [rem](/command/rem), and [mod](/command/mod).
 
 ### Working with mixed-integer representations
 
