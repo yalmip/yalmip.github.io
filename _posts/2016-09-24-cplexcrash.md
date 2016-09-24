@@ -3,7 +3,7 @@ layout: single
 permalink: /R20160923
 excerpt: "Boom!"
 title: "MATLAB 2016 + CPLEX crash"
-tags: [Release]
+tags: 
 comments: true
 date: '2016-09-23'
 ---
