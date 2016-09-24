@@ -17,3 +17,5 @@ Possible work-arounds
 * Edit **sdpsettings.m** and change **cplex = cplexoptimset('cplex');** to **cplex = cplexoptimset;**. The drawback is that the options structure reduced, i.e., this call does not create a cmplete set of options
 
 * Alternatively, look around for another solver. [GUROBI](/solver/gurobi) and [MOSEK](/solver/mosek) has a much better history of fixing their critical bugs rapidly.
+
+An upcoming patch-release of YALMIP will try to code arond these issues.
