@@ -13,4 +13,4 @@ To see how such a problem is modeled in YALMIP, a [unit commitment example](/exa
 
 If you would like to see how additional constraints or logic behaviour can be added to the model, let me know!
 
-> Take-away from example: Don't multiply binary variables and continuous varaibles unless you actually have to!
+> Take-away from example: Don't multiply binary variables and continuous variables unless you actually have to!
