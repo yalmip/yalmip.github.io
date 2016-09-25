@@ -215,7 +215,7 @@ for i = 1:150
         Bmodel = [.9;.1];
     end
     future_r = 4*sin((i:i+N)/40);    
-    inouts = {x,future_r,disturbance,oldu,Bmodel};
+    inputs = {x,future_r,disturbance,oldu,Bmodel};
     [solutions,diagnostics] = controller{inputs};    
     U = solutions{1};oldu = U(1);
     X = solutions{2};
