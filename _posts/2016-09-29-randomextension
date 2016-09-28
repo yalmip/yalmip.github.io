@@ -1,6 +1,6 @@
 ---
 layout: single
-excerpt: "Unintended consequences of imroved optimizer framework"
+excerpt: "Unintended consequences of an improved optimizer framework"
 title: "Sample-based robust optimization"
 tags: 
 comments: true
@@ -202,7 +202,7 @@ for k = 1:10
 end 
 ````
 
-This generalizes vastly. Nothing forces us to have models linear in the random variables, nor do we have to have simple balls
+This generalizes almost arbitrarily. Nothing forces us to have models linear in the random variables, nor do we have to have simple balls in which the uncertainty lives
 
 ````matlab
 x = sdpvar(2,1);
