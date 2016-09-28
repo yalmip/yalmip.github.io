@@ -11,9 +11,9 @@ date: '2016-09-28'
 
 The [optimizer](/command/optimizer) has been revamped significantly internally, and comes with new features and simplified use.
 
-For those of you who have missed this feature, [optimizer](/command/optimizer) allows you to define a parameterized optimization problem which YALMIP precompiles to its internal numerical format. This object can then be instantiated for particular values on the parameters. This allows for, e.g., rapid simulation and experimentation with optimization problems, as most of the YLMIP overhead is removed from the loop.
+For those of you who have missed this feature, [optimizer](/command/optimizer) allows you to define a parameterized optimization problem which YALMIP precompiles to its internal numerical format. This object can then be instantiated for particular values on the parameters. This allows for, e.g., rapid simulation and experimentation with optimization problems, as most of the YALMIP overhead is removed from the loop.
 
-Consider the problem of investigating the optimal value \\(x\\) in the optimization problem \\(\min_x (x-b)^2 s.t -a\leq x \leq a\\), as \\(a\\) and \\(b\\) varies. Creating an [optimizer](/command/optimizer) object for this setup is essentially done in the same fashion as when we solve the optimization problem, except that we declare parameters ( \\(a\\) and \\(b\\)) and outputs (\\(x\\)) as trailing arguments. It is recommended to explicitly declare the solver to be used. Here we specify [MOSEK](/solver/mosek), as we trivially know that the optimization problem will be a quadratic program once \\(a\\) and \\(b\\) are fixed (it is a quadratic program also when they are decision variables).
+Consider the problem of investigating the optimal value \\(x\\) in the optimization problem \\(\textbf{min}_x~ (x-b)^2 \textbf{subject to} s.t -a\leq x \leq a\\), as \\(a\\) and \\(b\\) varies. Creating an [optimizer](/command/optimizer) object for this setup is essentially done in the same fashion as when we solve the optimization problem, except that we declare parameters ( \\(a\\) and \\(b\\)) and outputs (\\(x\\)) as trailing arguments. It is recommended to explicitly declare the solver to be used. Here we specify [MOSEK](/solver/mosek), as we trivially know that the optimization problem will be a quadratic program once \\(a\\) and \\(b\\) are fixed (as it is a quadratic program already when they are decision variables).
 
 ````matlab
 sdpvar x a b
@@ -22,7 +22,7 @@ Objective = (x-b)^2;
 Saturation = optimizer([-a <= x <= a], Objective,sdpsettings('solver','mosek'),[a;b],x)
 ````
 
-If we want to solve the quadratic program for particular values of \\(a=1\\) and \\(b=3\\), we simply call the operator with those values
+If we want to solve the quadratic program for particular values of **a=1** and **b=3**, we simply call the operator with those values
 
 ````matlab
 xoptimal = Saturation([1;3])
@@ -50,18 +50,20 @@ xoptimal = Saturation( {1,3} )
 xoptimal = Saturation( 1 , 3 )
 ````
 
-This method to call the object is the fastest, but if you are ok with sacrificing some performance, you can use the following format (which is somewhat slower as it requires definitions and analysis of constraint objects). Note that the order does not make a difference.
+This purely numerical method to call the object is the fastest, but if you are ok with sacrificing some performance, you can use the following format (which is slower as it requires definitions and analysis of constraint objects). Note that the order does not make a difference.
 
 ````matlab
 xoptimal = Saturation(b == 3, b == 1)
 xoptimal = Saturation([a == 1, b == 1])
 ````
 
-The variables have to be specified in exactly the same form as they were declared in the creation of the object. Hence, the following will not work
+The variables have to be specified in exactly the same form as they were placed in the cells in the creation of the object. Hence, the following will not work
 
 ````matlab
 xoptimal = Saturation([a;b] == [1;3])
 ````
+
+Also note that you cannot mix declaration of parameters values using numerical values, and through constraint syntax.
 
 
 ### Partial instantiation
@@ -139,6 +141,16 @@ mesh(A,B,reshape(Optimal,size(A)));
 
 ![Nonlinear saturation]({{ site.url }}/images/saturatedoptimizernonlinear.png){: .center-image }
 
+We can perform a full parameterization, but delay the solution of the optimization problem
+
+````matlab
+Solver = saturation(1,3,'nosolve');
+
+xoptimal = Solver([]);
+````
+
+This feature can be useful in some cases where we concatentate several models, and then solve a problem on the intersection of all constraints.
+
 ### Concatenation of optimizer objects
 
 A new feature is the possibility to concatenate [optimizer](/command/optimizer) objects. This is in particular useful when performing partial instantiations.All constraints are appended in the two models, and the new objective is simple the average of all involved objectives, i.e they are essentially summed up.
@@ -153,13 +165,23 @@ Case1 = Saturation(a == 1);
 Case2 = Saturation(a == 2);
 
 Merge = [Case1,Case2];
-xoptimal = Marge(1)
+xoptimal = Merge(1)
 ````
 
 Effectively, we just solved
 
 ````matlab
 xoptimal = optimize([-1 <= x <= 1,-2 <= x <= 2],((x-1+1)^2+(x-1+2)^2)/2)
+````
+
+````matlab
+An alternative is to use a delayed solve, and fully instantiate all objects
+
+````matlab
+Case1 = Saturation(a == 1, b==1,'nosolve');
+Case2 = Saturation(a == 2, b==1,'nosolve');
+Merge = [Case1,Case2];
+xoptimal = Merge([])
 ````
 
 Note that current relase assumes that all concatenated models involve exactly the same variables, both parameters and decision variables.
