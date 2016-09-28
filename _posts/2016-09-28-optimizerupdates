@@ -82,7 +82,7 @@ Saturation_fixed_b = Saturation([],3)
 x_optmal = Saturation_fixed_b{1}
 ````
 
-This generalizes to more variables of course
+All this generalizes to more variables of course
 
 ````matlab
 sdpvar c d
@@ -90,8 +90,45 @@ Saturation = optimizer([-a - c - d <= x <= a + c + d], Objective,sdpsettings('so
 Saturation_fixed_ac = Saturation{[a == 1, [c;d] == 0]};
 Saturation_fixed_ac = Saturation{1,[],[0;0]};
 xoptimal = Saturation_fixed_ac{3}
-
 ````
+
+Let us use this partial instantiation to plot the optimal \\(x\\) as a function of \\(a\\) and \\(b\\) over a grid (we'll show below how you can do this quicker without this new partial instantiation, this is just for illustration)
+
+````matlab
+Saturation = optimizer([-a <= x <= a ], Objective,sdpsettings('solver','mosek'), { a , b}, x);
+% Create a grid
+[A,B] = meshgrid(0.5:0.05:1,-2:0.2:2);
+for i = 1:size(A,2)
+    Saturation_fixa = Saturation(A(1,i),[]);
+    for j = 1:size(A,1)        
+        Optimal(j,i) =  Saturation_fixa(B(j,i));
+    end
+end
+mesh(A,B,Optimal);
+xlabel('a');ylabel('b');zlabel('x')
+````
+
+Alternatively
+````matlab
+for i = 1:size(A,2)
+    for j = 1:size(A,1)        
+        Optimal(j,i) =  Saturation(A(j,i),B(j,i));
+    end
+end
+mesh(A,B,Optimal);
+````
+
+Fastest approach is a blocked augmentation of multiple arguments. The two lines of code below compiles and solves Those two lines solves 231 quadratic programs over a grid!
+
+````matlab
+Optimal = Saturation(A(:)',B(:)');
+mesh(A,B,reshape(Optimal,size(A)));
+````
+<-- Comment -->
+
+
+
+
 
 
 
