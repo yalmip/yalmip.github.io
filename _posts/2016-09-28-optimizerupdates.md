@@ -21,8 +21,78 @@ Constraints = [-a <= x <= a];
 Objective = (x-b)^2;
 Saturation = optimizer([-a <= x <= a], Objective,sdpsettings('solver','mosek'),[a;b],x)
 ````
-sdfsd
-WE can now 
+
+If we want to solve the quadratic program for particular values of \\(a=1\\) and \\(b=3\\), we simply call the operator with those values
+
+````matlab
+xoptimal = Saturation([1;3])
+````
+
+### Improved syntax
+
+If you have used [optimizer](/command/optimizer) before, you might notice that we now call the object with parantheses instead of curly brackets. Parantheses is the new standard, but curly brackets still apply.
+
+````matlab
+xoptimal = Saturation{[1;3]}
+````
+Instead of vectorizing the parameters into one vector, we can, as before, create an [optimizer](/command/optimizer) object using multiple input arguments by placing these in a cell in the declaration.
+
+````matlab
+Saturation = optimizer([-a <= x <= a], Objective,sdpsettings('solver','mosek'), { a , b }, x)
+````
+
+To be backwards compatible and be somewhat lax in common confusions between the old format (first line below) and prefered new (two last), the solution can be obtained with
+
+````matlab
+xoptimal = Saturation{ {1,3} }
+xoptimal = Saturation{  1,3 }
+xoptimal = Saturation( {1,3} )
+xoptimal = Saturation( 1 , 3 )
+````
+
+This method to call the object is the fastest, but if you are ok with sacrificing some performance, you can use the following format (which is somewhat slower as it requires definitions and analysis of constraint objects). Note that the order does not make a difference.
+
+````matlab
+xoptimal = Saturation(b == 3, b == 1)
+xoptimal = Saturation([a == 1, b == 1])
+````
+
+The variables have to be specified in exactly the same form as they were declared in the creation of the object. Hence, the following will not work
+
+````matlab
+xoptimal = Saturation([a;b] == [1;3])
+````
+
+
+### Partial instantiation
+
+The largest change in the [optimizer](/command/optimizer) framework is the introduction of partial instantiation. This means you can create an object where only a subset of parameters have been fixed.
+
+````matlab
+Saturation_fixed_a = Saturation(1,[])
+Saturation_fixed_a = Saturation([ a == 1])
+Saturation_fixed_b = Saturation([],3)
+Saturation_fixed_b = Saturation([ b == 3])
+````
+
+These objects can now be manipulated further, as it is just an [optimizer](/command/optimizer) object with a smaller amount of parameters.
+
+````matlab
+Saturation_fixed_b = Saturation([],3)
+x_optmal = Saturation_fixed_b{1}
+````
+
+This generalizes to more variables of course
+
+````matlab
+sdpvar c d
+Saturation = optimizer([-a - c - d <= x <= a + c + d], Objective,sdpsettings('solver','mosek'), { a , b , [c;d]}, x)
+Saturation_fixed_ac = Saturation{[a == 1, [c;d] == 0]};
+Saturation_fixed_ac = Saturation{1,[],[0;0]};
+xoptimal = Saturation_fixed_ac{3}
+
+````
+
 
 
 
