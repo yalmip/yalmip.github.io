@@ -4,7 +4,7 @@ excerpt: Slice'n dice your problems"
 title: "Extensions on the optimizer"
 tags: 
 comments: true
-features: false
+featured: false
 date: '2016-09-28'
 ---
 
