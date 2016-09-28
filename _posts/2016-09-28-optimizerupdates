@@ -175,13 +175,13 @@ xoptimal = optimize([-1 <= x <= 1,-2 <= x <= 2],((x-1+1)^2+(x-1+2)^2)/2)
 ````
 
 ````matlab
-An alternative is to use a delayed solve, and fully instantiate all objects
+An alternative is to use a delayed solve, and fully instantiate all objects before merging them.
 
 ````matlab
 Case1 = Saturation(a == 1, b==1,'nosolve');
 Case2 = Saturation(a == 2, b==1,'nosolve');
 Merge = [Case1,Case2];
-xoptimal = Merge([])
+xoptimal = Merge()
 ````
 
 Note that current relase assumes that all concatenated models involve exactly the same variables, both parameters and decision variables.
