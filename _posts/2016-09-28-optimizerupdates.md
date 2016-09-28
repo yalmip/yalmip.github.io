@@ -1,6 +1,6 @@
 ---
 layout: single
-excerpt: Slice'n dice your problems"
+excerpt: "Slice'n dice your problems"
 title: "Extensions on the optimizer"
 tags: 
 comments: true
