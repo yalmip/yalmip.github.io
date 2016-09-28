@@ -1,0 +1,160 @@
+---
+layout: single
+excerpt: "Slice'n dice your problems"
+title: "Extensions on the optimizer"
+tags: 
+comments: true
+featured: false
+date: '2016-09-28'
+---
+
+With the [recent extension](/optimizerupdates) of the [optimizer](/command/optimizer) framework, it was just too simple to add basic support for sample/scenario based optimization for uncertain programs.
+
+To illustrate the ideas, we will start with some pure old-school YALMIP code to show how a circle can be approximated using hyperplanes, i.e., we will create an polytopic approximation. 
+
+The ball \\(x^Tx \leq 1\\) can alternatively be written as \\(v^Tx \leq 1 ~\forall ~v^Tv\leq 1 \\) (this is called the dual-norm property).. Hence, the following lines of code generates a ball approximation and plots it together with the perfect ball (we sample \\v\\ on the unit-circle as samples inside will generate redundant constraints)
+
+````matlab
+x = sdpvar(2,1);
+ballApproximation = [];
+for i = 1:10
+ v = randn(2,1);v = v/norm(v)
+ ballApproximation = [ballApproximation, v'*x <= 1];
+end
+clf
+plot(ballApproximation);hold on
+plot(x'*x <= 1)
+````
+
+Let us see how this approximation evolves as we increase the number of hypeplanes, and let us also solve an optimization problem where we maximize \\(x_1+x_2\\) over the approximation just to see how this solution converges. Still, we're using vanilla YALMIP code. 
+
+````matlab
+x = sdpvar(2,1);
+ops = sdpsettings('plot.shade',.1,'verbose',0)
+ballApproximation = [];
+clf;hold on
+for k = 1:10
+  for i = 1:10
+    vi = randn(2,1);vi = vi/norm(vi);
+    ballApproximation = [ballApproximation, vi'*x <= 1];
+  end
+  plot(ballApproximation,[],200,[],ops);
+  optimize(ballApproximation,-sum(x),ops);  
+  plot(value(x(1)),value(x(2)),'k*')
+end 
+````
+
+In the [plot](/command/plot) command, we use 200 rays to increase the likelyhood of not missing any vertices during ray-shooting. In other words, the code above solves 2000 linear programs to plot the sequence of ball approximations, so you better have an efficient solver installed (code takes around 10-15 seconds with a quality [linear programming solver](/allsolvers) installed.
+
+![Approximated ball]({{ site.url }}/images/aproximationball1.png){: .center-image }
+
+In a first step to use recent additions to YALMIP, we use partially instantiated optimizer objects. We want to generate a bunch of constraints with different \\(v\\) but the same \\(x\\). Hence, we create a model is parameterized \\(v\\), and then instantiates objects where \\(v\\) is fixed to different values, and concatenate these. Conveniently, [plot](/command/plot) is overloaded on [optimizer](/command/optimizer) objects and simply plots the feasible set in any remaining decision- or parametric variables. Note that the uninstantiated model is bilinear in the variables, hence it is crucial to specify a relevant solver for the instantiated model.
+
+````matlab
+x = sdpvar(2,1);
+v = sdpvar(2,1);
+ops = sdpsettings('plot.shade',.1,'verbose',0,'solver','mosek');
+ballApproximation = [];
+paramModel = optimizer(v'*x <= 1,-sum(x),ops,v,x);
+clf;hold on
+for k = 1:10
+  for i = 1:10
+    vi = randn(2,1);vi = vi/norm(vi);
+    ballApproximation = [ballApproximation, paramModel(vi,'nosolve')];
+  end
+  plot(ballApproximation,[],200,[],ops);
+  xopt = ballApproximation();
+  plot(xopt(1),xopt(2),'k*')
+end 
+````
+
+### Generic uncertainty sets and sampling based scenarios
+
+The command [uncertain](/command/uncertain) has previously been used for declaring uncertain variables in a robust optimization problem, which has been solved using derivations of worst-case robust counterparts. It is now possible to attach a distribution or sample generator to an uncertainty declaration on a parameter used in an [optimizer](/command/optimizer)
+
+In the distribution case (other cases below), we specify a distribution with associated parameters from the list of distributions available in the **random** command (**random** is part of the Statistics Toolbox). 
+
+The following specifies a model where all elements in **v** are a random variable with uniform distribution between \\(-1\\) and \(1\\)
+
+````matlab
+Model = [v'*x <= 1, uncertain(v,'unif',[-1;-1],[1;1])];
+````
+
+YALMIP automatically appends dimension information to call to **random**, which means **random** automatically generates samples of correct dimension if you give scalar distribution parameters
+
+````matlab
+Model = [v'*x <= 1, uncertain(v,'unif',[-1;-1],[1;1])];
+````
+
+It is important that you supply all parameters for the distribution, as YALMIP always appends dimensions as trailing arguments, and if you omit some parameter, the dimension arguments will be interpreted as distribution parameters by **random**.
+
+The distribution can be used for sampling an uncertain model in an [optmizer](/command/optimizer) object.
+
+````matlab
+Model = [v'*x <= 1, uncertain(v,'unif',[-1;-1],[1;1])];
+OneHyperPlaneModel = optimizer(Model, -sum(x),ops,v,x);
+````
+
+We can instantiate this model as usual for a particular value on **v**. 
+
+````matlab
+model = OneHyperPlaneModel([-1;1],'nosolve');
+````
+
+However, we can also tell it to draw samples on parameters with distributions attached, and instantiate the object using those values.
+
+````matlab
+model = sample(OneHyperPlaneModel)
+````
+
+To create a model with several cuts, we simply concatenate the samples
+
+````matlab
+model = sample(OneHyperPlaneModel);
+for i = 1:10
+  model = [model, sample(OneHyperPlaneModel)];
+end
+````
+
+Of course, this can be simplified, adnd we can tell the sampler to draw several samples in one call, and concatenate those models.
+
+````matlab
+model = sample(OneHyperPlaneModel,10);
+````
+
+Now that we can attach a distribution to a variable, and sample models,  let us put this to use. In our first experiment, we will not reproduce the figure above, but create the set  \\(v^Tx \leq 1 ~\forall ~\left\lvert|v \right\rvert| \leq 1 \\). If you've done your homework, you should already now realize that will create a romb (asymptotically)
+
+````matlab
+x = sdpvar(2,1);
+v = sdpvar(2,1);
+ops = sdpsettings('plot.shade',.1,'verbose',0,'solver','mosek');
+rombApproximation = [];
+Model = [v'*x <= 1, uncertain(v,'unif',[-1;-1],[1;1])];
+Model = optimizer(Model, -sum(x),ops,v,x);
+clf;hold on
+for k = 1:10
+  rombApproximation = [rombApproximation, sample(Model,10)];  
+  plot(rombApproximation,[],200,[],ops);
+  xopt = rombApproximation();
+  plot(xopt(1),xopt(2),'k*')
+end 
+````
+
+![Approximated romb]({{ site.url }}/images/aproximationromb1.png){: .center-image }
+
+Of course, this is a silly way to specify the set \\(\left\lvert|v \right\rvert| \leq 1 \\). An alternative old-school YALMIP approach to create this set in a silly way is to create from a robust optimization framework, where the dual norm property is utomatically derived
+
+````matlab
+Model = [v'*x <= 1, uncertain(-1 <= v <= 1)];
+plot(Model,'red',200);
+````
+
+
+
+
+
+
+
+
+
+
