@@ -1,7 +1,7 @@
 ---
 layout: single
-excerpt: "Sample-based robust optimization"
-title: "Randomized optimizer objects"
+excerpt: "Unintended consequences of imroved optimizer framework"
+title: "Sample-based robust optimization"
 tags: 
 comments: true
 featured: false
