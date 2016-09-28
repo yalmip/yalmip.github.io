@@ -8,7 +8,7 @@ featured: false
 date: '2016-09-28'
 ---
 
-With the [recent extension](/optimizerupdates) of the [optimizer](/command/optimizer) framework, it was just too simple to add basic support for sample/scenario based optimization of uncertain programs.
+With the [recent extensions](/optimizerupdates) of the [optimizer](/command/optimizer) framework, it was just too simple to add basic support for sample/scenario based optimization of uncertain programs.
 
 To illustrate the ideas, we will start with some pure clasical YALMIP code to show how a circle can be approximated using hyperplanes, i.e., we will create an polytopic approximation. 
 
