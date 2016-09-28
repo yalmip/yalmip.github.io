@@ -21,7 +21,9 @@ sol = optimize(Constraints,Objective)
 
 Where to start...
 
-### Absolutely most common mistake
+Before asking a question on the YALMIP [forum](/https://groups.google.com/forum/#!forum/yalmip), make sure you've at least covered the first four tips here.
+
+### 1. Absolutely most common mistake
 
 Code looks like this
 
@@ -36,7 +38,7 @@ x = sdpvar(n,m,'full');
 ````
 
 
-### Is it really infeasible?
+### 2. Is it really infeasible?
 
 To begin with, get rid of the objective function. An objective function cannot generate any infeasibility, but in the feasibility analysis, it is just unnecessary to keep it. You might have stumbled into a bug in the solver presolve code or something, which causes it to make an incorrect statement. Some solvers mess up infeasibility with unbounded objective.
 
@@ -50,7 +52,7 @@ optimize(Constraints)
 
 Nope, not that simple...
 
-### Get a second opinion
+### 3. Get a second opinion
 
 Solvers can fail, so try another solver.
 
@@ -64,11 +66,11 @@ optimize(Constraints,[],sdpsettings('solver','gurobi'))
 
 OK, unlikely that two solvers make the same incorrect judgement.
 
-### Clean up and simplify your model
+### 4. Clean up and simplify your model
 
 Searching for a needle is easier in a clean small room, than a messy huge room. You don't have to debug your complete model, if the feasibility remains when you remove most parts of it. Make a quick effort to remove stuff. You might find the bug by simply looking at the condensed code...
 
-### Do you have a known feasible solution?
+### 5. Do you have a known feasible solution?
 
 If you have a known feasible solution, use that and see if your model actually is feasible when you use it. Simply assign the solution and check the constraints
 
@@ -130,7 +132,7 @@ check(Fubar)
 check(Foo)
 ````
 
-### Solve a model with slacked constraints
+### 6. Solve a model with slacked constraints
 
 Try to add slacks on constraints, and minimize the slack. Very often, you will see non-zero slacks just a few constraints, and they are often the guilty ones. At least it helps you to hone in on problematic constraints.
 
@@ -177,7 +179,7 @@ ans =
 The fifth constraints combined in the two sets of constraints appear to be problematic, as we cannot find a solution where they both are feasible.
 
 
-### Bisect you constraints
+### 7. Bisect you constraints
 
 Remove constraints, and see when it becomes feasible. In the end, this might be your only option to hone in on the problems in your code. You can do this either by commenting out parts in your code, or by indexing from the full set.
 
