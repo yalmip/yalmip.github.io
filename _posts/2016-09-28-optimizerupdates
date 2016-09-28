@@ -159,7 +159,11 @@ xoptimal = Marge(1)
 Effectively, we just solved
 
 ````matlab
-xoptimal = optimize([-1 <= x <= 1,-2 <= x <= 2],(x-1+1)^2+(x-1+2)^2)
+xoptimal = optimize([-1 <= x <= 1,-2 <= x <= 2],((x-1+1)^2+(x-1+2)^2)/2)
 ````
+
+Note that current relase assumes that all concatenated models involve exactly the same variables, both parameters and decision variables.
+
+
 
 
