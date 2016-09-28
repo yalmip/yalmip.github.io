@@ -108,6 +108,8 @@ mesh(A,B,Optimal);
 xlabel('a');ylabel('b');zlabel('x')
 ````
 
+![Saturation]({{ site.url }}/images/saturatedoptimizer.png){: .center-image }
+
 Alternatively
 ````matlab
 for i = 1:size(A,2)
@@ -124,12 +126,40 @@ Fastest approach is a blocked augmentation of multiple arguments. The two lines 
 Optimal = Saturation(A(:)',B(:)');
 mesh(A,B,reshape(Optimal,size(A)));
 ````
-<-- Comment -->
 
+Remember, [optimizer](/comand/optimizer) is not just for linearly parameterized problems or simple quadratic programs. However, when there are general [callback nonlinearities](/tutorial/nonlinearoperatorscallback) acting on parameters (functions such as [exp](/command/exp), [log](/command/log) etc), they can (currently) only act on simple parametric variables, i.e., not on any kind of compound expression involving parameters. Note that the problem below is a nonlinear program for YALMIP during the compilation phase, and is a quadratic program first when the parameters have been fixed. It is thus a case where it is crucial that we explicitly select a suitable solver for the instantiated problem.
 
+````matlab
+Objective = (x-4*sin(b))^2;
+Saturation = optimizer([-a <= x <= 1 + cos(a) ], Objective,sdpsettings('solver','mosek'), { a , b}, x);
+[A,B] = meshgrid(0.5:0.25:2*pi,-2*pi:0.2:2*pi);
+Optimal = Saturation(A(:)',B(:)');
+mesh(A,B,reshape(Optimal,size(A)));
+````
 
+![Nonlinear saturation]({{ site.url }}/images/saturatedoptimizernonlinear.png){: .center-image }
 
+### Concatenation of optimizer objects
 
+A new feature is the possibility to concatenate [optimizer](/command/optimizer) objects. This is in particular useful when performing partial instantiations.All constraints are appended in the two models, and the new objective is simple the average of all involved objectives, i.e they are essentially summed up.
 
+Hence, consider a case where we have two models
+
+````matlab
+Objective = (x - b + a)^2;
+Saturation = optimizer([-a <= x <= a ], Objective,sdpsettings('solver','mosek'), { a , b}, x);
+
+Case1 = Saturation(a == 1);
+Case2 = Saturation(a == 2);
+
+Merge = [Case1,Case2];
+xoptimal = Marge(1)
+````
+
+Effectively, we just solved
+
+````matlab
+xoptimal = optimize([-1 <= x <= 1,-2 <= x <= 2],(x-1+1)^2+(x-1+2)^2)
+````
 
 
