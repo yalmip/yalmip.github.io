@@ -1,18 +1,18 @@
 ---
 layout: single
-excerpt: "Slice'n dice your problems"
-title: "Extensions on the optimizer"
+excerpt: "Sample-based robust optimization"
+title: "Randomized optimizer objects"
 tags: 
 comments: true
 featured: false
 date: '2016-09-28'
 ---
 
-With the [recent extension](/optimizerupdates) of the [optimizer](/command/optimizer) framework, it was just too simple to add basic support for sample/scenario based optimization for uncertain programs.
+With the [recent extension](/optimizerupdates) of the [optimizer](/command/optimizer) framework, it was just too simple to add basic support for sample/scenario based optimization of uncertain programs.
 
-To illustrate the ideas, we will start with some pure old-school YALMIP code to show how a circle can be approximated using hyperplanes, i.e., we will create an polytopic approximation. 
+To illustrate the ideas, we will start with some pure clasical YALMIP code to show how a circle can be approximated using hyperplanes, i.e., we will create an polytopic approximation. 
 
-The ball \\(x^Tx \leq 1\\) can alternatively be written as \\(v^Tx \leq 1 ~\forall ~v^Tv\leq 1 \\) (this is called the dual-norm property).. Hence, the following lines of code generates a ball approximation and plots it together with the perfect ball (we sample \\v\\ on the unit-circle as samples inside will generate redundant constraints)
+The ball \\(x^Tx \leq 1\\) can alternatively be written as \\(v^Tx \leq 1 ~\forall ~v^Tv\leq 1 \\) (the dual-norm property). Hence, the following lines of code generate a ball approximation and plots it together with the exact ball (we sample \\v\\ on the unit-circle as samples inside will generate redundant constraints)
 
 ````matlab
 x = sdpvar(2,1);
@@ -23,10 +23,10 @@ for i = 1:10
 end
 clf
 plot(ballApproximation);hold on
-plot(x'*x <= 1)
+plot(x'*x <= 1);
 ````
 
-Let us see how this approximation evolves as we increase the number of hypeplanes, and let us also solve an optimization problem where we maximize \\(x_1+x_2\\) over the approximation just to see how this solution converges. Still, we're using vanilla YALMIP code. 
+Let us see how this approximation evolves as we increase the number of hyperplanes, and let us also solve an optimization problem where we maximize \\(x_1+x_2\\) over the approximation just to see how this solution converges. Still, we're using vanilla YALMIP code. 
 
 ````matlab
 x = sdpvar(2,1);
@@ -38,9 +38,9 @@ for k = 1:10
     vi = randn(2,1);vi = vi/norm(vi);
     ballApproximation = [ballApproximation, vi'*x <= 1];
   end
-  plot(ballApproximation,[],200,[],ops);
+  plot(ballApproximation,x,'blue',200,ops);
   optimize(ballApproximation,-sum(x),ops);  
-  plot(value(x(1)),value(x(2)),'k*')
+  plot(value(x(1)),value(x(2)),'k*');drawnow
 end 
 ````
 
@@ -62,7 +62,7 @@ for k = 1:10
     vi = randn(2,1);vi = vi/norm(vi);
     ballApproximation = [ballApproximation, paramModel(vi,'nosolve')];
   end
-  plot(ballApproximation,[],200,[],ops);
+  plot(ballApproximation,x,'blue',200,ops);
   xopt = ballApproximation();
   plot(xopt(1),xopt(2),'k*')
 end 
@@ -134,7 +134,7 @@ Model = optimizer(Model,-sum(x),ops,v,x);
 clf;hold on
 for k = 1:10
   rombApproximation = [rombApproximation, sample(Model,10)];  
-  plot(rombApproximation,[],200,[],ops);
+  plot(rombApproximation,x,'blue',200,ops);
   xopt = rombApproximation();
   plot(xopt(1),xopt(2),'k*')
 end 
@@ -146,7 +146,7 @@ Of course, this is a silly way to specify the set \\(\left\lvert|v \right\rvert|
 
 ````matlab
 Model = [v'*x <= 1, uncertain(-1 <= v <= 1)];
-plot(Model,'red',200);
+plot(Model,x,'red',200);
 ````
 
 The reason we started with an approimation of a romb, instead of the original ball approimation, is that there is no distribution in the **random** command which samples on the bounded unit ball. What we can do instead is to attach the variable with a function handle which generates a sample of suitable character. 
@@ -196,7 +196,7 @@ Model = optimizer(Model,-sum(x),ops,v,x);
 clf;hold on
 for k = 1:10
   ballApproximation = [ballApproximation, sample(Model,10)];  
-  plot(ballApproximation,[],200,[],ops);
+  plot(ballApproximation,x,'blue,200,ops);
   xopt = ballApproximation();
   plot(xopt(1),xopt(2),'k*');drawnow
 end 
@@ -208,23 +208,23 @@ This generalizes vastly. Nothing forces us to have models linear in the random v
 x = sdpvar(2,1);
 v = sdpvar(2,1);
 ops = sdpsettings('plot.shade',.1,'verbose',0,'solver','mosek');
-ballApproximation = [];
+setApproximation = [];
 
 f = @(x)randn(2,1);g = @(x)(sin(x)/(1 + abs(sum(x))/5));
-ballSampler = @(x)g(f());
+weirdSampler = @(x)g(f());
 
-Model = [v'*x <= 1 + sum(v.^4-v.^3), uncertain(v,ballSampler)];
+Model = [v'*x <= 1 + sum(v.^4-v.^3), uncertain(v,weirdSampler)];
 Model = optimizer(Model,-sum(x),ops,v,x);
 clf;hold on
 for k = 1:10
-  ballApproximation = [ballApproximation, sample(Model,10)];  
-  plot(ballApproximation,[],200,[],ops);
-  xopt = ballApproximation();
+  setApproximation = [setApproximation, sample(Model,10)];  
+  plot(setApproximation,x,'blue',200,ops);
+  xopt = setApproximation();
   plot(xopt(1),xopt(2),'k*');drawnow
 end 
 ````
 
-
+Notice that the resulting sets are all convex, as they are intersections of convex sets (hyperplanes), regardless of how complex the sampling is, or how the uncertainty enters the model.
 
 
 
