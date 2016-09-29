@@ -29,7 +29,7 @@ Creating an options structure with non-default values is easily done.
 ops = sdpsettings('solver','mosek','verbose',0)
 ```` 
 
-A convenient way to alter many options is to send an existing options structure as the first input argument.
+A convenient way to alter many options without getting a long line is to send an existing options structure as the first input argument.
 
 ````matlab
 ops = sdpsettings('solver','sdpa');
