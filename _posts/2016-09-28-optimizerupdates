@@ -142,10 +142,6 @@ mesh(A,B,reshape(Optimal,size(A)));
 
 ![Nonlinear saturation]({{ site.url }}/images/saturatedoptimizernonlinear.png){: .center-image }
 
-
-
-
-
 ### Delayed solution and concatenation of optimizer objects
 
 We can perform a full parameterization, but delay the solution of the optimization problem
@@ -189,8 +185,4 @@ Merge = [Case1,Case2];
 xoptimal = Merge()
 ````
 
-Note that current relase assumes that all concatenated models involve exactly the same variables, both parameters and decision variables.
-
-
-
-
+Note that current the relase assumes that all concatenated models involve exactly the same variables, both parameters and decision variables.
