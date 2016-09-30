@@ -1,0 +1,46 @@
+---
+layout: single
+category: command
+author_profile: false
+excerpt: 
+title: interp2
+tags:
+comments: true
+date: '2016-09-17'
+sidebar:
+  nav: "commands"
+---
+
+[interp2](/command/interp2) overloads interp2
+
+### Syntax
+
+````matlab
+y = interp1(xdata,ydata,zdata,x,y,'method')
+````
+
+### Example
+
+Create a nasty nonlinear function over a grid and find the global minima of a spline interpolated version of the nonlinear function, using the global solver [BMIBNB](/solver/bmibnb) (of course, this is silly to do as we simply can use the data to find the global minimum)
+
+````matlab
+[X,Y] = meshgrid(-3:.5:3,-3:.5:3);
+Z = 8*(X-.5).^2 + 100*sin(5*X).^2+((Y).^2-2*X.^2).^2+15*(Y+3).^2;
+
+sdpvar x y
+z = interp2(X,Y,Z,x,y,'spline');
+optimize([],z,sdpsettings('solver','bmibnb'));
+mesh(X,Y,Z);hold on;plot3(value(x),value(y),value(z),'*')
+````
+
+Of course, in this case we could have worked with the nonlinear directly.
+````matlab
+sdpvar x y
+z = 8*(x-.5)^2 + 100*sin(5*x)^2+((y)^2-2*x.^2).^2+15*(y+3).^2;
+optimize([],z,sdpsettings('solver','bmibnb'));
+plot3(value(x),value(y),value(z),'r*')
+````
+
+### Implementation
+
+The operator operator is implemented using the [callback framework](/tutorial/nonlinearoperatorscallback). The operator does not compute derivatives, which can lead to slow computations (and in general, computing a single function value is expensive).
