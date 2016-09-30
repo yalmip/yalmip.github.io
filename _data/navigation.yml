@@ -343,6 +343,10 @@ commands:
         url: /command/geomean
       - title: "huber"
         url: /command/huber        
+      - title: "interp1"
+        url: /command/interp1
+      - title: "interp2"
+        url: /command/interp2        
       - title: "kullbackleibler"
         url: /command/kullbackleibler
       - title: "log"
