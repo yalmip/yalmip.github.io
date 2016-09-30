@@ -12,7 +12,7 @@ With the [recent extensions](/optimizerupdates) of the [optimizer](/command/opti
 
 To illustrate the ideas, we will start with some pure clasical YALMIP code to show how a circle can be approximated using hyperplanes, i.e., we will create a polytopic outer approximation. 
 
-The ball \\(x^Tx \leq 1\\) can alternatively be written as \\(v^Tx \leq 1 ~\forall ~v^Tv\leq 1 \\) (the dual-norm property). Hence, the following lines of code generate a ball approximation and plots it together with the exact ball (we sample \\v\\ on the unit-circle as samples inside in th interior will generate redundant constraints)
+The ball \\(x^Tx \leq 1\\) can alternatively be written as \\(v^Tx \leq 1 ~\forall ~v^Tv\leq 1 \\) (the dual-norm property). Hence, the following lines of code generate a ball approximation and plots it together with the exact ball (we sample \\(v\\) on the unit-circle as samples inside in th interior will generate redundant constraints)
 
 ````matlab
 x = sdpvar(2,1);
@@ -151,6 +151,9 @@ Model = [v'*x <= 1, uncertain(-1 <= v <= 1)];
 plot(Model,x,'red');
 ````
 
+![Approximated romb]({{ site.url }}/images/approximationromb2.png){: .center-image }
+
+
 The reason we started with an approimation of a romb, instead of the original ball approimation, is that there is no distribution in the **random** command which samples on the bounded unit ball. What we can do instead is to attach the variable with a function handle which generates a sample of suitable character. 
 
 We could write a function which creates samples on the unit circle
@@ -218,13 +221,16 @@ weirdSampler = @(x)g(f());
 Model = [v'*x <= 1 + sum(v.^4-v.^3), uncertain(v,weirdSampler)];
 Model = optimizer(Model,-sum(x),ops,v,x);
 clf;hold on
-for k = 1:10
+for k = 1:20
   setApproximation = [setApproximation, sample(Model,10)];  
   plot(setApproximation,x,'blue',200,ops);
   xopt = setApproximation();
   plot(xopt(1),xopt(2),'k*');drawnow
 end 
 ````
+
+![Approximated something]({{ site.url }}/images/approximationweird1.png){: .center-image }
+
 
 Notice that the resulting sets are all convex, as they are intersections of convex sets (hyperplanes), regardless of how complex the sampling is, or how the uncertainty enters the model.
 
