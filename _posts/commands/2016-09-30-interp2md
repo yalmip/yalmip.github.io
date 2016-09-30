@@ -43,4 +43,4 @@ plot3(value(x),value(y),value(z),'r*')
 
 ### Implementation
 
-The operator operator is implemented using the [callback framework](/tutorial/nonlinearoperatorscallback). The operator does not compute derivatives, which can lead to slow computations (and in general, computing a single function value is expensive).
+The operator is implemented using the [callback framework](/tutorial/nonlinearoperatorscallback). The operator does not compute derivatives, which can lead to slow computations (and in general, computing a single function value is expensive).
