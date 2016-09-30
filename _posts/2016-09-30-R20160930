@@ -12,7 +12,7 @@ date: '2016-09-30'
 
 ### Major changes, fixes and improvements
 
-* [optimizer](/command/optimizer) revised and extended significantly. See the [post on core changes](/optimizerupdates) and its use for [optimization over randomized uncertainty](/randomextension).
+* [optimizer](/command/optimizer) revised and extended significantly. See the [post on core changes](/optimizerupdates) and its experimental use for [optimization over randomized uncertainty](/randomextension).
 * [optimizer](/command/optimizer) objects can now [plot](/command/plot) its feasible set.
 * Added a work-around for [CPLEX](/solver/cplex) and MATLAB 2016 (causes seg-faults when defining complete options structures in [sdpsettings](/command/sdpsettings). Note that the [CPLEX](/solver/cplex) options structure will be limited with this fix, but it is the only possible work-around at the moment (besides changing solver or downgrading MATLAB to an earlier version).
 * Fixed bug which caused [knitro](/solver/knitro) to crash if YALMIP could not deliver derivatives.
