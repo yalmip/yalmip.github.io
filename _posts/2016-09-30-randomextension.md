@@ -116,13 +116,13 @@ for i = 1:10
 end
 ````
 
-Of course, this can be simplified, and we can tell the sampler to draw several samples in one call, and concatenate those models.
+This can be simplified, and we can tell the sampler to draw several samples in one call, and concatenate those models.
 
 ````matlab
 model = sample(OneHyperPlaneModel,10);
 ````
 
-Now that we can attach a distribution to a variable, and sample models,  let us put this to use. In our first experiment, we will not reproduce the figure above, but create the set  \\(v^Tx \leq 1 ~\forall ~\left\lvert v \right\rvert \leq 1 \\). If you've done your homework, you should already now realize that will create a romb (asymptotically)
+Now that we can attach a distribution to a variable, and sample models, let us put this to use. In our first experiment, we will not reproduce the figure above, but create the set  \\(v^Tx \leq 1 ~\forall ~\left\lvert v \right\rvert \leq 1 \\). If you've done your homework, you should already now realize that will create a romb (asymptotically)
 
 ````matlab
 x = sdpvar(2,1);
@@ -144,7 +144,7 @@ As we sample in the whole set (as in contrast to the boundary), we are generatin
 
 ![Approximated romb]({{ site.url }}/images/approximationromb1.png){: .center-image }
 
-Of course, this is a silly way to specify the set \\(\left\lvert|v \right\rvert| \leq 1 \\). Another alternative old-school YALMIP approach to create this set in a silly way is to create it using the deterministic exact worst-case robust optimization framework, where the dual norm property is automatically derived (leading to a model with ony four linear constraints)
+Of course, this is a silly way to specify the set \\(\left\lvert v \right\rvert \leq 1 \\). An alternative old-school YALMIP approach to create this set in a silly way is to create it using the deterministic exact worst-case robust optimization framework, where the dual norm property is automatically derived (leading to a model with ony four linear constraints)
 
 ````matlab
 Model = [v'*x <= 1, uncertain(-1 <= v <= 1)];
@@ -154,7 +154,7 @@ plot(Model,x,'red');
 ![Approximated romb]({{ site.url }}/images/approximationromb2.png){: .center-image }
 
 
-The reason we started with an approimation of a romb, instead of the original ball approimation, is that there is no distribution in the **random** command which samples on the bounded unit ball. What we can do instead is to attach the variable with a function handle which generates a sample of suitable character. 
+The reason we started playing with an approximation of a romb, instead of the original ball approximation, is that there is no distribution in the **random** command which samples on the bounded unit ball. What we can do instead is to attach the variable with a function handle which generates a sample of suitable character. 
 
 We could write a function which creates samples on the unit circle
 
@@ -207,7 +207,7 @@ for k = 1:10
 end 
 ````
 
-This generalizes almost arbitrarily. Nothing forces us to have models linear in the random variables, nor do we have to have simple balls in which the uncertainty lives.
+This generalizes almost arbitrarily (well, limited by the current implementation of [optimizer](/optimizer) where better support for nonlinear [calback](/tutorial/nonlinearoperatorscallback) is needed). Nothing forces us to have models linear in the random variables, nor do we have to have simple balls in which the uncertainty lives.
 
 ````matlab
 x = sdpvar(2,1);
@@ -231,8 +231,7 @@ end
 
 ![Approximated something]({{ site.url }}/images/approximationweird1.png){: .center-image }
 
-
-Notice that the resulting sets are all convex, as they are intersections of convex sets (hyperplanes), regardless of how complex the sampling is, or how the uncertainty enters the model.
+Note that the resulting sets are all convex, as they are intersections of convex sets (hyperplanes), regardless of how complex the sampling is, or how the uncertainty enters the model.
 
 
 
