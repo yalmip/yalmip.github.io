@@ -7,6 +7,8 @@ comments: true
 date: '2016-09-23'
 ---
 
+> Update: This fix is now available in the official version
+
 [CPLEX](/solver/cplex) and/or MATLAB 2016 has a bug which causes this combination to cause a seg-fault when YALMIP is used.
 
 The crash apears inside [sdpsettings](/command/sdpsettings) which crashes violently, and this function is called when YALMIP sets up an options structure, no matter solver you will use. The problem is the function **cplexoptimset** supplied by [CPLEX](/solver/cplex)
