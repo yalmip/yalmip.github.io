@@ -44,11 +44,11 @@ for k = 1:10
 end 
 ````
 
-In the [plot](/command/plot) command, we use 200 rays to increase the likelyhood of not missing any vertices during ray-shooting. In other words, the code above solves 2000 linear programs to plot the sequence of ball approximations, so you better have an efficient solver installed (code takes around 10-15 seconds with a quality [linear programming solver](/allsolvers) installed.
+In the [plot](/command/plot) command, we use 200 rays to increase the likelyhood of not missing any vertices during ray-shooting. In other words, the code above solves 2000 linear programs to plot the sequence of ball approximations, so you better have an efficient solver installed (code takes around 10-15 seconds with a quality [linear programming solver](/allsolvers) installed).
 
 ![Approximated ball]({{ site.url }}/images/approximationball1.png){: .center-image }
 
-In a first step to use recent additions to YALMIP, we use partially instantiated optimizer objects. We want to generate a bunch of constraints with different \\(v\\) but the same \\(x\\). Hence, we create a model is parameterized \\(v\\), and then instantiates objects where \\(v\\) is fixed to different values, and concatenate these. Conveniently, [plot](/command/plot) is overloaded on [optimizer](/command/optimizer) objects and simply plots the feasible set in any remaining decision- or parametric variables. Note that the uninstantiated model is bilinear in the variables, hence it is crucial to specify a relevant solver for the instantiated model.
+In a first step to use [recent additions to YALMIP optimizer objects](/optimizerupdates), we use partially instantiated  [optimizer](/command/optimizer) objects. We want to generate a bunch of constraints with different \\(v\\) but the same \\(x\\). Hence, we create a model is parameterized \\(v\\), and then instantiates objects where \\(v\\) is fixed to different values, and concatenate these. Conveniently, [plot](/command/plot) is overloaded on [optimizer](/command/optimizer) objects and simply plots the feasible set in any remaining decision- or parametric variables. Note that the uninstantiated model is bilinear in the variables, hence it is crucial to specify a solver which is applicable once the parameters have been fixed.
 
 ````matlab
 x = sdpvar(2,1);
@@ -70,11 +70,11 @@ end
 
 ### Generic uncertainty sets and sampling based scenarios through optimizers
 
-The command [uncertain](/command/uncertain) has previously been used for declaring uncertain variables in a robust optimization problem, which then has been solved using derivations of worst-case robust counterparts. It is now possible to attach a distribution or sample generator to an uncertainty declaration of a parameter used in an [optimizer](/command/optimizer)
+The command [uncertain](/command/uncertain) has previously been used for declaring uncertain variables in a robust optimization problem, which then has been solved using derivations of worst-case robust counterparts. It is now possible to attach a distribution or sample generator to an uncertainty declaration of a parameter used in an [optimizer](/command/optimizer).
 
 In the distribution case (other cases below), we specify a distribution with associated parameters from the list of distributions available in the **random** command (**random** is part of the Statistics Toolbox). 
 
-The following specifies a model where all elements in **v** are a random variable with uniform distribution between \\(-1\\) and \(1\\)
+The following specifies a model where all elements in **v** are a random variable with uniform distribution between \\(-1\\) and \\(1\\)
 
 ````matlab
 Model = [v'*x <= 1, uncertain(v,'unif',[-1;-1],[1;1])];
@@ -122,7 +122,7 @@ Of course, this can be simplified, and we can tell the sampler to draw several s
 model = sample(OneHyperPlaneModel,10);
 ````
 
-Now that we can attach a distribution to a variable, and sample models,  let us put this to use. In our first experiment, we will not reproduce the figure above, but create the set  \\(v^Tx \leq 1 ~\forall ~\left\lvert|v \right\rvert| \leq 1 \\). If you've done your homework, you should already now realize that will create a romb (asymptotically)
+Now that we can attach a distribution to a variable, and sample models,  let us put this to use. In our first experiment, we will not reproduce the figure above, but create the set  \\(v^Tx \leq 1 ~\forall ~\left\lvert v \right\rvert \leq 1 \\). If you've done your homework, you should already now realize that will create a romb (asymptotically)
 
 ````matlab
 x = sdpvar(2,1);
