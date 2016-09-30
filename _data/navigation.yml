@@ -58,10 +58,12 @@ solvers:
         url: /solver/cbc
       - title: "CDD"
         url: /solver/cdd
+      - title: "CDCS"
+        url: /solver/cdcs
       - title: "CPLEX"
-        url: /solver/cplex
+        url: /solver/cplex        
       - title: "CSDP"
-        url: /solver/csdp
+        url: /solver/csdp        
       - title: "DSDP"
         url: /solver/dsdp
       - title: "ECOS"
