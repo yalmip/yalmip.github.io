@@ -18,6 +18,8 @@ YALMIP is free of charge to use and is openly distributed, but note that
 
 For installation, see the [installation tutorial](/tutorial/installation), and get started coding [here](/tutorial/basics)
 
+And don't forget, most likely you have to [install additional solvers](/allsolvers)
+
 ## Latest relase
 
 [Download latest YALMIP](https://github.com/yalmip/YALMIP/archive/master.zip){: .btn .btn--success}
