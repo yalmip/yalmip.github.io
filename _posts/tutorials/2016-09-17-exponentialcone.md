@@ -30,5 +30,5 @@ If the exponential cone program violates convexity rules, and an exponential con
 
 ````matlab
 sdpvar x
-optimize([],log(x), sdpsettings('solver',scs')
+optimize([],log(x), sdpsettings('solver',scs'))
 ````
