@@ -332,7 +332,9 @@ commands:
       - title: "cpower"
         url: /command/cpower
       - title: "crossentropy"
-        url: /command/crossentropy
+        url: /command/crossentropy        
+      - title: "det"
+        url: /command/det
       - title: "entropy"
         url: /command/entropy
       - title: "erf"
