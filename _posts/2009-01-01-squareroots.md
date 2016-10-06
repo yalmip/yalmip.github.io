@@ -7,7 +7,7 @@ comments: true
 date: '2009-08-29'
 ---
 
-One of the strengths in YALMIP is the built-in convexity analysis and modelling framework for conic optimization. The command [sqrt](/command/sqrt) is implemented in YALMIP as a convexity aware [nonlinear operator]. If you use the positive increasing concave operator [sqrt](/command/sqrt) in a way that satisfies the implemented rules for preserving convexity (maximize it, bound it from below,...), [sqrt](/command/sqrt) will be implemented using second-order cone constraints, 
+One of the strengths in YALMIP is the built-in convexity analysis and modelling framework for conic optimization. The command [sqrt](/command/sqrt) is implemented in YALMIP as a convexity aware [nonlinear operator](/tutorial/nonlinearoperators). If you use the positive increasing concave operator [sqrt](/command/sqrt) in a way that satisfies the implemented rules for preserving convexity (maximize it, bound it from below,...), [sqrt](/command/sqrt) will be implemented using second-order cone constraints, 
 
 $$
 \sqrt{x} \geq t \Leftrightarrow x\geq t^2 \Leftrightarrow  \left\| \begin{matrix}1-x\\2t\end{matrix}\right\|\leq 1+x 
