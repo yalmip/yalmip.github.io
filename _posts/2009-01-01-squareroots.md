@@ -36,7 +36,7 @@ F   = [1 <= x <= 2];
 optimize(F,obj)
 ````
 
-By using the [sqrtm](/command/sqrtm) operator instead, a general nonlinear problem is set up, and [FMINCON](/solver/fmincon) is called.
+By using the [sqrtm](/command/sqrtm) operator instead, a general nonlinear problem is set up, and a general nonlinear programming solver is called.
 
 ````matlab
 obj = x'*A*x + sqrtm(sum(x));
