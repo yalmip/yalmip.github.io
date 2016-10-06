@@ -53,8 +53,8 @@ xoptimal = Saturation( 1 , 3 )
 This purely numerical method to call the object is the fastest, but if you are ok with sacrificing some performance, you can now use the following format (which is slower as it involves creation and manipulation of constraint objects).
 
 ````matlab
-xoptimal = Saturation(b == 3, b == 1)
-xoptimal = Saturation([a == 1, b == 1])
+xoptimal = Saturation(b == 3, a == 1)
+xoptimal = Saturation([a == 1, b == 3])
 ````
 
 Note that the order does not make any difference. However, the variables have to be specified in exactly the same form as they were placed in the cells in the creation of the object. Hence, the following will not work
