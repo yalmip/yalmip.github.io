@@ -120,7 +120,7 @@ Of course, in this example, this makes no difference, as there only are 6 decisi
 ````matlab
 R = chol(Q);
 z = sdpvar(length(x),1);
-optimize([z = R*x],z'*z);
+optimize([z == R*x],z'*z);
 ````
 
 Even better, if you know \\(Q\\) is low-rank or there is some other structure that allows you to compute a low-rank possibly sparse factor, you should exploit that
@@ -128,12 +128,12 @@ Even better, if you know \\(Q\\) is low-rank or there is some other structure th
 ````matlab
 R = my_smart_factorization(Q);
 z = sdpvar(size(R,2),1);
-optimize([z = R*x],z'*z);
+optimize([z == R*x],z'*z);
 ````
 
 The archetypical example is **sum(x)^2** which leads to a completely dense quadratic model of rank 1. Absolutely catastrophical for large problems (it will most likely be indefinite for vectors of length larger than 10 in floating point numerics) and a waste of memory. The trivial model is
 
 ````matlab
 z = sdpvar(1);
-optimize([z = sum(x)],z^2);
+optimize([z == sum(x)],z^2);
 ````
