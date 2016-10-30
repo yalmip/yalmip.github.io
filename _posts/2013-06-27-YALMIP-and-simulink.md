@@ -228,11 +228,11 @@ if t == 0
     Controller = optimizer(constraints,objective,[],{x{1},r},u{1});
     
     % And use it here too
-    uout = Controller{{currentx,currentr}};
+    uout = Controller(currentx,currentr);
     
 else    
     % Almost no overhead
-    uout = Controller{{currentx,currentr}};
+    uout = Controller(currentx,currentr);
 end
 ````
 
