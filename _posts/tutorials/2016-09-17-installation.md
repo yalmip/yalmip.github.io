@@ -40,7 +40,7 @@ savepath
 
 To test your installation, run the command [yalmiptest](/command/yalmiptest). For further examples and tests, run code from this manual!
 
-Another approach is to handle your installation using [www.tbxmanager.com](http://www.tbxmanager.com).
+Another approach is to handle your installation using [www.tbxmanager.com](http://tbxmanager.com)
 
 ### Solvers
 
