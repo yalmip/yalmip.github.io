@@ -249,7 +249,7 @@ for k = 1:500
     % and yet some other effect
     forecast = forecast + randn(1,Horizon)*5;
 
-    [solution,problem] = Controller{{oldOnOff, forecast, oldP(:,end)}};
+    [solution,problem] = Controller{oldOnOff, forecast, oldP(:,end)};
     optimalP = solution{1};
     optimalOnOff = solution{2};
 
