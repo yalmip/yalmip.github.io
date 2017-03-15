@@ -38,7 +38,7 @@ Solve the problem for the case when \\(a=1\\).
 
 
 ````matlab
-P{1}
+P(1)
 ans =
 
     2.0000
@@ -48,7 +48,7 @@ Solve the problem for a range of parameters
 
 ````matlab
 z = (-5:0.1:5);
-plot(z,P{z})
+plot(z,P(z))
 ````
 
 Effectively, when the model is affinely parameterized in a parameter, a precompiled numerical model is created, and when a solution for a particular parameter value \\(a^{\star}\\) is requested, the precompiled model is appended with the constraint \\(a = a^{\star}\\) and sent to the solver.
@@ -80,7 +80,7 @@ P = optimizer(Constraints,Objective,options,a,x)
 We can now use the optimizer object as usual
 
 ````matlab
-plot(P{[0:.1:5]})
+plot(P[0:.1:5])
 ````
 
 Note that the solver selected here is a convex QP solver. Hence, it is not applicable when \\(a \le 0 \\). The behaviour for this case is undefined, and it is up to you to select a suitable solver for the parameter values you will see.
@@ -88,7 +88,7 @@ Note that the solver selected here is a convex QP solver. Hence, it is not appli
 Error flags from the solutions can be extracted using a second argument
 
 ````matlab
-[xvalue, errorcode] = P{[pi]})
+[xvalue, errorcode] = P(pi)
 ````
 
 
@@ -99,6 +99,33 @@ See more examples in the [MPC example](/example/standardmpc) and  [unit commitme
 Note that assigned values of [sdpvar](/command/sdpvar) objects are not updated after the optimization problem is solved.
 
  Sum-of-squares problems can be handled through optimizer also. Note though that parameters in the sum-of-squares problem cannot be explicitly defined in [optimizer](/command/optimizer), but YALMIP has to deduce them from non-sos constraints, the objective, input parameters and output parameters.
+ 
+ Consider the problem of finding a lower bound on a polynomial in a variable \\(x\\) using [sum-of-squares](/commands/solvesos). Here, \\(t\\) is automatically detected as a parameter as it is part of the objective
+ 
+ ````matlab
+sdpvar x t
+p = 1 + x + x^2 + x^3 + x^4
+solvesos(sos(p-t),-t)
+````
+
+Now consider the case where we want to investigate a lower bound for a set of polynomials with undeceided variables. Effectively, we want to find a parameter \\(b\\) such that the lower bound is maximized, and test this for a sequence of polynomials depending on a parameter \\(a\\) (which thus is fixed for every sum-of-squares problem solved). 
+
+ ````matlab
+sdpvar x t a b
+p = 1 + b*x + b*x^2 + a*x^3 + x^4
+````
+
+To ensure YALMIP understands that the sum-of-squares decomposition is performed over \\(x\\) only, we must add \\(b\\) to the parametric part of the sum-of-squares model, or add it to the list of outputs from optimizer. YALMIP automatically understands that \\(t\\) is a parameter as it is part of the objective (and declared as an input parameter to optimizer)
+P = optimizer([sos(p-t), -1000 <= b <= 1000],-t,sdpsettings('solver','sdpt3'),a,t);
+plot(P(-10:1:10))
+% Alternatively
+P = optimizer(sos(p-t),-t,[],a,[t;b]);
+sol = P(-10:1:10);
+plot(sol(1,:))
+````
+
+
+
 
 Variables involved in defining the geometry of an uncertainty set when using the robust optimization framework cannot be parameters (during compilation, YALMIP treats all parameters asdecision variables, and this effectively means that there is no description of the uncertainty set (the uncertainty set is defined as the constraints only involving uncertain variables)). Hence, the following scaled uncertainty box will not work
 
