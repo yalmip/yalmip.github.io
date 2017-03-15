@@ -116,6 +116,8 @@ p = 1 + b*x + b*x^2 + a*x^3 + x^4
 ````
 
 To ensure YALMIP understands that the sum-of-squares decomposition is performed over \\(x\\) only, we must add \\(b\\) to the parametric part of the sum-of-squares model, or add it to the list of outputs from optimizer. YALMIP automatically understands that \\(t\\) is a parameter as it is part of the objective (and declared as an input parameter to optimizer)
+
+ ````matlab
 P = optimizer([sos(p-t), -1000 <= b <= 1000],-t,sdpsettings('solver','sdpt3'),a,t);
 plot(P(-10:1:10))
 % Alternatively
