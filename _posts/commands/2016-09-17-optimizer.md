@@ -80,7 +80,7 @@ P = optimizer(Constraints,Objective,options,a,x)
 We can now use the optimizer object as usual
 
 ````matlab
-plot(P[0:.1:5])
+plot(P(0:.1:5))
 ````
 
 Note that the solver selected here is a convex QP solver. Hence, it is not applicable when \\(a \le 0 \\). The behaviour for this case is undefined, and it is up to you to select a suitable solver for the parameter values you will see.
