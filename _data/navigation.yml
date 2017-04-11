@@ -17,17 +17,17 @@ main:
 
   - title: "Index"
     url: /tags
-    
+
   - title: "FAQ"
     url: /faq
 
   - title: "Resources"
     url: /reference
-    
+
   - title: "Forum"
     url: "https://groups.google.com/forum/#!forum/yalmip"
-    
-    
+
+
 
 solvers:
   - title: Internal solvers
@@ -61,9 +61,9 @@ solvers:
       - title: "CDCS"
         url: /solver/cdcs
       - title: "CPLEX"
-        url: /solver/cplex        
+        url: /solver/cplex
       - title: "CSDP"
-        url: /solver/csdp        
+        url: /solver/csdp
       - title: "DSDP"
         url: /solver/dsdp
       - title: "ECOS"
@@ -116,6 +116,8 @@ solvers:
         url: /solver/pensdp
       - title: "QPC"
         url: /solver/qpc
+      - title: "OSQP"
+        url: /solver/osqp
       - title: "QPOASES"
         url: /solver/qpoases
       - title: "QSOPT"
@@ -131,7 +133,7 @@ solvers:
       - title: "SDPLR"
         url: /solver/sdplr
       - title: "SDPNAL"
-        url: /solver/sdpnal        
+        url: /solver/sdpnal
       - title: "SDPT3"
         url: /solver/sdpt3
       - title: "SEDUMI"
@@ -296,7 +298,7 @@ commands:
       - title: "binmodel"
         url: /command/binmodel
       - title: "blkvar"
-        url: /command/blkvar        
+        url: /command/blkvar
       - title: "coefficients"
         url: /command/coefficients
       - title: "degree"
@@ -332,7 +334,7 @@ commands:
       - title: "cpower"
         url: /command/cpower
       - title: "crossentropy"
-        url: /command/crossentropy        
+        url: /command/crossentropy
       - title: "det"
         url: /command/det
       - title: "entropy"
@@ -344,11 +346,11 @@ commands:
       - title: "geomean"
         url: /command/geomean
       - title: "huber"
-        url: /command/huber        
+        url: /command/huber
       - title: "interp1"
         url: /command/interp1
       - title: "interp2"
-        url: /command/interp2        
+        url: /command/interp2
       - title: "kullbackleibler"
         url: /command/kullbackleibler
       - title: "log"
