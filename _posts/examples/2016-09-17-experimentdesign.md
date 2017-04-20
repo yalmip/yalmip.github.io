@@ -23,15 +23,15 @@ In order to estimate physical parameters, identification experiments can be perf
 
 The problem is to combine these covariance matrices from different positions to achieve a minimal combined covariance matrix.  This can be interpreted as computing the number of experiments performed in each configuration.
 
-To define an optimal covariance matrix, a scalar measure on the matrix has to be introduced. In the paper, the minimum volume confidence ellipsoid was used, also called D-optimal design. This can be written as minimization of the determinant of the inverse combined covariance matrix [Vandenberge Boyd and Wu 1998].
+To define an optimal covariance matrix, a scalar measure on the matrix has to be introduced. In the paper, the minimum volume confidence ellipsoid was used, also called D-optimal design. This can be written as minimization of the determinant of the inverse combined covariance matrix.
 
 ### Combinatorial D-optimal design
 
 Let \\(Q\\) denote the total number of possible configurations and \\(H_i\\) the 12-by-12 inverse covariance matrices from each configuration. Our goal is to perform \\(M\\) experiments. The D-optimal design problem can be written as
 
-![Robot]({{ site.url }}/images/design1.png){: .center-image }
+![Model]({{ site.url }}/images/design1.png){: .center-image }
 
-This problem can be solved using YALMIPs internal mixed integer conic solver [BNB](solvers/bnb). Due to the [logdet](/command/logdet), you are advised to solve the problem using [SDPT](/solvers/sdpt3) as the lower bound solver.
+This problem can be solved using YALMIPs internal mixed integer conic solver [BNB](solvers/bnb). Due to the [logdet](/command/logdet) term, you are advised to solve the problem using [SDPT](/solvers/sdpt3) as the lower bound solver.
 
 Load the [covdata.mat] and use straightforward code to define the combined covariance matrix. Since this problem is combinatorial, we have to resort to a small number of candidates, compared to the problems we will solve below. Hence, we let **Q=200** and **M=15**.
 
