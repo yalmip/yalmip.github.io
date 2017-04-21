@@ -31,4 +31,4 @@ F = complements(y >= 0, x+z >= 1)
 ### Comments
 Since [complements](/command/complements) is implemented using a [big-M](/tutorial/bigmandconvexhulls) approach when you use a mixed-integer solver, it is crucial that all involved variables have explicit bound constraints.
 
-When a general nonlinear solver is used, the model is implemented by simply using the nonlinear form $x^Ty=0$.
+When a general nonlinear solver is used, the model is implemented by simply using the nonlinear form \\(x^Ty=0\\).
