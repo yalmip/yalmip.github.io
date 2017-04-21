@@ -301,6 +301,8 @@ commands:
         url: /command/blkvar
       - title: "coefficients"
         url: /command/coefficients
+      - title: "complements"
+        url: /command/complements        
       - title: "degree"
         url: /command/degree
       - title: "dissect"
