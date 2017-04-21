@@ -11,7 +11,7 @@ sidebar:
   nav: "commands"
 ---
 
-[complements](/command/complements) implements a complementarity constraint \(x\geq 0, y\geq 0, x^Ty = 0\)
+[complements](/command/complements) implements a complementarity constraint \\(x\geq 0, y\geq 0, x^Ty = 0\\)
 
 ### Syntax
 
@@ -21,7 +21,7 @@ F = implies(Constraint1,Constraint2)
 
 ### Examples
 
-[complements](/command/complements) applies to linear constraints and defines the associated complementarity constraints that one of the constraints is active. As an example, the following model states that \(y=0\) and \(x+z\geq 1\), or \(x+z = 1\) while \(y\geq 0\).
+[complements](/command/complements) applies to linear constraints and defines the associated complementarity constraints that one of the constraints is active. As an example, the following model states that \\(y=0\\) and \\(x+z\geq 1\\), or \\(x+z = 1\\) while \\(y\geq 0\\).
 ````matlab
 sdpvar x y z
 F = complements(y >= 0, x+z >= 1)
