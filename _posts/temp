@@ -16,4 +16,5 @@ date: '2017-04-21'
 * Support for [OSQP](/solver/osqp) (contributed by [Bartolomeo Stellato](https://github.com/bstellato)).
 * Support for [SDPA-GMP](/solver/sdpa) (contributed by [Giovanni Fantuzzi](https://github.com/giofantuzzi)).
 * Updated for [OSQP](/solver/osqp) (contributed by [Bartolomeo Stellato](https://github.com/bstellato)).
+* Various small bug fixes.
 
