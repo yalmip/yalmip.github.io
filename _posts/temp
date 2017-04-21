@@ -1,0 +1,19 @@
+---
+layout: single
+permalink: /R20170421
+excerpt: "Some minor patches"
+title: "New release R201704321"
+tags: [Release]
+comments: true
+date: '2017-04-21'
+---
+
+[Download latest release](/download)
+
+### Fixes
+
+* Support for [CPLEX](/solver/cplex) 12.7.1 (you are recommended to update).
+* Support for [OSQP](/solver/osqp) (contributed by [Bartolomeo Stellato](https://github.com/bstellato)).
+* Support for [SDPA-GMP](/solver/sdpa) (contributed by [Giovanni Fantuzzi](https://github.com/giofantuzzi)).
+* Updated for [OSQP](/solver/osqp) (contributed by [Bartolomeo Stellato](https://github.com/bstellato)).
+
