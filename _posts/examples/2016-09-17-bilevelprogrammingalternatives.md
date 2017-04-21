@@ -141,7 +141,7 @@ ops = sdpsettings('solver','bmibnb');
 optimize([KKT, A*x <= b + E*z], 0.5*x'*Q*x + c'*x + d'*z,ops)
 ````
 
-Alternatively, write the KKT using the built-in [complements]
+Alternatively, write the KKT using the built-in [complements](command/complements)
 
 ````matlab
 slack = sdpvar(length(h),1);
