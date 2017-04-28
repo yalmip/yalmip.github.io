@@ -138,7 +138,7 @@ objective = 0;
 for k = 1:N
  objective = objective + norm(Q*x{k},1) + norm(R*u{k},1);
  constraints = [constraints, x{k+1} == A*x{k} + B*u{k}];
- constraints = [constraints, -1 <= u{k}<= 1, -5<=x{k}<=5];
+ constraints = [constraints, -1 <= u{k}<= 1, -5<=x{k+1}<=5];
 end
 
 controller = optimizer(constraints, objective,[],x{1},[u{:}]);
@@ -194,9 +194,8 @@ objective = 0;
 for k = 1:N
     objective = objective + (C*x{k}-r{k})'*(C*x{k}-r{k}) + u{k}'*u{k};
     constraints = [constraints, x{k+1} == A*x{k}+B*u{k}+d];
-    constraints = [constraints, -1 <= u{k}<= 1, -5<=x{k}<=5];
+    constraints = [constraints, -1 <= u{k}<= 1, -5<=x{k+1}<=5];
 end
-constraints = [constraints, -5<=x{N+1}<=5];
 objective = objective + (C*x{N+1}-r{N+1})'*(C*x{N+1}-r{N+1});
 
 parameters_in = {x{1},[r{:}],d,pastu,B};
