@@ -23,7 +23,7 @@ In this article, we will look at some examples where we use a combination of YAL
 
 ### Plotting polytopes
 
-A cornerstone in [MPT](/solver/mpt) is the library for definition and manipulation of polytopes. Let us define a random polytope, and plot it using [MPT](/solver/mpt)(/solver/mpt).
+A cornerstone in [MPT](/solver/mpt) is the library for definition and manipulation of polytopes. Let us define a random polytope, and plot it using [MPT](/solver/mpt).
 
 ````matlab
 A = randn(10,2);
