@@ -321,6 +321,8 @@ commands:
         url: /command/monolist
       - title: "polynomial"
         url: /command/polynomial
+      - title: "replace"
+        url: /command/replace        
       - title: "sdisplay"
         url: /command/sdisplay
       - title: "sparse"
