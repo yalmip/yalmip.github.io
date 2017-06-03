@@ -13,9 +13,9 @@ sidebar:
 > The robust optimization module is described in the paper [Löfberg 2009](/reference/lofberg2009) (which should be cited if you use this functionality).
 
 
-YALMIP has a built-in module for sum-of-squares calculations. In its most basic formulation, a sum-of-squares (SOS) problem takes a polynomial \\(p(x)\\) and tries to find a real-valued polynomial vector function \\(h(x)\\) such that \\(p(x)=h^T(x)h(x)\\) (or equivalently \\(p(x)=v^T(x)Qv(x)\\) where \\(Q\\) is positive semidefinite and \\(v(x)\\) is a vector of monomials), hence proving non-negativity of the polynomial \\(p(x)\\). Read more about standard sum-of-squares decompositions in [Parrilo 2003].
+YALMIP has a built-in module for sum-of-squares calculations. In its most basic formulation, a sum-of-squares (SOS) problem takes a polynomial \\(p(x)\\) and tries to find a real-valued polynomial vector function \\(h(x)\\) such that \\(p(x)=h^T(x)h(x)\\) (or equivalently \\(p(x)=v^T(x)Qv(x)\\) where \\(Q\\) is positive semidefinite and \\(v(x)\\) is a vector of monomials), hence proving non-negativity of the polynomial \\(p(x)\\). Read more about standard sum-of-squares decompositions in [Parrilo 2003](/reference/parrilo2003).
 
-In addition to standard SOS decompositions which we discuss below, YALMIP also supports linearly and nonlinearly parameterized problems, decomposition of matrix valued polynomials, [Examples.MoreSOS symmetry reduction], [Examples.MoreSOS pre- and post-processing],  and computation of low-rank decompositions. These extension are described in [Löfberg 2009].
+In addition to standard SOS decompositions which we discuss below, YALMIP also supports linearly and nonlinearly parameterized problems, decomposition of matrix valued polynomials, [Examples.MoreSOS symmetry reduction], [Examples.MoreSOS pre- and post-processing],  and computation of low-rank decompositions. These extension are described in [Löfberg 2009](/reference/lofberg2009).
 
 ### Doing it your self the hard way
 
