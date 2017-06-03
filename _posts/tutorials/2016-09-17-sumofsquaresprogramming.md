@@ -10,7 +10,7 @@ sidebar:
   nav: "tutorials"
 ---
 
-> The robust optimization module is described in the paper (https://yalmip.github.io/reference/lofberg2009/)[Löfberg 2009] (which should be cited if you use this functionality).
+> The robust optimization module is described in the paper [Löfberg 2009](/reference/lofberg2009) (which should be cited if you use this functionality).
 
 
 YALMIP has a built-in module for sum-of-squares calculations. In its most basic formulation, a sum-of-squares (SOS) problem takes a polynomial \\(p(x)\\) and tries to find a real-valued polynomial vector function \\(h(x)\\) such that \\(p(x)=h^T(x)h(x)\\) (or equivalently \\(p(x)=v^T(x)Qv(x)\\) where \\(Q\\) is positive semidefinite and \\(v(x)\\) is a vector of monomials), hence proving non-negativity of the polynomial \\(p(x)\\). Read more about standard sum-of-squares decompositions in [Parrilo 2003].
