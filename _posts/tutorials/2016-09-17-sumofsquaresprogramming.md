@@ -15,7 +15,7 @@ sidebar:
 
 YALMIP has a built-in module for sum-of-squares calculations. In its most basic formulation, a sum-of-squares (SOS) problem takes a polynomial \\(p(x)\\) and tries to find a real-valued polynomial vector function \\(h(x)\\) such that \\(p(x)=h^T(x)h(x)\\) (or equivalently \\(p(x)=v^T(x)Qv(x)\\) where \\(Q\\) is positive semidefinite and \\(v(x)\\) is a vector of monomials), hence proving non-negativity of the polynomial \\(p(x)\\). Read more about standard sum-of-squares decompositions in [Parrilo 2003](/reference/parrilo2003).
 
-In addition to standard SOS decompositions which we discuss below, YALMIP also supports linearly and nonlinearly parameterized problems, decomposition of matrix valued polynomials, [Examples.MoreSOS symmetry reduction], [Examples.MoreSOS pre- and post-processing],  and computation of low-rank decompositions. These extension are described in [Löfberg 2009](/reference/lofberg2009).
+In addition to standard SOS decompositions which we discuss below, YALMIP also supports linearly and nonlinearly parameterized problems, decomposition of matrix valued polynomials, [symmetry reductionand pre- and post-processing](/example/moresos/)  and computation of low-rank decompositions. These extension are described in [Löfberg 2009](/reference/lofberg2009).
 
 ### Doing it your self the hard way
 
