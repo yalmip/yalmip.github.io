@@ -1,1 +1,18 @@
+---
+layout: single
+excerpt: "A common question is how you can plot YALMIP objects."
+title: Plotting YALMIP objects
+tags: [plot]
+comments: true
+date: '2011-02-09'
+---
 
+A common question is how you can plot optimization problems in YALMIP. The question is slightly odd,
+
+
+
+````matlab
+sdpvar x y
+p = (1+x*y)^2-x*y+(1-y)^2;
+g = [1-x;1+x;1-y;1+y]
+````
