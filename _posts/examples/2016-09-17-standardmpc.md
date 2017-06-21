@@ -82,7 +82,7 @@ end
 We can now obtain a solution from an arbitrary initial state, by simply constraining the initial state. The benefit now is that we do not have to redefine the compleyte model everytime the initial state changes, but simply make a small addition to it. The overhead in YALMIP to convert to solver specific format remains though. Of course, the draw-back is that there are some extra variables and constraints, but the computational impact of this is absolutely minor.
 
 ````matlab
-optimize([constraints, x0 == [3;1],objective);
+optimize([constraints, x0 == [3;1]],objective);
 value(u{1})
 ````
 
