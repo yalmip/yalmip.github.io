@@ -12,7 +12,8 @@ date: '2017-04-21'
 
 ### Fixes
 
-* Support for [CPLEX](/solver/cplex) 12.7.1 (you are recommended to update).
+* Support for [arbitrary precision linear programming](/solver/refiner) (contributed by [J. D. Bancal](https://github.com/jdbancal)).
+* Support for [CPLEX](/solver/cplex) 12.7.1 (they still haven't fixed [their bugs](/cplexcrash) though).
 * Support for [OSQP](/solver/osqp) (contributed by [Bartolomeo Stellato](https://github.com/bstellato)).
 * Support for [SDPA-GMP](/solver/sdpa) (contributed by [Giovanni Fantuzzi](https://github.com/giofantuzzi)).
 * Updated for [OSQP](/solver/osqp) (contributed by [Bartolomeo Stellato](https://github.com/bstellato)).
