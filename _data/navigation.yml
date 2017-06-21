@@ -160,6 +160,8 @@ examples:
         url: /example/explicitlpvmpc
       - title: "MPC - LPV models II"
         url: /example/explicitlpvampc
+      - title: "Simulink simulations"
+        url: /example/simulink
       - title: "LPV state feedback"
         url: /example/lpvstatefeedback
       - title: "Unit commitment planning"
