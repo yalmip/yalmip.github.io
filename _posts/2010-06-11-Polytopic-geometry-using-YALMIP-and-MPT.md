@@ -2,7 +2,7 @@
 layout: single
 excerpt: "Ever wondered how to compute the L1 Chebyshev ball?"
 title: Polytopic geometry using YALMIP and MPT
-tags: [Polytopes, Geometry, MPT]
+tags:
 comments: true
 date: '2010-06-11'
 image:
