@@ -4,7 +4,7 @@ category: command
 author_profile: false
 excerpt: "Options structure creation"
 title: sdpsettings
-tags:
+tags: Options
 comments: true
 date: '2016-09-17'
 sidebar:
