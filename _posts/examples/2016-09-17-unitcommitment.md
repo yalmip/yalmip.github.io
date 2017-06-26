@@ -49,9 +49,9 @@ onoff = binvar(Nunits,Horizon,'full');
 P     = sdpvar(Nunits,Horizon,'full');
 ````
 
-A typical mistake made now when modeling these things, is to start multiplying the **onoff** variables with the power variables, following the logic that the power from a plant is given by the product of **onoff**  and **P**. This is a very bad way to model these things, since they will move us outside the comfortable world of mixed integer linear and quadratic programming. Instead, the multiplication is done implicitly through logic constraints. If **onoff** is 0, **P** should be zero, and if **onoff** is one, **P** should be between lower and upper bounds.
+A typical mistake made now when modeling these things, is to start multiplying the **onoff** variables with the power variables, following the logic that the power from a plant is given by the product of **onoff**  and **P**. This is a very bad way to model these things, since they will move us outside the comfortable world of mixed integer linear and quadratic programming. Instead, the multiplication is done implicitly through logic constraints. If **onoff** is 0, **P** should be zero, and if **onoff** is 1, **P** should be between lower and upper bounds. This can be done using the command [implies](/command/implies), but we will model it manually here.
 
-We can start building our model based on this logic (remember, this can be vectorized, we use for-loops only to make the model easier to understand)
+We start building our model based on this logic (remember, this can be vectorized, we use for-loops only to make the model easier to understand)
 
 ````matlab
 Constraints = [];
@@ -68,7 +68,7 @@ for k = 1:Horizon
 end
 ````
 
-The total running cost over the forecasted horizon is summarized
+The total running cost over the forecasted horizon is computed
 
 ````matlab
 Objective = 0;
@@ -77,7 +77,7 @@ for k = 1:Horizon
 end
 ````
 
-The first simple model is complete, and we can solve the problem and display the results (this requires that you have an efficient [mixed-integer QP solver]] installed.)
+The first simple model is complete, and we can solve the problem and display the results (this requires that you have an efficient [mixed-integer QP solver](tags/#mixed-integer-quadratic-programming-solver) installed.)
 
 ````matlab
 optimize(Constraints,Objective)
