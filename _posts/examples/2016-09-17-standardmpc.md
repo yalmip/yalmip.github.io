@@ -54,7 +54,7 @@ for k = 1:N
 end
 ````
 
-Once the constraints and objective function have been generated, we can solve the optimization problem (in this case, a linear programming problem in the decision variable **u** and variables required to [Tutorials.GraphRepresentations  model the norms]).
+Once the constraints and objective function have been generated, we can solve the optimization problem (in this case, a linear programming problem in the decision variable **u** and variables required to [model the norms](/tutorial/nonlinearoperatorsgraphs/)).
 
 ````matlab
 optimize(constraints,objective);
@@ -79,7 +79,7 @@ for k = 1:N
 end
 ````
 
-We can now obtain a solution from an arbitrary initial state, by simply constraining the initial state. The benefit now is that we do not have to redefine the compleyte model everytime the initial state changes, but simply make a small addition to it. The overhead in YALMIP to convert to solver specific format remains though. Of course, the draw-back is that there are some extra variables and constraints, but the computational impact of this is absolutely minor.
+We can now obtain a solution from an arbitrary initial state, by simply constraining the initial state. The benefit now is that we do not have to redefine the complete model everytime the initial state changes, but simply make a small addition to it. The overhead in YALMIP to convert to solver specific format remains though. Of course, the drawback is that there are some extra variables and constraints, but the computational impact of this is absolutely minor.
 
 ````matlab
 optimize([constraints, x0 == [3;1]],objective);
@@ -161,7 +161,7 @@ stairs(implementedU,'b')
 ![Input trajectory]({{ site.url }}/images/mpcinputtrajectory.png){: .center-image }
 
 
-The models are easily extended to more complicated scenarios. Here we simulate the case with a reference trajectory preview, and a known, assumed constant, disturbance. We also want to plot the optimal predicted output with the reference. Inputs are not allowed to make changes larger than 0.15 and we switch to a quadratic objective function. To make matters worse, we do not now the value of the B matrix at compile time, as it can change. Hence, we make it a parameter. Since we now have a nonlinear parameterization, it is recommended to explicitly select the QP solver, to communicate to YALMIP that we know the problem will be a convex QP for fixed value of the parameters (the bilinearities between B and u will turn linear once B is fixed)
+The models are easily extended to more complicated scenarios. Here we simulate the case with a reference trajectory preview, and a known, assumed constant, disturbance. We also want to plot the optimal predicted output with the reference. Inputs are not allowed to make changes larger than 0.15 and we switch to a quadratic objective function. To make matters worse, we do not now the value of the **B** matrix at compile time, as it can change. Hence, we make it a parameter. Since we now have a nonlinear parameterization, we explicitly select a QP solver, to communicate to YALMIP that we know the problem will be a convex QP for fixed value of the parameters (the bilinearities between **B** and **u** will turn linear once **B** is fixed)
 
 ````matlab
 
