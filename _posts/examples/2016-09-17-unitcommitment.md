@@ -40,7 +40,7 @@ C = [10 20 20];
 Pforecast = 100 + 50*sin((1:Horizon)*2*pi/24);
 ````
 
-### A first model
+### A first model with linear on-off modelling
 
 The model will be composed of two variables. The first is a binary variable which controls if unit \\(i\\) is turned on at time \\(k\\), and the second variable is a continuous variable representing the power delivered by plant \\(i\\) at time \\(k\\).
 
@@ -153,7 +153,7 @@ legend('Unit 1','Unit 2','Unit 3');
 
 ![pwasol]({{ site.url }}/images/unitcommit4.png){: .center-image }
 
-### Simulation
+### Efficient simulation
 
 As a finale, let us simulate this plant control strategy in closed-loop. To do this we have to make some changes. To begin with, we must introduce a history. The action we take now depends on our past. If we turned on plant two 10 time units ago, we must still have it on, etc. The second thing we should do is to make the simulation efficient, by avoiding a complete redefinition of the whole optimization problem every time instant. To do so, we use the [optimizer](/command/optimizer) command. Finally, to make it realistic, we should have some disturbances on the power demand, and to cope with this, we add a simple slack on the power demand constraint, and penalize this slack in the objective function.
 
