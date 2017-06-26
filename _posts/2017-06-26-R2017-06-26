@@ -1,0 +1,22 @@
+---
+layout: single
+permalink: /R20170622
+excerpt: "Some more fixes"
+title: "New release R20170626"
+tags: [Release]
+comments: true
+date: '2017-06-26'
+---
+
+[Download latest release](/download)
+
+Might as well  small fixes immediately...
+
+### Fixes
+
+* Fix for crashing [IPOPT](/solver/ipopt) (#414 bug introduced in last release)
+* Fix for failed options in [CPLEX](/solver/cplex) in pre 2015 MATLAB versions (bug introduced in last release)
+* [BMIBNB](/solver/bmibnb) behaved strangely on problems with binary variables if [MOSEK](/solver/mosek) was used as lower solver
+* Support for [SDPA-GMP](/solver/sdpa) (contributed by [Giovanni Fantuzzi](https://github.com/giofantuzzi)).
+* Improved robustness of envelope approximator for functions with infinite gradients in [BMIBNB](/solver/bmibnb)
+
