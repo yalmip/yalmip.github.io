@@ -46,7 +46,7 @@ a_hat = sdpvar(6,1);
 residuals = y-x*a_hat;
 ````
 
-Using **abs** and **max**, we can easily solve the \\( L_1 \\) and the \\( L_{\infty} \\) regression problem (Note it is moch more efficient to use the **norm** operator than using the **abs** as YALMIP has to reason individually around every element in the absolute value whereas the **norm** operator only has one output). Explicitly creating absolute values when minimizing the \\(L_1\\)  error is simply unnecessarily complicated, but we use it here to illustrate the use of compund operations.
+Using [abs](/command/abs) and [max](/command/max), we can easily solve the \\( L_1 \\) and the \\( L_{\infty} \\) regression problem (Note it is much more efficient to use the [norm](/command/norm) operator than using a sum of [abs](/command/abs) as YALMIP has to reason individually around every element in the absolute value whereas the [norm](/command/norm) operator only has one output). Explicitly creating absolute values when minimizing the \\(L_1\\)  error is simply unnecessarily complicated, but we use it here to illustrate the use of composite operations.
 
 ````matlab
 optimize([],sum(abs(residuals)));
