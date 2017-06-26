@@ -91,6 +91,13 @@ Error flags from the solutions can be extracted using a second argument
 [xvalue, errorcode] = P(pi)
 ````
 
+By default, the solver is run in silent model, and to turn on display we have to increase verbosity level to 2.
+
+````matlab
+options = sdpsettings('solver','mosek','verbose',2);
+P = optimizer(Constraints,Objective,options,a,x)
+[xvalue, errorcode] = P(pi)
+````
 
 See more examples in the [MPC example](/example/standardmpc) and  [unit commitment example](/example/unitcommitment).
 
