@@ -77,7 +77,7 @@ for k = 1:Horizon
 end
 ````
 
-The first simple model is complete, and we can solve the problem and display the results (this requires that you have an efficient [mixed-integer QP solver](tags/#mixed-integer-quadratic-programming-solver) installed.)
+The first simple model is complete, and we can solve the problem and display the results (this requires that you have an efficient [mixed-integer QP solver](/tags/#mixed-integer-quadratic-programming-solver) installed.)
 
 ````matlab
 optimize(Constraints,Objective)
