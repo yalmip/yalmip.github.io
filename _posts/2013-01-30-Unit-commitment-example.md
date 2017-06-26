@@ -2,7 +2,7 @@
 layout: single
 excerpt: "A common application of integer programming is the unit commitment problem in power generation, i.e., scheduling of set of power plants in order to meet a current and forecasted power demand while minimizing costs."
 title: Unit commitment example - logic and integer programming 
-tags: [Integer programming, Logic programming]
+tags: 
 comments: true
 date: '2013-01-30'
 ---
