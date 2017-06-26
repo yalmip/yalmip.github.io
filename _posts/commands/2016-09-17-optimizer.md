@@ -21,7 +21,7 @@ P = optimizer(Con,Obj,Options,Parameters,WantedVariables)
 
 ### Examples
 
-[optimizer](/command/optimizer) is used to simplify and speed up code where the almost the same model is setup and solved repeatedly.
+[optimizer](/command/optimizer) is used to simplify and speed up code where  almost the same model is setup and solved repeatedly.
 
 As a start, we create a trivial linear programming model where a scalar decision variable \\(x\\) is bounded from below by some value \\(a+1\\). We create an optimizer object where the bound \\(a\\) is considered a parameter, and we are interested in the minimizing argument of \\(x^2\\) as the parameter \\(a\\) varies.
 
