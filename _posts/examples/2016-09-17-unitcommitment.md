@@ -79,7 +79,11 @@ end
 
 The first simple model is complete, and we can solve the problem and display the results (this requires that you have an efficient [mixed-integer QP solver](/tags/#mixed-integer-quadratic-programming-solver) installed.)
 
+**Fact for life:** Always turn on full display and debug mode when developing new models.
+{: .notice--info}
+
 ````matlab
+ops = sdpsettings('verobose',2,'debug',1);
 optimize(Constraints,Objective)
 stairs(value(P)');
 legend('Unit 1','Unit 2','Unit 3');
@@ -135,7 +139,7 @@ legend('Unit 1','Unit 2','Unit 3');
 
 ### Quantized power-levels
 
-Some plants can only be run in a finite number of configurations, thus making the delivered power a quantized variable. Here, we assume plant 3 is limited in such a way
+Some plants can only be run in a finite number of configurations, thus making the delivered power a quantized variable. Here, we assume plant 3 is limited in such a way and the quantization is modelled using the [ismember](/command/ismember) operator.
 
 ````matlab
 Unit3Levels = [0 1 6 10 12 20];
@@ -151,7 +155,7 @@ legend('Unit 1','Unit 2','Unit 3');
 
 ### Simulation
 
-As a finale, let us simulate this plant control strategy in closed-loop. To do this we have to make some changes. To begin with, we must introduce a history. The action we take at this very time instant depends on our past. If we turned on plant two 10 time units ago, we must still have it on, etc. The second thing we should do is to make the simulation efficient, by avoiding a complete redefinition of the whole optimization problem every time instant. To do so, we use the [optimizer](/command/optimizer) command. Finally, to make it realistic, we should have some disturbances on the power demand, and to cope with this, we add a simple slack on the power demand constraint, and penalize this slack in the objective function.
+As a finale, let us simulate this plant control strategy in closed-loop. To do this we have to make some changes. To begin with, we must introduce a history. The action we take now depends on our past. If we turned on plant two 10 time units ago, we must still have it on, etc. The second thing we should do is to make the simulation efficient, by avoiding a complete redefinition of the whole optimization problem every time instant. To do so, we use the [optimizer](/command/optimizer) command. Finally, to make it realistic, we should have some disturbances on the power demand, and to cope with this, we add a simple slack on the power demand constraint, and penalize this slack in the objective function.
 
 In order to use the [optimizer](/command/optimizer) command, parameters that change in each iteration  must be declared as [sdpvar](/command/sdpvar) objects. Things that change are the forecasts and the sliding history. As before, we use a forecast of 48 time units, and to cope with the up- and down-time constraints, we need a history of at least 30 time units.
 
@@ -222,12 +226,12 @@ end
 Objective = Objective + ChangePenalty*norm(P(:,1)-PreviusP,1);
 ````
 
-We are now ready to create our optimizer object. Our optimizer object solves the optimization problem for a particular instance of the forecast demand and history, and returns the  optimal powers and on-off sequences. For safety, we turn on the display in the solver.
+We are now ready to create our optimizer object. Our optimizer object solves the optimization problem for a particular instance of the forecast demand and history, and returns the optimal powers and on-off sequences. We're still running with full diagnostic display to be able to detect any issues you might have with your installation.
 
 ````matlab
 Parameters = {HistoryOnOff, Pforecast, PreviusP};
 Outputs = {P,onoff};
-ops = sdpsettings('verbose',2);
+ops = sdpsettings('verbose',2,'debug',1);
 Controller = optimizer(Constraints,Objective,ops,Parameters,Outputs);
 ````
 
