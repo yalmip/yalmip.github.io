@@ -10,7 +10,7 @@ date: '2017-06-26'
 
 [Download latest release](/download)
 
-Believe it or not, I do run tests before shipping...
+Believe it or not, a large test harness is run before shipping...
 
 ### Fixes
 
@@ -18,6 +18,6 @@ Believe it or not, I do run tests before shipping...
 * Fix for failed options in [CPLEX](/solver/cplex) in pre-2016 MATLAB versions (bug introduced in last release)
 * [BMIBNB](/solver/bmibnb) behaved strangely on problems with binary variables if [MOSEK](/solver/mosek) was used as lower solver
 * Improved robustness of [envelope approximator](/tutorial/envelopesinbmibnb/) for functions with infinite gradients in [BMIBNB](/solver/bmibnb)
-* Fixed bug in [sign](/command/sign) (operator could never take value 0)
+* Fixed bug in [sign](/command/sign) (operator could never take the value 0)
 
 
