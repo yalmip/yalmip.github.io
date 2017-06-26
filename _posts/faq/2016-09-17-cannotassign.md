@@ -12,4 +12,6 @@ sidebar:
 ---
 
 
-This is because of the way the object orientation works in MATLAB. The only work-around now is the command **X=double2sdpvar(eye(2));X(1,1) = sdpvar(1,1);** (or more sensibly manually construct the matrix by direct concatenations)
+This is because of the way the object orientation works in MATLAB (a user-class object cannot be assigned into a built-in class object). The prefered pattern to code in YALMIP is to use concatenation, i.e. create it as  **X=[sdpvar(1,1) 0;0 1]**. 
+
+A possible alternative is the command **X=double2sdpvar(eye(2));X(1,1) = sdpvar(1,1);** (not recommended though as it misses the core philosophy of YALMIP of being completely natural to beginners)
