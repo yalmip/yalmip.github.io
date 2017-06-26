@@ -162,6 +162,9 @@ We could write a function which creates samples on the unit circle
 % mysampler.m
 function z = mysampler(dim)
 z = randn(dim(1),1);z = z/norm(z);
+````
+
+This sampler can now be assigned to a variable
 
 ````matlab
 Model = [v'*x <= 1, uncertain(v,@mysampler)];
