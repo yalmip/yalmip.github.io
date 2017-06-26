@@ -73,15 +73,7 @@ optimize([],1e-3*norm(a_hat,2)+norm(residuals,inf));
 a_regLinf = value(a_hat)
 ````
 
-The norm operator is used exactly as the built-in **norm** function in MATLAB, both for vectors and matrices. Not only vector norms are conic representable, but also the largest singular value (2-norm in matrix case) and the Frobenious norm of a matrix are, to name a few.
-
-The [value](/command/value) command applies also to nonlinear operators (value(OPERATOR(X)) returns OPERATOR(value(X)).
-
-````matlab
-value(1e-3*norm(a_hat,2)+norm(residuals,inf))
-ans =
-    3.1175
-````
+The [norm](/command/norm) operator is used exactly as the built-in [norm](/command/norm) function in MATLAB, both for vectors and matrices. Not only vector norms are conic representable, but also the largest singular value (2-norm in matrix case) and the Frobenious norm of a matrix are, to name a few.
 
 A construction useful for maximizing determinants of positive definite matrices is the function \\( \det (P)^{1/m}\\), for positive definite matrix \\( P \\), where \\( m \\) is the dimension of \\(P\\). This concave function, called [geomean](/command/geomean) in YALMIP, is supported as an operator. Note that the positive semidefiniteness constraint on \\( P \\) is added automatically by YALMIP.
 
