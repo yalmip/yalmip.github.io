@@ -16,12 +16,12 @@ header:
 
 A classical problem in scheduling and integer programming is the unit commitment problem. In this problem, our task is to turn on and off power generating plants, in order to meet a forecasted future power demand, while minimizing our costs. We have several different power plants with different characteristics and running costs, and various constraints on how they can be used. We will start with a very simple model, and then expand this model with more advanced features. To make the code easy to read, we will write it in a verbose non-vectorized format.
 
-**Fact for life:** The most important thing we learn in this example is that you never should multiply binary variables with continuous variables t omodel on/off behavior. Instead, we invest a lot of effort in deriving equivalent linear presentations.
+**Fact for life:** The most important thing we learn in this example is that you never should multiply binary variables with continuous variables to model on/off behavior. Instead, we invest a lot of effort in deriving equivalent linear presentations.
 {: .notice--info}
 
 Note that this is a completely fictitious example created by someone (me) with very little exposure and experience from this field. The purpose is to highlight modeling tricks and YALMIP, not to give a tutorial or best-practice description on unit commitment problems.
 
-Before running these examples, you should install a strong [MILP solver](/tags/#mixed-integer-linear-programming-solver) (if you don't have one installed, YALMIP will use its very naive internal integer solver [BNB](/solver/bnb) which will fail to solve most problems here in reasonable time, if at all).
+Before running these examples, you must install a strong [MILP solver](/tags/#mixed-integer-linear-programming-solver) (if you don't have one installed, YALMIP will use its very naive internal integer solver [BNB](/solver/bnb) which will fail to solve most problems here in reasonable time, if at all).
 
 ### Data for the model
 
