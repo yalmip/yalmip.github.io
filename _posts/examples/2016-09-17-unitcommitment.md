@@ -83,8 +83,8 @@ The first simple model is complete, and we can solve the problem and display the
 {: .notice--info}
 
 ````matlab
-ops = sdpsettings('verobose',2,'debug',1);
-optimize(Constraints,Objective)
+ops = sdpsettings('verbose',1,'debug',1);
+optimize(Constraints,Objective,ops)
 stairs(value(P)');
 legend('Unit 1','Unit 2','Unit 3');
 ````
@@ -130,7 +130,8 @@ end
 ````
 
 ````matlab
-optimize(Constraints,Objective);
+ops = sdpsettings('verbose',2,'debug',1);
+optimize(Constraints,Objective,ops);
 stairs(value(P)');
 legend('Unit 1','Unit 2','Unit 3');
 ````
