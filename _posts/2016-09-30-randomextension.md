@@ -2,7 +2,7 @@
 layout: single
 excerpt: "Unintended consequences of an improved optimizer framework"
 title: "Sample-based robust optimization"
-tags: 
+tags: [Scenario optimization, Random, Distribution]
 comments: true
 featured: false
 date: '2016-09-28'
