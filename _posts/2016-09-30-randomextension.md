@@ -70,7 +70,7 @@ end
 
 ### Generic uncertainty sets and sampling based scenarios through optimizers
 
-The command [uncertain](/command/uncertain) has previously been used for declaring uncertain variables in a robust optimization problem, which then has been solved using derivations of worst-case robust counterparts. It is now possible to attach a distribution or sample generator to an uncertainty declaration of a parameter used in an [optimizer](/command/optimizer).
+The command [uncertain](/command/uncertain) has previously been used for declaring uncertain variables in a [robust optimization problem](/tutorial/robustoptimization), which then has been solved using derivations of worst-case robust counterparts. It is now possible to attach a distribution or sample generator to an uncertainty declaration of a parameter used in an [optimizer](/command/optimizer).
 
 In the distribution case (other cases below), we specify a distribution with associated parameters from the list of distributions available in the **random** command (**random** is part of the Statistics Toolbox). 
 
