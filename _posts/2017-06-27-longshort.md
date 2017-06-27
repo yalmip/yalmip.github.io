@@ -4,14 +4,14 @@ excerpt: "There is more than one way to skin a cat"
 title: Nonconvex long-short constraints
 tags: [Integer programming, Logic programming, Cardinality]
 comments: true
-date: 2014-02-08
+date: 2017-06-27
 ---
 
-A question on the forum today asked how one can constrain a solution to ensure a certain percetage of a vector to have a particular sign. This could for instance be of relevance in a [portfolio allocation](/example/portfolio) problem where we have constraints on the ratio of longs and shorts.
+A question on the forum today asked how one can constrain a solution to ensure a certain percentage of a vector to have a particular sign. This could for instance be of relevance in a [portfolio allocation](/example/portfolio) problem where we have constraints on the ratio of long and short positions.
 
-There are many natural ways to write this in MATLAB, but to include it in YALMIP code, it has to be based on operators which are supported by YALMIP. Let's look at some alternatives just for fun.
+There are many natural ways to write this in MATLAB, but to include it in YALMIP code, it has to be based on operators which are supported by YALMIP. Let's look at some alternatives.
 
-Let us assume we have a vector \\(x\\) of length \\(n\\) and we want at-least half of the elements to be non-negative. To have a problem to work with, we will minimize the distance to a vector \\(y\\).
+Let us assume we have a vector \\(x\\) of length \\(n\\) and we want at least half of the elements to be non-negative. To have a problem to work with, we will minimize the distance to a vector \\(y\\).
 
 ````matlab
 n = 20;
@@ -31,7 +31,7 @@ Model = [x >= -(1-d)*M, sum(d) >= 0.5*n, -1 <= x <= 1];
 optimize(Model,Objective)
 ````
 
-What we have implemented here is essentially an implication between the binary vector **d** **x**. This can more conveniently be written using [implies](/command/implies)
+What we have implemented here is essentially an implication between the binary vector **d** and **x**. This can more conveniently be written using [implies](/command/implies)
 
 ````matlab
 d = binvar(n,1)
@@ -41,7 +41,7 @@ optimize(Model,Objective)
 
 Going beyond these two models is never adviced, as it only complicates matters. However, let's see if we can come up with other models just for fun.
 
-The operator [sort](/command/sort) is overloaded, and our constraint can be states as the first \\(n/s\\) elements of the sorted vecrsion of \\(x\\) being non-negative. This will lead to a much worse integer model so never ever use the sort operator unless you have to
+The operator [sort](/command/sort) is overloaded, and our constraint can be states as the last \\(n/s\\) elements of the sorted version of \\(x\\) should be non-negative. This will lead to a much worse integer model so never ever use the sort operator unless you have to
 
 ````matlab
 sorted = sort(x);
