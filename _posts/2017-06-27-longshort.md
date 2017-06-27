@@ -24,7 +24,7 @@ To begin with, one has to understand that the constraint is nonconvex (it is a c
 
 ### A manual big-M model
 
-For the experienced user, a manual big-M model is obvious. Define \\(n\\) binary variables \\(d\\), where \\(d_i = 1\\) indicates that \\(x_i\\) is non-negative, and the model is straightforward. For future reference, we introduce a global bound on \\(x\\) as it will be required later when YALMIP is supposed to derive a sufficient big-M constant.
+For the experienced user, a manual big-M model is obvious. Define \\(n\\) binary variables \\(d\\), where \\(d_i = 1\\) indicates that \\(x_i\\) is non-negative, and the model is straightforward. For future reference, we introduce a global bound on \\(x\\) as it will be required later when YALMIP has to derive a  big-M constant.
 
 ````matlab
 d = binvar(n,1)
