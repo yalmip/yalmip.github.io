@@ -34,7 +34,7 @@ optimize(Model,Objective)
 ````
 
 ### Using implications
-What we have implemented here is essentially an implication between the binary vector **d** and **x**. This can more conveniently be written using [implies](/command/implies)
+What we have implemented above is essentially an implication between the binary vector **d** and **x**. This can more conveniently be written using [implies](/command/implies).
 
 ````matlab
 d = binvar(n,1)
