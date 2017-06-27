@@ -50,7 +50,7 @@ The operator [sort](/command/sort) is overloaded, and our constraint can be stat
 
 ````matlab
 sorted = sort(x);
-Model = [sorted(1:n/2) >= 0,  -1 <= x <= 1];
+Model = [sorted(n/2:end) >= 0,  -1 <= x <= 1];
 optimize(Model,Objective)
 ````
 
