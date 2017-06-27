@@ -13,7 +13,7 @@ sidebar:
 
 [bisection](/command/bisection) implements a bisection algorithm to solve some simple quasi-convex problems.
 
-Assumed constraints quasi-convex in \\(x\\) and the scalar \\(t\\), and objective function \\(t\\) or \\(-t\\)
+The code assumes the constraints are quasi-convex in \\(x\\) and the scalar \\(t\\), bilinear in \\(t\\) and \\(x\\), \\(t=0\\) is feasible, and the objective function is \\(t\\) or \\(-t\\).
 
 ### Syntax
 
