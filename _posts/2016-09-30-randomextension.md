@@ -12,7 +12,7 @@ With the [recent extensions](/optimizerupdates) of the [optimizer](/command/opti
 
 To illustrate the ideas, we will start with some pure clasical YALMIP code to show how a circle can be approximated using hyperplanes, i.e., we will create a polytopic outer approximation. 
 
-The ball \\(x^Tx \leq 1\\) can alternatively be written as \\(v^Tx \leq 1 ~\forall ~v^Tv\leq 1 \\) (the dual-norm property). Hence, the following lines of code generate a ball approximation and plots it together with the exact ball (we sample \\(v\\) on the unit-circle as samples inside in th interior will generate redundant constraints)
+The ball \\(x^Tx \leq 1\\) can alternatively be written as \\(v^Tx \leq 1 ~\forall ~v^Tv\leq 1 \\) (the dual-norm property). Hence, the following lines of code generate a ball approximation and plots it together with the exact ball (we sample \\(v\\) on the unit-circle as samples inside in the interior will generate redundant constraints)
 
 ````matlab
 x = sdpvar(2,1);
