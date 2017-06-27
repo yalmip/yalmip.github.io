@@ -11,7 +11,7 @@ sidebar:
   nav: "commands"
 ---
 
-[optimizer](/command/optimizer) creates an object with an low-level numerical format which can be used to efficiently solve a series of similar problems (reduces YALMP analysis and compilation overhead)
+[optimizer](/command/optimizer) creates an object with a pre-compiled low-level numerical format which can be used to efficiently solve a series of similar problems (reduces YALMP analysis and compilation overhead)
 
 ### Syntax
 
@@ -132,9 +132,6 @@ P = optimizer(sos(p-t),-t,[],a,[t;b]);
 sol = P(-10:1:10);
 plot(sol(1,:))
 ````
-
-
-
 
 Variables involved in defining the geometry of an uncertainty set when using the robust optimization framework cannot be parameters (during compilation, YALMIP treats all parameters asdecision variables, and this effectively means that there is no description of the uncertainty set (the uncertainty set is defined as the constraints only involving uncertain variables)). Hence, the following scaled uncertainty box will not work
 
