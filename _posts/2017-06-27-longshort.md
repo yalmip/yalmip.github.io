@@ -65,10 +65,10 @@ optimize(Model,Objective)
 
 ### sign
 
-Yet another poor way to express our constraint is that the sum of the signs of the vector should be 0.
+Yet another poor way to express our constraint is that the sum of the signs of the vector should be non-negative.
 
 ````matlab
-Model = [sum(sign(x)) == 0,  -1 <= x <= 1];
+Model = [sum(sign(x)) >= 0,  -1 <= x <= 1];
 optimize(Model,Objective)
 ````
 
