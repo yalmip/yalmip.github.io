@@ -49,7 +49,14 @@ Model = [sorted(1:n/2) >= 0,  -1 <= x <= 1];
 optimize(Model,Objective)
 ````
 
-Another approach is to use cardinality and the [nnz](/command/nnz) applied to constraints.
+Yet another weird way to express our constraint is that the sum of the signs of the vector should be 0.
+
+````matlab
+Model = [sum(sign(x)) == 0,  -1 <= x <= 1];
+optimize(Model,Objective)
+````
+
+Another approach is to cardinality and the [nnz](/command/nnz) applied to constraints.
 
 ````matlab
 Model = [nnz(x >= 0) >= n/2,  -1 <= x <= 1];
