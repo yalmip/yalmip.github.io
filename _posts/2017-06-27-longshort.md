@@ -22,7 +22,7 @@ Objective = (x-y)'*(x-y);
 
 To begin with, one has to understand that the constraint is nonconvex (it is a combinatorial constraint), and the end result in YALMIP will be a [mixed-integer representation](/tutorial/nonlinearoperatorsmixedinteger) of the constraint, more precisely a [big-M representation](/tutorial/bigmandconvexhulls/). 
 
-For the experienced user, a manual big-M model is obvious. Define \\(n\\) binary variables \\(d\\), where \\(d_i = 1\\) indicates that \\x_i\\) is non-negative, and the model is straightforward. For future reference, we introduce a global bound on \\(x\\) as it will be required later when YALMIP is supposed to derive a sufficient big-M constant.
+For the experienced user, a manual big-M model is obvious. Define \\(n\\) binary variables \\(d\\), where \\(d_i = 1\\) indicates that \\(x_i\\) is non-negative, and the model is straightforward. For future reference, we introduce a global bound on \\(x\\) as it will be required later when YALMIP is supposed to derive a sufficient big-M constant.
 
 ````matlab
 d = binvar(n,1)
@@ -41,7 +41,7 @@ optimize(Model,Objective)
 
 Going beyond these two models is never adviced, as it only complicates matters. However, let's see if we can come up with other models just for fun.
 
-The operator [sort](/command/sort) is overloaded, and our constraint can be states as the last \\(n/s\\) elements of the sorted version of \\(x\\) should be non-negative. This will lead to a much worse integer model so never ever use the sort operator unless you have to
+The operator [sort](/command/sort) is overloaded, and our constraint can be states as the last \\(n/2\\) elements of the sorted version of \\(x\\) should be non-negative. This will lead to a much worse integer model so never ever use the sort operator unless you really have to
 
 ````matlab
 sorted = sort(x);
@@ -49,14 +49,21 @@ Model = [sorted(1:n/2) >= 0,  -1 <= x <= 1];
 optimize(Model,Objective)
 ````
 
-Yet another weird way to express our constraint is that the sum of the signs of the vector should be 0.
+An alternative to the [sort](/command/sort) operator, but effectively the same thing both mathematically and in implementation in YALMIP is to say that the [median](/command/median) is non-negative
+
+````matlab
+Model = [median(x) >= 0,  -1 <= x <= 1];
+optimize(Model,Objective)
+````
+
+Yet another poor way to express our constraint is that the sum of the signs of the vector should be 0.
 
 ````matlab
 Model = [sum(sign(x)) == 0,  -1 <= x <= 1];
 optimize(Model,Objective)
 ````
 
-Another approach is to cardinality and the [nnz](/command/nnz) applied to constraints.
+Another approach is to work with cardinality and the [nnz](/command/nnz) applied to constraints.
 
 ````matlab
 Model = [nnz(x >= 0) >= n/2,  -1 <= x <= 1];
