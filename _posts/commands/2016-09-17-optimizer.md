@@ -13,6 +13,8 @@ sidebar:
 
 [optimizer](/command/optimizer) creates an object with a pre-compiled low-level numerical format which can be used to efficiently solve a series of similar problems (reduces YALMP analysis and compilation overhead)
 
+See the post [updated optimizer](/optimizerupdates) for recent extensions and improvements.
+
 ### Syntax
 
 ````matlab
