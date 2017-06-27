@@ -11,4 +11,4 @@ sidebar:
   nav:
 ---
 
-This deserves more than a small note. See [here].
+This deserves more than a small note. See [here](/squareroots)
