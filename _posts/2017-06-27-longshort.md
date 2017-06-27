@@ -56,7 +56,7 @@ optimize(Model,Objective)
 
 ### median
 
-An alternative to the [sort](/command/sort) operator, but effectively the same thing both mathematically and in implementation in YALMIP is to say that the [median](/command/median) is non-negative
+An alternative to the [sort](/command/sort) operator, but effectively the same thing both mathematically and by implementation in YALMIP, is to say that the [median](/command/median) is non-negative
 
 ````matlab
 Model = [median(x) >= 0,  -1 <= x <= 1];
