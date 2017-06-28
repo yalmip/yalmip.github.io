@@ -1,0 +1,23 @@
+---
+layout: single
+permalink: /R20170628
+excerpt: "Improvements in bmibnb..."
+title: "New release R20170628"
+tags: [Release]
+comments: true
+date: '2017-06-28'
+---
+
+[Download latest release](/download)
+
+Primarily improvements in the global solver [BMIBNB](/solver/bmibnb)
+
+### Fixes
+
+* Fix for wrong diagnostic code when [BMIBNB](/solver/bmibnb) terminated due to time limit
+* Improved performance when [KNITRO](/solver/knitro) is used in [BMIBNB](/solver/bmibnb) on problems with integer variables
+* [BMIBNB](/solver/bmibnb) can now handle partially given initial guesses (tries to complete the rest by solving linear feasbility problem)
+* Converts to full data in [FMINCON](/solver/fmincon) for some algorithmic choices to avoid warnings about sparse data
+
+
+
