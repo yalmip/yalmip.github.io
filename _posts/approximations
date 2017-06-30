@@ -15,6 +15,14 @@ T = chol(R);
 e = sdpvar(3,1);
 f = sdpvar(3,1);
 Model = [-1 <= [x y] <= 1, e == S*x, f = T*y];
+
+[~,Le,Ue] = boundingbox(Model,[],e);
+[~,Lf,Uf] = boundingbox(Model,[],f);
+
+E = repmat(Le,1,100) + repmat(linspace(0,1,100),3,1).*repmat(Ue-Le,1,20);
+F = repmat(Lf,1,100) + repmat(linspace(0,1,100),3,1).*repmat(Uf-Lf,1,20);
+
+
 ````
 
 We can now create an interpolated object for every element
