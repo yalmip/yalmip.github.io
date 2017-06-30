@@ -18,6 +18,8 @@ Primarily improvements in the global solver [BMIBNB](/solver/bmibnb)
 * Improved performance when [KNITRO](/solver/knitro) is used in [BMIBNB](/solver/bmibnb) on problems with integer variables
 * [BMIBNB](/solver/bmibnb) can now handle partially given initial guesses (tries to complete the rest by solving a linear feasbility problem)
 * Converts to full data in [FMINCON](/solver/fmincon) for some algorithmic choices to avoid warnings about sparse data
+* Extended [interp1](command/support) to support generation of epi- and hypo-graph based approximants
+
 
 
 
