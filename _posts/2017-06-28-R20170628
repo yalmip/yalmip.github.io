@@ -1,11 +1,11 @@
 ---
 layout: single
 permalink: /R20170628
-excerpt: "Improvements in bmibnb..."
-title: "New release R20170628"
+excerpt: "Improvements in bmibnb and interp1"
+title: "New release R20170630"
 tags: [Release]
 comments: true
-date: '2017-06-28'
+date: '2017-06-30'
 ---
 
 [Download latest release](/download)
