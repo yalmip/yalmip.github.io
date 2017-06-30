@@ -1,20 +1,20 @@
-A typical user-case could be indefinite quadratic programming. Let us assume we want to minimize \\(x'^TQx - y^TRy\\) over the unit-box
+A typical user-case could be indefinite quadratic programming. Let us assume we want to minimize \\(x'^TQx - y^TRy\\) over the unit-box intersected with \\(\sum x + \sum y = 0\\).
 
 ````matlab
 x = sdpvar(3,1);
 y = sdpvar(3,1);
 Q = randn(3);Q = Q*Q';
 R = randn(3);R = R*R';
-Model = [-1 <= [x y] <= 1];
+Model = [-1 <= [x y] <= 1, sum(x) + sum(y) == 1];
 ````
 
-To begin with, a problem here is that the model is multivaraite, but the [interp1](/command/interp1) only acts on univariate data. To handle that, we factorize the quadratic functions so we can write them as sums of univariate functions \\(\sum e_i^2 - \sum f_i^2\\)
+To begin with, a problem here is that the model is multivariate, but the [interp1](/command/interp1) only acts on univariate data. To handle that, we factorize the quadratic functions so we can write them as sums of univariate functions \\(\sum e_i^2 - \sum f_i^2\\)
 ````matlab
 S = chol(Q);
 T = chol(R);
 e = sdpvar(3,1);
 f = sdpvar(3,1);
-Model = [-1 <= [x y] <= 1, e == S*x, f = T*y];
+Model = [-1 <= [x y] <= 1, e == S*x, f == T*y];
 
 [~,Le,Ue] = boundingbox(Model,[],e);
 [~,Lf,Uf] = boundingbox(Model,[],f);
@@ -22,6 +22,11 @@ Model = [-1 <= [x y] <= 1, e == S*x, f = T*y];
 E = repmat(Le,1,100) + repmat(linspace(0,1,100),3,1).*repmat(Ue-Le,1,20);
 F = repmat(Lf,1,100) + repmat(linspace(0,1,100),3,1).*repmat(Uf-Lf,1,20);
 
+
+f1 = interp1(E,E.^2,e,'lp');
+f2 = interp1(F,F.^2,f,'lp');
+
+optimize(Model,sum(f1)-sum(f2))
 
 ````
 
