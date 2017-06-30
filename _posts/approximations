@@ -1,0 +1,20 @@
+A typical user-case could be indefinite quadratic programming. Let us assume we want to minimize \\(x'^TQx - y^TRy\\) over the unit-box
+
+````matlab
+x = sdpvar(3,1);
+y = sdpvar(3,1);
+Q = randn(3);Q = Q*Q';
+R = randn(3);R = R*R';
+Model = [-1 <= [x y] <= 1];
+````
+
+To begin with, a problem here is that the model is multivaraite, but the [interp1](/command/interp1) only acts on univariate data. To handle that, we factorize the quadratic functions so we can write them as sums of univariate functions \\(\sum e_i^2 - \sum f_i^2\\)
+````matlab
+S = chol(Q);
+T = chol(R);
+e = sdpvar(3,1);
+f = sdpvar(3,1);
+Model = [-1 <= [x y] <= 1, e == S*x, f = T*y];
+````
+
+We can now create an interpolated object for every element
