@@ -10,7 +10,7 @@ date: '2017-06-30'
 
 [Download latest release](/download)
 
-Primarily improvements in the global solver [BMIBNB](/solver/bmibnb)
+Primarily improvements related to use of the global solver [BMIBNB](/solver/bmibnb)
 
 ### Fixes
 
