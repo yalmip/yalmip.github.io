@@ -16,7 +16,7 @@ sidebar:
 ### Syntax
 
 ````matlab
-F = implies(Constraint1,Constraint2)
+F = complements(Constraint1,Constraint2)
 ````
 
 ### Examples
