@@ -14,7 +14,7 @@ In normal cases, any communication between YALMIP and the solver is uninterestin
 
 If we want to investigate the model that YALMIP sends to a solver, we can use either the command [export](/command/export), or call the solver and use the options **'savesolveroutput'** or **'debug'**.
 
-To extract a numerical model is solver-specific format without calling the solver, we use [export](/command/export)
+To extract a numerical model in solver-specific format without calling the solver, we use [export](/command/export)
 ````matlab
 sdpvar x y
 Model = export([x >= 0, x+y == 1], x^2 + y,sdpsettings('solver','quadprog'))
@@ -81,7 +81,7 @@ model =
 
 ## Extracting solver output
 
-In some cases, we might see some information displayed by the solver, such as gap metrics, feasibility distances, iteration counters, and we want to obtain those numbers. The only way to do this, beyond some clever regexp magic on the text in the command window, is to use the option 'savesolveroutput'. When doing so, all information that the solver returns in MATLAB, will be available in the output structure returned in [optimize](/command/optimize) 
+In some cases, we might see some information displayed by the solver, such as gap metrics, feasibility distances, iteration counters, and we want to obtain those numbers. The only way to do this, beyond some clever regexp magic on the text in the command window, is to use the option **'savesolveroutput'**. When doing so, all information that the solver returns in MATLAB, will be available in the output structure returned in [optimize](/command/optimize) 
 
 ````matlab
 sdpvar x y
