@@ -1,6 +1,6 @@
 ---
 layout: single
-permalink: /R20170628
+permalink: /Extracting
 excerpt: "Extracting inputs and outputs from solvers"
 title: "Extracting data from solvers"
 tags: [Export, Low-level]
