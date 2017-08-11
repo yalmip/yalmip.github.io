@@ -12,7 +12,7 @@ In normal cases, any communication between YALMIP and the solver is uninterestin
 
 ## Extracting solver input
 
-If we want to investigate the model that YALMIP sends to a solver, we can use either the command [export](/command/export), or call the solver and use the options 'savesolveroutput' or 'debug'.
+If we want to investigate the model that YALMIP sends to a solver, we can use either the command [export](/command/export), or call the solver and use the options ''savesolveroutput'' or ''debug''.
 
 To extract a numerical model is solver-specific format without calling the solver, we use [export](/command/export)
 ````matlab
@@ -55,7 +55,7 @@ ans =
       f: 0
 ````
 
-This model can also be obtained by using the 'savedebug' option which will create a file with the model, before calling the solver.
+This model can also be obtained by using the ''savedebug'' option which will create a file with the model, before calling the solver.
 
 ````matlab
 sdpvar x y
