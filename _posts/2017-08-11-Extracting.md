@@ -3,7 +3,7 @@ layout: single
 permalink: /Extracting
 excerpt: "Extracting inputs and outputs from solvers"
 title: "Extracting data from solvers"
-tags: [Export, Low-level]
+tags: [Export and import, Low-level]
 comments: true
 date: '2017-08-11'
 ---
