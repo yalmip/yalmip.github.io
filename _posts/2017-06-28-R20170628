@@ -10,10 +10,11 @@ date: '2017-06-30'
 
 [Download latest release](/download)
 
-Primarily improvements related to use of the global solver [BMIBNB](/solver/bmibnb)
+Primarily improvements related to use of the global solver [BMIBNB](/solver/bmibnb), but also finally some improvements to [sdisplay](/command/sdisplay)
 
 ### Fixes
 
+* [sdisplay](/command/sdisplay) now almost works as expected, and supports rounding in display
 * Fix for wrong diagnostic code when [BMIBNB](/solver/bmibnb) terminates due to time limit
 * Improved performance when [KNITRO](/solver/knitro) is used in [BMIBNB](/solver/bmibnb) on problems with integer variables
 * [BMIBNB](/solver/bmibnb) can now handle partially given initial guesses (tries to complete the rest by solving a linear feasbility problem)
