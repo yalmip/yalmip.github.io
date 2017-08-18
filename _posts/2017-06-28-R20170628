@@ -10,7 +10,7 @@ date: '2017-06-30'
 
 [Download latest release](/download)
 
-Improvements in the global solver [BMIBNB](/solver/bmibnb), symbolic displays in [sdisplay](/command/sdisplay) and convenient extensions in [interp1](command/support)
+Improvements in the global solver [BMIBNB](/solver/bmibnb), better symbolic displays in [sdisplay](/command/sdisplay) and convenient extensions in [interp1](command/support)
 
 ### Fixes
 
