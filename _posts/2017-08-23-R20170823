@@ -1,0 +1,23 @@
+---
+layout: single
+permalink: /R20170823
+excerpt: "Minor patches"
+title: "New release R20170823"
+tags: [Release]
+comments: true
+date: '2017-08-18'
+---
+
+[Download latest release](/download)
+
+### Fixes
+
+* [bmibnb](/solver/bmibnb) incorrectly claimed problems with initially unbounded relaxation as infeasible
+* [interp1](command/interp1) crashed in some [sos2](command/sos2) based models
+* Models with infinite coefficients in objective complained about NaN
+
+
+
+
+
+
