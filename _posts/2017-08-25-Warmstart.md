@@ -42,9 +42,9 @@ Error in fmincon (line 889)
 
 ````
 
-The solver has tried to start in \(x = 0\), and when the objective has been evaluated in a callback to YALMIP, it has led to division by zero.
+The solver has tried to start in \\(x = 0\\), and when the objective has been evaluated in a callback to YALMIP, it has led to division by zero.
 
-If we want the solver to start in \(x = 0.5\) instead, we [assign](/command/assign) that value to the variable, and use the **usex0** option.
+If we want the solver to start in \\(x = 0.5\\) instead, we [assign](/command/assign) that value to the variable, and use the **usex0** option.
 
 ````matlab
 assign(x,0.5);
@@ -64,7 +64,7 @@ optimize(Constraints,Objective,ops);
 Local minimum found.
 ````
 
-Many solvers have some internal logic in selecting an initial guess better than \(0\). In the case of [fmincon](/solver/fmincon) , it looks at bounds and initializes variables inside bounds. Hence, we can avoid the singularity by adding a bound which excludes \(0\).
+Many solvers have some internal logic in selecting an initial guess better than \\(0\\). In the case of [fmincon](/solver/fmincon) , it looks at bounds and initializes variables inside bounds. Hence, we can avoid the singularity by adding a bound which excludes \\(0\\).
 
 ````matlab
 optimize([Constraints, x >= 0.01],Objective);
@@ -83,7 +83,7 @@ optimize(Constraints,Objective,ops)
 Initial point is a local minimum.
 ````
 
-This strategy can be used in cases where you do not have any good guess, but you can solve another problem to find one. Consider the following problem with a simple polytopic constraint, but a complicating objective which has a singularity in \(0\) where   [fmincon](/solver/fmincon) could try to start if we are unlucky.
+This strategy can be used in cases where you do not have any good guess, but you can solve another problem to find one. Consider the following problem with a simple polytopic constraint, but a complicating objective which has a singularity in \\(0\\) where   [fmincon](/solver/fmincon) could try to start if we are unlucky.
 
 ````matlab
 x = sdpvar(3,1);
@@ -93,7 +93,7 @@ Constraint = [A*x <= b, x>=0];
 Objective = -sum(log(x));
 ````
 
-First solve a feasibility problem to find a solution (we could of course use some simple objective to steer it towards some value, but for simplicity, let us just try to find a solution and hope that it is not \(0\))
+First solve a feasibility problem to find a solution (we could of course use some simple objective to steer it towards some value, but for simplicity, let us just try to find a solution and hope that it is not \\(0\\))
 
 ````matlab
 optimize(Constraint);
@@ -123,7 +123,7 @@ Constraint = [A*(x-1) + B*(z-2) <= b];
 Objective = sum(x) + sum(z);
 ````
 
-Just as above, we use assign to initialize the values (we created a problem where \(x = 1\) and \(z=2\) are feasible almost surely)
+Just as above, we use assign to initialize the values (we created a problem where \\(x = 1\\) and \\(z=2\\) are feasible almost surely)
 
 ````matlab
 assign(x,1);
@@ -150,7 +150,7 @@ Important to understand is warm-starting integer programs might have no impact a
 
 When you create high-level models in YALMIP, you only see the variables you explicitly define. However, behind many functions and operators, YALMIP will introduce additional variables to create, e.g., [graph representations](/tutorial/nonlinearoperatorsgraphs), or to normalize expressions inside nonlinear operators to simplify convexity propagation and computations of derivatives in [callback operators](/tutorial/nonlinearoperatorscallback). Hence, you assign variables and try to warm-start the solver, but it still fails, as not all variables have an inital assignment and the solver picks it own initial starting-point instead.
 
-YALMIP tries to propagate your initial guesses to the internally introduced variables, but it is not guaranteed to always do this. As an example, the following model uses the linear-programming representable [sumk](/command/sumk) operator, and the initial guess on \(x\) will not be propagated to the auxilliary variables required to represent the epigraph of this operator.
+YALMIP tries to propagate your initial guesses to the internally introduced variables, but it is not guaranteed to always do this. As an example, the following model uses the linear-programming representable [sumk](/command/sumk) operator, and the initial guess on (\x\) will not be propagated to the auxilliary variables required to represent the epigraph of this operator.
 
 ````matlab
 x = sdpvar(3,1);
@@ -178,6 +178,6 @@ shifted x0 to strictly satisfy the bounds.
 Local minimum found that satisfies the constraints.
 ````
 
-For variables which haven't been assigned any values, YALMIP will use the value 0 if the option to use initial guesses is turned on. As we can see in the display, [fmincon](/solver/fmincon) sees that the supplied iniital guess is infeasible, and tweaks it and tries from another point instead. Luckily, it manages to find an alternative inital point which appears to keep our assigned values (inital cost is 6.0, which is the objective for \(x = 0.5\)).
+For variables which haven't been assigned any values, YALMIP will use the value 0 if the option to use initial guesses is turned on. As we can see in the display, [fmincon](/solver/fmincon) sees that the supplied iniital guess is infeasible, and tweaks it and tries from another point instead. Luckily, it manages to find an alternative inital point which appears to keep our assigned values (inital cost is 6.0, which is the objective for \\(x = 0.5\\)).
 
 
