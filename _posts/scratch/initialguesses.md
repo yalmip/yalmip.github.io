@@ -8,7 +8,7 @@ comments: true
 date: '2017-08-25'
 ---
 
-In some cases, the solver might benefit from an initial guess on where to start the search, so called warm-starting.
+In some cases, a solver might benefit from an initial guess on where to start the search, so called warm-starting.
 
 ## Linear, quadratic and conic programming
 
