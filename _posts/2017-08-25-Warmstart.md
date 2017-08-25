@@ -144,7 +144,7 @@ optimize(Constraint,Objective, sdpsettings('solver','gurobi','usex0',1));
 
 ### Supplying initials guesses in integer programs might help less than you think
 
-Important to understand is warm-starting integer programs might have no impact at all. Integer programs are hard due to two main reasons. The first and perhaps what many think is the hard part, is to find a feasible solution, and finding the optimal solution. This is called the upper bound generation. The second part is to derive lower bounds on the acheivable performance through relaxations. For some models, it is trivial to find the optimal solution, but it is extremely hard to create good lower bounds and thus proving that the currently best solution found actually is the globally optimal solution. In those cases, supplying an initial guess does not help much, as the solver would have found it quickly anyways.
+It is important to understand that warm-starting integer programs might have no impact at all. Integer programs are hard due to two main reasons. The first and perhaps what many think is the hard part, is to find a feasible solution, and finding the optimal solution. This is called the upper bound generation. The second part is to derive lower bounds on the acheivable performance through relaxations. For some models, it is trivial to find the optimal solution, but it is extremely hard to create good lower bounds and thus proving that the currently best solution found actually is the globally optimal solution. In those cases, supplying an initial guess does not help much, as the solver would have found it quickly anyways.
 
 ## Hidden variables
 
