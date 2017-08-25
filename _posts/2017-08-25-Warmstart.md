@@ -3,7 +3,7 @@ layout: single
 permalink: /Initials
 excerpt: "Give your solver a hint"
 title: "Supplying initial guesses to warm-start solvers"
-tags: [Warm-start, Initial]
+tags: [Warm-start, Assign, Initial]
 comments: true
 date: '2017-08-25'
 ---
