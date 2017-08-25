@@ -42,9 +42,9 @@ Error in fmincon (line 889)
 
 ````
 
-Most likely, the solver has tried to start in the initial guess \(x = 0\), and when the objective has been evaluated in a callback to YALMIP, it has led to division by zero.
+The solver has tried to start in \(x = 0\), and when the objective has been evaluated in a callback to YALMIP, it has led to division by zero.
 
-If we want the solver to start in \(x = 0.5\) instead, we assign that value to the variable, and use the **usex0** option.
+If we want the solver to start in \(x = 0.5\) instead, we [assign](/command/assign) that value to the variable, and use the **usex0** option.
 
 ````matlab
 assign(x,0.5);
@@ -70,7 +70,7 @@ Many solvers have some internal logic in selecting an initial guess better than 
 optimize([Constraints, x >= 0.01],Objective);
 ````
 
-Note, if we restart the solver now, the value assigned to the variables are those obtained in the latest solve. Hence, calling [optimize](/command/optimize) again will have the solver restart where it ended.
+Note, if we restart the solver now, the value assigned to the variables are those obtained in the latest solve or assigment. Hence, calling [optimize](/command/optimize) again will have the solver restart where it ended.
 
 
 ````matlab
