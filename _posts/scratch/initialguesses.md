@@ -12,7 +12,7 @@ In some cases, a solver might benefit from an initial guess on where to start th
 
 ## Linear, quadratic and conic programming
 
-Before we start supplying inititial guesses to solvers, it should be mentioned that when you solve simple linear, convex quadratic, second-order cone or linear semidefinite programs, there is typically no need to supply initial guesses. 
+Before we start supplying initial guesses to solvers, it should be mentioned that when you solve simple linear, convex quadratic, second-order cone or linear semidefinite programs, there is typically no reason to supply initial guesses. 
 
 These solvers often work with your model in a primal-dual space, typically with a reformulated model compared to your high-level model, and you will have no idea about a relevant initial primal-dual pair. In fact, many of these solvers have no way to supply an initial guess, and if they had, the solution-time would most likely not change much. Warm-starting these solvers is a field of research, and to a large degree, no general efficient methods are available.
 
