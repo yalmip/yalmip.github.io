@@ -171,6 +171,7 @@ clear all
 % Model data
 A = [2 -1;1 0.2];
 B = sdpvar(2,1);
+E = [1;1];
 nx = 2; % Number of states
 nu = 1; % Number of inputs
 
@@ -193,7 +194,7 @@ constraints = [-.1 <= diff([pastu u{:}]) <= .1];
 objective = 0;
 for k = 1:N
     objective = objective + (C*x{k}-r{k})'*(C*x{k}-r{k}) + u{k}'*u{k};
-    constraints = [constraints, x{k+1} == A*x{k}+B*u{k}+d];
+    constraints = [constraints, x{k+1} == A*x{k}+B*u{k}+E*d];
     constraints = [constraints, -1 <= u{k}<= 1, -5<=x{k+1}<=5];
 end
 objective = objective + (C*x{N+1}-r{N+1})'*(C*x{N+1}-r{N+1});
@@ -223,7 +224,7 @@ for i = 1:150
     end
     subplot(1,2,1);stairs(i:i+length(U)-1,U,'r')
     subplot(1,2,2);cla;stairs(i:i+N,X(1,:),'b');hold on;stairs(i:i+N,future_r(1,:),'k')
-    x = A*x + Bmodel*U(1)+disturbance;
+    x = A*x + Bmodel*U(1)+E*disturbance;
     pause(0.05)   
     % The measured disturbance actually isn't constant, it changes slowly
     disturbance = 0.9*disturbance + 0.1*randn(1)*.1;
