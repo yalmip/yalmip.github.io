@@ -16,7 +16,7 @@ A less known internal mixed-integer solver is [cutsdp](/solver/cutsdp). While [b
 
 ## Cutting planes - from the semidefinite cone to linear elementwise cone
 
-[cutsdp](/solver/cutsdp) is not only a solver for mixed-integer conic programs, but is a general solver for semidefinite programs also in the continuous case (although one should never use it as such). 
+[cutsdp](/solver/cutsdp) is not only a solver for mixed-integer conic (second-order and semidefinite) programs, but is a general solver for conic programs also in the continuous case (although one should never use it as such). 
 
 The basic idea is simple, and is a classical approach to nonlinear programming. A semidefinite constraint \\(X\succeq 0\\) is by definition equivalent to the infinite-dimensional linear programming model \\(v^TXv \geq 0 ~ \forall~v\\). The trick now is to cleverly generate a lot of vectors \\(v\\) and construct a linear program, such that the geometry of the linear programming model starts to approximate the geometry of the semidefinite program. Every such added linear constraint is called a cutting plane. Note that the linear program is an *outer approximation* of the original semidefinite program. This means that a feasible solution to the linear programming approximation is not guaranteed to be a feasible solution to the semidefinite program. It also means that if we are minimizing an objective, it will generate a lower bound.
 
