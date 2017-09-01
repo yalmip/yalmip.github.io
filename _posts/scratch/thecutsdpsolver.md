@@ -31,9 +31,9 @@ ops = sdpsettings('plot.shade',.1,'verbose',0);
 % Initial outer approximation
 ballApproximation = [-1 <= [x y] <= 1];
 clf;hold on
-for k = 1:10
-  vi = randn(3,1);
+for k = 1:10  
   for i = 1:20
+    vi = randn(3,1);
     ballApproximation = [ballApproximation, vi'*X*vi >= 0];  
   end
   plot(ballApproximation,[x;y],'blue',200,ops); 
@@ -43,9 +43,9 @@ for k = 1:10
 end 
 ````
 
-Creating a solver based on this strategy is primarily about generating relavant cutting planes, instead of randomly placing them everywhere. Since we have an objective function, where are not interested in approximating the whole feasible set, but only need a good approximation around the optimal point. Additionally, as it is in the implementation above, we are generating new cuts which might be completely redundant, i.e., the do not cut away any infeasible points.
+Creating a solver based on this strategy is primarily about generating relavant cutting planes, instead of randomly placing them everywhere. Since we have an objective function, where are not interested in approximating the whole feasible set, but only need a good approximation around the (unknown) optimal point. Additionally, as it is in the implementation above, we are generating new cuts which might be completely redundant, i.e., they do not cut away any infeasible points.
 
-Consider a solution leading to a matrix \\(X^{\star}\\). If this solution is infeasible, we know that the smallest eigenvalue of \\(X^{\star}\\) is negative. Hence there is a negative \\(\lambda\\) and a vector  \\(v\\) such that  \\(X^{\star}v = \lambda v\\),. i.e., \\(v^TX^{\star}v = \lambda v^v < 0\). In other words, the current solution vialates the constraint \\(v^TXv \geq 0\\). This indicates that  eigenvectors \\(v\\) associated with negative eigenvalues for the current semidefinite constraints are suitable candidates for creating cutting planes.
+Consider a solution leading to a matrix \\(X^{\star}\\). If this solution is infeasible in the semidefinite constraint, we know that the smallest eigenvalue of \\(X^{\star}\\) is negative. Hence there is a negative \\(\lambda\\) and a vector  \\(v\\) such that  \\(X^{\star}v = \lambda v\\),. i.e., \\(v^TX^{\star}v = \lambda v^v < 0\). In other words, the current solution violates the constraint \\(v^TXv \geq 0\\). This indicates that  eigenvectors \\(v\\) associated with negative eigenvalues for the current semidefinite constraints are suitable candidates for creating cutting planes.
 
 ````matlab
 ballApproximation = [-1 <= [x y] <= 1];
@@ -56,20 +56,20 @@ for k = 1:10
   vi = V(:,1);
   ballApproximation = [ballApproximation, vi'*X*vi >= 0];    
   plot(ballApproximation,[x;y],'blue',200,ops);   
-  plot(value(x),value(y),'k*');drawnow
+  plot(value(x),value(y),'k*');
   drawnow
 end 
 ````
 
-In a very few steps, the semidefinite constraint is perfectly approximated around the true optimal solution, and the problem is solved. Of course, this particular problem is trivial, and for real problems the number of cutting planes can grow very large while still having large infeasibility in the approximation.
+In a very few steps, the semidefinite constraint is perfectly approximated around the true optimal solution, and the problem is solved. Of course, this particular problem is trivial, and for real problems the number of cutting planes can grow very large while still having large infeasibility (negative eigenvalues in the semidefinite constraints).
 
 The [cutsdp](/solver/cutsdp) implements precisely this strategy, generalized to multiple constraints, and second-order cone constraints.
 
 ## Adding integrality constraints
 
-If we now add integrality constraints to the model, nothing really changes. We are still outer approximating the semidefinite cone, but instead of solving linear programs, we will solve mixed-integer linear programs. If the solution to the mixed-integer program satisfies the original semidefinite program, it is our sought solution. If not, it must vialote some semidefinite constraint, and we can add a cutting plane based on a negative eigenvalue. Also note that the feasible set of a purely integer semidefinite program, is a mixed-integer linear program in disguise. The feasible set is the integer lattice points, and the convex hull of these is a polytope.
+If we now add integrality constraints to the model, nothing really changes. We are still outer approximating the semidefinite cone, but instead of solving linear programs, we will solve mixed-integer linear programs. If the solution to the mixed-integer program satisfies the original semidefinite program, it is our sought solution. If not, it must violate some semidefinite constraint, and we can add a cutting plane based on a negative eigenvalue. Note that a purely integer semidefinite program, is a mixed-integer linear program in disguise. The feasible set is the integer lattice points, and the convex hull of these is a polytope.
 
-Let us create a mixed-integer semidefinite program, which models a problem where we are in one of two half-moons,  which can be cast as a mixed-integer semidefinite program (in practice you would simply write it using a quadratic constraint and YALMIP would derive a mixed-integer second-order cone problem instead). Note that you must have an efficient [mixed-integer linear programming solver] installed for the cutting-plane iterations to be fast, and you need a semidefinite-programming solver installed for the first plot to be generated. The integrality in the model comes from the use of the combinatorial [implications](/command/implies) and the binary variables which defines which half-moon we are in.
+Let us create a mixed-integer semidefinite program, which models a problem where we are in one of two half-moons,  which can be cast as a mixed-integer semidefinite program (in practice you would simply write it using a quadratic constraint and YALMIP would derive a mixed-integer second-order cone problem instead). You must have an efficient [mixed-integer linear programming solver](/tags/#mixed-integer-linear-programming-solver) installed for the cutting-plane iterations to be fast, and you need a [semidefinite-programming solver](/tags/#semidefinite-programming-solver) installed for the first plot to be generated. The integrality in the model comes from the use of the combinatorial [implications](/command/implies) with the binary variables  defining which half-moon we are in.
 
 ````matlab
 clf
@@ -88,7 +88,7 @@ for i = 1:10
 end
 ````
 
-A direct YALMIP implementation to solve this problem would be (here, YALMIP will derive a mixed-integer second-order cone program, so in practice, a better approach would be to use a solver such as [mosek](/solver/mosek), [gurobi](/solver/gurobi) or [cplex](/solver/cplex)
+A direct YALMIP implementation to solve this problem would be (here, YALMIP will derive a mixed-integer second-order cone program, so in practice, you would use a solver such as [mosek](/solver/mosek), [gurobi](/solver/gurobi) or [cplex](/solver/cplex)
 
 ````matlab
 Model = [x^2 + y^2 <= 1,
