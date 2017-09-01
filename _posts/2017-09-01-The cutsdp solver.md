@@ -3,7 +3,7 @@ layout: single
 permalink: /cutsdpsolver
 excerpt: "A little known solver"
 title: "The CUTSDP solver explained"
-tags: [Semidefinite programming, Mixed-integer conic programming solver]
+tags: [Semidefinite programming, Mixed-integer conic programming solver, Integer programming]
 comments: true
 date: '2017-09-01'
 ---
