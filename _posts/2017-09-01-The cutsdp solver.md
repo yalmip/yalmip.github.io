@@ -45,7 +45,7 @@ end
 
 Creating a solver based on this strategy is primarily about generating relavant cutting planes, instead of randomly placing them everywhere. Since we have an objective function, where are not interested in approximating the whole feasible set, but only need a good approximation around the (unknown) optimal point. Additionally, as it is in the implementation above, we are generating new cuts which might be completely redundant, i.e., they do not cut away any infeasible points.
 
-Consider a solution leading to a matrix \\(X^{\star}\\). If this solution is infeasible in the semidefinite constraint, we know that the smallest eigenvalue of \\(X^{\star}\\) is negative. Hence there is a negative \\(\lambda\\) and a vector  \\(v\\) such that  \\(X^{\star}v = \lambda v\\),. i.e., \\(v^TX^{\star}v = \lambda v^v < 0\). In other words, the current solution violates the constraint \\(v^TXv \geq 0\\). This indicates that  eigenvectors \\(v\\) associated with negative eigenvalues for the current semidefinite constraints are suitable candidates for creating cutting planes.
+Consider a solution leading to a matrix \\(X^{\star}\\). If this solution is infeasible in the semidefinite constraint, we know that the smallest eigenvalue of \\(X^{\star}\\) is negative. Hence there is a negative \\(\lambda\\) and a vector  \\(v\\) such that  \\(X^{\star}v = \lambda v\\),. i.e., \\(v^TX^{\star}v = \lambda v^Tv < 0\\). In other words, the current solution violates the constraint \\(v^TXv \geq 0\\). This indicates that  eigenvectors \\(v\\) associated with negative eigenvalues for the current semidefinite constraints are suitable candidates for creating cutting planes.
 
 ````matlab
 ballApproximation = [-1 <= [x y] <= 1];
