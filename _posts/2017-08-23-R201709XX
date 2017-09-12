@@ -1,0 +1,22 @@
+---
+layout: single
+permalink: /R201709XX
+excerpt: "Performance fix"
+title: "New release R201709XX"
+tags: [Release]
+comments: true
+date: '2017-09-XX'
+---
+
+[Download latest release](/download)
+
+### Fixes
+
+* Improved performance in compiling large poorly vectorized models 
+
+
+
+
+
+
+
