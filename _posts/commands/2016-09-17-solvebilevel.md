@@ -57,4 +57,4 @@ As an alternative, we can tell the solver to derive the [Commands.Kkt KKT condit
 ops = sdpsettings('bilvel.algorithm','external');
 solvebilevel(CO,OO,CI,OI,[y1 y2 y3])
 ````
-If you would like to use this approach, you are however recommended to derive the problem by calling the [Commands.Kkt KKT ] operator and setup the problem manually, in order to have full control of the way you work with bounds on the dual variables.
+If you would like to use this approach, you are however recommended to derive the problem by calling the [KKT](/command/kkt) operator and setup the problem manually, in order to have full control of the way you work with bounds on the dual variables.
