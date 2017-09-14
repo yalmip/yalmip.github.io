@@ -139,9 +139,9 @@ solvebilevel(CO,OO,CI,OI,[y1 y2 y3]);
    11 :  -1.940E+001     0.00    -1.940E+001   2  Infeasible in solver
 ````
 
-The bilevel solver is restricted to convex quadratic inner problems, but convexity is not a requirement on the outer problems. The bilevel solver solves the outer problem repeatedly in a branch-and-bound procedure, with additional equality constraints derived from complementary slackness appended. Hence, we have to make a choice between global solution of the outer problem, or a simple local solution. If we go for a local solution (using, e.g, [FMINCON]), we have no guarantees (except that the inner optimality constraint is satisfied). If we use a global outer solver (such as [BMIBNB]), a globally optimal bilevel solution follows.
+The bilevel solver is restricted to convex quadratic inner problems, but convexity is not a requirement on the outer problems. The bilevel solver solves the outer problem repeatedly in a branch-and-bound procedure, with additional equality constraints derived from complementary slackness appended. Hence, we have to make a choice between global solution of the outer problem, or a simple local solution. If we go for a local solution (using, e.g, [fmincon](/solver/fmincon)), we have no guarantees (except that the inner optimality constraint is satisfied). If we use a global outer solver (such as [bmibnb](/solver/bmibnb)), a globally optimal bilevel solution follows.
 
-As an illustration, we solve the original problem, but append a nonconvex quadratic term to the outer problem. To ensure a globally optimal solution, we use the global solver [BMIBNB](/solver/bmibnb) as the outer solver.
+As an illustration, we solve the original problem, but append a nonconvex quadratic term to the outer problem. To ensure a globally optimal solution, we use the global solver [bmibnb](/solver/bmibnb) as the outer solver.
 
 ````matlab
 OO = -8*x1 - 4*x2 + 4*y1 - 40*y2 + 4*y3;
