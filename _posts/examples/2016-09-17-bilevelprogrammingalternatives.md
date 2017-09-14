@@ -201,7 +201,7 @@ end
 
 ### Using the built-in bilevel solver
 
-As we mentioned above, YALMIP has a [built-in bilevel solver](/commands/solvebilevel) which applies to this problem.
+As we mentioned above, YALMIP has a [built-in bilevel solver](/command/solvebilevel) which applies to this problem.
 
 ````matlab
 con_inner = F*z <=  h + G*x;
