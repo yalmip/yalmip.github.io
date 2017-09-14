@@ -8,7 +8,7 @@ comments: true
 date: '2017-09-01'
 ---
 
-YALMIP is shipped with two built-in mixed-integer conic programming solvers, both relying external solvers to do the heavy work, but in completely different ways.
+YALMIP is shipped with two built-in mixed-integer conic programming solvers, both relying on external solvers to do the heavy work, but in completely different ways.
 
 The most known solver is the solver [bnb](/solver/bnb), which is a classical naive branch-and-bound implementation for mixed-integer convex programs (it can applied to any problem, but global optimality guarantees only hold for problems where the continuous relaxations are convex). Without a doubt, the solver is terribly slow compared to state-of-the-art solvers, and is only intended to be a tool for completing academic proof-of-concept projects where a mixed-integer semidefinite program is solved. For all other problem classes there are much better [external solvers](/tags/#mixed-integer-programming-solver), and in many cases you are much better off by developing your own dedicated solver if you need performance.
 
