@@ -11,7 +11,7 @@ sidebar:
 ---
 
 
-YALMIP has some support for logic programming ([implies](/command/implies), [nnz](/command/nnz), [sort](/command/sort), [alldifferent](/command/alldifferent) etc) and structured nonconvex programming (nonconvex use of operators such as [min](/command/min) , [max](/command/max), [norm](/command/norm), [abs](/command/abs) etc.) This feature relies on converting the user supplied model to an internal mixed-integer model, typically a mixed-integer linear program. The method used for performing this conversion is big-M reformulations.
+YALMIP has some support for logic programming ([implies](/command/implies), [nnz](/command/nnz), [sort](/command/sort), [alldifferent](/command/alldifferent) etc) and structured nonconvex programming (nonconvex use of operators such as [min](/command/min) , [max](/command/max), [norm](/command/norm), [abs](/command/abs) etc.) This feature relies on converting the user supplied model to an internal mixed-integer model, typically a mixed-integer linear program. The method used for performing this conversion is **big-M** reformulations.
 
 In most of the examples related to logic programming and nonconvex models, the importance of explicit bounds is stressed, and this example will try to motivate why this is important, describe the basics of big-M reformulations, and show how you manually can create stronger models by using the [hull](/command/hull) command.
 
@@ -19,15 +19,19 @@ In most of the examples related to logic programming and nonconvex models, the i
 
 Big-M reformulations are used to convert a logic or nonconvex constraint to a set of constraints describing the same feasible set, using auxillary binary variables and additional constraints.
 
-As an example, consider the logic constraint **implies(y,x==0)** where **y** is binary and **x** is a continuous variable. A big-M reformulation of this constraint would be
+As an example, consider the logic constraint **if y == 1 then x==0** where **y** is binary and **x** is a continuous variable, which in YALMIP is written as **implies(y,x==0)**. A big-M reformulation of this constraint would be
 
 ````matlab
 [(1-y)*m <= x <= (1-y)*M]
 ````
 
-If **M** is chosen sufficiently large and **m** is sufficiently small (i.e., negative and large in absolute terms), this big-M reformulation is equivalent to the original constraint. Clearly, if **y** is 1 (true), **x** is guaranteed to be 0. The complications arise when **y** is 0 and **x** should be unconstrained. For **x** to be unconstrained in this case, **M** has to be a number larger than any possible value that **x** can take in the complete model, and **m** smaller than any possible value of **x**. This is where the name big-M comes from.
+If **M** is chosen sufficiently large and **m** is sufficiently small (i.e., negative and large in absolute terms), this big-M reformulation is equivalent to the original constraint. If **y** is 1 (true), the only feasible **x** is 0, and our goal is accomplished. The complications arise when **y** is 0 and **x** should be unconstrained. For **x** to be unconstrained in this case, **M** has to be a number larger than any possible value that **x** can take in the complete model, and **m** smaller than any possible value of **x**. This is where the name big-M comes from.
 
 Hence, for a big-M reformulation to work, the modeling language has to be able to derive these constants, or conservative approximations, from the complete model. YALMIP derives these constants from the model automatically by searching for simple variable bound constraints and using these bound constraints to compute conservative bounds on the expressions involved in the big-M constraint. Consequently, you have to add explicit bounds on all variables that are involved in logic constraints or constraints involving nonconvex instances of operators such as **max**, **min** etc.
+
+**Tip:** The term big-M is however devastatingly misleading, a better term would be **sufficiently-large-small-M**. A naive (and sadly commonly used) approach is to use huge constants without any thought, such as **M**=1e6 and **m**=-1e6. This works in theory, but will give extremely bad and essentially useless models. The big-M reformulations will feature terrible numerical behavior, and the relaxations that are used in the mixed integer solver will be very weak, leading to excessive branching and thus increased computation time. As we will see in this example, already with modestly sub-optimal choices, the relaxation are terrible.
+{: .notice--info}
+
 
 > The term big-M is however devastatingly misleading, a better term would be **sufficiently-large-small-M**. A naive (and sadly commonly used) approach is to use huge constants without any thought, such as **M**=1e6 and **m**=-1e6. This works in theory, but will give extremely bad and essentially useless models. The big-M reformulations will feature terrible numerical behavior, and the relaxations that are used in the mixed integer solver will be very weak, leading to excessive branching and thus increased computation time. As we will see in this example, already with modestly sub-optimal choices, the relaxation are terrible.
 
