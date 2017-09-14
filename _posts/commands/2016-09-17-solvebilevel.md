@@ -51,7 +51,7 @@ ans =
          0    8.8500
 ````
 
-As an alternative, we can tell the solver to derive the [Commands.Kkt KKT conditions], and model the complementary slackness conditions using a big-M approach, and solve the problem using a standard mixed-integer solver.
+As an alternative, we can tell the solver to derive the [KKT conditions](/command/kkt), and model the complementary slackness conditions using a big-M approach, and solve the problem using a standard mixed-integer solver.
 
 ````matlab
 ops = sdpsettings('bilvel.algorithm','external');
