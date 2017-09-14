@@ -13,6 +13,7 @@ date: '2017-09-14'
 ### Fixes
 
 * Improved performance in compiling large poorly vectorized models 
+* Graph models in [interp1](/command/interp1) can now be based on either point interpolation (inner approximation), or tangent cuts (outer approximation)
 
 
 
