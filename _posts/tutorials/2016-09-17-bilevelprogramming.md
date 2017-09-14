@@ -59,7 +59,7 @@ Using standard notation, we define the outer constraints and objective
 
 ````matlab
 OO = -8*x1 - 4*x2 + 4*y1 - 40*y2 + 4*y3;
-CO = [y1 y2 y3]>=0,[x1 x2]>=0];
+CO = [[y1 y2 y3]>=0,[x1 x2]>=0];
 ````
 
 followed by the inner constraints and objective
@@ -117,7 +117,7 @@ solvebilevel(CO,OO+OO^2,CI,OI^2,[y1 y2 y3]);
 A strong feature of the built-in solver is that it builds upon the infrastructure in YALMIP, and easily hooks up to almost any kind of outer problem. Hence, we can take the problem above, and append a semidefinite constraint to the outer problem. The only difference is that during the branching of the complementary conditions, semidefinite programs have to be solved in each node.
 
 ````matlab
-CO = [y1 y2 y3] >= 0,[x1 x2] >= 0];
+CO = [[y1 y2 y3] >= 0,[x1 x2] >= 0];
 CO = [CO, [1 x1+x2;x1+x2 1/2] >= 0];
 
 solvebilevel(CO,OO,CI,OI,[y1 y2 y3]);
