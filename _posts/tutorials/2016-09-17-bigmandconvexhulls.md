@@ -29,15 +29,12 @@ If **M** is chosen sufficiently large and **m** is sufficiently small (i.e., neg
 
 Hence, for a big-M reformulation to work, the modeling language has to be able to derive these constants, or conservative approximations, from the complete model. YALMIP derives these constants from the model automatically by searching for simple variable bound constraints and using these bound constraints to compute conservative bounds on the expressions involved in the big-M constraint. Consequently, you have to add explicit bounds on all variables that are involved in logic constraints or constraints involving nonconvex instances of operators such as **max**, **min** etc.
 
-**Tip:** The term big-M is however devastatingly misleading, a better term would be **sufficiently-large-small-M**. A naive (and sadly commonly used) approach is to use huge constants without any thought, such as **M**=1e6 and **m**=-1e6. This works in theory, but will give extremely bad and essentially useless models. The big-M reformulations will feature terrible numerical behavior, and the relaxations that are used in the mixed integer solver will be very weak, leading to excessive branching and thus increased computation time. As we will see in this example, already with modestly sub-optimal choices, the relaxation are terrible.
+**Note:** The term big-M is devastatingly misleading, and a better term would be **sufficiently-large-small-M**. A naive (and sadly commonly used) approach is to use huge constants without any thought, such as **M**=1e6 and **m**=-1e6. This works in theory, but will give extremely bad and essentially useless models. The big-M reformulations will result in terrible numerics in solvers, and the relaxations that are used in the mixed integer solver will be very weak, leading to excessive branching and thus increased computation time. As we will see in this example, already with modestly sub-optimal choices, the relaxation are terrible.
 {: .notice--info}
-
-
-> The term big-M is however devastatingly misleading, a better term would be **sufficiently-large-small-M**. A naive (and sadly commonly used) approach is to use huge constants without any thought, such as **M**=1e6 and **m**=-1e6. This works in theory, but will give extremely bad and essentially useless models. The big-M reformulations will feature terrible numerical behavior, and the relaxations that are used in the mixed integer solver will be very weak, leading to excessive branching and thus increased computation time. As we will see in this example, already with modestly sub-optimal choices, the relaxation are terrible.
 
 ### Nonconvex polytope constraints
 
-To illustrate the importance of tight bounds in the big-M reformulations, we will return to one of the [logic programming examples], optimization over the union of polytopes.
+To illustrate the importance of tight bounds for the big-M reformulations, we will optimize over the union of polytopes.
 
 Define numerical data for four random polytopes.
 
@@ -83,7 +80,7 @@ F = [F, A3*x - b3 <= M3*(1-d(3))];
 F = [F, A4*x - b4 <= M4*(1-d(4))];
 ````
 
-A problem with this model is that we have picked the big-M constants large, without insight to the problem. The consequence of this is, except the poor numerics, is the weakness of the relaxed mixed integer model. We can see this by plotting the relaxed feasible set and compare it with the actual feasible set.
+A problem with this model is that we have naively picked the big-M constants large (at least we think they are large enough), without insight to the problem. The consequence of this is (except the poor numerics) the weakness of the relaxed mixed integer model. We can see this by plotting the relaxed feasible set and compare it with the actual feasible set.
 
 ````matlab
 plot(F,x,[],[],sdpsettings('relax',1))
@@ -96,7 +93,7 @@ plot(A4*x<=b4)
 
 ![Polytopes]({{ site.url }}/images/polytopesbigm.png){: .center-image }
 
-The relaxation is far from a good approximation of the true feasible set, indicating that a mixed integer solver may have problems solving this problem, since they rely on good quality relaxations.
+The relaxation is far from a good approximation of the true feasible set, indicating that a mixed integer solver may have problems solving this problem efficiently, since it typically relies on strong relaxations.
 
 A better model is obtained by using a more reasonable big-M constant (In this example, it is hard to use a good constant since the data is randomly generated. In practice, realistic bounds which is needed for YALMIPs derivation typically follow from model insight (When YALMIP performs the modeling internally, a considerable amount of preprocessing is performed in order to derive good bounds, based on supplied bounds on the involved variables)
 
@@ -137,7 +134,7 @@ plot(A4*x<=b4)
 
 ![Polytopes]({{ site.url }}/images/polytopesbigm3.png){: .center-image }
 
-Note though that the relaxation is far from good, despite the reasonable variable bounds. This is just a general feature of big-M models. To obtain better models, better bounds are required. Here, we can easily generate this by finding a bounding box of the union, by solving four bounding box problems (note that this requires the solution of 4*2*2 linear programs)
+The relaxation is far from good, despite the reasonable variable bounds. This is just a general feature of big-M models. To obtain better models, better bounds are required. Here, we can easily generate this by finding a bounding box of the union, by solving four bounding box problems (note that this requires the solution of 4*2*2 linear programs)
 
 ````matlab
 [~,L1,U1] = boundingbox(A1*x <= b1);
@@ -156,6 +153,8 @@ plot(A2*x<=b2)
 plot(A3*x<=b3)
 plot(A4*x<=b4)
 ````
+
+Analyzing your model to derive good bounds on all variables involved in expressions ending up in big-M reformulations is a central part of the modelling task.
 
 ### Convex hulls
 
