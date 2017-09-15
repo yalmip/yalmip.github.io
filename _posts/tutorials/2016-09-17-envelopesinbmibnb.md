@@ -15,11 +15,11 @@ The global solver [BMIBNB](/solver/bmibnb) is a YALMIP-based implementation of a
 A spatial branch-and-bound algorithm for nonconvex programming typically relies on a few standard steps. 
 
 0. The starting open node is the original optimization problem.
-1. In an open node, a standard local nonlinear solver is applied and a feasible, and hopefully locally optimal solution is computed. This gives an upper bound on the achievable objective (possibly infinite if the solver fails to find a feasible solution). The local solver for this step is specified with the option **'bmibnb.uppersolver'**.
-2. As a second step a convex relaxation of the model in the node is derived (using the methods described below), and the resulting convex optimization problem is solved (typically a linear program, or if the original problem is a nonconvex semidefinite program, a semidefinite program). This gives a lower bound on the achievable objective for this node. The lower bound solver is specified using the options **'bmibnb.lowersolver'**.
+1. In an open node, a [local nonlinear solver](/tags/#nonlinear-programming-solver) is applied and a feasible, and hopefully locally optimal solution is computed. This gives an upper bound on the achievable objective (possibly infinite if the solver fails to find a feasible solution). The local solver for this step is specified with the option **'bmibnb.uppersolver'**  in [BMIBNB](/solver/bmibnb).
+2. As a second step a convex relaxation of the model in the node is derived (using the methods described below), and the resulting convex optimization problem is solved (typically a linear program, or if the original problem is a nonconvex semidefinite program, a semidefinite program). This gives a lower bound on the achievable objective for this node. The lower bound solver is specified using the options **'bmibnb.lowersolver'** in [BMIBNB](/solver/bmibnb).
 3. Given these lower and upper bounds, a standard branch-and-bound logic is used to select a branch variable, create two new nodes, branch, prune and navigate among the remaining nodes.
 
-In addition to these standard steps, a large amount of preprocessing and bound-propagation is performed, both in the root-node and along the branching. This is important in order to obtain stronger linear relaxations. The options controlling this can be found in the description of [BMIBNB](/solver/bmibnb). Nevertheless, the central object is the relaxation problem, and this model is built using outer approximations of convex envelopes (the convex hull of the set \\( (x,f(x)) \\) on some interval in \\(x\\)).
+In addition to these standard steps, a large amount of preprocessing and bound-propagation is performed, both in the root-node and along the branching. This is important in order to obtain stronger linear relaxations as we will see below. The options controlling this can be found in the description of [BMIBNB](/solver/bmibnb). Nevertheless, the central object is the relaxation, and this model is built using outer approximations of convex envelopes (the convex hull of the set \\( (x,f(x)) \\) on some interval in \\(x\\)).
 
 ### Linear relaxation for bilinear and quadratic problems
 
@@ -30,7 +30,7 @@ Given two variables \\(x\\) and \\(y\\), and lower and upper bounds \\(x_L\\), \
 
 ![Bilinear hull]({{ site.url }}/images/xyhull.png){: .center-image }
 
-A linear relaxation of the term \\(xy\\) is obtained by introducing new variables \\(w_x\\), \\(w_{xy}\\) and \\(w_y\\), and replacing \\(x^2\\), \\(xy\\) and \\(y^2\\) in the constraints above and the original model with these \\(w\\) variables. A set of linear equalities is then obtained. This procedure is applied to all nonlinear terms.
+A linear relaxation of the nonlinear monomials are obtained by introducing new variables \\(w_x\\), \\(w_{xy}\\) and \\(w_y\\), and replacing \\(x^2\\), \\(xy\\) and \\(y^2\\) in the constraints above and the original model with these \\(w\\) variables. A set of linear equalities is then obtained. This procedure is applied to all nonlinear terms.
 
 We can use YALMIP to illustrate this for a simple scalar nonlinearity \\(x^2\\). We generate the nonlinear representation of the generating equations
 
@@ -51,7 +51,7 @@ hold on;plot(t,t.^2);
 
 ![Quadratic hull]({{ site.url }}/images/hullsqr.png){: .center-image }
 
-The horizontal axis is the original variable \\(x\\) and the vertical is the relaxed variable representing \\(x^2\\), and the polytope shows the feasible region for the relaxed variable. Clearly, the approximation is perfect at the bounds, but fairly poor in the middle. It should be stated that positivity bounds on quadratic terms automatically are appended  in the envelope implementation, thus cutting off the lower negative portion of the polytope (see below)
+The horizontal axis is the original variable \\(x\\) and the vertical is the relaxed variable representing \\(x^2\\), and the polytope shows the feasible region for the relaxed variable. Clearly, the approximation is perfect at the bounds, but fairly poor in the middle. It should be stated that non-negativity on variables representing quadratic terms automatically are appended  in the envelope implementation, thus cutting off the lower negative portion of the polytope (see below)
 
 By tightening the bounds during the branching process, the linear relaxation will become increasingly better. As an example, if the solver branches on  \\(x\\) at 0.5, two new nodes would be created with stronger relaxations.
 
@@ -75,7 +75,7 @@ hold on;plot(t,t.^2);
 
 ![Quadratic hull]({{ site.url }}/images/xyhull2.png){: .center-image }
 
-Note that the algorithm requires bounds on the variables. If YALMIP fails to extract any explicit bounds from the model in the root-node, the code will terminate and an error message will be displayed. Addionally, the tighter the bounds are, i.e., closer to the final optimal value, the better the envelope approximation will be.
+Note that the algorithm requires bounds on the variables. If YALMIP fails to extract any explicit bounds from the model in the root-node, the code will almost always terminate and an error message will be displayed. Addionally, the tighter the bounds are, i.e., closer to the final optimal value, the better the envelope approximation will be.
 
 ### Linear relaxation for polynomial problems
 
