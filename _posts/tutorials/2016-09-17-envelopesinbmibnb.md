@@ -166,10 +166,10 @@ sdpvar x
 optimize([x + x^2 + x^4 == 0,x,sdpsettings('solver','bmibnb'));
 ````
 
-YALMIP easily derivs the initial bound \\(-1 \leq x \leq 0\\) and then improves it furter to \\(-0.6875 \leq x \leq 0\\) (the optimal solution is \\(x=-0.6823\\), so the lower bound is essentially tight), and can use this when creating the cuts for the envelope approximation. A bit silly plot, but you will get a line in \\(x\\) here showing the feasible interval.
+YALMIP easily derivs the initial bound \\(-1 \leq x \leq 0\\) and then improves it further to \\(-0.6875 \leq x \leq 0\\) (the optimal solution is \\(x=-0.6823\\), so the lower bound is essentially tight), and can use this when creating the cuts for the envelope approximation. A bit silly plot, but you will get a line in \\(x\\) here showing the feasible interval.
 
 ````matlab
-E = envelope([x + x^2 + x^4 == w, w == 0);
+E = envelope([x + x^2 + x^4 == w, w == 0]);
 plot(E,[x;w],[],[],sdpsettings('relax',1));
 ````
 
