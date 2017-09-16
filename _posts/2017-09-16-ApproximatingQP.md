@@ -8,7 +8,7 @@ comments: true
 date: '2017-09-16'
 ---
 
-To showcase the generality and convenince of [interp1](/command/interp1), let us answer a common question which addresses the problem of solving (possibly mixed-integer) quadratic programs using linear solvers, and to make matters worse, we study indefinite quadratic objectives.
+To showcase the generality and convenience of [interp1](/command/interp1), let us answer a common question which addresses the problem of solving (possibly mixed-integer) quadratic programs using linear solvers, and to make matters worse, we study indefinite quadratic objectives.
 
 The simple idea we will use is to approximate the quadratic function as a piecewise affine function. Of course, this is not necessarily a good way to solve indefinite quadratic programs, but it is a common strategy ([see this post](/example/nonconvexquadraticprogramming) for some alternatives). Let us assume we want to minimize the indefinite objective \\(x^TQx - y^TRy\\) over the unit-box intersected with \\(\sum x + \sum y = 1\\).
 
