@@ -1,0 +1,21 @@
+---
+layout: single
+permalink: /R20170915
+excerpt: "Removed crashing bug in bonmin and ipopt"
+title: "New release R20170915"
+tags: [Release]
+comments: true
+date: '2017-09-15'
+---
+
+[Download latest release](/download)
+
+### Fixes
+
+* Fixed bug which caused [bonmin](/solver/bonmin) and [ipopt](/solver/ipopt) to crash in some instances with convex quadratic constraints
+
+
+
+
+
+
