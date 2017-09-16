@@ -8,9 +8,9 @@ comments: true
 date: '2017-09-16'
 ---
 
-To showcase the generality and convenince of the [interp1](/command/interp1), let us answer a common question which addresses the problem of solving integer quadratic programs using linear solvers, and to make matters worse, we study indefinite quadratic objectives.
+To showcase the generality and convenince of [interp1](/command/interp1), let us answer a common question which addresses the problem of solving (possibly mixed-integer) quadratic programs using linear solvers, and to make matters worse, we study indefinite quadratic objectives.
 
-The simple idea we will use is to approximate the quadratic function as a piecewise affine function. Of course, this is not necessarily a good way to solve indefinite quadratic programs, but it is a common strategy ([see this post](/example/nonconvexquadraticprogramming) for some alternatives). Let us assume we want to minimize the indefinite objective \\(x'^TQx - y^TRy\\) over the unit-box intersected with \\(\sum x + \sum y = 1\\).
+The simple idea we will use is to approximate the quadratic function as a piecewise affine function. Of course, this is not necessarily a good way to solve indefinite quadratic programs, but it is a common strategy ([see this post](/example/nonconvexquadraticprogramming) for some alternatives). Let us assume we want to minimize the indefinite objective \\(x^TQx - y^TRy\\) over the unit-box intersected with \\(\sum x + \sum y = 1\\).
 
 ````matlab
 n = 10;
@@ -21,7 +21,7 @@ R = randn(n);R = R*R';
 Model = [-1 <= [x y] <= 1, sum(x) + sum(y) == 1];
 ````
 
-To begin with, a problem here is that the model is multivariate, but the [interp1](/command/interp1) only acts on univariate data. To handle that, we factorize the quadratic functions so we can write them as sums of univariate functions \\(\sum e_i^2 - \sum f_i^2\\)
+To begin with, a problem here is that the model is multivariate, but [interp1](/command/interp1) only handles univariate data. To solve this, we factorize the quadratic functions and the objective using univariate functions \\(\sum e_i^2 - \sum f_i^2\\)
 ````matlab
 S = chol(Q);
 T = chol(R);
@@ -37,7 +37,7 @@ Our next step is to introduce a piecewise affine approximation of every quadrati
 [~,Lf,Uf] = boundingbox(Model,[],f);
 ````
 
-Now, generate a grid over the bounding box and define the piecewise affine approximators
+Generate a grid over the bounding boxes and define the piecewise affine approximators
 
 ````matlab
 N = 100;
@@ -56,6 +56,6 @@ optimize(Model,sum(f1)-sum(f2))
 
 If we have a convex mixed-integer quadratic programming solver, there is no need to approximate the first convex part of the objective, so we can use a partially quadratic model instead
 ````matlab
-Model = [-1 <= [x y] <= 1, f == T*y];
+Model = [-1 <= [x y] <= 1, sum(x) + sum(y) == 1, f == T*y];
 optimize(Model,x'*Q*x-sum(f2))
 ````
