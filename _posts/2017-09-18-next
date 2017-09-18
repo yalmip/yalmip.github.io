@@ -1,7 +1,7 @@
 ---
 layout: single
 permalink: /next
-excerpt: "Removed crashing bug in bonmin and ipopt"
+excerpt: "Removed bug crashing bonmin and ipopt"
 title: "New release R20170915"
 tags: [Release]
 comments: true
