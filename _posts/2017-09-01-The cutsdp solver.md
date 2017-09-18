@@ -10,13 +10,13 @@ date: '2017-09-01'
 
 YALMIP is shipped with two built-in mixed-integer conic programming solvers, both relying on external solvers to do the heavy work, but in completely different ways.
 
-The most known solver is the solver [bnb](/solver/bnb), which is a classical naive branch-and-bound implementation for mixed-integer convex programs (it can applied to any problem, but global optimality guarantees only hold for problems where the continuous relaxations are convex). Without a doubt, the solver is terribly slow compared to state-of-the-art solvers, and is only intended to be a tool for completing academic proof-of-concept projects where a mixed-integer semidefinite program is solved. For all other problem classes there are much better [external solvers](/tags/#mixed-integer-programming-solver), and in many cases you are much better off by developing your own dedicated solver if you need performance.
+The most known solver is the solver [BNB](/solver/bnb), which is a classical naive branch-and-bound implementation for mixed-integer convex programs (it can applied to any problem, but global optimality guarantees only hold for problems where the continuous relaxations are convex). Without a doubt, the solver is terribly slow compared to state-of-the-art solvers, and is only intended to be a tool for completing academic proof-of-concept projects where a mixed-integer semidefinite program is solved. For all other problem classes there are much better [external solvers](/tags/#mixed-integer-programming-solver), and in many cases you are much better off by developing your own dedicated solver if you need performance.
 
-A less known internal mixed-integer solver is [cutsdp](/solver/cutsdp). While [bnb](/solver/bnb) is based on branch-and-bound where, roughly speaking, integrality is approximated and relaxed during the iterative process, [cutsdp](/solver/cutsdp) is based on an iterative process where the geometry of the semidefinite cone is approximated and relaxed during the process, while integrality is guaranteed throughout.
+A less known internal mixed-integer solver is [CUTSDP](/solver/cutsdp). While [BNB](/solver/bnb) is based on branch-and-bound where, roughly speaking, integrality is approximated and relaxed during the iterative process, [CUTSDP](/solver/cutsdp) is based on an iterative process where the geometry of the semidefinite cone is approximated and relaxed during the process, while integrality is guaranteed throughout.
 
 ## Cutting planes - from the semidefinite cone to linear elementwise cone
 
-[cutsdp](/solver/cutsdp) is not only a solver for mixed-integer conic (second-order and semidefinite) programs, but is a general solver for conic programs also in the continuous case (although one should never use it as such). 
+[CUTSDP](/solver/cutsdp) is not only a solver for mixed-integer conic (second-order and semidefinite) programs, but is a general solver for conic programs also in the continuous case (although one should never use it as such). 
 
 The basic idea is simple, and is a classical approach to nonlinear programming. A semidefinite constraint \\(X\succeq 0\\) is by definition equivalent to the infinite-dimensional linear programming model \\(v^TXv \geq 0 ~ \forall~v\\). The trick now is to cleverly generate a lot of vectors \\(v\\) and construct a linear program, such that the geometry of the linear programming model starts to approximate the geometry of the semidefinite program. Every such added linear constraint is called a cutting plane. Note that the linear program is an *outer approximation* of the original semidefinite program. This means that a feasible solution to the linear programming approximation is not guaranteed to be a feasible solution to the semidefinite program. It also means that if we are minimizing an objective, it will generate a lower bound.
 
@@ -65,7 +65,7 @@ end
 
 In a very few steps, the semidefinite constraint is sufficiently well approximated around the true optimal solution, and the problem is solved. Of course, this particular problem is trivial, and for real problems the number of cutting planes can grow very large while still having large infeasibility (negative eigenvalues in the semidefinite constraints).
 
-The [cutsdp](/solver/cutsdp) solver implements precisely this strategy, generalized to multiple constraints, and second-order cone constraints.
+The [CUTSDP](/solver/cutsdp) solver implements precisely this strategy, generalized to multiple constraints, and second-order cone constraints.
 
 ## Adding integrality constraints
 
@@ -93,7 +93,7 @@ end
 ![Approximated half-moon union]({{ site.url }}/images/cutsdp2.png){: .center-image }
 
 
-A direct YALMIP implementation to solve this problem would be (here, YALMIP will derive a mixed-integer second-order cone program, so in practice, you would use a solver such as [mosek](/solver/mosek), [gurobi](/solver/gurobi) or [cplex](/solver/cplex)
+A direct YALMIP implementation to solve this problem would be (here, YALMIP will derive a mixed-integer second-order cone program, so in practice, you would use a solver such as [MOSEK](/solver/mosek), [GUROBI](/solver/gurobi) or [CPLEX](/solver/cplex)
 
 ````matlab
 Model = [x^2 + y^2 <= 1,
@@ -107,7 +107,7 @@ Through some additional initial preprocessing, the optimal solution is found alr
 
 ## Should I use [bnb](/solver/bnb) or [cutsdp](/solver/cutsdp)
 
-It really depends on the problem. [bnb](/solver/bnb) relaxes integrality but handles the semidefinite geometry exactly, while  [cutsdp](/solver/cutsdp)  relaxes the semidefinite cone while it handles integrality exactly in every iteration. Depending on the geometry of your problem, they will behave differently. Always test both.
+It really depends on the problem. [BNB](/solver/bnb) relaxes integrality but handles the semidefinite geometry exactly, while  [CUTSDP](/solver/cutsdp)  relaxes the semidefinite cone while it handles integrality exactly in every iteration. Depending on the geometry of your problem, they will behave differently. Always test both.
 
 
 
