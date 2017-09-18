@@ -14,6 +14,7 @@ date: '2017-09-15'
 
 * Eliminated some cases where the big-M modelling layer would complain about missing explicit bounds
 * Fixed bug which caused [BONMIN](/solver/bonmin) and [IPOPT](/solver/ipopt) to crash in some instances with convex quadratic constraints
+* Fixed bug which caused [bisection](/command/bisection) to crash on infeasible problems
 
 
 
