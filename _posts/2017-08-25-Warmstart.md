@@ -18,7 +18,7 @@ These solvers often work with your model in a primal-dual space, typically with 
 
 ## Nonlinear optimization
 
-The typical situation where you would want to supply an an initial guess is when you use a general purpose nonlinear solver, such as [fmincon](/solver/fmincon), [knitro](/solver/knitro) or [ipopt](/solver/ipopt). 
+The typical situation where you would want to supply an an initial guess is when you use a general purpose nonlinear solver, such as [FMINCON](/solver/fmincon), [KNITRO](/solver/knitro) or [IPOPT](/solver/ipopt). 
 
 Supplying an initial guess is typically done for two reasons. The first and most common reason is that we have a vague idea about where the solution to a non-convex problem is, and want to start the search in that region. The second reason is that the problem involves singularities and generally tricky regions, and we want to ensure that the solver does not try to start there.
 
@@ -83,7 +83,7 @@ optimize(Constraints,Objective,ops)
 Initial point is a local minimum.
 ````
 
-This strategy can be used in cases where you do not have any good guess, but you can solve another problem to find one. Consider the following problem with a simple polytopic constraint, but a complicating objective which has a singularity in \\(0\\) where   [fmincon](/solver/fmincon) could try to start if we are unlucky.
+This strategy can be used in cases where you do not have any good guess, but you can solve another problem to find one. Consider the following problem with a simple polytopic constraint, but a complicating objective which has a singularity in \\(0\\) where   [FMINCON](/solver/fmincon) could try to start if we are unlucky.
 
 ````matlab
 x = sdpvar(3,1);
