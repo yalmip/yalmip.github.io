@@ -62,7 +62,7 @@ optimize(Model,x'*Q*x-sum(f2))
 
 ## Generic case
 
-if we had been given a general quadatic \\(p(z)\\) we could easily have factorized it into a difference of convex functions by performing an eigenvalue factorization
+If we had been given a general quadatic \\(p(z)\\) we could have factorized it into a difference of convex quadratic functions by performing an eigenvalue factorization
 ````matlab
 z = sdpvar(5,1);
 p = (sum(z))^2 - sum(z.^2);
@@ -74,7 +74,7 @@ S = D(pos,pos)^.5*V(:,pos)';
 T = (-D(neg,neg))^.5*V(:,neg)';
 ````
 
-Notice that \\(S\\) and \\(T\\) might have a different dimensions, meaning that \\(e\\) and \\(f\\) will have fewer elements than \\(z\\) (the number of elements in \\(e\\) will be equal to the number of positve eigenvalues in \\(H\\) and the number of elements in \\(f\\) will be equal to the number of negative eigenvalues in \\(H\\).
+Note that \\(S\\) and \\(T\\) might have a different dimensions, meaning that \\(e\\) and \\(f\\) will have fewer elements than \\(z\\) (the number of elements in \\(e\\) will be equal to the number of positve eigenvalues in \\(H\\) and the number of elements in \\(f\\) will be equal to the number of negative eigenvalues in \\(H\\).
 
 Aplying this generic approach to our problem would be done by
 
@@ -107,4 +107,13 @@ f2 = interp1(F,F.^2,f,'lp');
 optimize(Model,sum(f1)-sum(f2) + c'*z + b)
 ````
 
-A drawback with this gneric approach, compared to the more direct model above, is that some sparse block-structure is lost in the decompositions, which might lead to worse performance in the solver.
+We can keep the convex part of course
+
+````matlab
+Model = [-1 <= [x y] <= 1, sum(x) + sum(y) == 1, f == T*z];
+optimize(Model,z'*S'*S*z - sum(f2) + c'*z + b)
+````
+
+
+
+A drawback with the generic approach, compared to the more direct model above, is that some sparse block-structure is lost in the decompositions, which might lead to worse performance in the solver.
