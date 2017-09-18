@@ -1,6 +1,6 @@
 ---
 layout: single
-permalink: /R20170915
+permalink: /next
 excerpt: "Removed crashing bug in bonmin and ipopt"
 title: "New release R20170915"
 tags: [Release]
@@ -12,6 +12,7 @@ date: '2017-09-15'
 
 ### Fixes
 
+* Eliminated some cases where the big-M modelling layer would complain about missing explicit bounds
 * Fixed bug which caused [bonmin](/solver/bonmin) and [ipopt](/solver/ipopt) to crash in some instances with convex quadratic constraints
 
 
