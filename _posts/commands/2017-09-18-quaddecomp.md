@@ -34,4 +34,13 @@ p = sum(x+2*y)^2 - sum(2*x.^2+y.^2) + sum(x+2*y);
 p - (z'*Q*z + c'*z + f)
 ````
 
-If you don't know if the expression is a quadratic your can use a 5th output and a non-zero value indicates non-quadratic.
+If you don't know if the expression is a quadratic your can use a 5th output where non-zero value indicates non-quadratic. If you only use 4 outputs and the expression is of degree larger than 2, an error will be issued.
+
+````matlab
+[Q,c,f,z,info] = quaddecomp(sdpvar(1)^3);
+>> info
+
+info =
+
+     1
+````
