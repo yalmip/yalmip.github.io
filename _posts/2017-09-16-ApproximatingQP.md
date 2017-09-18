@@ -62,7 +62,7 @@ optimize(Model,x'*Q*x-sum(f2))
 
 ## Generic case
 
-if we had been given a general quadatic \\(p(z)\\) we could easily have factorized it into a difference of convex functions by 
+if we had been given a general quadatic \\(p(z)\\) we could easily have factorized it into a difference of convex functions by performing an eigenvalue factorization
 ````matlab
 z = sdpvar(5,1);
 p = (sum(z))^2 - sum(z.^2);
@@ -84,9 +84,9 @@ x = sdpvar(n,1);
 y = sdpvar(n,1);
 Q = randn(n);Q = Q*Q';
 R = randn(n);R = R*R';
-Model = [-1 <= [x y] <= 1, sum(x) + sum(y) == 1];
+p = x'*Q*x - y'*R*y;
 
-[H,c,f,z] = quaddecomp(x'*Q*x - y'*R*y);
+[H,c,f,z] = quaddecomp(p);
 [V,D] = eig(full(H));
 pos = find(diag(D)>0);
 neg = find(diag(D)<0);
@@ -96,11 +96,13 @@ T = (-D(neg,neg))^.5*V(:,neg)';
 e = sdpvar(size(S,1),1);
 f = sdpvar(size(T,1),1);
 Model = [-1 <= [x y] <= 1, sum(x) + sum(y) == 1, e == S*z, f == T*z];
+[~,Le,Ue] = boundingbox(Model,[],e);
+[~,Lf,Uf] = boundingbox(Model,[],f);
 N = 100;
 E = repmat(Le,1,N) + repmat(linspace(0,1,N),n,1).*repmat(Ue-Le,1,N);
 F = repmat(Lf,1,N) + repmat(linspace(0,1,N),n,1).*repmat(Uf-Lf,1,N);
 
 f1 = interp1(E,E.^2,e,'lp');
 f2 = interp1(F,F.^2,f,'lp');
-optimize(Model,sum(f1)-sum(f2))
+optimize(Model,sum(f1)-sum(f2) + c'*z + f)
 ````
