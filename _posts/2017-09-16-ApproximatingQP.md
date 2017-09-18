@@ -107,13 +107,12 @@ f2 = interp1(F,F.^2,f,'lp');
 optimize(Model,sum(f1)-sum(f2) + c'*z + b)
 ````
 
-We can keep the convex part of course
+We can keep the convex part of course to see if the convex MIQP performs better than a full approximation via a MILP.
 
 ````matlab
 Model = [-1 <= [x y] <= 1, sum(x) + sum(y) == 1, f == T*z];
 optimize(Model,z'*S'*S*z - sum(f2) + c'*z + b)
 ````
-
 
 
 A drawback with the generic approach, compared to the more direct model above, is that some sparse block-structure is lost in the decompositions, which might lead to worse performance in the solver.
