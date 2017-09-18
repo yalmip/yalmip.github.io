@@ -15,13 +15,13 @@ header:
 
 A common question I get is along the lines *how can I solve a nonconvex QP using SeDuMi*?
 
-The answer to the questions is a bit tricky, since it depends on what the user means with  *solve*, and why [sedumi](/command/sedumi) is mentioned. Do you mean that you want to compute an exact solution and just assume that [sedumi](/command/sedumi) (or any SDP solver) can do this, or have you stumbled upon the notion of semidefinite relaxations and think semidefinite relaxations always solve the problem, or do you understand that a semidefinite relaxation only some times gives a solution, and primarily are used to compute lower bounds?
+The answer to the questions is a bit tricky, since it depends on what the user means with  *solve*, and why [SEDUMI](/command/sedumi) is mentioned. Do you mean that you want to compute an exact solution and just assume that [SEDUMI](/command/sedumi) (or any SDP solver) can do this, or have you stumbled upon the notion of semidefinite relaxations and think semidefinite relaxations always solve the problem, or do you understand that a semidefinite relaxation only some times gives a solution, and primarily are used to compute lower bounds?
 
 Some key-points 
 
-1. Nonconvex QPs can not be solved directly using [sedumi](/command/sedumi).
+1. Nonconvex QPs can not be solved directly using [SEDUMI](/command/sedumi).
 2. Nonconvex QPs are [NP-hard](http://en.wikipedia.org/wiki/NP-hard), and thus intractable (practically impossible to solve) in the general (non-trivially sized) case.
-3. Semidefinite relaxations (and thus [SEDUMI]) can be used to compute lower bounds on the achievable objective.
+3. Semidefinite relaxations (and thus [SEDUMI](/command/sedumi)) can be used to compute lower bounds on the achievable objective.
 4. Sometimes the semidefinite relaxation is tight and a solution can be recovered.
 5. There are stronger semidefinite relaxations than the standard relaxation (based on the so called method of moments).
 6. Adding redundant constraints can improve performance tremendously.
@@ -37,7 +37,7 @@ x = sdpvar(5,1);
 optimize([-1 <= x <= 1],x'*Q*x)
 ````
 
-If you have any nonlinear solver installed (such as [FMINCON]), YALMIP will call that solver. Some versions of [CPLEX](/solver/cplex) and [QUADPROG](/solver/quadprog) also accept indefinite QPs, so it might happen that YALMIP calls any of these solvers. Note though, the solution is not guaranteed to be a globally optimal solution, since all these solvers are local.
+If you have any nonlinear solver installed (such as [FMINCON](/solver/fmincon)), YALMIP will call that solver. Some versions of [CPLEX](/solver/cplex) and [QUADPROG](/solver/quadprog) also accept indefinite QPs, so it might happen that YALMIP calls any of these solvers. Note though, the solution is not guaranteed to be a globally optimal solution, since all these solvers are local.
 
 Our first approach will be to manually pose the semidefinite relaxation of the indefinite QP. The first trick in semidefinite relaxations is to introduce a new matrix \\(X\\), intended to model \\(xx^T\\). We use the fact \\(x^TQx=trace(QX)\\) and conceptually pose the following problem
 
@@ -74,7 +74,7 @@ For the particular problem we address here, the first-order relaxation is unboun
 
 ### Stronger semidefinite relaxations
 
-Stronger relaxations can be constructed manually fairly easily in YALMIP, but it is much easier to use ready-made software to perform this. One option is the separate package  [GloptiPoly]. Another alternative is the sparsity exploiting semidefinite relaxation code [SPARSEPOP](/solver/sparsepop) which is interfaced in YALMIP. Here, we will use the built-in [semidefinite relaxation module](/tutorial/momentrelaxations) in YALMIP.
+Stronger relaxations can be constructed manually fairly easily in YALMIP, but it is much easier to use ready-made software to perform this. One option is the separate package  [GloptiPoly](http://homepages.laas.fr/henrion/software/gloptipoly3/). Another alternative is the sparsity exploiting semidefinite relaxation code [SPARSEPOP](/solver/sparsepop) which is interfaced in YALMIP. Here, we will use the built-in [semidefinite relaxation module](/tutorial/momentrelaxations) in YALMIP.
 
 The simple semidefinite relaxation above, can be solved using the built-in semidefinite relaxation module using two different calls
 
@@ -137,7 +137,7 @@ end
 semilogy(1:10,comptimes)
 ````
 
-As one can see in the figure below, the semidefinite relaxations are extremely slow to compute compared to a vanilla branch & bound solver, already for modest problem sizes (the semidefinite relaxations were solved using [sedumi](/command/sedumi) while the global solver used [FMINCON](/solver/fmincon) and [GUROBI])
+As one can see in the figure below, the semidefinite relaxations are extremely slow to compute compared to a vanilla branch & bound solver, already for modest problem sizes (the semidefinite relaxations were solved using [SEDUMI](/command/sedumi) while the global solver used [FMINCON](/solver/fmincon) and [GUROBI](/solver/gurobi))
 
 ![CPU times]({{ site.url }}/images/nonconvexcomparetimes.png){: .center-image }
 
@@ -148,14 +148,14 @@ ops2 = sdpsettings('solver','moment','moment.order',2);
 sol = optimize([-1 <= x <= 1,x x.*x <= 1],x'*Q*x,ops2);
 ````
 
-Still, we have alternative, possibly even faster, ways to solve the problem. By reformulating the nonconvex QP to a mixed-integer linear program, the problem can be solved in a fraction of a second. A [KKT based indefinite QP solver](/solver/kktqp) is available in YALMIP (assuming you have an efficient MILP solver installed)
+Still, we have alternative, possibly even faster, ways to solve the problem. By reformulating the nonconvex QP to a mixed-integer linear program, the problem can be solved in a fraction of a second. A [KKT based indefinite QP solver](/solver/kktqp) is available in YALMIP (assuming you have an efficient [MILP solver](/tags/#mixed-integer-linear-programming-solver) installed)
 
 ````matlab
 ops= sdpsettings('solver','kktqp');
 sol = optimize([-1 <= x <= 1],x'*Q*x,ops);
 ````
 
-We repeat the experiments above, now with the strengthened second-order relaxation, and the KKT based MILP approach. From the figure, it is clear the the last method is the most efficient for this problem family.
+We repeat the experiments above, now with the strengthened second-order relaxation, and the KKT based MILP approach. From the figure, it is clear the the last method is the most efficient for this problem family, and the solver used.
 
 ![CPU times]({{ site.url }}/images/nonconvexcomparetimes2.png){: .center-image }
 
