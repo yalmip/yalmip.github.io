@@ -25,11 +25,11 @@ Define a quadratic function and extract data generating the quadratic function, 
 
 ````matlab
 x = sdpvar(3,1);
-y = sdpvar(2,1);
+y = sdpvar(3,1);
 
 p = sum(x+2*y)^2 - sum(2*x.^2+y.^2) + sum(x+2*y);
 
-[Q,c,f,z] = quaddecomp(p)
+[Q,c,f,z] = quaddecomp(p);
 
 p - (z'*Q*z + c'*z + f)
 ````
