@@ -66,7 +66,7 @@ if we had been given a general quadatic \\(p(z)\\) we could easily have factoriz
 ````matlab
 z = sdpvar(5,1);
 p = (sum(z))^2 - sum(z.^2);
-[H,c,f,z] = quaddecomp(p);
+[H,c,b,z] = quaddecomp(p);
 [V,D] = eig(full(H));
 pos = find(diag(D)>0);
 neg = find(diag(D)<0);
@@ -74,7 +74,7 @@ S = D(pos,pos)^.5*V(:,pos)';
 T = (-D(neg,neg))^.5*V(:,neg)';
 ````
 
-Notice that \\(S\\) and \\(T\\) might have a different dimensions, meaning that \\(e\\) and \\(f\\) will have fewer elements than \\(z\\) (the number of elements in \(e\\) will be equal to the number of positve eigenvalues in \\(H\\) and the number of elements in \\(f\\) will be equal to the number of negative eigenvalues in \\(H\\).
+Notice that \\(S\\) and \\(T\\) might have a different dimensions, meaning that \\(e\\) and \\(f\\) will have fewer elements than \\(z\\) (the number of elements in \\(e\\) will be equal to the number of positve eigenvalues in \\(H\\) and the number of elements in \\(f\\) will be equal to the number of negative eigenvalues in \\(H\\).
 
 Aplying this generic approach to our problem would be done by
 
@@ -86,7 +86,7 @@ Q = randn(n);Q = Q*Q';
 R = randn(n);R = R*R';
 p = x'*Q*x - y'*R*y;
 
-[H,c,f,z] = quaddecomp(p);
+[H,c,b,z] = quaddecomp(p);
 [V,D] = eig(full(H));
 pos = find(diag(D)>0);
 neg = find(diag(D)<0);
@@ -104,5 +104,7 @@ F = repmat(Lf,1,N) + repmat(linspace(0,1,N),n,1).*repmat(Uf-Lf,1,N);
 
 f1 = interp1(E,E.^2,e,'lp');
 f2 = interp1(F,F.^2,f,'lp');
-optimize(Model,sum(f1)-sum(f2) + c'*z + f)
+optimize(Model,sum(f1)-sum(f2) + c'*z + b)
 ````
+
+A drawback with this gneric approach, compared to the more direct model above, is that some sparse block-structure is lost in the decompositions, which might lead to worse performance in the solver.
