@@ -2,7 +2,7 @@
 layout: single
 category: command
 author_profile: false
-excerpt: "Extract variable value"
+excerpt: "Extract numerical representation of quadratic"
 title: quaddecomp
 tags: [Low-level]
 comments: true
