@@ -11,7 +11,7 @@ sidebar:
   nav: "commands"
 ---
 
-[getvariables](/command/getvariables) returns the internal variable indicies of an expression
+[getvariables](/command/getvariables) returns the internal variable indicies of the variables used in an expression
 
 ### Syntax
 
