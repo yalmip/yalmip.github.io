@@ -41,7 +41,7 @@ ans =
      4     5     6
 ````
 
-Variables do not have any connection to the name that is used in the work-space, but is uniquely defined by the index. By using the command recover, we can this to create the variable corresponding to a variable index
+Variables do not have any connection to the name that is used in the work-space, but is uniquely defined by the index. By using the command [recover](/command/recover), we can this to create the variable corresponding to a variable index
 
 ````matlab
 x = sdpvar(3,1);
