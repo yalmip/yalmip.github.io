@@ -21,7 +21,7 @@ sidebar:
 
 ### Examples
 
-Define a quadratic function and extract data generating the quadratic function, and check that the data is correct. Note that the order of the variables might be completely different compared to your natural ordering, hence the 4th output collects variables in the correct order.
+Define a quadratic function and extract data generating the quadratic function, and check that the data is correct. Note that the order of the variables might be completely different compared to your natural ordering, hence the 4th output collects variables in the used order.
 
 ````matlab
 x = sdpvar(3,1);
