@@ -66,5 +66,7 @@ getvariables(y)
 ans =
 
      4     5     6
+>> recover(i)
+Quadratic matrix variable 3x1 (full, real, 3 variables)
 ````
 
