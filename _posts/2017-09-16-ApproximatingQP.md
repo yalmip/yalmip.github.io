@@ -76,7 +76,7 @@ T = (-D(neg,neg))^.5*V(:,neg)';
 
 Note that \\(S\\) and \\(T\\) might have a different dimensions, meaning that \\(e\\) and \\(f\\) will have fewer elements than \\(z\\) (the number of elements in \\(e\\) will be equal to the number of positve eigenvalues in \\(H\\) and the number of elements in \\(f\\) will be equal to the number of negative eigenvalues in \\(H\\).
 
-Aplying this generic approach to our problem would be done by
+Applying this generic approach to our problem would be done by
 
 ````matlab
 n = 10;
@@ -86,6 +86,7 @@ Q = randn(n);Q = Q*Q';
 R = randn(n);R = R*R';
 p = x'*Q*x - y'*R*y;
 
+% We don't know about the simple structure of p...
 [H,c,b,z] = quaddecomp(p);
 [V,D] = eig(full(H));
 pos = find(diag(D)>0);
