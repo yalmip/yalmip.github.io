@@ -30,3 +30,6 @@ permalink: /allcommands
 
 ### Auxilliary
 [loadsdpafile](/command/loadsdpafile), [loadsedumidata](/command/loadsedumidata),[saveampl](/command/saveampl), [savecplexlp](/command/savecplexlp), [savesdpafile](/command/savesdpafile), [yalmiperror](/command/yalmiperror), [yalmiptest](/command/yalmiptest)
+
+### Low-level and internal
+[getvariables](/command/getvariables), [depends](/command/depends), [recover](/command/recover), [see](/command/see), [getbase](/command/getbase)
