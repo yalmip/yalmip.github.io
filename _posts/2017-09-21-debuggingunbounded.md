@@ -35,9 +35,9 @@ optimize(Constraints)
 
 Nope, not that simple...
 
-### 2. Bound the solution
+### 2. Bound the variables
 
-If the solver says it is unbounded, the standard trick is to artificially bound the solution-space and solve the problem. If this new problem is solved without problems, you have a clear indication that the original problem is flawed and unbounded. 
+If the solver says it is unbounded, the standard trick is to artificially bound the solution-space and solve the problem. If this new problem is solved without problems, you have a clear indication that the original problem is flawed and unbounded (due to unbounded variables) 
 
 The typical strategy is that you bound the solution-space using a large bounded set (such as a cube, or problem specific by bounding the trace of some positive semidefinite matrix you are working with etc), solve the problem, and then look at the solution to see if any variables end up at the artifially introduced bound. If they do, you have found your unbounded variables
 
