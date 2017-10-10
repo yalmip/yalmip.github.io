@@ -19,7 +19,7 @@ The [BMIBNB](/solver/bmibnb) solver is based on a simple spatial branch-and-boun
 Relaxed problems are solved using either an [LP solver](/tags/#linear-programming-solver), [QP solver](/tags/#quadratic-programming-solver), or [SDP solver](/tags/#semidefinite-programming-solver) solver, depending on the problem, while upper bounds are found using a local nonlinear solver such as [FMINCON](/solver/fmincon),  [SNOPT](/solver/snopt) and [IPOPT](/solver/ipopt), or [PENBMI/PENLAB](/solver/penbmi) for nonlinear semidefinite problems.
 
 ### Nonconvex quadratic programming
-The first example is a problem with a concave quadratic constraint (this is the example addressed in the moment relaxation section). Three different optimization problems are solved during the branching: Upper bounds using a local nonlinear solver `'bmibnb.uppersolver'`, lower bounds with `'bmibnb.lowersolver'` and bound tightening using a linear programming solver `'bmibnb.lpsolver'`.
+The first example is a problem with a concave quadratic constraint (this is the example addressed in the moment relaxation section). Three different optimization problems are solved during the branching: Upper bounds using a local nonlinear solver **'bmibnb.uppersolver'**, lower bounds with **'bmibnb.lowersolver'** and bound tightening using a linear programming solver **'bmibnb.lpsolver'**.
 
 ````matlab
 clear all
