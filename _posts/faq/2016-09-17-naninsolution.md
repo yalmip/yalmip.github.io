@@ -11,4 +11,4 @@ sidebar:
   nav:
 ---
 
-[Read more about NaN in models]
+[Read more about NaN in models](/naninmodel)
