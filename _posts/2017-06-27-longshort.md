@@ -2,7 +2,7 @@
 layout: single
 excerpt: "There is more than one way to skin a cat"
 title: Nonconvex long-short constraints
-tags: [Integer programming, Logic programming, Cardinality]
+tags: [Integer programming, Logic programming, Cardinality, Finance]
 comments: true
 date: 2017-06-27
 ---
