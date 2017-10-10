@@ -3,7 +3,7 @@ layout: single
 permalink: /interp1qp
 excerpt: "Convenient generation of approximations"
 title: "Nonconvex QP via piecewise affine models"
-tags: [Nonconvex quadratic programming, sos2, interp1]
+tags: [Nonconvex quadratic programming, Sos2, Interp1]
 comments: true
 date: '2017-09-16'
 ---
