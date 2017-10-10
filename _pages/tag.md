@@ -2,7 +2,7 @@
 layout: archive
 permalink: /tags/
 title: "Tag Index"
-excerpt: "An archive of posts sorted by tag frequency."
+excerpt: "An archive of posts sorted by tag."
 share: false
 ---
 
