@@ -19,7 +19,12 @@ share: false
     {% for post in site.tags[this_word] %}{% if post.title != null %}
       <div>
         <span style="float: left;">
+        {% if post.category != null %}
           <a href="{{ post.url }}">{{ post.title }}  ({{post.category}})</a>
+        {% endif %}
+         {% if post.category == null %}
+          <a href="{{ post.url }}">{{ post.title }}  (article)</a>
+        {% endif %}
         </span>
         <span style="float: right;">
           {{ post.date | date_to_string }}
