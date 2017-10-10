@@ -4,7 +4,7 @@ category: faq
 author_profile: false
 excerpt: 
 title: fmincon crashes
-tags:
+tags: [FMINCON]
 comments: true
 date: '2016-09-17'
 sidebar:
