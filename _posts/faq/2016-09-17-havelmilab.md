@@ -4,7 +4,7 @@ category: faq
 author_profile: false
 excerpt: 
 title:  I already have LMILAB and LINPROG installed, do I need any other solver?
-tags:
+tags: [LMILAB]
 comments: true
 date: '2016-09-17'
 sidebar:
