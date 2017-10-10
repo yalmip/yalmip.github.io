@@ -4,7 +4,7 @@ category: faq
 author_profile: false
 excerpt: 
 title: YALMIP complains about failing in convexity propagation
-tags:
+tags:[Epigraph, Hypograph]
 comments: true
 date: '2016-09-17'
 sidebar:
