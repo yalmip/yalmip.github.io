@@ -115,7 +115,7 @@ constraints = [constraints, -5 <= x{k+1} <= 5];
 controller = optimizer(constraints, objective,sdpsettings('verbose',1),x{1},u{1});
 ````
 
-The following model incorporates an avoidance constraint \\( \left\lvert x-r\right\rvert \geq 0.1\\), i.e., a small region around some central point \\(r\\) is considered dangerous and may not be entered. This is a non-convex constraint, but YALMIP can model this using the  [nonlinear operator framework]. Hence we create a controller setup that takes the current state and the dangerous position \\(r\\), and returns a safe input.
+The following model incorporates an avoidance constraint \\( \left\lvert x-r\right\rvert \geq 0.1\\), i.e., a small region around some central point \\(r\\) is considered dangerous and may not be entered. This is a non-convex constraint, but YALMIP can model this using the [nonlinear operator framework](/tutorial/nonlinearoperatorsmixedinteger). Hence we create a controller setup that takes the current state and the dangerous position \\(r\\), and returns a safe input.
 
 ````matlab
 u = sdpvar(repmat(nu,1,N),repmat(1,1,N));
