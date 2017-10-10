@@ -11,4 +11,4 @@ sidebar:
   nav:
 ---
 
-Send a mail to johanl@isy.liu.se. However, I only add new features when I need them my self, but if your idea is good enough, I might realize that I need it!
+Send a mail to johan.lofberg@liu.se. However, I only add new features when I need them my self, but if your idea is good enough, I might realize that I need it!
