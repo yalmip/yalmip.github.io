@@ -15,7 +15,7 @@ header:
 
 This example is motivated by one of the most asked question: *How can I do GEVP optimization?*
 
-The short answer is that YALMIP does not have a ready-to-run script for solving generalized eigenvalue problems, such as the [gevp](http://www.mathworks.com/access/helpdesk/help/toolbox/robust/gevp.html) command in [LMILAB].
+The short answer is that YALMIP does not have a ready-to-run script for solving generalized eigenvalue problems, such as the [gevp](http://www.mathworks.com/access/helpdesk/help/toolbox/robust/gevp.html) command in [LMILAB](/solver/lmilab).
 
 However, luckily this is not entirely true, and the long answer is given by this example.
 
@@ -95,13 +95,13 @@ Of course, in a real case, the code should be extended with more analysis of the
 
 ### Faster code through optimizer
 
-By using the [optimizer](/command/optimizer) construct, we can get rid of most of the YALMIP overhead. We create an [optimizer](/command/optimizer) object which solves the feasibility SDP for particular values of \\(t\\) (since the [optimizer](/command/optimizer) requires an explicit solver choice for nonlinearly parameterized models, the code below is hard-coded for [SEDUMI])
+By using the [optimizer](/command/optimizer) construct, we can get rid of most of the YALMIP overhead. We create an [optimizer](/command/optimizer) object which solves the feasibility SDP for particular values of \\(t\\) (since the [optimizer](/command/optimizer) requires an explicit solver choice for nonlinearly parameterized models, the code below is hard-coded for [MOSEK](/solver/mosek))
 
 ````matlab
 t_lower = 0;
 t_upper = 1;
 sdpvar t
-ops = sdpsettings('solver','sedumi');
+ops = sdpsettings('solver','mosek');
 Constraints = [P>=eye(2), A'*P+P*A <= -2*t*P];
 Solver = optimizer(Constraints,[],ops,t,P);
 [~, errorcode] = Solver{t_upper};
