@@ -12,22 +12,22 @@ YALMIP supports complex models by overloading standard operators in MATLAB. One 
 
 Hence, this logic has to be modelled manually, and the recommended approach to do this is to apply the [implies operator](/command/logic) in a structured fashion.
 
-## A worked example
+## An artificial regression problem
 
-Consider the problem of solving a form of linear regression where we want to minimize a \\( f(Ax-b)\\) where we want to use the penalty 
+Consider a problem where we wish to do regression with less sensitivity to outliers by using a non-convex penalty. For small residuals, we have a continuous penalty, medium-sized residuals are penalized with a linear cost, and really large residuals have constant penalty.
 
-Starting with the scalar case, the naive way to implement the function value would be
+For a scalar argument, the function can conceptually be written using the following evaluation in MATLAB
 
 ````matlab
-if e <= verylow
+if e <= -5
  f = 1;
-elseif e >= verylow && e <= low
+elseif e >= -5 && e <= -1
  f = 1-x;
-elseif e>=low && e <= high
+elseif e>=-1 && e <= 1
  f = e^2;
-elseif e>=high && e <= veryhigh
+elseif e>=1 && e <= 5
  f = 1+x;
-else 
+elseif e >= 5 
  f = 2;
 end 
 ````
@@ -41,7 +41,7 @@ For the cleanest possible code, you should think through what are the possible c
 ````matlab
 if e <= verylow
  f = 1;
- end;
+end;
  
 if e >= verylow && e <= low
  f = 1-x;
@@ -59,6 +59,7 @@ if e >= veryhigh
  f = 2;
 end 
 ````
+
 In this case, there are obviously 5 possible cases dividing the feasible space into 5 regions. Hence, we introduce 5 binary variables, and create a model where each of these binary variables forces the decision variable to be in the associated region, and the corresponding expression on the cost function to hold. Note that the expression used in the **if**-statement, and the resulting action, both are moved to a list of constraint.
 
 ````matlab
