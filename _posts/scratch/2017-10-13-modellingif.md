@@ -16,8 +16,9 @@ Hence, this logic has to be modelled manually, and the trick to do this is to ap
 
 Consider the problem of solving a form of linear regression where we want to minimize a \\( f(Ax-b)\\) where we want to use the penalty 
 
-THe naive way to write the model would be
+Starting with the scalar case, the naive way to implement the function value would be
 
+````matlab
 if e <= verylow
  f = 1;
 elseif e >= verylow && e <= low
@@ -29,15 +30,39 @@ elseif e>=high && e <= veryhigh
 else 
  f = 2;
 end 
- 
-This code will not run, and MATLAB will raise an error, as you are you are using  an sdpvar in the if construct. What we have to do is to translate this to simple combinatorial cases, and implement that using binary variables
+````
+
+This code will not run, and MATLAB will raise an error, as you are you are using  an [sdpvar](/command/sdpvar) in the if construct. What we have to do is to translate this to simple combinatorial cases, and implement that using binary variables
 
 ### Enumerate the possible cases
 
-For the cleanest possible code, you should think through what are the possible cases in the most simplified model possible, count these, and introduce a binary variable for every case. One should also strive for a descption where the possible sets are disjunctive in the sense that exactly one case can and should occur.
+For the cleanest possible code, you should think through what are the possible cases in the most simplified model possible. With simple, we mean no **else** statements, as few logical combinations as possible, and a set of conditions where only one thing can or should happen. In our case, a clean version would be
 
-In this case, there are obviously 5 possible cases clearly dividing the feasible space into 5 regions. Hence, we introduce 5 binary variables, and create a model where each of these binary variables forces the decision variable to be in the associated region, and the corresponding expression on the cost function to hold
+````matlab
+if e <= verylow
+ f = 1;
+ end;
+ 
+if e >= verylow && e <= low
+ f = 1-x;
+end
 
+if e>=low && e <= high
+ f = e^2;
+end
+ 
+if e>=high && e <= veryhigh
+ f = 1+x;
+end
+
+if e >= veryhigh
+ f = 2;
+end 
+````
+
+In this case, there are obviously 5 possible cases clearly dividing the feasible space into 5 regions. Hence, we introduce 5 binary variables, and create a model where each of these binary variables forces the decision variable to be in the associated region, and the corresponding expression on the cost function to hold. Note tht the expression used in the if-statement, and the resulting action, both are moved to a list of constraint.
+
+````matlab
 cases = binvar(5,1);
 Model = [sum(cases) == 1,
 implies(cases(1), [            e <= verylow,   f == 2]);
@@ -45,14 +70,4 @@ implies(cases(2), [ verylow <= e <= low,f == 1-x]);
 implies(cases(3), [     low <= e <= high, f == e^2]);
 implies(cases(4), [    high <= e <= veryhigh, f == 1+x]);
 implies(cases(5), [veryhigh <= e, f == 2])];
-
-
-
-
-
-
-
-
-
-
- 
+````
