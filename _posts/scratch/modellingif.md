@@ -14,19 +14,43 @@ Hence, this logic has to be modelled manually, and the recommended approach to d
 
 ## An artificial regression problem
 
-Consider a problem where we wish to do regression with less sensitivity to outliers by using a non-convex penalty. For small residuals, we have a continuous penalty, medium-sized residuals are penalized with a linear cost, and really large residuals have constant penalty.
+Consider a problem where we wish to do regression \\( \textbf{minimize} \sum f(e_i)\\) with less sensitivity to outliers by using a non-convex penalty \\(\cdot)\\). Instead of a standard quadratic, linear, or perhaps [huber penalty](/command/huber), we want to have a quaadratic behaviour for small residuals, linear penalty for medium-sized residuals, constant penalty for really large residuals.
 
-For a scalar argument, the function can conceptually be written using the following evaluation in MATLAB
+![nonconvex penalty]({{ site.url }}/images/nonconvexpenalty.png){: .center-image }
+
+A very naive way of formulating this would be \\(f(e) = min(2,min(2 + |x|,x^2))\\). However, if you use an objective with a sum of these expressions, the resulting model will be a pretty messy nonconvex integer model. Binary variables will be introduced to handlke the fact that the concave \\(\min\\) operator is used in an expression to be minimized, with more binary variables to handle the nonconvex use of the absolute value, and finally the mixed-integer model will also contain nonconvex quadratic equalities.
+
+A better approach is to try to untangle the model. A first step would perhaps be
+
+$$
+f(e) = \begin{cases} 7 , & \text{for } |e|\geq 5\\
+                     2 + |e| , & \text{for } 2 \geq |e|\leq 5\\
+                     e^2 , & \text{for } |e| \leq 2 
+                     \end{cases}
+$$
+
+This can be simplified even further (note, in optimazation simple is not equivalent to short, but preferably as linear, structured and sparse as possible)
+
+$$
+f(e) = \begin{cases} 2 & \text{for } e\leq -5\\
+                     2-e & \text{for } -2 \geq e\geq -5\\
+                     e^2 & \text{for } -2 \geq e\geq 2\\                     
+                     2+e & \text{for } 2 \geq e\leq 5\\                      
+                     2 & \text{for } e\geq 5\\                     
+                     \end{cases}
+$$
+
+To implement this in MATLAB, we could for instance try to incorporate some code along the lines of
 
 ````matlab
 if e <= -5
- f = 1;
-elseif e >= -5 && e <= -1
- f = 1-x;
-elseif e>=-1 && e <= 1
+ f = 2;
+elseif e >= -5 && e <= -2
+ f = 2-e;
+elseif e>=-2 && e <= 2
  f = e^2;
-elseif e>=1 && e <= 5
- f = 1+x;
+elseif e>=2 && e <= 5
+ f = 2+e;
 elseif e >= 5 
  f = 2;
 end 
@@ -36,52 +60,54 @@ This code will not run, and MATLAB will raise an error, as you are you are using
 
 ### Enumerate the possible cases
 
-For the cleanest possible code, you should think through what are the possible cases in the most simplified model possible. With simple, we mean no **else** statements, as few logical combinations as possible, and a set of conditions where only one thing can or should happen. In our case, a clean version would be
+For the cleanest possible code, you should think through what are the possible cases in the most simplified model possible. With simple, we mean no **else** statements, as few logical combinations as possible, and a set of conditions where only one thing can or should happen. In our case, a list of the possible cases would be
 
 ````matlab
-if e <= verylow
- f = 1;
+if e <= -5
+ f = 2;
 end;
  
-if e >= verylow && e <= low
- f = 1-x;
+if e >= -5 && e <= -2
+ f = 2-e;
 end
 
-if e>=low && e <= high
+if e>=-2 && e <= 2
  f = e^2;
 end
  
 if e>=high && e <= veryhigh
- f = 1+x;
+ f = 2+e;
 end
 
-if e >= veryhigh
+if e >= 5
  f = 2;
 end 
 ````
 
-In this case, there are obviously 5 possible cases dividing the feasible space into 5 regions. Hence, we introduce 5 binary variables, and create a model where each of these binary variables forces the decision variable to be in the associated region, and the corresponding expression on the cost function to hold. Note that the expression used in the **if**-statement, and the resulting action, both are moved to a list of constraint.
+In this case, there are obviously 5 possible cases dividing the feasible space into 5 regions. The strategy now is to introduce 5 binary variables, and create a model where each of these binary variables forces the decision variable to be in the associated region, and the corresponding expression on the cost function to hold. Note that the expression used in the **if**-statement, and the resulting action, both are moved to a list of constraint.
 
 ````matlab
-cases = binvar(5,1);
+d = binvar(5,1);
 Model = [sum(cases) == 1,
-implies(cases(1), [            e <= verylow,   f == 2]);
-implies(cases(2), [ verylow <= e <= low,f == 1-x]);
-implies(cases(3), [     low <= e <= high, f == e^2]);
-implies(cases(4), [    high <= e <= veryhigh, f == 1+x]);
-implies(cases(5), [veryhigh <= e, f == 2])];
+implies(d(1), [      e <= -5, f == 7]);
+implies(d(2), [-5 <= e <= -2, f == 2-e]);
+implies(d(3), [-2 <= e <= 2,  f == e^2]);
+implies(d(4), [ 2 <= e <= 5,  f == 2+e]);
+implies(d(5), [ 5 <= e,       f == 7])];
 ````
+
+At this point, we have a simple cleanly enumerated model, but in this particular case we have a remaining problem as the quadratic equality constraint is nonconvex. However, since we know \\(f\\) will be minimized, we can relax the equality to a convex inequality. The big-M model that will be derived will be \\(e^2 \leq f + M(1-d_3)\\), which is convex for relaxed integer variables, and hence mixed-integer SOCP representable.
 
 ### A more natural model which might lead to problems
 
-It should be said, that a lazy approach to create a thoretically equivalent model is
+It should be said, that a reasonable approach to create a thoretically equivalent model is
 
 ````matlab
-Model = [implies(e <= verylow,   f == 2);
-         implies(verylow <= e <= low,f == 1-x);
-         implies(low <= e <= high, f == e^2);
-         implies(high <= e <= veryhigh, f == 1+x);
-         implies(veryhigh <= e, f == 2)];
+Model = [implies(      e <= -5, f == 7);
+         implies(-5 <= e <= -2, f == 2-x);
+         implies(-2 <= e <= 2,  f == e^2);
+         implies( 2 <= e <= 5,  f == 2+x);
+         implies(      5 <= e,  f == 7)];
 ````
 
-Although this looks much easier, it hides important structure that can cause problems. As all those constraints are added independently, there is nothing in the model which explicitly forces one of the cases to hold. Due to numerical tolerances in solvers, it might be the case that the optimal **e** ends up at a point on the border between to regions where the solver manages to violate a condition every so slightly and renders all conditions inactive thus making **f** undefined. Hence, it is always recommended to explicitly define the disjunctive nature of the model by introducing a binary variables which must activate one condtion.
+Although this looks much easier, it hides important structure that can cause problems. As all those constraints are added independently, there is nothing in the model which explicitly forces one of the cases to hold. Due to numerical tolerances in solvers, it might be the case that the optimal **e** ends up at a point on the border between to regions where the solver manages to violate a constraint every so slightly and renders all conditions inactive thus making **f** undefined. Hence, it is always recommended to explicitly define the disjunctive nature of the model by introducing a binary variables which must activate one condition.
