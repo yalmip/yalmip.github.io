@@ -110,7 +110,7 @@ implies(d(5), [ 5 <= e,       f == 7])];
 
 ### Putting it together
 
-So let us solve the regression problem from the [quadratic programming tutorial](/tutorial/quadraticprogramming). We generate some data with non-gaussian noise (we create a considerably smaller problem here, as this model is very hard for the solver)
+So let us solve the regression problem from the [quadratic programming tutorial](/tutorial/quadraticprogramming). We generate some data with non-gaussian noise (we create a considerably smaller problem here, as this combinatorial model is very hard for most solvers)
 
 ````matlab
 x = [1 2 3 4 5 6]';
@@ -160,7 +160,7 @@ legend('True','Measurements','With our penalty','Standard regression')
 
 ### Converting to quadratic program
 
-As a side note, let us try to move from a mixed-integer second-order cone formulation to a mied-integer quadratic program, which typically can be solved more efficiently. The trick is to realize that the objective either is a linear term, or a squared linear term, depending on where we are. We therefore define each term in the objective as a sum of a linear term and a quadratic term, and zero out suitable parts.
+As a final note separate from the issues concering **if** statements, let us try to move from a mixed-integer second-order cone formulation to a mixed-integer quadratic program, which typically can be solved more efficiently. The trick is to realize that the objective either is a linear term, or a squared linear term, depending on where we are. We therefore define each term in the objective as a sum of a linear term and a squared linear term, and zero out suitable parts.
 
 ````matlab
 fL = sdpvar(length(y),1);
