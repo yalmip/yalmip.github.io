@@ -156,6 +156,8 @@ plot(t,[A*x y A*xhat1 A*xhat2]);
 legend('True','Measurements','With our penalty','Standard regression')
 ````
 
+![results from nonconvex penalty]({{ site.url }}/images/robustregression.png){: .center-image }
+
 ### Converting to quadratic program
 
 As a side note, let us try to move from a mixed-integer second-order cone formulation to a mied-integer quadratic program, which typically can be solved more efficiently. The trick is to realize that the objective either is a linear term, or a squared linear term, depending on where we are. We therefore define each term in the objective as a sum of a linear term and a quadratic term, and zero out suitable parts.
