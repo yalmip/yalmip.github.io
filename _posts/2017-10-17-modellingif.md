@@ -24,7 +24,7 @@ A better approach is to try to untangle the model. A first step would be to see 
 
 $$
 f(e) = \begin{cases} 7 , & \text{for } |e|\geq 5\\
-                     2 + |e| , & \text{for } 2 \geq |e|\leq 5\\
+                     2 + |e| , & \text{for } 2 \leq |e|\leq 5\\
                      e^2 , & \text{for } |e| \leq 2 
                      \end{cases}
 $$
@@ -33,10 +33,10 @@ This can be simplified even further (note, in optimization simple is not necessa
 
 $$
 f(e) = \begin{cases} 2 & \text{for } e\leq -5\\
-                     2-e & \text{for } -5 \geq e\leq -2\\
-                     e^2 & \text{for } -2 \geq e\leq 2\\                     
-                     2+e & \text{for } 2 \geq e\leq 5\\                      
-                     2 & \text{for }  5 \geq 5\\                     
+                     2-e & \text{for } -5 \leq e\leq -2\\
+                     e^2 & \text{for } -2 \leq e\leq 2\\                     
+                     2+e & \text{for } 2 \leq e\leq 5\\                      
+                     2 & \text{for }  5 \leq 5\\                     
                      \end{cases}
 $$
 
