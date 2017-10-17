@@ -108,7 +108,7 @@ implies(d(4), [ 2 <= e <= 5,  f == 2+e]);
 implies(d(5), [ 5 <= e,       f == 7])];
 ````
 
-## Putting it together
+### Putting it together
 
 So let us solve the regression problem from the [quadratic programming tutorial](/tutorial/quadraticprogramming). We generate some data with non-gaussian noise
 
@@ -136,17 +136,17 @@ Objective = sum(f);
 for i = 1:length(f)
  d = binvar(5,1);
  Model = [Model, sum(d) == 1,
- implies(d(1), [      e(i) <= -5, f(i) == 7]);
- implies(d(2), [-5 <= e(i) <= -2, f(i) == 2-e(i)]);
- implies(d(3), [-2 <= e(i) <= 2,  f(i) >= e(i)^2]);
- implies(d(4), [ 2 <= e(i) <= 5,  f(i) == 2+e(i)]);
- implies(d(5), [ 5 <= e(i),       f(i) == 7])];
+          implies(d(1), [      e(i) <= -5, f(i) == 7]);
+          implies(d(2), [-5 <= e(i) <= -2, f(i) == 2-e(i)]);
+          implies(d(3), [-2 <= e(i) <= 2,  f(i) >= e(i)^2]);
+          implies(d(4), [ 2 <= e(i) <= 5,  f(i) == 2+e(i)]);
+          implies(d(5), [ 5 <= e(i),       f(i) == 7])];
 end
 
 optimize(Model,Objective)
+
+plot(t,[y a*value(xhat)]);
 ````
-
-
 
 
 
@@ -157,7 +157,7 @@ It should be said, that a reasonable approach to create a thoretically equivalen
 ````matlab
 Model = [implies(      e <= -5, f == 7);
          implies(-5 <= e <= -2, f == 2-x);
-         implies(-2 <= e <= 2,  f == e^2);
+         implies(-2 <= e <= 2,  f >= e^2);
          implies( 2 <= e <= 5,  f == 2+x);
          implies(      5 <= e,  f == 7)];
 ````
