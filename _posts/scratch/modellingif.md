@@ -14,11 +14,11 @@ Hence, this logic has to be modelled manually, and the recommended approach to d
 
 ## An artificial regression problem
 
-Consider a problem where we wish to do regression \\( \textbf{minimize} \sum f(e_i)\\) with less sensitivity to outliers by using a non-convex penalty \\(f(\cdot)\\). Instead of a standard quadratic, linear, or perhaps [huber penalty](/command/huber), we want to have a quadratic behaviour for small residuals, linear penalty for medium-sized residuals, constant penalty for really large residuals.
+Consider a problem where we wish to do regression \\( \textbf{minimize} \sum f(e_i)\\) with less sensitivity to outliers by using a non-convex penalty \\(f(\cdot)\\). Instead of a standard quadratic, linear, or perhaps [huber penalty](/command/huber), we want to have a quadratic behaviour for small residuals, linear penalty for medium-sized residuals, constant penalty for really large residuals. We do not in any sense endorse this regresion approach, this is just for illustrating encoding of **if** statements.
 
 ![nonconvex penalty]({{ site.url }}/images/nonconvexpenalty.png){: .center-image }
 
-A very naive way of formulating this would be \\(f(e) = min(7,min(2 + |x|,x^2))\\). However, if you use an objective with a sum of these expressions, the resulting model will be a pretty messy nonconvex integer model. Binary variables will be introduced to handle the fact that the concave \\(\min\\) operator is used in an expression to be minimized, with more binary variables to handle the nonconvex use of the absolute value, and finally the mixed-integer model will also contain nonconvex quadratic equalities.
+A naive way of formulating this would be \\(f(e) = min(7,min(2 + |x|,x^2))\\). However, if you use an objective with a sum of these expressions, the resulting model will be a pretty messy nonconvex integer model. Binary variables will be introduced to handle the fact that the concave \\(\min\\) operator is used in an expression to be minimized, with more binary variables to handle the nonconvex use of the absolute value, and finally the mixed-integer model will also contain nonconvex quadratic equalities.
 
 A better approach is to try to untangle the model. A first step would perhaps be
 
@@ -84,7 +84,7 @@ if e >= 5
 end 
 ````
 
-In this case, there are obviously 5 possible cases dividing the feasible space into 5 regions. The strategy now is to introduce 5 binary variables, and create a model where each of these binary variables forces the decision variable to be in the associated region, and the corresponding expression on the cost function to hold. Note that the expression used in the **if**-statement, and the resulting action, both are moved to a list of constraint.
+In this case, there are obviously 5 possible cases dividing the feasible space into 5 regions. The strategy now is to introduce 5 binary variables, and create a model where each of these binary variables forces the decision variable to be in the associated region, and the corresponding expression on the cost function to hold. Note that the condition used in the **if**-statement, and the resulting action, both are moved to a list of constraint.
 
 ````matlab
 d = binvar(5,1);
@@ -122,18 +122,19 @@ y = A*x+n;
 plot(t,y);
 ````
 
-Define the residuals, and create the function values (which we do in a non-vectorized fashion here). Note that we have to add explicit bounds on all variables involved in the expressions which are modelled using big-M. For the problem to be solved efficiently, you have to have an efficient [mixed-integer second order cone programming solver](tags/#mixed-integer-second-order-cone-programming-solver) installed. For comparison, we also solve a standrd linear regression problem.
+Define the residuals and create the function values (which we do in a non-vectorized fashion here). To obtain a sparse structure in the complicated integer constraints, we define **e** by equalities, instead of making it a dense function of **xhat**. Note that we have to add explicit bounds on all variables involved in the implications as these are modelled using [big-M methods](/tutorial/bigmandconvexhulls/). For the problem to be solved efficiently, you have to have an efficient [mixed-integer second order cone programming solver](tags/#mixed-integer-second-order-cone-programming-solver) installed. For comparison, we also solve a standard linear regression problem.
 
 ````matlab
 xhat = sdpvar(6,1);
-e    = y-A*xhat;
+f = sdpvar(length(y),1);
+e = sdpvar(length(y),1);
 
-f = sdpvar(length(e),1);
 xBound = 100;
 eBound = norm(y,inf) + norm(A,inf)*xBound;
 fBound = max([2 + eBound, 7, eBound^2]);
-Model = [    e    == y-A*xhat;
-          -xBound <= xhat <= xBound,
+Model = [          e == y-A*xhat, 
+             -xBound <= xhat <= xBound,
+             -eBound <= e <= eBound,
           -fBound <= f <= fBound];
       
 Objective = sum(f);
@@ -145,6 +146,42 @@ for i = 1:length(f)
           implies(d(3), [-2 <= e(i) <= 2,  f(i) >= e(i)^2]);
           implies(d(4), [ 2 <= e(i) <= 5,  f(i) == 2+e(i)]);
           implies(d(5), [ 5 <= e(i),       f(i) == 7])];
+end
+
+optimize(Model,Objective)
+xhat1 = value(xhat);
+optimize([],e'*e)
+xhat2 = value(xhat);
+plot(t,[A*x y A*xhat1 A*xhat2]);
+legend('True','Measurements','With our penalty','Standard regression')
+````
+
+### Converting to quadratic program
+
+As a side note, let us try to move from a mixed-integer second-order cone formulation to a mied-integer quadratic program, which typically can be solved more efficiently. The trick is to realize that the objective either is a linear term, or a squared linear term, depending on where we are. We therefore define each term in the objective as a sum of a linear term and a quadratic term, and zero out suitable parts.
+
+````matlab
+fL = sdpvar(length(y),1);
+fQ = sdpvar(length(y),1);
+
+xBound = 100;
+eBound = norm(y,inf) + norm(A,inf)*xBound;
+Model = [          e == y-A*xhat, 
+             -xBound <= xhat <= xBound,
+             -eBound <= e <= eBound,
+         -(2+eBound) <= fL <= 2 + eBound,
+             -eBound <= fQ <= eBound];
+      
+Objective = sum(fL + fQ.^2);
+for i = 1:length(f)
+ d = binvar(5,1);
+ Model = [Model, sum(d) == 1,
+          implies(d(1), [      e(i) <= -5, fL(i) == 7,     fQ(i) == 0]);
+          implies(d(2), [-5 <= e(i) <= -2, fL(i) == 2-e(i),fQ(i) == 0]);
+          implies(d(3), [-2 <= e(i) <= 2,  fQ(i) == e(i),  fL(i) == 0]);
+          implies(d(4), [ 2 <= e(i) <= 5,  fL(i) == 2+e(i),fQ(i) == 0]);
+          implies(d(5), [ 5 <= e(i),       fL(i) == 7,     fQ(i) == 0])];
+
 end
 
 optimize(Model,Objective)
