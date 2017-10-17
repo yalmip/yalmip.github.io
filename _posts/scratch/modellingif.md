@@ -110,19 +110,19 @@ implies(d(5), [ 5 <= e,       f == 7])];
 
 ### Putting it together
 
-So let us solve the regression problem from the [quadratic programming tutorial](/tutorial/quadraticprogramming). We generate some data with non-gaussian noise
+So let us solve the regression problem from the [quadratic programming tutorial](/tutorial/quadraticprogramming). We generate some data with non-gaussian noise (we create a considerably smaller problem here, as this model is very hard for the solver)
 
 ````matlab
 x = [1 2 3 4 5 6]';
-t = (0:0.02:2*pi)';
+t = (0.1:0.2:2*pi)';
 A = [sin(t) sin(2*t) sin(3*t) sin(4*t) sin(5*t) sin(6*t)];
 n = (-4+8*rand(length(t),1));
-n(100:115) = 30;
+n(5:9) = 30;
 y = A*x+n;
 plot(t,y);
 ````
 
-Define the residuals, and create the function values (which we do in a non-vectorized fashion here). Note that we have to add explicit bounds on all variables involved in the expressions which are modelled using big-M. For the problem to be solved efficiently, you have to have an efficient [mixed-integer second order cone programming solver](tags/#mixed-integer-second-order-cone-programming-solver) installed
+Define the residuals, and create the function values (which we do in a non-vectorized fashion here). Note that we have to add explicit bounds on all variables involved in the expressions which are modelled using big-M. For the problem to be solved efficiently, you have to have an efficient [mixed-integer second order cone programming solver](tags/#mixed-integer-second-order-cone-programming-solver) installed. For comparison, we also solve a standrd linear regression problem.
 
 ````matlab
 xhat = sdpvar(6,1);
@@ -131,7 +131,11 @@ e    = y-A*xhat;
 f = sdpvar(length(e),1);
 xBound = 100;
 eBound = norm(y,inf) + norm(A,inf)*xBound;
-Model = [-xBound <= xhat <= xBound, -eBound <= f <= eBound];
+fBound = max([2 + eBound, 7, eBound^2]);
+Model = [    e    == y-A*xhat;
+          -xBound <= xhat <= xBound,
+          -fBound <= f <= fBound];
+      
 Objective = sum(f);
 for i = 1:length(f)
  d = binvar(5,1);
@@ -144,15 +148,17 @@ for i = 1:length(f)
 end
 
 optimize(Model,Objective)
-
-plot(t,[y a*value(xhat)]);
+xhat1 = value(xhat);
+optimize([],(y-A*xhat)'*(y-A*xhat))
+xhat2 = value(xhat);
+plot(t,[A*x y A*xhat1 A*xhat2]);
+legend('True','Measurements','With our penalty','Standard regression')
 ````
-
 
 
 ## A more natural model which might lead to problems
 
-It should be said, that a reasonable approach to create a thoretically equivalent model is
+It should be said, that a reasonable approach to create a theoretically equivalent model of the logic behaviour is
 
 ````matlab
 Model = [implies(      e <= -5, f == 7);
