@@ -135,7 +135,7 @@ fBound = max([2 + eBound, 7, eBound^2]);
 Model = [          e == y-A*xhat, 
              -xBound <= xhat <= xBound,
              -eBound <= e <= eBound,
-          -fBound <= f <= fBound];
+             -fBound <= f <= fBound];
       
 Objective = sum(f);
 for i = 1:length(f)
