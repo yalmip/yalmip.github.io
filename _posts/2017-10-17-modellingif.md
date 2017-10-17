@@ -84,7 +84,7 @@ if e >= 5
 end 
 ````
 
-In this case, there are obviously 5 possible cases dividing the feasible space into 5 regions. The strategy now is to introduce 5 binary variables, and create a model where each of these binary variables forces the decision variable to be in the associated region, and the corresponding expression on the cost function to hold. Note that the condition used in the **if**-statement, and the resulting action, both are moved to a list of constraint.
+In this case, there are obviously 5 possible cases dividing the feasible space into 5 regions. The strategy now is to introduce 5 binary variables, and create a model where each of these binary variables forces the **e** to be in the associated region, and the corresponding cost function on **f** to hold. Note that the condition used in the **if**-statement, and the resulting action, both are moved to a list of constraint.
 
 ````matlab
 d = binvar(5,1);
