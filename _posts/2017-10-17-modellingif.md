@@ -18,7 +18,7 @@ Consider a problem where we wish to do regression \\( \textbf{minimize} \sum f(e
 
 ![nonconvex penalty]({{ site.url }}/images/nonconvexpenalty.png){: .center-image }
 
-A naive way of formulating this would be \\(  f(e)  \\). However, if you use an objective with a sum of these expressions, the resulting model will be a pretty messy nonconvex integer model. Binary variables will be introduced to handle the fact that the concave \\(\min\\) operator is used in an expression to be minimized, with more binary variables to handle the nonconvex use of the absolute value, and finally the mixed-integer model will also contain nonconvex quadratic equalities.
+A naive way of formulating this would be \\(  f(e) = min(7,min(2 + |x|,x^2))     \\). However, if you use an objective with a sum of these expressions, the resulting model will be a pretty messy nonconvex integer model. Binary variables will be introduced to handle the fact that the concave \\(\min\\) operator is used in an expression to be minimized, with more binary variables to handle the nonconvex use of the absolute value, and finally the mixed-integer model will also contain nonconvex quadratic equalities.
 
 A better approach is to try to untangle the model. A first step would be to see it as
 
