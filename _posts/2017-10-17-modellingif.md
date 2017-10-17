@@ -96,7 +96,7 @@ implies(d(4), [ 2 <= e <= 5,  f == 2+e]);
 implies(d(5), [ 5 <= e,       f == 7])];
 ````
 
-At this point, we have a simple cleanly enumerated model, but in this particular case we have a remaining problem as the quadratic equality constraint is nonconvex. However, since we know \\(f\\) will be minimized, we can relax the equality to a convex inequality. The big-M model that will be derived for **implies(d,e^2<=f)** would be \\(e^2 \leq f + M(1-d_3)\\), which is convex for relaxed integer variables, and hence mixed-integer SOCP representable. A final proposal is thus
+At this point, we have a simple cleanly enumerated model, but in this particular case we have a remaining problem as the quadratic equality constraint is nonconvex. However, since we know \\(f\\) will be minimized, we can relax the equality to a convex inequality. The big-M model that will be derived for **implies(d,e^2<=f)** would be \\(e^2 \leq f + M(1-d)\\), which is convex for relaxed integer variables, and hence mixed-integer second-order cone representable. A final proposal is thus
 
 ````matlab
 d = binvar(5,1);
@@ -108,7 +108,7 @@ implies(d(4), [ 2 <= e <= 5,  f == 2+e]);
 implies(d(5), [ 5 <= e,       f == 7])];
 ````
 
-### Putting it together
+### Putting it together for a test
 
 So let us solve the regression problem from the [quadratic programming tutorial](/tutorial/quadraticprogramming). We generate some data with non-gaussian noise (we create a considerably smaller problem here, as this combinatorial model is very hard for most solvers)
 
@@ -122,7 +122,7 @@ y = A*x+n;
 plot(t,y);
 ````
 
-Define the residuals and create the function values (which we do in a non-vectorized fashion here). To obtain a sparse structure in the complicated integer constraints, we define **e** by equalities, instead of making it a dense function of **xhat**. Note that we have to add explicit bounds on all variables involved in the implications as these are modelled using [big-M methods](/tutorial/bigmandconvexhulls/). For the problem to be solved efficiently, you have to have an efficient [mixed-integer second order cone programming solver](tags/#mixed-integer-second-order-cone-programming-solver) installed. For comparison, we also solve a standard linear regression problem.
+Define the residuals and function values (which we do in a non-vectorized fashion here). To obtain a sparse structure in the complicated integer constraints, we define **e** by equalities, instead of making it a dense function of **xhat**. Note that we have to add explicit bounds on all variables involved in the implications as these are modelled using [big-M methods](/tutorial/bigmandconvexhulls/). For the problem to be solved efficiently, you have to have an efficient [mixed-integer second order cone programming solver](tags/#mixed-integer-second-order-cone-programming-solver) installed. For comparison, we also solve a standard linear regression problem.
 
 ````matlab
 xhat = sdpvar(6,1);
