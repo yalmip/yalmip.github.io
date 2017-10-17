@@ -14,7 +14,7 @@ Hence, this logic has to be modelled manually, and the recommended approach to d
 
 ## A nonconvex regression problem
 
-Consider a problem where we wish to do regression \\( \textbf{minimize} \sum f(e_i)\\) with reduced sensitivity to large outliers by using a non-convex penalty \\(f(\cdot)\\). Instead of a standard quadratic, linear, or perhaps [huber penalty](/command/huber), we want to have a quadratic behaviour for small residuals, linear penalty for medium-sized residuals, and constant penalty for really large residuals. We do not in any sense endorse this regresion approach, this is just for illustrating encoding of **if** statements.
+Consider a problem where we wish to do regression \\( \textbf{minimize} \sum f(e_i)\\) where \\(y = y-Ax\\) with reduced sensitivity to large outliers by using a non-convex penalty \\(f(\cdot)\\). Instead of a standard quadratic, linear, or perhaps [huber penalty](/command/huber), we want to have a quadratic behaviour for small residuals, linear penalty for medium-sized residuals, and constant penalty for really large residuals. We do not in any sense endorse this regresion approach, this is just for illustrating encoding of **if** statements.
 
 ![nonconvex penalty]({{ site.url }}/images/nonconvexpenalty.png){: .center-image }
 
