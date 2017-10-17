@@ -14,11 +14,11 @@ Hence, this logic has to be modelled manually, and the recommended approach to d
 
 ## An artificial regression problem
 
-Consider a problem where we wish to do regression \\( \textbf{minimize} \sum f(e_i)\\) with less sensitivity to outliers by using a non-convex penalty \\(\cdot)\\). Instead of a standard quadratic, linear, or perhaps [huber penalty](/command/huber), we want to have a quaadratic behaviour for small residuals, linear penalty for medium-sized residuals, constant penalty for really large residuals.
+Consider a problem where we wish to do regression \\( \textbf{minimize} \sum f(e_i)\\) with less sensitivity to outliers by using a non-convex penalty \\(f(\cdot)\\). Instead of a standard quadratic, linear, or perhaps [huber penalty](/command/huber), we want to have a quadratic behaviour for small residuals, linear penalty for medium-sized residuals, constant penalty for really large residuals.
 
 ![nonconvex penalty]({{ site.url }}/images/nonconvexpenalty.png){: .center-image }
 
-A very naive way of formulating this would be \\(f(e) = min(2,min(2 + |x|,x^2))\\). However, if you use an objective with a sum of these expressions, the resulting model will be a pretty messy nonconvex integer model. Binary variables will be introduced to handlke the fact that the concave \\(\min\\) operator is used in an expression to be minimized, with more binary variables to handle the nonconvex use of the absolute value, and finally the mixed-integer model will also contain nonconvex quadratic equalities.
+A very naive way of formulating this would be \\(f(e) = min(7,min(2 + |x|,x^2))\\). However, if you use an objective with a sum of these expressions, the resulting model will be a pretty messy nonconvex integer model. Binary variables will be introduced to handle the fact that the concave \\(\min\\) operator is used in an expression to be minimized, with more binary variables to handle the nonconvex use of the absolute value, and finally the mixed-integer model will also contain nonconvex quadratic equalities.
 
 A better approach is to try to untangle the model. A first step would perhaps be
 
@@ -29,7 +29,7 @@ f(e) = \begin{cases} 7 , & \text{for } |e|\geq 5\\
                      \end{cases}
 $$
 
-This can be simplified even further (note, in optimazation simple is not equivalent to short, but preferably as linear, structured and sparse as possible)
+This can be simplified even further (note, in optimization simple is not necessarily equivalent to short, but preferably as linear, structured and sparse as possible)
 
 $$
 f(e) = \begin{cases} 2 & \text{for } e\leq -5\\
@@ -44,7 +44,7 @@ To implement this in MATLAB, we could for instance try to incorporate some code 
 
 ````matlab
 if e <= -5
- f = 2;
+ f = 7;
 elseif e >= -5 && e <= -2
  f = 2-e;
 elseif e>=-2 && e <= 2
@@ -52,11 +52,11 @@ elseif e>=-2 && e <= 2
 elseif e>=2 && e <= 5
  f = 2+e;
 elseif e >= 5 
- f = 2;
+ f = 7;
 end 
 ````
 
-This code will not run, and MATLAB will raise an error, as you are you are using an [sdpvar](/command/sdpvar) in the **if** construct. What we have to do is to translate this to simple combinatorial cases, and implement that using binary variables.
+This code will not run, and MATLAB will raise an error, as you are you are using an [sdpvar](/command/sdpvar) in the **if** construct. What we have to do is to translate this to a simple combinatorial model, and implement that using binary variables.
 
 ### Enumerate the possible cases
 
@@ -88,7 +88,7 @@ In this case, there are obviously 5 possible cases dividing the feasible space i
 
 ````matlab
 d = binvar(5,1);
-Model = [sum(cases) == 1,
+Model = [sum(d) == 1,
 implies(d(1), [      e <= -5, f == 7]);
 implies(d(2), [-5 <= e <= -2, f == 2-e]);
 implies(d(3), [-2 <= e <= 2,  f == e^2]);
@@ -96,9 +96,61 @@ implies(d(4), [ 2 <= e <= 5,  f == 2+e]);
 implies(d(5), [ 5 <= e,       f == 7])];
 ````
 
-At this point, we have a simple cleanly enumerated model, but in this particular case we have a remaining problem as the quadratic equality constraint is nonconvex. However, since we know \\(f\\) will be minimized, we can relax the equality to a convex inequality. The big-M model that will be derived will be \\(e^2 \leq f + M(1-d_3)\\), which is convex for relaxed integer variables, and hence mixed-integer SOCP representable.
+At this point, we have a simple cleanly enumerated model, but in this particular case we have a remaining problem as the quadratic equality constraint is nonconvex. However, since we know \\(f\\) will be minimized, we can relax the equality to a convex inequality. The big-M model that will be derived for **implies(d,e^2<=f)** would be \\(e^2 \leq f + M(1-d_3)\\), which is convex for relaxed integer variables, and hence mixed-integer SOCP representable. A final proposal is thus
 
-### A more natural model which might lead to problems
+````matlab
+d = binvar(5,1);
+Model = [sum(d) == 1,
+implies(d(1), [      e <= -5, f == 7]);
+implies(d(2), [-5 <= e <= -2, f == 2-e]);
+implies(d(3), [-2 <= e <= 2,  f >= e^2]);
+implies(d(4), [ 2 <= e <= 5,  f == 2+e]);
+implies(d(5), [ 5 <= e,       f == 7])];
+````
+
+## Putting it together
+
+So let us solve the regression problem from the [quadratic programming tutorial](/tutorial/quadraticprogramming). We generate some data with non-gaussian noise
+
+````matlab
+x = [1 2 3 4 5 6]';
+t = (0:0.02:2*pi)';
+A = [sin(t) sin(2*t) sin(3*t) sin(4*t) sin(5*t) sin(6*t)];
+n = (-4+8*rand(length(t),1));
+n(100:115) = 30;
+y = A*x+n;
+plot(t,y);
+````
+
+Define the residuals, and create the function values (which we do in a non-vectorized fashion here). Note that we have to add explicit bounds on all variables involved in the expressions which are modelled using big-M. For the problem to be solved efficiently, you have to have an efficient [mixed-integer second order cone programming solver](tags/#mixed-integer-second-order-cone-programming-solver) installed
+
+````matlab
+xhat = sdpvar(6,1);
+e    = y-A*xhat;
+
+f = sdpvar(length(e),1);
+xBound = 100;
+eBound = norm(y,inf) + norm(A,inf)*xBound;
+Model = [-xBound <= xhat <= xBound, -eBound <= f <= eBound];
+Objective = sum(f);
+for i = 1:length(f)
+ d = binvar(5,1);
+ Model = [Model, sum(d) == 1,
+ implies(d(1), [      e(i) <= -5, f(i) == 7]);
+ implies(d(2), [-5 <= e(i) <= -2, f(i) == 2-e(i)]);
+ implies(d(3), [-2 <= e(i) <= 2,  f(i) >= e(i)^2]);
+ implies(d(4), [ 2 <= e(i) <= 5,  f(i) == 2+e(i)]);
+ implies(d(5), [ 5 <= e(i),       f(i) == 7])];
+end
+
+optimize(Model,Objective)
+````
+
+
+
+
+
+## A more natural model which might lead to problems
 
 It should be said, that a reasonable approach to create a thoretically equivalent model is
 
@@ -110,4 +162,5 @@ Model = [implies(      e <= -5, f == 7);
          implies(      5 <= e,  f == 7)];
 ````
 
-Although this looks much easier, it hides important structure that can cause problems. As all those constraints are added independently, there is nothing in the model which explicitly forces one of the cases to hold. Due to numerical tolerances in solvers, it might be the case that the optimal **e** ends up at a point on the border between to regions where the solver manages to violate a constraint every so slightly and renders all conditions inactive thus making **f** undefined. Hence, it is always recommended to explicitly define the disjunctive nature of the model by introducing a binary variables which must activate one condition.
+
+Although this looks much easier, it hides important structure that can cause problems. As all those constraints are added independently, there is nothing in the model which **explicitly** forces one of the cases to hold. Due to numerical tolerances in solvers, it might be the case that the optimal **e** ends up at a point on the border between two regions where the solver manages to violate a constraint every so slightly and renders all conditions inactive thus making **f** undefined. Hence, it is always recommended to explicitly define the disjunctive nature of the model by introducing binary variables which must activate one condition.
