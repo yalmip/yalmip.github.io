@@ -56,7 +56,7 @@ elseif e >= 5
 end 
 ````
 
-This code will not run, and MATLAB will raise an error, as you are you are using an [sdpvar](/command/sdpvar) in the **if** construct. What we have to do is to translate this to a simple combinatorial model, and implement that using binary variables.
+This code will not run, and MATLAB will raise an error, as you are you are using an expression involving [sdpvar](/command/sdpvar) variables in the **if** construct. What we have to do is to translate this to a simple combinatorial model, and implement that using binary variables.
 
 ### Enumerate the possible cases
 
