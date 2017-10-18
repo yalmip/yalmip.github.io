@@ -3,7 +3,7 @@ layout: single
 permalink: /modellingif
 excerpt: "Untangle that messy expression"
 title: "Modelling if-else-end statements"
-tags: [Mixed-integer programming, Logic programming]
+tags: [Integer programming, Logic programming]
 comments: true
 date: '2017-10-17'
 ---
