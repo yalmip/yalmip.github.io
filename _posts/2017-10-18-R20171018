@@ -1,0 +1,23 @@
+---
+layout: single
+permalink: /R20171018
+excerpt: "Important patch"
+title: "New release R20171018"
+tags: [Release]
+comments: true
+date: '2017-10-18'
+---
+
+[Download latest release](/download)
+
+### Fixes
+
+* A severe bug was introduced in the previous release which caused constraints to disappear in some scenarios for large problems
+* Fixed nameclash on [crossentropy](/command/crossentropy) command with the nnet toolbox
+* [max](/command/max) involving **-inf** in all elements now behaves as expected
+
+
+
+
+
+
