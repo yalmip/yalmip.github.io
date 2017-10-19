@@ -43,7 +43,7 @@ plot(x'*value(P2)*x <= 1,[],'y');
 
 ![Ellipsoid]({{ site.url }}/images/minellipsoid.png){: .center-image }
 
-If you have the dedicated solver [sdpt3](/command/sdpt3) installed and want to use it to handle the logarithmic term directly, you must use the dedicated command [logdet](/command/logdet) for the objective and explicitly select [sdpt3](/command/sdpt3). This command can not be used in any other construction than in the objective function, compared to the geomean operator that can be used as any other variable in YALMIP, since it a so called nonlinear operator.
+If you have the dedicated solver [SDPT3](/solver/sdpt3) installed and want to use it to handle the logarithmic term directly, you must use the dedicated command [logdet](/command/logdet) for the objective and explicitly select [SDPT3](/solver/sdpt3). This command can not be used in any other construction than in the objective function, compared to the geomean operator that can be used as any other variable in YALMIP, since it a so called nonlinear operator.
 
 ````matlab
 optimize(F,-logdet(P),sdpsettings('solver','sdpt3'));
