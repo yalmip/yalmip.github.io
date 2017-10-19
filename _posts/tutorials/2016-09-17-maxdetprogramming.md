@@ -53,4 +53,4 @@ plot(x'*value(P1)*x <= 1,[],'r');
 plot(x'*value(P2)*x <= 1,[],'y');
 ````
 
-Note that if you use the [logdet](/command/logdet) command but not explicitly select a solver that supports logdet terms natively, YALMIP will use \\(-\det(P)^{1/m}\\) as objective function instead anyway. This will not cause any problems if your objective function is a simple logdet expression (since the two functions are monotonically related). However, if you have a mixed objective function such as \\(\operatorname{trace}(P)-\log(\det(P))\\), you can only use [SDPT3 version 4].
+Note that if you use the [logdet](/command/logdet) command but not explicitly select a solver that supports logdet terms natively, YALMIP will use \\(-\det(P)^{1/m}\\) as objective function instead anyway. This will not cause any problems if your objective function is a simple logdet expression (since the two functions are monotonically related). However, if you have a mixed objective function such as \\(\operatorname{trace}(P)-\log(\det(P))\\), you can only use [SDPT3 version 4](/solver/sdpt3).
