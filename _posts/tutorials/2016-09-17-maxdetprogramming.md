@@ -21,7 +21,7 @@ Find the ellipsoid \\(x^TPx \leq 1\\) with smallest possible volume that contain
 
 ![Ellipsoid]({{ site.url }}/images/ellips5.gif){: .center-image }
 
-The objective function \\(-\det(P)\\) (which is minimized) is not convex, but monotonic transformations can render this problem convex. One alternative is the logarithmic transform, leading to minimization of\\(-\log(\det(P))\\) instead, which only is supported if you use [SDPT3 version 4] (see below).
+The objective function \\(-\det(P)\\) (which is minimized) is not convex, but monotonic transformations can render this problem convex. One alternative is the logarithmic transform, leading to minimization of\\(-\log(\det(P))\\) instead, which only is supported if you use [SDPT3 version 4](/solver/sdpt3) (see below).
 
 For other SDP solvers YALMIP uses \\(-\det(P)^{1/m}\\)  where \\(m\\) is dimension of \\(P\\) (in other words, the geometric mean of the eigenvalues). The concave function \\(\det(P)^{1/m}\\), available by applying [geomean](/command/geomean) on a Hermitian matrix in YALMIP, can be modeled using semidefinite and second order cones, hence any SDP solver can be used for solving determinant maximization problems.
 
