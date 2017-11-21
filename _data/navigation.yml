@@ -2,7 +2,10 @@
 main:
   - title: "Download"
     url: /download
-
+    
+  - title: "Search"
+    url: /search
+    
   - title: "Tutorials"
     url: /tutorials
 
