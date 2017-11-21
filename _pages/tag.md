@@ -25,10 +25,7 @@ share: false
          {% if post.category == null %}
           <a href="{{ post.url }}">{{ post.title }}  (article)</a>
         {% endif %}
-        </span>
-        <span style="float: right;">
-          {{ post.date | date_to_string }}
-        </span>
+        </span>   
       </div>
       <div style="clear: both;"></div>
     {% endif %}{% endfor %}
