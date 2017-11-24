@@ -8,7 +8,7 @@ comments: true
 date: '2017-11-24'
 ---
 
-A common question is how one can solve [multi-objective problems](https://en.wikipedia.org/wiki/Multi-objective_optimization) using YALMIP. The standard answer is that you cannot solve these using YALMIP. A more detailed answer is that you can solve these peroblem as you first have to sort out what you actually mean when you talk about a solution to a multi-objective problem, as there is no single solution but a set of solutions, and finding this set is done using various strategies.
+A common question is how one can solve [multi-objective problems](https://en.wikipedia.org/wiki/Multi-objective_optimization) using YALMIP. The standard answer is that you cannot solve these using YALMIP. A more detailed answer is that you cannot solve these problem until you have sorted out what you actually mean when you talk about a solution to a multi-objective problem, as there is no single solution but a set of solutions, and finding this set can be done using various strategies.
 
 At the core, there is typically a fundamental misconception about multi-objective optimization, in the sense that it would be possible to magically compute **a** solution which optimizes several competing objective. Of course, it is impossible to design a car which is as light as possible, as cheap as possible, as fast as possible, and as durable as possible, all at the same time. In the end, the solution to the obviously multi-objective task of designing a car, will be a compromise. Multi-objective optimization is about finding **the set** of non-bad compromises, which is called the Pareto-optimal solutions.
 
