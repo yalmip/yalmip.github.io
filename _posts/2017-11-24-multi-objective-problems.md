@@ -37,15 +37,15 @@ Variance = w'*S*w;
 Return = -mu*w;
 ````
 
-In this problem, we have two competing objectives, minimizing the variance of the portfolio return, and maximizing the expected return. A simple linear scalarization of this problem would simply be a linear combination of them (note that we are negating the return as we want to maximize it).
+In this problem, we have two competing objectives, minimizing the variance of the portfolio return, and maximizing the expected return. A simple linear scalarization of this problem would simply be a linear combination of them (note that we have negated the return as we want to maximize it).
 
 ````matlab
 optimize(Constraints, 0.5*Variance + 0.5*Return);
 ````
 
-So how should be combine them? Well, that is precisely the problem. There is no clear-cut answer on that. It depends on what you want to achieve, i.e., which compromise you are interested in.
+Why 0.5? Well, that is precisely the problem. There is no clear-cut answer on that. It depends on what you want to achieve, i.e., which compromise you are interested in.
 
-Hence, what one typically wants to do then is to solve the problem for a range of scalarization compromises.
+Hence, what one typically wants to do then is to solve the problem for a range of scalarization compromises, and try to get a feeling for the character of the solutions, and use some logic to pick the best compromise.
 
 ````matlab
 clf
@@ -85,7 +85,7 @@ Constraints = [sum(w) == 1, w>=0,  w'*S*w <= v];
 Variance = v;
 Return = -mu*w;
 sdpvar t
-Solver = optimizer(Constraints,(1-t)*Variance + t*Return,sdpsettings('solver','sdpt3'),{w'*S*w,Return})
+Solver = optimizer(Constraints,(1-t)*Variance + t*Return,sdpsettings('solver','mosek'),t,{w'*S*w,Return})
 
 clf
 hold on
