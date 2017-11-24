@@ -23,7 +23,7 @@ So, the answer to the question is
 
 A simple way to attack a multi-objective problem is to scalarize the objective functions, i.e. introduce a single objective which represents a compromise of the objective. 
 
-Consider the portfolio example
+Consider the [portfolio example](/example/portfolio)
 
 ````matlab
 n = 10;
