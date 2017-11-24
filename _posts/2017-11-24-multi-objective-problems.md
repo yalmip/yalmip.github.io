@@ -9,6 +9,18 @@ date: '2017-11-24'
 published : false
 ---
 
+A common question is how one can solve [multi-objective problems](https://en.wikipedia.org/wiki/Multi-objective_optimization) using YALMIP. The standard answer is that you cannot solve these using YALMIP. A more detailed answer is that you can solve these peroblem,s but you first have to sort out what you mean when you talk about a solution yto a multi-objective problem, as there is no single solution but a set of solutions, and finding this set is done using various strategies.
+
+At the core, there is typically a fundamental misconception about multi-objective optimization, in the sense that it would be possible to magically compute **a** solution which optimizes several competing objective. Of course, it is impossible to design a car which is as light as possible, as cheap as possible, as fast as possible, and as durable as possible, all at the samer time. In the end, the solution to the obviously multi-objective task of designing a car, will be a compromise. Multi-objective optimization is about finding **the set** of non-bad compromises.
+
+So, the answer to the question is
+
+* No, you cannot compute **the** solution to the multi-objective problem, as there is no such thing
+* No, YALMIP does not interface any multi-objective solver to compute the pareto-optimal solution set
+* Yes, of course you can compute solutions to the multi-objective problem by simply implementing a multi-objective algorithm using any standard solver to compute solutions to the optimization problems that arise
+
+
+
 YALMIP supports complex models by overloading most standard operators in MATLAB. One common issue though that many users struggle with is models involving **if** statements. The object-oriented overloading of operators in MATLAB does not support overloading of programming constructs, i.e., **if x**, **elseif x**, **switch x case y**, **for x=y** where **x** or **y** involves [sdpvar](/command/sdpvar) variables will not work.
 
 Hence, this logic has to be modelled manually, and the recommended approach to do this is to apply the [implies operator](/command/logic) in a structured fashion.
