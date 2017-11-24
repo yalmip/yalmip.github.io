@@ -88,12 +88,19 @@ Solver = optimizer(Constraints,(1-t)*Variance + t*Return,sdpsettings('solver','m
 
 clf
 hold on
-t = 0:0.05:1
 for t = 0:0.05:1
  sol = Solver(t);
  plot(sol{1},-sol{2},'*')
  drawnow
 end
+````
+
+Even faster and more compact!
+
+````matlab
+t = 0:0.05:1
+sol = Solver(t);
+plot(sol{1},-sol{2},'*')  
 ````
 
 So to summarize: yes you can implement any multi-objective solver strategy you want as long as you can model it using YALMIP.
