@@ -18,9 +18,9 @@ So, the answer to the question is
 * No, YALMIP does not interface any multi-objective solver to compute the pareto-optimal solution set.
 * Yes, of course you can compute solutions to the multi-objective problem by simply implementing a multi-objective algorithm using any standard solver to compute solutions to the optimization problems that arise.
 
-## Scalarizing a multi-objective objective
+## Scalarizing a the multi-objective
 
-A simple way to attack a multi-objective problem is to scalarize the objective functions, i.e. introduce a single objective which represents a compromise of the objective. 
+A simple way to attack a multi-objective problem is to scalarize the objective functions, i.e. introduce a single objective which represents a compromise of the competing objectives. 
 
 Consider the [portfolio example](/example/portfolio)
 
@@ -36,7 +36,7 @@ Variance = w'*S*w;
 Return = -mu*w;
 ````
 
-In this problem, we have two competing objectives, minimizing the variance of the portfolio return, and maximizing the expected return. A simple linear scalarization of this problem would simply be a linear combination of them (note that we have negated the return as we want to maximize it).
+In this problem, we have two competing objectives, minimizing the variance of the portfolio return, and maximizing the expected return. A simple scalarization of this problem could simply be a linear combination of them (note that we have negated the return above as we want to maximize it).
 
 ````matlab
 optimize(Constraints, 0.5*Variance + 0.5*Return);
