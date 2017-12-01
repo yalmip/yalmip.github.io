@@ -307,4 +307,3 @@ defaults:
       share: false
       related: true       
       
-remote_theme: Phlow/feeling-responsive
