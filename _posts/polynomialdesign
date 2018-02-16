@@ -1,0 +1,133 @@
+---
+layout: single
+permalink: /polynomialdesign
+excerpt: "Working with polynomials"
+title: "Design polynomials"
+tags: [Linear programming, quadratic programming, Semidefinite programming, Sum-of-squares programming]
+comments: true
+date: '2018-02-16'
+---
+
+In this post, we showcase some of the operations available on polynomials, and illustrate a common polynomial design problem.
+
+We have given the task of designing a polynomial \\( p(x) \\) such that it satisfies certain properties. To begin with, let us assume the only requirements are \\(  p(x_0) = y_0,  p(x_1) \geq y_1\\) and \\(p(x_2) \geq y_2\\), and we want to design a polynomial of order 6.
+
+## Point-wise function values
+
+Start by defining the data in the problem
+
+````matlab
+x0 = -1
+x1 = 0;
+x2 = 1;
+y0 = 0;
+y1 = 1;
+y2 = 0;
+n = 6;
+````
+
+To define polynomials, the most convenients commands are [polynomial](/commands/polynomial) or possibly [monolist](/commands/monolist). The command [polynomial](/commands/polynomial) creates a polynomial and also returns the coefficients and the basis
+
+````matlab
+[p,a,v] = polynomial(x,n);
+````
+
+To handle point-wise constraints on the polynomial, we use the command [replace](/commands/polynomial) for evaluation. Solving the initial problem is thus simply
+
+````matlab
+Model = [replace(p,x,x0)==y0,replace(p,x,x1)==y1, replace(p,x,x2)>=y2];
+optimize(Model)
+````
+
+This a trivial linear program in the coefficients \\(a\\) without any objective. We could of course add any suitable objective, such as \\(\||a||_2^2\\). We will use more advanced objectives later though.
+
+## Derivatives and integrals
+
+In polynomial design, it is common to have constraints on derivatives in certain points. since derivatives and integrals of a polynomial is a linear operator in the coefficients, we can easily work with these. Hence, let us add the constraint the the polynomial is flat at the end-points, and has positive curvature in the middle (for higher order derivatives, simply apply the jacobian command suitably many times
+
+````matlab
+dp = jacobian(p,x);
+dp2 = hessian(p,x);
+Model = [replace(p,x,x0)==y0,replace(p,x,x1)>=y1, replace(p,x,x2)==y2,
+         replace(dp,x,x0)==0,replace(dp,x,x2)==0,replace(dp2,x,x1)>=0];
+optimize(Model)
+````
+
+
+
+
+
+
+
+
+
+
+
+In this problem, we have two competing objectives, minimizing the variance of the portfolio return, and maximizing the expected return. A simple scalarization of this problem could simply be a linear combination of them (note that we have negated the return above as we want to maximize it).
+
+````matlab
+optimize(Constraints, 0.5*Variance + 0.5*Return);
+````
+
+Why 0.5? Well, that is precisely the problem. There is no clear-cut answer on that. It depends on what you want to achieve, i.e., which compromise you are interested in.
+
+Hence, what one typically wants to do then is to solve the problem for a range of scalarization compromises, and try to get a feeling for the character of the solutions, and use some logic to pick the best compromise.
+
+````matlab
+clf
+hold on
+for t = 0:0.05:1
+  optimize(Constraints, (1-t)*Variance + t*Return);
+  plot(value(Variance),value(-Return),'*')
+  drawnow
+end
+````
+
+We can speed this up by using the possibility of [multiple solutions computed in one shot](/multiplesolutions). This requires linear objectives though so we make a simple epigraph reformulation of the objective. Note that this moves us from a quadratic program to a second-order cone program. 
+
+````matlab
+sdpvar v
+Constraints = [sum(w) == 1, w>=0,  w'*S*w <= v];
+Variance = v;
+Return = -mu*w;
+
+clf
+hold on
+t = 0:0.05:1
+Objectives = (1-t)*Variance + t*Return;
+optimize(Constraints, Objectives);
+for i = 1:length(t)
+ selectsolution(i);
+ plot(value(w'*S*w),value(-Return),'*')
+ drawnow
+end
+````
+
+An more general approach is to implement the strategy using an [optimizer object](/comands/optimizer). Note that we return the value of the variance computed from the allocation, instead of the simple epigraph variable. The reason is that the epigraph variable is not used when **t = 1** and thus the epigraph variable and the expression it bounds are not the same in that border case. Also note that the solver has to be specified, in this case we pick [MOSEK](/solvers/mosek)
+
+````matlab
+sdpvar v
+Constraints = [sum(w) == 1, w>=0,  w'*S*w <= v];
+Variance = v;
+Return = -mu*w;
+sdpvar t
+Solver = optimizer(Constraints,(1-t)*Variance + t*Return,sdpsettings('solver','mosek'),t,{w'*S*w,Return})
+
+clf
+hold on
+for t = 0:0.05:1
+ sol = Solver(t);
+ plot(sol{1},-sol{2},'*')
+ drawnow
+end
+````
+
+Even faster and more compact!
+
+````matlab
+t = 0:0.05:1
+sol = Solver(t);
+plot(sol{1},-sol{2},'*')  
+````
+
+So to summarize: yes you can implement any multi-objective solver strategy you want as long as you can model it using YALMIP.
