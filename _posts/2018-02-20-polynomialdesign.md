@@ -8,6 +8,7 @@ comments: true
 date: '2018-02-16'
 ---
 
+
 In this post, we showcase some of the operations available on polynomials, and illustrate a common polynomial design problem.
 
 We have given the task of designing a polynomial \\( p(x) \\) such that it satisfies certain properties. To begin with, let us assume the only requirements are the point-wise constraints \\(  p(x_0) = y_0,  p(x_1) \geq y_1\\) and \\(p(x_2) = y_2\\), and we want to design a polynomial of order 9.
