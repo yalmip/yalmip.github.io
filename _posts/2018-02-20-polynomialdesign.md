@@ -50,7 +50,7 @@ plot(xv,yv)
 
 ## Derivatives and integrals
 
-In polynomial design, it is common to have constraints on derivatives in certain points. Since derivatives and integrals of a polynomial are linear operator in the coefficients, we can easily work with these. Hence, let us add the constraint that the polynomial is flat at the end-points, and has non-negative curvature in the middle (for higher order derivatives, simply apply the jacobian command suitably many times)
+In polynomial design, it is common to have constraints on derivatives in certain points. Since derivatives and integrals of a polynomial are linear operators in the coefficients, we can easily work with these. Hence, let us add the constraint that the polynomial is flat at the end-points, and has non-negative curvature in the middle (for higher order derivatives, simply apply the jacobian command repeatedly)
 
 ````matlab
 dp = jacobian(p,x);
@@ -63,12 +63,12 @@ hold on
 plot(xv,yv)
 ````
 
-Let us now add an objective. As an example, let us minimize the squared integral \\( (\int_{-1}^1 p(\tau)^2d\tau)^2\\). Note that this is a convex quadratic funtion in \\(a\\).
+Let us now add an objective. As an example, let us minimize the squared integral \\( \int_{-1}^1 p(\tau)^2d\tau\\). Note that this is a convex quadratic funtion in \\(a\\).
 
 ````matlab
 Model = [replace(p,x,x0)==y0,replace(p,x,x1)>=y1, replace(p,x,x2)==y2,
          replace(dp,x,x0)==0,replace(dp,x,x2)==0,replace(dp2,x,x1)>=0];
-optimize(Model, (int(p^2,x,-1,1)));
+optimize(Model, int(p^2,x,-1,1));
 yv = polyval(fliplr(value(a')),xv);
 hold on
 plot(xv,yv)
@@ -78,7 +78,7 @@ plot(xv,yv)
 
 ## Infinite-dimensional constraints
 
-A common situation is that we have infinite-dimensional constraints, i.e., in this context, constraints that should hold for an interval of \\(x\\), such as positivity, convexity, or curvature constraints. There are essentially two ways to deal with this, optimistic relaxations based on gridding, and conservative relaxations based on [sum-of-squares](/tutorial/sumofsquaresprogramming/).
+A common situation is that we have infinite-dimensional constraints, i.e., in this context, constraints that should hold for an interval of \\(x\\), such as positivity or convexity defined by curvature constraints. There are essentially two ways to deal with this, optimistic relaxations based on gridding, and conservative relaxations based on [sum-of-squares](/tutorial/sumofsquaresprogramming/).
 
 Let us assume we want the polynomial to be non-negative on the interval we are studying. A simple gridding could be something along the lines of
 
@@ -89,7 +89,7 @@ xgrid = linspace(-1,1,15);
 for i = 1:length(xgrid)
  Model = [Model, replace(p,x,xgrid(i)) >= 0];
 end
-optimize(Model, (int(p^2,x,-1,1)));
+optimize(Model, int(p^2,x,-1,1));
 yv = polyval(fliplr(value(a')),xv);
 ygrid = polyval(fliplr(value(a')),xgrid);
 hold on
@@ -98,11 +98,11 @@ plot(xgrid,ygrid,'r+');
 grid on
 ````
 
-Unfortunately, with a too coarse gridding, the non-negativity requirement will not hold outside the grid-points.
+Unfortunately, with a too coarse gridding, the non-negativity constraint will be violated outside the grid-points.
 
-Instead, we apply a sum-of-squares argument. We want \\(p(x) \geq 0 \\) for all \\(x^2 \leq 1\\). In a sum-of-squares setup, we first rewrite this as finding a certificate polynomial \\(s(x)\geq 0\\) such that \\( p(x) \geq s(x)(1-x^2)\\). At this point, the positivity requirements are replaced with sum-of-squares decomposability.
+Instead, we can apply sum-of-squares arguments. We want \\(p(x) \geq 0 \\) for all \\(x^2 \leq 1\\). In a sum-of-squares setup, we first rewrite this as finding a certificate polynomial \\(s(x)\geq 0\\) such that \\( p(x) \geq s(x)(1-x^2)\\). At this point, the positivity requirements are replaced with sum-of-squares decomposability.
 
-In the following code, we define a quadratic multiplier \\(s(x)\\) and solve the sum-of-squares program to find a polynomial \\(p(x)\\) which is guranteed to be locally non-negative
+In the following code, we define a parameterised quadratic multiplier \\(s(x)\\) and solve the sum-of-squares program to find a polynomial \\(p(x)\\) which is guranteed to be locally non-negative
 
 ````matlab
 Model = [replace(p,x,x0)==y0,replace(p,x,x1)>=y1, replace(p,x,x2)==y2,
