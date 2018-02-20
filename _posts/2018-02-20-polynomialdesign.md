@@ -5,7 +5,7 @@ excerpt: "Working with polynomials, function values, derivatives, integrals and 
 title: "Designing polynomials"
 tags: [Linear programming, quadratic programming, Semidefinite programming, Sum-of-squares programming]
 comments: true
-date: 2018-02-16
+date: "2018-02-16"
 ---
 
 
