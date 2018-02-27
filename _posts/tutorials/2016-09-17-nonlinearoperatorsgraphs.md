@@ -188,7 +188,7 @@ The result is two linear inequalities related to the min operator and 7 second o
 If you want to add your own operator, all you need to do is to create 1 file. This file should be able to return the numerical value of the operator for a numerical input, and return the epigraph (or hypograph) and a descriptive structure of the operator when the first input is **'graph'**. As an example, the following file implements the nonlinear operator tracenorm. This convex operator returns **sum(svd(X))** for matrices **X**. This value can also be described as the minimizing argument of the optimization problem
 
 $$
-\textbf{min}_{t,A,B}  ~ \textbf{  subject to } \begin{bmatrix}A & X\\X^T B\end{bmatrix}, \textbf{tr}(A)+\textbf{tr}(B) \leq 2t
+\textbf{min}_{t,A,B}  ~ \textbf{  subject to } \begin{bmatrix}A & X\\X^T & B\end{bmatrix}, \textbf{tr}(A)+\textbf{tr}(B) \leq 2t
 $$
 
 The code looks essentially the same for all conic representable operators.
@@ -208,7 +208,7 @@ switch class(varargin{1})
             X = varargin{3}; % 3rd arg and above are always arguments user used.
             A = sdpvar(size(X,1));
             B = sdpvar(size(X,2));
-            F = [A X;X' B] >= 0, trace(A)+trace(B) <= 2*t];
+            F = [[A X;X' B] >= 0, trace(A)+trace(B) <= 2*t];
 
             % Operator description
             properties.convexity    = 'convex';   % convex | none | concave
