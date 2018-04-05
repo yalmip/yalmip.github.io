@@ -24,7 +24,7 @@ Note that the framework currently is focused on elementwise functions or functio
 
 Essentially all simple univariate functions in MATLAB are available as callback operators in YALMIP.
 
-The following problem should return 2, if the nonlinear solver (probably [FMINCON]) performs well.
+The following problem should return 2, if the nonlinear solver you use (probably [FMINCON](/solver/fmincon)) performs well.
 
 ````matlab
 sdpvar x
@@ -49,7 +49,7 @@ Since the problem is nonconvex, we cannot be sure that the computed solution act
 optimize([-5 <= x <= 5],-exp(-(x-2).^2),sdpsettings('solver','bmibnb'));
 ````
 
-The global solver [BMIBNB](/solver/bmibnb) is based on the envelope outer approximations discussed below. Note that the solver requires bounds (preferably explicit) on variables that are involved in nonconvex terms. The reason for this can be found in the [tutorial on envelopes and global optimization](/tutorial/envelopesinbmibnb) and the [big-M].
+The global solver [BMIBNB](/solver/bmibnb) is based on the envelope outer approximations discussed below. Note that the solver requires bounds (preferably explicit) on variables that are involved in nonconvex terms. The reason for this can be found in the [tutorial on envelopes and global optimization](/tutorial/envelopesinbmibnb) and the [big-M tutorial](/tutorial/bigmandconvexhulls).
 
 In general, working with nonlinear callback-based operators in YALMIP requires no special code. It must however be kept in mind that they require general-purpose nonlinear solvers.
 
