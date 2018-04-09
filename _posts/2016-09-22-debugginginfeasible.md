@@ -40,7 +40,7 @@ x = sdpvar(n,m,'full');
 
 ### 2. Is it really infeasible?
 
-To begin with, get rid of the objective function. An objective function cannot generate any infeasibility, but in the feasibility analysis, it is just unnecessary to keep it. You might have stumbled into a bug in the solver presolve code or something, which causes it to make an incorrect statement. Some solvers mess up infeasibility with unbounded objective.
+To begin with, get rid of the objective function. An objective function cannot generate any infeasibility, but in the feasibility analysis, it is just unnecessary to keep it. You might have stumbled into a bug in the solver presolve code or something, which causes it to make an incorrect statement. Some solvers mess up infeasibility with unbounded objective. If that is the case, you would have to [debug your unbounded model](/debuggingunbounded). Hence, if the problem without objective is feasible, the problem is in the objective and not in the constraints
 
 ````matlab
 optimize(Constraints)
