@@ -153,7 +153,7 @@ aa = repmat(a,2*nu,1) + kron(c,ones(size(a,1),1));
 bb = repmat(b,2*nu,1) + kron(d,ones(size(a,1),1));
 
 % Constrain predicted state
-[H,K] = value(sol{k+1}{1}.Pfinal);
+[H,K] = double(sol{k+1}{1}.Pfinal);
 F     = [F, H*xp <= K];
 
 % Cost function
@@ -179,7 +179,7 @@ bb = repmat(b,2*nu,1) + kron(d,ones(size(a,1),1));
 xp = x{k} + Bth*uth; % x{1} = z
 
 % Constrain predicted state
-[H,K] = value(sol{k+1}{1}.Pfinal);
+[H,K] = double(sol{k+1}{1}.Pfinal);
 F     = [F, H*xp <= K];
 
 % Cost function
