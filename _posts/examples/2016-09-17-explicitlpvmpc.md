@@ -60,7 +60,6 @@ umax =   1 ;
 Q   = eye(nx);
 R   = 0.01;
 N   = 3;
-nrm = inf;
 xref = [0;0];
 ````
 
@@ -134,7 +133,7 @@ bb = repmat(b,2*nu,1) + kron(d,ones(size(a,1),1));
 F = [F, xmin  <= xp   <= xmax];
 
 % Cost function
-F   = [F, aa*[Q*(xp-xref);R*uth]+bb + norm(Q*(x{k}-xref),nrm) <= w];
+F   = [F, aa*[Q*(xp-xref);R*uth]+bb + norm(Q*(x{k}-xref),inf) <= w];
 obj = w;
 ````
 
@@ -158,7 +157,7 @@ F     = [F, H*xp <= K];
 
 % Cost function
 F   = [F, aa*[xp;R*uth]+bb <= w];
-obj = norm(Q*(x{k}-xref),nrm) + w;
+obj = norm(Q*(x{k}-xref),inf) + w;
 ````
 
 ### Final step
