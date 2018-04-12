@@ -85,6 +85,7 @@ for k = N:-1:1   % shifted: N-1:-1:0
 
     % Parameter simplex
     F = [uncertain(th{k}), sum(th{k}) == 1, 0 <= th{k} <= 1];
+    % Epigraph variable, MPT requires a bounded set so let us add artificial upper bound
     F = [F, 0 <= w <= 10000];
 
     % Uncertain predictions and control
