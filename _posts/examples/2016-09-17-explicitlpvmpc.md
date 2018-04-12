@@ -100,9 +100,14 @@ for k = N:-1:1   % shifted: N-1:-1:0
     F = [F, xmin  <= x{k} <= xmax];
 
     % Insert step-specific code here
-    % ...
-    % ...
-
+    if k == N
+     % Initial step
+    elseif k > 1
+     % Intermediate step
+    else
+     % Final step
+    end
+    
     % Determine robust counterpart
     [F,obj] = robustify(F,obj,yopts,th{k});
 
