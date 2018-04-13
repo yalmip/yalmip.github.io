@@ -5,7 +5,7 @@ excerpt: "Convenient generation of approximations"
 title: "Nonconvex QP via piecewise affine models"
 tags: [Nonconvex quadratic programming, Integer programming, Sos2, Interp1]
 comments: true
-date: '2017-09-16'
+date: 2017-09-16
 ---
 
 To showcase the generality and convenience of [interp1](/command/interp1), let us answer a common question which addresses the problem of solving (possibly mixed-integer) quadratic programs using linear solvers, and to make matters worse, we study indefinite quadratic objectives.
