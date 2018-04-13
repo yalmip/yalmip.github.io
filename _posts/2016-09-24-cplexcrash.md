@@ -4,8 +4,10 @@ excerpt: "Boom!"
 title: "MATLAB 2016 + CPLEX crash"
 tags: 
 comments: true
-date: '2016-09-23'
+date: 2016-09-23
 ---
+
+> Update: Use CPLEX 12.8 and MATLAB 2017 or later. Other combinations are unstable
 
 > Update: This fix is now available in the official version
 
