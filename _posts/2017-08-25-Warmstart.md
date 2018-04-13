@@ -5,7 +5,7 @@ excerpt: "Give your solver a hint"
 title: "Supplying initial guesses to warm-start solvers"
 tags: [Warm-start, Assign, Initial]
 comments: true
-date: '2017-08-25'
+date: 2017-08-25
 ---
 
 In some cases, a solver might benefit from an initial guess on where to start the search, so called warm-starting.
