@@ -5,7 +5,7 @@ title: "Extensions on the optimizer"
 tags: 
 comments: true
 featured: false
-date: '2016-09-28'
+date: 2016-09-28
 ---
 
 
