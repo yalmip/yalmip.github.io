@@ -5,7 +5,7 @@ excerpt: "Extracting inputs and outputs from solvers"
 title: "Extracting low-level data from solvers"
 tags: [Export and import, Low-level]
 comments: true
-date: '2017-08-11'
+date: 2017-08-11
 ---
 
 In normal cases, any communication between YALMIP and the solver is uninteresting, as all we are interested in is the [diagnostic code](command/yalmiperror) available in the output from [optimize](/command/optimize) and optimal values which are asigned to our decision variables and available through [value](/command/value). There are however cases where we want to obtain all the information the solver has returned in the call, and the model we sent to the solver.
