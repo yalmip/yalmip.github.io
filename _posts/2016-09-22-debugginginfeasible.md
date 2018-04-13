@@ -4,7 +4,7 @@ excerpt: "Where to start?"
 title: Debugging infeasible models
 tags: [Typical problems, Tricks]
 comments: true
-date: '2016-09-22'
+date: 2016-09-22
 ---
 
 You've created your massive 5000 lines of code model, and when you run it, the solver claims it is infeasible
