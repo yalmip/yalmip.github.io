@@ -5,7 +5,7 @@ excerpt: "How do I create a cheap Ferrari?"
 title: "Multi-objective problems in YALMIP"
 tags: [Multiobjective programming, Portfolio optimization]
 comments: true
-date: '2017-11-24'
+date: 2017-11-24
 ---
 
 A common question is how one can solve [multi-objective problems](https://en.wikipedia.org/wiki/Multi-objective_optimization) using YALMIP. The standard answer is that you cannot solve these using YALMIP. A more detailed answer is that you cannot solve these problem until you have sorted out what you actually mean when you talk about a solution to a multi-objective problem, as there is no single solution but a set of solutions, and finding this set can be done using various strategies.
