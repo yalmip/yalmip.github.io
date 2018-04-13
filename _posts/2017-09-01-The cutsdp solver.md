@@ -5,7 +5,7 @@ excerpt: "A little known solver"
 title: "The CUTSDP solver explained"
 tags: [Semidefinite programming, Mixed-integer conic programming solver, Integer programming]
 comments: true
-date: '2017-09-01'
+date: 2017-09-01
 ---
 
 YALMIP is shipped with two built-in mixed-integer conic programming solvers, both relying on external solvers to do the heavy work, but in completely different ways.
