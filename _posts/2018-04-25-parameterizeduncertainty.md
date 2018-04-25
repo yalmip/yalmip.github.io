@@ -16,7 +16,7 @@ The type of models YALMIP works with in [robust optimization](/tutorial/robustop
 $$
 \begin{aligned}
 \text{min}_x \text{max}_w f(x,w) & \\
-\text{subject to} ~~& g(x,w) \leq 0 \forall \{w ~| ~h(w) \leq 0 \}
+\text{subject to} & g(x,w) \leq 0 \forall \{w ~| ~h(w) \leq 0 \}
 \end{aligned}
 $$
 
@@ -64,7 +64,7 @@ UncertaintyModel = [norm(w,1) <= 1];
 optimize([UncertainConstraint,UncertaintyModel,uncertain(z)],-r)
 ````
 
-This is a very simple model, and YALMIP derives the robust counterpart and computes the largest inscibed L1-ball.
+This is a very simple model, and YALMIP derives the robust counterpart and computes the largest inscribed L1-ball.
 
 ````matlab
 plot(A*w <= b,w,'red');hold on;
