@@ -5,127 +5,70 @@ excerpt: "Uncertainty descriptions can only involve uncertain variables, so how 
 title: "Parameterizing the uncertainty set in robust optimization"
 tags: [Robust optimization, Uncertainty]
 comments: true
-published: false
+published: true
 date: 2018-04-25
 ---
 
+In this quick post, we look at the problem of having parameterized uncertainty sets, and how these can be dealt with by reparameterizing the uncertainty.
 
-In this post, we showcase some of the operations available on polynomials, and illustrate a common polynomial design problem.
+The type of models YALMIP works with in [robust optimization](/tutorial/robustoptimization) is assumed to of the form 
 
-We have given the task of designing a polynomial \\( p(x) \\) such that it satisfies certain properties. To begin with, let us assume the only requirements are the point-wise constraints \\(  p(x_0) = y_0,  p(x_1) \geq y_1\\) and \\(p(x_2) = y_2\\), and we want to design a polynomial of order 9.
+$$
+\begin{aligned}
+\text{min}_x \text{max}_w f(x,w) & \\
+\text{subject to} ~~& g(x,w) \leq 0 \forall \{w ~| ~h(w) \leq 0 \}
+\end{aligned}
+$$
 
-## Point-wise function values
+However, in some cases it might be that the uncertainty set is parameterized, and the parameters defining the geometry are seen as decision variables. A typical case would be that the size of the set is parameter, and we wish to compute a robust solution which is some compromise between the level of robustness and conservativity. YALMIP does not support this, as YALMIP cannot distinguish between normal decision variables, and parameters in uncertainty sets. If a constraint is defined using both uncertain variables and variables which are not declared as uncertain, it will be considered to be an uncertain constraint, and not a definition of an uncertainty set.
 
-Start by defining the data in the problem
+## Reparameterizing the uncertainty
 
-````matlab
-x0 = -1
-x1 = 0;
-x2 = 1;
-y0 = 0;
-y1 = 1;
-y2 = 0;
-n = 9;
-````
+As an example, let us consider the problem of computing the Chebychev L1-ball of a polytope, i.e., the largest possible romb that can be placed inside a given polytope. This can be formulated as the robust optimization problem
 
-To define polynomials, the most convenients commands are [polynomial](/commands/polynomial) or possibly [monolist](/commands/monolist). The command [polynomial](/commands/polynomial) creates a polynomial but also returns the coefficients and the basis
+$$
+\begin{aligned}
+\text{max}_r & \\
+\text{subject to} & Az \leq b \forall \{|z-z_c|_1 \leq r\}
+\end{aligned}
+$$
 
-````matlab
-x = sdpvar(1);
-[p,a,v] = polynomial(x,n);
-````
+Here, \(z\) is the uncertain variable, and the center of the ball \(z_c\) and the size of the ball \(r\) are parameters in the uncertainty description.
 
-The vector \\(a\\) holds the coefficients, and \\(v(x)\\) is the corresponding basis in \\(p(x) = a^Tv(x)\\). To handle point-wise constraints on the polynomial, we use the command [replace](/commands/polynomial) for evaluation. Solving the initial problem is thus
-
-````matlab
-Model = [replace(p,x,x0)==y0,replace(p,x,x1)>=y1, replace(p,x,x2)==y2];
-optimize(Model)
-````
-
-This a trivial linear program in the coefficients \\(a\\) without any objective. To plot the polynomial, we use built-in functionality (but note that YALMIP has a reveresed order on monomials in a polynomial compared to polyval).
+The incorrect YALMIP model would be
 
 ````matlab
-xv = linspace(x0,x2,100);
-yv = polyval(fliplr(value(a')),xv);
-plot(xv,yv)
+A = randn(10,2);b = rand(10,1)*10;
+
+z = sdpvar(2,1);
+zc = sdpvar(2,1);
+r = sdpvar(1);
+
+UncertainConstraint = [A*z <= b];
+UncertaintyModel = [norm(z-zc,1) <= r];
+optimize([UncertainConstraint,UncertaintyModel,uncertain(z)],-r)
 ````
 
-## Derivatives and integrals
+This model will fail, since YALMIP cannot find the intended uncertainty desciption here, as there is no constraint which only involves uncertain variables. Adding \(r\) and \(z_c\) to the list of uncertain variables does not make sense either, as they are not uncertain, but simply not decided yet.
 
-In polynomial design, it is common to have constraints on derivatives in certain points. Since derivatives and integrals of a polynomial are linear operators in the coefficients, we can easily work with these. Hence, let us add the constraint that the polynomial is flat at the end-points, and has non-negative curvature in the middle (for higher order derivatives, simply apply the jacobian command repeatedly)
+The way to model this setup is to think of a normalized uncertainty, and then write the uncertainty in terms of this normalized uncertainty. In our case, we can see the uncertainty as a scaled and translated uncertainty.
 
 ````matlab
-dp = jacobian(p,x);
-dp2 = hessian(p,x);
-Model = [replace(p,x,x0)==y0,replace(p,x,x1)>=y1, replace(p,x,x2)==y2,
-         replace(dp,x,x0)==0,replace(dp,x,x2)==0,replace(dp2,x,x1)>=0];
-optimize(Model)
-yv = polyval(fliplr(value(a')),xv);
-hold on
-plot(xv,yv)
+w = sdpvar(2,1);
+zc = sdpvar(2,1);
+r = sdpvar(1);
+
+z = r*w + zc;
+UncertainConstraint = [A*z <= b];
+UncertaintyModel = [norm(w,1) <= 1];
+optimize([UncertainConstraint,UncertaintyModel,uncertain(z)],-r)
 ````
 
-Let us now add an objective. As an example, let us minimize the squared integral \\( \int_{-1}^1 p(\tau)^2d\tau\\). Note that this is a convex quadratic funtion in \\(a\\).
+This is a very simple model, and YALMIP derives the robust counterpart and computes the largest inscibed L1-ball.
 
 ````matlab
-Model = [replace(p,x,x0)==y0,replace(p,x,x1)>=y1, replace(p,x,x2)==y2,
-         replace(dp,x,x0)==0,replace(dp,x,x2)==0,replace(dp2,x,x1)>=0];
-optimize(Model, int(p^2,x,-1,1));
-yv = polyval(fliplr(value(a')),xv);
-hold on
-plot(xv,yv)
+plot(A*w <= b,w,'red');hold on;
+plot(norm(w - value(zc),1)<= value(r),w,'yellow')
 ````
 
-
-
-## Infinite-dimensional constraints
-
-A common situation is that we have infinite-dimensional constraints, i.e., in this context, constraints that should hold for an interval of \\(x\\), such as positivity or convexity defined by curvature constraints. There are essentially two ways to deal with this, optimistic relaxations based on gridding, and conservative relaxations based on [sum-of-squares](/tutorial/sumofsquaresprogramming/).
-
-Let us assume we want the polynomial to be non-negative on the interval we are studying. A simple gridding could be something along the lines of
-
-````matlab
-Model = [replace(p,x,x0)==y0,replace(p,x,x1)>=y1, replace(p,x,x2)==y2,
-         replace(dp,x,x0)==0,replace(dp,x,x2)==0,replace(dp2,x,x1)>=0];
-xgrid = linspace(-1,1,15);     
-for i = 1:length(xgrid)
- Model = [Model, replace(p,x,xgrid(i)) >= 0];
-end
-optimize(Model, int(p^2,x,-1,1));
-yv = polyval(fliplr(value(a')),xv);
-ygrid = polyval(fliplr(value(a')),xgrid);
-hold on
-plot(xv,yv);
-plot(xgrid,ygrid,'r+');
-grid on
-````
-
-Unfortunately, with a too coarse gridding, the non-negativity constraint will be violated outside the grid-points.
-
-Instead, we can apply sum-of-squares arguments. We want \\(p(x) \geq 0 \\) for all \\(x^2 \leq 1\\). In a sum-of-squares setup, we first rewrite this as finding a certificate polynomial \\(s(x)\geq 0\\) such that \\( p(x) \geq s(x)(1-x^2)\\). At this point, the positivity requirements are replaced with sum-of-squares decomposability.
-
-In the following code, we define a parameterised quadratic multiplier \\(s(x)\\) and solve the sum-of-squares program to find a polynomial \\(p(x)\\) which is guranteed to be locally non-negative
-
-````matlab
-Model = [replace(p,x,x0)==y0,replace(p,x,x1)>=y1, replace(p,x,x2)==y2,
-         replace(dp,x,x0)==0,replace(dp,x,x2)==0,replace(dp2,x,x1)>=0];
-[s,c] = polynomial(x,2);
-Model = [Model, sos(s), sos(p - s*(1-x^2))];
-solvesos(Model, int(p^2,x,-1,1),[],[a;c]);
-yv = polyval(fliplr(value(a')),xv);
-hold on
-plot(xv,yv,'--b');
-````
-
-What you will note though is that the solution is pretty far away from the solution obtained by gridding. The reason is that the method is conservative and the order on the multiplier is too low. By increasing the order, the optimal solution is recovered
-
-````matlab
-Model = [replace(p,x,x0)==y0,replace(p,x,x1)>=y1, replace(p,x,x2)==y2,
-         replace(dp,x,x0)==0,replace(dp,x,x2)==0,replace(dp2,x,x1)>=0];
-[s,c] = polynomial(x,6);
-Model = [Model, sos(s), sos(p - s*(1-x^2))];
-solvesos(Model, int(p^2,x,-1,1),[],[a;c]);
-yv = polyval(fliplr(value(a')),xv);
-hold on
-plot(xv,yv,'-b');
-````
+![L1 Chebychev ball]({{ site.url }}/images/L1cheby.png){: .center-image }
