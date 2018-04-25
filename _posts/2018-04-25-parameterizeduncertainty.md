@@ -16,7 +16,7 @@ The type of models YALMIP works with in [robust optimization](/tutorial/robustop
 $$
 \begin{aligned}
 \text{min}_x \text{max}_w f(x,w) & \\
-\text{subject to} & g(x,w) \leq 0 \forall \{w ~| ~h(w) \leq 0 \}
+\text{subject to}~ & g(x,w) \leq 0~ \forall~ \{w ~| ~h(w) \leq 0 \}
 \end{aligned}
 $$
 
@@ -28,8 +28,8 @@ As an example, let us consider the problem of computing the Chebychev L1-ball of
 
 $$
 \begin{aligned}
-\text{max}_r & \\
-\text{subject to} & Az \leq b \forall \{|z-z_c|_1 \leq r\}
+\text{max}_{z_c,r}~r & \\
+\text{subject to}~ & Az \leq b ~\forall~ \{|z-z_c|_1 \leq r\}
 \end{aligned}
 $$
 
