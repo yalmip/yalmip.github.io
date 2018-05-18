@@ -122,7 +122,7 @@ This can be simplified, and we can tell the sampler to draw several samples in o
 model = sample(OneHyperPlaneModel,10);
 ````
 
-Now that we can attach a distribution to a variable, and sample models, let us put this to use. In our first experiment, we will not reproduce the figure above, but create the set  \\(v^Tx \leq 1 ~\forall ~\left\lvert v \right\rvert \leq 1 \\). If you've done your homework, you should already now realize that will create a romb (asymptotically)
+Now that we can attach a distribution to a variable, and sample models, let us put this to use. In our first experiment, we will not reproduce the figure above, but create the set  \\(v^Tx \leq 1 ~\forall ~\left\lvert v \right\rvert \leq 1 \\). If you've done your homework, you should already now realize that will create a romb (asymptotically). Note that **rombApproximation** will be an [optimizer](/optimizer) object without any remaining parameters. To execute a solve, we simply give it an empty list of parametric values.
 
 ````matlab
 x = sdpvar(2,1);
@@ -153,10 +153,9 @@ plot(Model,x,'red');
 
 ![Approximated romb]({{ site.url }}/images/approximationromb2.png){: .center-image }
 
+The reason we started playing with an approximation of a romb, instead of the original ball approximation, is that there is no distribution in the **random** command which samples on the bounded unit ball. What we can do instead is to attach the variable with a general function handle which generates a sample of suitable character. 
 
-The reason we started playing with an approximation of a romb, instead of the original ball approximation, is that there is no distribution in the **random** command which samples on the bounded unit ball. What we can do instead is to attach the variable with a function handle which generates a sample of suitable character. 
-
-We could write a function which creates samples on the unit circle
+We create a function which creates samples on the unit circle
 
 ````matlab
 % mysampler.m
@@ -164,7 +163,7 @@ function z = mysampler(dim)
 z = randn(dim(1),1);z = z/norm(z);
 ````
 
-This sampler can now be assigned to a variable
+This sampler can now be assigned to an uncertain variable
 
 ````matlab
 Model = [v'*x <= 1, uncertain(v,@mysampler)];
