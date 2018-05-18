@@ -48,7 +48,7 @@ In the [plot](/command/plot) command, we use 200 rays to increase the likelyhood
 
 ![Approximated ball]({{ site.url }}/images/approximationball1.png){: .center-image }
 
-In a first step to use the [recent additions to YALMIP optimizer objects](/optimizerupdates), we use partially instantiated  [optimizer](/command/optimizer) objects. We want to generate a bunch of constraints with different \\(v\\) but the same \\(x\\). Hence, we create a model which is parameterized in \\(v\\), and then instantiates objects where \\(v\\) is fixed to different values, and concatenate these. Conveniently, [plot](/command/plot) is now overloaded on [optimizer](/command/optimizer) objects and simply plots the feasible set in any remaining decision- or parametric variables. Note that the uninstantiated model is bilinear in the variables, hence it is crucial to specify a solver which is applicable once the parameters have been fixed.
+In a first step to use the [recent additions to YALMIP optimizer objects](/optimizerupdates), we use partially instantiated  [optimizer](/command/optimizer) objects. We want to generate a bunch of constraints with different \\(v\\) but the same \\(x\\). Hence, we create a model which is parameterized in \\(v\\), and then instantiates objects where \\(v\\) is fixed to different values, and concatenate these. Conveniently, [plot](/command/plot) is now overloaded on [optimizer](/command/optimizer) objects and simply plots the feasible set in any remaining decision- or parametric variables. Note that the uninstantiated model is bilinear in the variables, hence it is crucial to specify a solver which is applicable once the parameters have been fixed. Also note the use of the flag **'nosolve'** which stops the optimizer object from solving the instantiated model
 
 ````matlab
 x = sdpvar(2,1);
@@ -74,7 +74,7 @@ The command [uncertain](/command/uncertain) has previously been used for declari
 
 In the distribution case (other cases below), we specify a distribution with associated parameters from the list of distributions available in the **random** command (**random** is part of the Statistics Toolbox). 
 
-The following specifies a model where all elements in **v** are a random variable with uniform distribution between \\(-1\\) and \\(1\\)
+The following specifies a model where all elements in **v** are random variables with uniform distribution between \\(-1\\) and \\(1\\)
 
 ````matlab
 Model = [v'*x <= 1, uncertain(v,'unif',[-1;-1],[1;1])];
