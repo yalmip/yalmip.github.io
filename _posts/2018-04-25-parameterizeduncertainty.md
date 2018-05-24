@@ -61,7 +61,7 @@ r = sdpvar(1);
 z = r*w + zc;
 UncertainConstraint = [A*z <= b];
 UncertaintyModel = [norm(w,1) <= 1];
-optimize([UncertainConstraint,UncertaintyModel,uncertain(z)],-r)
+optimize([UncertainConstraint,UncertaintyModel,uncertain(w)],-r)
 ````
 
 This is a very simple model, and YALMIP derives the robust counterpart and computes the largest inscribed L1-ball.
