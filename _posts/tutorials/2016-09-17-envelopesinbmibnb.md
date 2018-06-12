@@ -163,7 +163,7 @@ Finally, a comment on bounds. As a general rule of thumb, you have to bound all 
 
 ````matlab
 sdpvar x
-optimize([x + x^2 + x^4 == 0,x,sdpsettings('solver','bmibnb'));
+optimize([x + x^2 + x^4 == 0],x,sdpsettings('solver','bmibnb'));
 ````
 
 YALMIP easily derives the initial bound \\(-1 \leq x \leq 0\\) and then improves it further to \\(-0.6875 \leq x \leq 0\\) (the optimal solution is \\(x=-0.6823\\), so the lower bound is essentially tight), and can use this when creating the cuts for the envelope approximation. A bit silly plot, but you will get a line in \\(x\\) here showing the feasible interval.
