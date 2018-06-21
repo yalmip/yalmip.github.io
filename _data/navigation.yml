@@ -148,7 +148,7 @@ solvers:
       - title: "XPRESS"
         url: /solver/xpress
 examples:
-  - title: Control applications
+  - title: Control
     children:
       - title: "MPC - basics"
         url: /example/standardmpc
@@ -170,20 +170,14 @@ examples:
         url: /example/unitcommitment
       - title: "Decay rate estimation"
         url: /example/decayrate
-  - title: Other
-    children:
-      - title: "Bilevel programming"
-        url: /example/bilevelprogrammingalternatives
-      - title: "Experiment design"
-        url: /example/experimentdesign
-      - title: "Polytopic geometry"
-        url: /example/polytopicgeometry
+  - title: Finance
+    children:     
       - title: "Portfolio allocation"
-        url: /example/portfolio
-      - title: "Sudoku solver"
-        url: /example/sudoku
-      - title: "Sum-of-squares processing"
-        url: /example/moresos
+        url: /example/portfolio     
+  - title: Geometry
+    children:  
+      - title: "Polytopic geometry"
+        url: /example/polytopicgeometry      
   - title: Other
     children:
       - title: "Bilevel programming"
