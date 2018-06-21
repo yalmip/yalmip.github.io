@@ -149,7 +149,7 @@ solvers:
         url: /solver/xpress
 
 examples:
-  - title: Control applications
+  - title: Control
     children:
       - title: "MPC - basics"
         url: /example/standardmpc
