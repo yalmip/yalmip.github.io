@@ -170,27 +170,28 @@ examples:
       - title: "Unit commitment planning"
         url: /example/unitcommitment
       - title: "Decay rate estimation"
-        url: /example/decayrate
+        url: /example/decayrate        
   - title: Finance
     children:      
       - title: "Portfolio allocation"
-        url: /example/portfolio
+        url: /example/portfolio        
   - title: Geometry
     children:      
       - title: "Polytopic geometry"
-        url: /example/polytopicgeometry   
+        url: /example/polytopicgeometry         
 - title: Optimization concepts
     children:
       - title: "Bilevel programming"
         url: /example/bilevelprogrammingalternatives     
       - title: "Sum-of-squares processing"
-        url: /example/moresos                
+        url: /example/moresos          
 - title: Other
     children:     
       - title: "Experiment design"
         url: /example/experimentdesign           
       - title: "Sudoku solver"
-        url: /example/sudoku       
+        url: /example/sudoku 
+        
 tutorials:
   - title: Introduction
     children:
