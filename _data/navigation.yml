@@ -184,6 +184,20 @@ examples:
         url: /example/sudoku
       - title: "Sum-of-squares processing"
         url: /example/moresos
+  - title: Other
+    children:
+      - title: "Bilevel programming"
+        url: /example/bilevelprogrammingalternatives
+      - title: "Experiment design"
+        url: /example/experimentdesign
+      - title: "Polytopic geometry"
+        url: /example/polytopicgeometry
+      - title: "Portfolio allocation"
+        url: /example/portfolio
+      - title: "Sudoku solver"
+        url: /example/sudoku
+      - title: "Sum-of-squares processing"
+        url: /example/moresos        
 tutorials:
   - title: Introduction
     children:
