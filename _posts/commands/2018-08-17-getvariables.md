@@ -16,13 +16,7 @@ sidebar:
 ### Syntax
 
 ````matlab
-yalmip('clear')
-x = sdpvar(1);
-getvariables(x)
-
-y = sdpvar(2,3);
-getvariables(y)
-
+k = getvariables(x)
 ````
 
 ### Examples
