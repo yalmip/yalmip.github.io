@@ -37,7 +37,7 @@ ans =
     2 3 4 5 6 7 
 ````
 
-Also nonlinear terms have internal indicies (and assosciated structure to explain how the term relates to other linear variables)
+Also nonlinear terms have internal indicies (and assosciated data to explain how the term relates to other linear variables)
 
 ````matlab
 z = x^2;
