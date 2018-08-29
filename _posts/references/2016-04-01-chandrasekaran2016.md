@@ -1,0 +1,24 @@
+---
+title: "Relative entropy optimization and its applications"
+author: "Venkat Chandrasekaran and Parikshit Shah"
+where: "Mathematical Programming Series A"
+tags: [Exponential programming]
+date: '2016-04-01'
+layout: single
+category: reference
+author_profile: false
+excerpt: 
+comments: false
+sidebar:
+  nav: 
+---
+````
+@Article{chandrasekaran2016,
+author="Chandrasekaran, Venkat and and Shah, Parikshit",
+title="Relative entropy optimization and its applications",
+journal="Mathematical Programming Series A",
+year="2016",
+volume="161",
+pages="1--32",
+}
+````
