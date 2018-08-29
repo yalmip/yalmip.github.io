@@ -10,7 +10,7 @@ sidebar:
   nav: "tutorials"
 ---
 
-The exponential cone is defined as the set \\(  (ye^{x/y}\leq z, y>0) \\), see, e.g. [Chandrasekara and Shah 2015]. YALMIP is capable of detecting and calling specialized solvers for a variety of exponential cone representable function. 
+The exponential cone is defined as the set \\(  (ye^{x/y}\leq z, y>0) \\), see, e.g. [Chandrasekara and Shah 2016](/reference/chandrasekaran2016) for a primer on exponential cone programming and the equivalent framework of relative entropy programming. YALMIP is capable of detecting and calling specialized solvers for a variety of exponential cone representable function. 
 
 By simple variable transformations, the following functions are automatically detected as exponential cone representable and suitably rewritten before calling an exponential cone capable solver
 
