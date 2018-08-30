@@ -3,7 +3,7 @@ title: "Exponential cone programming"
 category: tutorial
 author_profile: false
 level: 4
-tags: [Exponential cone programming, Exponential and logarithmic functions]
+tags: [Exponential cone programming, relative entropy programming, Exponential and logarithmic functions]
 excerpt: "Convex conic optimization over exponentials and logarithms"
 layout: single
 sidebar:
@@ -22,19 +22,29 @@ Note that YALMIP does not necessarily detect exponential cones when written in t
 
 The code below requires [SCS](/solver/scs) or [ECOS](/solver/ecos) to be relevant. If none of those solvers are installed, YALMIP will work with the nonlinear functions as written and treat the problem as a general nonlinear program.
 
-
 ### Logistic regression
 
-As an example, we solve the logistic regression problem. The problem here is to find a classifier $\\( \operatorname{sign}(a^Tx + b)\\) for a given dataset \\( x_i\\) with associated labels \\( y_i \in \{-1,1\} \\). In other words, a classifier similiar to the simple separating hyperplane discussed in the [linear programming tutorial](/tutorials/linearprogramming). 
+As an example, we solve the logistic regression problem. The problem here is to find a classifier \\( \operatorname{sign}(a^Tx + b)\\) for a given dataset \\( x_i\\) with associated labels \\( y_i \in \left{-1,1\right} \\). In other words, a classifier similiar to the simple separating hyperplane discussed in the [linear programming tutorial](/tutorials/linearprogramming). 
 
-A convex relaxation of the problem can be solved by minimizing \\( \sum \log(1 + e^{-y_i(a^Tx_i + b}) \\). We note that this can be written as sum of [logsumexp](/command/logsumexp) operators by noting that \\( \log(1 + e^{z}) \\) also can be written as  \\( \log(e^{0} + e^{z}) \\). In YALMIP, you do not have to think further, but use the [logsumexp](/command/logsumexp) operator directly. However, let us show how this boils down to a simple exponential cone program.
+A convex relaxation of the problem can be solved by minimizing \\( \sum \log(1 + e^{-y_i(a^Tx_i + b)} \\). This can be written as sum of [logsumexp](/command/logsumexp) operators by noting that \\( \log(1 + e^{z}) \\) also can be written as  \\( \log(e^{0} + e^{z}) \\). In YALMIP, you do not have to think further, but can use the [logsumexp](/command/logsumexp) operator directly to solve our problem. However, let us show how this boils down to a simple exponential cone program.
 
-To begin with, the problem can be written as minimizing \\( \sum t_i \\) subject to \\( \log (e^0 + e^{-y_i(a^Tx_i + b}) \leq t_i \\). The constraint is rewritten by exponentiating both sides to  \\(e^0 + e^{-y_i(a^Tx_i + b}) \leq e^t_i \\), which is equivalent to  \\(e^{-t_i} + e^{-y_i(a^Tx_i + b}-t_i) \leq 1 \\), which can be further normalized to \\(z_i + u_i \leq 1, e^{-t_i}\leq z_i, e^{-y_i(a^Tx_i + b}-t_i) \leq u_i\\), which thus lands us in an exponential cone program.
+To begin with, the problem can be written as minimizing \\( \sum t_i \\) subject to \\( \log (e^0 + e^{-y_i(a^Tx_i + b}) \leq t_i \\). The constraint is first rewritten by exponentiating both sides to  \\(e^0 + e^{-y_i(a^Tx_i + b)} \leq e^t_i \\), which is equivalent to  \\(e^{-t_i} + e^{-y_i(a^Tx_i + b)-t_i} \leq 1 \\), which can be further normalized to \\(z_i + u_i \leq 1, e^{-t_i}\leq z_i, e^{-y_i(a^Tx_i + b}-t_i) \leq u_i\\), which thus lands us in an exponential cone program.
 
+Generate data as in the [linear programming tutorial](/tutorials/linearprogramming) for a classification problem. 
 
 ````matlab
 %
 ````
+
+Solve the problem using the built-in  [logsumexp](/command/logsumexp) which automattically will write the problem as an exponential cone program if an exponential cone program solver is specified.
+
+````matlab
+%
+````
+
+Alternatively, set up the low-level model manually
+
+
 
 
 ### Comments
