@@ -2,7 +2,7 @@
 title: "Relative entropy optimization and its applications"
 author: "Venkat Chandrasekaran and Parikshit Shah"
 where: "Mathematical Programming Series A"
-tags: [Exponential programming]
+tags: [Exponential cone programming]
 date: '2016-04-01'
 layout: single
 category: reference
