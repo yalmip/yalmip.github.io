@@ -21,4 +21,4 @@ y = logsumexp(x)
 
 ### Implementation
 
-The operator is implemented as [callback operator](/tutorial/nonlinearoperatorscallback), except when [SCS](/solver/scs) or [ECOS](/solver/ecos) are used and the exponential cone description is exploited in a [graph representation](/tutorial/nonlinearoperatorsgraphs).
+The operator is implemented as [callback operator](/tutorial/nonlinearoperatorscallback), except when [SCS](/solver/scs) or [ECOS](/solver/ecos) are used and the [exponential cone description](/tutorials/exponentialcone) is exploited in a [graph representation](/tutorial/nonlinearoperatorsgraphs).
