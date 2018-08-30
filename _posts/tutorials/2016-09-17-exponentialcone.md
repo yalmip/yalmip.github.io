@@ -33,18 +33,55 @@ To begin with, the problem can be written as minimizing \\( \sum t_i \\) subject
 Generate data as in the [linear programming tutorial](/tutorials/linearprogramming) for a classification problem. 
 
 ````matlab
-%
+
 ````
 
-Solve the problem using the built-in  [logsumexp](/command/logsumexp) operator which automatically models the problem as an exponential cone program if an exponential cone program solver is specified. Note that [logsumexp](/command/logsumexp) applied to a matrix will return a vector with  [logsumexp](/command/logsumexp) applied to every row. 
+Solve the problem using the built-in  [logsumexp](/command/logsumexp) operator which automatically models the problem as an exponential cone program if an exponential cone program solver is specified. Note that [logsumexp](/command/logsumexp) applied to a matrix will return a vector with  [logsumexp](/command/logsumexp) applied to every row. If you have an exponential cone programming solver installed, it will automatically be selected.
 
 ````matlab
-%
+N = 50;
+blues = randn(2,N/2);  
+reds = randn(2,N/2)+2;
+clf
+plot(reds(1,:),reds(2,:),'r*');hold on
+plot(blues(1,:),blues(2,:),'b*')
+
+% blue = 1, red = -1
+x = [blues reds];
+y = [repmat(1,1,length(blues)) repmat(-1,1,length(reds))];
+
+a = sdpvar(2,1);
+b = sdpvar(1);
+J = sum(logsumexp([(-y.*(a'*x + b))' zeros(length(y),1)]'))
+optimize([],J);
 ````
 
-Alternatively, set up the low-level model manually
+We study the result by marking the data points with a ring colored according to the computed classifier, and count the number of mis-classified training points
 
+````matlab
+class = sign(value(a'*x+b));
+classB = find(class == 1);
+classR = find(class == -1);
+plot(x(1,classB),x(2,classB),'bo')
+plot(x(1,classG),x(2,classG),'ro')
+nnz(sign(value(a'*x+b))-y)
+````
 
+Of course, nothing forces us to use linear separators
+
+````matlab
+X = [x;x(1,:).^2;x(2,:).^2;x(1,:).*x(2,:)]
+a = sdpvar(size(X,1),1);
+b = sdpvar(1);
+J = sum(logsumexp([(-y.*(a'*X + b))' zeros(length(y),1)]'))
+optimize([],J);
+class = sign(value(a'*X+b));
+classB = find(class == 1);
+classR = find(class == -1);
+plot(x(1,classB),x(2,classB),'bo')
+plot(x(1,classG),x(2,classG),'ro')
+nnz(sign(value(a'*X+b))-y)
+````
 
 
 ### Comments
