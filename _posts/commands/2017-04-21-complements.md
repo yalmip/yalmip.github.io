@@ -4,7 +4,7 @@ category: command
 author_profile: false
 excerpt: ""
 title: complements
-tags: [Logic programming]
+tags: [Complementarity]
 comments: true
 date: '2017-04-21'
 sidebar:
