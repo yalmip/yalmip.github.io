@@ -375,4 +375,4 @@ sdpvar t
 optimize([Model,Cost <= t],t)
 ````
 
-At this point, one should note that this is a very special case of [robust model predictive control](/example/robustmpc))
+At this point, one should note that this is a very special case of [robust model predictive control](/example/robustmpc)
