@@ -57,7 +57,7 @@ sdpvar a p
 b = p-a
 Model = [0 <= a <= 200, 0 <= b <= 120, 100 <= p <= 200, uncertain(p)]
 ````
-In this model there is only 1 decision variable (**a**). Bobs load is simply an assingment from fixed decisions and uncertainties.
+In this model there is only 1 decision variable (**a**). Bobs load is simply an assignment from fixed decisions and uncertainties.
 
 Another version could be that the manager meant that Alice and Bob actually should pick up the phone and ask what the price is, and then act accordingly. Once again, that simply means we want to define a fixed map from the price to the loads, and we no longer have any decision variables at all. One such decision rule, or policy, is that they always use \(a = \frac{p}{2}\) and \(b = \frac{p}{2}\). In other words, our model would be
 
