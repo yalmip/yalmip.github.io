@@ -50,7 +50,7 @@ sdpvar a b p
 Model = [0 <= a <= 200, 0 <= b <= 120, b == p -a, 100 <= p <= 200, uncertain(p)]
 ````
 
-The problem with this model is that we are still saying that Bobs load is a fixed decision (since it is its own decision variable), while we really only want it to be a function of Alice load and the market price. We thus do not want to model an equality between two independent decision variables and a price, but simply define the linear map that arise due to the causal (time-dependent order) structure in the problem. The correct model would thus be
+The problem with this model is that we are still saying that Bobs load is a fixed decision (since it is its own decision variable), while we really only want it to be a function of Alice load and the market price. We thus do not want to model an equality between two independent decision variables and an uncertain price, but simply define the linear map that arise due to the causal (time-dependent order) structure in the problem. The correct model would thus be
 
 ````matlab
 sdpvar a p
