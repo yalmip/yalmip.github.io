@@ -98,12 +98,10 @@ So how can this work, since we've just learned that you cannot have uncertaintie
 
 In this second example, we address precisely the same mistakes and correct them in the same way. 
 
-Alice manages a warehouse selling goods. The stock of goods available in the warehouse on the morning of day \\(i\\) is \\(w_i\\). Everyday, she sells \\(s_i\\) items but this quantity is fluctuating so all we know a-priori is that \\(200 \leq s_i \leq 1000\\). She also receives delivery of supplies every day. The delivery is not instant but arrives in the morning two days after the order was made (order in the evening of day \\(i\\) arrives in morning of day \\(i+2\\)). We call the order \\(u_i\\). We cannot remove or ship back inventory, i.e. $\\(u_i \geq 0\\). Some customers are not happy with the product, so 10% of all sold items are returned two days after it was sold. Collecting all information, we have the dynamical system 
-
+Alice manages a warehouse selling goods. The stock of goods available in the warehouse on the morning of day \\(i\\) is \\(w_i\\). Everyday, she sells \\(s_i\\) items but this quantity is fluctuating so all we know a-priori is that \\(200 \leq s_i \leq 1000\\). She also receives delivery of supplies every day. The delivery is not instant but arrives in the morning two days after the order was made (order in the evening of day \\(i\\) arrives in morning of day \\(i+2\\)). We call the order \\(u_i\\). We cannot remove or ship back inventory, i.e. \\(u_i \geq 0\\). Some customers are not happy with the product, so 10% of all sold items are returned two days after it was sold. Collecting all information, we have the dynamical system 
 $$
-w_i = w_{i-1} - s_{i-1} + u_{i-2} + 0.1s{i-2}
+w_i = w_{i-1} - s_{i-1} + u_{i-2} + 0.1s_{i-2}
 $$
-
 The warehouse can only stock 8000 items, and we must always have enough in stock to be able to sell to all prospective customers. At the same time, keeping a large stock is a waste of capital resources, so it should be kept as small as possible. To model that, our goal it to minimize the predicted sum of the stock over the coming days.
 {: .notice--success}
 
