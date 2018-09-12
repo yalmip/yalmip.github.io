@@ -73,7 +73,7 @@ b = p/2
 Model = [0 <= a <= 200, 0 <= b <= 120, 100 <= p <= 200, uncertain(p)]
 ````
 
-This model is a bit too simple (we have no decision variables!) but it illustrates the idea of a policy compared to a decision. An improvement which could be useful in a more complex scenario is to parameterize the policy. The manager thinks Alice and Bob are too dumb to load cleverly once they know the price (Alice truck is bigger so perhaps they should load more Sheep in her trcuk). Hence, he wants to create a function that they can use to select the number of cheap to load. One such policy is a linear decision rule \\(a = t_0 + t_1p, b = s_0 + s_1p\\). As long as \\(t_0+s_0 = 0\\) and \\(t_1+s_1 = 1\\), they will bring the correct amount. Here, we thus decide upon the decision rule parameters before knowing the price of the horse, but once the price is known, we have a method to distribute the load.
+This model is a bit too simple (we have no decision variables!) but it illustrates the idea of a policy compared to a decision. An improvement which could be useful in a more complex scenario is to parameterize the policy. The manager thinks Alice and Bob are too dumb to load cleverly once they know the price (Alice truck is bigger so perhaps they should load more sheep in her truck). Hence, he wants to create a function that they can use to select the number of cheap to load. One such policy is a linear decision rule \\(a = t_0 + t_1p, b = s_0 + s_1p\\). As long as \\(t_0+s_0 = 0\\) and \\(t_1+s_1 = 1\\), they will bring the correct amount. Here, we thus decide upon the decision rule parameters before knowing the price of the horse, but once the price is known, we have a method to distribute the load.
 
 ````matlab
 sdpvar p t0 t1 s0 s1
