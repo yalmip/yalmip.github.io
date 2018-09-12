@@ -57,9 +57,14 @@ sdpvar a p
 b = p-a
 Model = [0 <= a <= 200, 0 <= b <= 120, 100 <= p <= 200, uncertain(p)]
 ````
-In this model there is only 1 decision variable (**a**). Bobs load is simply an assignment from fixed decisions and uncertainties.
+In this model there is only 1 decision variable (**a**). Bobs load is simply an assignment from fixed decisions and uncertainties. We've introduced an intermediate placeholder for our convenience, and what YALMIP sees here is really
 
-Another version could be that the manager meant that Alice and Bob actually should pick up the phone and ask what the price is, and then act accordingly. Once again, that simply means we want to define a fixed map from the price to the loads, and we no longer have any decision variables at all. One such decision rule, or policy, is that they always use \(a = \frac{p}{2}\) and \(b = \frac{p}{2}\). In other words, our model would be
+````matlab
+sdpvar a p
+Model = [0 <= a <= 200, 0 <=  p-a <= 120, 100 <= p <= 200, uncertain(p)]
+````
+
+Another version could be that the manager meant that Alice and Bob actually should pick up the phone and ask what the price is, and then act accordingly. Once again, that simply means we want to define a fixed map from the price to the loads, and we no longer have any decision variables at all. One such decision rule, or policy, is that they always use \\(a = \frac{p}{2}\\) and \\(b = \frac{p}{2}\\). In other words, our model would be
 
 ````matlab
 sdpvar p
@@ -68,7 +73,7 @@ b = p/2
 Model = [0 <= a <= 200, 0 <= b <= 120, 100 <= p <= 200, uncertain(p)]
 ````
 
-This model is a bit too simple (we have no decision variables!) but it illustrates the idea of a policy compared to a decision. An improvement which could be useful in a more complex scenario is to parameterize the policy. The manager thinks Alice and Bob are too dumb to load cleverly once they know the price (Alice truck is bigger so perhaps they should load more Sheep in her trcuk). Hence, he wants to create a function that they can use to select the number of cheap to load. One such policy is a linear decision rule \(a = t_0 + t_1p, b = s_0 + s_1p\). As long as \(t_0+s_0 = 0\) and \(t_1+s_1 = 1\), they will bring the correct amount. Here, we thus decide upon the decision rule parameters before knowing the price of the horse, but once the price is known, we have a method to distribute the load.
+This model is a bit too simple (we have no decision variables!) but it illustrates the idea of a policy compared to a decision. An improvement which could be useful in a more complex scenario is to parameterize the policy. The manager thinks Alice and Bob are too dumb to load cleverly once they know the price (Alice truck is bigger so perhaps they should load more Sheep in her trcuk). Hence, he wants to create a function that they can use to select the number of cheap to load. One such policy is a linear decision rule \\(a = t_0 + t_1p, b = s_0 + s_1p\\). As long as \\(t_0+s_0 = 0\\) and \\(t_1+s_1 = 1\\), they will bring the correct amount. Here, we thus decide upon the decision rule parameters before knowing the price of the horse, but once the price is known, we have a method to distribute the load.
 
 ````matlab
 sdpvar p t0 t1 s0 s1
@@ -86,9 +91,9 @@ b = s0 + s1*p;
 Model = [0 <= a <= 200, 0 <= b <= 120, a + b == p, 100 <= p <= 200, uncertain(p)]
 ````
 
-So how can this work, since we've just learned that you cannot have uncertainties in equalities? When YALMIP finds the equality involving the uncertainty, it will derive the conditions required for the equality to be reasonable, i.e., it will derive the conditions necessary for the decision variables in order to completely eliminate any uncertainty in the equality. In this case, it will see the equality \(t_0 + s_0 + (t_1 + s_1)p = p\), and thus the only was this can be feasible for uncertain \(p\) is that \(t_1+s_1=0\), and the remaining term in the equality then says \(t_0 + s_0 = 0\).
+So how can this work, since we've just learned that you cannot have uncertainties in equalities? When YALMIP finds the equality involving the uncertainty, it will derive the conditions required for the equality to be reasonable, i.e., it will derive the conditions necessary for the decision variables in order to completely eliminate any uncertainty in the equality. In this case, it will see the equality \\(t_0 + s_0 + (t_1 + s_1)p = p\\), and thus the only was this can be feasible for uncertain \\(p\\) is that \\(t_1+s_1=0\\), and the remaining term in the equality then says \\(t_0 + s_0 = 0\\).
 
 
-
+### A ware-house logistics problem
 
 
