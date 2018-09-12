@@ -220,7 +220,7 @@ ans =
    19660
 ````
 
-This simple rule leads to a massively improved worst-case capital cost. Can we improve it by not just restocking exactly the sold items plus or minus , but optimize over this law? Let us try a simple generalizations
+This simple rule leads to a massively improved worst-case capital cost. Can we improve it by not just restocking exactly the sold items plus or minus some fixed term, but optimize over this policy? Let us try a simple generalizations with a linear decision rule using all past sales.
 
 ````matlab
 sdpvar s1 s2 s3 s4 s5 s6 s7 s8 s9 s10
