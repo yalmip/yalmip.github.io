@@ -91,7 +91,7 @@ b = s0 + s1*p;
 Model = [0 <= a <= 200, 0 <= b <= 120, a + b == p, 100 <= p <= 200, uncertain(p)]
 ````
 
-So how can this work, since we've just learned that you cannot have uncertainties in equalities? When YALMIP finds the equality involving the uncertainty, it will derive the conditions required for the equality to be reasonable, i.e., it will derive the conditions necessary for the decision variables in order to completely eliminate any uncertainty in the equality. In this case, it will see the equality \\(t_0 + s_0 + (t_1 + s_1)p = p\\), and thus the only was this can be feasible for uncertain \\(p\\) is that \\(t_1+s_1=1\\), and the remaining term in the equality then says \\(t_0 + s_0 = 0\\).
+So how can this work, since we've just learned that you cannot have uncertainties in equalities? When YALMIP finds the equality involving the uncertainty, it will derive the conditions required for the equality to be reasonable, i.e., it will derive the conditions necessary for the decision variables in order to completely eliminate any uncertainty in the equality. In this case, it will see the equality \\(t_0 + s_0 + (t_1 + s_1)p = p\\), and the only way this can be feasible for uncertain \\(p\\) is that \\(t_1+s_1=1\\), and the remaining term in the equality then says \\(t_0 + s_0 = 0\\).
 
 
 ### A warehouse logistics problem
