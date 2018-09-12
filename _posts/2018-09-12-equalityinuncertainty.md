@@ -94,6 +94,40 @@ Model = [0 <= a <= 200, 0 <= b <= 120, a + b == p, 100 <= p <= 200, uncertain(p)
 So how can this work, since we've just learned that you cannot have uncertainties in equalities? When YALMIP finds the equality involving the uncertainty, it will derive the conditions required for the equality to be reasonable, i.e., it will derive the conditions necessary for the decision variables in order to completely eliminate any uncertainty in the equality. In this case, it will see the equality \\(t_0 + s_0 + (t_1 + s_1)p = p\\), and thus the only was this can be feasible for uncertain \\(p\\) is that \\(t_1+s_1=0\\), and the remaining term in the equality then says \\(t_0 + s_0 = 0\\).
 
 
-### A ware-house logistics problem
+### A warehouse logistics problem
+
+In this second example, we address precisely the same mistakes and correct them in the same way. 
+
+Alice manages a warehouse selling goods. The stock of goods available in the warehouse on the morning of day \\(i\\) is \\(w_i\\). Everyday, we sell \\(s_i\\) items but this quantity is fluctuating so all we know a-priori is that \\(200 \leq s_i \leq 1000\\). We also get delivery of supplies everyday. The delivery is not instant but arrives in the morning two days after we made the order (order made in the evening of day \\(i\\) arrives in morning of day \\(i+2\\)). We call the order made \\(u_i\\). Some customers are not happy with the product, so 10% of all sold items are returned two days after it was sold. Collecting all information, we have the dynamical system 
+
+$$
+w_i = w_{i-1} - s_{i-1} + u_{i-2} + 0.1s{i-2}
+$$
+
+The warehouse can only stock 2000 items, and we must always have enough in stock to be able to sell to all prospective customers. At the same time, keeping a large stock is a waste of capital resources, so it should be kept as small as possible. To model that, our goal it to minimize the predicted sum of the stock over the coming days.
+{: .notice--success}
+
+Let us start by setting up a typical incorrect model. We assume we are making plans for our restocking for 10 days ahead, and we assume we start from scratch in a situation where we have 1200 items in the inventory (typically you would have some history of sales and restocking orders that you would have to include). To make it even more realistic, we write the code in an ugly non-vectorized fashion, and we will also write the dynamical update in a way that hides the simple causal structure.
+
+````matlab
+sdpvar w1 w2 w3 w4 w5 w6 w7 w8 w9 w10
+sdpvar u1 u2 u3 u4 u5 u6 u7 u8 u9 u10
+sdpvar s1 s2 s3 s4 s5 s6 s7 s8 s9 s10
+sdpvar cost
+
+Model = [uncertain([s1 s2 s3 s4 s5 s6 s7 s8 s9]),
+         200 <= [s1 s2 s3 s4 s5 s6 s7 s8 s9] <= 1000,
+         w1 == 1200
+         w2 + s1 == w1
+         w3 + s2 == w2 + u1 + 0.1*s1
+         w4 + s3 == w3 + u2 + 0.1*s2
+         w5 + s4 == w4 + u3 + 0.1*s3
+         w6 + s5 == w5 + u4 + 0.1*s4
+         w7 + s6 == w6 + u5 + 0.1*s5
+         w8 + s7 == w7 + u6 + 0.1*s6
+         w9 + s8 == w8 + u7 + 0.1*s7
+        w10 + s9 == w9 + u8 + 0.1*s8]
+Cost = w1+w2+w3+w4+w5+w6+w7+w8+w9+w10        
+````
 
 
