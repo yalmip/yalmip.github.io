@@ -5,7 +5,7 @@ excerpt: "= ≠ =="
 title: "Equalities with uncertainty"
 tags: [Robust optimization, Uncertainty]
 comments: true
-published: false
+published: true
 date: 2018-09-11
 ---
 
