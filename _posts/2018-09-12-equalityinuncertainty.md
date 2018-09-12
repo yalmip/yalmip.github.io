@@ -296,10 +296,10 @@ optimize([Model,Cost <= t],t)
 value(t)
 ans =
 
-   19480
+   19660
 ````
 
-Nope. Taking todays sale into account is sufficient in this scenario. At this point though, it shoulds be evident that one should vectorize the code. We do that, but go back to our previous simple policy.
+Nope. Taking todays sale into account is sufficient in this scenario. At this point though, it shoulds be evident that one should vectorize the code. We do that, but go back to our simple policy.
 
 ````matlab
 s = sdpvar(1,10);
