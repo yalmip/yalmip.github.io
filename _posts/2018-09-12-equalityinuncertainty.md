@@ -1,7 +1,7 @@
 ---
 layout: single
 permalink: /equalityinuncertainty
-excerpt: "= ≠ =="
+excerpt: "= ≠ ==. Horse trading and warehouse logistics"
 title: "Equalities with uncertainty"
 tags: [Robust optimization, Uncertainty]
 comments: true
