@@ -39,7 +39,7 @@ sdpvar a b p
 Model = [0 <= a <= 200, 0 <= b <= 120, a + b == p, 100 <= p <= 200, uncertain(p)]
 ````
 
-It should be pretty obvious that this is a nonsense problem. It is completely impossible to select the fixed decisions **a** and **b** at the farm, go the market and figure out the price, and magically have the correct number. Indeed, if you try to solve the optimization problem, it will be infeasible.
+It should be pretty obvious that this is a nonsense problem. It is completely impossible to select the fixed decisions **a** and **b** at the farm, go the market and figure out the price, and magically have the correct number of sheep in their trucks. Indeed, if you try to solve the optimization problem, it will be infeasible.
 
 Let us untangle what has gone wrong. The first issue is that the setup simply doesn't make sense in real-life, which translates to the incorrect use of an equality ==. So what could the manager have meant that they should do, and how does that translate to the model.
 
