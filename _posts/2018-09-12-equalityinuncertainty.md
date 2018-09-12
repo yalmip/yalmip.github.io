@@ -331,8 +331,7 @@ sdpvar t
 optimize([Model,Cost <= t],t)
 ````
 
-We can take this one step further and see the dynamics as a standard discrete-time dynamical system. Let us denote the state \\(x_i\\), and this state contains \\(w_i, s_{i-1}\\) and \\(u_{i-1}\\). With this definition, we have
-
+We can take this one step further and see the dynamics as a standard discrete-time dynamical system. Let us denote the state \\(x_i\\), and this state contains \\(w_i, s_{i-1}\\) and \\(u_{i-1}\\). We have
 $$
 x_{i+1} = Ax_i + Bu_i + Gs_i = \left(\begin{matrix}1 & 0.1 & 1\\
                          0 &   0 & 0\\
