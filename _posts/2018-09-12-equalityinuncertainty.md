@@ -11,13 +11,13 @@ date: 2018-09-11
 
 If I had a million dollars for every time I've had to explain this, I would definitely not write this post. 
 
-Trying to develop [robust optimization](/tutorial/robustoptimization) models with [uncertainty](/command/uncertain/) appearing in equality constraints is a common mistake, and the reason people do this mistake is due to
+Trying to develop [robust optimization](/tutorial/robustoptimization) models with [uncertainty](/command/uncertain/) appearing in equality constraints is a common mistake, and the reason people do this mistake is almost always due to failure to
 
- - failure to understand the difference between a **decision variable** and an **expression involving decision variables**
+ - understand the difference between a **decision variable** and an **expression involving decision variables**
  
- - failure to understand the difference between **an equality constraint ==** and an **asignment =**
+ - understand the difference between **an equality constraint ==** and an **asignment =**
   
- - failure to see the difference between a **decison variable** and a **policy or decision rule**.
+ - underastand the difference between a **decison variable** and a **policy or decision rule**.
 
 ### Buying a horse the old way
 
