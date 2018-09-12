@@ -19,6 +19,8 @@ Trying to develop [robust optimization](/tutorial/robustoptimization) models wit
   
  - failure to see the difference between a **decison variable** and a **policy or decision rule**.
 
+! Buying a horse the old way
+
 To understand the problem, we work with the following problem.
 
 Alice and Bob are going to the market to buy a horse. They will pay the horse by trading with sheep. They do not know the current market price **p** of a horse, all they know is that it cost somewhere between 100 and 200 sheep. Alice and Bob will bring the sheep in their trucks. Alice will bring **a** sheep in her truck, while  Bob will bring **b** sheep. They have been told by their manager that they can under no circumstances bring any sheep back to the farm, and they can leave no sheep at the market but all sheep must be used to pay for the horse, and they must pay the market price and nothing else. Alice truck can pack 200 sheep while Bob only can carry 120 sheep.
