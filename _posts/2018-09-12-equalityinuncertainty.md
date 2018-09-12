@@ -57,7 +57,7 @@ sdpvar a p
 b = p-a
 Model = [0 <= a <= 200, 0 <= b <= 120, 100 <= p <= 200, uncertain(p)]
 ````
-In this model there is only 1 decision variable (**a**). Bobs load is simply an assignment from fixed decisions and uncertainties. We've introduced an intermediate placeholder for our convenience, and what YALMIP sees here is really
+In this model there is only 1 decision variable (**a**). Bobs load is simply an assignment from fixed decisions and uncertainties. We've introduced an intermediate placeholder for our convenience, but what YALMIP sees here is really
 
 ````matlab
 sdpvar a p
