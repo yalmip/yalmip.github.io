@@ -130,7 +130,7 @@ Model = [uncertain([s1 s2 s3 s4 s5 s6 s7 s8 s9]),
         0 <= [u1 u2 u3 u4 u5 u6 u7 u8]]
 Cost = w1+w2+w3+w4+w5+w6+w7+w8+w9+w10        
 ````
-Let us untangle all the mistakes. First, we have written the dynamical update of the stock in a way that hides the simple update law. It looks like all variables are coupled by a large number of equality constraints, but that's not true. The stock is completely and uniquely goverened by a linear time-invariant dynamical system with states \\(w_i\\) and external inputs \\(u_i\\) and \\(s_i\\). Secondly, the future stock is not a decision variable, it is an expression built from the initial stock, the sequence of sales, and the sequence of restocking order (which is the only decision variable). Hence, a first step would be write down the dynamics using the corresponding assignments
+Let us untangle all the mistakes. First, we have written the dynamical update of the stock in a way that hides the simple update law. It looks like all variables are coupled by a large number of equality constraints, but that's not true. The stock is completely and uniquely goverened by a linear time-invariant dynamical system with states \\(w_i\\) and external inputs \\(u_i\\) and \\(s_i\\). Secondly, the future stock is not a decision variable, it is an expression built from the initial stock, the sequence of sales, and the sequence of restocking order (which is the only decision variable). Hence, a first step would be create the predicted future states using the corresponding assignments
 
 ````matlab
 sdpvar s1 s2 s3 s4 s5 s6 s7 s8 s9 s10
