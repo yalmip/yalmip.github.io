@@ -29,7 +29,7 @@ Alice and Bob are going to the market to buy a horse. They will pay the horse by
 To figure out how many sheep they should bring in their trucks when going to the market, they must thus solve the uncertain feasibility problem
 
 $$
-0 \leq a 200, 0 \leq b \leq 120,  a + b = p~\forall~100 \leq p \leq 200
+0 \leq a \leq  200, 0 \leq b \leq 120,  a + b = p~\forall~100 \leq p \leq 200
 $$
 
 The corresponding YALMIP model would be
