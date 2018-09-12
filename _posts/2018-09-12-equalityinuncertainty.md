@@ -15,7 +15,7 @@ Trying to develop [robust optimization](/tutorial/robustoptimization) models wit
 
  - understand the difference between a **decision variable** and an **expression involving decision variables**
  
- - understand the difference between **an equality constraint ==** and an **asignment =**
+ - understand the difference between **an equality constraint ==** and an **assignment =**
   
  - underastand the difference between a **decison variable** and a **policy or decision rule**.
 
