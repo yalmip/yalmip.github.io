@@ -29,14 +29,14 @@ Alice and Bob are going to the market to buy a horse. They will pay the horse by
 To figure out how many sheep they should bring in their trucks when going to the market, they must thus solve the uncertain feasibility problem
 
 $$
-0 \leq a 150, 0 \leq b \leq 75, 0 \leq c \leq  a + b = p~\forall~100 \leq p \leq 200
+0 \leq a 200, 0 \leq b \leq 120,  a + b = p~\forall~100 \leq p \leq 200
 $$
 
 The corresponding YALMIP model would be
 
 ````matlab
 sdpvar a b p
-Model = [0 <= a <= 150, 0 <= b <= 75, a + b == p, 100 <= p <= 200, uncertain(p)]
+Model = [0 <= a <= 200, 0 <= b <= 120, a + b == p, 100 <= p <= 200, uncertain(p)]
 ````
 
 It should be pretty obvious that this is a nonsense problem. It is completely impossible to select the fixed decisions **a** and **b** at the farm, go the market and figure out the price, and magically have the correct number. Indeed, if you try to solve the optimization problem, it will be infeasible.
