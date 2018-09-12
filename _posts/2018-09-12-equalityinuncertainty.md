@@ -331,23 +331,23 @@ sdpvar t
 optimize([Model,Cost <= t],t)
 ````
 
-We can take this one step further and see the dynamics as a standard discrete-time dynamical system. Let us denote the state \\(x_i\\), and this state contains \\(w_i, s_{i-1} and u_{i-1}\\). With this definition, we have
+We can take this one step further and see the dynamics as a standard discrete-time dynamical system. Let us denote the state \\(x_i\\), and this state contains \\(w_i, s_{i-1}\\) and \\(u_{i-1}\\). With this definition, we have
 
 $$
-x_{i+1} = Ax_i + Bu_i + Gs_i = \begin{pmatrix}1 & 0.1 & 1\\
+x_{i+1} = Ax_i + Bu_i + Gs_i = \begin{matrix}1 & 0.1 & 1\\
                          0 &   0 & 0\\
-                         0 &   0 & 0\end{bmatrix} + 
-                         \begin{pmatrix}
+                         0 &   0 & 0\end{matrix} + 
+                         \begin{matrix}
                          0\\
                          0\\
-                         1\end{bmatrix}u_i+
-                         \begin{pmatrix}
+                         1\end{matrix}u_i+
+                         \begin{matrix}
                          -1\\
                          1\\
-                         0\end{bmatrix}s_i                                                  
+                         0\end{matrix}s_i                                                  
 $$
 
-With this notation, the prediction model is very compact. Note that we use unnecessarily many \\(u\\), but that's just to keep the code simple. They are defined, but never
+With this notation, the prediction model is very compact. Note that we use unnecessarily many \\(u\\), but that's just to keep the code simple. They are defined and constrained, but never used in the predictions.
 
 ````matlab
 s = sdpvar(1,10);
