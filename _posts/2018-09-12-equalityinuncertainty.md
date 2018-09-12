@@ -287,7 +287,7 @@ w10 = w9-s9+u8+0.1*s8;
 
 Model = [uncertain([s1 s2 s3 s4 s5 s6 s7 s8 s9 s10]),
          200 <= [s1 s2 s3 s4 s5 s6 s7 s8 s9 s10] <= 1000,
-         0 <= [w1 w2 w3 w4 w5 w6 w7 w8 w9 w10] <= 7000,
+         0 <= [w1 w2 w3 w4 w5 w6 w7 w8 w9 w10] <= 8000,
          0 <= [w1-s1 w2-s2 w3-s3 w4-s4 w5-s5 w6-s6 w7-s7 w8-s8 w9-s9 w10-s10],
          0 <= [u1 u2 u3 u4 u5 u6 u7 u8]]
 Cost = w1+w2+w3+w4+w5+w6+w7+w8+w9+w10;
