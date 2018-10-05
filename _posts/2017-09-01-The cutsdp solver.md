@@ -10,7 +10,7 @@ date: 2017-09-01
 
 YALMIP is shipped with two built-in mixed-integer conic programming solvers, both relying on external solvers to do the heavy work, but in completely different ways.
 
-The most known solver is the solver [BNB](/solver/bnb), which is a classical naive branch-and-bound implementation for mixed-integer convex programs (it can applied to any problem, but global optimality guarantees only hold for problems where the continuous relaxations are convex). The solvers are only relevant for mixed-integer semidefinite programs. For all other problem classes there are much better [external solvers](/tags/#mixed-integer-programming-solver).
+The most known solver is the solver [BNB](/solver/bnb), which is a classical branch-and-bound implementation for mixed-integer convex programs (it can applied to any problem, but global optimality guarantees only hold for problems where the continuous relaxations are convex). The solvers are only relevant for mixed-integer semidefinite programs. For all other problem classes there are much better [external solvers](/tags/#mixed-integer-programming-solver).
 
 A less known internal mixed-integer solver is [CUTSDP](/solver/cutsdp). While [BNB](/solver/bnb) is based on branch-and-bound where, roughly speaking, integrality is approximated and relaxed during the iterative process, [CUTSDP](/solver/cutsdp) is based on an iterative process where the geometry of the semidefinite cone is approximated and relaxed during the process, while integrality is guaranteed throughout.
 
