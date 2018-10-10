@@ -31,7 +31,7 @@ xhat = sdpvar(6,1);
 sdpvar u v
 
 F = [cone(y-A*xhat,u), cone(xhat,v)];
-solvesdp(F,u + v);
+optimize(F,u + v);
 ````
 
 By using the automatic modelling support in the [nonlinear operator framework](/tutorial/nonlinearoperator), we can alternatively write it in the following epigraph form
@@ -41,12 +41,12 @@ xhat = sdpvar(6,1);
 sdpvar u v
 
 F = [norm(y-A*xhat,2) <= u, norm(xhat,2) <= v];
-solvesdp(F,u + v);
+optimize(F,u + v);
 ````
 
 Of course, we can write it in the most natural form (and YALMIP will automatically perform the epigraph reformulation and represent the model using second order cone operators)
 ````matlab
-solvesdp([],norm(y-A*xhat,2) + norm(xhat,2));
+optimize([],norm(y-A*xhat,2) + norm(xhat,2));
 ````
 
 YALMIP will automatically model this as a second order cone problem, and solve it as such if a [second-order cone programming solver](/yalmip/solvers) is installed. If no second order cone programming solver is found, YALMIP will convert the model to a semidefinite program and solve it using any installed [semidefinite programming solver](/yalmip/solvers)
