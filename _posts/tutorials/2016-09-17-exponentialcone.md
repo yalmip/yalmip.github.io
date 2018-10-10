@@ -77,7 +77,7 @@ class = sign(value(a'*X+b));
 classB = find(class == 1);
 classR = find(class == -1);
 plot(x(1,classB),x(2,classB),'bo')
-plot(x(1,classG),x(2,classG),'ro')
+plot(x(1,classR),x(2,classR),'ro')
 nnz(sign(value(a'*X+b))-y)
 ````
 
