@@ -62,7 +62,7 @@ Solver = optimizer(x >= 0, norm(A*x - b)),sdpsettings('solver','mosek'),{A,b},x)
 xd = Solver(Ad,bd);
 ````
 
-The optimizer object is now created in roughly 30 seconds, but most importantly every use of the optimizer object only takes around 0.3 seconds, meaning that the overhead has been significanty reduced compared to the fully parameterized model. There is still significant overhead though as we know the solver only needs around 0.1 seconds, but this comes from the fact that the symbolic model still is very large. For n=1000, the overhead is drastically reduced and the optimizer call and the total time is 0.1 seconds of which 0.05 seconds is spent in solver, and for n = 500 the toal time is 0.06 seconds with 0.02 seconds spent in solver. Note that for the case n = 500, there are still close to 6000 symbolic terms in the precompiled object, so the fact that there is remaining overhead is not surprsing.
+The optimizer object is now created in roughly 30 seconds, but most importantly every use of the optimizer object only takes around 0.3 seconds, meaning that the overhead has been significanty reduced compared to the fully parameterized model. There is still significant overhead though as we know the solver only needs around 0.1 seconds, but this comes from the fact that the symbolic model still is very large. For n=1000, the overhead is drastically reduced and the optimizer call and the total time is 0.1 seconds of which 0.05 seconds is spent in solver, and for n = 500 the total time is 0.04 seconds with 0.02 seconds spent in solver. Note that for the case n = 500, there are still close to 6000 symbolic terms in the precompiled object, so the fact that there is remaining overhead is not surprsing.
 
 
 
