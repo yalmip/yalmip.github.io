@@ -9,6 +9,8 @@ published: false
 date: 2018-10-12
 ---
 
+{% include note.html content="Note that this feature requires release 20181012 or later." %}
+
 The [optimizer framework](/command/optimizer) can be used to reduce overhead significantly when solving many similiar problems, by pre-compiling a model paramterized in set of parameters which can change.
 
 The goal with [optimizer](/command/optimizer) is to move as much as possible in the YALMIP overhead related to model analysis, solver selection, operator modelling, and extraction of low-level numerical models closer to solver formats, to a pre-compilation stage, and then only adjust a small part of the partially compiled model when some parameter changes, before compiling the final solver model and sending it to the solver. 
