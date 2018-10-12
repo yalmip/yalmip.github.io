@@ -24,7 +24,7 @@ Model = [Model, x(k) == x(k-1) + u(k)*d(k)]
 ...
 ````
 
-The product here completely kills this model, as it introduces a nonconvex bilinear equality constraint, thus landing us in a very hard nonconvex nonlinear integer program. A significantly better model is to introduce a new variable to represent the product, and then model the product using simple linear logic. This will keep us in the comfortable world on mixed-integer linear programming (considering these constraints only of course)
+The product here completely kills this model, as it introduces a nonconvex bilinear equality constraint, thus landing us in a very hard nonconvex nonlinear integer program. A significantly better model is to introduce a new variable to represent the product, and then model the product using simple linear logic. This will keep us in the comfortable world of mixed-integer linear programming (considering these constraints only of course)
 
 ````matlab
 x = sdpvar(N,1);
@@ -36,7 +36,7 @@ Model = [Model, x(k) == x(k-1) + w(k), implies(d(k)==1, w(k)==u(k), implies(d(k)
 ...
 ````
 
-The implication will be converted to linear equalities using the [big-M modelling framework](/tutorials/bigmandconvexhulls), but you can of course do it manually
+The implication will be converted to linear equalities using the [big-M modelling framework](/tutorials/bigmandconvexhulls), but you can of course do it manually if you are familiar with the method
 
 ````matlab
 Model = [Model, x(k) == x(k-1) + w(k), -M*d(k) <= w(k) <= M*d(k), -M*(1-d(k)) <= w(k)-u(k) <= M*(1-d(k))]
