@@ -9,7 +9,8 @@ published: false
 date: 2018-10-12
 ---
 
-{% include note.html content="Note that this feature requires release 20181012 or later." %}
+Note that this feature requires release 20181012 or later.
+{: .notice--info}
 
 The [optimizer framework](/command/optimizer) can be used to reduce overhead significantly when solving many similiar problems, by pre-compiling a model paramterized in set of parameters which can change.
 
