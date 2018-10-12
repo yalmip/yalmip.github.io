@@ -5,7 +5,7 @@ excerpt: "Be careful with unnecessary symbolic overhead"
 title: "Working with sparse parameterizations in optimizer"
 tags: [Optimizer, Tricks]
 comments: true
-published: false
+published: true
 date: 2018-10-12
 ---
 
