@@ -36,14 +36,15 @@ Model = [Model, x(k) == x(k-1) + w(k), implies(d(k)==1, w(k)==u(k), implies(d(k)
 ...
 ````
 
-The implication will be converted to linear equalities using the [big-M modelling framework](/tutorials/bigmandconvexhulls), but you can of course do it manually if you are familiar with the method
+The implication will be converted to linear equalities using the [big-M modelling framework](/tutorial/bigmandconvexhulls), but you can of course do it manually if you are familiar with the method
 
 ````matlab
 Model = [Model, x(k) == x(k-1) + w(k), -M*d(k) <= w(k) <= M*d(k), -M*(1-d(k)) <= w(k)-u(k) <= M*(1-d(k))]
 ````
 
-Alternatively, there is a command [binmodel](/commands/binmodel) to use in more complex scenarios if you are too lazy to detect and untangle all the nonlinear products.
+Alternatively, there is a command [binmodel](/command/binmodel) to use in more complex scenarios if you are too lazy to detect and untangle all the nonlinear products.
 
+Some more on-off modelling is discussed n the [unit commitment example](/example/unitcommitment).
 
 
 
