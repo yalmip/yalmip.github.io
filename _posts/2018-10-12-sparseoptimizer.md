@@ -18,7 +18,7 @@ The goal with [optimizer](/command/optimizer) is to move as much as possible in 
 
 However, with a complicated parameterization, such as when the parameter enters the model nonlinearly with decision variables (bilinear being the typical case, as below), this still requires rather complicated symbolic manipulations when forming the final model given a parameter value. 
 
-In the following model, we are going to study a case where we intend to solve a large ampount of non-negativity constrained least-squares problems \\( \min_{x\geq 0} ||Ax-b|| \\), with the particular feature that all data matrices \\(A\\), which will be a parameter, has a known sparse banded structure.
+In the following model, we are going to study a case where we intend to solve a large ampount of non-negativity constrained least-squares problems \\( \min_{x\geq 0} |Ax-b| \\), with the particular feature that all data matrices \\(A\\), which will be a parameter, has a known sparse banded structure.
 
 Let us begin by defining a test-case
 
