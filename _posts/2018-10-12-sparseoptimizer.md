@@ -9,7 +9,7 @@ published: true
 date: 2018-10-12
 ---
 
-Note that this feature requires release 20181012 or later.
+Note that this feature requires **R20181012** or later.
 {: .notice--info}
 
 The [optimizer framework](/command/optimizer) can be used to reduce overhead significantly when solving many similiar problems, by pre-compiling a model paramterized in set of parameters which can change.
@@ -18,7 +18,7 @@ The goal with [optimizer](/command/optimizer) is to move as much as possible in 
 
 However, with a complicated parameterization, such as when the parameter enters the model nonlinearly with decision variables (bilinear being the typical case, as below), this still requires rather complicated symbolic manipulations when forming the final model given a parameter value. 
 
-In the following model, we are going to study a case where we intend to solve a large ampount of non-negativity constrained least-squares problems \\( \min_{x\geq 0} \||Ax-b\||_2 \\), with the particular feature that all data matrices \\(A\\), which will be a parameter, has a known sparse banded structure.
+In the following model, we are going to study a case where we intend to solve a large ampount of non-negativity constrained least-squares problems \\( \min_{x\geq 0} ||Ax-b||_2 \\), with the particular feature that all data matrices \\(A\\), which will be a parameter, has a known sparse banded structure.
 
 Let us begin by defining a test-case
 
@@ -48,11 +48,11 @@ Solver = optimizer(x >= 0, norm(A*x - b)),sdpsettings('solver','mosek'),{A,b},x)
 xd = Solver(Ad,bd);
 ````
 
-Unfortunately, this will be a massively complicated object. The expression **A*x** involves 4 million symbolic monomials and it takes around 10 minutes to just create that expression! This is perhaps not a major issue if we can win back that time when we solve our problems, but we will meet more problems. Creating the solver object once **A*x** is formed takes another minute or so, but also this is a one-time occurance. However, once we start using the solver object, it's even more problematic. It turns out that the call with a data instance takes 5 minutes!, i.e., horribly slow compared to setting up the model from scratch.
+Unfortunately, this will be a massively complicated object. The expression **Ax** involves 4 million symbolic monomials and it takes around 10 minutes to just create that expression! This is perhaps not a major issue if we can win back that time when we solve our problems, but we will meet more problems. Creating the solver object once **Ax** is formed takes another minute or so, but also this is a one-time occurance. However, once we start using the solver object, it's even more problematic. It turns out that the call with a data instance takes 5 minutes!, i.e., horribly slow compared to setting up the model from scratch.
 
 The problem is the extremely complicated bilinear object. When we send data to the solver object, it has to reason over and manipulate that massive 4 million terms object, in order to reduce the symbolic terms by replacing parameters with given data. 
 
-However, since we know that most of the elements in the data matrices are zero, there is no reason to introduce a symbolic data matrix which is fully parameterized. Instead, we should only parameterize the terms which actually can become non-zero. Luckily, the optimizer object supports this sparsity reduced parameterization. All data matrices will have the same sparsity pattern as our test case, hence we can use it to zero out all elements in **A** which never will be anything but 0 anyway. Note that we do a **yalmip('clear')** below to clear out all internal stuff generated when we created our massive symbolic object above
+However, since we know that most of the elements in the data matrices are zero, there is no reason to introduce a symbolic data matrix which is fully parameterized. Instead, we should only parameterize the terms which actually can become non-zero. Luckily, the optimizer object supports this sparsity reduced parameterization. All data matrices will have the same sparsity pattern as our test case, hence we can use it to zero out all elements in **A** which never will be anything but 0 anyway. Note that we do a **yalmip('clear')** to clear out all internal stuff generated when we created our massive symbolic object above
 
 ````matlab
 yalmip('clear')
