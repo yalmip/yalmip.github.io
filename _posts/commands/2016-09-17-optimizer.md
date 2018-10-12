@@ -23,6 +23,8 @@ P = optimizer(Con,Obj,Options,Parameters,WantedVariables)
 
 ### Examples
 
+First a word of warning: Never start your model development using optimizer constructs. Always start with a standard model based on calls to [optimize](/command/optimize), and then when everything works as expected, adjust you model to use [optimizer](/command/optimizer) instead, if you think this will improve simulation performance. Debugging models in the [optimizer](/command/optimizer) world is much harder and not recommended.
+
 [optimizer](/command/optimizer) is used to simplify and speed up code where  almost the same model is setup and solved repeatedly.
 
 As a start, we create a trivial linear programming model where a scalar decision variable \\(x\\) is bounded from below by some value \\(a+1\\). We create an optimizer object where the bound \\(a\\) is considered a parameter, and we are interested in the minimizing argument of \\(x^2\\) as the parameter \\(a\\) varies.
