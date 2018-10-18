@@ -19,7 +19,7 @@ Trying to develop [robust optimization](/tutorial/robustoptimization) models wit
   
  - understand the difference between a **decison variable** and a **policy or decision rule**.
 
-### Buying a horse the old way
+### How to buy a horse
 
 To understand the problem, we work with the following problem.
 
