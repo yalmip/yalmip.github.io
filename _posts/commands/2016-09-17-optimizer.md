@@ -103,6 +103,22 @@ P = optimizer(Constraints,Objective,options,a,x)
 [xvalue, errorcode] = P(pi)
 ````
 
+If you have many parameters and outputs, you can of course vectorize the 4th and 5th arguments suitably, but a more convenient way is to use a cell format
+
+````matlab
+sdpvar a b x y
+Constraints = [-1 <= x <= -a^2/25 + b*y];
+Objective = a*x^2 + 2*x+y^2;
+options = sdpsettings('solver','mosek');
+P = optimizer(Constraints,Objective,options,{a,b},{x,Objective})
+[sol, errorcode] = P({pi,1});
+[sol{1} sol{2}]
+% Alternative
+[sol, errorcode] = P(pi,1);
+[sol{1} sol{2}]
+````
+
+
 See more examples in the [MPC example](/example/standardmpc) and  [unit commitment example](/example/unitcommitment).
 
 ### Comments
