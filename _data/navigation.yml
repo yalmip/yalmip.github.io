@@ -145,6 +145,8 @@ solvers:
         url: /solver/snopt
       - title: "SPARSEPOP"
         url: /solver/sparsepop
+      - title: "SWARM"
+        url: /solver/swarm        
       - title: "XPRESS"
         url: /solver/xpress
 examples:
