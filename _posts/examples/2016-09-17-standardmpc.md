@@ -205,28 +205,31 @@ solutions_out = {[u{:}], [x{:}]};
 controller = optimizer(constraints, objective,sdpsettings('solver','gurobi'),parameters_in,solutions_out);
 x = [0;0];
 clf;
-disturbance = randn(1);
+disturbance = randn(1)*.01;
 oldu = 0;
 hold on
-for i = 1:150
+xhist = x;
+for i = 1:300
     if i < 50
         Bmodel = [1;0];
     else
         Bmodel = [.9;.1];
     end
-    future_r = 4*sin((i:i+N)/40);    
+    future_r = 3*sin((i:i+N)/40);    
     inputs = {x,future_r,disturbance,oldu,Bmodel};
     [solutions,diagnostics] = controller{inputs};    
     U = solutions{1};oldu = U(1);
     X = solutions{2};
     if diagnostics == 1
         error('The problem is infeasible');
-    end
+    end    
     subplot(1,2,1);stairs(i:i+length(U)-1,U,'r')
     subplot(1,2,2);cla;stairs(i:i+N,X(1,:),'b');hold on;stairs(i:i+N,future_r(1,:),'k')
+    stairs(1:i,xhist(1,:),'g')    
     x = A*x + Bmodel*U(1)+E*disturbance;
+    xhist = [xhist x];
     pause(0.05)   
     % The measured disturbance actually isn't constant, it changes slowly
-    disturbance = 0.9*disturbance + 0.1*randn(1)*.1;
+    disturbance = 0.99*disturbance + 0.01*randn(1);
 end
 ````
