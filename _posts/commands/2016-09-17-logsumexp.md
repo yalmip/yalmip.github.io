@@ -26,4 +26,4 @@ The convex [logsumexp](/commands/logsumexp) operator can be used to perform logi
 
 ### Implementation
 
-The operator is implemented as [callback operator](/tutorial/nonlinearoperatorscallback), except when [SCS](/solver/scs) or [ECOS](/solver/ecos) are used and the [exponential cone description](/tutorial/exponentialcone) is exploited in a [graph representation](/tutorial/nonlinearoperatorsgraphs).
+The operator is implemented as [callback operator](/tutorial/nonlinearoperatorscallback), except when [Mosek 9](/solver/mosek), [SCS](/solver/scs) or [ECOS](/solver/ecos) are used and the [exponential cone description](/tutorial/exponentialcone) is exploited in a [graph representation](/tutorial/nonlinearoperatorsgraphs).
