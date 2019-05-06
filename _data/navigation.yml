@@ -131,6 +131,8 @@ solvers:
         url: /solver/quadprogbb
       - title: "SCIP"
         url: /solver/scip
+      - title: "SCS"
+        url: /solver/scs
       - title: "SDPA"
         url: /solver/sdpa
       - title: "SDPLR"
