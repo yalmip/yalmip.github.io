@@ -47,7 +47,7 @@ A simple categorization is as follows (the definitions of free and commercial de
 
 ### Second-order cone programming (free)
 
-[ECOS](/solver/ecos), [SDPT3](/solver/sdpt3), [SEDUMI](/solver/sedumi)
+[ECOS](/solver/ecos), [SCS](/solver/scs), [SDPT3](/solver/sdpt3), [SEDUMI](/solver/sedumi)
 
 ### Second-order cone programming (commercial)
 
@@ -59,7 +59,7 @@ A simple categorization is as follows (the definitions of free and commercial de
 
 ### Semidefinite programming (free)
 
-[CSDP](/solver/csdp), [DSDP](/solver/dsdp), [LOGDETPPA](/solver/logdetppa), [PENLAB](/solver/penlab), [SDPA](/solver/sdpa), [SDPLR](/solver/sdplr), [SDPT3](/solver/sdpt3), [SDPNAL](/solver/sdpnal), [SEDUMI](/solver/sedumi)
+[CSDP](/solver/csdp), [DSDP](/solver/dsdp), [LOGDETPPA](/solver/logdetppa), [PENLAB](/solver/penlab), [SCS](/solver/scs), [SDPA](/solver/sdpa), [SDPLR](/solver/sdplr), [SDPT3](/solver/sdpt3), [SDPNAL](/solver/sdpnal), [SEDUMI](/solver/sedumi)
 
 ### Semidefinite programming (commercial)
 
