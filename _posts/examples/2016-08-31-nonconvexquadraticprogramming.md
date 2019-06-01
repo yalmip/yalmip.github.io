@@ -37,7 +37,7 @@ x = sdpvar(5,1);
 optimize([-1 <= x <= 1],x'*Q*x)
 ````
 
-If you have any nonlinear solver installed (such as [FMINCON](/solver/fmincon)), YALMIP will call that solver. Some versions of [CPLEX](/solver/cplex) and [QUADPROG](/solver/quadprog) also accept indefinite QPs, so it might happen that YALMIP calls any of these solvers. Note though, the solution is not guaranteed to be a globally optimal solution, since all these solvers are local.
+If you have any nonlinear solver installed (such as [FMINCON](/solver/fmincon)), YALMIP will call that solver. Some versions of [CPLEX](/solver/cplex) and [QUADPROG](/solver/quadprog) also accept indefinite QPs, so it might happen that YALMIP calls any of these solvers. Note though, the solution is not guaranteed to be a globally optimal solution ([CPLEX](/solver/cplex) can compute globally optimal solutions by setting the 'optimalitytarget' option suitably)
 
 Our first approach will be to manually pose the semidefinite relaxation of the indefinite QP. The first trick in semidefinite relaxations is to introduce a new matrix \\(X\\), intended to model \\(xx^T\\). We use the fact \\(x^TQx=trace(QX)\\) and conceptually pose the following problem
 
