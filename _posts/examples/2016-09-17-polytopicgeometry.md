@@ -119,8 +119,8 @@ optimize([A*(xc+r*d) <= b, uncertain(d), d'*d <= 1],-r)
 With this formulation at hand, we can generalize. The robust optimization module allows fairly general uncertainty descriptions when the uncertain constraint is elementwise. Let's compute the 1-norm and infinity-norm Chebychev balls!
 
 ````matlab
-plot(A*x < b);
-optimize([A*(xc+r*d) <= b, d'*d < 1, uncertain(d)],-r)
+plot(A*x <= b);
+optimize([A*(xc+r*d) <= b, d'*d <= 1, uncertain(d)],-r)
 hold on
 plot(norm(x-value(xc))<=value(r),x,'b')
 
