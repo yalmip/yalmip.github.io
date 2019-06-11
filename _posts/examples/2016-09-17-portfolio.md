@@ -26,7 +26,7 @@ S = randn(n);S = S*S'/1000; % Covariance
 mu  = rand(1,n)/100;        % Expected return       
 ````
 
-We introduce a vector **w** to model the position in each asset, and solve the standard Markowitz portfolio problem (no short positions) and aim for an expected return equal to the average historical return of all assets.
+We introduce a vector **x** to model the position in each asset, and solve the standard Markowitz portfolio problem (no short positions) and aim for an expected return equal to the average historical return of all assets.
 
 ````matlab
 x = sdpvar(n,1);
@@ -104,7 +104,7 @@ value(w)
 
 ### The efficient frontier
 
-A school-book example of parametric optimization is the efficient frontier in the Markowitz portfolio. This is the lowest possible variance \\(x'^TSx\\) achievable, when striving for a particular profit.
+A school-book example of parametric optimization is the efficient frontier in the Markowitz portfolio. This is the lowest possible variance \\(x^TSx\\) achievable, when striving for a particular profit.
 
 ### Repeated solutions using the optimizer command
 
