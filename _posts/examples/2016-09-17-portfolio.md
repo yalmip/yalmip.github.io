@@ -72,10 +72,10 @@ To ensure a balanced portfolio, constraints on smallest and largest fraction cou
 
 ````matlab
 d = binvar(n,1);           % models if variable is nonzero
-F = [sum(x) == 1, 1>=w>=0, mu*w == mutarget];
+F = [sum(x) == 1, 1>=x>=0, mu*x == mutarget];
 F = F + [sum(d) <= 4]   % At most 4 positions
-F = F + [x <= d];       % If d==0 then w = 0
-F = F + [x >= 0.1*d];   % If d==1 then w >= 0.1
+F = F + [x <= d];       % If d(i)==0 then x(i) = 0
+F = F + [x >= 0.1*d];   % If d(i)==1 then x(i) >= 0.1
 F = F + [x <= 0.8];     % No position >= 0.8
 optimize(F,x'*S*x)
 value(w)
@@ -86,7 +86,7 @@ An equivalent model can be obtained by using the command [semivar](/command/semi
 ````matlab
 w = semivar(n,1);      % Either 0...
 F = [0.1 <= x <= 0.8]; % ...or between bounds
-F = [F, sum(x) == 1, mu*w == mutarget];
+F = [F, sum(x) == 1, mu*x == mutarget];
 F = [F, nnz(x) <= 4];      % At most 4 positions
 optimize(F,x'*S*x)
 value(w)
@@ -133,7 +133,7 @@ We can alternatively compute and plot this curve, if [MPT](/solver/mpt) is insta
 x = sdpvar(n,1);
 sdpvar mutarget
 F = [sum(x) == 1, x>=0, mu*x == mutarget];
-[sol,dgn,aux,Valuefcn,woptimal] = solvemp(F,x'*S*x,[],mutarget);
+[sol,dgn,aux,Valuefcn,xoptimal] = solvemp(F,x'*S*x,[],mutarget);
 plot(Valuefcn);
 ````
 
@@ -143,6 +143,6 @@ The minimum risk portfolio and the associated variance at the target profit that
 
 ````matlab
 assign(mutarget,mean(mu))
-value(woptimal)
+value(xoptimal)
 value(Valuefcn)
 ````
