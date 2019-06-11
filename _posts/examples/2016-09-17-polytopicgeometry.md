@@ -109,23 +109,6 @@ plot([z == x+w, A*x <= b, E*w <= f],z)
 
 The [Chebyshev ball](http://en.wikipedia.org/wiki/Chebyshev_center) is defined as the largest possible ball that can be placed inside a set \\(P\\). The search for the Chebychev center, and the associated size of the ball, can be stated as finding the largest \\(r\\) such that \\(x+rd\\) is in \\(P\\) for all \\(d\\) in a unit-ball.
 
-For a polytope and the Euclidean norm-ball, this boils down to
-
-````matlab
-xc = sdpvar(2,1);
-r = sdpvar(1);
-optimize(A*xc+r*sqrt(sum(A.^2,2)) <= b,-r)
-````
-
-We plot the polytope and the Chebychev ball
-
-````matlab
-plot(A*x < b);hold on
-plot(norm(x-value(xc),2)<=value(r),x,'b')
-````
-
-![costs_LPVMPC]({{ site.url }}/images/mptyalmip8.png){: .center-image }
-
 In order to extend this concept, we first note that the Chebychev formulation can be interpreted as a robustness problem. Hence, we can compute the Chebychev ball using the robust optimization module
 
 ````matlab
