@@ -24,9 +24,9 @@ YALMIP cannot deal with arbitrary uncertain problems (it is in general an intrac
 
 The different cases are called *scenarios* in the paper above, and they are converted to a robust counterpart using so called *filters*. There are three major scenarios with corresponding filters, all discussed in the paper referenced above.
 
-1. For elementwise constraints \\(b^Tx + (A^Tx + c)^Tw\\) (affinely parameterized  in the uncertainty for fixed **x**), polytopic and general conic uncertainty sets are supported. The uncertainty is eliminated using either duality theory or enumeration. For the enumeration approach to work, you must have [MPT](/solver/mpt) installed.
+1. For elementwise constraints \\(b^Tx + (A^Tx + c)^Tw\leq 0\\) (affinely parameterized  in the uncertainty for fixed **x**), polytopic and general conic uncertainty sets are supported. The uncertainty is eliminated using either duality theory or enumeration. For the enumeration approach to work, you must have [MPT](/solver/mpt) installed.
 
-2.  For elementwise constraints \\(b^Tx + (A^Tx + c)^Tw\\) and the uncertainty constrained to a norm-ball (\\(p=1,2,\infty\\)), the uncertainty is removed by explicitly maximizing the expression w.r.t the uncertainty typically leading to a very efficient representation of the worst-case.
+2.  For elementwise constraints \\(b^Tx + (A^Tx + c)^Tw\leq 0\\) and the uncertainty constrained to a norm-ball (\\(p=1,2,\infty\\)), the uncertainty is removed by explicitly maximizing the expression w.r.t the uncertainty typically leading to a very efficient representation of the worst-case.
 
 3. For conic constraints affinely parameterized in the uncertainty, polytopic uncertainty sets are supported. The uncertainty is removed using enumeration.
 
