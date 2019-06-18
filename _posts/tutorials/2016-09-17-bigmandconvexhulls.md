@@ -29,7 +29,7 @@ If **M** is chosen sufficiently large and **m** is sufficiently small (i.e., neg
 
 Hence, for a big-M reformulation to work, the modeling language has to be able to derive these constants, or conservative approximations, from the complete model. YALMIP derives these constants from the model automatically by searching for simple variable bound constraints and using these bound constraints to compute conservative bounds on the expressions involved in the big-M constraint. Consequently, you have to add explicit bounds on all variables that are involved in logic constraints or constraints involving nonconvex instances of operators such as **max**, **min** etc.
 
-**Note:** The term big-M is devastatingly misleading, and a better term would be **sufficiently-large-small-M**. A naive (and sadly commonly used) approach is to use huge constants without any thought, such as **M**=1e6 and **m**=-1e6. This works in theory, but will give extremely bad and essentially useless models. The big-M reformulations will result in terrible numerics in solvers, and the relaxations that are used in the mixed integer solver will be very weak, leading to excessive branching and thus increased computation time. As we will see in this example, already with modestly sub-optimal choices, the relaxation are terrible.
+**Note:** The term big-M is devastatingly misleading, and a better term would be **sufficiently-large-small-M**. A naive (and sadly commonly used) approach is to use huge constants without any thought, such as **M**=1e6 and **m**=-1e6. This works in theory, but will give extremely bad and essentially useless models. The big-M reformulations will result in terrible numerics in solvers, and the relaxations that are used in the mixed integer solver will be very weak, leading to excessive branching and thus increased computation time. As we will see in this example, already with modestly sub-optimal choices, the relaxations are terrible.
 {: .notice--info}
 
 ### Nonconvex polytope constraints
@@ -40,14 +40,15 @@ Define numerical data for four random polytopes.
 
 ````matlab
 x = sdpvar(2,1);
-A1 = randn(8,2);
-b1 = rand(8,1)*2-A1*[3;3];
-A2 = randn(8,2);
-b2 = rand(8,1)*2-A2*[-3;3];
-A3 = randn(8,2);
-b3 = rand(8,1)*2-A3*[3;-3];
-A4 = randn(8,2);
-b4 = rand(8,1)*2-A4*[-3;-3];
+n = 10;
+A1 = randn(n,2);
+b1 = rand(n,1)*2-A1*[3;3];
+A2 = randn(n,2);
+b2 = rand(n,1)*2-A2*[-3;3];
+A3 = randn(n,2);
+b3 = rand(n,1)*2-A3*[3;-3];
+A4 = randn(n,2);
+b4 = rand(n,1)*2-A4*[-3;-3];
 plot(A1*x<=b1)
 plot(A2*x<=b2)
 plot(A3*x<=b3)
