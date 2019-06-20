@@ -10,10 +10,10 @@ sidebar:
   nav: "tutorials"
 ---
 
-1. [Logical models involving binary variables ](#logics)
-1. [Logical models involving binary variables ](#logics)
-1. [Logical models involving binary variables ](#logics)
-1. [Logical models involving binary variables ](#logics)
+1. [Logical models involving binary variables](#logics)
+1. [Logical models involving binary variables and constraints](#constraints)
+1. [Multiplications of variables and functions](#products)
+1. [Representations of functions](#functions)
 
 
 Some simple rules and strategies when deriving models for complex logic and combinatorials models:
@@ -90,6 +90,7 @@ $$
 
 
 ## Logical models involving binary variables and constraints
+{: #constraints }
 
 ### If a then  \\(f(x)\leq 0\\)
 
@@ -267,6 +268,7 @@ $$
 
 
 ## Multiplications of variables and functions
+{: #products }
 
 ### y = ab, a and b binary
 
@@ -317,6 +319,7 @@ Make binary expansion of **w** and the create models for binary times continuous
 Make binary expansions of both **w** and **x** and then create models for binary products.
 
 ## Representations of functions
+{: #functions }
 
 ### y = abs(x)
 
