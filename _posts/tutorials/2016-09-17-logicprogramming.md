@@ -266,7 +266,7 @@ Make binary expansions of **w** and **x** and then create models for binary prod
 
 ### y = abs(x)
 
-Absolute value is 
+A logical representation of absolute value is 
 
 $$
 \begin{align}
@@ -275,7 +275,7 @@ x &\leq 0 \rightarrow y = -x
 \end{align}
 $$
 
-A disjoint representation using binary variables
+A disjoint representation of this using binary variables
 
 $$
 \begin{align}
@@ -285,7 +285,7 @@ z_1 + z_2 &= 1
 \end{align}
 $$
 
-Once again standard implications so standard big-M model
+Once again standard implications so the result is standard big-M model
 
 $$
 \begin{align}
@@ -299,7 +299,7 @@ Remember that absolute value is convex, so a you only use a MILP representation 
 
 ### y = max(x)
 
-The maximum of a vector can be though of a logical model 
+The maximum of a vector can also be thought of as a logical model 
 
 $$
 \begin{align}
@@ -309,7 +309,7 @@ x_n &\geq x \rightarrow y = x_n
 \end{align}
 $$
 
-Hence, introduce a binary variable for every possibility and see as disjoint cases
+Hence, introduce a binary variable for every possibility and derive disjoint representation
 
 $$
 \begin{align}
@@ -320,7 +320,7 @@ z_n &\rightarrow y = x_n, x_n \geq x\\
 \end{align}
 $$
 
-This is finalized with implication models
+This is finalized with standard implication models
 
 $$
 \begin{align}
@@ -331,11 +331,11 @@ $$
 \end{align}
 $$
 
-Remember max is convex, so a you only use a MILP representation if absoutely needed.
+Remember that max is convex, so you only use a MILP representation if absolutely needed.
 
 ### y = min(x)
 
-Simply use **min(x) = -max(-x)**
+Use \(( \min(x) = -\max(-x)\\).
 
 ### y = sort(x)
 
@@ -369,4 +369,10 @@ Bla bla
 
 Bla bla
 
+### y = piecewise affine function
 
+Bla bla
+
+### y = piecewise quadratic function
+
+Bla bla
