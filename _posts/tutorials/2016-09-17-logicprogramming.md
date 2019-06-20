@@ -87,31 +87,57 @@ $$
 
 ### If a then  \\(f(x)\leq 0\\) else  \\(f(x)\geq 0\\)
 
-This is an example of a disjoint setup where exactly 1 out of two conditions hold.
+The standard implication is simply repreated for the two cases.
 
 $$
-f(x) \leq M(1-a),~g(x)\leq Ma
+f(x) \leq M(1-a),-f(x)\leq Ma
 $$
 
-To create more easily generalizable models and learn a common core strategy for all models, it is adviced to think of this as two cases each associated with some situation. 
+To create more easily generalizable models and learn a common core strategy for all models, it is adviced to think of this as two disjoint cases each associated with some situation. 
 
 $$
-\begin{equation}
 \begin{align}
 \z_1 &\rightarrow \{f(x)\leq 0, a=1\}\\
-\z_2 &\rightarrow \{g(x)\leq 0, a=0\}\\
+\z_2 &\rightarrow \{-f(x)\leq 0, a=0\}\\
 \z_1 + z_2 &= 1
 \end{align}
-\end{equation}
+$$
+
+This can for instance be written as
+
+$$
+\begin{align}
+f(x)\leq M(1-z_1), a=1\\
+-f(x) \leq M(1-z_2), a=0\\
+\z_1 + z_2 &= 1
+\end{align}
 $$
 
 ### If a then  \\(f(x)\leq 0\\) else  \\(g(x)\leq 0\\)
 
-Bla bla
+Once again, we make a clean representation using additional variables to encode disjoint cases
+$$
+\begin{align}
+f(x)\leq M(1-z_1), a=1\\
+g(x) \leq M(1-z_2), a=0\\
+\z_1 + z_2 &= 1
+\end{align}
+$$
 
 ### If \\( f(x) \leq 0\\) then a
 
-Bla bla
+When \\(f(x)\\) becomes negative, a should be forced to be activated
+
+$$
+f(x)\geq -M(1-a)
+$$
+
+notice that the case $f(x)=0$ is impossible to handle consistently in practice as solvers work finite precision and tolerances. If it is absolutely vital that the **a** is activated for $f(x)=0$, a margin has to be added, and this margin has to be selected ad-hoc so it is consistent with the numerical tolerance of the solver
+
+$$
+f(x)\geq \epsilon -M(1-a)
+$$
+
 
 ### If \\( f(x) \leq 0\\) then a else not a
 
