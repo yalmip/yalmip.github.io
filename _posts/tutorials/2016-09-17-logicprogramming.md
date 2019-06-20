@@ -343,7 +343,7 @@ Bla bla
 
 ### y = floor(x)
 
-In theory introduce integer \\(y\\) and \\(x-1 < y \geq x\\). In practice strict inequality has to be approximated leading to \\(x-1+\epsilon \leq y \leq x\\)
+In theory introduce integer \\(y\\) and \\(x-1 < y \leq x\\). In practice strict inequality has to be approximated leading to \\(x-1+\epsilon \leq y \leq x\\)
 
 ### y = ceil(x)
 
@@ -357,9 +357,9 @@ In theory introduce integer \\(y\\) and \\(x \geq y < x+1\\). In practice strict
 
 Bla bla
 
-### y = sign(x)
+### y = sgn(x)
 
-A logical model of \\(s = \sign(x)\\) is
+A logical model of \\(s = \sgn(x)\\) is
 
 $$
 \begin{align}
@@ -380,7 +380,7 @@ z_1+z_2+z_3 &= 1
 \end{align}
 $$
 
-A big-M representation of the implications, using a margin around 0 if necessary leads to
+A big-M representation of the implications, using a margin \\(\epsilon\\) around 0 if wanted leads to
 
 $$
 \begin{align}
