@@ -12,6 +12,13 @@ sidebar:
 
 Throughout the examples here, $a$ and $b$ represent scalar binary variables, $z$ represent a vector of binary variables, and $x$ represent continuous variables.
 
+
+1. Try to represent things with disjoint events representing "exactly one thing of these occur"
+2. Try to arrive at "binary variable implies set of constraints"
+3. Introduce intermediate auxilliary variables to keep things clean
+4. Decompose the logic using intermediate variables to connect parts
+
+
 ### s = NOT a
 
 With binary \\(a = 1\\) representing true and \\(a = 0\\) representing false, logical negation turns into 
@@ -31,7 +38,6 @@ optimize([s == 1 - a, a == 1], -s);value(s)
 ### s = a AND b
 
 \\(s\\) has to be \\(1\\) if both \\(a\\) and \\(b\\) are 1. \\(s\\) has to be \\(0\\) if  either of \\(a\\) and \\(b\\) are 0.
-
 
 $$
 s \geq a + b -1,~s \leq a,~s\leq b
@@ -77,87 +83,50 @@ $$
 
 Bla bla
 
-````matlab
-binvar a
-````
-
 ### If a then  \\(f(x)\leq 0\\)
 
 Bla bla
-
-````matlab
-binvar a
-````
 
 ### If a then  \\(f(x)\leq 0\\) else  \\(f(x)\geq 0\\)
 
 Bla bla
 
-````matlab
-binvar a
-````
-
 ### If a then  \\(f(x)\leq 0\\) else  \\(g(x)\leq 0\\)
 
 Bla bla
-
-````matlab
-binvar a
-````
-
 
 ### If \\( f(x) \leq 0\\) then a
 
 Bla bla
 
-````matlab
-binvar a
-````
-
 ### If \\( f(x) \leq 0\\) then a else not a
 
 Bla bla
 
-````matlab
-binvar a
-````
+### If \\( f(x) \leq 0\\) then  \\( g(x) \leq 0\\)
+
+Bla bla
 
 ### y = ab, a and b binary
 
 Bla bla
 
-````matlab
-binvar a
-````
-
 ### y = ax, a binary x continuous (or integer)
 
 Bla bla
 
-````matlab
-binvar a
-````
 
 ### y = max(x)
 
 Bla bla
 
-````matlab
-binvar a
-````
 
 ### y = min(x)
 
 Bla bla
 
-````matlab
-binvar a
-````
 
 ### y = sort(x)
 
 Bla bla
 
-````matlab
-binvar a
-````
