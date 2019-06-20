@@ -56,7 +56,7 @@ $$
 \\(s\\) has to be \\(1\\) if  exactly one of \\(a\\) and \\(b\\) are 1, and \\(0\\) otherwise
 
 $$
-s \geq a - b, s \geq b-a, s \leq a + b, a + b\leq 2-s
+s \geq a - b, ~s \geq b-a, ~ s \leq a + b, ~ a + b\leq 2-s
 $$
 
 The idea generalizes to an arbitrary number of binary variables  with
@@ -93,22 +93,22 @@ $$
 f(x) \leq M(1-a),-f(x)\leq Ma
 $$
 
-To create more easily generalizable models and learn a common core strategy for all models, it is adviced to think of this as two disjoint cases each associated with some situation. 
+To create more easily generalizable models and learn a common core strategy for all models, it is adviced to think of this as two disjoint cases each associated with a set of constraints. 
 
 $$
 \begin{align}
-z_1 &\rightarrow \{f(x)\leq 0, a=1\}\\
-z_2 &\rightarrow \{-f(x)\leq 0, a=0\}\\
+z_1 &\rightarrow \{f(x)\leq 0, ~ a=1\}\\
+z_2 &\rightarrow \{-f(x)\leq 0, ~ a=0\}\\
 z_1 + z_2 &= 1
 \end{align}
 $$
 
-This can for instance be written as
+This can be implemented using standard implications
 
 $$
 \begin{align}
-f(x)\leq M(1-z_1), a=1\\
--f(x) \leq M(1-z_2), a=0\\
+f(x)\leq M(1-z_1), -(1-z_1)\leq a-1 \leq (1-z_1)\\
+-f(x) \leq M(1-z_2), -(1-z_2) \leq a \leq (1-z_2)\\
 z_1 + z_2 &= 1
 \end{align}
 $$
