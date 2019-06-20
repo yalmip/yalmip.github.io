@@ -28,13 +28,6 @@ $$
 s = 1-a
 $$
 
-In YALMIP, we either do this manually, or use the logical operator. Let's try it where we force \\(a\\) to be true, and then try to maximize \\(s\\) (only feasible solution is \\(s == 0\\))
-
-````matlab
-binvar s a
-optimize([s == not(a), a == 1], -s);value(s)
-optimize([s == 1 - a, a == 1], -s);value(s)
-````
 
 ### s = a AND b
 
@@ -44,18 +37,11 @@ $$
 s \geq a + b -1,~s \leq a,~s\leq b
 $$
 
-The idea generalizes to an arbitrary number of binary variables \\(s = z_1 \& z_2 \& \ldots z_\n\\) with
+The idea generalizes to an arbitrary number of binary variables \\(s = z_1 ~\&~ z_2~ \&~ \ldots ~\&~ z_n\\) with
 
 $$
 s \geq \sum_{i=1}^n z_i - (n-1), s\leq z
 $$
-
-Solve a trivial problem where the only feasible solution is \\(s = 0\\)
-````matlab
-binvar s a b
-optimize([s == a & b, a == 1, b == 1], s);value(s)
-optimize([s >= a + b - 1, s<=a, s<=b, a == 1, b == 1], -s);value(s)
-````
 
 ### s = a OR b
 
@@ -76,21 +62,48 @@ $$
 The idea generalizes to an arbitrary number of binary variables  with
 
 $$
-s \geq z_i - \sum_{j\ne i} z_j - (n-1), s\leq \sum_{i = 1}^n z_j \leq n + (1-n)s
+s \geq z_i - \sum_{j\ne i} z_j,~ s\leq \sum_{i = 1}^n z_j \leq n + (1-n)s
 $$
 
 
 ### If a then b
 
-Bla bla
+Logical implication of binary variables
+
+
+$$
+b \geq a
+$$
+
 
 ### If a then  \\(f(x)\leq 0\\)
 
-Bla bla
+To ensure a constraint holds when a binary is true, we model implication using a big-M strategy
+
+$$
+f(x) \leq M(1-a)
+$$
+
 
 ### If a then  \\(f(x)\leq 0\\) else  \\(f(x)\geq 0\\)
 
-Bla bla
+This is an example of a disjoint setup where exactly 1 out of two conditions hold.
+
+$$
+f(x) \leq M(1-a),~g(x)\leq Ma
+$$
+
+To create more easily generalizable models and learn a common core strategy for all models, it is adviced to think of this as two cases each associated with some situation. 
+
+$$
+\begin{equation}
+\begin{align}
+\z_1 &\rightarrow \{f(x)\leq 0, a=1\}\\
+\z_2 &\rightarrow \{g(x)\leq 0, a=0\}\\
+\z_1 + z_2 &= 1
+\end{align}
+\end{equation}
+$$
 
 ### If a then  \\(f(x)\leq 0\\) else  \\(g(x)\leq 0\\)
 
