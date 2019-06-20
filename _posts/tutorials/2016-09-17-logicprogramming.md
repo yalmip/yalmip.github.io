@@ -295,6 +295,8 @@ z_1 + z_2 &= 1
 \end{align}
 $$
 
+Remember that absolute value is convex, so a you only use a MILP representation if absoutely needed.
+
 ### y = max(x)
 
 The maximum of a vector can be though of a logical model 
@@ -329,11 +331,11 @@ $$
 \end{align}
 $$
 
+Remember max is convex, so a you only use a MILP representation if absoutely needed.
 
 ### y = min(x)
 
 Simply use **min(x) = -max(-x)**
-
 
 ### y = sort(x)
 
