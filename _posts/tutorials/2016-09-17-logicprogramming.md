@@ -285,7 +285,7 @@ This is implemented using our standard model for implications
 
 $$
 \begin{align}
-M(1-a) &\leq y-x \leq M(1-a)\\
+-M(1-a) &\leq y-x \leq M(1-a)\\
 -Ma &\leq y \leq Ma
 \end{align}
 $$
@@ -331,7 +331,7 @@ z_1 + z_2 &= 1
 \end{align}
 $$
 
-Once again standard implications so the result is standard big-M model
+Once again standard implications so the result is a standard big-M model
 
 $$
 \begin{align}
