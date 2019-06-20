@@ -149,21 +149,53 @@ Bla bla
 
 ### y = ab, a and b binary
 
-Bla bla
+Binary multiplication is nothing but logical and, hence
+
+$$
+y \leq a, y\leq b, y\geq a+b-1
+$$
 
 ### y = ax, a binary x continuous (or integer)
+
+Multiplication of binary and non-binary should be seen as a logical operation
+$$
+a  \rightarrow y = 0\\
+1-a \rightarrow y = x\\
+$$
+
+This is implemented using our models for implications
+
+$$
+M(1-a) \leq y-x \leq M(1-a)\\
+Ma \leq y \leq Ma
+$$
 
 Bla bla
 
 
 ### y = max(x)
 
-Bla bla
+The maximum of a vector can be though of a logical model **if x(1) larger than all other elements then y = x(1) elseif x(2) ...**. Hence, introduce a binary variable for every possibility, and 
+
+$$
+z_1 \rightarrow y = x_1, x_1 \geq x\\
+\vdots\\
+z_n \rightarrow y = x_n, x_n \geq x\\
+$$
+
+This is finalized with implications
+
+$$
+M(1-z_1) \leq y - x_1\leq M(1-z_1), x-x_1 \leq M(1-z_1)\\
+\vdots\\
+M(1-z_n) \leq y - x_1\leq M(1-z_n), x-x_n \leq M(1-z_n)\\
+\sum_{i=1}^n z_1 = 1
+$$
 
 
 ### y = min(x)
 
-Bla bla
+Simply use **min(x) = -max(-x)**
 
 
 ### y = sort(x)
