@@ -114,7 +114,7 @@ z_1 + z_2 &= 1
 \end{align}
 $$
 
-This can be implemented using standard implications
+Once again ending up as standard models for implications
 
 $$
 \begin{align}
@@ -126,7 +126,7 @@ $$
 
 ### If a then  \\(f(x)\leq 0\\) else  \\(g(x)\leq 0\\)
 
-Once again, we make a clean representation using additional variables to encode disjoint cases
+Make a clean representation using additional variables to encode two disjoint cases
 
 $$
 \begin{align}
@@ -136,7 +136,7 @@ z_1 + z_2 &= 1
 \end{align}
 $$
 
-Application of big-M leads to
+Standard models for implications
 
 $$
 \begin{align}
@@ -148,29 +148,24 @@ $$
 
 ### If a then  \\(f(x)= 0\\)
 
-This is nothing but two implications
+This is nothing but two implications, hence
 
 $$
 \begin{align}
-f(x)&\leq M(1-q)\\
+f(x)&\leq M(1-a)\\
 -f(x) &\leq M(1-a)\\
 \end{align}
 $$
 
 ### If \\( f(x) \leq 0\\) then a
 
-When \\(f(x)\\) becomes negative, a should be forced to be activated. This is accomplished by reversing the constraint and introducing an implication for the reverse model
+When \\(f(x)\\) becomes negative, the binary variable should be forced to be activated. This is accomplished by reversing the constraint and introducing an implication for the reverse model
 
 $$
 f(x)\geq -M(1-a)
 $$
 
-Notice that the case $f(x)=0$ is impossible to handle consistently in practice as solvers work finite precision and tolerances. If it is absolutely vital that the **a** is activated for $f(x)=0$, a margin has to be added, and this margin has to be selected ad-hoc so it is consistent with the numerical tolerance of the solver. If $f(x)$ goes below the tolerance \\(\epsilson\\), the logical variable is forced active.
-
-$$
-f(x)\geq \epsilon -M(1-a)
-$$
-
+Note that we use a non-strict inequality. If behaviour around \\f(x)\\) is important, a margin will have to be used as discussed before.
 
 ### If \\( f(x) \leq 0\\) then a else not a
 
@@ -201,16 +196,17 @@ Glue the two conditions using an intermediate binary variable
 
 $$
 \begin{align}
-f(x)\leq 0 &\rightarrow z_1\\
-z_1 \implies g(x)\\
+f(x)&\leq 0 &\rightarrow z_1\\
+z_1 &\implies g(x)\\
 \end{align}
 $$
 
 These are standard models and we thus have
 
+$$
 \begin{align}
-f(x)\geq -M(1-z_1)\\
-g(x) \leq M(1-z_1)\\
+f(x)&\geq -M(1-z_1)\\
+g(x)&\leq M(1-z_1)\\
 \end{align}
 $$
 
@@ -222,60 +218,82 @@ $$
 Binary multiplication is nothing but logical and, hence
 
 $$
-y \leq a, y\leq b, y\geq a+b-1
+y \leq a,~ y\leq b,~ y\geq a+b-1
 $$
 
 Generalization to more terms follows the same generlization as logical and.
 
-### y = ax, a binary x continuous (or integer)
+### y = ax, a binary x x non-binary
 
 Multiplication of binary and non-binary should be seen as a logical operation
 $$
-a  \rightarrow y = 0\\
-1-a \rightarrow y = x\\
+\begin{align}
+a  &\rightarrow y = x\\
+1-a &\rightarrow y = 0\\
+\end{align}
 $$
 
-This is implemented using our models for implications
+This is implemented using our standard model for implications
 
 $$
+\begin{align}
 M(1-a) \leq y-x \leq M(1-a)\\
-Ma \leq y \leq Ma
+-Ma \leq y \leq Ma
+\end{align}
 $$
 
-### y = abx, a and b binary x continuous (or integer)
+### y = abx, a and b binary x non-binary
 
-When there are repeated binary variables, the procedure is simply repeated with intermediate variables, start by intorducing a new variable and  **c = ab**  and then use stanbdard model for **y = cx**. 
+When there are repeated binary variables, the procedure is simply repeated with intermediate variables. Start by introducing a new variable and  model for **c = ab**  and then use model for **y = cx**. 
 
-The idea and model generlizes to arbitrary polynomials of binary variables.
+The idea and model generalizes to arbitrary polynomials of binary variables.
 
 ### y = ax, a binary x integer
 
-To multiply with an integer variable, make a binary expansion of the integer \\(x = z_1 + 2 z_2+ 4z_3 + \ldots 2^{n+1}z_n\\) with binary variables $z$, then model new terms \\(y_i = xz_i\\) using standard model for binary product.
-
+To multiply with an integer variable, make a binary expansion of the integer \\(x = z_1 + 2 z_2+ 4z_3 + \ldots 2^{n+1}z_n\\) with binary variables $z$, then model new terms \\(y_i = xz_i\\) using standard model for binary times non-binary.
 
 ### y = wx, w integer  x continuous
 
-Make binary expansion of **w** and the create model for binary times continuous.
+Make binary expansion of **w** and the create models for binary times continuous.
+
+### y = wx, w integer  x integer
+
+Make binary expansions of **w** and **x** and then create models for binary products.
 
 ## Representations of functions
 
 ### y = max(x)
 
-The maximum of a vector can be though of a logical model **if x(1) larger than all other elements then y = x(1) elseif x(2) ...**. Hence, introduce a binary variable for every possibility, and 
+The maximum of a vector can be though of a logical model 
 
 $$
-z_1 \rightarrow y = x_1, x_1 \geq x\\
+\begin{align}
+x_1 &\geq x \rightarrow y = x_1\\
+\vdots&
+x_n &\geq x \rightarrow y = x_n
+\end{align}
+$$
+
+Hence, introduce a binary variable for every possibility and see as disjoint cases
+
+$$
+\begin{align}
+z_1 &\rightarrow y = x_1, x_1 \geq x\\
 \vdots\\
-z_n \rightarrow y = x_n, x_n \geq x\\
+z_n &\rightarrow y = x_n, x_n \geq x\\
+\sum_{i=1}^n z_i &= 1
+\end{align}
 $$
 
-This is finalized with implications
+This is finalized with implication models
 
 $$
+\begin{align}
 M(1-z_1) \leq y - x_1\leq M(1-z_1), x-x_1 \leq M(1-z_1)\\
 \vdots\\
 M(1-z_n) \leq y - x_1\leq M(1-z_n), x-x_n \leq M(1-z_n)\\
 \sum_{i=1}^n z_1 = 1
+\end{align}
 $$
 
 
