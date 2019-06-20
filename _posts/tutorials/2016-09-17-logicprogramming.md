@@ -10,7 +10,6 @@ sidebar:
   nav: "tutorials"
 ---
 
-Throughout the examples here, **a** and **b** represent scalar binary variables, **z** represents a vector of binary variables, and **x** is just some generic variable (could be anything).
 
 Some simple rules and strategies when deriving models for complex logic and combinatorials models:
 1. Try to represent things with disjoint events of the kind "exactly one of these things occur" with a binary variable associated to each event.
@@ -19,6 +18,8 @@ Some simple rules and strategies when deriving models for complex logic and comb
 4. Decompose the logic using intermediate variables to connect parts
 
 In other words, a large sparse simple model is much better than a compact complex model.
+
+Throughout the examples here, **a** and **b** represent scalar binary variables, **z** represents a vector of binary variables, and **x** is just some generic variable (could be anything).
 
 ## Logical models involving binary variables
 
@@ -221,7 +222,7 @@ $$
 y \leq a,~ y\leq b,~ y\geq a+b-1
 $$
 
-Generalization to more terms follows the same generlization as logical and.
+Generalization to more terms follows the same generalization as logical and.
 
 ### y = ax, a binary x x non-binary
 
