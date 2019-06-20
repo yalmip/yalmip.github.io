@@ -11,7 +11,7 @@ sidebar:
 ---
 
 
-### a \\(\rightarrow \\) b
+### If a then b, a \\(\rightarrow \\) b
 
 Bla bla
 
@@ -20,6 +20,22 @@ binvar a
 ````
 
 ### s = a \\(\& \\) b \\(\& \\) c \\(\ldots \\)
+
+Bla bla
+
+````matlab
+binvar a
+````
+
+### If a then  \\(f(x)\leq 0\\), \\( a \rightarrow f(x)\leq 0 \\)
+
+Bla bla
+
+````matlab
+binvar a
+````
+
+### If \\( f(x) \leq 0\\) then a, \\(  f(x) \leq 0 \rightarrow a \\)
 
 Bla bla
 
