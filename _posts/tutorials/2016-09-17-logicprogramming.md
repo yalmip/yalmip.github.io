@@ -10,14 +10,15 @@ sidebar:
   nav: "tutorials"
 ---
 
-Throughout the examples here, $a$ and $b$ represent scalar binary variables, $z$ represent a vector of binary variables, and $x$ represent continuous variables.
+Throughout the examples here, **a** and **b** represent scalar binary variables, **z** represents a vector of binary variables, and **x** is just some generic variable (could be anything).
 
-
-1. Try to represent things with disjoint events representing "exactly one thing of these occur"
+Some simple rules and strategies when deriving models for complex logic and combinatorials models:
+1. Try to represent things with disjoint events of the kind "exactly one of these things occur" with a binary variable associated to each event.
 2. Try to arrive at "binary variable implies set of constraints"
 3. Introduce intermediate auxilliary variables to keep things clean
 4. Decompose the logic using intermediate variables to connect parts
 
+In other words, a large sparse simple model is much better than a compact complex model.
 
 ### s = NOT a
 
