@@ -20,6 +20,8 @@ Some simple rules and strategies when deriving models for complex logic and comb
 
 In other words, a large sparse simple model is much better than a compact complex model.
 
+## Logical models involving binary variables
+
 ### s = NOT a
 
 With binary \\(a = 1\\) representing true and \\(a = 0\\) representing false, logical negation turns into 
@@ -76,6 +78,8 @@ b \geq a
 $$
 
 
+## Logical models involving binary variables and constraints
+
 ### If a then  \\(f(x)\leq 0\\)
 
 To ensure a constraint holds when a binary is true, we model implication using a big-M strategy
@@ -125,6 +129,8 @@ z_1 + z_2 &= 1
 \end{align}
 $$
 
+Application of big-M leads to
+
 $$
 \begin{align}
 f(x) &\leq M(1-z_1), -(1-z_1)\leq a-1 \leq (1-z_1)\\
@@ -139,20 +145,20 @@ This is nothing but two implications
 
 $$
 \begin{align}
-f(x)&\leq M(1-q), a=1\\
--f(x) &\leq M(1-q), a=0\\
+f(x)&\leq M(1-q)\\
+-f(x) &\leq M(1-a)\\
 \end{align}
 $$
 
 ### If \\( f(x) \leq 0\\) then a
 
-When \\(f(x)\\) becomes negative, a should be forced to be activated
+When \\(f(x)\\) becomes negative, a should be forced to be activated. This is accomplished by reversing the constraint and introducing an implication for the reverse model
 
 $$
 f(x)\geq -M(1-a)
 $$
 
-Notice that the case $f(x)=0$ is impossible to handle consistently in practice as solvers work finite precision and tolerances. If it is absolutely vital that the **a** is activated for $f(x)=0$, a margin has to be added, and this margin has to be selected ad-hoc so it is consistent with the numerical tolerance of the solver
+Notice that the case $f(x)=0$ is impossible to handle consistently in practice as solvers work finite precision and tolerances. If it is absolutely vital that the **a** is activated for $f(x)=0$, a margin has to be added, and this margin has to be selected ad-hoc so it is consistent with the numerical tolerance of the solver. If $f(x)$ goes below the tolerance \\(\epsilson\\), the logical variable is forced active.
 
 $$
 f(x)\geq \epsilon -M(1-a)
@@ -161,11 +167,48 @@ $$
 
 ### If \\( f(x) \leq 0\\) then a else not a
 
-Bla bla
+Now it starts paying of thinking in terms of auxilliary variables and disjoint cases. This is (with standard problems arising at the cross-over)
+
+$$
+\begin{align}
+z_1 &\rightarrow \{f(x)\leq 0, ~ a=1\}\\
+z_2 &\rightarrow \{f(x)\geq 0, ~ a=0\}\\
+z_1 + z_2 &= 1
+\end{align}
+$$
+
+A big-M model is thus
+
+$$
+\begin{align}
+f(x) &\leq M(1-z_1), -(1-z_1)\leq a-1 \leq (1-z_1)\\
+g(x) &\leq M(1-z_2), -(1-z_2) \leq a  \leq (1-z_2)\\
+z_1 + z_2 &= 1
+\end{align}
+$$
+
 
 ### If \\( f(x) \leq 0\\) then  \\( g(x) \leq 0\\)
 
-Bla bla
+Glue the two conditions using an intermediate binary variable
+
+$$
+\begin{align}
+f(x)\leq 0 &\rightarrow z_1\\
+z_1 \implies g(x)\\
+\end{align}
+$$
+
+These are standard models and we thus have
+
+\begin{align}
+f(x)\geq -M(1-z_1)\\
+g(x) \leq M(1-z_1)\\
+\end{align}
+$$
+
+
+## Multiplications of variables and functions
 
 ### y = ab, a and b binary
 
@@ -174,6 +217,8 @@ Binary multiplication is nothing but logical and, hence
 $$
 y \leq a, y\leq b, y\geq a+b-1
 $$
+
+Generalization to more terms follows the same generlization as logical and.
 
 ### y = ax, a binary x continuous (or integer)
 
@@ -190,8 +235,22 @@ M(1-a) \leq y-x \leq M(1-a)\\
 Ma \leq y \leq Ma
 $$
 
-Bla bla
+### y = abx, a and b binary x continuous (or integer)
 
+When there are repeated binary variables, the procedure is simply repeated with intermediate variables, start by intorducing a new variable and  **c = ab**  and then use stanbdard model for **y = cx**. 
+
+The idea and model generlizes to arbitrary polynomials of binary variables.
+
+### y = ax, a binary x integer
+
+To multiply with an integer variable, make a binary expansion of the integer \\(x = z_1 + 2 z_2+ 4z_3 + \ldots 2^{n+1}z_n\\) with binary variables $z$, then model new terms \\(y_i = xz_i\\) using standard model for binary product.
+
+
+### y = wx, w integer  x continuous
+
+Make binary expansion of **w** and the create model for binary times continuous.
+
+## Representations of functions
 
 ### y = max(x)
 
