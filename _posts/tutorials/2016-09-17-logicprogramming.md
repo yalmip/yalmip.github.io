@@ -10,7 +10,7 @@ sidebar:
   nav: "tutorials"
 ---
 
-
+Throughout the examples here, $a$ and $b$ represent scalar binary variables, $z$ represent a vector of binary variables, and $x$ represent continuous variables.
 
 ### s = NOT a
 
