@@ -11,7 +11,8 @@ sidebar:
 ---
 
 
-### If a then b, a \\(\rightarrow \\) b
+
+### s = NOT a
 
 Bla bla
 
@@ -19,7 +20,7 @@ Bla bla
 binvar a
 ````
 
-### s = a \\(\& \\) b \\(\& \\) c \\(\ldots \\)
+### s = a AND b
 
 Bla bla
 
@@ -27,7 +28,7 @@ Bla bla
 binvar a
 ````
 
-### If a then  \\(f(x)\leq 0\\), \\( a \rightarrow f(x)\leq 0 \\)
+### s = a OR b
 
 Bla bla
 
@@ -35,7 +36,97 @@ Bla bla
 binvar a
 ````
 
-### If \\( f(x) \leq 0\\) then a, \\(  f(x) \leq 0 \rightarrow a \\)
+
+### s = a XOR b
+
+Bla bla
+
+````matlab
+binvar a
+````
+
+### If a then b
+
+Bla bla
+
+````matlab
+binvar a
+````
+
+### If a then  \\(f(x)\leq 0\\)
+
+Bla bla
+
+````matlab
+binvar a
+````
+
+### If a then  \\(f(x)\leq 0\\) else  \\(f(x)\geq 0\\)
+
+Bla bla
+
+````matlab
+binvar a
+````
+
+### If a then  \\(f(x)\leq 0\\) else  \\(g(x)\leq 0\\)
+
+Bla bla
+
+````matlab
+binvar a
+````
+
+
+### If \\( f(x) \leq 0\\) then a
+
+Bla bla
+
+````matlab
+binvar a
+````
+
+### If \\( f(x) \leq 0\\) then a else not a
+
+Bla bla
+
+````matlab
+binvar a
+````
+
+### y = ab, a and b binary
+
+Bla bla
+
+````matlab
+binvar a
+````
+
+### y = ax, a binary x continuous (or integer)
+
+Bla bla
+
+````matlab
+binvar a
+````
+
+### y = max(x)
+
+Bla bla
+
+````matlab
+binvar a
+````
+
+### y = min(x)
+
+Bla bla
+
+````matlab
+binvar a
+````
+
+### y = sort(x)
 
 Bla bla
 
