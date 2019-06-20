@@ -18,3 +18,11 @@ Bla bla
 ````matlab
 binvar a
 ````
+
+### s = a \\(\& \\) b \\(\& \\) c \\(\ldots \\)
+
+Bla bla
+
+````matlab
+binvar a
+````
