@@ -23,6 +23,8 @@ Throughout the examples here, **a** and **b** represent scalar binary variables,
 
 Note that what we try to emphasize in the examples is that most models can be derived using exactly the same strategy and basic building blocks. Many of the models can be simplified and reduced, but those steps are typically done just as efficiently inside the solver during pre-solve.
 
+In the models, we make use of [big-M models](/tutorial/bigmandconvexhulls/) with associated constant \\(M\\). We use a notation with the same value everywhere, but in practice you would spend effort on deriving as small constants as possible for every single constraint.
+
 ## Logical models involving binary variables
 
 ### s = NOT a
@@ -203,9 +205,9 @@ A big-M representation of the implications, using a margin \\(\epsilon\\) around
 
 $$
 \begin{align}
--1-z_1 &\leq a \leq 1-z_1, f(x) \leq -\epsilon + M(1-z_1)\\
--1-z_2 &\leq a-1 \leq 1-z_2, -M(1-z_2)-\epsilon \leq f(x) \leq \epsilon + M(1-z_2)\\
--1-z_3 &\leq a \leq 1-z_3, f(x) \geq \epsilon -M(1-z_3)\\
+-(1-z_1) &\leq a \leq (1-z_1), f(x) \leq -\epsilon + M(1-z_1)\\
+-(1-z_2) &\leq a-1 \leq (1-z_2), -M(1-z_2)-\epsilon \leq f(x) \leq \epsilon + M(1-z_2)\\
+-(1-z_3) &\leq a \leq (1-z_3), f(x) \geq \epsilon -M(1-z_3)\\
 z_1+z_2+z_3 &= 1
 \end{align}
 $$
@@ -283,8 +285,8 @@ This is implemented using our standard model for implications
 
 $$
 \begin{align}
-M(1-a) \leq y-x \leq M(1-a)\\
--Ma \leq y \leq Ma
+M(1-a) &\leq y-x \leq M(1-a)\\
+-Ma &\leq y \leq Ma
 \end{align}
 $$
 
@@ -292,11 +294,11 @@ $$
 
 When there are repeated binary variables, the procedure is simply repeated with intermediate variables. Start by introducing a new variable and  model for **c = ab**  and then use model for **y = cx**. 
 
-The idea and model generalizes to arbitrary polynomials of binary variables.
+The idea and model generalizes to arbitrary polynomials of binary variables simply introduce intermediate variables to keep it simple.
 
 ### y = ax, a binary, x integer
 
-To multiply with an integer variable, make a binary expansion of the integer \\(x = z_1 + 2 z_2+ 4z_3 + \ldots +2^{n+1}z_n\\) with binary variables $z$, then model new terms \\(y_i = xz_i\\) using standard model for binary times non-binary.
+An alternative for multiplying a binary with an integer variable is to make a binary expansion of the integer \\(x = z_1 + 2 z_2+ 4z_3 + \ldots +2^{n+1}z_n\\) with binary variables $z$, and then model new terms \\(y_i = az_i\\) using standard model for binary times binary.
 
 ### y = wx, w integer, x continuous 
 
@@ -304,7 +306,7 @@ Make binary expansion of **w** and the create models for binary times continuous
 
 ### y = wx, w integer,  x integer
 
-Make binary expansions of **w** and **x** and then create models for binary products.
+Make binary expansions of both **w** and **x** and then create models for binary products.
 
 ## Representations of functions
 
@@ -339,7 +341,7 @@ z_1 + z_2 &= 1
 \end{align}
 $$
 
-Remember that absolute value is convex, so a you only use a MILP representation if absoutely needed.
+Remember that absolute value is convex, so you only use a MILP representation if absoutely needed.
 
 ### y = max(x)
 
@@ -353,7 +355,7 @@ x_n &\geq x \rightarrow y = x_n
 \end{align}
 $$
 
-Hence, introduce a binary variable for every possibility and derive disjoint representation
+Introduce a binary variable for every case and derive disjoint representation
 
 $$
 \begin{align}
