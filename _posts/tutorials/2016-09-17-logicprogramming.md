@@ -21,6 +21,7 @@ s = 1-a
 $$
 
 In YALMIP, we either do this manually, or use the logical operator. Let's try it where we force \\(a\\) to be true, and then try to maximize \\(s\\) (only feasible solution is \\(s == 0\\)
+
 ````matlab
 binvar s a
 optimize([s == not(a), a == 1], -s);value(s)
@@ -34,7 +35,9 @@ optimize([s == 1 - a, a == 1], -s);value(s)
 $$
 s \geq a + b -1 
 $$
+
 \\(s\\) has to be \\(0\\) if  either of \\(a\\) and \\(b\\) are 0.
+
 $$
 s \leq a, s\leq b
 $$
