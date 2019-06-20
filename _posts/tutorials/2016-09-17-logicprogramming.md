@@ -97,9 +97,9 @@ To create more easily generalizable models and learn a common core strategy for 
 
 $$
 \begin{align}
-\z_1 &\rightarrow \{f(x)\leq 0, a=1\}\\
-\z_2 &\rightarrow \{-f(x)\leq 0, a=0\}\\
-\z_1 + z_2 &= 1
+z_1 &\rightarrow \{f(x)\leq 0, a=1\}\\
+z_2 &\rightarrow \{-f(x)\leq 0, a=0\}\\
+z_1 + z_2 &= 1
 \end{align}
 $$
 
@@ -109,7 +109,7 @@ $$
 \begin{align}
 f(x)\leq M(1-z_1), a=1\\
 -f(x) \leq M(1-z_2), a=0\\
-\z_1 + z_2 &= 1
+z_1 + z_2 &= 1
 \end{align}
 $$
 
@@ -120,7 +120,17 @@ $$
 \begin{align}
 f(x)\leq M(1-z_1), a=1\\
 g(x) \leq M(1-z_2), a=0\\
-\z_1 + z_2 &= 1
+z_1 + z_2 &= 1
+\end{align}
+$$
+
+### If a then  \\(f(x)= 0\\)
+
+This is nothing but two implications
+$$
+\begin{align}
+f(x)\leq M(1-q), a=1\\
+-f(x) \leq M(1-q), a=0\\
 \end{align}
 $$
 
@@ -132,7 +142,7 @@ $$
 f(x)\geq -M(1-a)
 $$
 
-notice that the case $f(x)=0$ is impossible to handle consistently in practice as solvers work finite precision and tolerances. If it is absolutely vital that the **a** is activated for $f(x)=0$, a margin has to be added, and this margin has to be selected ad-hoc so it is consistent with the numerical tolerance of the solver
+Notice that the case $f(x)=0$ is impossible to handle consistently in practice as solvers work finite precision and tolerances. If it is absolutely vital that the **a** is activated for $f(x)=0$, a margin has to be added, and this margin has to be selected ad-hoc so it is consistent with the numerical tolerance of the solver
 
 $$
 f(x)\geq \epsilon -M(1-a)
