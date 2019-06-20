@@ -263,6 +263,38 @@ Make binary expansions of **w** and **x** and then create models for binary prod
 
 ## Representations of functions
 
+
+### y = abs(x)
+
+Absolute value is 
+
+$$
+\begin{align}
+x &\geq 0 \rightarrow y = x\\
+x &\leq 0 \rightarrow y = -x
+\end{align}
+$$
+
+A disjoint representation using binary variables
+
+$$
+\begin{align}
+z_1 &\rightarrow \{x\geq 0,~y = x\}\\
+z_2 &\rightarrow \{x\leq 0,~y = -x\}\\
+z_1 + z_2 &= 1
+\end{align}
+$$
+
+Once again standard implications so standard big-M model
+
+$$
+\begin{align}
+-M(1-z_1) &\leq y - x\leq M(1-z_1), x\geq -M(1-z_1)\\
+-M(1-z_2) &\leq y + x\leq M(1-z_2), x\geq M(1-z_2)\\
+z_1 + z_2 &= 1
+\end{align}
+$$
+
 ### y = max(x)
 
 The maximum of a vector can be though of a logical model 
@@ -290,9 +322,9 @@ This is finalized with implication models
 
 $$
 \begin{align}
-M(1-z_1) &\leq y - x_1\leq M(1-z_1), ~x-x_1 \leq M(1-z_1)\\
+-M(1-z_1) &\leq y - x_1\leq M(1-z_1), ~x-x_1 \leq M(1-z_1)\\
 \vdots\\
-M(1-z_n) &\leq y - x_1\leq M(1-z_n), ~x-x_n \leq M(1-z_n)\\
+-M(1-z_n) &\leq y - x_1\leq M(1-z_n), ~x-x_n \leq M(1-z_n)\\
 \sum_{i=1}^n z_1 &= 1
 \end{align}
 $$
