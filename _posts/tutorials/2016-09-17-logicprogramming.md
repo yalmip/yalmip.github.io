@@ -24,6 +24,7 @@ In YALMIP, we either do this manually, or use the logical operator. Let's try it
 ````matlab
 binvar s a
 optimize([s == not(a), a == 1], -s);value(s)
+optimize([s == 1 - a, a == 1], -s);value(s)
 ````
 
 ### s = a AND b
@@ -44,8 +45,11 @@ $$
 s \sum_{i=1}^n z_i - (n-1), s\leq z
 $$
 
+Solve a trivial problem where the only feasible solution is \\(s = 0\\)
 ````matlab
-binvar a
+binvar s a b
+optimize([s == a & b, a == 1, b == 1], s);value(s)
+optimize([s >= a + b - 1, s<=a, s<=b, a == 1, b == 1], -s);value(s)
 ````
 
 ### s = a OR b
