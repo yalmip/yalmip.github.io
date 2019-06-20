@@ -1,5 +1,5 @@
 ---
-title: "Logic programming"
+title: "Logics and integer-programming representations"
 category: tutorial
 author_profile: false
 level: 4
@@ -82,16 +82,15 @@ $$
 
 ### If a then  \\(f(x)\leq 0\\)
 
-To ensure a constraint holds when a binary is true, we model implication using a big-M strategy
+To ensure a constraint holds when a binary is true, we model implication using a [big-M strategy](/tutorial/bigmandconvexhulls/).
 
 $$
 f(x) \leq M(1-a)
 $$
 
-
 ### If a then  \\(f(x)\leq 0\\) else  \\(f(x)\geq 0\\)
 
-The standard implication is simply repreated for the two cases.
+The standard implication is simply repeated for the two cases.
 
 $$
 f(x) \leq M(1-a),-f(x)\leq Ma
