@@ -137,7 +137,7 @@ $$
 
 ### If a then  \\(f(x)\leq 0\\) else  \\(g(x)\leq 0\\)
 
-Make a clean representation using additional variables to encode two disjoint cases
+We could of course create  a model using \\(a\\) only, but using the same strategy the whole time trains us to realize that all model look the same in principle
 
 $$
 \begin{align}
@@ -159,7 +159,7 @@ $$
 
 ### If a then  \\(f(x)= 0\\)
 
-This is nothing but a double-sided inequality in the implication, hence
+This is nothing but  two inequalities in the implication, hence
 
 $$
 \begin{align}
