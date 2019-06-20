@@ -103,7 +103,7 @@ This is a general strategy throughout. If you enter complex expressions, introdu
 
 ### If a then  \\(f(x) < 0\\)
 
-Strict inequalities are impossible in pracice (unless \\(f(x)\\) is quantized such as only involving integer variables). Hence, you have to use a margin and hope that this in combination with solver tolerances leads to a solution which actually satisfies the constraints (solutions claimed feasible and optimal can easily be infeasible and are only guaranteed to satisfy solver tolerance and termination critera)
+Strict inequalities are impossible in practice (unless \\(f(x)\\) is quantized such as only involving integer variables). Hence, you have to use a margin and hope that this in combination with solver tolerances leads to a solution which actually satisfies the constraints (solutions claimed feasible and optimal can easily be infeasible and are only guaranteed to satisfy solver tolerance and termination critera)
 
 $$
 f(x) \leq -\epsilon  + M(1-a)
