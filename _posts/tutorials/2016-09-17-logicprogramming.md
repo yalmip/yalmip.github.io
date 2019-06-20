@@ -93,6 +93,8 @@ $$
 f(x) \leq M(1-a)
 $$
 
+This is the core model construct which is used for almost all cases below.
+
 ### If logical(z) then  \\(f(x)= 0\\)
 
 Introduce a new binary variable \\(s\\) to represent the logical condition using the methods above, and then use the standard implication.
