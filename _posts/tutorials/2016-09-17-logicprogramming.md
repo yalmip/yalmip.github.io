@@ -341,3 +341,32 @@ Simply use **min(x) = -max(-x)**
 
 Bla bla
 
+### y = floor(x)
+
+Bla bla
+
+### y = ceil(x)
+
+Bla bla
+
+### y = fix(x)
+
+Bla bla
+
+### y = round(x)
+
+Bla bla
+
+### y = rem(x)
+
+Bla bla
+
+### y = mod(x)
+
+Bla bla
+
+### y = sign(x)
+
+Bla bla
+
+
