@@ -268,7 +268,7 @@ $$
 
 Generalization to more terms follows the same generalization as logical and.
 
-### y = ax, a binary x x non-binary
+### y = ax, a binary x, x non-binary
 
 Multiplication of binary and non-binary should be seen as a logical operation
 
@@ -288,26 +288,25 @@ M(1-a) \leq y-x \leq M(1-a)\\
 \end{align}
 $$
 
-### y = abx, a and b binary x non-binary
+### y = abx, a and b binary, x non-binary
 
 When there are repeated binary variables, the procedure is simply repeated with intermediate variables. Start by introducing a new variable and  model for **c = ab**  and then use model for **y = cx**. 
 
 The idea and model generalizes to arbitrary polynomials of binary variables.
 
-### y = ax, a binary x integer
+### y = ax, a binary, x integer
 
 To multiply with an integer variable, make a binary expansion of the integer \\(x = z_1 + 2 z_2+ 4z_3 + \ldots +2^{n+1}z_n\\) with binary variables $z$, then model new terms \\(y_i = xz_i\\) using standard model for binary times non-binary.
 
-### y = wx, w integer  x continuous
+### y = wx, w integer, x continuous 
 
 Make binary expansion of **w** and the create models for binary times continuous.
 
-### y = wx, w integer  x integer
+### y = wx, w integer,  x integer
 
 Make binary expansions of **w** and **x** and then create models for binary products.
 
 ## Representations of functions
-
 
 ### y = abs(x)
 
