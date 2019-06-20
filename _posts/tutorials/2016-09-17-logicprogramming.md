@@ -349,25 +349,48 @@ In theory introduce integer \\(y\\) and \\(x-1 < y \geq x\\). In practice strict
 
 In theory introduce integer \\(y\\) and \\(x \geq y < x+1\\). In practice strict inequality has to be approximated leading to \\(x \leq y \leq x+1-\epsilon\\)
 
-### y = fix(x)
+### y = rem(x,m)
 
-Bla bla
+\\( y = rem(x,m)\\) means \\( y = x - n*m, n = \fix(x/m)\\). 
 
-### y = round(x)
-
-Bla bla
-
-### y = rem(x)
-
-Bla bla
-
-### y = mod(x)
+### y = mod(x,m)
 
 Bla bla
 
 ### y = sign(x)
 
-Bla bla
+A logical model of \\(s = \sign(x)\\) is
+
+$$
+\begin{align}
+x & < 0 \rightarrow s = -1\\
+x & = 0 \rightarrow s = 0\\
+x & > 0 \rightarrow s = 1\\
+\end{align}
+$$
+
+This is interpreted as 
+
+$$
+\begin{align}
+z_1 &\rightarrow \{x<0, s=-1\} \\
+z_2 &\rightarrow \{x=0, s=0\} \\
+z_3 &\rightarrow \{x>0,s=1\} \\
+z_1+z_2+z_3 &= 1
+\end{align}
+$$
+
+A big-M representation of the implications, using a margin around 0 if necessary leads to
+
+$$
+\begin{align}
+-M(1-z_1) &\leq s+1 \leq M(1-z_1), x \leq -\epsilon + M(1-z_1)\\
+-M(1-z_2) &\leq s \leq M(1-z_2), -M(1-z_2)-\epsilon \leq x \leq \epsilon + M(1-z_2)\\
+-M(1-z_3) &\leq s-1 \leq M(1-z_3), x \geq \epsilon -M(1-z_3)\\
+z_1+z_2+z_3 &= 1
+\end{align}
+$$
+
 
 ### y = piecewise affine function
 
