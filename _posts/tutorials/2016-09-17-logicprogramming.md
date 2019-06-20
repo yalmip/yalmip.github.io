@@ -116,10 +116,19 @@ $$
 ### If a then  \\(f(x)\leq 0\\) else  \\(g(x)\leq 0\\)
 
 Once again, we make a clean representation using additional variables to encode disjoint cases
+
 $$
 \begin{align}
-f(x)\leq M(1-z_1), a=1\\
-g(x) \leq M(1-z_2), a=0\\
+z_1 &\rightarrow \{f(x)\leq 0, ~ a=1\}\\
+z_2 &\rightarrow \{g(x)\leq 0, ~ a=0\}\\
+z_1 + z_2 &= 1
+\end{align}
+$$
+
+$$
+\begin{align}
+f(x) \leq M(1-z_1), -(1-z_1)\leq a-1 \leq (1-z_1)\\
+g(x) \leq M(1-z_2), -(1-z_2) \leq a  \leq (1-z_2)\\
 z_1 + z_2 &= 1
 \end{align}
 $$
@@ -127,6 +136,7 @@ $$
 ### If a then  \\(f(x)= 0\\)
 
 This is nothing but two implications
+
 $$
 \begin{align}
 f(x)\leq M(1-q), a=1\\
