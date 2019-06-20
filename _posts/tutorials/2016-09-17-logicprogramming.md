@@ -335,7 +335,7 @@ Remember that max is convex, so you only use a MILP representation if absolutely
 
 ### y = min(x)
 
-Use \(( \min(x) = -\max(-x)\\).
+Use \\( \min(x) = -\max(-x)\\).
 
 ### y = sort(x)
 
@@ -343,11 +343,11 @@ Bla bla
 
 ### y = floor(x)
 
-Bla bla
+In theory introduce integer \\(y\\) and \\(x-1 < y \geq x\\). In practice strict inequality has to be approximated leading to \\(x-1+\epsilon \leq y \leq x\\)
 
 ### y = ceil(x)
 
-Bla bla
+In theory introduce integer \\(y\\) and \\(x \geq y < x+1\\). In practice strict inequality has to be approximated leading to \\(x \leq y \leq x+1-\epsilon\\)
 
 ### y = fix(x)
 
