@@ -10,6 +10,11 @@ sidebar:
   nav: "tutorials"
 ---
 
+1. [Logical models involving binary variables ](#logics)
+1. [Logical models involving binary variables ](#logics)
+1. [Logical models involving binary variables ](#logics)
+1. [Logical models involving binary variables ](#logics)
+
 
 Some simple rules and strategies when deriving models for complex logic and combinatorials models:
 1. Try to represent things with disjoint events of the kind "exactly one of these things occur" with a binary variable associated to each event.
@@ -25,7 +30,8 @@ Note that what we try to emphasize in the examples is that most models can be de
 
 In the models, we make use of [big-M models](/tutorial/bigmandconvexhulls/) with associated constant \\(M\\). We use a notation with the same value everywhere, but in practice you would spend effort on deriving as small constants as possible for every single constraint.
 
-## Logical models involving binary variables
+## Logical models involving binary variables 
+{: #logics }
 
 ### s = NOT a
 
