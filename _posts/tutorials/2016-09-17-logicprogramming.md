@@ -14,15 +14,35 @@ sidebar:
 
 ### s = NOT a
 
-Bla bla
+With binary \\(a = 1\\) representing true and \\(a = 0\\) representing false, logical negation turns into 
 
+$$
+s = 1-a
+$$
+
+In YALMIP, we either do this manually, or use the logical operator. Let's try it where we force \\(a\\) to be true, and then try to maximize \\(s\\) (only feasible solution is \\(s == 0\\)
 ````matlab
-binvar a
+binvar s a
+optimize([s == not(a), a == 1], -s);value(s)
 ````
 
 ### s = a AND b
 
-Bla bla
+\\(s\\) has to be \\(1\\) if both \\(a\\) and \\(b\\) are 1. Hence
+
+$$
+s \geq a + b -1 
+$$
+\\(s\\) has to be \\(0\\) if  either of \\(a\\) and \\(b\\) are 0.
+$$
+s \leq a, s\leq b
+$$
+
+The idea generalizes to an arbitrary number of binary variables \\(s = z_1 \& z_2 \& \ldots z_\n$ with
+
+$$
+s \sum_{i=1}^n z_i - (n-1), s\leq z
+$$
 
 ````matlab
 binvar a
