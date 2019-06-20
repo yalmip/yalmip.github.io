@@ -21,6 +21,8 @@ In other words, a large sparse simple model is much better than a compact comple
 
 Throughout the examples here, **a** and **b** represent scalar binary variables, **z** represents a vector of binary variables, and **x** is just some generic variable (could be anything).
 
+Note that what we try to emphasize in the examples is that most models can be derived using exactly the same strategy and basic building blocks. Many of the models can be simplified and reduced, but those steps are typically done just as efficiently inside the solver during pre-solve.
+
 ## Logical models involving binary variables
 
 ### s = NOT a
@@ -89,9 +91,15 @@ $$
 f(x) \leq M(1-a)
 $$
 
+### If logical(z) then  \\(f(x)= 0\\)
+
+Introduce a new binary variable \\(z\\) to represent the logical condition using the methods above, and then use the standard implication.
+
+This is a general strategy throughout. If you enter complex expressions, introduce new variables for simple sub-parts and build the complete model by combining simple standard models.
+
 ### If a then  \\(f(x) < 0\\)
 
-Strict inequalities are impossible in pracice (unless \\f(x)\)) is quantized such as only involving integer variables). Hence, you have to use a margin and hope that the solver tolerances leads to a solution which actually satisfies the constraints (solutions returned can easily be infeasible and a re only guaranteed to satisfy solver tolerance and termination critera)
+Strict inequalities are impossible in pracice (unless \\f(x)\)) is quantized such as only involving integer variables). Hence, you have to use a margin and hope that the solver tolerances leads to a solution which actually satisfies the constraints (solutions returned can easily be infeasible and are only guaranteed to satisfy solver tolerance and termination critera)
 
 $$
 f(x) \leq -\epsilon  + M(1-a)
@@ -105,7 +113,7 @@ $$
 f(x) \leq M(1-a),-f(x)\leq Ma
 $$
 
-To create more easily generalizable models and learn a common core strategy for all models, it is adviced to think of this as two disjoint cases each associated with a set of constraints. 
+To create more easily generalizable models and learn a common core strategy, it is adviced to think of this as two disjoint cases each associated with a set of constraints. 
 
 $$
 \begin{align}
@@ -149,7 +157,7 @@ $$
 
 ### If a then  \\(f(x)= 0\\)
 
-This is nothing but two implications, hence
+This is nothing but a double-sided inequality in the implication, hence
 
 $$
 \begin{align}
@@ -167,6 +175,42 @@ f(x)\geq -M(1-a)
 $$
 
 Note that we use a non-strict inequality. If behaviour around \\f(x)\\) is important, a margin will have to be used as discussed before.
+
+
+### If \\( f(x) = 0\\) then a
+
+First, this is extremely ill-posed in practice as solvers work with floating-point numbers so it might consider, e.g., \\(10^{-7\\) to be 0. It is also often ill-posed from a practical point of view. If your model says **if waterlevel is 0** do you really want it to behave differently compared to the case when the waterlevel is \\(10^{-11}\\), i.e. the thickness of one atom?
+
+The disjoint logical model is
+$$
+f(x)<0 \rightarrow a = 0
+f(x)=0 \rightarrow a = 1
+f(x)>0 \rightarrow a = 0
+$$
+
+This is interpreted as 
+
+$$
+\begin{align}
+z_1 &\rightarrow \{f(x)<0, a=0\} \\
+z_2 &\rightarrow \{f(x)=0, a=1\} \\
+z_3 &\rightarrow \{f(x)>0,a=0\} \\
+z_1+z_2+z_3 &= 1
+\end{align}
+$$
+
+A big-M representation of the implications, using a margin \\(\epsilon\\) around 0 if wanted leads to
+
+$$
+\begin{align}
+-1-z_1 &\leq a \leq 1-z_1, f(x) \leq -\epsilon + M(1-z_1)\\
+-1-z_2 &\leq a-1 \leq 1-z_2, -M(1-z_2)-\epsilon \leq f(x) \leq \epsilon + M(1-z_2)\\
+-1-z_3 &\leq a \leq 1-z_3, f(x) \geq \epsilon -M(1-z_3)\\
+z_1+z_2+z_3 &= 1
+\end{align}
+$$
+
+
 
 ### If \\( f(x) \leq 0\\) then a else not a
 
