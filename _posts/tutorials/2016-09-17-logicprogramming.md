@@ -95,7 +95,7 @@ $$
 
 ### If logical(z) then  \\(f(x)= 0\\)
 
-Introduce a new binary variable \\(z\\) to represent the logical condition using the methods above, and then use the standard implication.
+Introduce a new binary variable \\(s\\) to represent the logical condition using the methods above, and then use the standard implication.
 
 This is a general strategy throughout. If you enter complex expressions, introduce new variables for simple sub-parts and build the complete model by combining simple standard models.
 
