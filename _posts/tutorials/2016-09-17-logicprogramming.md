@@ -226,6 +226,7 @@ Generalization to more terms follows the same generlization as logical and.
 ### y = ax, a binary x x non-binary
 
 Multiplication of binary and non-binary should be seen as a logical operation
+
 $$
 \begin{align}
 a  &\rightarrow y = x\\
