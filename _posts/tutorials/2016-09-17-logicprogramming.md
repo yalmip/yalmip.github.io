@@ -88,6 +88,14 @@ $$
 f(x) \leq M(1-a)
 $$
 
+### If a then  \\(f(x) < 0\\)
+
+Strict inequalities are impossible in pracice (unless \\f(x)\)) is quantized such as only involving integer variables). Hence, you have to use a margin and hope that the solver tolerances leads to a solution which actually satisfies the constraints (solutions returned can easily be infeasible and a re only guaranteed to satisfy solver tolerance and termination critera)
+
+$$
+f(x) \leq -\epsilon  + M(1-a)
+$$
+
 ### If a then  \\(f(x)\leq 0\\) else  \\(f(x)\geq 0\\)
 
 The standard implication is simply repeated for the two cases.
