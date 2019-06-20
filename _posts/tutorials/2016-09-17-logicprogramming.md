@@ -10,4 +10,11 @@ sidebar:
   nav: "tutorials"
 ---
 
-Not added.
+
+### a \\(\rightarrow \\) b
+
+Bla bla
+
+````matlab
+binvar a
+````
