@@ -265,6 +265,9 @@ g(x)&\leq M(1-z_1)\\
 $$
 
 
+### alldifferent(x)
+
+
 ## Multiplications of variables and functions
 {: #products }
 
@@ -446,6 +449,10 @@ z_1+z_2+z_3 &= 1
 \end{align}
 $$
 
+
+### y = nnz(x)
+
+Bla bla
 
 ### y = piecewise affine function
 
