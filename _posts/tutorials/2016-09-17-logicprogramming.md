@@ -40,7 +40,7 @@ $$
 The idea generalizes to an arbitrary number of binary variables \\(s = z_1 ~\&~ z_2~ \&~ \ldots ~\&~ z_n\\) with
 
 $$
-s \geq \sum_{i=1}^n z_i - (n-1), s\leq z
+s \geq \sum_{i=1}^n z_i - (n-1), ~s\leq z
 $$
 
 ### s = a OR b
@@ -48,7 +48,7 @@ $$
 \\(s\\) has to be \\(1\\) if  either of \\(a\\) and \\(b\\) are 1, and \\(0\\) if none of them are 1.
 
 $$
-s \geq a,~s\geq b, s \leq a + b 
+s \geq a,~s\geq b, ~ s \leq a + b 
 $$
 
 ### s = a XOR b
