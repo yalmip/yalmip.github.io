@@ -251,7 +251,7 @@ The idea and model generalizes to arbitrary polynomials of binary variables.
 
 ### y = ax, a binary x integer
 
-To multiply with an integer variable, make a binary expansion of the integer \\(x = z_1 + 2 z_2+ 4z_3 + \ldots 2^{n+1}z_n\\) with binary variables $z$, then model new terms \\(y_i = xz_i\\) using standard model for binary times non-binary.
+To multiply with an integer variable, make a binary expansion of the integer \\(x = z_1 + 2 z_2+ 4z_3 + \ldots +2^{n+1}z_n\\) with binary variables $z$, then model new terms \\(y_i = xz_i\\) using standard model for binary times non-binary.
 
 ### y = wx, w integer  x continuous
 
@@ -270,7 +270,7 @@ The maximum of a vector can be though of a logical model
 $$
 \begin{align}
 x_1 &\geq x \rightarrow y = x_1\\
-\vdots&
+\vdots&\\
 x_n &\geq x \rightarrow y = x_n
 \end{align}
 $$
@@ -290,10 +290,10 @@ This is finalized with implication models
 
 $$
 \begin{align}
-M(1-z_1) \leq y - x_1\leq M(1-z_1), x-x_1 \leq M(1-z_1)\\
+M(1-z_1) &\leq y - x_1\leq M(1-z_1), ~x-x_1 \leq M(1-z_1)\\
 \vdots\\
-M(1-z_n) \leq y - x_1\leq M(1-z_n), x-x_n \leq M(1-z_n)\\
-\sum_{i=1}^n z_1 = 1
+M(1-z_n) &\leq y - x_1\leq M(1-z_n), ~x-x_n \leq M(1-z_n)\\
+\sum_{i=1}^n z_1 &= 1
 \end{align}
 $$
 
