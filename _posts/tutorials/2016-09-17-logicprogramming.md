@@ -107,8 +107,8 @@ This can be implemented using standard implications
 
 $$
 \begin{align}
-f(x)\leq M(1-z_1), -(1-z_1)\leq a-1 \leq (1-z_1)\\
--f(x) \leq M(1-z_2), -(1-z_2) \leq a \leq (1-z_2)\\
+f(x)&\leq M(1-z_1), -(1-z_1)\leq a-1 \leq (1-z_1)\\
+-f(x) &\leq M(1-z_2), -(1-z_2) \leq a \leq (1-z_2)\\
 z_1 + z_2 &= 1
 \end{align}
 $$
@@ -127,8 +127,8 @@ $$
 
 $$
 \begin{align}
-f(x) \leq M(1-z_1), -(1-z_1)\leq a-1 \leq (1-z_1)\\
-g(x) \leq M(1-z_2), -(1-z_2) \leq a  \leq (1-z_2)\\
+f(x) &\leq M(1-z_1), -(1-z_1)\leq a-1 \leq (1-z_1)\\
+g(x) &\leq M(1-z_2), -(1-z_2) \leq a  \leq (1-z_2)\\
 z_1 + z_2 &= 1
 \end{align}
 $$
@@ -139,8 +139,8 @@ This is nothing but two implications
 
 $$
 \begin{align}
-f(x)\leq M(1-q), a=1\\
--f(x) \leq M(1-q), a=0\\
+f(x)&\leq M(1-q), a=1\\
+-f(x) &\leq M(1-q), a=0\\
 \end{align}
 $$
 
