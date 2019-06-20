@@ -22,11 +22,9 @@ Some simple rules and strategies when deriving models for complex logic and comb
 3. Introduce intermediate auxilliary variables to keep things clean
 4. Decompose the logic using intermediate variables to connect parts
 
-In other words, a large sparse simple model is much better than a compact complex model.
+In other words, a large sparse simple model is much better than a compact complex model. What we try to emphasize in the examples is that **most models can be derived using exactly the same strategy and a few very basic building blocks**. Many of the models can be simplified and reduced, but those steps are typically done just as efficiently inside the solver during pre-solve.
 
 Throughout the examples here, **a** and **b** represent scalar binary variables, **z** represents a vector of binary variables, and **x** is just some generic variable (could be anything).
-
-Note that what we try to emphasize in the examples is that most models can be derived using exactly the same strategy and basic building blocks. Many of the models can be simplified and reduced, but those steps are typically done just as efficiently inside the solver during pre-solve.
 
 In the models, we make use of [big-M models](/tutorial/bigmandconvexhulls/) with associated constant \\(M\\). We use a notation with the same value everywhere, but in practice you would spend effort on deriving as small constants as possible for every single constraint.
 
