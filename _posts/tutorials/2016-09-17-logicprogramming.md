@@ -290,7 +290,7 @@ Once again standard implications so the result is standard big-M model
 $$
 \begin{align}
 -M(1-z_1) &\leq y - x\leq M(1-z_1), x\geq -M(1-z_1)\\
--M(1-z_2) &\leq y + x\leq M(1-z_2), x\geq M(1-z_2)\\
+-M(1-z_2) &\leq y + x\leq M(1-z_2), x\leq M(1-z_2)\\
 z_1 + z_2 &= 1
 \end{align}
 $$
