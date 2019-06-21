@@ -250,8 +250,8 @@ Glue the two conditions using an intermediate binary variable
 
 $$
 \begin{align}
-f(x)&\leq 0 &\rightarrow z_1\\
-z_1 &\implies g(x)\\
+f(x) & \leq 0 \rightarrow z_1\\
+z_1  & \rightarrow g(x)
 \end{align}
 $$
 
@@ -260,7 +260,7 @@ These are standard models and we thus have
 $$
 \begin{align}
 f(x)&\geq -M(1-z_1)\\
-g(x)&\leq M(1-z_1)\\
+g(x)&\leq M(1-z_1)
 \end{align}
 $$
 
