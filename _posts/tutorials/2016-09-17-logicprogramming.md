@@ -562,7 +562,7 @@ $$
 
 Following the picewise affine model, it is trivial to extend to the quadratic case **if** \\(A_ix\leq b_i\\) then \\(y = \frac{1}{2}x^TQ_ix + c_i^Tx+d_i\\). However, one should be slightly more clever, as the standard approach would introduce equalities involving quadratic expressions, which is nonconvex. 
 
-Define \\(N\\) vectors $p_i$ with length equal to \\(x\\), and  define \\(y\\) as  \\( \sum_{i = 1}^N \frac{1}{2}p_i^TQ_ip_i + c_i^Tp_i+d_i z_i\\) where
+Define \\(N\\) vectors \\(p_i\\) with length equal to \\(x\\), and  define \\(y\\) as  \\( \sum_{i = 1}^N \frac{1}{2}p_i^TQ_ip_i + c_i^Tp_i+d_i z_i\\) where
 
 $$
 \begin{align}
