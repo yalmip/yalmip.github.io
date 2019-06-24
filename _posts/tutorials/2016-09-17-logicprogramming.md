@@ -442,10 +442,10 @@ Implement the implications with integer \\(y\\)  and a combined model for ceil a
 
 $$
 \begin{align}
-x \leq M(1-z_1)\\
-x \geq -M(1-z_2)\\
-x - z_2 + \epsilon \leq y \leq x + z_1-\epsilon
-z_1+z_2 &= 1
+x &\leq M(1-z_1)\\
+x &\geq -M(1-z_2)\\
+x - z_2 + z_1\epsilon &\leq y \leq x + z_1-z_2\epsilon\\
+z_1+z_2 & = 1
 \end{align}
 $$
 
