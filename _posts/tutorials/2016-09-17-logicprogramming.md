@@ -421,11 +421,11 @@ In theory introduce integer \\(y\\) and \\(x \geq y < x+1\\). In practice strict
 
 ### y = rem(x,m)
 
-\\( y = \mathop{rem}(x,m)\\) means \\( y = x - nm, n = \mathop{fix}(x/m)\\), meaning we have to implement \\(\mathop{fix}(x/m)\\) using the model above (we assume \\(m\\) is constant\\).
+\\( y = \mathop{rem}(x,m)\\) means \\( y = x - nm, n = \mathop{fix}(x/m)\\), meaning we have to implement \\(\mathop{fix}(x/m)\\) using the model above (we assume \\(m\\) is constant).
 
 ### y = mod(x,m)
 
-\\( y = \mathop{mod}(x,m)\\) means \\( y = x - nm, n = \mathop{floor}(x/m)\\), meaning we have to implement \\(\mathop{floor}(x/m)\\) using the model above (we assume \\(m\\) is constant\\).
+\\( y = \mathop{mod}(x,m)\\) means \\( y = x - nm, n = \mathop{floor}(x/m)\\), meaning we have to implement \\(\mathop{floor}(x/m)\\) using the model above (we assume \\(m\\) is constant).
 
 ### y = sgn(x)
 
