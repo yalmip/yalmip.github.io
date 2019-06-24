@@ -514,6 +514,18 @@ $$
 
 ### y = nnz(x)
 
+To count elements let \\(y = \sum_{i=1}^n \z_i\\). Introduce additional binary vectors \\(v,u\\) and the logical model
+
+$$
+\begin{align}
+v_i = 1 & \rightarrow  x_i \leq -\epsilon\\
+z_i = 1 & \rightarrow  \epsilon \geq x_i \geq -\epsilon\\
+u_i = 1 & \rightarrow x_i \geq \epsilon\\
+u_i + z_i + v_i & = 1
+\end{align}
+$$
+
+
 ### y = piecewise affine function
 
 ### y = piecewise quadratic function
