@@ -106,11 +106,11 @@ $$
 f(x) \leq M(1-a)
 $$
 
-This is the core model construct which is used for almost all cases below.
+This is the model construct which is used for almost all cases below. Make sure you understand why this works. In YALMIP, this is the core of the [implies](/command/implies) operator.
 
 ### If logical(z) then  \\(f(x)= 0\\)
 
-Introduce a new binary variable \\(s\\) to represent the logical condition using the methods above, and then use the standard implication.
+Introduce a new binary variable \\(s\\) to represent the logical condition using the methods above, and then use the standard implication. Note that you do not have to model the logical condition exactly (both directions), all you need is \\(\mathop{logical}(z) \rightarrow s\\).
 
 This is a general strategy throughout. If you enter complex expressions, introduce new variables for simple sub-parts and build the complete model by combining simple standard models.
 
