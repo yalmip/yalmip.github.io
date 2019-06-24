@@ -538,12 +538,12 @@ $$
 
 ### y = piecewise affine function
 
-A typical piecewise affine model is represented as **if** \\(A_ix\leq b_i\\) then \\(y = c_i^Tx+c_i\\). From above, this is 
+A typical piecewise affine model is represented as **if** \\(A_ix\leq b_i\\) then \\(y = c_i^Tx+c_i\\) where \\(i = 1,\ldots,N\\). From above, this is 
 
 $$
 \begin{align}
 z_i = 1 & \rightarrow  \{A_i x \leq b_i, y = c^T_ix + d_i\}\\
-\sum_{i=1}^n z_i &= 1
+\sum_{i=1}^N z_i &= 1
 \end{align}
 $$
 
@@ -559,3 +559,24 @@ $$
 
 
 ### y = piecewise quadratic function
+
+Following the picewise affine model, it is trivial to extend to the quadratic case **if** \\(A_ix\leq b_i\\) then \\(y = \frac{1}{2}x^TQ_ix + c_i^Tx+c_i\\). However, one should be slightly more clever, as the standard approach would introduce equalities involving quadratic expressions, which is nonconvex. 
+
+Define \\(N\\) vectors $p_i$ with length equal to \\(x\\), and  define \\(y\\) as  \\( \sum_{i = 1}^N \frac{1}{2}p_i^TQ_ip_i + c_i^Tp_i+c_i z_i\\)
+
+$$
+\begin{align}
+z_i = 1 & \rightarrow  \{x = p_i, A_i x \leq b_i\}\\
+\sum_{i=1}^n z_i &= 1
+\end{align}
+$$
+
+Standard implication...
+
+$$
+\begin{align}
+ A_ix - b_i &\leq M(1-z_i)\\ 
+ -M(1-z_i) &\leq x-p_i \leq M(1-z_i)\\
+ \sum_{i=1}^n z_i &= 1
+\end{align}
+$$
