@@ -10,11 +10,12 @@ sidebar:
   nav: "tutorials"
 ---
 
+YALMIP does a lot of modelling for you behind the scenes, but sometimes it is important to know how models are created and what the standard building blocks and tricks are. Creating integer programming representable models seem like magic to some, but there are really only a few standard tricks used leading to a family of models. 
+
 1. [Logical models involving binary variables](#logics)
 1. [Logical models involving binary variables and constraints](#constraints)
 1. [Multiplications of variables and functions](#products)
 1. [Representations of functions](#functions)
-
 
 Some simple rules and strategies when deriving models for complex logic and combinatorials models:
 1. Try to represent things with disjoint events of the kind "exactly one of these things occur" with a binary variable associated to each event.
