@@ -407,7 +407,7 @@ Use \\( \min(x) = -\max(-x)\\).
 
 ### y = sort(x)
 
-Let \\(P\\) be a binary permutation matrix (rows and columns sum to 1), and write \\(y\\) as permutation of \\(x\\), \\(y = Px\\). For \\(y\\) to be sorted (increasing), we must have \\(y_i \geq y_{i+1}\\). Multiplications \\(y = Px\\) is implemented using the models above \\(-M(1-P_{ij}) \leq y_i - x_j \leq M(1-P_{ij})\\).
+Let \\(P\\) be a binary permutation matrix (rows and columns sum to 1), and write \\(y\\) as permutation of \\(x\\), \\(y = Px\\). For \\(y\\) to be sorted (increasing), we must have \\(y_i \leq y_{i+1}\\). Multiplications \\(y = Px\\) is implemented using the models above, e.g., \\(-M(1-P_{ij}) \leq y_i - x_j \leq M(1-P_{ij})\\).
 
 ### y = floor(x)
 
