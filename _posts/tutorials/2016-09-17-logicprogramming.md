@@ -415,7 +415,7 @@ In theory introduce integer \\(y\\) and \\(x-1 < y \leq x\\). In practice strict
 
 ### y = ceil(x)
 
-In theory introduce integer \\(y\\) and \\(x \geq y < x+1\\). In practice strict inequality has to be approximated leading to \\(x \leq y \leq x+1-\epsilon\\)
+In theory introduce integer \\(y\\) and \\(x \leq y < x+1\\). In practice strict inequality has to be approximated leading to \\(x \leq y \leq x+1-\epsilon\\)
 
 ### y = fix(x)
 
