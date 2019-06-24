@@ -398,7 +398,7 @@ Use \\( \min(x) = -\max(-x)\\).
 
 ### y = sort(x)
 
-Bla bla
+Let \\(P\\) be a binary permutation matrix (rows and columns sum to 1), and write \\(y\\) as permutation of \\(x\\), \\(y = Px\\). For \\(y\\) to be sorted (increasing), we must have \\(y_i \geq y_{i+1}\\). Multiplications \\(y = Px\\) is implemented using the models above \\(-M(1-P_{ij}) \leq y_i - x_j \leq M(1-P_{ij})\\).
 
 ### y = floor(x)
 
@@ -408,12 +408,15 @@ In theory introduce integer \\(y\\) and \\(x-1 < y \leq x\\). In practice strict
 
 In theory introduce integer \\(y\\) and \\(x \geq y < x+1\\). In practice strict inequality has to be approximated leading to \\(x \leq y \leq x+1-\epsilon\\)
 
+### y = fix(x)
+
 ### y = rem(x,m)
 
-\\( y = \mathop{rem}(x,m)\\) means \\( y = x - n*m, n = \mathop{fix}(x/m)\\). 
+\\( y = \mathop{rem}(x,m)\\) means \\( y = x - nm, n = \mathop{fix}(x/m)\\), meaning we have to implement \\(\mathop{fix}(x/m)\\) using the model above (we assume \\(m\\) is constant\\).
 
 ### y = mod(x,m)
 
+\\( y = \mathop{mod}(x,m)\\) means \\( y = x - nm, n = \mathop{floor}(x/m)\\), meaning we have to implement \\(\mathop{floor}(x/m)\\) using the model above (we assume \\(m\\) is constant\\).
 
 ### y = sgn(x)
 
