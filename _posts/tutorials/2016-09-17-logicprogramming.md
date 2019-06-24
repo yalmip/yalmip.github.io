@@ -261,7 +261,7 @@ Glue the two conditions using an intermediate binary variable
 $$
 \begin{align}
 f(x) & \leq 0 \rightarrow z_1\\
-z_1  & \rightarrow g(x)
+z_1  & \rightarrow g(x) \leq 0
 \end{align}
 $$
 
