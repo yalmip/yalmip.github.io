@@ -536,8 +536,26 @@ u_i + z_i + v_i & = 1
 \end{align}
 $$
 
-
-
 ### y = piecewise affine function
+
+A typical piecewise affine model is represented as **if** \\(A_ix\leq b_i\\) then \\(y = c_i^Tx+c_i\\). From above, this is 
+
+$$
+\begin{align}
+z_i = 1 & \rightarrow  \{A_i x \leq b_i, y = c^T_ix + d_i\}\\
+\sum_{i=1}^n z_i &= 1
+\end{align}
+$$
+
+Standard implication...
+
+$$
+\begin{align}
+ A_ix - b_i &\leq M(1-z_i)\\ 
+ -M(1-z_i) &\leq y-c_i^Tx-d_i \leq M(1-z_i)\\
+ \sum_{i=1}^n z_i &= 1
+\end{align}
+$$
+
 
 ### y = piecewise quadratic function
