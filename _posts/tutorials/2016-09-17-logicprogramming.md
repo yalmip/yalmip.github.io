@@ -63,6 +63,13 @@ $$
 s \geq a,~s\geq b, ~ s \leq a + b 
 $$
 
+
+Also this generalizes trivially to arbitrary length
+
+$$
+s \geq z, ~s\leq \sum_{i = 1}^n z_j
+$$
+
 ### s = a XOR b
 
 \\(s\\) has to be \\(1\\) if  exactly one of \\(a\\) and \\(b\\) are 1, and \\(0\\) otherwise
