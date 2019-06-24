@@ -525,6 +525,18 @@ u_i + z_i + v_i & = 1
 \end{align}
 $$
 
+Once again standard implications
+
+$$
+\begin{align}
+ \epsilon +x & \leq M(1-v_1)\\ 
+ -\epsilon +x & \leq M(1-z_1),~-\epsilon -x & \leq M(1-z_1)\\
+  \epsilon -x & \leq M(1-u_1)\\ 
+u_i + z_i + v_i & = 1
+\end{align}
+$$
+
+
 
 ### y = piecewise affine function
 
