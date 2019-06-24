@@ -298,9 +298,6 @@ z_3  & \geq z_1+z_2 - 1
 \end{align}
 $$
 
-### alldifferent(x)
-
-
 ## Multiplications of variables and functions
 {: #products }
 
