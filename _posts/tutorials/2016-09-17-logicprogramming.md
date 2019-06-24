@@ -233,7 +233,7 @@ $$
 
 ### If \\( f(x) \leq 0\\) then a else not a
 
-Now it starts paying of thinking in terms of auxilliary variables and disjoint cases. This is (with standard problems arising at the cross-over)
+Now it starts paying of thinking in terms of auxilliary variables and disjoint cases. This is 
 
 $$
 \begin{align}
