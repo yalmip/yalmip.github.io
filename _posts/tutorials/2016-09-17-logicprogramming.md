@@ -200,9 +200,11 @@ First, this is extremely ill-posed in practice as solvers work with floating-poi
 
 The disjoint logical model is
 $$
-f(x)<0 \rightarrow a = 0
-f(x)=0 \rightarrow a = 1
-f(x)>0 \rightarrow a = 0
+\begin{align}
+f(x)&<0 \rightarrow a = 0\\
+f(x)&=0 \rightarrow a = 1\\
+f(x)6>0 \rightarrow a = 0
+\end{align}
 $$
 
 This is interpreted as 
