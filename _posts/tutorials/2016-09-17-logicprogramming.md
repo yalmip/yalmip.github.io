@@ -274,6 +274,28 @@ g(x)&\leq M(1-z_1)
 \end{align}
 $$
 
+### If (\\( f(x) \leq 0\\) and \\( h(x) \leq 0\\) ) then  \\( g(x) \leq 0\\)
+
+Not much variation and the pattern should be clear. Glue conditions using intermediate binary variables
+
+$$
+\begin{align}
+f(x) & \leq 0 \rightarrow z_1\\
+h(x) & \leq 0 \rightarrow z_2\\
+z_1 & \& z_2 \\rightarrow z_3\\
+z_3 & \rightarrow g(x) \leq 0
+\end{align}
+$$
+
+These are standard models and we thus have
+
+$$
+\begin{align}
+f(x) & \geq -M(1-z_1)\\
+h(x) & \geq -M(1-z_2)\\
+z_3  & \geq z_1+z_2 - 1
+\end{align}
+$$
 
 ### alldifferent(x)
 
