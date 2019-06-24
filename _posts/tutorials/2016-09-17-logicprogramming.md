@@ -183,7 +183,7 @@ $$
 f(x)\geq -M(1-a)
 $$
 
-Note that we use a non-strict inequality. If behaviour around \\f(x)\\) is important, a margin will have to be used as discussed before.
+Note that we use a non-strict inequality. If behaviour around \\(f(x)\\) is important, a margin will have to be used as discussed before.
 
 
 ### If \\( f(x) = 0\\) then a
