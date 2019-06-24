@@ -442,9 +442,9 @@ A big-M representation of the implications, using a margin \\(\epsilon\\) around
 
 $$
 \begin{align}
--M(1-z_1) &\leq s+1 \leq M(1-z_1), x \leq -\epsilon + M(1-z_1)\\
--M(1-z_2) &\leq s \leq M(1-z_2), -M(1-z_2)-\epsilon \leq x \leq \epsilon + M(1-z_2)\\
--M(1-z_3) &\leq s-1 \leq M(1-z_3), x \geq \epsilon -M(1-z_3)\\
+-M(1-z_1) &\leq s+1 \leq M(1-z_1), ~ x \leq -\epsilon + M(1-z_1)\\
+-M(1-z_2) &\leq s \leq M(1-z_2), ~ -M(1-z_2)-\epsilon \leq x \leq \epsilon + M(1-z_2)\\
+-M(1-z_3) &\leq s-1 \leq M(1-z_3), ~x \geq \epsilon -M(1-z_3)\\
 z_1+z_2+z_3 &= 1
 \end{align}
 $$
