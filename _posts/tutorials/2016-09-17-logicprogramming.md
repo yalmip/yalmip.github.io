@@ -410,15 +410,14 @@ In theory introduce integer \\(y\\) and \\(x \geq y < x+1\\). In practice strict
 
 ### y = rem(x,m)
 
-\\( y = rem(x,m)\\) means \\( y = x - n*m, n = \fix(x/m)\\). 
+\\( y = \mathop{rem}(x,m)\\) means \\( y = x - n*m, n = \mathop{fix}(x/m)\\). 
 
 ### y = mod(x,m)
 
-Bla bla
 
 ### y = sgn(x)
 
-A logical model of \\(s = \sgn(x)\\) is
+A logical model of \\(s = \mathop{sgn}(x)\\) is
 
 $$
 \begin{align}
@@ -450,15 +449,8 @@ z_1+z_2+z_3 &= 1
 \end{align}
 $$
 
-
 ### y = nnz(x)
-
-Bla bla
 
 ### y = piecewise affine function
 
-Bla bla
-
 ### y = piecewise quadratic function
-
-Bla bla
