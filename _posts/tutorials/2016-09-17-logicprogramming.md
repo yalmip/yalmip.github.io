@@ -453,7 +453,7 @@ Logical model
 $$
 \begin{align}
 z_1 &\rightarrow \{x\leq 0,y = \mathop{ceil}(x)\} \\
-z_2 &\rightarrow \{x\geq 0,y = \mathop{floor}(x)\}
+z_2 &\rightarrow \{x\geq 0,y = \mathop{floor}(x)\}\\
 z_1+z_2 &= 1
 \end{align}
 $$
