@@ -13,7 +13,7 @@ sidebar:
 YALMIP does a lot of modelling for you behind the scenes, but sometimes it is important to know how models are created and what the standard building blocks and tricks are. Creating integer programming representable models seem like magic to some, but there are really only a few standard tricks used leading to a family of models. 
 
 1. [Logical models involving binary variables](#logics)
-1. [Logical models involving binary variables and constraints](#constraints)
+1. [Logical models involving implications with binary variables and constraints](#constraints)
 1. [Multiplications of variables and functions](#products)
 1. [Representations of functions](#functions)
 
