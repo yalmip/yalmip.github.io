@@ -323,7 +323,7 @@ An alternative for multiplying a binary with an integer variable is to make a bi
 
 ### y = wx, w integer, x continuous 
 
-Make binary expansion of **w** and the create models for binary times continuous.
+Make binary expansion of **w** and then create models for binary times continuous.
 
 ### y = wx, w integer,  x integer
 
