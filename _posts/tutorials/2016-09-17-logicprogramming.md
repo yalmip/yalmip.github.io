@@ -444,7 +444,7 @@ $$
 \begin{align}
 x &\leq M(1-z_1)\\
 x &\geq -M(1-z_2)\\
-x - z_2 + z_1\epsilon &\leq y \leq x + z_1-z_2\epsilon\\
+x - z_2 + z_2\epsilon &\leq y \leq x + z_1-z_1\epsilon\\
 z_1+z_2 & = 1
 \end{align}
 $$
