@@ -282,7 +282,7 @@ $$
 \begin{align}
 f(x) & \leq 0 \rightarrow z_1\\
 h(x) & \leq 0 \rightarrow z_2\\
-z_1 & \& z_2 \\rightarrow z_3\\
+z_1 & \& z_2 \rightarrow z_3\\
 z_3 & \rightarrow g(x) \leq 0
 \end{align}
 $$
@@ -293,6 +293,7 @@ $$
 \begin{align}
 f(x) & \geq -M(1-z_1)\\
 h(x) & \geq -M(1-z_2)\\
+g(x) & \leq M(1-z_3)\\
 z_3  & \geq z_1+z_2 - 1
 \end{align}
 $$
