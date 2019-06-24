@@ -313,9 +313,9 @@ $$
 
 ### y = abx, a and b binary, x non-binary
 
-When there are repeated binary variables, the procedure is simply repeated with intermediate variables. Start by introducing a new variable and  model for **c = ab**  and then use model for **y = cx**. 
+When there are repeated binary variables, the procedure cab simply be repeated with intermediate variables. Start by introducing a new variable and  model for **c = ab**  and then use model for **y = cx**. 
 
-The idea and model generalizes to arbitrary polynomials of binary variables simply introduce intermediate variables to keep it simple.
+The idea and model generalizes to arbitrary polynomials of binary variables, simply introduce intermediate variables to keep it simple.
 
 ### y = ax, a binary, x integer
 
