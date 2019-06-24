@@ -419,6 +419,37 @@ In theory introduce integer \\(y\\) and \\(x \leq y < x+1\\). In practice strict
 
 ### y = fix(x)
 
+Round towards zero means we we want floor for positive arguements and ceil for negative arguments. We can write this as 
+
+$$
+\begin{align}
+x & \leq 0 \rightarrow y = \mathop{ceil}(x)\\
+x & \geq 0 \rightarrow s =  \mathop{floor}(x)\\
+\end{align}
+$$
+
+Logical model
+
+$$
+\begin{align}
+z_1 &\rightarrow \{x\leq 0,y = \mathop{ceil}(x)\} \\
+z_2 &\rightarrow \{x\geq 0,y = \mathop{floor}(x)\}
+z_1+z_2 &= 1
+\end{align}
+$$
+
+Implement the implications with integer \\(y\\)  and a combined model for ceil and floor
+
+$$
+\begin{align}
+x \leq M(1-z_1)\\
+x \geq -M(1-z_2)\\
+x - z_2 + \epsilon \leq y \leq x + z_1-\epsilon
+z_1+z_2 &= 1
+\end{align}
+$$
+
+
 ### y = rem(x,m)
 
 \\( y = \mathop{rem}(x,m)\\) means \\( y = x - nm, n = \mathop{fix}(x/m)\\), meaning we have to implement \\(\mathop{fix}(x/m)\\) using the model above (we assume \\(m\\) is constant).
