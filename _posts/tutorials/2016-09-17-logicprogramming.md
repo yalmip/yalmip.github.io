@@ -538,19 +538,19 @@ $$
 
 ### y = f(x), x scalar integer
 
-For an arbitrary function defined over a bounded integer set (here for simplicity \\(1\\leq x \\ M\\), we simply see it as as the disjoint logic model
+For an arbitrary function defined over a bounded integer set (here for simple notation assumed to be \\(1\\leq x \\ M\\), we simply see it as as the disjoint logic model
 
 $$
 \begin{align}
 z_i = 1 & \rightarrow  \{x = i, y = f(i)\}\\
-\sum_{i=1}^N z_i &= 1
+\sum_{i=1}^M z_i &= 1
 \end{align}
 $$
 
 This is compactly written as 
 
 $$
-y = \sum_{i=1}^{N} z_if(i),~x = \sum_{i=1}^{N} i z_i, ~\sum_{i=1}^N z_i = 1
+y = \sum_{i=1}^{M} z_if(i),~x = \sum_{i=1}^{M} i z_i, ~\sum_{i=1}^M z_i = 1
 $$
 
 
