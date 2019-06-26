@@ -536,6 +536,25 @@ u_i + z_i + v_i & = 1
 \end{align}
 $$
 
+### y = f(x), x scalar integer
+
+For an arbitrary function defined over a bounded integer set (here for simplicity \\(1\\leq x \\ M\\), we simply see it as as the disjoint logic model
+
+$$
+\begin{align}
+z_i = 1 & \rightarrow  \{x = i, y = f(i)\}\\
+\sum_{i=1}^N z_i &= 1
+\end{align}
+$$
+
+This is compactly written as 
+
+$$
+y = \sum_{i=1}^{N} z_if(i),~x = \sum_{i=1}^{N} i z_i, ~\sum_{i=1}^N z_i = 1
+$$
+
+
+
 ### y = piecewise affine function
 
 A typical piecewise affine model is represented as **if** \\(A_ix\leq b_i\\) then \\(y = c_i^Tx+d_i\\) where \\(i = 1,\ldots,N\\). From above, this is 
