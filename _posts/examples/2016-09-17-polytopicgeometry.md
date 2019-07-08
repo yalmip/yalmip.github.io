@@ -112,6 +112,7 @@ The [Chebyshev ball](http://en.wikipedia.org/wiki/Chebyshev_center) is defined a
 In order to extend this concept, we first note that the Chebychev formulation can be interpreted as a robustness problem. Hence, we can compute the Chebychev ball using the robust optimization module
 
 ````matlab
+r = sdpvar(1);
 xc = sdpvar(2,1);
 d = sdpvar(2,1);
 optimize([A*(xc+r*d) <= b, uncertain(d), d'*d <= 1],-r)
