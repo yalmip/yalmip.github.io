@@ -185,10 +185,10 @@ $$
 
 ### If \\( f(x) \leq 0\\) then a
 
-When \\(f(x)\\) becomes negative, the binary variable should be forced to be activated. This is accomplished by reversing the constraint and introducing an implication for the reverse model
+When \\(f(x)\\) becomes negative, the binary variable should be forced to be activated. 
 
 $$
-f(x)\geq -M(1-a)
+f(x)\geq -Ma
 $$
 
 Note that we use a non-strict inequality. If behaviour around \\(f(x)\\) is important, a margin will have to be used as discussed before.
