@@ -269,7 +269,7 @@ These are standard models and we thus have
 
 $$
 \begin{align}
-f(x)&\geq -M(1-z_1)\\
+f(x)&\geq -Mz_1\\
 g(x)&\leq M(1-z_1)
 \end{align}
 $$
@@ -291,8 +291,8 @@ These are standard models and we thus have
 
 $$
 \begin{align}
-f(x) & \geq -M(1-z_1)\\
-h(x) & \geq -M(1-z_2)\\
+f(x) & \geq -Mz_1\\
+h(x) & \geq -Mz_2\\
 g(x) & \leq M(1-z_3)\\
 z_3  & \geq z_1+z_2 - 1
 \end{align}
