@@ -59,4 +59,4 @@ ans =
    -4.0000
 ````
 
-For a more complete introduction, please study the [moment tutorial](/tutorial/momentrelaxations), and the quick introduction to semidefinite relaxations in [relaxvalue].
+For a more complete introduction, please study the [moment tutorial](/tutorial/momentrelaxations), and the quick introduction to semidefinite relaxations in [relaxvalue](/command/relaxvalue).
