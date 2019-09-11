@@ -199,6 +199,7 @@ Note that we use a non-strict inequality. If behaviour around \\(f(x)\\) is impo
 First, this is extremely ill-posed in practice as solvers work with floating-point numbers so it might consider, e.g., \\(10^{-7}\\) to be 0. It is also often ill-posed from a practical point of view. If your model says **if waterlevel is 0** is it really absolutely crucial that it behaves differently compared to the case when the waterlevel is \\(10^{-11}\\), i.e. the thickness of one atom? If yes,  how do you plan to implement that solution in practice?
 
 The disjoint logical model is
+
 $$
 \begin{align}
 f(x)&<0 \rightarrow a = 0\\
