@@ -203,7 +203,7 @@ $$
 \begin{align}
 f(x)&<0 \rightarrow a = 0\\
 f(x)&=0 \rightarrow a = 1\\
-f(x)6>0 \rightarrow a = 0
+f(x)& >0 \rightarrow a = 0
 \end{align}
 $$
 
