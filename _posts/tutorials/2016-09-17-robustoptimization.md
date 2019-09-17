@@ -144,7 +144,7 @@ F = [A'*P + P*A <= -eye(2), 1 <= t <= 2, uncertain(t)];
 sol = optimize(F,trace(P))
 ````
 
-For more examples, check out the [LPV control example]
+For more examples, check out the [LPV control example](/example/lpvstatefeedback/)
 
 ### Useful features
 
