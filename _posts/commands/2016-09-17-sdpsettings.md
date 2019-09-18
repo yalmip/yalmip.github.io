@@ -23,10 +23,10 @@ optimize(Constraints, Objective, options)
 
 ### Examples
 
-Creating an options structure with non-default values is easily done.
+Creating an options structure with specified values is easily done.
 
 ````matlab
-ops = sdpsettings('solver','mosek','verbose',0)
+ops = sdpsettings('solver','mosek','verbose',1,'debug',1)
 ```` 
 
 A convenient way to alter many options without getting a long line is to send an existing options structure as the first input argument.
@@ -48,7 +48,6 @@ Solver-specific options
 ````matlab
 ops = sdpsettings('solver','sdpa','sdpa.maxIteration',100);
 ```` 
-
 
 The easiest way to find out the possible options is to define a default options structure and display it
 
@@ -135,11 +134,15 @@ ans =
 
 ### solver
 
-In the code above, we told YALMIP to use the solver DSDP, and to run in silent mode. The possible values to give to the field **solver** can be found in the [solver documentation](/allsolvers). If the solver isn't found, an [error code](/command/yalmiperror) will be returned in the output structure. To let YALMIP select the solver, use the default solver tag ''. If you give a comma-separated list of solvers such as **'dsdp,csdp,sdpa'**, YALMIP will select based on this preference. If you add a wildcard in the end **'dsdp,csdp,sdpa,*'**, YALMIP will select another solver if none of the solvers in the list were found. 
+In the code above, we told YALMIP to use the solver Mosek. The possible values to give to the field **solver** can be found in the [solver documentation](/allsolvers). If the solver isn't found, an [error code](/command/yalmiperror) will be returned in the output structure. To let YALMIP select the solver, use the default solver tag ''. If you give a comma-separated list of solvers such as **'dsdp,csdp,sdpa'**, YALMIP will select based on this preference. If you add a wildcard in the end **'dsdp,csdp,sdpa,*'**, YALMIP will select another solver if none of the solvers in the list were found. 
 
 ### verbose
 
 By setting **verbose** to 0, the solvers will run with minimal display. By increasing the value, the display level is controlled (typically 1 gives modest display level while 2 gives an awful amount of information printed).
+
+### debug
+
+If **debug** is turned on, YALMIP will not try to catch errors, which will simplify finding out where and why YALMIP failed  unexpectedly.
 
 ### warning
 
@@ -153,13 +156,9 @@ The field **beeponproblem** contains a list of error codes (see [yalmiperror](/c
 
 When the field **showprogress** is set to 1, the user can see what YALMIP currently is doing (might be a good idea for large-scale problems). 
 
-### debug
-
-If **debug** is turned on, YALMIP will not try to catch errors, which will simplify finding out where and why YALMIP failed  unexpectedly.
-
 ### cachesolvers
 
-Every time [optimize](/command/optimize) is called, YALMIP checks for available solvers. This can take a while on some systems (some slow networks), so it is possible to avoid doing this check every call. Set **cachesolvers** to 1, and YALMIP will remember the solvers (using a persistent variable) found in the first call to [optimize](/command/optimize). If solvers are added to the path after the first call, YALMIP will not detect this. Hence, after adding a solver to the path the work-space must be cleared or [optimize](/command/optimize) must be called once with cachesolvers set to 0. Only use this option if you absolutely have to.
+Every time [optimize](/command/optimize) is called, YALMIP checks for available solvers. This can take a while on some systems (some slow networks), so it is possible to avoid doing this check every call. Set **cachesolvers** to 1, and YALMIP will remember the solvers (using a persistent variable) found in the first call to [optimize](/command/optimize). If solvers are added to the path after the first call, YALMIP will not detect this. Hence, after adding a solver to the path the work-space must be cleared or [optimize](/command/optimize) must be called once with cachesolvers set to 0. Only use this option if you absolutely have to, this is practically obsolete on modern systems.
 
 ### removeequalities
 
