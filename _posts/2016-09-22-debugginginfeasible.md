@@ -221,7 +221,7 @@ There we have it. Constraint 5 and 11 are inconsistent. Figure out why!
 
 In more complex models with interacting constraints, you might need more advanced strategies. One such idea is to try to re-order group constraints to detect problems. 
 
-Begin by structuring your model in to logical sets of constraints, so your initial problematic constraints look something like this (remember, we only want to detet the reason for infeasibility so we only solve the feasibility problem)
+Begin by structuring your model into logical sets of constraints (clean up your messy code!), so your initial problematic model looks something like this (remember, we only want to detect the reason for infeasibility so we only solve the feasibility problem)
 
 
 ````matlab
@@ -254,7 +254,7 @@ Model = [Model,ObjectiveConstraints];
 optimize(Model)
 ````
 
-You solve this nicely structured problem, and it turns out to be infeasible. What you do now is that you solve the problem after wvery addition of a new set of constraints, and find out where it first fails
+You solve this nicely structured problem, and it turns out to be infeasible. What you do now is that you solve the problem after every addition of a new set of constraints, and find out where it first fails
 
 ````matlab
 Model = [];
@@ -290,13 +290,13 @@ Model = [Model,ObjectiveConstraints];
 optimize(Model) % fail!
 ````
 
-Hene, all you know now is that the last set of constraints turns the whole model infeasible, but that does not mean that it is the sole reason. Indeed, we can check it individually, and see that it is feasible.
+Hene, all you know now is that the last set of constraints turns the whole model infeasible, but that does not mean that there is an error in that single constraint. Indeed, we can check it individually, and see that it is feasible.
 
 ````matlab
 optimize(ObjectiveConstraints) % works
 ````
 
-Instead, we move that block of onstraints to the top, and perform the procedure again
+Instead, we move that block of constraints to the top, and perform the procedure again
 
 ````matlab
 Model = [];
@@ -377,4 +377,4 @@ optimize(Model) % fails
 
 ````
 
-Model fails when apple constraints, salary constraints and objetive constraints are used together. Hence, we have reduced the model to a much smaller model whih we now can analyze in greater detail to understand why it is infeasible.
+Model fails when apple constraints, salary constraints and objective constraints are used together. Hence, we have reduced the model to a much smaller model which we now must analyze in greater detail to understand why it is infeasible.
