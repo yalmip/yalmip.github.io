@@ -216,3 +216,165 @@ Infeasible
 
 There we have it. Constraint 5 and 11 are inconsistent. Figure out why!
 
+
+### Debugging more omplex models
+
+In more complex models with interacting constraints, you might need more advanced strategies. One such idea is to try to re-order group constraints to detect problems. 
+
+Begin by structuring your model in to logical sets of constraints, so your initial problematic constraints look something like this (remember, we only want to detet the reason for infeasibility so we only solve the feasibility problem)
+
+
+````matlab
+Model = [];
+
+% Create the banana constraints
+BananaConstraints = ...
+Model = [Model,BananaConstraints];
+
+% Create the apple constraints
+AppleConstraints = ...
+Model = [Model,AppleConstraints];
+
+% Create the pear constraints
+PearConstraints = ...
+Model = [Model,PearConstraints];
+
+% Create the salary constraints
+SalaryConstraints = ...
+Model = [Model,SalaryConstraints];
+
+% Create the weather constraints
+WeatherConstraints = ...
+Model = [Model,WeatherConstraints];
+
+% Create the objective constraints
+ObjectiveConstraints = ...
+Model = [Model,ObjectiveConstraints];
+
+optimize(Model)
+````
+
+You solve this nicely structured problem, and it turns out to be infeasible. What you do now is that you solve the problem after wvery addition of a new set of constraints, and find out where it first fails
+
+````matlab
+Model = [];
+
+% Create the banana constraints
+BananaConstraints = ...
+Model = [Model,BananaConstraints];
+optimize(Model) % OK, works
+
+% Create the apple constraints
+AppleConstraints = ...
+Model = [Model,AppleConstraints];
+optimize(Model) % ok, works
+
+% Create the pear constraints
+PearConstraints = ...
+Model = [Model,PearConstraints];
+optimize(Model) % ok, works
+
+% Create the salary constraints
+SalaryConstraints = ...
+Model = [Model,SalaryConstraints];
+optimize(Model) % ok, works
+
+% Create the weather constraints
+WeatherConstraints = ...
+Model = [Model,WeatherConstraints];
+optimize(Model) % ok, works
+
+% Create the objective constraints
+ObjectiveConstraints = ...
+Model = [Model,ObjectiveConstraints];
+optimize(Model) % fail!
+````
+
+Hene, all you know now is that the last set of constraints turns the whole model infeasible, but that does not mean that it is the sole reason. Indeed, we can check it individually, and see that it is feasible.
+
+````matlab
+optimize(ObjectiveConstraints) % works
+````
+
+Instead, we move that block of onstraints to the top, and perform the procedure again
+
+````matlab
+Model = [];
+
+% Create the objective constraints
+ObjectiveConstraints = ...
+Model = [Model,ObjectiveConstraints];
+optimize(Model) % OK, works
+
+% Create the banana constraints
+BananaConstraints = ...
+Model = [Model,BananaConstraints];
+optimize(Model) % OK, works
+
+% Create the apple constraints
+AppleConstraints = ...
+Model = [Model,AppleConstraints];
+optimize(Model) % ok, works
+
+% Create the pear constraints
+PearConstraints = ...
+Model = [Model,PearConstraints];
+optimize(Model) % ok, works
+
+% Create the salary constraints
+SalaryConstraints = ...
+Model = [Model,SalaryConstraints];
+optimize(Model) % fails
+
+````
+
+OK, it failed when we came to the salary constraints this time. Re-shuffle again
+
+
+````matlab
+Model = [];
+
+% Create the salary constraints
+SalaryConstraints = ...
+Model = [Model,SalaryConstraints];
+optimize(Model)  % OK, works
+
+% Create the objective constraints
+ObjectiveConstraints = ...
+Model = [Model,ObjectiveConstraints];
+optimize(Model) % OK, works
+
+% Create the banana constraints
+BananaConstraints = ...
+Model = [Model,BananaConstraints];
+optimize(Model) % OK, works
+
+% Create the apple constraints
+AppleConstraints = ...
+Model = [Model,AppleConstraints];
+optimize(Model) % fail
+````
+
+Apple constraints caused problems. Re-shuffle
+
+````matlab
+Model = [];
+
+% Create the apple constraints
+AppleConstraints = ...
+Model = [Model,AppleConstraints];
+optimize(Model) % OK, works
+
+% Create the salary constraints
+SalaryConstraints = ...
+Model = [Model,SalaryConstraints];
+optimize(Model)  % OK, works
+
+% Create the objective constraints
+ObjectiveConstraints = ...
+Model = [Model,ObjectiveConstraints];
+optimize(Model) % fails
+
+````
+
+Model fails when apple constraints, salary constraints and objetive constraints are used together. Hence, we have reduced the model to a much smaller model whih we now can analyze in greater detail to understand why it is infeasible.
