@@ -88,7 +88,7 @@ x_Linf = value(xhat);
 We plot the solutions, and notice that the 1-norm estimate worked very well and essentially managed to capture the underlying harmonics despite the severe measurement error after 2 seconds, whereas the two other estimates perform badly on this data set.
 
 ````matlab
-plot(t,[y a*x_L1 a*x_L2 a*x_Linf]);
+plot(t,[y A*x_L1 A*x_L2 A*x_Linf]);
 ````
 
 ![Solution to regression problem]({{ site.url }}/images/regresssolution.png){: .center-image }
