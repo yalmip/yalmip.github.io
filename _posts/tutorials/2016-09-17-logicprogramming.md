@@ -342,7 +342,7 @@ The idea and model generalizes to arbitrary polynomials of binary variables, sim
 
 ### y = ax, a binary, x integer
 
-An alternative for multiplying a binary with an integer variable is to make a binary expansion of the integer \\(x = z_1 + 2 z_2+ 4z_3 + \ldots +2^{n+1}z_n\\) with binary variables \\(z\\), model products with new variables \\(y_i = az_i\\) using standard model for binary times binary, and then use \\(x = y_1 + 2y_2 + 4y_3 \ldots\\).
+An alternative for multiplying a binary with an integer variable is to make a binary expansion of the integer \\(x = z_1 + 2 z_2+ 4z_3 + \ldots +2^{n+1}z_n\\) with binary variables \\(z\\), model products with new variables \\(y_i = az_i\\) using standard model for binary times binary, and then use \\(y = y_1 + 2y_2 + 4y_3 \ldots\\).
 
 ### y = wx, w integer, x continuous 
 
