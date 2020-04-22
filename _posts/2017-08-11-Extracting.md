@@ -85,7 +85,7 @@ In some cases, we might see some information displayed by the solver, such as ga
 
 ````matlab
 sdpvar x y
-diagnostics = optimize([x >= 0, x+y == 1], x^2 + y,sdpsettings('solver','quadprog','savesolverinput',1));
+diagnostics = optimize([x >= 0, x+y == 1], x^2 + y,sdpsettings('solver','quadprog','savesolveroutput',1));
 diagnostics.solveroutput
 
 ans = 
