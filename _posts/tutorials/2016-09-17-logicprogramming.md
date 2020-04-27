@@ -251,7 +251,7 @@ A big-M model is thus
 $$
 \begin{align}
 f(x) &\leq M(1-z_1), -(1-z_1)\leq a-1 \leq (1-z_1)\\
-g(x) &\leq M(1-z_2), -(1-z_2) \leq a  \leq (1-z_2)\\
+f(x) &\geq M(1-z_2), -(1-z_2) \leq a  \leq (1-z_2)\\
 z_1 + z_2 &= 1
 \end{align}
 $$
