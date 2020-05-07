@@ -47,6 +47,8 @@ solvers:
         url: /solver/kktqp
       - title: "MOMENT"
         url: /solver/moment
+      - title: "REFINER"
+        url: /solver/refiner
   - title: External solvers
     children:
       - title: "BARON"
