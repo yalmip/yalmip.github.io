@@ -25,10 +25,10 @@ And finally, there are no free lunches and you get what you pay for (unless you'
 A simple categorization is as follows (the definitions of free and commercial depends slightly on the solver, please see the specific comments in the solver description)
 
 ### Linear programming (free)
-[CDD](solver/cdd), [CLP](/solver/clp), [GLPK](solver/glpk), [LPSOLVE](/solver/lpsolve), [QSOPT](solver/qsopt), [SCIP](/solver/scip)
+[CDD](/solver/cdd), [CLP](/solver/clp), [GLPK](/solver/glpk), [LPSOLVE](/solver/lpsolve), [QSOPT](/solver/qsopt), [SCIP](/solver/scip)
 
 ### Mixed Integer Linear programming (free)
-[CBC](solver/cbc), [GLPK](solver/glpk), [LPSOLVE](/solver/lpsolve), [SCIP](/solver/scip)
+[CBC](/solver/cbc), [GLPK](/solver/glpk), [LPSOLVE](/solver/lpsolve), [SCIP](/solver/scip)
 
 ### Linear programming (commercial)
 [CPLEX](/solver/cplex) (free for academia), [GUROBI](/solver/gurobi) (free for academia), [LINPROG](/solver/linprog), [MOSEK](/solver/mosek) (free for academia), [XPRESS](/solver/xpress) (free for academia)
@@ -37,7 +37,7 @@ A simple categorization is as follows (the definitions of free and commercial de
 [CPLEX](/solver/cplex) (free for academia), [GUROBI](/solver/gurobi) (free for academia), [INTLINPROG](/solver/intlinprog), [MOSEK](/solver/mosek) (free for academia), [XPRESS](/solver/xpress) (free for academia)
 
 ### Quadratic programming (free)
-[OSQP](/solver/osqp), [BPMPD](/solver/bpmpd), [CLP](/solver/clp), [OOQP](/solver/ooqp), [QPC](/solver/qpc), [QPOASES](/solver/qpoases), [QUADPROGBB](solver/quadprogbb) (nonconvex QP)
+[OSQP](/solver/osqp), [BPMPD](/solver/bpmpd), [CLP](/solver/clp), [OOQP](/solver/ooqp), [QPC](/solver/qpc), [QPOASES](/solver/qpoases), [QUADPROGBB](/solver/quadprogbb) (nonconvex QP)
 
 ### Quadratic programming (commercial)
 [CPLEX](/solver/cplex) (free for academia), [GUROBI](/solver/gurobi) (free for academia), [MOSEK](/solver/mosek) (free for academia), [NAG](/solver/nag), [QUADPROG](/solver/quadprog), [XPRESS](/solver/xpress) (free for academia)
