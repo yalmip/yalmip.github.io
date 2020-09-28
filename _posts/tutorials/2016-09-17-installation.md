@@ -10,7 +10,11 @@ sidebar:
   nav: "tutorials"
 ---
 
-YALMIP is entirely based on m-code, and is thus easy to install. Remove any old version of YALMIP, unzip the downloaded zip-file  and **add the following directories to your MATLAB path**
+YALMIP is entirely based on m-code, and is thus easy to install.
+
+The official version can be found at https://github.com/yalmip/yalmip/archive/master.zip. In some cases you might need the most recent development branch, and this can be found at https://github.com/yalmip/yalmip/archive/develop.zip (don't install this unless you absolutely have to for some reason, and you actually know what you are doing).
+
+Remove any old version of YALMIP, unzip the downloaded zip-file  and **add the following directories to your MATLAB path**
 
 ````
 ->/YALMIP-master
@@ -24,7 +28,7 @@ YALMIP is entirely based on m-code, and is thus easy to install. Remove any old 
 ->/YALMIP-master/operators
 ````
 
-Of course, you do not have to call the directory YALMIP-master, that just happens to be the name of the zip that Github generates.
+Of course, you do not have to call the directory YALMIP-master, that just happens to be the name of the zip that Github generates for the master branch..
 
 A lazy way to do this is `addpath(genpath(yalmiprootdirectory))`
 
@@ -38,9 +42,22 @@ addpath(genpath([pwd filesep 'yalmip']));
 savepath
 ````
 
+Another approach is to handle your installation using [www.tbxmanager.com](http://tbxmanager.com)
+
 To test your installation, run the command [yalmiptest](/command/yalmiptest). For further examples and tests, run code from this manual!
 
-Another approach is to handle your installation using [www.tbxmanager.com](http://tbxmanager.com)
+If things fail or you suspect there is some problem, solve a trivial problem and see what happens.
+
+````matlab
+% Does YALMIP work at all? If not, we might not even be able to create a variable
+x = sdpvar(x)
+
+% Can any solver be called?
+optimize(x>= 0, x,sdpsettings('debug',1))
+
+% Can the solver you have troubles with be called?
+optimize(x>= 0, x,sdpsettings('debug',1,'solver','thissolver'))
+````
 
 ### Solvers
 
