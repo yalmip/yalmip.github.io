@@ -12,11 +12,11 @@ sidebar:
 
 Global solutions! Well, don't expect too much from global solvers. 
 
-The focus here is on the built-in solver [BMIBNB](/solver/bmibnb). The code is fairly robust on small problems (solves 180 of the globlib problems in under 8 minutes total), and a couple of small real-world problems with bilinear matrix inequalities have been solved successfully. Alternative global solvers can be found [here](/tags/#global-solver)
+The focus here is on the built-in solver [BMIBNB](/solver/bmibnb). The solver is fairly robust on small problems and is probably the most general nonlinear global solver available, albeit not the fastest. Alternative global solvers can be found [here](/tags/#global-solver)
 
 The [BMIBNB](/solver/bmibnb) solver is based on a simple spatial branch-and-bound strategy, using McCormick's convex envelopes for bounding bilinear terms, and general convex envelope approximations for other nonlinear operators. LP-based bound tightening is (optionally) applied iteratively to improve variable bounds together with some additional techniques to, e.g., exploit complementary constraints, extraction of bounds from quadratic, exploiting inverse functions etc. See the [envelope approximation](/tutorial/envelopesinbmibnb)) for some of the details.
 
-Relaxed problems are solved using either an [LP solver](/tags/#linear-programming-solver), [QP solver](/tags/#quadratic-programming-solver), or [SDP solver](/tags/#semidefinite-programming-solver) solver, depending on the problem, while upper bounds are found using a local nonlinear solver such as [FMINCON](/solver/fmincon),  [SNOPT](/solver/snopt) and [IPOPT](/solver/ipopt), or [PENBMI/PENLAB](/solver/penbmi) for nonlinear semidefinite problems.
+Relaxed problems are solved using either an [LP solver](/tags/#linear-programming-solver), [QP solver](/tags/#quadratic-programming-solver), or [SDP solver](/tags/#semidefinite-programming-solver) solver, depending on the problem, while upper bounds are found using a local nonlinear solver such as [FMINCON](/solver/fmincon),  [SNOPT](/solver/snopt) and [IPOPT](/solver/ipopt).
 
 ### Nonconvex quadratic programming
 The first example is a problem with a concave quadratic constraint (this is the example addressed in the moment relaxation section). Three different optimization problems are solved during the branching: Upper bounds using a local nonlinear solver **'bmibnb.uppersolver'**, lower bounds with **'bmibnb.lowersolver'** and bound tightening using a linear programming solver **'bmibnb.lpsolver'**.
