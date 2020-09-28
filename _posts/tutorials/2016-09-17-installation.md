@@ -12,7 +12,7 @@ sidebar:
 
 YALMIP is entirely based on m-code, and is thus easy to install.
 
-The official version can be found at [https://github.com/yalmip/yalmip/archive/master.zip]. In some cases you might need the most recent development branch, and this can be found at [https://github.com/yalmip/yalmip/archive/develop.zip] (don't install this unless you absolutely have to for some reason, and you actually know what you are doing).
+The official version can be found at [https://github.com/yalmip/yalmip/archive/master.zip](https://github.com/yalmip/yalmip/archive/master.zip). In some cases you might need the most recent development branch, and this can be found at [https://github.com/yalmip/yalmip/archive/develop.zip](https://github.com/yalmip/yalmip/archive/develop.zip) (don't install this unless you absolutely have to for some reason, and you actually know what you are doing).
 
 Remove any old version of YALMIP, unzip the downloaded zip-file  and **add the following directories to your MATLAB path**
 
