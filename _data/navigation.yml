@@ -2,10 +2,7 @@
 main:
   - title: "Download"
     url: /download
-    
-  - title: "Search"
-    url: /search
-    
+        
   - title: "Tutorials"
     url: /tutorials
 
@@ -29,8 +26,9 @@ main:
 
   - title: "Forum"
     url: "https://groups.google.com/forum/#!forum/yalmip"
-
-
+    
+  - title: "Search"
+    url: /search    
 
 solvers:
   - title: Internal solvers
