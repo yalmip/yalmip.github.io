@@ -12,7 +12,7 @@ sidebar:
 
 Global solutions! Well, don't expect too much from global solvers. 
 
-The focus here is on the built-in solver [BMIBNB](/solver/bmibnb). The solver is fairly robust on small problems and is probably the most general nonlinear global solver available, albeit not the fastest. Alternative global solvers can be found [here](/tags/#global-solver)
+The focus here is on the built-in solver [BMIBNB](/solver/bmibnb). The solver is fairly robust on small problems and is probably the most general nonlinear global solver available, albeit not the fastest. External global solvers interfaced can be found [here](/tags/#global-solver)
 
 The [BMIBNB](/solver/bmibnb) solver is based on a simple spatial branch-and-bound strategy, using McCormick's convex envelopes for bounding bilinear terms, and general convex envelope approximations for other nonlinear operators. LP-based bound tightening is (optionally) applied iteratively to improve variable bounds together with some additional techniques to, e.g., exploit complementary constraints, extraction of bounds from quadratic, exploiting inverse functions etc. See the [envelope approximation](/tutorial/envelopesinbmibnb)) for some of the details.
 
