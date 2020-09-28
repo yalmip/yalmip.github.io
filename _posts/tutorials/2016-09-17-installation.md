@@ -46,7 +46,7 @@ Another approach is to handle your installation using [www.tbxmanager.com](http:
 
 To test your installation, run the command [yalmiptest](/command/yalmiptest). For further examples and tests, run code from this manual!
 
-If things fail or you suspect there is some problem, solve a trivial problem and see what happens.
+If things fail or you suspect there is some problem, solve a trivial problem with debug turned on and see what happens.
 
 ````matlab
 % Does YALMIP work at all? If not, we might not even be able to create a variable
@@ -55,7 +55,7 @@ x = sdpvar(x)
 % Can any solver be called?
 optimize(x>= 0, x,sdpsettings('debug',1))
 
-% Can the solver you have troubles with be called?
+% Problems with a specific solver?
 optimize(x>= 0, x,sdpsettings('debug',1,'solver','thissolver'))
 ````
 
