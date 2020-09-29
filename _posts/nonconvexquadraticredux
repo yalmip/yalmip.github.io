@@ -1,0 +1,26 @@
+---
+layout: single
+excerpt: "Real progress"
+title: Nonconvex quadratic programming comparisons: 10 years later
+tags: [Second-order cone programming representable, Typical problems]
+comments: true
+published: false
+date: 2020-08-29
+---
+
+Almost 10 years ago, [a post was published](example/nonconvexquadraticprogramming/), comparing a semidefinite relaxation strategy with simply using YALMIPs built-in global solvers. Although the main message of the post remains valid, the computational results are perhaps a bit outdated.
+
+THh numbers should to be updated due to 3 main reasons
+
+1. We now have [MOSEK](/solver/mosek) available for solving semidefinite programs more efficiently.
+2. The built-in global solver [BMIBNB](/solver/bmibnb) has been improved.
+3. There are now several easily accesible solvers for global nonconvex quadratic programming.
+
+Hence, without further ado, we run the example again, but this time with many more solvers, and on larger problems. 
+
+````matlab
+Q = magic(5);
+x = sdpvar(5,1);
+optimize([-1 <= x <= 1],x'*Q*x)
+````
+
