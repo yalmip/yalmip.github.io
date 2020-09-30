@@ -8,19 +8,35 @@ published: false
 date: 2020-08-29
 ---
 
-Almost 10 years ago, [a post was published](example/nonconvexquadraticprogramming/), comparing a semidefinite relaxation strategy with simply using YALMIPs built-in global solvers. Although the main message of the post remains valid, the computational results are perhaps a bit outdated.
+Almost 10 years ago, [a post was published](example/nonconvexquadraticprogramming/), comparing a semidefinite relaxation strategy with simply using YALMIPs built-in global solvers. Although the main message of the post remains valid (understand when, why and how you apply a semidefinite relaxation!), the computational results are perhaps a bit outdated.
 
-THh numbers should to be updated due to 3 main reasons
+We recompute the results to reflect 3 developments over the last decade
 
 1. We now have [MOSEK](/solver/mosek) available for solving semidefinite programs more efficiently.
 2. The built-in global solver [BMIBNB](/solver/bmibnb) has been improved.
-3. There are now several easily accesible solvers for global nonconvex quadratic programming.
+3. There are now several easily accesible external solvers for global nonconvex quadratic programming.
 
-Hence, without further ado, we run the example again, but this time with many more solvers, and on larger problems. 
+Hence, without further ado, we run the example again, but this time with many more solvers, and on larger problems. If you want to run this code, you will have to adjust it to  only reference and use the solvers you have installed.
+
+The code allows the solvers to use 100 seconds, and runs for increasing problem sizes until no solver manages to solve the problem in that time.
 
 ````matlab
 Q = magic(5);
 x = sdpvar(5,1);
 optimize([-1 <= x <= 1],x'*Q*x)
 ````
+
+Some general comments on what we see
+
+* Results for small n is not that relevant. For these small sizes, general overhead in the MATLAB interfaces affect more than the actual algorithm. For instance, Gurobi and Mosek have very low MATLAB overhead, while CPLEX is worse, and the built-in solvers kktqp and bmibnb are entirely coded in MATLAB which cause overhead for trivial problem sizes.
+
+* The time reported for the moment solver is the time spent in the SDP solver which solves the relaxation. THe actual call to the moment framework is larger, and becomes excessive for larger problem sizes. This is not caused by the complexity of the resulting SDP or the theory, but by the quick-n-dirty implementation of setting up the moment relaxation inside YALMIP. However, for problems of sizes where this becomes problematic, the solution time in the solver will be massive anyway so you would never want to solve those problems to begin with.
+
+* bmibnb, gurobi and scip attack the nonconvex QP using the same strategy (spatial branch & bound). The fact that performs extremely well here is not a general conclusion, but the result of some very effient cut or bound propagator which just happens to perform well on this model class.
+
+* Likewise, cplex and kktqp solve the problem using similiar ideas (as far as I know). Once again, general conclusions should not be drawn from this example, but it is interesting to see that ktqp is much more predictable in solution time.
+
+* Since we only allow 100 seconds, the reported times which are just above 100 are most likely not solved to optimality, but the solver simply had to abort as it ran out of time.
+
+* We have made no changes to default settings, neither algorithmic or tolerances. Hence most solver can most likely be adjusted to perform better, and the comparison might be unfair as they use different tolerances for checking feasibility and optimality (well we actually tightened the termination criteria for bmibnb, it looked to good with the default setting as it almost always finished in only two nodes with the default relative gap tolerance of 1%)
 
