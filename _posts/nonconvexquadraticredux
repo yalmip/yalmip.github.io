@@ -40,3 +40,5 @@ Some general comments on what we see
 
 * We have made no changes to default settings, neither algorithmic or tolerances. Hence most solver can most likely be adjusted to perform better, and the comparison might be unfair as they use different tolerances for checking feasibility and optimality (well we actually tightened the termination criteria for bmibnb, it looked to good with the default setting as it almost always finished in only two nodes with the default relative gap tolerance of 1%)
 
+* The fact that the two internal solvers bmibnb and kktqp survied the game for the longest is surprising. The commercial players still have room for improvement to say the least. Once again though, this is one particular instance class (although not cherry picked) and no general conclusions can be drawn from this. All of the commercial alternatives are orders of magnitudes faster on many other problems.
+
