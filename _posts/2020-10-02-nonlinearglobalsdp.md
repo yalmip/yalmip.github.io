@@ -2,7 +2,7 @@
 layout: single
 permalink: /nonlinearsdpcuts
 excerpt: "The first cut is not the deepest"
-title: "SDP cones in BMINBB"
+title: "SDP cones in BMIBNB"
 tags: [Global optimization, Semidefinite programming]
 comments: true
 published: false
@@ -15,7 +15,7 @@ With the most recent release, the situation is improved, and there is now better
 
 ## Suitable background
 
-To avoid repetition of general concepts, you are adviced to read the post on [CUTSDP](/cutsdpsolver) where cutting planes are used for the linear semidefinite cone in a different context. You are also adviced to read the general posts on [global optimization] and [envelope generation](tutorial/envelopesinbmibnb/) to understand how a spatial branch & bound solver works.
+To avoid repetition of general concepts, you are adviced to read the post on [CUTSDP](/cutsdpsolver) where cutting planes are used for the linear semidefinite cone in a different context. You are also adviced to read the general posts on [global optimization](tutorial/globaloptimization) and [envelope generation](tutorial/envelopesinbmibnb/) to understand how a spatial branch & bound solver works.
 
 ## The strategy
 
@@ -23,17 +23,17 @@ Now, having read the recommended articles, you know that [BMIBNB](/solver/bmibnb
 
 The lower bound problem does not pose any particular problem when we add a semidefinite cone to the model. After relaxing nonlinearities and all we have to do is to solve a linear semidefinte program, which we have a plethora of solvers for. Hence, the only difference is that we swtich from a linear programming based lower bound (or more generally a quadratic or second-order cone programming solver) to a linear semidefinite programming solver.
 
-The upper bound is the issue. While there are many solvers available for standard nonlinear programming, this is not the case for nonlinear semidefinite programming. In principle though, if our nonlinear model has a semidefinite constraint \\(G(x) \succeq 0\\), possibly nonlinear, we can view this as \\(v^TG(x)v \geq 0~\forall v\\). Hence, by simply adding an infinite amount of scalar constraints, we can mimic the semidefinite constraint and solve the upper bound problem using a standard nonlinear solver. Of course, this is not practical or possible. Instead, we use the idea iteratively and build an approximation of the semidefinite cone as we work our way through the tree. Remember, it is not crucial that we actually manage to compute an upper bound in every node. It is of course good if we can generate feasible solutions, but if we fail, it only means we have to open more nodes and try to find feasible solutions with associated upper bounds in those future nodes. Also remember that the upper bound problem is solved on a globally valid model. A semidefinite cut added to the upper bound model is valid in all nodes.
+The upper bound is the issue. While there are many solvers available for standard nonlinear programming, this is not the case for nonlinear semidefinite programming. In principle, if our nonlinear model has a semidefinite constraint \\(G(x) \succeq 0\\), possibly nonlinear, we can view this as \\(v^TG(x)v \geq 0~\forall v\\). Hence, by simply adding an infinite number of scalar constraints, we can mimic the semidefinite constraint and solve the upper bound problem using a standard nonlinear solver. Of course, this is not practical or possible. Instead, we use the idea iteratively and build an approximation of the semidefinite cone as we work our way through the branching tree. Remember, it is not crucial that we actually manage to find a feasible solution in every node. It is of course good if we can generate feasible solutions to finally find the optimal solution, but if we fail, it only means we have to open more nodes and try to find feasible solutions with associated upper bounds in those future nodes. Also remember that the upper bound problem is solved on a globally valid model. A semidefinite cut added to the upper bound model is valid in all nodes.
 
-Hence, the basic algorithm is
+Hence, the obvious algorithm is
 
 1. Create some initial approximation \\(\hat{G}(x) \geq 0\\) of the semidefinite cone (e.g. add the constraint that the diagonal is non-negative)
 
-2. In the node, try to solve the nonlinear program using the approximation \\(\hat{G}(x)\\). If a solution is found, and \\(G(x) \succeq 0\\) is satisfied, a valid upper bound has been computed. If \\(G(x) \succeq 0\\) is violated, compute an eigenvector \\(v\\) associated to a negative eigenvalue and add the cut \\( v^TG(x)v \geq 0 \\) to the approximation \\(\hat{G}(x)\geq 0\\).
+2. In the node, try to solve the nonlinear program using the approximation \\(\hat{G}(x)\\). If a solution is found, and \\(G(x) \succeq 0\\) is satisfied, a valid upper bound has been computed. If \\(G(x) \succeq 0\\) is violated, we do not have a feasible solution but we can compute an eigenvector \\(v\\) associated to a negative eigenvalue and add the cut \\( v^TG(x)v \geq 0 \\) to the approximation \\(\hat{G}(x)\geq 0\\).
 
-3. Either repeat (2) several times in the node, or proceed with branching process and use the new approximation first in the next node.
+3. Either repeat (2) several times in the node, or proceed with branching process and use the new approximation in following nodes.
 
-Everything else is exactly as usual in the global algorithm.
+Everything else is exactly as before in the branch & bound algorithm.
 
 ## Illustrating the steps manually
 
@@ -43,7 +43,7 @@ The feasible set are the two disjoint regions top left and bottom right with bor
 
 ![True feasible set]({{ site.url }}/images/nonlinearsdpcut1.png){: .center-image }
 
-THe figure can be generated with the following code
+The figure can be generated with the following code
 
 ````matlab
 clf;
@@ -53,7 +53,7 @@ hold on
 grid on
 ````
 
-As a starting approximation of the feasible set, in addition to the box constrants, we have the diagonal requirement \\(y^2 -1 \geq 0\\). Obviously, this is the region above the top black line, and below the bottom black line in the following figure
+As an initial approximation of the feasible set, in addition to the box constrants, we have the diagonal requirement \\(y^2 -1 \geq 0\\). This is the region above the top black line, and below the bottom black line in the following figure
 
 ![Approximation 1]({{ site.url }}/images/nonlinearsdpcut2.png){: .center-image }
 
@@ -64,7 +64,7 @@ l=ezplot('y^2-1-0*x',[-3 3 -3 3]);
 set(l,'color','black');set(l,'linewidth',2);
 ````
 
-Now assume we use this initial model for upper bound generation. A nonlinear solver might find the solution \\(x=0, y=1\\) marked with a black star in the figure below. Plugging in this solution into \\(G(x,y)\\) and computing eigenvalues shows that the matrix is indefinite (it is obviously not positive definite since the solution is outside the feasible region) meaning we failed to find a feasible solution to the original problem and thus generated no upper bound. By computing the associated eigenvector and forming the cut, we obtain a feasible region whose border is shown in blue. The feasible region to this cut is the area to the left of the blue curve. Note that it is tangent to the true feasible set at two points.Our nonlinear model is now the intersection of the two regions defined by the black lines, and the new region *to the left of the blue line*.
+Now assume we use this initial model for upper bound generation. A nonlinear solver might find the solution \\(x=0, y=1\\) marked with a black star in the figure below. Plugging in this solution into \\(G(x,y)\\) and computing eigenvalues shows that the matrix is indefinite (it is obviously not positive definite since the solution is outside the feasible region) meaning we failed to find a feasible solution to the original problem and thus generated no upper bound. By computing the associated eigenvector and forming the cut, we obtain a feasible region whose border is shown in blue. The feasible region to this cut is the area *to the left of the blue curve*. Note that it is tangent to the true feasible set at two points.Our nonlinear model is now the intersection of the two regions defined by the black lines, and the new region to the left of the blue line.
 
 ![Approximation 2]({{ site.url }}/images/nonlinearsdpcut3.png){: .center-image }
 
@@ -83,7 +83,7 @@ l = ezplot(s{1},[-3 3 -3 3]);
 set(l,'color','blue');set(l,'linewidth',2);
 ````
 
-Once again, either in the same node or later on, the new model is used by the nonlinear solver, and this time we might obtain \\(x=0, y=-1\\) marked with a blue star. We are still infeasible in the original model and analyzing eigenvalues and generating a new cut leads to the region *to the right of the green curve*. Iterating again using the intersection of the three constraints leads to, say, (-0.7,1) and a cut ilustrated by *the yellow line which we should be to the left of*.
+Once again, either in the same node or later on, the new model is used by the nonlinear solver, and this time we might obtain \\(x=0, y=-1\\) marked with a blue star. We are still infeasible in the original model and analyzing eigenvalues and generating a new cut leads to the region *to the right of the green curve*. Iterating again using the intersection of the three constraints leads to, say, (-0.7,1) and a cut illustrated by *the yellow line which we should be to the left of*.
 
 ![Approximation 2]({{ site.url }}/images/nonlinearsdpcut5.png){: .center-image }
 
@@ -111,7 +111,7 @@ set(l,'linewidth',2);
 
 ## Running the solver
 
-So let us throw [MIBNB](/solver/bmibnb) on the problem (we save some internal history for later analysis). From the log, we can deduce that the algorithm found a feasible solution already in the first node (as we will see later, this is a trivial point in the top left corner). It then saw a bunch of SDP-infeasible solutions from which it generated cuts to add to the model, and after 5 iterations it found a new better solution. More cuts wre added, and in iteration 9 and 15 better solutions were found, and with the solution found in node 15 the gap could be closed completely and thus a globally optimal solution was found.Note that the logtells us that the solutions actually weren't found by the upper bound solver [FMINCON](/solver/fmincon), but were recovered using heuristics from lower bound solutions etc.
+So let us test [BMIBNB](/solver/bmibnb) on the problem (we save some internal history for later analysis). From the log, we can conclude that the algorithm found a feasible solution already in the first node (as we will see later, this is a trivial point in the top left corner). It then saw a bunch of SDP-infeasible solutions from which it generated cuts to add to the model, and after 5 iterations it found a new better solution. More cuts were added, and in iteration 9 and 15 even better solutions were found, and with the solution found in node 15 the gap could be closed completely and thus a globally optimal solution was found. Note that the log tells us that the SDP-feasible solutions weren't found by the upper bound solver [FMINCON](/solver/fmincon), but were recovered using heuristics from lower bound solutions etc. The solutions generated by the lower bound solver are important in generating relevant points to compute cuts in though.
 
 ````matlab
 sdpvar x y
@@ -152,11 +152,26 @@ sol = optimize(Model,x^2+y^2,sdpsettings('solver','bmibnb','savesolveroutput',1)
 *         8% spent in lower solver (19 problems solved)
 *         32% spent in LP-based domain reduction (76 problems solved)
 *         3% spent in upper heuristics (73 candidates tried)
+
 ````
+
+The figure below shows the progress of the SDP-feasible upper bound solutions
+
+````matlab
+clf;
+l=ezplot('y^2-1-(x+y)^2',[-3 3 -3 3]);
+set(l,'color','red');set(l,'linewidth',2);
+hold on
+grid on
+title('')
+plot(xhist(1,:),xhist(2,:),'b*--')
+````
+
+![Solutions]({{ site.url }}/images/nonlinearsdpcut6.png){: .center-image }
 
 ## There's more to the story
 
-As explained above, nothing prevents us from iterating the cut-generating strategy in every node several times. This can e controlled by an option. If we want to do, say, three rounds of solving the nonlinear program followed by adding violated SDP cuts, we run the code below. We see that several rounds are performed in every node, and the result is that more effort is spent in every node but a fewer number of nodes are needed. Note that it is not necessarily a good thing to add many new cuts in every node and strive for an SDP feasible solution everywhere. We might be wasting a lot of resources in creating a high-fidelity model in a region which is far from the globlly optimal solution anyway.
+As explained above, nothing prevents us from iterating the cut-generating strategy in every node several times. This can be controlled by an option. If we want to perform, say, three rounds of solving the nonlinear program followed by adding violated SDP cuts, we run the code below. We see that several rounds are performed in every node, and the result is that more effort is spent in every node but a fewer number of nodes are needed. Note that it is not necessarily a good thing to add many new cuts in every node and strive for an SDP feasible solution everywhere. We might be wasting a lot of resources in creating a high-fidelity model in a region which is far from the globlly optimal solution anyway.
 
 ````matlab
 sdpvar x y
@@ -192,9 +207,9 @@ sol = optimize(Model,x^2+y^2,sdpsettings('solver','bmibnb','bmibnbuppersdprelax'
 *         1% spent in upper heuristics (36 candidates tried)
 ````
 
-This can be taken to the extreme. By setting the number of rounds to inf, we force [BMIBNB](solver/bmibnb) to continue adding SDP cuts until the solution either is SDP-feasible, or the nonlinear solver fails to find a solution to the approximation.
+This can be taken to the extreme. By setting the number of rounds to infinity, we force [BMIBNB](solver/bmibnb) to continue adding SDP cuts until the solution either is SDP-feasible, or the nonlinear solver fails to find a solution to the approximation. 
 
-Another use of the framework is to use it in combintion with a global solver. By using a global solver for the upper bound solver, and then setting the number of rounds to inf, the solution computed will not only be SDP-feasible, but globally optimal! Since we know any computed solution is the globally optimal solution, we want to terminate without bothering about the lower bound, and we can achive this by setting the lower bound target. Since our SDP cuts are quadratic, and the objective is quadratic, we can use [Gurobi](/solver/gurobi) which can do global optimization for quadratic models. THere is one tricky caveat here though: The numerical tolerances in vs judging feasibility can infer with each other. A solution which [Gurobi](/solver/gurobi) thinks is good enough might still violate the cut we just added, and then we will keep adding the same cut. To counteract this, we tighten the feasibility tolerance in [Gurobi](/solver/gurobi).
+Another use of the framework is to use it in combintion with a global solver. By using a global solver as the upper bound solver (!), and then setting the number of rounds to infinity, the solution computed will not only be SDP-feasible, but globally optimal! Since we know the computed solution is the globally optimal solution, we can terminate without bothering about the lower bound, and we can achive this by setting the lower bound target. Since our SDP cuts are quadratic, and the objective is quadratic, we can use [Gurobi](/solver/gurobi) which supports global optimization for quadratic models. There is one tricky caveat here though: The numerical tolerances in [BMIBNB](/solver/bmibnb) vs [Gurobi](/solver/gurobi) for judging feasibility can infer with each other. A solution which [Gurobi](/solver/gurobi) thinks is good enough might still, according to  [BMIBNB](/solver/bmibnb), violate the cut we just added, and then we might keep adding the same cut in an infinite loop. To counteract this, we tighten the feasibility tolerance in [Gurobi](/solver/gurobi) (and in pratice you would not want to set the iteration limit to infinity but something more sensible)
 
 ````matlab
 sdpvar x y
@@ -221,7 +236,7 @@ sol = optimize(Model,x^2+y^2,ops);
 *         0% spent in upper heuristics (0 candidates tried)
 ````
 
-Yet another use is to use it as a trick to create a local solver.Just run it with any nonlinear solver until SDP feasible, and then terminate by setting lower bound target to negative infinity. Note in the display below that in the root node, [fmincon](/solver/fmincon) fails to even find a feasile solution to the SDP relaxed problem, and then no cuts can be generated. THe SDP-feasible solution is actually found by heuristics for thi particular eample.
+Yet another application is to use it as a trick to create a local nonlinear SDP solver. Just run it with any nonlinear solver until SDP feasible, and then terminate by setting lower bound target to negative infinity. Note in the display below shows that in the root node, [fmincon](/solver/fmincon) fails to even find a feasible solution to the SDP relaxed problem, and then no cuts can be generated. THe SDP-feasible solution is actually found by heuristics for this particular example.
 
 ````matlab
 sdpvar x y
