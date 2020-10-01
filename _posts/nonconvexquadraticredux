@@ -28,15 +28,16 @@ optimize([-1 <= x <= 1],x'*Q*x)
 
 Some general comments on what we see
 
-* Results for small n are not that relevant. For these small sizes, general overhead in the MATLAB interfaces influence more than the actual algorithm. For instance, Gurobi and [Mosek](/solver/mosek) (used for the moment relaxation) have very low MATLAB overhead, while [CPLEX](/solver/cplex) is worse, and the built-in solvers [KKTQP](/solver/kktqp) and [BMIBNB](/solver/bmibnb) are entirely coded in MATLAB which cause overhead for trivial problem sizes.
+* Results for small n are not that relevant. For these small sizes, general overhead in the MATLAB interfaces influence more than the actual algorithm. For instance, [Gurobi](/solver/gurobi) and [Mosek](/solver/mosek) (used for the moment relaxation) have very low MATLAB overhead, while [CPLEX](/solver/cplex) is worse, and the built-in solvers [KKTQP](/solver/kktqp) and [BMIBNB](/solver/bmibnb) are entirely coded in MATLAB which cause overhead for trivial problem sizes.
 
 * The time reported for the moment solver is the time spent in the SDP solver which solves the relaxation (here [MOSEK](/solver/mosek)). The actual call to the moment framework is larger, and becomes excessive for larger problem sizes. This is not caused by the complexity of the resulting SDP or the theory, but by the quick-n-dirty implementation of setting up the moment relaxation inside YALMIP. However, for problems of sizes where this becomes problematic, the solution time in the solver will be massive anyway so you would probably never want to solve those problems to begin with.
 
 * [BMIBNB](/solver/bmibnb), [Gurobi](/solver/gurobi), [Cplex](/solver/cplex), [SCIP](/solver/scip) and [BARON](/solver/baron) attack the nonconvex QP using the same strategy (spatial branch & bound). The fact that [BMIBNB](/solver/bmibnb) performs extremely well here is not a general conclusion, but the result of some very effient cut or bound propagator which just happens to perform well on this model class.
 
-* Since we only allow 180 seconds, the reported times which are just above 180 are most likely not solved to optimality, but the solver simply had to abort as it ran out of time.
+* Since we only allow 180 seconds, the reported times which are just above 180 seconds are most likely not solved to optimality, but the solver simply had to abort as it ran out of time.
 
 * We have made no changes to default settings. Hence most solver can most likely be adjusted to perform better, and the comparison might be unfair as they use different tolerances for checking feasibility and optimality (well we actually tightened the termination criteria for bmibnb, it looked to good with the default setting as it almost always finished in only two nodes with the default relative gap tolerance of 0.01%, and we cranked up the maximum numbers of allowed nodes in [BMIBNB](/solver/bmibnb)and [SCIP](/solver/scip) since these have very low default limits)
 
 * The fact that the two internal solvers [BMIBNB](/solver/bmibnb) and [KKTP](/solver/kktqp) survied the game for the longest is surprising. The commercial players still have room for improvement to say the least. Once again though, this is one particular instance class (although not cherry picked, it just happened to be the one used 10 years ago) and no general conclusions can be drawn from this. All of the commercial alternatives are orders of magnitudes faster on many other problems.
 
+* The current release of all solvers have been used, except [SCIP](/solver/scip) where the most recent MATLAB interface only is available for 5.0.
