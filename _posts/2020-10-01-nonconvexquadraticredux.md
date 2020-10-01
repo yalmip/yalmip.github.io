@@ -65,7 +65,7 @@ end
 
 Some general comments on what we see
 
-* Reading the figure: From left to right in giving up (crossing 180 seconds) we have full moment relaxation, [Gurobi](/solver/gurobi),  [BARON](/solver/baron), improved moment relaxation, [SCIP](/solver/scip) and [Cplex](/solver/cplex), and the surprise winners [BMIBNB](/solver/bmibnb) and [KKTQP](/solver/kktqp)]
+* Reading the figure: From left to right in giving up (crossing 180 seconds) we have full moment relaxation, [Gurobi](/solver/gurobi),  [BARON](/solver/baron), improved moment relaxation, [SCIP](/solver/scip) and [Cplex](/solver/cplex), and the surprise winners [BMIBNB](/solver/bmibnb) and [KKTQP](/solver/kktqp)
 
 * The main message remains: A full-fledged naive semidefinite relaxation is the worst you can do for anything but very small problems. A slightly improved model which is compactified using quadratic constraints allows a smaller semidefinite program that is competetive with the global solvers for a larger range of problem sizes.
 
