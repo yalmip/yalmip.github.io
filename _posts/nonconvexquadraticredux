@@ -21,10 +21,47 @@ Hence, without further ado, we run the example again, but this time with many mo
 The code allows the solvers to use 180 seconds, and runs for increasing problem sizes until no solver manages to solve the problem in that time.
 
 ````matlab
-Q = magic(5);
-x = sdpvar(5,1);
-optimize([-1 <= x <= 1],x'*Q*x)
+clear all
+clf
+defaults = sdpsettings('verbose',0);
+maxtime = 180;
+ops(1) = sdpsettings(defaults,'solver','moment','moment.order',3,'moment.solver','mosek','mosek.MSK_DPAR_OPTIMIZER_MAX_TIME',maxtime);
+ops(end+1) = ops(1);ops(2).moment.order = 2;
+ops(end+1) = sdpsettings(defaults,'solver','bmibnb','bmibnb.uppersolver','fmincon','bmibnb.maxtime',maxtime,'bmibnb.relgaptol',1e-4,'bmibnb.maxiter',inf);
+ops(end+1) = sdpsettings(defaults,'solver','gurobi','gurobi.timelimit',maxtime);
+ops(end+1) = sdpsettings(defaults,'solver','cplex','cplex.timelimit',maxtime);
+ops(end+1) = sdpsettings(defaults,'solver','scip','scip.maxtime',maxtime,'scip.maxnodes',2^31-1);
+ops(end+1) = sdpsettings(defaults,'solver','baron','baron.maxtime',maxtime);
+ops(end+1) = sdpsettings(defaults,'solver','kktqp','kktqp.solver','gurobi','gurobi.timelimit',maxtime);
+
+n = 1;
+go_on = 1;
+while go_on    
+    Q = magic(n);
+    x = sdpvar(n,1);
+    for k = 1:length(ops)
+        % Only run this solver if it finished in time for smaller model                             
+        if n == 1 || comptimes(k,n-1)<maxtime
+            disp(['Calling ' ops(k).solver ', n = ' num2str(n)]);
+            if k == 2
+                sol = optimize([-1 <= x <= 1,  x.^2 <= 1],x'*Q*x,ops(k));
+            else
+                sol = optimize([-1 <= x <= 1],x'*Q*x,ops(k));
+            end
+            comptimes(k,n) = sol.solvertime;               
+        else
+            comptimes(k,n) = nan;                   
+        end
+    end
+    l=semilogy(1:n,comptimes);set(l,'linewidth',2);grid on;
+    l = legend({ops.solver});
+    set(l,'linewidth',2,'Location','southeast');drawnow
+    n = n + 1;
+    go_on = ~all(isnan(comptimes(:,end)));
+end
 ````
+
+![Computation results]({{ site.url }}/images/nonconvexquadraticredux.png){: .center-image }
 
 Some general comments on what we see
 
