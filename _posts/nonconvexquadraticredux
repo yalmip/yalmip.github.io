@@ -65,13 +65,13 @@ end
 
 Some general comments on what we see
 
-* Reading the figure: From left to right in giving up (crossing 180 seconds) we have full moment relaxation, [Gurobi](/solver/gurobi),  [BARON](/solver/baron), improved moment relaxation, [SCIP](/solver/scip) and [Cplex](/solver/cplex), [BMIBNB](/solver/bmibnb), and to the very right the winner [KKTQP](/solver/kktqp)]
+* Reading the figure: From left to right in giving up (crossing 180 seconds) we have full moment relaxation, [Gurobi](/solver/gurobi),  [BARON](/solver/baron), improved moment relaxation, [SCIP](/solver/scip) and [Cplex](/solver/cplex), and the surprise winners [BMIBNB](/solver/bmibnb) and [KKTQP](/solver/kktqp)]
 
-* The main message remains: A full-fledged naive semidefinite relaxation is the worst you can do for anything but very small problems. A slightly improved model which is compactified using quadratic constraints leads to a sufficiently small semidefinite program that is competetive with the global solvers for a larger range of problem sizes.
+* The main message remains: A full-fledged naive semidefinite relaxation is the worst you can do for anything but very small problems. A slightly improved model which is compactified using quadratic constraints allows a smaller semidefinite program that is competetive with the global solvers for a larger range of problem sizes.
 
 * A benefit with the moment based methods is that the computational effort is fairly predicatable, compared to the more unpredicatble behaviour of global solvers.
 
-* A benefit with the global methods is that they have a solution available very quickly and can be terminated and then also supply a lower bound. For instance, [BMIBNB](/solver/bmibnb) can almost always deliver a solution within 1% optimality gap after a few seconds (and that solution is almost always the global minimizer). This is not possible with the moment based method. If you re lucky, it has computed a tight lower bound when it is finisihed, and from that it might be possible to extrct a solution.
+* A benefit with the branch & bound based global methods is that they have a solution available very quickly and can be terminated and then also supply a lower bound. For instance, [BMIBNB](/solver/bmibnb) can almost always deliver a solution within 1% optimality gap after a few seconds (and that solution is almost always the global minimizer). In the final model with n=39, although it takes the solver more than 180 seconds to close the gap completely, the solver has found the global solution, with a gap of 0.1%, already after a fraction of a second and then spends the remaining time on trying to close the gap further. This is not possible with the moment based method. If you re lucky, it has computed a tight lower bound when it is finisihed, and from that it might be possible to extrct a solution.
 
 * Results for small n are not that relevant. For these small sizes, general overhead in the MATLAB interfaces influence more than the actual algorithm. For instance, [Gurobi](/solver/gurobi) and [Mosek](/solver/mosek) (used for the moment relaxation) have very low MATLAB overhead, while [CPLEX](/solver/cplex) is worse, and the built-in solvers [KKTQP](/solver/kktqp) and [BMIBNB](/solver/bmibnb) are entirely coded in MATLAB which cause overhead for trivial problem sizes.
 
