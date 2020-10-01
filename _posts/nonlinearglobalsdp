@@ -8,11 +8,49 @@ comments: true
 date: 2020-10-01
 ---
 
-YALMIP has an internal very general global solver [BMIBNB](/solver/bmibnb). Since inception some 15 years ago, it has supported nonlinear semidefinite constraints (this is actually why it initially was developed, hence the name) but this feature has essentially been useless as it has required a nonlinear SDP solver for the upper bound and solution generation. Although [PENSDP](/solver/pensdp) and [PENBMI](/solver/penbmi) are such solvers, they are not robust enough to be used in the branch & bound framework, and the development of these solvers have stalled.
+YALMIP has an internal very general global solver [BMIBNB](/solver/bmibnb). Since inception some 15 years ago, it has supported nonlinear semidefinite constraints (this is actually why it initially was developed, hence the name) but this feature has essentially been useless as it has required a nonlinear SDP solver for the upper bound and solution generation. Although [PENSDP](/solver/pensdp) and [PENBMI](/solver/penbmi) are such solvers, they are not robust enough to be used in the branch & bound framework, and the development of these solvers appear to have stalled.
 
-With the most recent release, the situation is improved, and there is now a much better support for the semidefinite cone in [BMIBNB](/solver/bmibnb), and a completely different approach is used to handle this. Instead of relying on nonlinear SDP solvers, the machinery for the upper bound problem is based on a nonlinear cutting plane strategy. 
+With the most recent release, the situation is improved, and there is now a much better support for the semidefinite cone in [BMIBNB](/solver/bmibnb), and a completely different approach is used to handle this. Instead of relying on nonlinear SDP solvers, the machinery for the upper bound problem is based on a nonlinear cutting plane strategy using your stadnard favorite nonlinear solver. 
 
-To avoid repetition of some general concepts, you are adviced to read the post on the [CUTSDP](cutsdpsolver) where cutting planes are used for the semidefinite cone in a different context. You are also adviced to read the general posts on [global optimization] and [envelope generation](tutorial/envelopesinbmibnb/)
+## Suitable background
+
+To avoid repetition of general concepts, you are adviced to read the post on the [CUTSDP](/cutsdpsolver) where cutting planes are used for the linear semidefinite cone in a different context. You are also adviced to read the general posts on [global optimization] and [envelope generation](tutorial/envelopesinbmibnb/) to understand how a spatial branch & bound solver works.
+
+## The strategy
+
+Now, having read the recommended articles, you know that [BMIBNB](/solver/bmibnb) needs two central components: A lower bound solver which solves a convex typically linear relaxation of the problem, and an upper bound solver which tries to solve the original nonlinear problem staring from some suitably selected starting point (typically some combination of the center of the box and the solution to the lower bound problem)
+
+The lower bound problem does not pose any particular problem when we add a semidefinite cone to the model. Relaxing all nonlinearities and all we have to do is to solve a linear semidefinte program, which we have a plethora of solvers for. Hence, the only difference is that we swtich from a linear programming lower bound solver (or more generally possibly a quadratic or second-order cone programming solver) to a semidefinite programming solver.
+
+The upper bound is more problematic. While there are many solvers available for standard nonlinear programming, this is not the case for nonlinear semidefinite programming. In principle, if our nonlinear model has the nonlinear semidefinite constraint \\(G(x) \succeq 0\\), we can alternatively view this as \\(v^TG(x)v \geq 0~\forall v\\). Hence, by simply adding an infinite amount of scalar constraints, we can mimic the semidefinite constraint and solve the upper bound problem using a standard nonlinear solver. Of course, this is not practical or possible. Instead, we will use the idea iteratively and build an approximation of the semidefinite cone as we work our way through the tree. Remember, it is not important that we actually manage to compute an upper bound in every node. It is of course good if we can generate feasible solutions, but if we fail, it only means we have to open more nodes. Also remember that the upper bound problem is solved on a globally valid model. A semidefinite cut added to the upper bound model in a node is valid in any other node too.
+
+Hence, the basic algorithm is
+
+1. Create some initial approximation  \\(\hat{G}(x)\\) of the semidefinite cone (simply adds the constraint that the diagonal is non-negative)
+
+2. In every node, try to solve the nonlinear program using the approimation \\(\hat{G}(x)\\). If a solution is found, and \\(G(x) \succeq 0\\) is satisfied, a valid upper bound has been computed. If \\(G(x) \succeq 0\\) is violated, compute eigenvector \\(v\\) associated to negative eigenvalues and add the cut \\( v^TG(x)v \geq 0 \\) to the constraint list \\(\hat{G}(x)\\).
+
+3. Either repeat (2) several times in the node, or proceed with branching process and use the new approximation first in the next node.
+
+
+## Illustrating the steps manually
+
+Consider a small example where we want to minimize \\(x^2+y^2\\) over \\(-3 \leq x,y \leq 3\\) and \\( \begin{pmatrix} y^2-1 x+y\\x+y 1\end{pmatrix} \succeq 0\\). We can see that the semidefinite constraints can be written as \\(y^2-1\geq 0\\) and \\( y^2-1 - (x+y)^2 \geq 0\\) by studying conditions for the matrix to be positive semidefinite. The first condition is redundant as it follows from the second.
+
+The feasible set is the disjoint regions top left and bottom right in the figure below. We can generate that figure with
+
+
+A a starting approximation of the feasible set, in addition to the box constrants, we have \\(y^2 -1 \geq 0\\). Obviously, this is the region above the top vlack line, and belo the bottom lack line.
+
+Now assume we use this model for upper bound generation. A nonlinear solver might find the solution \\(x=0, y=1\\) marked with a black star in the figure below. Plugging in this solution into \\(G\\) and computing eigenvalues shows that the matrix is indefinite (it is obviously not positive definite since the solution is outside the feasible region), and by computing the associated eigenvector and forming the cut, we obtain a feasible region whose border is shown in blue. THe feasible region to this cut is the area left of the blue curve. Note that it is tangent to the true feasible set at two points.
+
+Once again, either in the same node or later on, the new model is solved using a nonlinear solver, and this time we might obtain \\(x=0, y=-1\\) marked with a blue star. Analyzing eigenvalues and gnerating a new cut leads to the region to the right of the green curve.
+
+## Test with solver
+
+
+
+
 
 
 
