@@ -13,6 +13,9 @@ header:
   teaser: "nonconvexcomparetimes2.png"
 ---
 
+The computational results reported below are a bit outdated. For more recent numbers and a more comparisons see the article [Nonconvex quadratic programming and moments: 10 years later](/nonconvexquadraticredux)
+{: .notice--info}
+
 A common question I get is along the lines *how can I solve a nonconvex QP using SeDuMi*?
 
 The answer to the questions is a bit tricky, since it depends on what the user means with  *solve*, and why [SEDUMI](/command/sedumi) is mentioned. Do you mean that you want to compute an exact solution and just assume that [SEDUMI](/command/sedumi) (or any SDP solver) can do this, or have you stumbled upon the notion of semidefinite relaxations and think semidefinite relaxations always solve the problem, or do you understand that a semidefinite relaxation only some times gives a solution, and primarily are used to compute lower bounds?
