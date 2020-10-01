@@ -11,7 +11,7 @@ date: 2020-10-02
 
 YALMIP has an internal very general global solver [BMIBNB](/solver/bmibnb). Since inception some 15 years ago, it has supported nonlinear semidefinite constraints (this is actually why it initially was developed, hence the name) but this feature has essentially been useless as it has required a nonlinear SDP solver for the upper bound and solution generation. Although [PENSDP](/solver/pensdp) and [PENBMI](/solver/penbmi) are such solvers, they are not robust enough to be used in the branch & bound framework, and the development of these solvers appear to have stalled.
 
-With the most recent release, the situation is improved, and there is now better support for the semidefinite cone in [BMIBNB](/solver/bmibnb), and a completely different approach is used to achieve this. Instead of relying on external (non-existant) nonlinear SDP solvers, the machinery for the upper bound problem is based on a nonlinear cutting plane strategy using your standard favorite nonlinear solver. Will this work on any problem? Absolutely not. You might be lucky though, and this is work in progress.
+With the most recent release, the situation is improved with better support for the semidefinite cone in [BMIBNB](/solver/bmibnb), and a completely different approach is used to achieve this. Instead of relying on external (non-existant) nonlinear SDP solvers, the machinery for the upper bound problem is based on a nonlinear cutting plane strategy using your standard favorite nonlinear solver. Will this work on any problem? Absolutely not. A cutting plane strategy performs pretty badly already in the linear SDP case, but you might be lucky though, and this is work in progress.
 
 ## Suitable background
 
