@@ -1,11 +1,12 @@
 ---
 layout: single
 permalink: /nonlinearsdpcuts
-excerpt: "What did just happen?"
+excerpt: "The first cut is not the deepest"
 title: "SDP cones in BMINBB"
 tags: [Global optimization, Semidefinite programming]
 comments: true
-date: 2020-10-01
+published: false
+date: 2020-10-02
 ---
 
 YALMIP has an internal very general global solver [BMIBNB](/solver/bmibnb). Since inception some 15 years ago, it has supported nonlinear semidefinite constraints (this is actually why it initially was developed, hence the name) but this feature has essentially been useless as it has required a nonlinear SDP solver for the upper bound and solution generation. Although [PENSDP](/solver/pensdp) and [PENBMI](/solver/penbmi) are such solvers, they are not robust enough to be used in the branch & bound framework, and the development of these solvers appear to have stalled.
