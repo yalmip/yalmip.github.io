@@ -38,121 +38,216 @@ Everything else is exactly as usual in the global algorithm.
 
 Consider a small example where we want to minimize \\(x^2+y^2\\) over \\(-3 \leq (x,y) \leq 3\\) and \\( G(x,y) = \begin{pmatrix} y^2-1 x+y\\x+y 1\end{pmatrix} \succeq 0\\). The semidefinite constraints can be written as \\(y^2-1\geq 0\\) and \\( y^2-1 - (x+y)^2 \geq 0\\) by studying conditions for the matrix to be positive semidefinite (the first condition is redundant as it is implied by the second)
 
-The feasible set is the disjoint regions top left and bottom right with borders outlined in red in the figure below, generated with the following code
+The feasible set are the two disjoint regions top left and bottom right with borders outlined in red in the figure below
 
+![True feasible set]({{ site.url }}/images/nonlinearsdpcut1.png){: .center-image }
 
-As a starting approximation of the feasible set, in addition to the box constrants, we have the diagonal requirement \\(y^2 -1 \geq 0\\). Obviously, this is the region above the top black line, and below the bottom black line.
+THe figure can be generated with the following code
 
-Now assume we use this initial model for upper bound generation. A nonlinear solver might find the solution \\(x=0, y=1\\) marked with a black star in the figure below. Plugging in this solution into \\(G(x,y)\\) and computing eigenvalues shows that the matrix is indefinite (it is obviously not positive definite since the solution is outside the feasible region) meaning we failed to find a feasible solution to the original problem and thus generated no upper bound. By computing the associated eigenvector and forming the cut, we obtain a feasible region whose border is shown in blue. The feasible region to this cut is the area left of the blue curve. Note that it is tangent to the true feasible set at two points.Our nonlinear model is now the intersection of the two regions defined by the black lines, and the new region to the left of the blue line.
+````matlab
+clf;
+l=ezplot('y^2-1-(x+y)^2',[-3 3 -3 3]);
+set(l,'color','red');set(l,'linewidth',2);
+hold on
+grid on
+````
 
-Once again, either in the same node or later on, the new model is used by the  nonlinear solver, and this time we might obtain \\(x=0, y=-1\\) marked with a blue star. Once again infeasible in the original model and analyzing eigenvalues and generating a new cut leads to the region to the right of the green curve. Iterating once again using  intersection of the three constraints leads to a new cut ilustrated by the yellow line which we should be to the left of.
+As a starting approximation of the feasible set, in addition to the box constrants, we have the diagonal requirement \\(y^2 -1 \geq 0\\). Obviously, this is the region above the top black line, and below the bottom black line in the following figure
+
+![Approximation 1]({{ site.url }}/images/nonlinearsdpcut2.png){: .center-image }
+
+To generate these lines we ran
+
+````matlab
+l=ezplot('y^2-1-0*x',[-3 3 -3 3]);
+set(l,'color','black');set(l,'linewidth',2);
+````
+
+Now assume we use this initial model for upper bound generation. A nonlinear solver might find the solution \\(x=0, y=1\\) marked with a black star in the figure below. Plugging in this solution into \\(G(x,y)\\) and computing eigenvalues shows that the matrix is indefinite (it is obviously not positive definite since the solution is outside the feasible region) meaning we failed to find a feasible solution to the original problem and thus generated no upper bound. By computing the associated eigenvector and forming the cut, we obtain a feasible region whose border is shown in blue. The feasible region to this cut is the area to the left of the blue curve. Note that it is tangent to the true feasible set at two points.Our nonlinear model is now the intersection of the two regions defined by the black lines, and the new region *to the left of the blue line*.
+
+![Approximation 2]({{ site.url }}/images/nonlinearsdpcut3.png){: .center-image }
+
+The computations are straightforward
+
+````matlab
+l = plot(0,1,'ko');
+set(l,'MarkerFaceColor','black')
+sdpvar x y
+G = [y^2-1 x+y;x+y 1]
+assign([x;y],[0;1])
+[V,D] = eig(value(G));
+gi = V(:,1)'*G*V(:,1);
+s = sdisplay(gi);
+l = ezplot(s{1},[-3 3 -3 3]);
+set(l,'color','blue');set(l,'linewidth',2);
+````
+
+Once again, either in the same node or later on, the new model is used by the nonlinear solver, and this time we might obtain \\(x=0, y=-1\\) marked with a blue star. We are still infeasible in the original model and analyzing eigenvalues and generating a new cut leads to the region *to the right of the green curve*. Iterating again using the intersection of the three constraints leads to, say, (-0.7,1) and a cut ilustrated by *the yellow line which we should be to the left of*.
+
+![Approximation 2]({{ site.url }}/images/nonlinearsdpcut5.png){: .center-image }
+
+````matlab
+assign([x;y],[0;-1])
+l = plot(0,-1,'bo');
+set(l,'MarkerFaceColor','blue')
+[V,D] = eig(value(G));
+gi = V(:,1)'*G*V(:,1);
+s = sdisplay(gi);
+l = ezplot(s{1},[-3 3 -3 3]);
+set(l,'color','green')
+set(l,'linewidth',2);
+l = plot(-.7,1,'go');
+set(l,'Markersize',5)
+set(l,'MarkerFaceColor','green')
+assign([x;y],[-.7;1])
+[V,D] = eig(value(G));
+gi = V(:,1)'*G*V(:,1);
+s = sdisplay(gi);
+l = ezplot(s{1},[-3 3 -3 3]);
+set(l,'color','yellow');
+set(l,'linewidth',2);
+````
 
 ## Running the solver
 
-
-
-
-
-
-
-which is extremely general, and  , which is a classical branch-and-bound implementation for mixed-integer convex programs (it can applied to any problem, but global optimality guarantees only hold for problems where the continuous relaxations are convex). The solvers are only relevant for mixed-integer semidefinite programs. For all other problem classes there are much better [external solvers](/tags/#mixed-integer-programming-solver).
-
-A less known internal mixed-integer solver is [CUTSDP](/solver/cutsdp). While [BNB](/solver/bnb) is based on branch-and-bound where, roughly speaking, integrality is approximated and relaxed during the iterative process, [CUTSDP](/solver/cutsdp) is based on an iterative process where the geometry of the semidefinite cone is approximated and relaxed during the process, while integrality is guaranteed throughout.
-
-## Cutting planes - from the semidefinite cone to linear elementwise cone
-
-[CUTSDP](/solver/cutsdp) is not only a solver for mixed-integer conic (second-order and semidefinite) programs, but is a general solver for conic programs also in the continuous case (although one should never use it as such). 
-
-The basic idea is simple, and is a classical approach to nonlinear programming. A semidefinite constraint \\(X\succeq 0\\) is by definition equivalent to the infinite-dimensional linear programming model \\(v^TXv \geq 0 ~ \forall~v\\). The trick now is to cleverly generate a lot of vectors \\(v\\) and construct a linear program, such that the geometry of the linear programming model starts to approximate the geometry of the semidefinite program. Every such added linear constraint is called a cutting plane. Note that the linear program is an *outer approximation* of the original semidefinite program. This means that a feasible solution to the linear programming approximation is not guaranteed to be a feasible solution to the semidefinite program. It also means that if we are minimizing an objective, it will generate a lower bound.
-
-To see the basic idea in practice, we consider a simple semidefinite constraint defining a ball, and an objective which tells us we want to go as far as possible to the nort-east, and then approximate this model with an increasing number of cutting planes (to speed up the process, we add 20 cutting planes before plotting again. To see a faster high-level implementation, look at [this post](/randomextension))
+So let us throw [MIBNB](/solver/bmibnb) on the problem (we save some internal history for later analysis). From the log, we can deduce that the algorithm found a feasible solution already in the first node (as we will see later, this is a trivial point in the top left corner). It then saw a bunch of SDP-infeasible solutions from which it generated cuts to add to the model, and after 5 iterations it found a new better solution. More cuts wre added, and in iteration 9 and 15 better solutions were found, and with the solution found in node 15 the gap could be closed completely and thus a globally optimal solution was found.Note that the logtells us that the solutions actually weren't found by the upper bound solver [FMINCON](/solver/fmincon), but were recovered using heuristics from lower bound solutions etc.
 
 ````matlab
 sdpvar x y
-% Manual SDP model of x^2 + y^2 <= 1
-X = [1 x y;[x;y] eye(2)];
-Objective = -x-y;
-ops = sdpsettings('plot.shade',.1,'verbose',0);
-% Initial outer approximation
-ballApproximation = [-1 <= [x y] <= 1];
-clf;hold on
-for k = 1:10  
-  for i = 1:20
-    vi = randn(3,1);
-    ballApproximation = [ballApproximation, vi'*X*vi >= 0];  
-  end
-  plot(ballApproximation,[x;y],'blue',200,ops); 
-  optimize(ballApproximation,Objective,ops);
-  plot(value(x),value(y),'k*');drawnow
-  drawnow
-end 
+G = [y^2-1 x+y;x+y 1]
+Model = [-3 <= [x y] <= 3, G >= 0];
+sol = optimize(Model,x^2+y^2,sdpsettings('solver','bmibnb','savesolveroutput',1));
+* Starting YALMIP global branch & bound.
+* Upper solver     : fmincon
+* Lower solver     : MOSEK
+* LP solver        : GUROBI
+* -Extracting bounds from model
+* -Perfoming root-node bound propagation
+* -Calling upper solver (no solution found)
+* -Branch-variables : 2
+* -More root-node bound-propagation
+* -Performing LP-based bound-propagation 
+* -And some more root-node bound-propagation
+* Starting the b&b process
+ Node       Upper       Gap(%)       Lower     Open   Time
+    1 :   1.80000E+01   161.90    1.00000E+00    2     0s  Solution found by heuristics | Added 1 cut on SDP cone  
+    2 :   1.80000E+01   161.90    1.00000E+00    3     0s  Added 1 cut on SDP cone  
+    3 :   1.80000E+01   152.45    1.56312E+00    4     0s  Added 1 cut on SDP cone  
+    4 :   1.80000E+01   152.45    1.56312E+00    5     0s  Added 1 cut on SDP cone  
+    5 :   2.46872E+00    30.03    1.56312E+00    6     0s  Improved solution found by heuristics | Added 1 cut on SDP cone  
+    6 :   2.46872E+00    30.03    1.56312E+00    5     0s  Added 1 cut on SDP cone | Pruned stack based on new upper bound  
+    7 :   2.46872E+00    28.68    1.59858E+00    4     0s  Added 1 cut on SDP cone | Pruned stack based on new upper bound  
+    8 :   2.46872E+00    28.68    1.59858E+00    5     0s  Added 1 cut on SDP cone  
+    9 :   1.68243E+00     3.18    1.59858E+00    6     0s  Improved solution found by heuristics | Added 1 cut on SDP cone  
+   10 :   1.68243E+00     3.18    1.59858E+00    3     0s  Poor bound in lower, killing node | Pruned stack based on new upper bound  
+   11 :   1.68243E+00     2.60    1.61371E+00    4     0s  Added 1 cut on SDP cone  
+   12 :   1.68243E+00     2.60    1.61371E+00    5     0s  Added 1 cut on SDP cone  
+   13 :   1.68243E+00     2.60    1.61371E+00    6     0s  Added 1 cut on SDP cone  
+   14 :   1.68243E+00     2.60    1.61371E+00    7     0s  Added 1 cut on SDP cone  
+   15 :   1.61808E+00     0.00    1.61803E+00    0     0s  Poor bound in lower, killing node | Pruned stack based on new upper bound  
+* Finished.  Cost: 1.6181 (lower bound: 1.618, relative gap 0%)
+* Termination with all nodes pruned 
+* Timing: 39% spent in upper solver (14 problems solved)
+*         8% spent in lower solver (19 problems solved)
+*         32% spent in LP-based domain reduction (76 problems solved)
+*         3% spent in upper heuristics (73 candidates tried)
 ````
 
-![Approximated ball]({{ site.url }}/images/cutsdp1.png){: .center-image }
+## There's more to the story
 
-Creating a solver based on this strategy is primarily about generating relavant cutting planes, instead of randomly placing them everywhere. Since we have an objective function, we are not interested in approximating the whole feasible set, but only need a good approximation around the (unknown) optimal point. Additionally, as it is in the implementation above, we are generating new cuts which might be completely redundant, i.e., they do not cut away any infeasible points.
-
-Consider a solution leading to a matrix \\(X^{\star}\\). If the solution is infeasible in the semidefinite constraint, we know that the smallest eigenvalue of \\(X^{\star}\\) is negative. Hence there is a negative \\(\lambda\\) and a vector  \\(v\\) such that  \\(X^{\star}v = \lambda v\\),. i.e., \\(v^TX^{\star}v = \lambda v^Tv < 0\\). In other words, the current solution violates the constraint \\(v^TXv \geq 0\\). This indicates that eigenvectors \\(v\\) associated with negative eigenvalues for the current semidefinite constraints are suitable candidates for creating cutting planes.
+As explained above, nothing prevents us from iterating the cut-generating strategy in every node several times. This can e controlled by an option. If we want to do, say, three rounds of solving the nonlinear program followed by adding violated SDP cuts, we run the code below. We see that several rounds are performed in every node, and the result is that more effort is spent in every node but a fewer number of nodes are needed. Note that it is not necessarily a good thing to add many new cuts in every node and strive for an SDP feasible solution everywhere. We might be wasting a lot of resources in creating a high-fidelity model in a region which is far from the globlly optimal solution anyway.
 
 ````matlab
-ballApproximation = [-1 <= [x y] <= 1];
-clf;hold on
-for k = 1:10  
-  optimize(ballApproximation,Objective,ops);
-  [V,D] = eig(value(X));  
-  vi = V(:,1);
-  ballApproximation = [ballApproximation, vi'*X*vi >= 0];    
-  plot(ballApproximation,[x;y],'blue',200,ops);   
-  plot(value(x),value(y),'k*');
-  drawnow
-end 
+sdpvar x y
+G = [y^2-1 x+y;x+y 1]
+Model = [-3 <= [x y] <= 3, G >= 0];
+sol = optimize(Model,x^2+y^2,sdpsettings('solver','bmibnb','bmibnbuppersdprelax',3));
+* Starting YALMIP global branch & bound.
+* Upper solver     : fmincon
+* Lower solver     : MOSEK
+* LP solver        : GUROBI
+* -Extracting bounds from model
+* -Perfoming root-node bound propagation
+* -Calling upper solver (no solution found)
+* -Branch-variables : 2
+* -More root-node bound-propagation
+* -Performing LP-based bound-propagation 
+* -And some more root-node bound-propagation
+* Starting the b&b process
+ Node       Upper       Gap(%)       Lower     Open   Time
+    1 :   1.80000E+01   161.90    1.00000E+00    2     0s  Solution found by heuristics | Added 1 cut on SDP cone | Added 1 cut on SDP cone | Added 1 cut on SDP cone  
+    2 :   1.80000E+01   161.90    1.00000E+00    3     0s  Added 1 cut on SDP cone | Added 1 cut on SDP cone | Added 1 cut on SDP cone  
+    3 :   1.80000E+01   152.45    1.56312E+00    4     0s  Added 1 cut on SDP cone | Added 1 cut on SDP cone | Added 1 cut on SDP cone  
+    4 :   1.80000E+01   152.45    1.56312E+00    5     0s  Added 1 cut on SDP cone | Added 1 cut on SDP cone | Added 1 cut on SDP cone  
+    5 :   2.46872E+00    30.03    1.56312E+00    6     0s  Improved solution found by heuristics | Added 1 cut on SDP cone | Added 1 cut on SDP cone | Improved solution found by upper solver  
+    6 :   2.46870E+00    30.03    1.56312E+00    5     0s  Added 1 cut on SDP cone | Added 1 cut on SDP cone | Improved solution found by upper solver | Pruned stack based on new upper bound  
+    7 :   2.46870E+00    28.68    1.59858E+00    4     0s  Added 1 cut on SDP cone | Added 1 cut on SDP cone | Added 1 cut on SDP cone | Pruned stack based on new upper bound  
+    8 :   1.61803E+00     0.75    1.59858E+00    5     0s  Added 1 cut on SDP cone | Improved solution found by upper solver  
+* Finished.  Cost: 1.618 (lower bound: 1.5986, relative gap 0.74589%)
+* Termination with relative gap satisfied 
+* Timing: 69% spent in upper solver (9 problems solved)
+*         5% spent in lower solver (12 problems solved)
+*         14% spent in LP-based domain reduction (38 problems solved)
+*         1% spent in upper heuristics (36 candidates tried)
 ````
 
-In a very few steps, the semidefinite constraint is sufficiently well approximated around the true optimal solution, and the problem is solved. Of course, this particular problem is trivial, and for real problems the number of cutting planes can grow very large while still having large infeasibility (negative eigenvalues in the semidefinite constraints).
+This can be taken to the extreme. By setting the number of rounds to inf, we force [BMIBNB](solver/bmibnb) to continue adding SDP cuts until the solution either is SDP-feasible, or the nonlinear solver fails to find a solution to the approximation.
 
-The [CUTSDP](/solver/cutsdp) solver implements precisely this strategy, generalized to multiple constraints, and second-order cone constraints.
-
-## Adding integrality constraints
-
-If we now add integrality constraints to the model, nothing really changes. We are still outer approximating the semidefinite cone, but instead of solving linear programs, we will solve mixed-integer linear programs. If the solution to the mixed-integer program satisfies the original semidefinite program, it is our sought solution. If not, it must violate some semidefinite constraint, and we can add a cutting plane based on a negative eigenvalue. Note that a purely integer semidefinite program is a mixed-integer linear program in disguise. The feasible set is the integer lattice points, and the convex hull of these is a polytope.
-
-Let us create a mixed-integer semidefinite program, which models a problem where we are in one of two half-moons,  which can be cast as a mixed-integer semidefinite program (in practice you would write it using a quadratic constraint and YALMIP would derive a mixed-integer second-order cone problem instead). You must have an efficient [mixed-integer linear programming solver](/tags/#mixed-integer-linear-programming-solver) installed for the cutting-plane iterations to be fast, and you need a [semidefinite-programming solver](/tags/#semidefinite-programming-solver) installed for the first plot to be generated. The integrality in the model comes from the use of combinatorial [implications](/command/implies) with the binary variable defining in which half-moon we are.
+Another use of the framework is to use it in combintion with a global solver. By using a global solver for the upper bound solver, and then setting the number of rounds to inf, the solution computed will not only be SDP-feasible, but globally optimal! Since we know any computed solution is the globally optimal solution, we want to terminate without bothering about the lower bound, and we can achive this by setting the lower bound target. Since our SDP cuts are quadratic, and the objective is quadratic, we can use [Gurobi](/solver/gurobi) which can do global optimization for quadratic models. THere is one tricky caveat here though: The numerical tolerances in vs judging feasibility can infer with each other. A solution which [Gurobi](/solver/gurobi) thinks is good enough might still violate the cut we just added, and then we will keep adding the same cut. To counteract this, we tighten the feasibility tolerance in [Gurobi](/solver/gurobi).
 
 ````matlab
-clf
-hold on
-X = [1 x y;[x;y] eye(2)];
-binvar d
-plot([X >= 0, -1 <= [x y] <= 1, implies(d,x>=0.5),implies(1-d,x <= -0.5)]);
-Model = [-1 <= [x y] <= 1, implies(d,x>=0.5),implies(1-d,x <= -0.5)];
-for i = 1:10
-    plot(Model,[x;y],'yellow',200,ops)
-    optimize(Model,-x-y,ops);
-    plot(value(x),value(y),'k*');
-    [V,D] = eig(value(X))
-    v = V(:,1);
-    Model = [Model, v'*X*v >= 0];
-end
+sdpvar x y
+G = [y^2-1 x+y;x+y 1]
+Model = [-3 <= [x y] <= 3, G >= 0];
+ops = sdpsettings('solver','bmibnb','bmibnb.uppersdprelax',inf,'bmibnb.lowertarget',-inf);
+ops = sdpsettings(ops,'bmibnb.uppersolver','gurobi','gurobi.FeasibilityTol',1e-8);
+sol = optimize(Model,x^2+y^2,ops);
+* Starting YALMIP global branch & bound.
+* Upper solver     : GUROBI
+* Lower solver     : MOSEK
+* LP solver        : GUROBI
+* -Extracting bounds from model
+* -Perfoming root-node bound propagation
+* -Calling upper solver (found a solution!)
+* -Branch-variables : 2
+* -More root-node bound-propagation
+* -Performing LP-based bound-propagation 
+* -And some more root-node bound-propagation
+* -Terminating in root as solution found and lower target is -inf
+* Timing: 79% spent in upper solver (1 problems solved)
+*         7% spent in lower solver (4 problems solved)
+*         0% spent in LP-based domain reduction (0 problems solved)
+*         0% spent in upper heuristics (0 candidates tried)
 ````
 
-![Approximated half-moon union]({{ site.url }}/images/cutsdp2.png){: .center-image }
-
-
-A direct YALMIP implementation to solve this problem would be (here, YALMIP will derive a mixed-integer second-order cone program, so in practice, you would use a solver such as [MOSEK](/solver/mosek), [GUROBI](/solver/gurobi) or [CPLEX](/solver/cplex)
+Yet another use is to use it as a trick to create a local solver.Just run it with any nonlinear solver until SDP feasible, and then terminate by setting lower bound target to negative infinity. Note in the display below that in the root node, [fmincon](/solver/fmincon) fails to even find a feasile solution to the SDP relaxed problem, and then no cuts can be generated. THe SDP-feasible solution is actually found by heuristics for thi particular eample.
 
 ````matlab
-Model = [x^2 + y^2 <= 1,
-        -1 <= [x y] <= 1, 
-        implies(d,x>=0.5),implies(1-d,x <= -0.5)];
-optimize(Model, Objective, sdpsettings('solver','cutsdp'));        
+sdpvar x y
+G = [y^2-1 x+y;x+y 1]
+Model = [-3 <= [x y] <= 3, G >= 0];
+ops = sdpsettings('solver','bmibnb','bmibnb.uppersdprelax',inf,'bmibnb.lowertarget',-inf);
+ops = sdpsettings(ops,'bmibnb.uppersolver','fmincon');
+sol = optimize(Model,x^2+y^2,ops);
+* Starting YALMIP global branch & bound.
+* Upper solver     : fmincon
+* Lower solver     : MOSEK
+* LP solver        : GUROBI
+* -Extracting bounds from model
+* -Perfoming root-node bound propagation
+* -Calling upper solver (no solution found)
+* -Branch-variables : 2
+* -More root-node bound-propagation
+* -Performing LP-based bound-propagation 
+* -And some more root-node bound-propagation
+* Starting the b&b process
+ Node       Upper       Gap(%)       Lower     Open   Time
+    1 :   1.80000E+01   161.90    1.00000E+00    2     0s  Solution found by heuristics  
+* Finished.  Cost: 18 (lower bound: 1, relative gap 161.9048%)
+* Termination with upper bound limit reached 
+* Timing: 72% spent in upper solver (1 problems solved)
+*         5% spent in lower solver (5 problems solved)
+*         4% spent in LP-based domain reduction (4 problems solved)
+*         2% spent in upper heuristics (4 candidates tried)
 ````
-
-Through some additional initial preprocessing, the optimal solution is found already in the first mixed-integer linear program, i.e, the first mixed-integer linear program returns a solution which is feasible in the original mixed-integer semidefinite program, and is thus an optimal solution to the original problem.
-
-
-## Should I use [bnb](/solver/bnb) or [cutsdp](/solver/cutsdp)
-
-It really depends on the problem. [BNB](/solver/bnb) relaxes integrality but handles the semidefinite geometry exactly, while  [CUTSDP](/solver/cutsdp)  relaxes the semidefinite cone while it handles integrality exactly in every iteration. Depending on the geometry of your problem, they will behave differently. Always test both.
-
-
 
