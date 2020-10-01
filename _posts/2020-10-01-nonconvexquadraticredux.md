@@ -4,7 +4,6 @@ excerpt: "Not everyhing was better in the past"
 title: Nonconvex quadratic programming and moments: 10 years later
 tags: [Nonconvex quadratic programming, Global optimization, Moment relaxations]
 comments: true
-published: true
 date: 2020-10-01
 ---
 
