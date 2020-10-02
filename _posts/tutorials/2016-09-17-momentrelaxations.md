@@ -3,7 +3,7 @@ title: "Moment relaxations"
 category: tutorial
 author_profile: false
 level: 4
-tags: [Semidefinite programming, Moment relaxations, Polynomials]
+tags: [Semidefinite programming, Moment relaxations, Polynomials, Global optimization, Nonconvex quadrtic programming]
 excerpt: "Moment relaxations allows us to find lower bounds on polynomial optimization problems using semidefinite programming"
 layout: single
 sidebar:
@@ -12,6 +12,8 @@ sidebar:
 
 
 YALMIP comes with a built-in module for polynomial programming using moment relaxations. This can be used for finding lower bounds on constrained polynomial programs (inequalities and equalities, element-wise and semidefinite), and to extract the optimizers in case the relaxation is tight. The implementation is entirely based on high-level YALMIP code, and can be somewhat inefficient for large problems (the inefficiency would then show in the setup of the problem, not actually solving the semidefinite resulting program). For the underlying theory of moment relaxations, the reader is referred to [Lasserre 2001](/reference/lassere2001).
+
+Also remember that an often better approach for solving nonconvex problem (and actaully computing a solution) is to use [standard global optimization](/tutorial/gloaloptimization).
 
 ### Solving polynomial problems by relaxations
 
