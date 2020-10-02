@@ -93,7 +93,7 @@ Note that the algorithm requires bounds on the variables. [BMIBNB](/solver/bmibn
 
 ## Linear relaxation for multivariate polynomial problems
 
-Multivariate polynomial problems are treated by simply converting them to bilinear representtions by introducing additional variables and constraints. As an example, the term \\(x^2y^2\\) can be written as \\(uv\\) with the new bilinear equality constraints \\(u=x^2\\) and \\(v=y^2\\). Once a bilinear model has been obtained, standard bilinear relaxations can be used on the three monomials \\(x^2, y^2, uv\\). 
+Multivariate polynomial problems are treated by simply converting them to bilinear representions by introducing additional variables and constraints. As an example, the term \\(x^2y^2\\) can be written as \\(uv\\) with the new bilinear equality constraints \\(u=x^2\\) and \\(v=y^2\\). Once a bilinear model has been obtained, standard bilinear relaxations can be used on the three monomials \\(x^2, y^2, uv\\). 
 
 ## Linear relaxation for univariate higher degree monomials
 
