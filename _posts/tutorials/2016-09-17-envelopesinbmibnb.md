@@ -126,7 +126,7 @@ The engine in YALMIP allows every operator to announce properties which can be u
 
 The important property for us is **convexhull(xL,xU)** (although we soon will see that this is almost never used).
 
-As an example, let us create an outer approximation of the convex hull of for the **sqrtm** function which is the [standard nonlinear overloading of \\(\sqrt{x}\\)](/squareroots). The function is concave, and this means that a convex hull approximation can be constructed by two upper tangent hyperplanes in the end-points, and a lower hyperplane connecting the function values in the two end-points.
+As an example, let us create an outer approximation of the convex hull for **sqrtm** which is the [standard nonlinear overloading of \\(\sqrt{x}\\)](/squareroots). The function is concave, and this means that a convex hull approximation can be constructed by two upper tangent hyperplanes in the end-points, and a lower hyperplane connecting the function values in the two end-points.
 
 ````matlab
 xL = 0.1;
@@ -153,7 +153,7 @@ Luckily, manual implementation of code like this is not needed in many places in
 
 The operator information is exploited as much as possible. If both a convex hull generator and explicit convexity information is missing, but the operators returns information about inflection points, this can be used to see if the function is convex or concave on the interval and generate a convex hull approximation accordingly. In the case of the quadratic function above, we saw the need of adding a additional cut to avoid the negative region, and this is done automatically using information about the range of the function.
 
-Explicit representations of the envelopes are implemented for most nonlinear operators, such as \\(x^p\\), \\(e^x\\), \\\log(x)\\), \(\qsrt{x}\\) and trigonometric functions. For convex and concave functions no dedicated envelope code is required as long as derivatives are available, as an envelope approximation can be created from the gradients. 
+Explicit representations of the envelopes are implemented for most nonlinear operators, such as \\(x^p\\), \\(e^x\\), \\\log(x)\\), \\(sqrt{x}\\) and trigonometric functions. For convex and concave functions no dedicated envelope code is required as long as derivatives are available, as an envelope approximation can be created from the gradients. 
 
 In the absolute worst-case scenario where no information is supplied, and nothing is known, a sampling strategy is used to derive the linear relaxation. This would essentially only be the case if a user has added an operator without supplying any properties or tailor-made conve hull generator. To illustrate a sampling based approimant, the following code computes an approximation of the convex envelope of **sin** using three facets.
 
