@@ -3,7 +3,7 @@ title: "Global optimization"
 category: tutorial
 author_profile: false
 level: 4
-tags: [Global optimization, Nonconvex quadratic programming, Nonlinear semidefinite programming, BMI, Bilinear matrix inequality]
+tags: [Nonconvex programming, Global optimization, Nonconvex quadratic programming, Nonlinear semidefinite programming, BMI, Bilinear matrix inequality]
 excerpt: "The holy grail! 60% of the time it works every time."
 layout: single
 sidebar:
