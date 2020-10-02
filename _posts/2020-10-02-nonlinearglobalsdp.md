@@ -85,7 +85,7 @@ set(l,'color','blue');set(l,'linewidth',2);
 
 Once again, either in the same node or later on, the new model is used by the nonlinear solver, and this time we might obtain \\(x=0, y=-1\\) marked with a blue star. We are still infeasible in the original model and analyzing eigenvalues and generating a new cut leads to the region *to the right of the green curve*. Iterating again using the intersection of the three constraints leads to, say, (-0.7,1) and a cut illustrated by *the yellow line which we should be to the left of*.
 
-![Approximation 2]({{ site.url }}/images/nonlinearsdpcut5.png){: .center-image }
+![Approximation 3]({{ site.url }}/images/nonlinearsdpcut5.png){: .center-image }
 
 ````matlab
 assign([x;y],[0;-1])
@@ -108,6 +108,26 @@ l = ezplot(s{1},[-3 3 -3 3]);
 set(l,'color','yellow');
 set(l,'linewidth',2);
 ````
+
+Just for fun, let us see what happens in the limit by generating cuts from a bunch of random oints. Note that the choice of points is arbitrary. Here we draw it from the box, but we could just as well have drawn them on the unit circle, as the cut is scale invariant.
+
+````matlab
+clf;
+l=ezplot('y^2-1-(x+y)^2',[-3 3 -3 3]);
+set(l,'color','red');set(l,'linewidth',3);
+hold on
+grid on
+for i = 1:100
+    assign([x;y],-3 + rand(2,1)*6);    
+    [V,D] = eig(value(G));
+    gi = V(:,1)'*G*V(:,1);
+    s = sdisplay(gi);
+    l = ezplot(s{1},[-3 3 -3 3]);
+    drawnow
+end
+````
+
+![Limit approximation]({{ site.url }}/images/nonlinearsdpcut7png){: .center-image }
 
 ## Running the solver
 
