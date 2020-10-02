@@ -153,7 +153,7 @@ Luckily, manual implementation of code like this is not needed in many places in
 
 The operator information is exploited as much as possible. If both a convex hull generator and explicit convexity information is missing, but the operators returns information about inflection points, this can be used to see if the function is convex or concave on the interval and generate a convex hull approximation accordingly. In the case of the quadratic function above, we saw the need of adding a additional cut to avoid the negative region, and this is done automatically using information about the range of the function.
 
-Explicit representations of the envelopes are implemented for most nonlinear operators, such as \\(x^p\\), \\(e^x\\), \\\log(x)\\), \\(sqrt{x}\\) and trigonometric functions. For convex and concave functions no dedicated envelope code is required as long as derivatives are available, as an envelope approximation can be created from the gradients. 
+Explicit representations of the envelopes are implemented for most nonlinear operators, such as \\(x^p\\), \\(e^x\\), \\(\log(x)\\), \\(sqrt{x}\\) and trigonometric functions. For convex and concave functions no dedicated envelope code is required as long as derivatives are available, as an envelope approximation can be created from the gradients. 
 
 In the absolute worst-case scenario where no information is supplied, and nothing is known, a sampling strategy is used to derive the linear relaxation. This would essentially only be the case if a user has added an operator without supplying any properties or tailor-made conve hull generator. To illustrate a sampling based approimant, the following code computes an approximation of the convex envelope of **sin** using three facets.
 
@@ -199,14 +199,18 @@ If you study the quadratic monomial from earlier, you will see that YALMIP not o
 
 ````matlab
 sdpvar w x
-E = envelope([0 <= x <= 3*pi/2, w == x^2]);
+E = envelope([0 <= x <= 5, w == x^2]);
 plot(E,[x;w],[],[],sdpsettings('relax',1));
 hold on
-x = linspace(0,3*pi/2,100);
+x = linspace(0,5,100);
 plot(x,x.^2)
 ````
 
-Finally, a comment on bounds. As a general rule of thumb, you have to bound all variables used in nonlinear epxressions when you use the global solver [BMIBNB](/solver/bmibnb) which is based on the envelope approximations. However, YALMIP performs various bound strengthening schemes to improve the bounds, and the same code is used in the [envelope](/command/envelope) code  used above. In some cases, YALMIP can derive bounds, without any initial bounds being specified at all. As an example, the following problem is easily solved with nicely behaved envelopes despite supplying no bounds
+![Quadratic hull]({{ site.url }}/images/internalsquare.png){: .center-image }
+
+### THe importance of bounds
+
+Finally, a comment on bounds. As a general rule of thumb, you have to bound all variables used in nonlinear exressions when you use the global solver [BMIBNB](/solver/bmibnb) which is based on the envelope approximations. However, YALMIP performs various bound strengthening schemes to improve the bounds and find implied bounds, and the same code is used in the [envelope](/command/envelope) code used above. In some cases, YALMIP can derive bounds, without any initial bounds being specified at all. As an example, the following problem is easily solved with nicely behaved envelopes despite supplying no bounds
 
 ````matlab
 sdpvar x
