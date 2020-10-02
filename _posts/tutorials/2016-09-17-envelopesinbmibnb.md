@@ -86,6 +86,7 @@ t = (-1:0.01:2);
 hold on;plot(t,t.^2);
 ````
 
+
 ![Quadratic hull]({{ site.url }}/images/xyhull2.png){: .center-image }
 
 Note that the algorithm requires bounds on the variables. [BMIBNB](/solver/bmibnb) extracts all explicit bounds in the model in the root-node and applies several tricks to improve these, and find implied bounds on variables for which no bounds have been supplied. Still, you should always add as much information as possible, and possibly artificial bounds. The tighter the bounds are, i.e., closer to the final optimal value, the better the envelope approximations will be, and the faster the global solver will converge.
