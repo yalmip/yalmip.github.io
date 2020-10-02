@@ -3,7 +3,7 @@ title: "Moment relaxations"
 category: tutorial
 author_profile: false
 level: 4
-tags: [Semidefinite programming, Moment relaxations, Polynomials, Global optimization, Nonconvex quadrtic programming]
+tags: [Semidefinite programming, Moment relaxations, Polynomials, Global optimization, Nonconvex quadratic programming]
 excerpt: "Moment relaxations allows us to find lower bounds on polynomial optimization problems using semidefinite programming"
 layout: single
 sidebar:
