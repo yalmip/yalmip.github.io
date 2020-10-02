@@ -15,6 +15,9 @@ This tutorial is slightly outdated and does not reflect the full picture, and wi
 
 The global solver [BMIBNB](/solver/bmibnb) is a YALMIP-based implementation of a standard spatial branch-and-bound strategy. If you are unfamiliar with the basic ideas in a branch & bound solver, you should try to find an [introduction](https://en.wikipedia.org/wiki/Branch_and_bound) first.
 
+
+# A branch & bound solver
+
 A spatial branch & bound algorithm for nonconvex programming typically relies on a few standard steps. 
 
 0. The starting open node is the original optimization problem.
@@ -25,7 +28,11 @@ A spatial branch & bound algorithm for nonconvex programming typically relies on
 
 3. Given these lower and upper bounds, a standard branch-and-bound logic is used to select a branch variable, a branch point, create two new nodes, branch, prune and navigate among the remaining nodes in a tree of open nodes.
 
-In addition to these standard steps, a large amount of preprocessing and bound-propagation is performed, both in the root-node and along the branching. This is extremely important in order to obtain stronger linear relaxations as we will see below. Some options controlling this can be found in the description of [BMIBNB](/solver/bmibnb). However, the central object is the relaxation computed once bounds are available, and this model is built using outer approximations of convex envelopes (the convex hull of the set \\( (x,f(x)) \\) on some interval in \\(x\\)).
+In addition to these standard steps, a large amount of preprocessing and bound-propagation is performed, both in the root-node and along the branching. This is extremely important in order to obtain stronger linear relaxations as we will see below. Some options controlling this can be found in the description of [BMIBNB](/solver/bmibnb). 
+
+## Convex envelope approximations
+
+The central object in the solver is the relaxation model which is derived once bounds are available, and this model is built using outer approximations of convex envelopes (the convex hull of the set \\( (x,f(x)) \\) on some interval in \\(x\\)).
 
 ### Linear relaxation for bilinear and quadratic problems
 
