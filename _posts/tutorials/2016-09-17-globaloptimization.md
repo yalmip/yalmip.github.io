@@ -10,7 +10,7 @@ sidebar:
   nav: "tutorials"
 ---
 
-Global solutions! Well, don't expect too much from global solvers. THe problem we attack here is in theory intractable almost always, and practic is not far from theory unfortunately.
+Global solutions! Well, don't expect too much from global solvers. The problem we attack here is in theory intractable almost always, and practic is not far from theory unfortunately.
 
 The focus here is on the built-in solver [BMIBNB](/solver/bmibnb). The solver is fairly robust on small problems and is probably the most general nonlinear global solver available, albeit not the fastest. External global solvers interfaced can be found [here](/tags/#global-solver)
 
