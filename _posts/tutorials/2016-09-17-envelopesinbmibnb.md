@@ -208,7 +208,7 @@ plot(x,x.^2)
 
 ![Quadratic hull]({{ site.url }}/images/internalsquare.png){: .center-image }
 
-### THe importance of bounds
+### The importance of bounds
 
 Finally, a comment on bounds. As a general rule of thumb, you have to bound all variables used in nonlinear exressions when you use the global solver [BMIBNB](/solver/bmibnb) which is based on the envelope approximations. However, YALMIP performs various bound strengthening schemes to improve the bounds and find implied bounds, and the same code is used in the [envelope](/command/envelope) code used above. In some cases, YALMIP can derive bounds, without any initial bounds being specified at all. As an example, the following problem is easily solved with nicely behaved envelopes despite supplying no bounds
 
