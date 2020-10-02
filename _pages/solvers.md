@@ -63,7 +63,7 @@ A simple categorization is as follows (the definitions of free and commercial de
 
 ### Semidefinite programming (commercial)
 
-[LMILAB](/solver/lmilab), [MOSEK](/solver/mosek) (free for academia), [PENBMI](/solver/penbmi), [PENSDP](/solver/pensdp) (free for academia)
+[LMILAB (not recommended)](/solver/lmilab), [MOSEK](/solver/mosek) (free for academia), [PENBMI](/solver/penbmi), [PENSDP](/solver/pensdp) (free for academia)
 
 ### General nonlinear programming and other solvers
 
