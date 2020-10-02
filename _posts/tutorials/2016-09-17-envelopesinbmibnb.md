@@ -43,7 +43,7 @@ Given two variables \\(x\\) and \\(y\\), and lower and upper bounds \\(x_L\\), \
 
 ![Bilinear hull]({{ site.url }}/images/xyhull.png){: .center-image }
 
-A linear relaxation of the nonlinear monomials are obtained by introducing new variables \\(w_x\\), \\(w_{xy}\\) and \\(w_y\\), and replacing \\(x^2\\), \\(xy\\) and \\(y^2\\) in the constraints above and the original model with these \\(w\\) variables. A set of linear equalities is then obtained. This procedure is applied to all nonlinear terms.
+A linear relaxation of the nonlinear monomials is obtained by introducing new variables \\(w_x\\), \\(w_{xy}\\) and \\(w_y\\), and replacing \\(x^2\\), \\(xy\\) and \\(y^2\\) in the constraints above and the original model with these \\(w\\) variables. A set of linear equalities is then obtained outer bounding the original model. This procedure is applied to all nonlinear terms.
 
 We can use YALMIP to illustrate this for a simple scalar nonlinearity \\(x^2\\). We generate the nonlinear representation of the generating equations
 
