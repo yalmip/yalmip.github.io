@@ -28,7 +28,7 @@ In addition to these standard steps, a large amount of preprocessing and bound-p
 
 # Convex envelope approximations
 
-The central object in the solver is the relaxation model which is derived once bounds are available, and this model is built using outer approximations of convex envelopes (the convex hull of the set \\( (x,f(x)) \\) on some interval in \\(x\\)).
+The central object in the solver is the relaxation model which is derived once bounds are available in a node, and this model is built using outer approximations of convex envelopes (the convex hull of the set \\( (x,f(x)) \\) on some interval in \\(x\\)).
 
 ## Linear relaxation for bilinear and quadratic problems
 
