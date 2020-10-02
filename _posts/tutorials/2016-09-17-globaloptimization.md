@@ -69,7 +69,7 @@ optimize(F,p,options);
 
 As you can see, a lot of time is spent in the linear programming based bound propagation. [BMIBNB](solver/bmibnb) applies this on almost all models. If you want to turn it off, you set **'bmibnb.lpreduce'** to **0**, and if you want to enforce it you set it to **1**. Default is **-1** which means [BMIBNB](solver/bmibnb) decides.
 
-Upper bounds are generated both by calling the nonlinear solver, but also by aggresively checking all kinds of candidates that pop up in the algorithm (solutions to lower bound problems, and points created when performing bound propagation). In the log above, we seee that the nonlinear solver was only called 4 times, but 80 other solution candidates were analyzed as candidates for generating an upper bound.
+Upper bounds are generated both by calling the nonlinear solver, but also by aggresively checking all kinds of candidates that pop up in the algorithm (solutions to lower bound problems, and points created when performing bound propagation). In the log above, we see that the nonlinear solver was only called 4 times, but 80 other solution candidates were analyzed as candidates for generating an upper bound.
 
 The second example is a slightly larger nonconvex quadratic programming problem. The problem is easily solved to a gap of less than 1%.
 
