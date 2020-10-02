@@ -83,7 +83,7 @@ Some general comments on what we see
 
 * We have made no changes to default settings. Hence most solver can most likely be adjusted to perform better, and the comparison might be unfair as they use different tolerances for checking feasibility and optimality (well we actually tightened the termination criteria for  [BMIBNB](/solver/bmibnb), it looked to good with the default setting as it almost always finished in only two nodes with the default relative gap tolerance of 0.01%, and we cranked up the maximum numbers of allowed nodes in [BMIBNB](/solver/bmibnb) and [SCIP](/solver/scip) since these have very low default limits)
 
-* The problem appears to be very easy for both [[BMIBNB](/solver/bmibnb) and [CPLEX](/solver/cplex) when n is a multiple of 4 (these models lead to a quadratic indefinite objective with many zero eigenvalues)
+* The problem appears to be very easy for both [BMIBNB](/solver/bmibnb) and [CPLEX](/solver/cplex) when n is a multiple of 4 (these models lead to a quadratic indefinite objective with many zero eigenvalues)
 
 * The fact that the two internal solvers [BMIBNB](/solver/bmibnb) and [KKTP](/solver/kktqp) survied the game for the longest is surprising. The commercial players still have room for improvement to say the least. Once again though, this is one particular instance class (although not cherry picked, it just happened to be the one used 10 years ago) and no general conclusions can be drawn from this. All of the commercial alternatives are orders of magnitudes faster on many other problems.
 
