@@ -97,35 +97,36 @@ Multivariate polynomial problems are treated by simply converting them to biline
 
 ## Linear relaxation for univariate higher degree monomials
 
-Higher degree monomials can be either be handled by applying same idea as for multivariate terms, or by using the general envelope appoxmation methods described below. [BMIBNB](/solver/bmibnb) aplies both strategies depending on context.
+Higher degree monomials can be either be handled by applying same idea as for multivariate terms, or by using the general envelope appoxmation methods described below. [BMIBNB](/solver/bmibnb) applies both strategies depending on context.
 
 ## Linear relaxation for general univariate operators
 
 A nonlinear scalar term \\(f(x)\\) is replaced with a new variable \\(w\\), and linear inequalities on \\(x\\) and \\(w\\) are introduced to ensure that \\(w\\) approximates \\(f(x)\\) well, i.e., that the curve \\(w = f(x)\\) is contained in the polytopic region in \\(A_x x + A_w w \leq b\\).
 
-For this to work, every operator (exp, sin,coth...) has to be apply to supply the envelope polytope data \\(A,b)\\)  given bounds \((x_L\\) and \\(x_U\\).  Indeed, this is supported in the infrastructure in YALMIP which is based on operator overloading. Not only does an operator now what it should evaluate to (i.e. the standard operator in MATLAB), but it can be equipped with a lot of extra knowledge. 
+For this to work, every operator (exp, sin, coth...) has to be apply to supply the envelope polytope data \\((A,b)\\) given bounds \\((x_L\\) and \\(x_U\\).  Indeed, this is supported in the infrastructure in YALMIP which is based on operator overloading. Not only does an operator know what it should evaluate to, but it can be equipped with a lot of extra knowledge. 
 
-The engine in YALMIP allows every operator to announce properties which can be used by, e.g., [BMIBNB](/solver/). The most common properties are
+The engine in YALMIP allows every operator to announce properties which can be used by, e.g., [BMIBNB](/solver/). The most common important proprties and methods are
 
-* (x), the default 
-* dervative(x) Returns derivative at x
-* inverse(x) Returns function inverse x
-* convexhull(xL,xU) Returns the polytope data \\(A,b\\) for outer approximation of convex hull
-* bounds(xL,xU) Returns local information about range in interval (lower and upper bounds)
-* vexity() Returns global convexity information ('convex','concave','none')
-* vexity(xL,xU) Returns local convexity information in interval ('convex','concave','none')
-* monotonicity() Returns global information about monotonicity ('increasing', 'decreasing', 'none')
-* monotonicity(L,xU) Returns local information about monotonicity in interval ('increasing', 'decreasing', 'none')
-* definiteness() Returns global information about monotonicity ('negative', 'positive', 'none')
-* definiteness(xL,xU) Returns local information about monotonicity in interval ('negative', 'positive', 'none')
-* range() Returns global information about range of function (lower and upper)
-* inflection() Returns information about where function switches convexity, and in what direction
-* stationary() Returns points where the function is stationary
-* singular() Returns points where the function is stationary
+* f(x)  The function value 
+* derivative(x) Derivative at x
+* inverse(x) Function inverse x
+* convexhull(xL,xU) Polytope data \\(A,b\\) for outer approximation of convex hull
+* domain() Domain for the function (interval defined by \\((x_L\\) and \\(x_U\\))
+* bounds(xL,xU)  Local information about function range (lower and upper bounds) in an interval
+* vexity()  Global convexity information ('convex','concave','none')
+* vexity(xL,xU)  Local convexity information in interval ('convex','concave','none')
+* monotonicity() Global information about monotonicity ('increasing', 'decreasing', 'none')
+* monotonicity(L,xU) Local information about monotonicity in interval ('increasing', 'decreasing', 'none')
+* definiteness() Global information about monotonicity ('negative', 'positive', 'none')
+* definiteness(xL,xU)  Local information about monotonicity in interval ('negative', 'positive', 'none')
+* range() Global information about range of function (lower and upper)
+* inflection() Information about where function switches convexity , and in what direction
+* stationary() Points where the function is stationary
+* singular() Points where the function is singular
 
 The important property for us is **convexhull(xL,xU)** (although we soon will see that this is almost never used).
 
-As an example, let us derive an outer approximation of the convex hull of for the **sqrtm** function which is the [standard nonlinear overloading of ((\sqrt{x}\\)](/squareroots). The function is concave, and this means that a convex hull approximation can be constructed by two upper tangent hyperplanes in the end-points, and a lower hyperplane connecting the function values in the two end-points.
+As an example, let us create an outer approximation of the convex hull of for the **sqrtm** function which is the [standard nonlinear overloading of ((\sqrt{x}\\)](/squareroots). The function is concave, and this means that a convex hull approximation can be constructed by two upper tangent hyperplanes in the end-points, and a lower hyperplane connecting the function values in the two end-points.
 
 ````matlab
 xL = 0.1;
