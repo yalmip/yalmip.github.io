@@ -43,9 +43,9 @@ Given two variables \\(x\\) and \\(y\\), and lower and upper bounds \\(x_L\\), \
 
 ![Bilinear hull]({{ site.url }}/images/xyhull.png){: .center-image }
 
-A linear relaxation of the nonlinear monomials is obtained by introducing new variables \\(w_x\\), \\(w_{xy}\\) and \\(w_y\\), and replacing \\(x^2\\), \\(xy\\) and \\(y^2\\) in the constraints above and the original model with these \\(w\\) variables. A set of linear equalities is then obtained outer bounding the original model. This procedure is applied to all nonlinear terms.
+A linear relaxation of the nonlinear monomials is obtained by introducing new variables \\(w_x\\), \\(w_{xy}\\) and \\(w_y\\), and replacing \\(x^2\\), \\(xy\\) and \\(y^2\\) in the constraints above and the original model with these \\(w\\) variables. This procedure is applied to all nonlinear terms. A set of linear inequalities (and equalities if there are any) is then obtained outer bounding the original model. 
 
-We can use YALMIP to illustrate this for a simple scalar nonlinearity \\(x^2\\). We generate the nonlinear representation of the generating equations
+We can use YALMIP to illustrate this for a simple scalar nonlinearity \\(x^2\\). We create the nonlinear representation of the generating inequalities
 
 ````matlab
 sdpvar x;
@@ -54,7 +54,7 @@ xU = 2;
 constraints =[(xU-x)*(x-xL)>=0,(xU-x)*(xU-x)>=0,(x-xL)*(x-xL)>=0]
 ````
 
-A linear relaxation is obtained by introducing a new variable, and using this variable instead of \\(x^2\\). This is essentially what happens when you use the option relax when you solve optimization problems. Any monomial term is treated as an independent variable. We use this trick to easily plot the linear relaxation.
+A linear relaxation is obtained by introducing a new variable, and using this variable instead of \\(x^2\\). This is what happens when you use the option **relax** when you solve an optimization problems. Any monomial term is treated as an independent variable. We can use this options also when plotting, hence easily showing the linear relaxation.
 
 ````matlab
 plot(constraints,[x;x^2],[],[],sdpsettings('relax',1))
@@ -64,9 +64,9 @@ hold on;plot(t,t.^2);
 
 ![Quadratic hull]({{ site.url }}/images/hullsqr.png){: .center-image }
 
-The horizontal axis is the original variable \\(x\\) and the vertical is the relaxed variable representing \\(x^2\\), and the polytope shows the feasible region for the relaxed variable. Clearly, the approximation is perfect at the bounds, but fairly poor in the middle. It should be stated that non-negativity on variables representing quadratic terms automatically are appended  in the envelope implementation, thus cutting off the lower negative portion of the polytope (see below)
+The horizontal axis is the original variable \\(x\\) and the vertical is the relaxed variable representing \\(x^2\\), and the polytope shows the feasible region for the relaxed variable. The approximation is tight at the bounds, but fairly poor in the middle. Non-negativity on variables representing quadratic terms automatically are appended in the envelope implementation, thus cutting off the lower negative portion of the polytope (see below)
 
-By tightening the bounds during the branching process, the linear relaxation will become increasingly better. As an example, if the solver branches on  \\(x\\) at 0.5, two new nodes would be created with stronger relaxations.
+By tightening the bounds during the branching process, the linear relaxation will become increasingly better in nodes down the tree. As an example, if the solver branches on  \\(x\\) at 0.5, two new nodes would be created with stronger relaxations.
 
 ````matlab
 sdpvar x;
@@ -88,7 +88,7 @@ hold on;plot(t,t.^2);
 
 ![Quadratic hull]({{ site.url }}/images/xyhull2.png){: .center-image }
 
-Note that the algorithm requires bounds on the variables. If YALMIP fails to extract any explicit bounds from the model in the root-node, the code will almost always terminate and an error message will be displayed. Addionally, the tighter the bounds are, i.e., closer to the final optimal value, the better the envelope approximation will be.
+Note that the algorithm requires bounds on the variables. [BMIBNB](/solver/bmibnb) extracts all explicit bounds in the model in the root-node and applies several tricks to improve these, and find implied bounds on variables for which no bounds have been supplied. THis might fail though, so you should always add as much information as possible, and possibly artificial bounds. The tighter the bounds are, i.e., closer to the final optimal value, the better the envelope approximations will be.
 
 ### Linear relaxation for polynomial problems
 
