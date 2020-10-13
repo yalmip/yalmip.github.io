@@ -35,7 +35,7 @@ A controller which minimizes the worst case cost is given by solving the followi
 
 ![polytopicsystem]({{ site.url }}/images/lqr1.png){: .center-image }
 
-This is a nonconvex problem, but a standard trick in control  [Boyd et al. 1994](/reference/boyd1994) is to perform a congruence transformation with \\(Y=P^-1\\), introduce \\(L=KY\\), and apply a Schur complement. Instead of solving the nonconvex problem, the following problem is solved instead (never mind the odd change of objective)
+This is a nonconvex problem, but a standard trick in control  [Boyd et al. 1994](/reference/boyd1994) is to perform a congruence transformation with \\(Y=P^{-1}\\), introduce \\(L=KY\\), and apply a Schur complement. Instead of solving the nonconvex problem, the following problem is solved instead (never mind the odd change of objective)
 
 ![polytopicsystem]({{ site.url }}/images/lqrlmi2.png){: .center-image }
 
