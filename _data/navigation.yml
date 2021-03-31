@@ -63,6 +63,8 @@ solvers:
         url: /solver/cdd
       - title: "CDCS"
         url: /solver/cdcs
+      - title: "CONEPROG"
+        url: /solver/coneprog        
       - title: "CPLEX"
         url: /solver/cplex
       - title: "CSDP"
