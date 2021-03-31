@@ -51,7 +51,7 @@ A simple categorization is as follows (the definitions of free and commercial de
 
 ### Second-order cone programming (commercial)
 
-[CPLEX](/solver/cplex) (free for academia), [GUROBI](/solver/gurobi) (free for academia), [MOSEK](/solver/mosek) (free for academia), [XPRESS](/solver/xpress) (generous community trial license available)
+[CPLEX](/solver/cplex) (free for academia), [CONEPROG](/solver/coneprog), [GUROBI](/solver/gurobi) (free for academia), [MOSEK](/solver/mosek) (free for academia), [XPRESS](/solver/xpress) (generous community trial license available)
 
 ### Mixed Integer Second-order cone programming (commercial)
 
