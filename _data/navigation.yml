@@ -411,12 +411,16 @@ commands:
         url: /command/cone
       - title: "cut"
         url: /command/cut
+      - title: "expcone"
+        url: /command/expcone        
       - title: "iff"
         url: /command/iff
       - title: "implies"
         url: /command/implies
       - title: "integer"
         url: /command/integer
+      - title: "pcone"
+        url: /command/pcone        
       - title: "rank"
         url: /command/rank
       - title: "rcone"
