@@ -2,7 +2,7 @@
 title: "Power cone programming"
 category: tutorial
 author_profile: false
-level: 4
+level: 5
 tags: [Power cone programming]
 excerpt: "Convex conic optimization over power cones"
 layout: single
@@ -12,11 +12,11 @@ sidebar:
 
 The power cone as we use it is defined as the set \\( \left \lvert z \right\rvert_2 \leq x^{\alpha}y^{1-\alpha}, x\geq 0, y\geq 0 \\) for constant \\( 0 < \alpha < 1\\). In contrast to [exponential cones](/tutorial/exponentialcone/), YALMIP does not detect and reformulate models to power cones. Instead, power cones can only be used as a low-level construct via [pcone](/command/pcone/), with a small exception illustrated below.
 
-The code below requires [Mosek 9](/solver/mosek) to be relevant as this is the only power cone solver available in YALMIP.
+The code below requires [Mosek 9](/solver/mosek) as this is the only power cone solver available in YALMIP.
 
 ### Geometric example 
 
-The following example called the p-norm geometric median of a point cloud is taken from [Mosek](https://docs.mosek.com/modeling-cookbook/powo.html). Given a set of points \\(x_i\\) our task is to find the point \\(y\\)) minimizing \\( \sum_i  \left \lvert y-x_i \right\rvert_2 \\) for different \\(p > 1\\). We use the power one representation from [Mosek](https://docs.mosek.com/modeling-cookbook/powo.html) and show how it is implemented using [pcone](/command/pcone), and use a built-in command which implements a power cone representation of the p-norm.
+The following example called the p-norm geometric median of a point cloud is taken from [Moseks power cone introduction](https://docs.mosek.com/modeling-cookbook/powo.html). Given a set of points \\(x_i\\) our task is to find the point \\(y\\) minimizing \\( \sum_i  \left \lvert y-x_i \right\rvert_p \\) for different \\(p > 1\\). We use the power cone representation from [Mosek](https://docs.mosek.com/modeling-cookbook/powo.html) and show how it is implemented using [pcone](/command/pcone). Afterwards, we also use a built-in command which implements a power cone representation of the p-norm.
 
 Generate some random points, and plot them together with the convex hull
 
