@@ -20,6 +20,8 @@ By simple variable transformations, the following functions are automatically de
 
 Note that YALMIP does not necessarily detect exponential cones when written in the canonical form \\( ye^{x/y}\leq z \\), but instead you can use the perspective exponential, [pexp](/command/pexp), which implements  \\( ye^{x/y} \\).
 
+A low-level approach to define exponential cones is the command [expcone](/command/expcone).
+
 The code below requires [Mosek 9](/solver/mosek), [SCS](/solver/scs) or [ECOS](/solver/ecos) to be relevant. If none of those solvers are installed, YALMIP will work with the nonlinear functions as written and treat the problem as a general nonlinear program.
 
 ### Logistic regression example
