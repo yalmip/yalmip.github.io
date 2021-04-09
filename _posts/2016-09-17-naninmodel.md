@@ -13,6 +13,13 @@ Sometimes you might see error messages from YALMIP screaming about NaNs (not a n
 You have NaNs in your constraints!. Please fix model
 ````
 
+or you are contructing an expression and see
+
+````
+Error using  +  (line 46)
+Adding NaN to an SDPVAR makes no sense.
+````
+
 Alternatively, you have solved a problem, and when evaluating something, such as the objective function, you see NaNs
 
 ````matlab
@@ -80,6 +87,8 @@ y = double2sdpvar(zeros(1,5));
 y(5) = x;
 ````
 
+Another fix is to vectorize you computation, as these issues often arise when using some simple naive for-loop.
+
 ### Bad data to begin with
 
 Crap in crap out. Of course, if you create a model which contains NaNs, you will have NaNs in your model. Hence, check your data!
@@ -91,7 +100,7 @@ Model = [x <= 1/woops-1/woops^2];
 
 ### The variable was never used in the optimization problem
 
-For a variable to have a value, it must have been visible to the optimization problem. Variables which have not been optimized have the default value NaN. In the following model, although we see **y** in the model, it disappears since it is multiplied with 0, and is thus not part of the model sent to the solver.
+For a variable to have a value, it must have been visible to the optimization problem. Variables which have not been optimized have the default value NaN. In the following model, although **we** see y in the model, it disappears since it is multiplied with 0, and is thus not part of the model to YALMIP and thus completely unavailable to the solver.
 
 ````matlab
 sdpvar x y
