@@ -67,6 +67,8 @@ plot(x(1,classG),x(2,classG),'ro')
 nnz(sign(value(a'*x+b))-y)
 ````
 
+![Logistic regression with linear classifier]({{ site.url }}/images/logisticregression.png){: .center-image }
+
 Of course, nothing forces us to use linear separators
 
 ````matlab
