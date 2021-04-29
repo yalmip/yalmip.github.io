@@ -33,19 +33,20 @@ Note that you need a [sos2](/command/sos2) capable solver such as [GUROBI](/solv
 Define some data represeting the vertices of a star (remember, a star-convex does not have to look like a star, it is just a name)
 
 ````matlab
-n = 5;
-th = linspace(0, 2*pi, 2*n+1);
+n = 6;
+th = linspace(-pi, pi, 2*n+1);
 xi = (1+rem((1:2*n+1),2)).*cos(th);
 yi = (1+rem((1:2*n+1),2)).*sin(th);
 clf;
 hold on;
+grid on
 plot( xi, yi, 'b*-' );
 axis equal;
 ````
 
 ![A star]({{ site.url }}/images/starshaped1.png){: .center-image }
 
-The feasible set inside the star can be represented as the union of 6 polytopes. Hence, a general approach to representing this set is to descibe these polytopes, and then use logic programming and binary variables to represent the union as illustrated in [the big-M tutorial](/tutorial/bigmandconvexhulls/). However, star-shaped polygons can also be represented much more conveniently using [sos2](/command/sos2) constructs.
+The feasible set inside the star can be represented as the union of 7 polytopes. Hence, a general approach to representing this set is to descibe these polytopes, and then use logic programming and binary variables to represent the union as illustrated in [the big-M tutorial](/tutorial/bigmandconvexhulls/). However, star-shaped polygons can also be represented much more conveniently using [sos2](/command/sos2) constructs.
 
 To derive a [sos2](/command/sos2) representation, we first focus on representing the border of the polygon. Every point on the border of the star can be written as a linear combination of two adjacent vertices \\( \lambda_i v_i + \lambda_{i+1}v_{i+1}, \lambda_i + \lambda_{i+1}==1, \lambda_i\geq 0,  \lambda_{i+1}\geq 0\\). This is the classical application of [sos2](/command/sos2), and precisely the same model YALMIP uses for general [interp1](/command/interp1) representation.
 
@@ -73,14 +74,21 @@ This is not due to an incorrect model, but simply a limitation of the plot comma
 To make sure we actually model the border of the polygon, let us solve a simple problem where we find the point closest to a point outside.
 
 ````matlab
-optimize(Model, (x-1)^2 + (y-1.5)^2)
-plot(1,1.5,'o*r')
-plot(value(x),value(y),'o*r')
+sdpvar x y
+lambda = sdpvar(length(xi),1)
+F = [sos2(lambda), lambda>=0, sum(lambda)==1,
+     x == lambda'*xi(:), y == lambda'*yi(:)];
+optimize(Model, (x-1.5)^2 + (y-1)^2)
+plot(1.5,1,'*r')
+plot(value(x),value(y),'ok')
 ````
+
+![Star convex hull]({{ site.url }}/images/starshaped3.png){: .center-image }
+
 
 ## Scaling and translating
 
-So how can we include the interior? This is where star-convexity comes into play. Since any scaled point on the border also is part of the star, it means we can scale the interpolating \\(\lambda\\) with an arbitrary scale \\(0 \leq t \leq 1\\). It also means we can take the adjacent interpolated vertices and scale them individually first, and then interpolate between them. Effectively, this simply means we can replace the model with
+So how can we include the interior? This is where star-convexity comes into play. Since any scaled point of the border also is part of the star, it means we can scale the interpolating \\(\lambda\\)-variables with an arbitrary scale \\(0 \leq t \leq 1\\). It also means we can take the adjacent interpolated vertices and scale them individually first, and then interpolate between them. Effectively, this simply means we can replace the model with
 
 ````matlab
 sdpvar x y
@@ -94,18 +102,18 @@ This model can be extended further by allowing an arbitrary scaling of the set b
 What about the translations and the more general case of star-convexity w.r.t other points than the origin? Let us start by defining a star centered outside the origin, so that star-convexity w.r.t the origin is violated.
 
 ````matlab
-n = 5;
-th = linspace(0, 2*pi, 2*n+1);
-xi = 1 + (1+rem((1:2*n+1),2)).*cos(th);
-yi = 2 + (1+rem((1:2*n+1),2)).*sin(th);
+n = 6;
+th = linspace(-pi, pi, 2*n+1);
+xi = 1+(1+rem((1:2*n+1),2)).*cos(th);
+yi = 2+(1+rem((1:2*n+1),2)).*sin(th);
 clf;
 hold on;
-plot( xi, yi, 'b*-' );
 grid on
+plot( xi, yi, 'b*-' );
 axis equal;
 ````
 
-If we define the set using the same code as before, the case which only includes the border will still be valid, but the generalization to include the interior is flawed. As the interpolating \\(\lambda\\) is allowed to be zero, the origin will be included as a feasible point. The problem is that the set is not star-convex w.r.t the origin and the set we create now is the union of all stars scaled towards the origin.
+If we define the set using the same code as before, the case which only includes the border will still be valid, but the generalization to include the interior is flawed. As the interpolating \\(\lambda\\) is allowed to be zero, the origin will be included as a feasible point. The problem is that the set is not star-convex w.r.t the origin and the set we would create using our old code is the union of all stars scaled towards the origin.
 
 No problems though, we shift the origin and define the set as a translated star-convex set. Draw its convex hull as a sanity check. In this particular case, we can shift the origin to the mean of the coordinates.
 
@@ -119,13 +127,53 @@ Model = [sos2(lambda), lambda>=0,sum(lambda)<=1,
 plot(Model,[x;y],[],[],sdpsettings('plot.shade',.1)     
 ````
 
-Note that the use of star-convexity representation around the mean of the coordinates is definitely not something which works in all cases. For highly symmetric objects it does, but in general problem specific insight is needed.
+Note that the use of a star-convexity representation around the mean of the coordinates is definitely not something which works in all cases. For highly symmetric objects it does, but in general problem specific insight is needed. As an example, the following set (blue) is star-convex (simple shift it slide it to the left and it is star-convex wr.t. the origin) but shifting all coordinates using the mean (red) generates a set which is not star-convex w.r.t the origin
 
-Not too complicated to code, but YALMIP has built-in support for creating these sets even more convenently. By default it only takes the coordinates and assumes star-convexity w.r.t to the origin. A third argument can be used to translate the set (representing star-convexity around the translated point), and there is a third option to allow for scaling.
+
+````matlab
+xi = [1 2 2 3 3 4 4 1 1];
+yi = [1 1 5 5 1 1 0 0 1];
+clf
+hold on;
+grid on
+plot( xi, yi, 'b*-' );
+plot( xi-mean(xc), yi-mean(yc), 'r*--' );
+axis equal;
+````
+
+
+![Star convex hull]({{ site.url }}/images/starshaped3.png){: .center-image }
+
+## Built-in support
+
+
+As we have seen, using [sos2](/command/sos) it is straightforward to derive a model, but YALMIP has built-in support for creating these sets even more convenently. By default it only takes the coordinates and assumes star-convexity w.r.t to the origin. A third argument can be used to translate the set (representing star-convexity around the translated point), and there is a third option to allow for scaling. With a fifth options, you can ask for YALMIP to automatically shift the model to derive a star-convexity model around the mean, median or center of bounding box.
 
 ````matlab
 Model = starpolygon(xi,yi);
-Model = starpolygon(xi,yi,c);   % Translation 
-Model = starpolygon(xi,yi,c,t); % Scale
+Model = starpolygon(xi,yi,c);    % Translation (optional)
+Model = starpolygon(xi,yi,c,t);  % Scale (optional)
+Model = starpolygon(xi,yi,c,t,); % Shift (optional, 'mean', median' or 'box')
 ````
+
+Hence, if we have data representing a weird set which is star-convex around \\( (1,2) \\), and we want to use this as a template but translated and scaled
+
+
+````matlab
+n = 6;
+th = linspace(-pi, pi, 2*n+1);
+xi = 1+(1+rem((1:2*n+1),3)).*cos(th).^3;
+yi = 2+(1+rem((1:2*n+1),2)).*sin(th);
+clf;
+hold on;
+grid on
+plot( xi, yi, 'b*-' );
+axis equal;
+
+sdpvar x y
+Model = starpolygon(xi,yi,[x;y]);
+plot(Model,[x;y],[],[],sdpsettings('plot.shade',.1)     
+````
+
+
 
