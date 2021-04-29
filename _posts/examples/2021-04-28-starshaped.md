@@ -4,7 +4,7 @@ category: example
 author_profile: false
 excerpt: "Sort of convex but not quite"
 title: Working with star-convex polygons
-tags: [Geometry, interp1, sos2, Special ordered set]
+tags: [Star-convexity, Geometry, interp1, sos2, Special ordered set]
 comments: true
 date: '2021-04-28'
 published: true
