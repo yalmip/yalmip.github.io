@@ -45,22 +45,30 @@ axis equal;
 
 ![A star]({{ site.url }}/images/starshaped1.png){: .center-image }
 
-The feasible set inside the star can be represented as the union of 6 polytopes. Hence, a general approach to representing this set is to descibe these polytopes, and then use logic programming and binary variables to represent the union as illustrated in [the big-M tutorial](/tutorial/bigmandconvexhulls/). However, star-shaped polygons can also be represented [sos2](/command/sos2) constructs.
+The feasible set inside the star can be represented as the union of 6 polytopes. Hence, a general approach to representing this set is to descibe these polytopes, and then use logic programming and binary variables to represent the union as illustrated in [the big-M tutorial](/tutorial/bigmandconvexhulls/). However, star-shaped polygons can also be represented much more conveniently using [sos2](/command/sos2) constructs.
 
-To derive a [sos2](/command/sos2) representation, we first focus on representing the border of the polygon. Every point on the border of the star can be written as a linear combination of two adjacent vertices. This is basically the definition of an application of  [sos2](/command/sos2), and precisely the same model YALMIP uses for general [interp1](/command/interp1) representation.
+To derive a [sos2](/command/sos2) representation, we first focus on representing the border of the polygon. Every point on the border of the star can be written as a linear combination of two adjacent vertices \\(\lambda_i v_i + \lambda_{i+1}v_{i+1}, \lamba_i + \lambda_{i+1}==1, \lamba_i\geq 0,  \lamba_{i+1}\geq 0\\). This is the classical application of [sos2](/command/sos2), and precisely the same model YALMIP uses for general [interp1](/command/interp1) representation.
 
-Assuming we have coordinates \\(x\\) and \\(y\\) in our model, and we want to say that \\((x,y)\\) is on the border, we arrive at the model
+Assuming we work with coordinates \\(x\\) and \\(y\\) as decision variables in our model, and we want to say that \\((x,y)\\) is on the border, we arrive at the model
 
 ````matlab
 sdpvar x y
 lambda = sdpvar(length(xi),1)
-F = [sos2(lambda), lambda>=0,sum(lambda)==1,
-     x == lambda'*xi(:), y == lambda'*yi(:)]
+F = [sos2(lambda), lambda>=0, sum(lambda)==1,
+     x == lambda'*xi(:), y == lambda'*yi(:)];
 ````
 
 That's all!
 
-To see that this really models what we want, we could plot the set. When doing so, you will note that it is not drawing the star, but the convex hull of the star. This is not due to an incorrect model, but simply a limitation of the plot command. When you plot a set, it performs ray-shooting to find points on the boundary, and then draws the convex hull of these points (the only way to draw non-convex sets in YALMIP is to explicitly model mixed-integer models, as YALMIP then will perform enumeration of all combinatorial combinations and draw each set individually to depict the union)
+To see that this really models what we want, we could plot the set. When doing so, you will note that it is not drawing the star, but the convex hull of the star. 
+
+````matlab
+plot(Model,[x;y],[],[],sdpsettings('plot.shade',.1) )    
+````
+
+![Star convex hull]({{ site.url }}/images/starshaped2.png){: .center-image }
+
+This is not due to an incorrect model, but simply a limitation of the plot command. When you plot a set, it performs ray-shooting to find points on the boundary, and then draws the convex hull of these points (the only way to draw non-convex sets in YALMIP is to explicitly model mixed-integer models, as YALMIP then will perform enumeration of all combinatorial combinations and draw each set individually to depict the union)
 
 To make sure we actually model the border of the polygon, let us solve a simple problem where we find the point closest to a point outside.
 
