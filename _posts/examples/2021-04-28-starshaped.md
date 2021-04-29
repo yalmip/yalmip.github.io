@@ -43,7 +43,7 @@ plot( xi, yi, 'b*-' );
 axis equal;
 ````
 
-![costs_LPVMPC]({{ site.url }}/images/mptyalmip1.png){: .center-image }
+![A star]({{ site.url }}/images/starshaped1.png){: .center-image }
 
 The feasible set inside the star can be represented as the union of 6 polytopes. Hence, a general approach to representing this set is to descibe these polytopes, and then use logic programming and binary variables to represent the union as illustrated in [the big-M tutorial](/tutorial/bigmandconvexhulls/). However, star-shaped polygons can also be represented [sos2](/command/sos2) constructs.
 
@@ -108,7 +108,7 @@ Model = [sos2(lambda), lambda>=0,sum(lambda)<=1,
 plot(Model,[x;y],[],[],sdpsettings('plot.shade',.1)     
 ````
 
-Not too complicated coding, but YALMIP has built-in support for creating these sets. By default it only takes the coordinates and represents the star-convex set with an automatic translation of the origin, but there is a third option to only include he border and a fourth argument to translate the whole set (can be a decision variable)
+Not too complicated to code, but YALMIP has built-in support for creating these sets even more convenently. By default it only takes the coordinates and represents the star-convex set with an automatic translation of the origin, and there is a third option to only include he border and a fourth argument to translate the whole set (can be a decision variable).
 
 ````matlab
 Model = starpolygon(xi,yi);
