@@ -22,7 +22,7 @@ image:
 
 In the world between convex and non-convex sets, there is a geometry which is called [star-convex (star-domain, star-shaped, radially convex)](https://en.wikipedia.org/wiki/Star_domain). As the name reveals, a classical drawing of a star (centered around the origin) is a special case. 
 
-Mathematically, the definition of a star-convex set is that all points between the origin and any point in the set is in the set. Compare this to the definition of a convex set where all points on a line between any two points are in the set. Loosely speaking, it is convex w.r.t a particular point (here the origin). The origin can be changed to some other point by translating the whole set and defining star-convexity w.r.t the translated origin.
+Mathematically, the definition of a (origin-centered) star-convex set is that all points between the origin and any point in the set is in the set. Compare this to the definition of a convex set where all points on a line between any two points are in the set. Loosely speaking, it is convex w.r.t a particular point (here the origin). The origin can be changed to some other point by translating the whole set and defining star-convexity w.r.t the translated origin.
 
 Here, we will play around a bit with star-convex polygons, modelling them both manually and by using built-in support.
 
@@ -80,7 +80,7 @@ plot(value(x),value(y),'o*r')
 
 ## Scaling and translating
 
-So how can we include the interior? This is where star-convexity comes into play. Since any scaled point on the border also is part of the star, it means we can scale the interpolating \\(\lambda\\) with an arbitrary scale $0 \leq t \leq 1$. It also means we can take the adjacent interpolated vertices and scale them individually first, and then interpolate between them. Effectively, this simply means we can replace the model with
+So how can we include the interior? This is where star-convexity comes into play. Since any scaled point on the border also is part of the star, it means we can scale the interpolating \\(\lambda\\) with an arbitrary scale \\(0 \leq t \leq 1\\). It also means we can take the adjacent interpolated vertices and scale them individually first, and then interpolate between them. Effectively, this simply means we can replace the model with
 
 ````matlab
 sdpvar x y
@@ -89,8 +89,7 @@ F = [sos2(lambda), lambda>=0,sum(lambda)<=1,
      x == lambda'*xi(:), y == lambda'*yi(:)]
 ````
 
-This model can be extended further by allowing an arbitrary scaling of the set by using any upper bound on the sum, even as a decision variable as the bound enters affinely.
-
+This model can be extended further by allowing an arbitrary scaling of the set by using any upper bound on the sum, even a decision variable as the bound enters affinely.
 
 What about the translations and the more general case of star-convexity w.r.t other points than the origin? Let us start by defining a star centered outside the origin, so that star-convexity w.r.t the origin is violated.
 
