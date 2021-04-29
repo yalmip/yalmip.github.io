@@ -208,7 +208,7 @@ xn = 3+interp1(th,xi,thn)+.1*randn(1,2*3*n+1)
 yn = 2+interp1(th,yi,thn)+.1*randn(1,2*3*n+1)
 plot( xn, yn, 'r*' );
 
-% Now say that each point in point-cloud is in scaled and translate polygon
+% Now say that each point in point-cloud is in scaled and translated polygon
 sdpvar t
 c = sdpvar(2,1);
 Model = [];
