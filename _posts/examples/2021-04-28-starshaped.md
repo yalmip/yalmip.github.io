@@ -142,7 +142,7 @@ axis equal;
 ````
 
 
-![Star convex hull]({{ site.url }}/images/starshaped3.png){: .center-image }
+![Star convex hull]({{ site.url }}/images/starshaped4.png){: .center-image }
 
 ## Built-in support
 
