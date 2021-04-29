@@ -22,7 +22,7 @@ image:
 
 In the world between convex and non-convex sets, there is a geometry which is called [star-convex (star-domain, star-shaped, radially convex)](https://en.wikipedia.org/wiki/Star_domain). As the name reveals, a classical drawing of a star (centered around the origin) is a special case. 
 
-Mathematically, the definition of a star-convex set is that all points between the origin and any point in the set is in the set. Compare this to the definition of a convex set where all points on a line between any two points are in the set. Loosely speaking, it is convex w.r.t a particular point (here the origin). The origin can be changed to some other point by translating the whole set and defining star convexity w.r.t the translated origin.
+Mathematically, the definition of a star-convex set is that all points between the origin and any point in the set is in the set. Compare this to the definition of a convex set where all points on a line between any two points are in the set. Loosely speaking, it is convex w.r.t a particular point (here the origin). The origin can be changed to some other point by translating the whole set and defining star-convexity w.r.t the translated origin.
 
 Here, we will play around a bit with star-convex polygons, modelling them both manually and by using built-in support.
 
@@ -78,6 +78,7 @@ plot(1,1.5,'o*r')
 plot(value(x),value(y),'o*r')
 ````
 
+## Scaling and translating
 
 So how can we include the interior? This is where star-convexity comes into play. Since any scaled point on the border also is part of the star, it means we can scale the interpolating \\(\lambda\\) with an arbitrary scale $0 \leq t \leq 1$. It also means we can take the adjacent interpolated vertices and scale them individually first, and then interpolate between them. Effectively, this simply means we can replace the model with
 
@@ -88,7 +89,10 @@ F = [sos2(lambda), lambda>=0,sum(lambda)<=1,
      x == lambda'*xi(:), y == lambda'*yi(:)]
 ````
 
-What about the translations and te more general case of star-convexity w.r.t other points than the origin? Let us start by defining a star centered outside the origin, so that star-convexity w.r.t the origin is violated.
+This model can be extended further by allowing an arbitrary scaling of the set by using any upper bound on the sum, even as a decision variable as the bound enters affinely.
+
+
+What about the translations and the more general case of star-convexity w.r.t other points than the origin? Let us start by defining a star centered outside the origin, so that star-convexity w.r.t the origin is violated.
 
 ````matlab
 n = 5;
@@ -104,7 +108,7 @@ axis equal;
 
 If we define the set using the same code as before, the case which only includes the border will still be valid, but the generalization to include the interior is flawed. As the interpolating \\(\lambda\\) is allowed to be zero, the origin will be included as a feasible point. The problem is that the set is not star-convex w.r.t the origin and the set we create now is the union of all stars scaled towards the origin.
 
-No problems though, we shift the origin and define the set as a translated star-convex set. Draw its convex hull as a sanity check.
+No problems though, we shift the origin and define the set as a translated star-convex set. Draw its convex hull as a sanity check. In this particular case, we can shift the origin to the mean of the coordinates.
 
 ````matlab
 xc = mean(xi);
@@ -116,11 +120,13 @@ Model = [sos2(lambda), lambda>=0,sum(lambda)<=1,
 plot(Model,[x;y],[],[],sdpsettings('plot.shade',.1)     
 ````
 
-Not too complicated to code, but YALMIP has built-in support for creating these sets even more convenently. By default it only takes the coordinates and represents the star-convex set with an automatic translation of the origin, and there is a third option to only include he border and a fourth argument to translate the whole set (can be a decision variable).
+Note that the use of star-convexity representation around the mean of the coordinates is definitely not something which works in all cases. For highly symmetric objects it does, but in general problem specific insight is needed.
+
+Not too complicated to code, but YALMIP has built-in support for creating these sets even more convenently. By default it only takes the coordinates and assumes star-convexity w.r.t to the origin. A third argument can be used to translate the set (representing star-convexity around the translated point), and there is a third option to allow for scaling.
 
 ````matlab
 Model = starpolygon(xi,yi);
-Model = starpolygon(xi,yi,1);        % Only include border
-Model = starpolygon(xi,yi,[],[7;5]); % Additional translation
+Model = starpolygon(xi,yi,c);   % Translation 
+Model = starpolygon(xi,yi,c,t); % Scale
 ````
 
