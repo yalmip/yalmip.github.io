@@ -125,7 +125,7 @@ Model = [sos2(lambda), lambda>=0,sum(lambda)<=1,
 plot(Model,[x;y],[],[],sdpsettings('plot.shade',.1)     
 ````
 
-Note that the using the mean of the coordinates as the vntage point is definitely not something which works in all cases. For highly symmetric objects it does, but in general problem specific insight is needed. As an example, the following set (blue) is star-convex (simple shift it slide it to the left and it is star-convex wr.t. the origin) but shifting all coordinates using the mean (red) generates a set which is not star-convex w.r.t the origin
+Note that the using the mean of the coordinates as the vantage point is definitely not something which works in all cases. For highly symmetric objects it does, but in general problem specific insight is needed. As an example, the following set (blue) is star-convex (slide it to the left and it is star-convex wr.t. the origin) but after shifting all coordinates using the mean (red) we see that the set is not star-convex w.r.t the origin.
 
 
 ````matlab
@@ -144,13 +144,13 @@ axis equal;
 ## Built-in support
 
 
-As we have seen, by using [sos2](/command/sos) it is straightforward to derive a model, but YALMIP has built-in support for creating these sets even more convenently. By default it only takes the coordinates and assumes star-convexity w.r.t to the origin. A third argument can be used to translate the set (representing star-convexity around the translated point), and there is a third option to allow for scaling. With a fifth options, you can ask for YALMIP to automatically shift the model to derive a star-convexity model around the mean, median or center of bounding box.
+As we have seen, by using [sos2](/command/sos) it is straightforward to derive a model, but YALMIP has built-in support for creating these sets even more convenently. By default it only takes the coordinates and the element intended to be in the set and assumes star-convexity w.r.t to the origin. A fourth argument can be used to translate the set, and there is a fifth option to allow for scaling. With a sixth options, you can ask for YALMIP to automatically shift the model to derive a star-convexity model around a particular point, the mean, median or center of bounding box.
 
 ````matlab
-Model = starpolygon(xi,yi,z);     % Define model z in star-convex polygon defined by (xi,yi)
-Model = starpolygon(xi,yi,c);     % Translate polygon (optional)
-Model = starpolygon(xi,yi,c,t);   % Scale polygon (optional)
-Model = starpolygon(xi,yi,c,t,p); % Vantage-point (optional, either a point, or 'mean', median' or 'box')
+Model = starpolygon(xi,yi,z);       % Define model z in star-convex polygon defined by (xi,yi)
+Model = starpolygon(xi,yi,z,c);     % Translate polygon (optional)
+Model = starpolygon(xi,yi,z,c,t);   % Scale polygon (optional)
+Model = starpolygon(xi,yi,z,c,t,p); % Vantage-point (optional, either a point, or 'mean', median' or 'box')
 ````
 
 Construct data for a weird set which is star-convex around (e.g.) \\( (1,2) \\). Plot the star-convex set and its convex hull (shaded pink), the convex hull of the scaled set (blue), the convex hull of the translated set (yellow), and a scaled version with an alternative vantage point (red).
