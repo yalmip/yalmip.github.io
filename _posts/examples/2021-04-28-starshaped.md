@@ -9,7 +9,7 @@ comments: true
 date: '2021-04-28'
 published: true
 header:
-  teaser: "mptyalmip9.png"
+  teaser: "starshaped2.png"
 sidebar:
   nav: "examples"
 image:
