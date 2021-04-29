@@ -6,7 +6,7 @@ excerpt: "Ever wondered how the L1 Chebyshev ball can be computed?"
 title: Polytopic geometry using YALMIP and MPT
 tags: [Polytopes, MPT, Convex hull, Geometry]
 comments: true
-published: false
+published: true
 date: '2016-09-16'
 header:
   teaser: "mptyalmip9.png"
