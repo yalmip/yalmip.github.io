@@ -18,8 +18,6 @@ image:
   thumb: lofberg.jpg
 ---
 
-** UNDER CONSTRUCTION**
-
 In the grey area between convex and non-convex sets, there is a geometry which is called [star-convex (star-domain, star-shaped, radially convex)](https://en.wikipedia.org/wiki/Star_domain). As the name reveals, a classical drawing of a star is a special case. 
 
 Mathematically, the definition of a (origin-centered) star-convex set is that all points between the origin and any point in the set is in the set. Compare this to the definition of a convex set where all points on a line between any two points are in the set. Loosely speaking, it is convex w.r.t a particular point (here the origin). The origin can be changed to some other so called vantage point by translating the whole set and defining star-convexity w.r.t the translated origin.
@@ -144,12 +142,12 @@ axis equal;
 ## Built-in support
 
 
-As we have seen, by using [sos2](/command/sos) it is straightforward to derive a model, but YALMIP has built-in support for creating these sets even more convenently. By default it only takes the coordinates and the element intended to be in the set and assumes star-convexity w.r.t to the origin. A fourth argument can be used to translate the set, and there is a fifth option to allow for scaling. With a sixth options, you can ask for YALMIP to automatically shift the model to derive a star-convexity model around a particular point, the mean, median or center of bounding box.
+As we have seen, by using [sos2](/command/sos) it is straightforward to derive a model, but YALMIP has built-in support for creating these sets even more conveniently. By default it only takes the coordinates and the element intended to be in the set and assumes star-convexity w.r.t to the origin. A fourth argument can be used to translate the set, and there is a fifth option to allow for scaling. With a sixth options, you can ask for YALMIP to automatically shift the model to derive a star-convexity model around a particular point, the mean, median or center of bounding box.
 
 ````matlab
-Model = starpolygon(xi,yi,z);       % Define model z in star-convex polygon defined by (xi,yi)
-Model = starpolygon(xi,yi,z,c);     % Translate polygon (optional)
-Model = starpolygon(xi,yi,z,c,t);   % Scale polygon (optional)
+Model = starpolygon(xi,yi,z);       % Define model z in star-convex polygon defined by (xi,yi). Origin assumed to be vantage point
+Model = starpolygon(xi,yi,z,c);     % Translate polygon by c (optional)
+Model = starpolygon(xi,yi,z,c,t);   % Scale polygon by t (relative vantage point) (optional)
 Model = starpolygon(xi,yi,z,c,t,p); % Vantage-point (optional, either a point, or 'mean', median' or 'box')
 ````
 
