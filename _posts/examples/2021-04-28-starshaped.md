@@ -28,7 +28,7 @@ Note that you need a [sos2](/command/sos2) capable solver such as [GUROBI](/solv
 
 ### Star-convex polygons
 
-Define some data represeting the vertices of a star (remember, a star-convex does not have to look like a star, it is just a name)
+Define some data represeting the vertices of a star (remember, a star-convex set does not have to look like a star, it is just a name)
 
 ````matlab
 n = 6;
@@ -44,7 +44,7 @@ axis equal;
 
 ![A star]({{ site.url }}/images/starshaped1.png){: .center-image }
 
-Note that we have generated the coordinates so that they represent a closed curve, i.e. the first and last value is the same. This is important to remember when you create these sets.
+Note that we have generated the coordinates so that they represent a closed curve, i.e. the first and last values are the same. This is important to remember when you create these sets using the methods described here
 
 The feasible set inside the star can be represented as the union of 7 polytopes. Hence, a general approach to representing this set is to describe these polytopes, and then use logic programming and binary variables to represent the union as illustrated in [the big-M tutorial](/tutorial/bigmandconvexhulls/). However, star-convex polygons can be represented much more conveniently using [sos2](/command/sos2) constructs.
 
