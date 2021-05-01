@@ -266,9 +266,9 @@ defaults:
       type: posts
     values:
       layout: single
-      author_profile: true
+      author_profile: false
       read_time: false
-      comments: true
+      comments: false
       share: false
       related: true
   # _examples
