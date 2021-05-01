@@ -9,7 +9,7 @@ sidebar:
 
 An extremely common mistake beginners make in the development of models is that they have binary variables representing some type of on/off behaviour, and then multiply other variables with this binary to represent things being turned off.
 
-Typical model could for instance be something along the lines of
+A typical model could for instance be something along the lines of
 
 ````matlab
 x = sdpvar(N,1);
@@ -32,7 +32,7 @@ Model = [Model, x(k) == x(k-1) + w(k), implies(d(k)==1, w(k)==u(k), implies(d(k)
 ...
 ````
 
-The implication will be converted to linear equalities using the [big-M modelling framework](/tutorial/bigmandconvexhulls), but you can of course do it manually if you are familiar with the method
+The implication will be converted to linear equalities using the [big-M modelling framework](/tutorial/bigmandconvexhulls), but you can of course do it manually if you are familiar with the method.
 
 ````matlab
 Model = [Model, x(k) == x(k-1) + w(k), -M*d(k) <= w(k) <= M*d(k), -M*(1-d(k)) <= w(k)-u(k) <= M*(1-d(k))]
