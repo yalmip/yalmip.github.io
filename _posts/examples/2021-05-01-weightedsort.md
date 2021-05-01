@@ -9,7 +9,7 @@ comments: true
 date: '2021-05-01'
 published: true
 header:
-  teaser: "starshaped2.png"
+  teaser: "weightedsortnonconvex.png"
 sidebar:
   nav: "examples"
 image:
