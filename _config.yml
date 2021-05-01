@@ -74,66 +74,6 @@ analytics:
   google:
     tracking_id          :
 
-
-defaults:
-  # _posts
-  - scope:
-      path: ""
-      type: posts
-    values:
-      layout: single
-      author_profile: true
-      read_time: false
-      comments: true
-      share: false
-      related: true
-  # _examples
-  - scope:
-      path: ""
-      type: examples
-    values:
-      layout: single
-      author_profile: false
-      read_time: false
-      comments: true
-      share: false
-      related: true      
-  # _tutorials
-  - scope:
-      path: ""
-      type: tutorials
-    values:
-      level: 4
-      layout: single
-      author_profile: false
-      read_time: false
-      comments: true
-      share: false
-      related: true 
-  # _references
-  - scope:
-      path: ""
-      type: reference
-    values:
-      layout: single
-      author_profile: false
-      read_time: false
-      comments: true
-      share: false
-      related: true  
-  # _faq
-  - scope:
-      path: ""
-      type: faq
-    values:
-      layout: single
-      author_profile: false
-      read_time: false
-      comments: false
-      share: false
-      related: true      
-
-
 # Site Author
 author:
   name             : "Johan Löfberg"
@@ -318,4 +258,61 @@ collections:
   references:
     output: true
     permalink: /:collection/:path/
-    
+
+defaults:
+  # _posts
+  - scope:
+      path: ""
+      type: post
+    values:
+      layout: single
+      author_profile: true
+      read_time: false
+      comments: true
+      share: false
+      related: true
+  # _examples
+  - scope:
+      path: ""
+      type: example
+    values:
+      layout: single
+      author_profile: false
+      read_time: false
+      comments: true
+      share: false
+      related: true      
+  # _tutorials
+  - scope:
+      path: ""
+      type: tutorial
+    values:
+      level: 4
+      layout: single
+      author_profile: false
+      read_time: false
+      comments: true
+      share: false
+      related: true 
+  # _references
+  - scope:
+      path: ""
+      type: reference
+    values:
+      layout: single
+      author_profile: false
+      read_time: false
+      comments: true
+      share: false
+      related: true  
+  # _faq
+  - scope:
+      path: ""
+      type: faq
+    values:
+      layout: single
+      author_profile: false
+      read_time: false
+      comments: false
+      share: false
+      related: true
