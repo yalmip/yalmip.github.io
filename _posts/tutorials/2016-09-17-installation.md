@@ -1,7 +1,6 @@
 ---
 title: "Installation"
 category: tutorial
-author_profile: false
 tags: 
 excerpt: "If it's hard, you're doing it wrong."
 layout: single
