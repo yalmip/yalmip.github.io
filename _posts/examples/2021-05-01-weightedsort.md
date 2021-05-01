@@ -3,7 +3,7 @@ layout: single
 category: example
 author_profile: false
 excerpt: "Doing the forbidden"
-title: Sorting with linear programming
+title: Sorting with linear programming, or?
 tags: [Sort, linear programming, black box]
 comments: true
 date: '2021-05-01'
