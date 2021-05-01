@@ -19,8 +19,8 @@ image:
 ---
 
 * This example currently only runs on the develop branch 
-* A [MILP solver is required](tags/#mixed-integer-linear-programming-solver)
-* A [NLP solver is required](tags/#nonlinear-programming-solver)
+* An [MILP solver is required](tags/#mixed-integer-linear-programming-solver)
+* An [NLP solver is required](tags/#nonlinear-programming-solver)
 * Complete code can be found in the bottom
 {: .notice--info}
 
