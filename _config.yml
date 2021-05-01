@@ -14,7 +14,7 @@ description              : "YALMIP A toolbox for modelling and optimization"
 url                      : "https://yalmip.github.io"
 baseurl                  : # ""
 repository               : "johanlofberg/yalmip" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
-teaser                   : "forest.jpg"
+teaser                   : #
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
 comments:
