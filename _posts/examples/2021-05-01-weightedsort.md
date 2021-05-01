@@ -146,28 +146,10 @@ If you remove the sorting from the generation of \\(p\\) you will see that conve
 
 ![Convex weighted sorted sum]({{ site.url }}/images/weightedsumnonconvex.png){: .center-image }
 
-# A collapsible section with markdown
-<details>
-  <summary>Click to expand!</summary>
-  
-  ## Heading
-  1. A numbered
-  2. list
-     * With some
-     * Sub bullets
-</details>
 
-# A collapsible n
 <details>
   <summary>Click to expand!</summary>
   <script src="https://gist.github.com/johanlofberg/3af68b7e5688caf4a679047636fea764.js"></script>
-  ## Heading
-  1. A numbered
-  2. list
-     * With some
-     * Sub bullets
 </details>
-
-<script src="https://gist.github.com/johanlofberg/3af68b7e5688caf4a679047636fea764.js"></script>
 
 
