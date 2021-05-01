@@ -22,8 +22,6 @@ A [discussion on stackexchange](https://math.stackexchange.com/questions/4121115
 
 So can it be more efficient to solve a linear program using a nonlinear solver than a dedicated LP solver? Depends on what you mean with a linear program.
 
-Complete code can be found at the bottom.
-
 ## The problem
 
 The problem discussed which triggered this example is
