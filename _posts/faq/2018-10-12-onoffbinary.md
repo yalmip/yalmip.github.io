@@ -1,11 +1,7 @@
 ---
-layout: single
 category: faq
-author_profile: false
-excerpt: 
 title: Modelling on/off behaviour leads to poor performance
-tags:
-comments: true
+tags: [Common mistakes]
 date: '2016-09-17'
 sidebar:
   nav:

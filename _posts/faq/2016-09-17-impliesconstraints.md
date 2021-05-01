@@ -1,11 +1,6 @@
 ---
-layout: single
 category: faq
-author_profile: false
-excerpt: 
 title: Using implies on constraint sometimes fails
-tags:
-comments: true
 date: '2016-09-17'
 sidebar:
   nav:

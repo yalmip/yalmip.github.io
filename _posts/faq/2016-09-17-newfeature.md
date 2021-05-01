@@ -1,11 +1,6 @@
 ---
-layout: single
 category: faq
-author_profile: false
-excerpt: 
 title: I have an idea for a new feature. What to do?
-tags:
-comments: true
 date: '2016-09-17'
 sidebar:
   nav:

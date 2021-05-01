@@ -1,11 +1,7 @@
 ---
-layout: single
 category: faq
-author_profile: false
-excerpt: 
 title: "Duals from second-order cone or quadratic model"
 tags: [Duality, Dual]
-comments: true
 date: '2021-04-07'
 sidebar:
   nav:

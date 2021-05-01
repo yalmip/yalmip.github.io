@@ -1,7 +1,5 @@
 ---
-layout: single
 category: faq
-excerpt:
 title:  Can I solve BMIs without PENBMI or PENLAB?
 tags: [Bilinear matrix inequality, Semidefinite programming]
 date: '2016-09-17'

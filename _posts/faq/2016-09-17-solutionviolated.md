@@ -1,11 +1,6 @@
 ---
-layout: single
 category: faq
-author_profile: false
-excerpt: 
 title: The solution I get is not feasible but violated by, say, -1e-6
-tags:
-comments: true
 date: '2016-09-17'
 sidebar:
   nav:

@@ -1,11 +1,7 @@
 ---
-layout: single
 category: faq
-author_profile: false
-excerpt: 
 title: I have problems solving a geometric program
 tags: [Geometric programming]
-comments: true
 date: '2016-09-17'
 sidebar:
   nav:

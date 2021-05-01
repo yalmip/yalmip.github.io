@@ -1,11 +1,7 @@
 ---
-layout: single
 category: faq
-author_profile: false
-excerpt: 
 title: Compiling YALMIP with a solver does not work
 tags: [Compiling]
-comments: true
 date: '2016-09-17'
 sidebar:
   nav:

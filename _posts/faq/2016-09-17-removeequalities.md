@@ -1,11 +1,6 @@
 ---
-layout: single
 category: faq
-author_profile: false
-excerpt: 
 title: I get strange results when I use the option 'removeequalities
-tags:
-comments: true
 date: '2016-09-17'
 sidebar:
   nav:

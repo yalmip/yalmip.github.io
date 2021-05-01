@@ -1,11 +1,7 @@
 ---
-layout: single
 category: faq
-author_profile: false
-excerpt: 
 title: I can not write X = eye(2); X(1,1)=sdpvar(1,1)!
 tags:
-comments: true
 date: '2016-09-17'
 sidebar:
   nav:

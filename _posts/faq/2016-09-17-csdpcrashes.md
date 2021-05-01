@@ -1,10 +1,7 @@
 ---
-layout: single
 category: faq
-excerpt: 
 title: CSDP runs but crashes
 tags: [CSDP]
-comments: true
 date: '2016-09-17'
 sidebar:
   nav:

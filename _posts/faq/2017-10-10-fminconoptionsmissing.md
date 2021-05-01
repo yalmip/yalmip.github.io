@@ -1,11 +1,6 @@
 ---
-layout: single
 category: faq
-author_profile: false
-excerpt:
 title:  Why are some fmincon options missing?
-tags:
-comments: true
 date: '2017-10-10'
 sidebar:
   nav:
