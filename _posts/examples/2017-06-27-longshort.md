@@ -6,6 +6,8 @@ title: Nonconvex long-short constraints - 7 ways to count
 tags: [Integer programming, Logic programming, Cardinality, Finance, Portfolio optimization]
 comments: true
 date: 2017-06-27
+sidebar:
+  nav: "examples"
 ---
 
 A question on the forum today asked how one can constrain a solution to ensure a certain percentage of a vector to have a particular sign. This could for instance be of relevance in a [portfolio allocation](/example/portfolio) problem where we have constraints on the ratio of long (positive) and short (negative) positions.
