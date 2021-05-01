@@ -87,7 +87,7 @@ Some operators in YALMIP are modelled differently depending on which solver is u
 
 One way to proceed is to implement a new operator in YALMIP which computes the function value and derivative. This is easy to do, but instead we use a method where we define the operator via the [blackbox](/command/blackbox) operator.
 
-We start with a setup which only will return function values to the solver. This means we have to use a solver which is capable of performing numerical differentiation. We create a function. To avoid creating any file defining our function, we use an anonymous function. Any nonlinear solver will work, but here we specify fmincon with its active set algorithm.
+We start with a setup which only will return function values to the solver. This means we have to use a solver which is capable of performing numerical differentiation. To avoid creating any file defining our function we use an anonymous function. Any nonlinear solver will work, but here we specify [fmincon](/solver/fmincon) with its active set algorithm.
 
 ````matlab
 f = @(w)(sort(R*w,'descend')'*p);
@@ -99,7 +99,7 @@ optimize(Model,objective,ops)
 
 If you test this and compare with solutions from the LP and MILP approach, you will note that the nonlinear solver indeed finds the solution. Most impressively though, it is several orders of magnitude faster than the LP model. For a model of size \\(n=100, m=1000\\) the nonlinear model is solved in a few seconds while the LP model requires close to an hour and completely bogs down a standard computer due to the excessive memory demand.
 
-Numerical differentiation works well here, but we can supply a derivative too. Now, the function we work with is not differentiable as it is piecewise affine, so we must trust that our nonlinear solver is able to cope with this. If the vector happened to be sorted, the derivative would simply be \\(R^Tp\\). However, the sort operation must be taken into account, and it turns out that the derivative (or sub-gradient to be more precise) can be computed with
+Numerical differentiation works well here, but we can supply a derivative too. The function we work with is not differentiable as it is piecewise affine, so we must trust that our nonlinear solver is able to cope with this. If the vector happened to be sorted, the derivative would simply be \\(R^Tp\\). However, the sort operation must be taken into account, and it turns out that the gradient (or sub-gradient to be more precise) can be computed with
 
 ````matlab
 function df = myderivative(w,R,p)
@@ -107,3 +107,16 @@ function df = myderivative(w,R,p)
 [~,order] = sort(R*w,'descend');
 df = R(order,:)'*p;
 ````
+
+With this file available, we can run the code again, but this time with a supplied gradient.
+
+````matlab
+f = @(w)(sort(R*w,'descend')'*p);
+df = @(w)myderivative(w,R,p);
+objective = blackbox(f,w,df)+norm(w-w0,1);
+
+ops = sdpsettings('solver''fmincon','fmincon.algorithm','active-set');
+optimize(Model,objective,ops)
+````
+
+
