@@ -310,9 +310,10 @@ defaults:
       path: "_posts/faq"
       type: posts
     values:
+      category: faq
       layout: single
       author_profile: true
-      read_time: false
+      read_time: true
       comments: false
-      share: false
+      share: true
       related: true
