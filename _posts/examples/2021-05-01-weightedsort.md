@@ -13,9 +13,9 @@ header:
 sidebar:
   nav: "examples"
 image:
-  feature: weightedsortnonconvex.jpg
-  teaser: weightedsortnonconvex.jpg
-  thumb: weightedsortnonconvex.jpg
+  feature: weightedsortnonconvex.png
+  teaser: weightedsortnonconvex.png
+  thumb: weightedsortnonconvex.png
 ---
 
 
