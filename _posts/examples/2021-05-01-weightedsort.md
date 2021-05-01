@@ -13,9 +13,9 @@ header:
 sidebar:
   nav: "examples"
 image:
-  feature: lofberg.jpg
-  teaser: lofberg.jpg
-  thumb: lofberg.jpg
+  feature: weightedsortnonconvex.jpg
+  teaser: weightedsortnonconvex.jpg
+  thumb: weightedsortnonconvex.jpg
 ---
 
 
