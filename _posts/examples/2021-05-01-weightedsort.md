@@ -4,7 +4,7 @@ category: example
 author_profile: false
 excerpt: "Doing the forbidden"
 title: Sorting with linear programming, or?
-tags: [Sort, linear programming, Black-box]
+tags: [Sort, Linear programming, Black-box, Nonlinear programming]
 comments: true
 date: '2021-05-01'
 published: true
