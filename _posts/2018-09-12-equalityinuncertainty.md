@@ -1,11 +1,15 @@
 ---
 layout: single
 permalink: /equalityinuncertainty
-excerpt: "= ≠ ==. Horse purchases and warehouse logistics"
+excerpt: "= ≠ ==. Horse and sheep purchases and warehouse logistics"
 title: "Equalities with uncertainty"
 tags: [Robust optimization, Uncertainty]
 comments: true
 published: true
+image:
+  feature: sheep.png
+  teaser: sheep.png
+  thumb: sheep.png
 date: 2018-09-11
 ---
 
