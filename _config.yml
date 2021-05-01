@@ -318,7 +318,9 @@ defaults:
       share: false
       related: true
       image:
-         teaser: "what.png"
+        feature: what.png
+        teaser: what.png
+        thumb: what.png
 # _solver
   - scope:
       path: "_posts/solvers"
