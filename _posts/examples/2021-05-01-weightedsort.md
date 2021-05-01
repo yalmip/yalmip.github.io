@@ -7,7 +7,7 @@ title: Sorting with linear programming
 tags: [Sort, linear programming, black box]
 comments: true
 date: '2021-05-01'
-published: false
+published: true
 header:
   teaser: "starshaped2.png"
 sidebar:
