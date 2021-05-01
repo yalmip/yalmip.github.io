@@ -228,7 +228,8 @@ plot( value(t)*xs+value(c(1)), value(t)*ys+value(c(2)), 'k*-' );
 
 
 
-
-
-
+<details>
+  <summary>Complete code, click to expand!</summary>
+<script src="https://gist.github.com/johanlofberg/1fa43402d071790d8a622f542a5bdb27.js"></script>
+</details>
 
