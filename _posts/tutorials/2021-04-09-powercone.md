@@ -4,6 +4,8 @@ category: tutorial
 level: 5
 tags: [Power cone programming]
 excerpt: "Convex conic optimization over power cones"
+header:
+    teaser: "cone.jpg"
 sidebar:
   nav: "tutorials"
 ---
