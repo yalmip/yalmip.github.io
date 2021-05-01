@@ -298,12 +298,22 @@ defaults:
   # references
   - scope:
       path: ""
-      type: tutorials
+      type: references
     values:
       layout: single
       author_profile: false
       read_time: false
       comments: true
       share: false
-      related: true       
-      
+      related: true  
+  # faq
+  - scope:
+      path: ""
+      type: faq
+    values:
+      layout: single
+      author_profile: false
+      read_time: false
+      comments: false
+      share: false
+      related: true      
