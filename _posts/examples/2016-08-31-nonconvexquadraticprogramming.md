@@ -6,7 +6,7 @@ excerpt: "Common question: how can I solve a nonconvex QP using SeDuMi? Weird qu
 title: Nonconvex quadratic programming comparisons
 tags: [Nonconvex quadratic programming, Global optimization, Semidefinite programming, Moment relaxations, Kktqp, Kkt]
 comments: true
-date: '2011-08-31'
+date: '2020-10-01'
 sidebar:
   nav: "examples"
 header:
