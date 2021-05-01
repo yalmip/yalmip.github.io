@@ -1,11 +1,8 @@
 ---
-layout: single
 category: example
-author_profile: false
 excerpt: "Common question: how can I solve a nonconvex QP using SeDuMi? Weird question, but interesting answer."
 title: Nonconvex quadratic programming comparisons
 tags: [Nonconvex quadratic programming, Global optimization, Semidefinite programming, Moment relaxations, Kktqp, Kkt]
-comments: true
 date: '2020-10-01'
 sidebar:
   nav: "examples"

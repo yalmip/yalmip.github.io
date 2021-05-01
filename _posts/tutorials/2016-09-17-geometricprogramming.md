@@ -1,11 +1,9 @@
 ---
 title: "Geometric programming"
 category: tutorial
-author_profile: false
 level: 4
 tags: [Geometric programming]
 excerpt: "Geometric programming. Not about geometry."
-layout: single
 sidebar:
   nav: "tutorials"
 ---

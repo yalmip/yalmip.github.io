@@ -1,9 +1,7 @@
 ---
 title: "Second order cone programming"
 excerpt: "Ice-cream cone! Yummy."
-layout: single
 category: tutorial
-author_profile: false
 tags: [Second-order cone programming]
 level: 3
 sidebar:

@@ -1,11 +1,9 @@
 ---
 title: "Power cone programming"
 category: tutorial
-author_profile: false
 level: 5
 tags: [Power cone programming]
 excerpt: "Convex conic optimization over power cones"
-layout: single
 sidebar:
   nav: "tutorials"
 ---

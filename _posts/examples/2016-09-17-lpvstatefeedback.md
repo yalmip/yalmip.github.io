@@ -1,11 +1,8 @@
 ---
-layout: single
 category: example
-author_profile: false
 excerpt: "Let YALMIP do the hard work"
 title: State feedback design for LPV system
 tags: [Control, Robust optimization, Semidefinite programming]
-comments: true
 date: '2016-09-16'
 sidebar:
   nav: "examples"

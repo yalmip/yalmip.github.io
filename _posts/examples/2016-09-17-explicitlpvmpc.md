@@ -1,11 +1,8 @@
 ---
-layout: single
 category: example
-author_profile: false
 excerpt: "Annoyingly hard to do nicely with a nice theoretical framework. Let's try dynamic programming."
 title: Model predictive control - LPV models
 tags: [Control, MPC, Dynamic programming]
-comments: true
 date: '2016-09-16'
 sidebar:
   nav: "examples"

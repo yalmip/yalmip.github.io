@@ -1,10 +1,8 @@
 ---
 title: "Quadratic programming"
 category: tutorial
-author_profile: false
 tags: [Quadratic programming, Large-scale quadratic programming]
 excerpt: "Almost as easy as linear programming. Be careful though, symbolics might start to cause overhead."
-layout: single
 level: 2
 sidebar:
   nav: "tutorials"

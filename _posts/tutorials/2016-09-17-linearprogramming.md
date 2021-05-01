@@ -1,10 +1,8 @@
 ---
 title: "Linear programming"
 category: tutorial
-author_profile: false
 tags: [Linear programming, Classification]
 excerpt: "As easy as it gets. Linear separation with linear norms."
-layout: single
 level: 1.5
 sidebar:
   nav: "tutorials"

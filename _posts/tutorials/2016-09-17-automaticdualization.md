@@ -1,11 +1,9 @@
 ---
 title: "Automatic dualization"
 category: tutorial
-author_profile: false
 level: 4
 tags: [Duality, Automatic dualization]
 excerpt: "Primal or dual arbitrary in primal-dual solver? No, but YALMIP can help you reformulate your model."
-layout: single
 header:
   teaser:
 sidebar:

@@ -1,11 +1,9 @@
 ---
 title: "Bilevel programming"
 category: tutorial
-author_profile: false
 level: 4
 tags: [Bilevel programming]
 excerpt: "Bilevel programming using the built-in bilevel solver"
-layout: single
 sidebar:
   nav: "tutorials"
 ---

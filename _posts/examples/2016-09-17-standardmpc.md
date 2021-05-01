@@ -1,11 +1,8 @@
 ---
-layout: single
 category: example
-author_profile: false
 excerpt: "Model predictive control, receding horizon control, discrete-time dynamic planning, or what ever you want to call it."
 title: Model predictive control - Basics
 tags: [Control, MPC, Quadratic programming, Simulation]
-comments: true
 header:
   teaser: "mpcinputtrajectory.png"
 date: '2016-09-16'

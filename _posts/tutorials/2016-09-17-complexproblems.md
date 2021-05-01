@@ -1,11 +1,9 @@
 ---
 title: "Complex-valued problems"
 category: tutorial
-author_profile: false
 level: 4
 tags: [Complex data]
 excerpt: "Complex data in optimization models. No problem in reality."
-layout: single
 sidebar:
   nav: "tutorials"
 ---

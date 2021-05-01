@@ -1,11 +1,8 @@
 ---
-layout: single
 category: example
-author_profile: false
 excerpt: "Solving mixed-integer maxdet problems and exploiting duality"
 title: Experiment design in system identification
 tags: [Experiment design, Semidefinite programming, Determinant maximization, Integer programming, Dual, Duality]
-comments: true
 date: '2016-09-16'
 sidebar:
   nav: "examples"

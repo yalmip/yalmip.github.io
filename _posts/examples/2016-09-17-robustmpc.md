@@ -1,11 +1,8 @@
 ---
-layout: single
 category: example
-author_profile: false
 excerpt: "Robust optimization in MPC, a perfect case for YALMIP"
 title: Model predictive control - robust solutions
 tags: [Control, MPC, Robust optimization, Multi-parametric programming]
-comments: true
 date: '2016-09-16'
 sidebar:
   nav: "examples"

@@ -1,11 +1,8 @@
 ---
-layout: single
 category: example
-author_profile: false
 excerpt: "Mixed-integer optmization with logical modelling"
 title: Unit commitment
 tags: [Control, Integer programming, Logic programming, Simulation, Planning]
-comments: true
 date: '2016-09-16'
 sidebar:
   nav: "examples"
