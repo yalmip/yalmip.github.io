@@ -1,11 +1,8 @@
 ---
-layout: single
 category: command
-author_profile: false
 excerpt: "Convexity aware implementation of kullackleibler entropy"
 title: kullbackleibler
 tags: [Exponential cone programming representable, Exponential and logarithmic functions]
-comments: true
 date: '2016-09-17'
 sidebar:
   nav: "commands"

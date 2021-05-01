@@ -1,11 +1,8 @@
 ---
-layout: single
 category: command
-author_profile: false
 excerpt: "Derive semidefinite relaxation model of polynomial program without solving it"
 title: momentmodel
 tags: [Moment relaxations, Semidefinite relaxations]
-comments: true
 date: '2016-09-17'
 sidebar:
   nav: "commands"

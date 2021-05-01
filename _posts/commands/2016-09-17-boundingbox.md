@@ -1,11 +1,8 @@
 ---
-layout: single
 category: command
-author_profile: false
 excerpt: "Create model representing the bounding box of set of constraints"
 title: boundingbox
 tags: [Polytopes]
-comments: true
 date: '2016-09-17'
 sidebar:
   nav: "commands"

@@ -1,11 +1,8 @@
 ---
-layout: single
 category: command
-author_profile: false
 excerpt: "Built-in meta-solver for polynomial optimization problem using semidefinite relaxations"
 title: solvemoment
 tags: [Semidefinite relaxations, Moment relaxations, Polynomial programming]
-comments: true
 date: '2016-09-17'
 sidebar:
   nav: "commands"

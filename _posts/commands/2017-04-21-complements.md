@@ -1,11 +1,8 @@
 ---
-layout: single
 category: command
-author_profile: false
 excerpt: ""
 title: complements
 tags: [Integer programming representable, Complementarity]
-comments: true
 date: '2017-04-21'
 sidebar:
   nav: "commands"

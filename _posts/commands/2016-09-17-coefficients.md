@@ -1,11 +1,8 @@
 ---
-layout: single
 category: command
-author_profile: false
 excerpt: "Extract coefficients in polynomial expression"
 title: coefficients
 tags: [Polynomials]
-comments: true
 date: '2016-09-17'
 sidebar:
   nav: "commands"

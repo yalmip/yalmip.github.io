@@ -1,11 +1,8 @@
 ---
-layout: single
 category: command
-author_profile: false
 excerpt: "Extract numerical representation of quadratic"
 title: quaddecomp
 tags: [Low-level]
-comments: true
 date: '2017-09-18'
 sidebar:
   nav: "commands"

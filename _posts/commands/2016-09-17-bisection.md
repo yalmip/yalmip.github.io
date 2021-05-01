@@ -1,11 +1,8 @@
 ---
-layout: single
 category: command
-author_profile: false
 excerpt: "Built-in meta-solver for some quasi-convex optimization problems"
 title: bisection
 tags: [Semidefinite programming, Quasi-convex, Bisection]
-comments: true
 date: '2016-09-17'
 sidebar:
   nav: "commands"

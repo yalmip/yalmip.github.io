@@ -1,11 +1,8 @@
 ---
-layout: single
 category: command
-author_profile: false
 excerpt: "Import SEDUMI data to YALMIP model"
 title: loadsedumidata
 tags: [Export and import]
-comments: true
 date: '2016-09-17'
 sidebar:
   nav: "commands"

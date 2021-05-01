@@ -1,11 +1,8 @@
 ---
-layout: single
 category: command
-author_profile: false
 excerpt: "Extract value of expression after solving relaxation"
 title: relaxvalue
 tags:
-comments: true
 date: '2016-09-17'
 sidebar:
   nav: "commands"

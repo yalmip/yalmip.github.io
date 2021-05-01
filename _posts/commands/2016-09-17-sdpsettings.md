@@ -1,11 +1,8 @@
 ---
-layout: single
 category: command
-author_profile: false
 excerpt: "Options structure creation"
 title: sdpsettings
 tags: Options
-comments: true
 date: '2016-09-17'
 sidebar:
   nav: "commands"
