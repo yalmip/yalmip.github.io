@@ -119,4 +119,35 @@ ops = sdpsettings('solver''fmincon','fmincon.algorithm','active-set');
 optimize(Model,objective,ops)
 ````
 
+### Looking at the function
+
+Just for fun, let us illustrate what the function looks like, by plotting a random projection from a random 4-dimensional case
+
+
+````matlab
+p = sort(rand(10,1),'descend');
+R = randn(10,4);
+c = rand(1,2);
+x = -1:0.01:1;
+y = -1:0.01:1;
+for i = 1:length(x)
+    for j = 1:length(y)
+        w = [x(i) y(j) c]';
+        s = sort(R*w,'descend');
+        J(i,j) = sum(s'*p);
+    end
+end
+mesh(J)
+````
+
+The facet structure is visible sometimes (the function is LP-representable, hence guaranteed to be piecewise affine). 
+
+![Convex weighted sorted sum]({{ site.url }}/images/weightedsum.png){: .center-image }
+
+If you remove the sorting from the generation of \\(p\\) you will see that convexity no longer is guaranteed.
+
+
+
+
+
 
