@@ -7,6 +7,10 @@ title: What does YALMIP mean?
 tags:
 comments: true
 date: '2016-09-17'
+image:
+  feature: what.png
+  teaser: what.png
+  thumb: what.png
 sidebar:
   nav:
 ---
