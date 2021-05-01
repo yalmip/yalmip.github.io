@@ -9,13 +9,13 @@ comments: true
 date: '2021-05-01'
 published: true
 header:
-  teaser: "weightedsortnonconvex.png"
+  teaser: "weightedsumnonconvex.png"
 sidebar:
   nav: "examples"
 image:
-  feature: weightedsortnonconvex.png
-  teaser: weightedsortnonconvex.png
-  thumb: weightedsortnonconvex.png
+  feature: weightedsumnonconvex.png
+  teaser: weightedsumnonconvex.png
+  thumb: weightedsumnonconvex.png
 ---
 
 
