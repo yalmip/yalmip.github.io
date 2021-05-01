@@ -55,8 +55,6 @@ solvers:
         url: /solver/bintprog
       - title: "BONMIN"
         url: /solver/bonmin
-      - title: "BPMPD"
-        url: /solver/bpmpd
       - title: "CBC"
         url: /solver/cbc
       - title: "CDD"
@@ -107,8 +105,6 @@ solvers:
         url: /solver/mosek
       - title: "MPT"
         url: /solver/mpt
-      - title: "NAG"
-        url: /solver/nag
       - title: "NOMAD"
         url: /solver/nomad
       - title: "OOQP"
@@ -184,12 +180,16 @@ examples:
     children:  
       - title: "Polytopic geometry"
         url: /example/polytopicgeometry      
+      - title: "Star-convex polygons"
+        url: /example/starshaped          
   - title: Other
     children:
       - title: "Bilevel programming"
         url: /example/bilevelprogrammingalternatives
       - title: "Experiment design"
         url: /example/experimentdesign
+      - title: "Nonlinear linear programming"
+        url: /example/weightedsort        
       - title: "Polytopic geometry"
         url: /example/polytopicgeometry
       - title: "Portfolio allocation"
