@@ -18,6 +18,11 @@ image:
   thumb: lofberg.jpg
 ---
 
+
+This example currently only runs on the develop branch 
+{: .notice--info}
+
+
 In the grey area between convex and non-convex sets, there is a geometry which is called [star-convex (star-domain, star-shaped, radially convex)](https://en.wikipedia.org/wiki/Star_domain). As the name reveals, a classical drawing of a star is a special case. 
 
 Mathematically, the definition of a (origin-centered) star-convex set is that all points between the origin and any point in the set is in the set. Compare this to the definition of a convex set where all points on a line between any two points are in the set. Loosely speaking, it is convex w.r.t a particular point (here the origin). The origin can be changed to some other so called vantage point by translating the whole set and defining star-convexity w.r.t the translated origin.
