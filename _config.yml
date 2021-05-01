@@ -304,7 +304,7 @@ defaults:
       read_time: false
       comments: true
       share: false
-      related: false 
+      related: true 
   # _faq
   - scope:
       path: "_posts/faq"
@@ -316,7 +316,7 @@ defaults:
       read_time: false
       comments: false
       share: false
-      related: false
+      related: true
 # _solver
   - scope:
       path: "_posts/solvers"
@@ -328,4 +328,16 @@ defaults:
       read_time: false
       comments: false
       share: false
-      related: false
+      related: true
+# _command
+  - scope:
+      path: "_posts/commands"
+      type: posts
+    values:
+      category: faq
+      layout: single
+      author_profile: false
+      read_time: false
+      comments: false
+      share: false
+      related: true
