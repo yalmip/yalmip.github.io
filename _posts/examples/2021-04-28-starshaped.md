@@ -13,9 +13,9 @@ header:
 sidebar:
   nav: "examples"
 image:
-  feature: lofberg.jpg
-  teaser: lofberg.jpg
-  thumb: lofberg.jpg
+  feature: starshaped2.png
+  teaser: starshaped2.png
+  thumb: starshaped2.png
 ---
 
 
