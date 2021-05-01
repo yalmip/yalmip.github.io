@@ -57,8 +57,8 @@ Assuming we work with coordinates \\(x\\) and \\(y\\) as decision variables in o
 ````matlab
 sdpvar x y
 lambda = sdpvar(length(xi),1)
-F = [sos2(lambda), lambda>=0, sum(lambda)==1,
-     x == xi*lambda', y == yi*lambda];
+Model = [sos2(lambda), lambda>=0, sum(lambda)==1,
+         x == xi*lambda, y == yi*lambda];
 ````
 
 That's all!
@@ -66,7 +66,7 @@ That's all!
 To see that this really models what we want, we could plot the set. When doing so, you will note that it is not drawing the star, but the convex hull of the star. 
 
 ````matlab
-plot(Model,[x;y],[],[],sdpsettings('plot.shade',.1) )    
+plot(Model,[x;y],[],[],sdpsettings('plot.shade',.1))    
 ````
 
 ![Star convex hull]({{ site.url }}/images/starshaped2.png){: .center-image }
@@ -91,8 +91,8 @@ So how can we include the interior? This is where star-convexity comes into play
 ````matlab
 sdpvar x y
 lambda = sdpvar(length(xi),1)
-F = [sos2(lambda), lambda>=0,sum(lambda)<=1,
-     x == xi*lambda', y == yi*lambda];
+Model = [sos2(lambda), lambda>=0,sum(lambda)<=1,
+         x == xi*lambda, y == yi*lambda];
 ````
 
 This model can be extended further by allowing an arbitrary scaling of the set by using any upper bound on the sum, even a decision variable as the bound enters affinely.
@@ -122,7 +122,7 @@ lambda = sdpvar(length(xi),1)
 Model = [sos2(lambda), lambda>=0,sum(lambda)<=1,
          x == xc + (xi-xc)*lambda, 
          y == yc + (yi-yc)*lambda];
-plot(Model,[x;y],[],[],sdpsettings('plot.shade',.1)     
+plot(Model,[x;y],[],[],sdpsettings('plot.shade',.1))   
 ````
 
 Note that the using the mean of the coordinates as the vantage point is definitely not something which works in all cases. For highly symmetric objects it does, but in general problem specific insight is needed. As an example, the following set (blue) is star-convex (slide it to the left and it is star-convex wr.t. the origin) but after shifting all coordinates using the mean (red) we see that the set is not star-convex w.r.t the origin.
@@ -204,8 +204,8 @@ axis equal;
 
 % Create the point-cloud
 thn = linspace(-pi, pi, 2*3*n+1);
-xn = 3+interp1(th,xi,thn)+.1*randn(1,2*3*n+1)
-yn = 2+interp1(th,yi,thn)+.1*randn(1,2*3*n+1)
+xn = 3+interp1(th,xs,thn)+.1*randn(1,2*3*n+1)
+yn = 2+interp1(th,ys,thn)+.1*randn(1,2*3*n+1)
 plot( xn, yn, 'r*' );
 
 % Now say that each point in point-cloud is in scaled and translated polygon
