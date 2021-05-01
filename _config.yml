@@ -295,7 +295,7 @@ defaults:
       comments: true
       share: false
       related: true 
-  # references
+  # _references
   - scope:
       path: ""
       type: references
@@ -306,7 +306,7 @@ defaults:
       comments: true
       share: false
       related: true  
-  # faq
+  # _faq
   - scope:
       path: ""
       type: faq
