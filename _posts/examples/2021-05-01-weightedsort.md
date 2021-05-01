@@ -15,10 +15,10 @@ image:
   thumb: weightedsumnonconvex.png
 ---
 
-* This example currently only runs on the develop branch 
-* An [MILP solver is required](tags/#mixed-integer-linear-programming-solver)
-* An [NLP solver is required](tags/#nonlinear-programming-solver)
-* Complete code can be found in the bottom
+   * This example currently only runs on the develop branch 
+   * An [MILP solver is required](tags/#mixed-integer-linear-programming-solver)
+   * An [NLP solver is required](tags/#nonlinear-programming-solver)
+   * Complete code can be found in the bottom
 {: .notice--info}
 
 A [discussion on stackexchange](https://math.stackexchange.com/questions/4121115/optimization-with-sort-or-bilevel-optimization-with-permutation-matrix) led to some experiments and an interesting case where a linear programming formulation is absolutely horrible compared to an approach where a general nonlinear solver used. We thus have a problem where the standard rule that we should solve problems as a linear programs if possible is violated. 
