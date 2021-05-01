@@ -1,6 +1,6 @@
 ---
 layout: single
-category: faq
+type: faq
 excerpt: 
 title: CSDP runs but crashes
 tags: [CSDP]
