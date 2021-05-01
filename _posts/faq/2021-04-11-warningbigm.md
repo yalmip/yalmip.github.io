@@ -4,8 +4,8 @@ category: faq
 author_profile: false
 excerpt: 
 title: "Warning about lousy big-M models"
-tags: [Big-M, Implies]
-comments: true
+tags: [Big-M, Implies, Common mistakes]
+comments: false
 date: '2021-04-11'
 sidebar:
   nav:
