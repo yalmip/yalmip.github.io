@@ -308,10 +308,10 @@ defaults:
   # _faq
   - scope:
       path: ""
-      type: faq
+      category: faq
     values:
       layout: single
-      author_profile: false
+      author_profile: true
       read_time: false
       comments: false
       share: false
