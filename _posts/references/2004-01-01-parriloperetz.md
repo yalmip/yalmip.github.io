@@ -4,11 +4,7 @@ author: "P. A. Parrilo, R. Peretz"
 where: "Discrete and Computational Geometry"
 tags: [Sum-of-squares programming]
 date: '2004-01-01'
-layout: single
 category: reference
-author_profile: false
-excerpt: 
-comments: false
 sidebar:
   nav: 
 ---

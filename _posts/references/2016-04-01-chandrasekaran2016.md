@@ -4,11 +4,7 @@ author: "Venkat Chandrasekaran and Parikshit Shah"
 where: "Mathematical Programming Series A"
 tags: [Exponential cone programming]
 date: '2016-04-01'
-layout: single
 category: reference
-author_profile: false
-excerpt: 
-comments: false
 sidebar:
   nav: 
 ---
