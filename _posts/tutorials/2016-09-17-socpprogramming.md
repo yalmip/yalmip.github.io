@@ -4,6 +4,12 @@ excerpt: "Ice-cream cone! Yummy."
 category: tutorial
 tags: [Second-order cone programming]
 level: 3
+header:
+  teaser: cone.jpg
+image:
+  feature: cone.jpg
+  teaser: cone.jpg
+  thumb: cone.jpg 
 sidebar:
   nav: "tutorials"
 ---
