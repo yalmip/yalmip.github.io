@@ -343,3 +343,5 @@ defaults:
       comments: false
       share: false
       related: true
+      header:
+          teaser: toolbox.jpg
