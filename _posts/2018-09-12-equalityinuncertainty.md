@@ -4,7 +4,7 @@ permalink: /equalityinuncertainty
 excerpt: "= ≠ ==. Horse and sheep purchases and warehouse logistics"
 title: "Equalities with uncertainty"
 tags: [Robust optimization, Uncertainty]
-comments: true
+comments: false
 published: true
 image:
   feature: sheep.png
