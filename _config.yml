@@ -317,12 +317,6 @@ defaults:
       comments: false
       share: false
       related: true
-      header:
-          teaser: "what.png"
-      image:
-          feature: what.png
-          teaser: what.png
-           thumb: what.png
 # _solver
   - scope:
       path: "_posts/solvers"
