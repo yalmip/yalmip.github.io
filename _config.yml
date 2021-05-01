@@ -307,8 +307,8 @@ defaults:
       related: true  
   # _faq
   - scope:
-      path: ""
-      category: faq
+      path: "_posts/faq"
+      type: posts
     values:
       layout: single
       author_profile: true
