@@ -317,6 +317,7 @@ defaults:
       comments: false
       share: false
       related: true
+      teaser: "what.png"
 # _solver
   - scope:
       path: "_posts/solvers"
