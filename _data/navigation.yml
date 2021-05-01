@@ -176,6 +176,8 @@ examples:
     children:     
       - title: "Portfolio allocation"
         url: /example/portfolio     
+      - title: "Non-convex long-short models"
+        url: /example/longshort
   - title: Geometry
     children:  
       - title: "Polytopic geometry"
