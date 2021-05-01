@@ -13,7 +13,7 @@ sidebar:
 
 ### Standard Markowitz portfolio
 
-The standard [Markowitz mean-variance portfolio problem](http://en.wikipedia.org/wiki/Modern_portfolio_theory) is to select assets (relative investements \\(x\\)) to minimize the variance \\(x^TSx\\) of the portfolio profit while giving a specified expected return \\(\mu^{\star}\\), given historical data of mean returns \\(\mu\\) and covariance \\(S\\) of stock returns.
+The standard [Markowitz mean-variance portfolio problem](http://en.wikipedia.org/wiki/Modern_portfolio_theory) is to select assets (relative investments \\(x\\)) to minimize the variance \\(x^TSx\\) of the portfolio profit while giving a specified expected return \\(\mu^{\star}\\), given historical data of mean returns \\(\mu\\) and covariance \\(S\\) of stock returns.
 
 Let us begin by defining some random data with 10 candidate assets.
 
