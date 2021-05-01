@@ -276,3 +276,8 @@ Play around with the various prices and characteristics, and you will see that y
 If your browser supports animated png, you will see an animation of the simulation in the figure below.
 
 ![pwasol]({{ site.url }}/images/anim.png){: .center-image }
+
+<details>
+  <summary>Complete code, click to expand!</summary>
+  <script src="https://gist.github.com/johanlofberg/3dac77927826543552a61262181727c6.js"></script>
+</details>
