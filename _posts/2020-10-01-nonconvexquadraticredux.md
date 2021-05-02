@@ -8,13 +8,13 @@ comments: true
 date: 2020-10-01
 ---
 
-Almost 10 years ago, [a post was published](example/nonconvexquadraticprogramming/), comparing semidefinite relaxation strategies with YALMIPs built-in global solvers. Although the main message of the post remains valid (understand when, why and how you apply a semidefinite relaxation!), the computational results are perhaps a bit outdated.
+Almost 10 years ago, [a post was published](example/nonconvexquadraticprogramming/), comparing [semidefinite relaxation strategies](/tutorials/momentrelaxations) with YALMIPs built-in global solvers. Although the main message of the post remains even more valid (understand when, why and how you apply a semidefinite relaxation!), the computational results are perhaps a bit outdated.
 
 We recompute the results to reflect 3 developments over the last decade
 
 1. We now have [MOSEK](/solver/mosek) available for solving semidefinite programs more efficiently.
 2. The built-in global solver [BMIBNB](/solver/bmibnb) has been improved.
-3. There are now several easily accesible external solvers for [global nonconvex quadratic programming](tags/#nonconvex-quadratic-programming-solver)
+3. There are now several easily accessible external solvers for [global nonconvex quadratic programming](tags/#nonconvex-quadratic-programming-solver)
 
 Hence, without further ado, we run the example again, but this time with many more solvers, and on larger problems. If you want to run this code, you will have to adjust it to the set of solvers you have available.
 
