@@ -1,7 +1,7 @@
 ---
 category: example
 excerpt: "Be careful with unnecessary symbolic overhead"
-title: Sparse parameterizations in optimizer objects"
+title: Sparse parameterizations in optimizer objects
 tags: [Optimizer, Tricks, Common mistakes]
 date: 2018-10-12
 ---
