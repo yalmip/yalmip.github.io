@@ -3,6 +3,8 @@ category: example
 excerpt: "Be careful with unnecessary symbolic overhead"
 title: Sparse parameterizations in optimizer objects
 tags: [Optimizer, Tricks, Common mistakes]
+header:
+  teaser: "sparseA.png"
 date: 2018-10-12
 ---
 
