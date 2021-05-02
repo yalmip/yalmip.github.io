@@ -84,5 +84,7 @@ Model = [nnz(x >= 0) >= n/2,  -1 <= x <= 1];
 optimize(Model,Objective)
 ````
 
-
-
+<details>
+  <summary>Complete code, click to expand!</summary>
+  <script src="https://gist.github.com/johanlofberg/9a40149e21e5fa0266970cf2d75c6027.js"></script>
+</details>
