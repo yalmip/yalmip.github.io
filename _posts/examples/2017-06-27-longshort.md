@@ -4,6 +4,7 @@ layout: single
 excerpt: "There is more than one way to skin a cat"
 title: Nonconvex long-short constraints - 7 ways to count
 tags: [Integer programming, Logic programming, Cardinality, Finance, Portfolio optimization]
+gist: "https://gist.github.com/johanlofberg/9a40149e21e5fa0266970cf2d75c6027.js"
 date: 2017-06-27
 header:
  teaser: ta.png
