@@ -15,6 +15,10 @@ image:
   thumb: starshaped2.png
 ---
 
+<details>
+  <summary>Complete code, click to expand!</summary>
+<script src="https://gist.github.com/johanlofberg/1fa43402d071790d8a622f542a5bdb27.js"></script>
+</details>
 
 This example currently only runs on the develop branch 
 {: .notice--info}
@@ -225,11 +229,4 @@ plot( value(t)*xs+value(c(1)), value(t)*ys+value(c(2)), 'k*-' );
 
 ![Star convex hull]({{ site.url }}/images/starshaped6.png){: .center-image }
 
-
-
-
-<details>
-  <summary>Complete code, click to expand!</summary>
-<script src="https://gist.github.com/johanlofberg/1fa43402d071790d8a622f542a5bdb27.js"></script>
-</details>
 
