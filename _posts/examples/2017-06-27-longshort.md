@@ -12,11 +12,6 @@ sidebar:
   nav: "examples"
 ---
 
-<details>
-  <summary>Complete code, click to expand!</summary>
-  <script src="https://gist.github.com/johanlofberg/9a40149e21e5fa0266970cf2d75c6027.js"></script>
-</details>
-
 A question on the forum today asked how one can constrain a solution to ensure a certain percentage of a vector to have a particular sign. This could for instance be of relevance in a [portfolio allocation](/example/portfolio) problem where we have constraints on the ratio of long (positive) and short (negative) positions.
 
 There are many natural ways to write this in MATLAB, but to include it in YALMIP code, it has to be based on operators which are supported by YALMIP. Let's look at some alternatives.
