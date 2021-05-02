@@ -3,13 +3,7 @@ title: "Power cone programming"
 category: tutorial
 level: 5
 tags: [Power cone programming]
-excerpt: "Convex conic optimization over power cones"
-header:
-  teaser: cone.jpg
-image:
-  feature: cone.jpg
-  teaser: cone.jpg
-  thumb: cone.jpg 
+excerpt: "Convex conic optimization over power cones" 
 sidebar:
   nav: "tutorials"
 ---
