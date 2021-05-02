@@ -128,3 +128,12 @@ yv = polyval(fliplr(value(a')),xv);
 hold on
 plot(xv,yv,'-b');
 ````
+
+
+![Designed polynomials]({{ site.url }}/images/designingpolynomials.png){: .center-image }
+
+
+<details>
+  <summary>Complete code, click to expand!</summary>
+  <script src="https://gist.github.com/johanlofberg/37805dfb34547e6a5e457a7c2912ecf4.js"></script>
+</details>
