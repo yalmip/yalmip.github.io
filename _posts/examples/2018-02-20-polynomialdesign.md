@@ -15,6 +15,10 @@ image:
 date: 2018-02-16
 ---
 
+<details>
+  <summary>Complete code, click to expand!</summary>
+  <script src="https://gist.github.com/johanlofberg/37805dfb34547e6a5e457a7c2912ecf4.js"></script>
+</details>
 
 In this post, we showcase some of the operations available on polynomials, and illustrate a common polynomial design problem.
 
@@ -139,8 +143,3 @@ plot(xv,yv,'-b');
 
 ![Designed polynomials]({{ site.url }}/images/designingpolynomials.png){: .center-image }
 
-
-<details>
-  <summary>Complete code, click to expand!</summary>
-  <script src="https://gist.github.com/johanlofberg/37805dfb34547e6a5e457a7c2912ecf4.js"></script>
-</details>
