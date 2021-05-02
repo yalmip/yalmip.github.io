@@ -316,11 +316,9 @@ defaults:
       read_time: false
       comments: false
       share: false
-      related: true
-      image:
-          thumb: what.png      
- #     header:
- #         teaser: what.png
+      related: true      
+      header:
+          teaser: what.png
 # _solver
   - scope:
       path: "_posts/solvers"
