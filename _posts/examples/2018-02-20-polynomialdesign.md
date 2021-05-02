@@ -4,6 +4,7 @@ layout: single
 excerpt: "Working with polynomials, function values, derivatives, integrals and their properties"
 title: "Designing polynomials"
 tags: [Linear programming, Quadratic programming, Semidefinite programming, Sum-of-squares programming]
+gist: "https://gist.github.com/johanlofberg/37805dfb34547e6a5e457a7c2912ecf4.js"
 header:
   teaser: "designingpolynomials.png"
 sidebar:
@@ -14,13 +15,6 @@ image:
   thumb: designingpolynomials.png
 date: 2018-02-16
 ---
-
-<details>
-  <summary>Complete code, click to expand!</summary>
-  <script src="https://gist.github.com/johanlofberg/37805dfb34547e6a5e457a7c2912ecf4.js"></script>  
-  
-</details>
-
 
 In this post, we showcase some of the operations available on polynomials, and illustrate a common polynomial design problem.
 
