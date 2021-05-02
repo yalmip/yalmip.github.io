@@ -89,3 +89,13 @@ for p = 1.1:0.1:10
 end
 ````
 
+
+![Path]({{ site.url }}/images/powerconepath.png){: .center-image }
+
+
+<details>
+  <summary>Complete code, click to expand!</summary>
+  <script src="https://gist.github.com/johanlofberg/c6d98dcc2516971a320665ec19c5ad46.js"></script>
+</details>
+
+
