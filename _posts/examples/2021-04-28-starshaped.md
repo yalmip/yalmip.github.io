@@ -4,7 +4,7 @@ excerpt: "Sort of convex but not quite"
 title: Working with star-convex polygons
 tags: [Star-convexity, Geometry, interp1, sos2, Special ordered set]
 date: '2021-04-28'
-published: true
+gist: "https://gist.github.com/johanlofberg/1fa43402d071790d8a622f542a5bdb27.js"
 header:
   teaser: "starshaped2.png"
 sidebar:
@@ -14,11 +14,6 @@ image:
   teaser: starshaped2.png
   thumb: starshaped2.png
 ---
-
-<details>
-  <summary>Complete code, click to expand!</summary>
-<script src="https://gist.github.com/johanlofberg/1fa43402d071790d8a622f542a5bdb27.js"></script>
-</details>
 
 This example currently only runs on the develop branch 
 {: .notice--info}
