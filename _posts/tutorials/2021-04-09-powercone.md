@@ -8,6 +8,11 @@ sidebar:
   nav: "tutorials"
 ---
 
+<details>
+  <summary>Complete code, click to expand!</summary>
+  <script src="https://gist.github.com/johanlofberg/c6d98dcc2516971a320665ec19c5ad46.js"></script>
+</details>
+
 The power cone as we use it is defined as the set \\( \left \lvert z \right\rvert_2 \leq x^{\alpha}y^{1-\alpha}, x\geq 0, y\geq 0 \\) for constant \\( 0 < \alpha < 1\\). In contrast to [exponential cones](/tutorial/exponentialcone/), YALMIP does not detect and reformulate models to power cones. Instead, power cones can only be used as a low-level construct via [pcone](/command/pcone/), with a small exception illustrated below.
 
 The code below requires [Mosek 9](/solver/mosek) as this is the only power cone solver available in YALMIP.
@@ -86,10 +91,5 @@ end
 
 ![Path]({{ site.url }}/images/powerconepath.png){: .center-image }
 
-
-<details>
-  <summary>Complete code, click to expand!</summary>
-  <script src="https://gist.github.com/johanlofberg/c6d98dcc2516971a320665ec19c5ad46.js"></script>
-</details>
 
 
