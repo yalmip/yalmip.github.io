@@ -196,6 +196,8 @@ examples:
         url: /example/polytopicgeometry
       - title: "Portfolio allocation"
         url: /example/portfolio
+      - title: "Sparse optimizer"
+        url: /example/sparseoptimizer        
       - title: "Sudoku solver"
         url: /example/sudoku
       - title: "Sum-of-squares processing"
