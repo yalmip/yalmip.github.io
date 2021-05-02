@@ -15,6 +15,11 @@ image:
   thumb: weightedsumnonconvex.png
 ---
 
+<details>
+  <summary>Complete code, click to expand!</summary>
+  <script src="https://gist.github.com/johanlofberg/3af68b7e5688caf4a679047636fea764.js"></script>
+</details>
+
 This example currently only runs on the develop branch 
 {: .notice--info}
 
@@ -146,10 +151,5 @@ If you remove the sorting from the generation of \\(p\\) you will see that conve
 
 ![Convex weighted sorted sum]({{ site.url }}/images/weightedsumnonconvex.png){: .center-image }
 
-
-<details>
-  <summary>Complete code, click to expand!</summary>
-  <script src="https://gist.github.com/johanlofberg/3af68b7e5688caf4a679047636fea764.js"></script>
-</details>
 
 
