@@ -6,6 +6,9 @@ tags: [Optimizer, Tricks, Common mistakes]
 date: 2018-10-12
 ---
 
+Notice that the core in YALMIP has had some performance improvements which makes the use of an optimizer object less beneficial in this example. Nevertheless, the general idea introduced here with a sparse parameterization in the optimizer is still important.
+{: .notice--info}
+
 The [optimizer framework](/command/optimizer) can be used to reduce overhead significantly when solving many similiar problems, by pre-compiling a model parameterized in set of parameters which can change.
 
 The goal with [optimizer](/command/optimizer) is to move as much as possible of YALMIP overhead related to model analysis, solver selection, operator modelling, and extraction of low-level numerical models closer to solver formats, to a pre-compilation stage, and then only adjust a small part of the partially compiled model when some parameter changes, before compiling the final solver model and sending it to the solver. 
@@ -33,7 +36,13 @@ x = sdpvar(n,1);
 optimize(x >= 0, norm(Ad*x - bd),sdpsettings('solver','mosek'))
 ````
 
-We note that it takes YALMIP around 1 second to analyze the problem, select solver, and create the numerical model for the solver, while the solver only spends around 0.1 seconds to actually solve the problem. This is not an issue if we only want to solve 1 problem, but what if we want to solve 1000 problems for different data with the same structure?
+We note that it takes YALMIP more time to analyze the problem, select solver, and create the numerical model for the solver, as it takes for the solver to solve the problem. Actually, this problem is so easy that you have to turn off the display to time the solver accurately, as most time is spent in printing in the MATLAB command window
+
+````matlab
+optimize(x >= 0, norm(Ad*x - bd),sdpsettings('solver','mosek','verbose',0))
+````
+
+This is not an issue if we only want to solve 1 problem, but what if we want to solve 1000 problems for different data with the same structure?
 
 To get rid of the analysis and numerical model extraction overhead when solving many problems of this type, we update our code and try to make a parameterized object which (we think...) will allow us to rapidly solve the problem for varying data,. Let's test this on our single instance (don't run this if you are in a hurry!)
 
@@ -57,9 +66,11 @@ x = sdpvar(n,1);
 b = sdpvar(n,1);
 A = sdpvar(n,n,'full');
 A = A.*(Ad ~= 0);
-Solver = optimizer(x >= 0, norm(A*x - b)),sdpsettings('solver','mosek'),{A,b},x);
+Solver = optimizer(x >= 0, norm(A*x - b),sdpsettings('solver','mosek'),{A,b},x);
 
+tic
 xd = Solver(Ad,bd);
+toc
 ````
 
 The optimizer object is now created in roughly 30 seconds, but most importantly every use of the optimizer object only takes around 0.3 seconds, meaning that the overhead has been significanty reduced compared to the fully parameterized model. There is still significant overhead though as we know the solver only needs around 0.1 seconds, but this comes from the fact that the symbolic model still is very large. For n=1000, the overhead is drastically reduced and the optimizer call and the total time is 0.1 seconds of which 0.05 seconds is spent in solver, and for n = 500 the total time is 0.04 seconds with 0.02 seconds spent in solver. Note that for the case n = 500, there are still close to 6000 symbolic terms in the precompiled object, so the fact that there is remaining overhead is not surprsing.
