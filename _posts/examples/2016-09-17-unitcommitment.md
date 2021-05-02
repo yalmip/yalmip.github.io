@@ -11,6 +11,11 @@ header:
 ---
 
 
+<details>
+  <summary>Complete code, click to expand!</summary>
+  <script src="https://gist.github.com/johanlofberg/3dac77927826543552a61262181727c6.js"></script>
+</details>
+
 A classical problem in scheduling and integer programming is the [unit commitment problem](https://en.wikipedia.org/wiki/Unit_commitment_problem_in_electrical_power_production). In this problem, our task is to turn on and off power generating plants, in order to meet a forecasted future power demand, while minimizing our costs. We have several different power plants with different characteristics and running costs, and various constraints on how they can be used. We will start with a very simple model, and then expand this model with more advanced features. To make the code easy to read, we will write it in a verbose non-vectorized format.
 
 **Tip:** The most important thing we learn in this example is that you **never multiply binary variables with continuous variables to model on/off behavior**. Instead, we derive equivalent linear presentations.
@@ -149,7 +154,7 @@ stairs(value(P)');
 legend('Unit 1','Unit 2','Unit 3');
 ````
 
-![pwasol]({{ site.url }}/images/unitcommit4.png){: .center-image }
+![Solution]({{ site.url }}/images/unitcommit4.png){: .center-image }
 
 ### Efficient simulation
 
@@ -275,9 +280,5 @@ Play around with the various prices and characteristics, and you will see that y
 
 If your browser supports animated png, you will see an animation of the simulation in the figure below.
 
-![pwasol]({{ site.url }}/images/anim.png){: .center-image }
+![Animation]({{ site.url }}/images/anim.png){: .center-image }
 
-<details>
-  <summary>Complete code, click to expand!</summary>
-  <script src="https://gist.github.com/johanlofberg/3dac77927826543552a61262181727c6.js"></script>
-</details>
