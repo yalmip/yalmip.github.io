@@ -318,7 +318,7 @@ defaults:
       share: false
       related: true
       image:
-          teaser: what.png      
+          thumb: what.png      
  #     header:
  #         teaser: what.png
 # _solver
