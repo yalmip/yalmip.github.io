@@ -16,7 +16,7 @@ blues = randn(2,25);
 greens = randn(2,25)+2;
 ````
 
-Display it
+Display the two clusters of data.
 
 ````matlab
 plot(greens(1,:),greens(2,:),'g*')
