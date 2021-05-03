@@ -144,7 +144,7 @@ The facet structure is visible sometimes (remember, the function is LP-represent
 
 ![Convex weighted sorted sum]({{ site.url }}/images/weightedsum.png){: .center-image }
 
-If you remove the sorting from the generation of \\(p\\) you will see that convexity no longer is guaranteed (it is still picewise afffine though, as we can represent it using a MILP).
+If you remove the sorting from the generation of \\(p\\) you will see that convexity no longer is guaranteed (it is still piecewise afffine though, as we can represent it using a MILP).
 
 ![Convex weighted sorted sum]({{ site.url }}/images/weightedsumnonconvex.png){: .center-image }
 
