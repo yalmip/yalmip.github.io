@@ -8,7 +8,7 @@ sidebar:
   nav: "commands"
 ---
 
-[allvariables](/command/allvariables)(/command/allvariables) creates a vector with all variables used.
+[allvariables](/command/allvariables) creates a vector with variables used in a set of objects
 
 ### Syntax  
 
