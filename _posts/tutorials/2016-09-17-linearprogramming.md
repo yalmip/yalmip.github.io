@@ -57,6 +57,8 @@ Objective = sum(u)+sum(v)
 Constraints = [Constraints, -1 <= a <= 1];
 ````
 
+Absolute value is convex and LP-representable, so we could just as well have used the built-in command [abs](/command/abs), but here we build the LP as basic as possible.
+
 At last, we are ready to solve the problem
 
 ````matlab
