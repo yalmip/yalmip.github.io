@@ -15,7 +15,7 @@ The code below requires [Mosek 9](/solver/mosek) as this is the only power cone 
 
 ### Geometric example 
 
-The following example called the p-norm geometric median of a point cloud is taken from [Moseks power cone introduction](https://docs.mosek.com/modeling-cookbook/powo.html). Given a set of points \\(x_i\\) our task is to find the point \\(y\\) minimizing \\( \sum_i  \left \lvert y-x_i \right\rvert_p \\) for different \\(p > 1\\). We use the power cone representation from [Mosek](https://docs.mosek.com/modeling-cookbook/powo.html) and show how it is implemented using [pcone](/command/pcone). Afterwards, we also use a built-in command which implements a power cone representation of the p-norm.
+The following example called the p-norm geometric median of a point cloud is taken from [Moseks power cone introduction](https://docs.mosek.com/modeling-cookbook/powo.html). Given a set of points \\(x_i\\) our task is to find the point \\(y\\) minimizing \\( \sum_i  \left \lvert y-x_i \right\rvert_p \\) for different \\(p > 1\\). We use the power cone representation from [Mosek](https://docs.mosek.com/modeling-cookbook/powo.html) and show how it is implemented using [pcone](/command/pcone). Afterwards, we also use a built-in command [pnorm](/command/pnorm) which implements a power cone representation of the p-norm.
 
 Generate some random points, and plot them together with the convex hull
 
