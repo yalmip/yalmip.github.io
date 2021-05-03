@@ -87,3 +87,37 @@ optimize(F,P(1,1));
 ````
 
 Since the variable **P([2 3 6])** is a vector, the constraint is interpreted as a standard linear inequality, according to the rules introduced in the [basic tutorial](/tutorials/basic).
+
+Finally, let us solve a robust stabilization problem to show how we can use for-loops
+
+````matlab
+A = [-1 2 0;-3 -4 1;0 0 -2];
+P = sdpvar(3,3);
+F = [P >= eye(3)]
+for i = 1:20
+    Ai = A + rand(3);
+    F = [F, Ai'*P+P*Ai <= 0];
+end
+optimize(F,trace(P));
+````
+
+The computed matrix\\(P\\) defines an invariant ellipsoid, so let us lot trajectories to see that this really holds true
+
+````matlab
+P = value(P);
+clf
+x = sdpvar(3,1);
+plot(x'*P*x <= 1,x,[],[],sdpsettings('plot.shade',.1));
+
+hold on
+for i = 1:30
+    Ai = A + rand(3);
+    f = @(t,x)(Ai*x);
+    x0 = randn(3,1);x0 = x0/sqrt((x0'*P*x0));
+    X = ode45(f,[0 20],x0);
+    l = plot3(X.y(1,:),X.y(2,:),X.y(3,:));
+    set(l,'Linewidth',3);drawnow
+end
+````
+
+![Ellipsoid]({{ site.url }}/images/invariantellipsoid.png){: .center-image }
