@@ -3,6 +3,7 @@ title: "Linear programming"
 category: tutorial
 tags: [Linear programming, Classification]
 excerpt: "As easy as it gets. Linear separation with linear norms."
+gist: "https://gist.github.com/johanlofberg/b925f3732c0d55ff7249c9ad3421ebb9.js"
 level: 1.5
 sidebar:
   nav: "tutorials"
