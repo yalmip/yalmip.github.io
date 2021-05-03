@@ -101,7 +101,7 @@ end
 optimize(F,trace(P));
 ````
 
-The computed matrix\\(P\\) defines an invariant ellipsoid, so let us lot trajectories to see that this really holds true
+The computed matrix \\(P\\) defines an invariant ellipsoid, so let us lot trajectories to see that this really holds true
 
 ````matlab
 P = value(P);
