@@ -13,7 +13,7 @@ The power cone as we use it is defined as the set \\( \left \lvert z \right\rver
 
 The code below requires [Mosek 9](/solver/mosek) as this is the only power cone solver available in YALMIP.
 
-### Geometric example 
+## Geometric example 
 
 The following example called the p-norm geometric median of a point cloud is taken from [Moseks power cone introduction](https://docs.mosek.com/modeling-cookbook/powo.html). Given a set of points \\(x_i\\) our task is to find the point \\(y\\) minimizing \\( \sum_i  \left \lvert y-x_i \right\rvert_p \\) for different \\(p > 1\\). We use the power cone representation from [Mosek](https://docs.mosek.com/modeling-cookbook/powo.html) and show how it is implemented using [pcone](/command/pcone). Afterwards, we also use a built-in command [pnorm](/command/pnorm) which implements a power cone representation of the p-norm.
 
@@ -28,6 +28,8 @@ clf;
 plot([z == x*s, s>=0, sum(s)==1],z);hold on
 plot(x(1,:),x(2,:),'k*');
 ````
+
+### Low-level approach via pcone
 
 We start with a low-level scalar implementation of the sum of p-norms, and we trace the solution as a function of \\(p\\).
 
@@ -69,6 +71,8 @@ for p = 1.1:0.1:10
     drawnow
 end
 ````
+
+## High-level code via pnorm
 
 Power cones are currently only supported via the low-level [pcone](/command/pcone) operator, and the only high-level use of power cones is that the p-norm representation used above is available in the command [pnorm](/command/pnorm). By default it is implemented using a second-order cone representation, so a third argument is needed.
 
