@@ -140,7 +140,7 @@ end
 mesh(x,y,J)
 ````
 
-The facet structure is visible sometimes (remember, the function is LP-representabl thus guaranteed to be piecewise affine). 
+The facet structure is visible sometimes (remember, the function is LP-representable thus guaranteed to be piecewise affine). 
 
 ![Convex weighted sorted sum]({{ site.url }}/images/weightedsum.png){: .center-image }
 
