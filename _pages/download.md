@@ -22,7 +22,11 @@ And don't forget, most likely you have to [install additional solvers](/allsolve
 
 ## Latest relase
 
-[Download latest YALMIP](https://github.com/yalmip/YALMIP/archive/master.zip){: .btn .btn--success}
+[Latest official release](https://github.com/yalmip/YALMIP/archive/master.zip){: .btn .btn--success}
+
+## Development branch (only use if you have a specific resaon to...)
+
+[Current development version](https://github.com/yalmip/YALMIP/archive/development.zip){: .btn .btn--warning}
 
 ## Old releases
 
