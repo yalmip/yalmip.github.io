@@ -315,6 +315,8 @@ commands:
         url: /command/sosmodel
   - title: Variable manipulations
     children:
+      - title: "allvariables"
+        url: /command/allvariables    
       - title: "assign"
         url: /command/assign
       - title: "binmodel"
