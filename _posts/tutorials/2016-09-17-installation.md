@@ -69,4 +69,4 @@ If you have [MPT](/solver/mpt) installed, make sure that you delete the YALMIP d
 
 If you have used YALMIP before, type `clear classes` or restart MATLAB before using the new version.
 
-YALMIP is primarily developed on a Windows machine using MATLAB 2015a. The code should work on any platform, but is developed and thus most extensively tested on Windows. Most parts of YALMIP should in principle work with MATLAB 6.5, but has not been tested (to any larger extent) on these versions. MATLAB 5.2 or earlier versions are definitely not supported.
+YALMIP is primarily developed on a Windows machine using MATLAB 2021a. The code should work on any platform, but is developed and thus most extensively tested on Windows. Most parts of YALMIP should in principle work with MATLAB 6.5, but has not been tested (to any larger extent) on these versions. MATLAB 5.2 or earlier versions are definitely not supported.
