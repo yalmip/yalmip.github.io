@@ -116,7 +116,6 @@ Note that the low-level manipulations here can be performed much easier by using
 ````matlab
 optimize([],norm(e,1));
 optimize([],norm(e,inf));
-optimize([],norm(e,inf));
 optimize([],e'*e + norm(e,1));
 ````
 
