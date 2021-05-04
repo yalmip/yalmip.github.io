@@ -31,7 +31,7 @@ Solve the problem using the overloaded concave [log](/command/log).
 optimize(A*x <= b,-sum(log(b-A*x)))
 ````
 
-If you have an [exponential cone programming solver](tags/#exponential-cone-programming-solver) installed, this will solve nicely. However, if YALMIP has to revert to a [standard nonlinear solver](tags/#nonlinear-programming-solver), it can easily fail. The reason is that these solvers often have problems with models where the objective function is undefined for infeasible points, or more generally have singularities.
+If you have an [exponential cone programming solver](/tags/#exponential-cone-programming-solver) installed, this will solve nicely. However, if YALMIP has to revert to a [standard nonlinear solver](/tags/#nonlinear-programming-solver), it can easily fail. The reason is that these solvers often have problems with models where the objective function is undefined for infeasible points, or more generally have singularities.
 
 To avoid this issue on this model, we can use the exponential operator instead and solve an inverse formulation of the same problem.
 
@@ -40,7 +40,7 @@ y = sdpvar(m,1);
 optimize(exp(y) <= b-A*x,-sum(y));
 ````
 
-A completely equivalent problem with much better properties in a general nonlinear solver. Note that also this model will be solved with a [exponential cone programming solver](tags/#exponential-cone-programming-solver) if available.
+A completely equivalent problem with much better properties in a general nonlinear solver. Note that also this model will be solved with a [exponential cone programming solver](/tags/#exponential-cone-programming-solver) if available.
 
 
 By default, YALMIP allows nonconvex problems to be formulated. However, if you want to make sure that no nonconvex problems are set up by YALMIP, you can specify this. If we switch the sign on the objective a non-convex model is obtained, and YALMIP detects this.
