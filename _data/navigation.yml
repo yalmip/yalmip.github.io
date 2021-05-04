@@ -229,6 +229,8 @@ tutorials:
         url: /tutorial/geometricprogramming
       - title: "Exponential cone programming"
         url: /tutorial/exponentialcone
+      - title: "Power cone programming"
+        url: /tutorial/powercone
       - title: "General convex programming"
         url: /tutorial/generalconvexprogramming
       - title: "Integer programming"
@@ -247,21 +249,6 @@ tutorials:
         url: /tutorial/sumofsquaresprogramming
       - title: "Moment relaxations"
         url: /tutorial/momentrelaxations
-  - title: Auxilliary
-    children:
-      - title: "Nonlinear operators"
-        url: /tutorial/nonlinearoperators
-      - title: "Big-M and convex hulls"
-        url: /tutorial/bigmandconvexhulls
-      - title: "Envelope approximations for global optimization"
-        url: /tutorial/envelopesinbmibnb
-      - title: "Duality"
-        url: /tutorial/duality
-      - title: "Automatic dualizations"
-        url: /tutorial/automaticdualization
-      - title: "Complex problems"
-        url: /tutorial/complexproblems
-
 
 commands:
   - title: Most common
