@@ -1,11 +1,8 @@
 ---
 title: "Logics and integer-programming representations"
-category: tutorial
-level: 6
+category: inside
 tags: [Logic programming, Big-M, Integer programming]
 excerpt: "Logic programming in YALMIP means programming with operators such as alldifferent, number of non-zeros, implications and similiar combinatorial objects."
-sidebar:
-  nav: "tutorials"
 ---
 
 YALMIP does a lot of modelling for you behind the scenes, but sometimes it is important to know how models are created and what the standard building blocks and tricks are. Creating integer programming representable models seem like magic to some, but there are really only a few standard tricks used leading to a family of models. 
