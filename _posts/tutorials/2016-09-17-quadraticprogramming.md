@@ -8,6 +8,12 @@ sidebar:
   nav: "tutorials"
 ---
 
+Aslight generalization from linear programming leads us to quadratic programming, here focusing on the convex case. Non-convex quadratic programming is possible too, but it is orders of magnitudes harder and a much more complex problem.
+
+The typical application of convex quadratic programming are variants of least-squares estimation.
+
+## Regression and least-squares
+
 Let us assume that we have data generated from a noisy linear regression \\(y_t = a_tx + e_t\\). The goal is to estimate the parameter \\(x\\), given the measurements \\(y_t\\) and \\(a_t\\), and we will try 3 different approaches based on linear and quadratic programming.
 
 Create some noisy data with severe outliers to work with.
@@ -91,11 +97,21 @@ plot(t,[y A*x_L1 A*x_L2 A*x_Linf]);
 
 ![Solution to regression problem]({{ site.url }}/images/regresssolution.png){: .center-image }
 
-Let us finally state that some of the manipulations here can be performed much easier by using the [nonlinear operator framework](/tutorial/nonlinearoperator) in YALMIP.
+With quadratic programming, we typically mean linear constraints and quadratic objective, so let us solve such a general problem by adding a 1-norm regularization to our least-squares estimate.
 
 ````matlab
-optimize([],norm(residuals,1));
-optimize([],norm(residuals,inf));
+bound = sdpvar(length(e),1);
+Constraints = [-bound <= e <= bound];
+optimize(Constraints,e'*e + sum(bound));
+````
+
+Let us finally state that the low-level manipulations here can be performed much easier by using the [nonlinear operator framework](/tutorial/nonlinearoperator) in YALMIP.
+
+````matlab
+optimize([],norm(e,1));
+optimize([],norm(e,inf));
+optimize([],norm(e,inf));
+optimize([],e'*e + norm(e,1));
 ````
 
 ### Large-scale quadratic programs
