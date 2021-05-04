@@ -1,11 +1,8 @@
 ---
 title: "Big-M and convex hulls"
-category: tutorial
-level: 5
+category: inside
 tags: [Big-M, Convex hull, Logic programming, Integer programming, Polytopes]
 excerpt: "Learn how nonconvex models are written as integer programs using big-M strategies, and why it should be called small-M."
-sidebar:
-  nav: "tutorials"
 ---
 
 
