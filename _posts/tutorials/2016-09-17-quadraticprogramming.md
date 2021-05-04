@@ -13,7 +13,7 @@ A slight generalization from linear programming leads us to quadratic programmin
 
 Typical applications of convex quadratic programming are variants of least-squares estimation.
 
-## Regression and least-squares
+## Regression
 
 Let us assume that we have data generated from a noisy linear regression \\(y_t = a_tx + e_t\\). The goal is to estimate the parameter \\(x\\), given the measurements \\(y_t\\) and \\(a_t\\), and we will try 3 different approaches based on linear and quadratic programming.
 
@@ -36,6 +36,8 @@ Define the variable we are looking for
 ````matlab
 xhat = sdpvar(6,1);
 ````
+
+### Linear programming regression
 
 By using \\( \hat{x}\\) and the regressors, we can define the residuals \\( e = y - A\hat{x}\\) (which also will be an [sdpvar](/yalmip/commands/sdpvar) object, parametrized in the sought variable \\(\hat{x}\\))
 
@@ -67,16 +69,7 @@ The optimal value is, as always, extracted using the overloaded [value](/yalmip/
 x_L1 = value(xhat);
 ````  
 
-The 2-norm problem (least-squares) is easily solved as a QP problem without any constraints.
-
-````matlab
-optimize([],e'*e);
-x_L2 = value(xhat);
-````
-
-YALMIP automatically detects that the objective is a convex quadratic function, and solves the problem using any installed [QP solver](tags/#quadratic-programming-solver). If no QP solver is found, the problem is converted to an [SOCP](tags/#quadratic-programming-solver), and if no dedicated [SOCP solver](tags/#second-order-cone-programming-solver) exist, the SOCP is converted to an [SDP](/tutorial/semidefiniteprogramming) (although at that point you are better of explicitly telling YALMIP via [sdpsettings](/command/sdpsetting) to use a standard [nonlinear solver](tags/#nonlinear-programming-solver), which will be much better than using an SDP solver).
-
-Finally, we minimize the \\(\infty\\)-norm. This corresponds to minimizing the largest (absolute value) residual. Introduce a scalar to bound the largest value in the vector residual (YALMIP uses MATLAB standard to compare scalars, vectors and matrices)
+Minimize the \\(\infty\\)-norm. This corresponds to minimizing the largest (absolute value) residual. Introduce a scalar to bound the largest value in the vector residual (YALMIP uses MATLAB standard to compare scalars, vectors and matrices)
 
 ````matlab
 bound = sdpvar(1,1);
@@ -90,13 +83,16 @@ optimize(Constraints,bound);
 x_Linf = value(xhat);
 ````
 
-We plot the solutions, and notice that the 1-norm estimate worked very well and essentially managed to capture the underlying harmonics despite the severe measurement error after 2 seconds, whereas the two other estimates perform badly on this data set.
+### Quadratic programming regression
+
+The 2-norm problem (least-squares) is easily solved as a QP problem without any constraints.
 
 ````matlab
-plot(t,[y A*x_L1 A*x_L2 A*x_Linf]);
+optimize([],e'*e);
+x_L2 = value(xhat);
 ````
 
-![Solution to regression problem]({{ site.url }}/images/regresssolution.png){: .center-image }
+YALMIP automatically detects that the objective is a convex quadratic function, and solves the problem using any installed [QP solver](tags/#quadratic-programming-solver). If no QP solver is found, the problem is converted to an [SOCP](tags/#quadratic-programming-solver), and if no dedicated [SOCP solver](tags/#second-order-cone-programming-solver) exist, the SOCP is converted to an [SDP](/tutorial/semidefiniteprogramming) (although at that point you are better of explicitly telling YALMIP via [sdpsettings](/command/sdpsetting) to use a standard [nonlinear solver](tags/#nonlinear-programming-solver), which will be much better than using an SDP solver).
 
 With quadratic programming, we typically mean linear constraints and quadratic objective, so let us solve such a general problem by adding a 1-norm regularization to our least-squares estimate.
 
@@ -105,6 +101,15 @@ bound = sdpvar(length(e),1);
 Constraints = [-bound <= e <= bound];
 optimize(Constraints,e'*e + sum(bound));
 ````
+
+We plot the solutions, and notice that the 1-norm estimate worked very well and essentially managed to capture the underlying harmonics despite the severe measurement error after 2 seconds, whereas the other estimates perform badly on this data set.
+
+````matlab
+plot(t,[y A*x_L1 A*x_L2 A*x_Linf]);
+````
+
+![Solution to regression problem]({{ site.url }}/images/regresssolution.png){: .center-image }
+
 
 Note that the low-level manipulations here can be performed much easier by using the [nonlinear operator framework](/tutorial/nonlinearoperator) in YALMIP.
 
@@ -115,7 +120,7 @@ optimize([],norm(e,inf));
 optimize([],e'*e + norm(e,1));
 ````
 
-### Large-scale quadratic programs
+## Large-scale quadratic programs
 
 The 2-norm solution (least-squares estimate) is most classically stated in the described QP formulation, although it in some cases is much more efficient in YALMIP to express the problem using a 2-norm, which will lead to a [second-order cone problem](/tutorial/secondorderconeprogramming).
 
