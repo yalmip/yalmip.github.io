@@ -2,7 +2,7 @@
 category: example
 excerpt: "Untangle that messy expression"
 title: "Modelling if-else-end statements"
-tags: [Integer programming, Logic programming]
+tags: [Integer programming, Logic programming, Implies, Regression]
 header:
   teaser: "nonconvexpenalty.png"
 sidebar:
