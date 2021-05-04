@@ -65,7 +65,7 @@ optimize([],norm(y-A*xhat,2));
 plot(t,Atrue*value(xhat),'k');
 ````
 
-![Result]({{ site.url }}/images/socpregression1.png){: .center-image }
+![Result 1]({{ site.url }}/images/socpregression1.png){: .center-image }
 
 Interestingly, the result on the given corrupted training data is essentially the same.
 
@@ -81,4 +81,4 @@ optimize([],norm(y-A*xhat,2));
 plot(t,A*value(xhat),'k');
 ````
 
-![Result]({{ site.url }}/images/socpregression2.png){: .center-image }
+![Result 2]({{ site.url }}/images/socpregression2.png){: .center-image }                                
