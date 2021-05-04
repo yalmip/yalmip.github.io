@@ -45,14 +45,14 @@ F = [norm(y-A*xhat,2) <= u, norm(xhat,2) <= v];
 optimize(F,u + v);
 ````
 
-Of course, we can write it in the most natural form (and YALMIP will automatically perform the epigraph reformulation and represent the model using second order cone operators)
+Of course, we can write it in the most natural form (and YALMIP will automatically perform the epigraph reformulation and represent the model using second-order cone operators)
 ````matlab
 optimize([],norm(y-A*xhat,2) + norm(xhat,2));
 ````
 
-YALMIP will automatically model this as a second-order cone problem, and solve it as such if a [second-order cone programming solver](/yalmip/solvers) is installed. If no second order cone programming solver is found, YALMIP will convert the model to a semidefinite program and solve it using any installed [semidefinite programming solver](/yalmip/solvers).
+YALMIP will automatically model this as a second-order cone problem, and solve it as such if a [second-order cone programming solver](/yalmip/solvers) is installed. If no second-order cone programming solver is found, YALMIP will convert the model to a semidefinite program and solve it using any installed [semidefinite programming solver](/yalmip/solvers).
 
-Let us plot the solution, and then see what standard least-squares would have obtained. Note that this is the performance on the real regressor. Our regularization has protected us from over-fitting too much to the data.
+Let us plot the solution, and then see what standard least-squares would have obtained. Note that this is the performance on the real regressor. Our regularization has protected us from over-fitting too much to the corrupt data.
 
 ````matlab
 clf
@@ -67,7 +67,7 @@ plot(t,Atrue*value(xhat),'k');
 
 ![Result 1]({{ site.url }}/images/socpregression1.png){: .center-image }
 
-Interestingly, the result on the given corrupted training data is essentially the same.
+Interestingly, the result on the given corrupt training data is essentially the same.
 
 ````matlab
 clf
