@@ -1,13 +1,8 @@
 ---
 title: "Nonlinear operators - callbacks"
-category: tutorial
-level: 6
+category: inside
 tags:
 excerpt: "Callback representations of nonlinear operators"
-header:
-  teaser:
-sidebar:
-  nav: "tutorials"
 ---
 
 The nonlinear operator framework was initially implemented for functions that can be modelled rigorously using conic constraints and additional variables through [graph representations](/tutorial/nonlinearoperatorsgraphs).
