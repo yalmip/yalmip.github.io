@@ -2,7 +2,7 @@
 title: "Second order cone programming"
 excerpt: "Ice-cream cone! Yummy."
 category: tutorial
-tags: [Second-order cone programming]
+tags: [Second-order cone programming, Regression]
 level: 3
 sidebar:
   nav: "tutorials"
