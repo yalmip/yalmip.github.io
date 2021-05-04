@@ -3,6 +3,7 @@ title: "Quadratic programming"
 category: tutorial
 tags: [Quadratic programming, Large-scale quadratic programming, Regression]
 excerpt: "Almost as easy as linear programming. Be careful though, symbolics might start to cause overhead."
+gist: "https://gist.github.com/johanlofberg/167433af551dc6e42ef9fd6f5f3e9a44.js"
 level: 2
 sidebar:
   nav: "tutorials"
