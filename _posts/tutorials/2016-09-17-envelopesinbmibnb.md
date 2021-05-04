@@ -10,7 +10,7 @@ sidebar:
 
 The global solver [BMIBNB](/solver/bmibnb) is a YALMIP-based implementation of a standard spatial branch-and-bound strategy. If you are unfamiliar with the basic ideas in a branch & bound solver, you should try to find an [introduction](https://en.wikipedia.org/wiki/Branch_and_bound) first and then perhaps check out the article on [global optimization](tutorial/globaloptimization)
 
-# A branch & bound solver
+## A branch & bound solver
 
 A spatial branch & bound algorithm for nonconvex programming typically relies on a few standard steps. 
 
@@ -24,11 +24,11 @@ A spatial branch & bound algorithm for nonconvex programming typically relies on
 
 In addition to these standard steps, a large amount of preprocessing and bound-propagation is performed, both in the root-node and along the branching. This is extremely important in order to obtain stronger linear relaxations as we will see below. Some options controlling this can be found in the description of [BMIBNB](/solver/bmibnb). 
 
-# Convex envelope approximations
+## Convex envelope approximations
 
 The central object in the solver is the relaxation model which is derived once bounds are available in a node, and this model is built using outer approximations of convex envelopes (the convex hull of the set \\( (x,f(x)) \\) on some interval in \\(x\\)).
 
-## Linear relaxation for bilinear and quadratic problems
+### Linear relaxation for bilinear and quadratic problems
 
 The solver implements a standard relaxation strategy where all bilinear and quadratic terms are replaced with new linear variables. Based on bounds on the variables in the term, constraints are added to relate the new linear variable with the original nonlinear term, in order to make the relaxation as tight as possible. 
 
@@ -85,15 +85,15 @@ hold on;plot(t,t.^2);
 
 Note that the machinery requires bounds on the variables. [BMIBNB](/solver/bmibnb) extracts all explicit bounds in the model in the root-node and applies several tricks to improve these, and find implied bounds on variables for which no bounds have been supplied. Still, you should always add as much information as possible, and possibly artificial bounds. The tighter the bounds are, i.e., closer to the final optimal value, the better the envelope approximations will be, and the faster the global solver will converge.
 
-## Linear relaxation for multivariate polynomial problems
+### Linear relaxation for multivariate polynomial problems
 
 Multivariate polynomial problems are treated by simply converting them to bilinear representions by introducing additional variables and constraints. As an example, the term \\(x^2y^2\\) can be written as \\(uv\\) with the new bilinear equality constraints \\(u=x^2\\) and \\(v=y^2\\). Once a bilinear model has been obtained, standard bilinear relaxations can be used on the three monomials \\(x^2, y^2, uv\\). 
 
-## Linear relaxation for univariate higher degree monomials
+### Linear relaxation for univariate higher degree monomials
 
 Higher degree monomials can be either be handled by applying same idea as for multivariate terms, or by using the general envelope appoxmation methods described below. [BMIBNB](/solver/bmibnb) applies both strategies depending on context.
 
-## Linear relaxation for general univariate operators
+### Linear relaxation for general univariate operators
 
 A nonlinear scalar term \\(f(x)\\) is replaced with a new variable \\(w\\), and linear inequalities on \\(x\\) and \\(w\\) are introduced to ensure that \\(w\\) approximates \\(f(x)\\) well, i.e., that the curve \\(w = f(x)\\) is contained in the polytopic region in \\(A_x x + A_w w \leq b\\).
 
