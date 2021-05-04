@@ -1,9 +1,8 @@
 ---
-layout: single
+category: inside
 excerpt: "Where to start?"
 title: Debugging infeasible models
 tags: [Typical problems, Tricks]
-comments: true
 date: 2016-09-22
 ---
 

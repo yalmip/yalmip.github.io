@@ -1,9 +1,8 @@
 ---
-layout: single
+category: inside
 excerpt: "Avoid that for-loop by using vector objectives"
 title: Computing multiple solutions in one shot
 tags: [Tricks]
-comments: true
 date: '2009-08-29'
 ---
 

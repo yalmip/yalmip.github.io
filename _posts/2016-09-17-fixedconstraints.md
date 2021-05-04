@@ -1,9 +1,8 @@
 ---
-layout: single
+category: inside
 excerpt: "Code works for almost all cases, but suddenly fails."
 title: Constraints without any variables
 tags: [Typical problems]
-comments: true
 date: '2009-08-29'
 ---
 

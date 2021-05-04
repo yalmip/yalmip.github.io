@@ -1,10 +1,8 @@
 ---
-layout: single
-permalink: /multiobjective
+category: inside
 excerpt: "How do I create a cheap Ferrari?"
 title: "Multi-objective problems in YALMIP"
 tags: [Multiobjective programming, Portfolio optimization]
-comments: true
 date: 2017-11-24
 ---
 

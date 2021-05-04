@@ -13,7 +13,7 @@ header:
 <!-- <h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>-->
 
 {% for post in site.posts %}
-{% if post.category == "example" or post.category == "faq" or post.category == "tutorial" or post.category == "solver" or post.category == "command" or post.category == "reference"%}
+{% if post.category == "example" or post.category == "faq" or post.category == "tutorial" or post.category == "solver" or post.category == "command" or post.category == "reference" or post.category == "inside"%}
 {% else %}
 {% include archive-single.html type="grid" %}
 {% endif %}

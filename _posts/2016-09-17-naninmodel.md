@@ -1,9 +1,8 @@
 ---
-layout: single
+category: inside
 excerpt: "Where why how?"
 title: NaN in model
 tags: [Typical problems]
-comments: true
 date: '2009-08-29'
 ---
 

@@ -1,9 +1,8 @@
 ---
-layout: single
+category: inside
 excerpt: "Where to start?"
 title: Debugging unbounded models
 tags: [Typical problems, Tricks]
-comments: true
 date: 2017-09-21
 ---
 

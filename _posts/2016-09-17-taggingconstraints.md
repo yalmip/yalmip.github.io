@@ -1,9 +1,8 @@
 ---
-layout: single
+category: inside
 excerpt: "Name your constraints for easy reference"
 title: Tagging constraints
 tags: [Tricks]
-comments: true
 date: '2009-08-29'
 ---
 
