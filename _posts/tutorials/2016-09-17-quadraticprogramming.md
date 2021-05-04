@@ -30,25 +30,25 @@ Define the variable we are looking for
 xhat = sdpvar(6,1);
 ````
 
-By using **xhat** and the regressors in **A**, we can define the residuals (which also will be an [sdpvar](/yalmip/commands/sdpvar) object, parametrized in **xhat**)
+By using \\( \hat{x}\\) and the regressors, we can define the residuals \\( e = y - A\hat{x}\\) (which also will be an [sdpvar](/yalmip/commands/sdpvar) object, parametrized in the sought variable \\(\hat{x}\\))
 
 ````matlab
-residuals = y-A*xhat;
+e = y-A*xhat;
 ````
 
-To solve the 1-norm regression problem (minimize sum of absolute values of residuals), we can define a variable that will serve as a bound on the absolute values of **y-A*xhat** (we will solve this problem much more conveniently below by simply using the norm operator)
+To solve the 1-norm regression problem (minimize sum of absolute values of residuals), we can define a variable that will serve as a bound on the absolute values of \\(e\\) (we will solve this problem much more conveniently below by simply using the norm operator)
 
 ````matlab
-bound = sdpvar(length(residuals),1);
+bound = sdpvar(length(e),1);
 ````
 
 Express that the bound variables are larger than the absolute values of the residuals (note the convenient definition of a double-sided constraint).
 
 ````matlab
-Constraints = [-bound <= residuals <= bound];
+Constraints = [-bound <= e <= bound];
 ````
 
-Call YALMIP to minimize the sum of the bounds subject to the constraints in **Constraints**. YALMIP will automatically detect that this is a linear program, and call any [LP solver](/yalmip/solvers) available on your path.
+Call YALMIP to minimize the sum of the bounds subject to the constraints modelling the abolsute values. YALMIP will automatically detect that this is a linear program, and call any [LP solver](/yalmip/solvers) available on your path.
 
 ````matlab
 optimize(Constraints,sum(bound));
@@ -63,17 +63,17 @@ x_L1 = value(xhat);
 The 2-norm problem (least-squares) is easily solved as a QP problem without any constraints.
 
 ````matlab
-optimize([],residuals'*residuals);
+optimize([],e'*e);
 x_L2 = value(xhat);
 ````
 
-YALMIP automatically detects that the objective is a convex quadratic function, and solves the problem using any installed [QP solver](/yalmip/solvers). If no QP solver is found, the problem is converted to an SOCP, and if no dedicated SOCP solver exist, the SOCP is converted to an SDP.
+YALMIP automatically detects that the objective is a convex quadratic function, and solves the problem using any installed [QP solver](/yalmip/solvers). If no QP solver is found, the problem is converted to an [SOCP](/tutorial/socpprogramming), and if no dedicated SOCP solver exist, the SOCP is converted to an [SDP](/tutorial/semidefiniteprogramming) (although at that point you are better of explicitly telling YALMIP to use a standard nonlinear solver, which will be much better than using an SDP solver).
 
 Finally, we minimize the \\(\infty\\)-norm. This corresponds to minimizing the largest (absolute value) residual. Introduce a scalar to bound the largest value in the vector residual (YALMIP uses MATLAB standard to compare scalars, vectors and matrices)
 
 ````matlab
 bound = sdpvar(1,1);
-Constraints  = [-bound <= residuals <= bound];
+Constraints  = [-bound <= e <= bound];
 ````  
 
 and minimize the bound.
@@ -100,7 +100,7 @@ optimize([],norm(residuals,inf));
 
 ### Large-scale quadratic programs
 
-The 2-norm solution is most easily stated in the described QP formulation, although it in some cases is more efficient in YALMIP to express the problem using a 2-norm, which will lead to a [second order cone problem](/tutorial/secondorderconeprogramming).
+The 2-norm solution is most easily stated in the described QP formulation, although it in some cases is muh more efficient in YALMIP to express the problem using a 2-norm, which will lead to a [second order cone problem](/tutorial/secondorderconeprogramming).
 
 ````matlab
 optimize([],norm(residuals,2));
@@ -135,3 +135,13 @@ The archetypical example is **sum(x)^2** which leads to a completely dense quadr
 z = sdpvar(1);
 optimize([z == sum(x)],z^2);
 ````
+
+Finally, note that squaring a 2-norm expression simply returns the quadratic function, i.e., the following two alls are equivalent and no SOCP modelling is performed. 
+
+````matlab
+optimize([],norm(e)^2);
+optimize([],e'*e);
+````
+
+
+
