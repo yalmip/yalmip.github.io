@@ -8,9 +8,11 @@ sidebar:
   nav: "tutorials"
 ---
 
-YALMIP was initially developed as a modelling tool for conic optimization problems, or problems that can be converted to conic optimization problems. However, today it is a rather general modelling tool with support for most functions and operators.
+YALMIP really does not care if your general nonlinear program is convex or not. In the general case it will just be a nonlinear model and any nonlinear solver is used. If it happens to be convex, the solver might perform better, but that is not something YALMIP can influence.
 
-You are advised to read the [nonlinear operators tutorial](/tutorial/nonlinearoperators) before reading this tutorial.
+However, all nonconvex models are not created equal. There are nice convex models, and nasty nonconvex models, from YALMIPs perspective.
+
+## 
 
 As an example, we will find the analytic center of a polytope \\(Ax \leq b\\). The analytic center is defined as the point which maximizes the expression \\( \sum \log(b-Ax)\\)
 
@@ -23,28 +25,25 @@ b = rand(m,1)*m;
 x = sdpvar(n,1);
 ````
 
-Solve the problem using the overloaded concave [log](/command/log) (for this to work, you need to have a general purpose nonlinear solver installed)
+Solve the problem using the overloaded concave [log](/command/log).
 
 ````matlab
 optimize(A*x <= b,-sum(log(b-A*x)))
 ````
 
-Most likely, this will fail if you try to run it. The reason is that nonlinear solvers often have problems with models where the objective function is undefined for infeasible points.
+If you have an [exponential cone programming solver](tags/#exponential-cone-programming-solver) installed, this will solve nicely. However, if YALMIP has to revert to a [standard nonlinear solver](tags/#nonlinear-programming-solver), it can easily fail. The reason is that these solvers often have problems with models where the objective function is undefined for infeasible points, or more generally have singularities.
 
-To avoid this, we can use the exponential operator instead and solve an inverse formulation of the same problem.
+To avoid this issue on this model, we can use the exponential operator instead and solve an inverse formulation of the same problem.
 
 ````matlab
 y = sdpvar(m,1);
 optimize(exp(y) <= b-A*x,-sum(y));
 ````
 
-Finally, note that we can solve the problem using the overloaded [geomean](/command/geomean) operator. This will however lead to a second order cone problem.
+A completely equivalent problem with much better properties in a general nonlinear solver. Note that also this model will be solved with a [exponential cone programming solver](tags/#exponential-cone-programming-solver) if available.
 
-````matlab
-optimize([],-geomean(b-A*x));
-````
 
-By default, YALMIP allows nonconvex problems to be formulated. However, if you want to make sure that no nonconvex problems are set up by YALMIP, you can specify this
+By default, YALMIP allows nonconvex problems to be formulated. However, if you want to make sure that no nonconvex problems are set up by YALMIP, you can specify this. If we switch the sign on the objective a non-convex model is obtained, and YALMIP detects this.
 
 ````matlab
 optimize(A*x <= b,sum(log(b-A*x)),sdpsettings('allownonconvex',0))
