@@ -121,38 +121,37 @@ The 2-norm solution (least-squares estimate) is most classically stated in the d
 ````matlab
 optimize([],norm(residuals,2));
 ````
-
-The reason is that a quadratic function with \\(n\\) variables can be composed of up to \\(n(n+1)/2\\) monomials, which YALMIP has to work with symbolically. If you absolutely need to solve a large-scale quadratic program with YALMIP using a QP solver, introduce an auxiliary variable and equality constraints. This will make the quadratic term sparse (not only YALMIP but many QP solvers will be significantly faster after this transformation)
+The reason is that a quadratic function with \\(n\\) variables can be composed of up to \\(n(n+1)/2\\) monomials, which YALMIP has to work with symbolically. If you absolutely need to solve a large-scale quadratic program with YALMIP using a QP solver, introduce an auxiliary variable and equality constraints. This will make the quadratic term sparse and move any dense data to the linear equality constrnaints (not only YALMIP but many QP solvers will be significantly faster after this transformation)
 
 ````matlab
-aux = sdpvar(length(residuals),1);
-optimize([aux == residuals],aux'*aux);
+s = sdpvar(length(e),1);
+optimize([s == e],s'*s);
 ````
 
 Of course, in this example, it makes no difference, as there only are 6 decision variables but in scenarios where your objective is \\(x^TQx\\) and \\(Q=R^TR\\) is large and dense, a better model might be
 
 ````matlab
 R = chol(Q);
-z = sdpvar(length(x),1);
-optimize([z == R*x],z'*z);
+s = sdpvar(length(x),1);
+optimize([s == R*x],s'*s);
 ````
 
 Even better, if you know \\(Q\\) is low-rank or there is some other structure that allows you to compute a low-rank possibly sparse factor, you should exploit that
 
 ````matlab
 R = my_smart_factorization(Q);
-z = sdpvar(size(R,2),1);
-optimize([z == R*x],z'*z);
+s = sdpvar(size(R,2),1);
+optimize([s == R*x],s'*s);
 ````
 
 The archetypical example is **sum(x)^2** which leads to a completely dense quadratic model of rank 1. Absolutely catastrophical for large problems (it will most likely be indefinite for vectors of length larger than 10 in floating-point numerics) and a waste of memory. The trivial improvement is
 
 ````matlab
-z = sdpvar(1);
-optimize([z == sum(x)],z^2);
+s = sdpvar(1);
+optimize([s == sum(x)],s^2);
 ````
 
-Finally, note that squaring a 2-norm expression simply returns the quadratic function, i.e., the following two calls are equivalent and no SOCP modelling is performed. In other words, the introduction of a possibly complicated symbolic quadratic object is not avoided here.
+Finally, note that squaring a 2-norm expression simply returns the quadratic function, i.e., the following two calls are equivalent and no SOCP modelling is performed. In other words, the introduction of a possibly complicated symbolic quadratic object is not circumvented here.
 
 ````matlab
 optimize([],norm(R*e)^2);
