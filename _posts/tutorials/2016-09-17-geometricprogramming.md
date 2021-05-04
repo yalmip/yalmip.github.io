@@ -8,14 +8,19 @@ sidebar:
   nav: "tutorials"
 ---
 
-The following example requires [MOSEK](/solver/mosek) or [GPPOSY](/solver/gpposy), or any nonlinear solver such as [FMINCON](/solver/fmincon), [SNOPT](/solver/snopt) or [IPOPT](/solver/ipopt). (The solvers [MOSEK](/solver/mosek) and [GPPOSY](/solver/gpposy) are dedicated geometric programming solvers, but for small to medium-scale problems, comparable performance is obtained by simply letting YALMIP convert the problem to the convex form and solve the problem using a general nonlinear solver.)
+The following example requires [MOSEK](/solver/mosek) or [GPPOSY](/solver/gpposy), or any nonlinear solver such as [FMINCON](/solver/fmincon), [SNOPT](/solver/snopt) or [IPOPT](/solver/ipopt). The solvers [GPPOSY](/solver/gpposy) is a dedicated geometric programming solvers but slightly outdated. With [MOSEK](/solver/mosek), YALMIP automatically rewrites the problem to an [exponential cone program]((tutorial/exponentialcone). With a general nonlinear solver, it is possible tell YLMIP to rewrite the geometri program to its convex form.
 
-Nonlinear terms can be defined also with negative and non-integer powers. This can be used to define geometric programming problems.
+
+## Posynomial forms
+
+A general signomial problem has the following form.
 
 ![Geometric program]({{ site.url }}/images/gemoetric.gif){: .center-image }
 
 
-Geometric programming solvers are capable of solving a sub-class of geometric problems where \\(c\geq 0\\) with the additional constraint \\(t\geq 0\\), so called posynomial geometric programming. The following example is taken from the [MOSEK](/solver/mosek) manual. Note that there has to be explicit positivity constraint on all involved variables in the model.
+Geometric programming solvers are capable of solving a sub-class where \\(c\geq 0\\) and \\(t\geq 0\\), so called posynomial geometric programming. The following example is taken from the [MOSEK](/solver/mosek) manual. Note that there has to be explicit positivity constraint on all involved variables in the model.
+
+Assuming [MOSEK](/solver/mosek) or  [GPPOSY](/solver/gpposy) is available, we can solve the following model.
 
 ````matlab
 sdpvar t1 t2 t3
@@ -81,8 +86,8 @@ optimize(C,obj);
 
 To understand how a generalized geometric program can be converted to a standard geometric program, the reader is referred to [Boyd et al 2007].
 
-### Comments
-The posynomial geometric programming problem is not convex in its standard formulation. Hence, if a general nonlinear solver is applied to the problem, it will typically fail. However, by performing a suitable logarithmic variable transformation, the problem is rendered convex. YALMIP has built-in support for performing this variable change, and solve the problem using a nonlinear solver such as [FMINCON](/solver/fmincon). To invoke this module in YALMIP, use the solver tag `'fmincon-geometric'`.
+### Using standard nonlinear solvers
+The posynomial geometric programming problem is not convex in its standard formulation. The presence of multiple singularities due to the negative powers does not make matters ny easier. Hence, if a general nonlinear solver is applied to the problem, it will typically fail. However, by performing a suitable logarithmic variable transformation, the problem is rendered convex. YALMIP has built-in support for performing this variable change, and solve the problem using a nonlinear solver such as [FMINCON](/solver/fmincon). To invoke this module in YALMIP, use the solver tag `fmincon-geometric'.
 
 ````matlab
 sdpvar t1 t2 t3
@@ -90,10 +95,6 @@ obj = (40*t1^-1*t2^-0.5*t3^-1)+(20*t1*t3)+(40*t1*t2*t3);
 C = [(1/3)*t1^-2*t2^-2+(4/3)*t2^0.5*t3^-1 <= 1, t1>=0, t2>=0, t3>=0];
 optimize(C,obj,sdpsettings('solver','fmincon-geometric'));
 ````
-
-The current version of YALMIP has a bug that may cause problems if you have convex quadratic constraints. To avoid this problem, use `sdpsettings('convertconvexquad',0)`. To avoid some other known issues, it is advised to explicitly tell YALMIP that the problem is a geometric problem by specifying the solver to `'gpposy'`, `'mosek-geometric'` or `'fmincon-geometric'`.
-
-Never use the commands [sqrt](/command/sqrt) and [cpower](/command/cpower) when working with geometric programs, i.e. always use the ^ operator. The reason is implementation issues in YALMIP. The commands [sqrt](/command/sqrt) and [cpower](/command/cpower) are meant to be used in optimization problems where a conic model is derived using convexity propagation, see [nonlinear operators](/tutorial/nonlinearoperators).
 
 ### Mixed integer geometric programming
 
@@ -159,3 +160,9 @@ D = max(T6,T7);
 optimize([F,integer(x)],D)
 value(D)
 ````
+
+### Known issues
+
+Confusion can occur in the reformulation engine if you have convex quadratic constraints in your geometric program. To avoid this problem, use `sdpsettings('convertconvexquad',0)`. To avoid some other known issues, it is advised to explicitly tell YALMIP that the problem is a geometric problem by specifying the solver to `'gpposy'`, `'mosek-geometric'` or `'fmincon-geometric'`.
+
+Never use the commands [sqrt](/command/sqrt) and [cpower](/command/cpower) when working with geometric programs, i.e. always use the ^ operator. The reason is implementation issues in YALMIP. The commands [sqrt](/command/sqrt) and [cpower](/command/cpower) are meant to be used in optimization problems where a conic second-order cone model is meant to be derived.
