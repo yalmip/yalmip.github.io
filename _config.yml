@@ -331,6 +331,19 @@ defaults:
       comments: false
       share: false
       related: true
+
+# _inside
+  - scope:      
+      type: posts
+    values:
+      category: inside
+      layout: single
+      author_profile: false
+      read_time: false
+      comments: false
+      share: false
+      related: true
+
 # _command
   - scope:
       path: "_posts/commands"
