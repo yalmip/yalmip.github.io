@@ -8,9 +8,9 @@ sidebar:
   nav: "tutorials"
 ---
 
-Aslight generalization from linear programming leads us to quadratic programming, here focusing on the convex case. Non-convex quadratic programming is possible too, but it is orders of magnitudes harder and a much more complex problem.
+A slight generalization from linear programming leads us to quadratic programming, here focusing on the convex case. Non-convex quadratic programming is possible too, but it is orders of magnitudes harder and a much more complex problem.
 
-The typical application of convex quadratic programming are variants of least-squares estimation.
+Typical applications of convex quadratic programming are variants of least-squares estimation.
 
 ## Regression and least-squares
 
@@ -105,7 +105,7 @@ Constraints = [-bound <= e <= bound];
 optimize(Constraints,e'*e + sum(bound));
 ````
 
-Let us finally state that the low-level manipulations here can be performed much easier by using the [nonlinear operator framework](/tutorial/nonlinearoperator) in YALMIP.
+Note that the low-level manipulations here can be performed much easier by using the [nonlinear operator framework](/tutorial/nonlinearoperator) in YALMIP.
 
 ````matlab
 optimize([],norm(e,1));
