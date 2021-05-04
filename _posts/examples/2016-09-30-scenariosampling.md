@@ -4,6 +4,7 @@ category: example
 excerpt: "Unintended consequences of an improved optimizer framework"
 title: "Sample-based robust optimization"
 tags: [Scenario optimization, Random, Distribution, Optimizer]
+gist: "https://gist.github.com/johanlofberg/9babc43cedcf48391a3c9adba194b4d2.js"
 date: 2016-09-28
 header:
   teaser: "approximationromb2.png"
@@ -69,7 +70,8 @@ for k = 1:10
   end
   plot(ballApproximation,x,'blue',200,ops);
   xopt = ballApproximation();
-  plot(xopt(1),xopt(2),'k*')
+  plot(xopt(1),xopt(2),'k*');
+  drawnow
 end 
 ````
 
