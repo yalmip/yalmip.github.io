@@ -12,7 +12,7 @@ YALMIP really does not care if your general nonlinear program is convex or not. 
 
 However, all nonconvex models are not created equal. There are nice convex models, and nasty nonconvex models, from YALMIPs perspective.
 
-## 
+## Analytic center of polytope
 
 As an example, we will find the analytic center of a polytope \\(Ax \leq b\\). The analytic center is defined as the point which maximizes the expression \\( \sum \log(b-Ax)\\)
 
