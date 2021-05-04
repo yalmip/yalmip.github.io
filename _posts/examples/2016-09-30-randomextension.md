@@ -14,7 +14,7 @@ image:
   thumb: approximationromb2.png
 ---
 
-To illustrate the ideas, we will start with some pure clasical YALMIP code to show how a circle can be approximated using hyperplanes, i.e., we will create a polytopic outer approximation. 
+To illustrate the ideas, we will start with some basic YALMIP code to show how a circle can be approximated using hyperplanes, i.e., we will create a polytopic outer approximation. 
 
 The ball \\(x^Tx \leq 1\\) can alternatively be written as \\(v^Tx \leq 1 ~\forall ~v^Tv\leq 1 \\) (the dual-norm property). Hence, the following lines of code generate a ball approximation and plots it together with the exact ball (we sample \\(v\\) on the unit-circle as samples inside in the interior will generate redundant constraints)
 
@@ -30,7 +30,7 @@ plot(ballApproximation,x,'blue');hold on
 plot(x'*x <= 1,x,'red');
 ````
 
-Let us see how this approximation evolves as we increase the number of hyperplanes, and let us also solve an optimization problem where we maximize \\(x_1+x_2\\) over the approximation just to see how this solution converges. Still, we're using vanilla YALMIP code. 
+Let us see how this approximation evolves as we increase the number of hyperplanes, and let us also solve an optimization problem where we maximize \\(x_1+x_2\\) over the approximation just to see how this solution converges. 
 
 ````matlab
 x = sdpvar(2,1);
@@ -48,11 +48,11 @@ for k = 1:10
 end 
 ````
 
-In the [plot](/command/plot) command, we use 200 rays to increase the likelyhood of not missing any vertices during ray-shooting. In other words, the code above solves 2000 linear programs to plot the sequence of ball approximations, so you better have an efficient solver installed (code takes around 10-15 seconds with a quality [linear programming solver](/allsolvers) installed).
+In the [plot](/command/plot) command, we use 200 rays to increase the likelihood of not missing any vertices during ray-shooting. In other words, the code above solves 2000 linear programs to plot the sequence of ball approximations, so you better have an efficient solver installed (code takes around 10-15 seconds with a quality [linear programming solver](/allsolvers) installed).
 
 ![Approximated ball]({{ site.url }}/images/approximationball1.png){: .center-image }
 
-In a first step to use the [recent additions to YALMIP optimizer objects](/optimizerupdates), we use partially instantiated  [optimizer](/command/optimizer) objects. We want to generate a bunch of constraints with different \\(v\\) but the same \\(x\\). Hence, we create a model which is parameterized in \\(v\\), and then instantiates objects where \\(v\\) is fixed to different values, and concatenate these. Conveniently, [plot](/command/plot) is now overloaded on [optimizer](/command/optimizer) objects and simply plots the feasible set in any remaining decision- or parametric variables. Note that the uninstantiated model is bilinear in the variables, hence it is crucial to specify a solver which is applicable once the parameters have been fixed. Also note the use of the flag **'nosolve'** which stops the optimizer object from solving the instantiated model
+In a first step to use the [recent additions to YALMIP optimizer objects](/optimizerupdates), we use partially instantiated  [optimizer](/command/optimizer) objects. We want to generate a bunch of constraints with different \\(v\\) but the same \\(x\\). Hence, we create a model which is parameterized in \\(v\\), and then instantiate objects where \\(v\\) is fixed to different values, and concatenate these. Conveniently, [plot](/command/plot) is overloaded on [optimizer](/command/optimizer) objects and simply plots the feasible set in any remaining decision- or parametric variables. Note that the uninstantiated model is bilinear in the variables, hence it is crucial to specify a solver which is applicable once the parameters have been fixed. Also note the use of the flag **'nosolve'** which stops the optimizer object from solving the instantiated model
 
 ````matlab
 x = sdpvar(2,1);
