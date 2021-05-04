@@ -47,4 +47,4 @@ Of course, we can write it in the most natural form (and YALMIP will automatical
 optimize([],norm(y-A*xhat,2) + norm(xhat,2));
 ````
 
-YALMIP will automatically model this as a second order cone problem, and solve it as such if a [second-order cone programming solver](/yalmip/solvers) is installed. If no second order cone programming solver is found, YALMIP will convert the model to a semidefinite program and solve it using any installed [semidefinite programming solver](/yalmip/solvers)
+YALMIP will automatically model this as a second order cone problem, and solve it as such if a [second-order cone programming solver](/yalmip/solvers) is installed. If no second order cone programming solver is found, YALMIP will convert the model to a semidefinite program and solve it using any installed [semidefinite programming solver](/yalmip/solvers).
