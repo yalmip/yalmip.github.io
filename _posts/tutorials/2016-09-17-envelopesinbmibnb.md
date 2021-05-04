@@ -8,7 +8,7 @@ sidebar:
   nav: "tutorials"
 ---
 
-The global solver [BMIBNB](/solver/bmibnb) is a YALMIP-based implementation of a standard spatial branch-and-bound strategy. If you are unfamiliar with the basic ideas in a branch & bound solver, you should try to find an [introduction](https://en.wikipedia.org/wiki/Branch_and_bound) first and then perhaps check out the article on [global optimization](/globaloptimization)
+The global solver [BMIBNB](/solver/bmibnb) is a YALMIP-based implementation of a standard spatial branch-and-bound strategy. If you are unfamiliar with the basic ideas in a branch & bound solver, you should try to find an [introduction](https://en.wikipedia.org/wiki/Branch_and_bound) first and then perhaps check out the article on [global optimization](tutorial/globaloptimization)
 
 # A branch & bound solver
 
@@ -18,9 +18,9 @@ A spatial branch & bound algorithm for nonconvex programming typically relies on
 
 1. In an open node, a [local nonlinear solver](/tags/#nonlinear-programming-solver) is applied and may find a feasible (and hopefully locally optimal) solution. This gives an upper bound on the achievable objective (possibly infinite if the solver fails to find a feasible solution). The local solver for this step is specified with the option **'bmibnb.uppersolver'**  in [BMIBNB](/solver/bmibnb).
 
-2. As a second step a convex relaxation of the model in the node is derived (using the methods described below), and the resulting convex optimization problem is solved (typically a linear program, or if the original problem is a nonconvex semidefinite program, a semidefinite program, or perhaps a quadratic or second-order cone solver, depending on what convex relaxation we have). This gives a lower bound on the achievable objective for this node. The lower bound solver is specified using the options **'bmibnb.lowersolver'** in [BMIBNB](/solver/bmibnb).
+2. As a second step a convex relaxation of the model in the node is derived (using the methods described below), and the resulting convex optimization problem is solved (typically a linear program, or if the original problem is a nonconvex semidefinite program, a semidefinite program, or perhaps a quadratic or second-order cone solver, depending on what convex relaxation we have). This gives a lower bound on the achievable objective for this node. The lower bound solver is specified using the options **'bmibnb.lowersolver'** in [BMIBNB](/solver/bmibnb). If the lower bound is larger than the best upper bound so far, the node can be discarded as the optimal solution cannnot be situated in this node.
 
-3. Given these lower and upper bounds, a standard branch-and-bound logic is used to select a branch variable, a branch point, create two new nodes, branch, prune and navigate among the remaining nodes in a tree of open nodes.
+3. Given these lower and upper bounds, if the node was not discarded a standard branch-and-bound logic is used to select a branch variable, a branch point, create two new nodes, branch, prune and navigate among the remaining nodes in a tree of open nodes using (2).
 
 In addition to these standard steps, a large amount of preprocessing and bound-propagation is performed, both in the root-node and along the branching. This is extremely important in order to obtain stronger linear relaxations as we will see below. Some options controlling this can be found in the description of [BMIBNB](/solver/bmibnb). 
 
