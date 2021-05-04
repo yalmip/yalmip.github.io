@@ -91,26 +91,26 @@ Multivariate polynomial problems are treated by simply converting them to biline
 
 ### Linear relaxation for univariate higher degree monomials
 
-Higher degree monomials can be either be handled by applying same idea as for multivariate terms, or by using the general envelope appoxmation methods described below. [BMIBNB](/solver/bmibnb) applies both strategies depending on context.
+Higher degree monomials can be either be handled by applying same idea as for multivariate terms, or by using the general envelope approximation methods described below. [BMIBNB](/solver/bmibnb) applies both strategies depending on context.
 
 ### Linear relaxation for general univariate operators
 
 A nonlinear scalar term \\(f(x)\\) is replaced with a new variable \\(w\\), and linear inequalities on \\(x\\) and \\(w\\) are introduced to ensure that \\(w\\) approximates \\(f(x)\\) well, i.e., that the curve \\(w = f(x)\\) is contained in the polytopic region in \\(A_x x + A_w w \leq b\\).
 
-For this to work, every operator (exp, sin, coth...) has to be apply to supply the envelope polytope data \\((A,b)\\) given bounds \\((x_L\\) and \\(x_U\\).  Indeed, this is supported in the infrastructure in YALMIP which is based on operator overloading. Not only does an operator know what it should evaluate to, but it can be equipped with a lot of extra knowledge. 
+For this to work, every operator (exp, sin, coth...) has to be apply to supply the envelope polytope data \\((A,b)\\) given bounds \\(x_L\\) and \\(x_U\\). Indeed, this is supported in the infrastructure in YALMIP which is based on operator overloading. Not only does an operator know what it should evaluate to, but it can be equipped with a lot of extra knowledge. 
 
-The engine in YALMIP allows every operator to announce properties which can be used by, e.g., [BMIBNB](/solver/). The most common important proprties and methods are
+The engine in YALMIP allows every operator to announce properties which can be used by, e.g., [BMIBNB](/solver/). The most common important properties and methods are
 
 * f(x)  The function value 
 * derivative(x) Derivative at x
 * inverse(x) Function inverse x
 * convexhull(xL,xU) Polytope data \\(A,b\\) for outer approximation of convex hull
-* domain() Domain for the function (interval defined by \\((x_L\\) and \\(x_U\\))
+* domain() Domain for the function 
 * bounds(xL,xU)  Local information about function range (lower and upper bounds) in an interval
 * vexity()  Global convexity information ('convex','concave','none')
 * vexity(xL,xU)  Local convexity information in interval ('convex','concave','none')
 * monotonicity() Global information about monotonicity ('increasing', 'decreasing', 'none')
-* monotonicity(L,xU) Local information about monotonicity in interval ('increasing', 'decreasing', 'none')
+* monotonicity(xL,xU) Local information about monotonicity in interval ('increasing', 'decreasing', 'none')
 * definiteness() Global information about monotonicity ('negative', 'positive', 'none')
 * definiteness(xL,xU)  Local information about monotonicity in interval ('negative', 'positive', 'none')
 * range() Global information about range of function (lower and upper)
@@ -143,13 +143,11 @@ hold on;plot(t,sqrt(t));
 
 ![Quadratic hull]({{ site.url }}/images/hullsqrtm.png){: .center-image }
 
-Luckily, manual implementation of code like this is not needed in many places inside YALMIP. Instead, [BMIBNB](solver/bmibnb) can check if the operator exports a derivative method, and if the function claims to be convex or concave on the interval, and then automtically generate the outer approximation using tangent planes etc.
+Luckily, manual implementation of code like this is not needed in many places inside YALMIP. Instead, [BMIBNB](solver/bmibnb) can check if the operator exports a derivative method, and if the function claims to be convex or concave on the interval automatically generate the outer approximation using tangent planes etc.
 
 The operator information is exploited as much as possible. If both a convex hull generator and explicit convexity information is missing, but the operators returns information about inflection points, this can be used to see if the function is convex or concave on the interval and generate a convex hull approximation accordingly. In the case of the quadratic function above, we saw the need of adding a additional cut to avoid the negative region, and this is done automatically using information about the range of the function.
 
-Explicit representations of the envelopes are implemented for most nonlinear operators, such as \\(x^p\\), \\(e^x\\), \\(\log(x)\\), \\(sqrt{x}\\) and trigonometric functions. For convex and concave functions no dedicated envelope code is required as long as derivatives are available, as an envelope approximation can be created from the gradients. 
-
-In the absolute worst-case scenario where no information is supplied, and nothing is known, a sampling strategy is used to derive the linear relaxation. This would essentially only be the case if a user has added an operator without supplying any properties or tailor-made conve hull generator. To illustrate a sampling based approimant, the following code computes an approximation of the convex envelope of **sin** using three facets.
+In the absolute worst-case scenario where no information is supplied, and nothing is known, a sampling strategy is used to derive the linear relaxation. This would essentially only be the case if a user has added an operator without supplying any properties or tailor-made convex hull generator. To illustrate a sampling based approximant, the following code computes an approximation of the convex envelope of **sin** using three facets.
 
 ````matlab
 xL = 0;
@@ -179,6 +177,7 @@ In the code above, we generated the envelope approximations manually, but it is 
 Our **sin** example
 
 ````matlab
+clf
 sdpvar w x
 E = envelope([0 <= x <= 3*pi/2, w == sin(x)]);
 plot(E,[x;w],[],[],sdpsettings('relax',1));
@@ -204,7 +203,7 @@ plot(x,x.^2)
 
 ### The importance of bounds
 
-Finally, a comment on bounds. As a general rule of thumb, you have to bound all variables used in nonlinear exressions when you use the global solver [BMIBNB](/solver/bmibnb) which is based on the envelope approximations. However, YALMIP performs various bound strengthening schemes to improve the bounds and find implied bounds, and the same code is used in the [envelope](/command/envelope) code used above. In some cases, YALMIP can derive bounds, without any initial bounds being specified at all. As an example, the following problem is easily solved with nicely behaved envelopes despite supplying no bounds
+Finally, a comment on bounds. As a general rule of thumb, you have to bound all variables used in nonlinear exressions when you use the global solver [BMIBNB](/solver/bmibnb) which is based on envelope approximations. However, YALMIP performs various bound strengthening schemes to improve bounds and find implied bounds, and the same code is used in the [envelope](/command/envelope) code used above. In some cases, YALMIP can derive bounds, without any initial bounds being specified at all. As an example, the following problem is easily solved with nicely behaved envelopes despite supplying no bounds
 
 ````matlab
 sdpvar x
