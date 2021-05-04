@@ -14,13 +14,13 @@ The global solver [BMIBNB](/solver/bmibnb) is a YALMIP-based implementation of a
 
 A spatial branch & bound algorithm for nonconvex programming typically relies on a few standard steps. 
 
-0. The starting open node is the original optimization problem.
+0. The starting open node is the original optimization problem constrained to a box which outerbounds the feasible space.
 
 1. In an open node, a [local nonlinear solver](/tags/#nonlinear-programming-solver) is applied and may find a feasible (and hopefully locally optimal) solution. This gives an upper bound on the achievable objective (possibly infinite if the solver fails to find a feasible solution). The local solver for this step is specified with the option **'bmibnb.uppersolver'**  in [BMIBNB](/solver/bmibnb).
 
-2. As a second step a convex relaxation of the model in the node is derived (using the methods described below), and the resulting convex optimization problem is solved (typically a linear program, or if the original problem is a nonconvex semidefinite program, a semidefinite program, or perhaps a quadratic or second-order cone solver, depending on what convex relaxation we have). This gives a lower bound on the achievable objective for this node. The lower bound solver is specified using the options **'bmibnb.lowersolver'** in [BMIBNB](/solver/bmibnb). If the lower bound is larger than the best upper bound so far, the node can be discarded as the optimal solution cannnot be situated in this node.
+2. As a second step a convex relaxation of the model in the node is derived (using the methods described below), and the resulting convex optimization problem is solved (typically a linear program, or if the original problem is a nonconvex semidefinite program, a semidefinite program, or perhaps a convex quadratic or second-order cone problem, depending on what convex relaxation we have). This gives a lower bound on the achievable objective in this box. The lower bound solver is specified using the options **'bmibnb.lowersolver'** in [BMIBNB](/solver/bmibnb). If the lower bound is larger than the best upper bound so far, the node can be discarded as the optimal solution cannnot be located in this box.
 
-3. Given these lower and upper bounds, if the node was not discarded a standard branch-and-bound logic is used to select a branch variable, a branch point, create two new nodes, branch, prune and navigate among the remaining nodes in a tree of open nodes using (2).
+3. Given these lower and upper bounds, if the node was not discarded a standard branch-and-bound logic is used to select a branch variable, a branch point, divide current box into two new boxes and create the two resulting nodes, branch, prune and navigate among the remaining nodes in a tree of open nodes using (2).
 
 In addition to these standard steps, a large amount of preprocessing and bound-propagation is performed, both in the root-node and along the branching. This is extremely important in order to obtain stronger linear relaxations as we will see below. Some options controlling this can be found in the description of [BMIBNB](/solver/bmibnb). 
 
@@ -219,7 +219,5 @@ plot(E,[x;w],[],[],sdpsettings('relax',1));
 ````
 
 Can you also derive the interval from the nonlinear equation?
-
-
 
 
