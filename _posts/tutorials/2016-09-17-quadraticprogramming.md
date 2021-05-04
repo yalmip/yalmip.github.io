@@ -67,7 +67,7 @@ optimize([],e'*e);
 x_L2 = value(xhat);
 ````
 
-YALMIP automatically detects that the objective is a convex quadratic function, and solves the problem using any installed [QP solver](/yalmip/solvers). If no QP solver is found, the problem is converted to an [SOCP](/tutorial/socpprogramming), and if no dedicated SOCP solver exist, the SOCP is converted to an [SDP](/tutorial/semidefiniteprogramming) (although at that point you are better of explicitly telling YALMIP to use a standard nonlinear solver, which will be much better than using an SDP solver).
+YALMIP automatically detects that the objective is a convex quadratic function, and solves the problem using any installed [QP solver](tags/#quadratic-programming-solver). If no QP solver is found, the problem is converted to an [SOCP](tags/#quadratic-programming-solver), and if no dedicated [SOCP solver](tags/#second-order-cone-programming-solver) exist, the SOCP is converted to an [SDP](/tutorial/semidefiniteprogramming) (although at that point you are better of explicitly telling YALMIP via [sdpsettings](/command/sdpsetting) to use a standard [nonlinear solver](tags/#nonlinear-programming-solver), which will be much better than using an SDP solver).
 
 Finally, we minimize the \\(\infty\\)-norm. This corresponds to minimizing the largest (absolute value) residual. Introduce a scalar to bound the largest value in the vector residual (YALMIP uses MATLAB standard to compare scalars, vectors and matrices)
 
@@ -100,7 +100,7 @@ optimize([],norm(residuals,inf));
 
 ### Large-scale quadratic programs
 
-The 2-norm solution is most easily stated in the described QP formulation, although it in some cases is muh more efficient in YALMIP to express the problem using a 2-norm, which will lead to a [second order cone problem](/tutorial/secondorderconeprogramming).
+The 2-norm solution (least-squares estimate) is most classically stated in the described QP formulation, although it in some cases is muh more efficient in YALMIP to express the problem using a 2-norm, which will lead to a [second-order cone problem](/tutorial/secondorderconeprogramming).
 
 ````matlab
 optimize([],norm(residuals,2));
@@ -113,7 +113,7 @@ aux = sdpvar(length(residuals),1);
 optimize([aux == residuals],aux'*aux);
 ````
 
-Of course, in this example, this makes no difference, as there only are 6 decision variables but in scenarios where your objective is \\(x^TQx\\) and \\(Q=R^TR\\) is large, a better model might be
+Of course, in this example, it makes no difference, as there only are 6 decision variables but in scenarios where your objective is \\(x^TQx\\) and \\(Q=R^TR\\) is large and dense, a better model might be
 
 ````matlab
 R = chol(Q);
@@ -129,18 +129,18 @@ z = sdpvar(size(R,2),1);
 optimize([z == R*x],z'*z);
 ````
 
-The archetypical example is **sum(x)^2** which leads to a completely dense quadratic model of rank 1. Absolutely catastrophical for large problems (it will most likely be indefinite for vectors of length larger than 10 in floating point numerics) and a waste of memory. The trivial model is
+The archetypical example is **sum(x)^2** which leads to a completely dense quadratic model of rank 1. Absolutely catastrophical for large problems (it will most likely be indefinite for vectors of length larger than 10 in floating-point numerics) and a waste of memory. The trivial improvement is
 
 ````matlab
 z = sdpvar(1);
 optimize([z == sum(x)],z^2);
 ````
 
-Finally, note that squaring a 2-norm expression simply returns the quadratic function, i.e., the following two alls are equivalent and no SOCP modelling is performed. 
+Finally, note that squaring a 2-norm expression simply returns the quadratic function, i.e., the following two calls are equivalent and no SOCP modelling is performed. In other words, the introduction of a possibly complicated symbolic quadratic object is not avoided here.
 
 ````matlab
-optimize([],norm(e)^2);
-optimize([],e'*e);
+optimize([],norm(R*e)^2);
+optimize([],e'*R'*R*e);
 ````
 
 
