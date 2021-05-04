@@ -17,7 +17,7 @@ The [BMIBNB](/solver/bmibnb) solver is based on a spatial branch & bound strateg
 
 Relaxed problems are solved using either an [LP solver](/tags/#linear-programming-solver), [QP solver](/tags/#quadratic-programming-solver), [SOCP solver](/tags/#second-order-cone-programming-solver), or [SDP solver](/tags/#semidefinite-programming-solver) solver, depending on the problem and what solvers you have available, while upper bounds are found using a [local nonlinear solver](/tags/#nonlinear-programming-solver) such as [FMINCON](/solver/fmincon),  [SNOPT](/solver/snopt) or [IPOPT](/solver/ipopt).
 
-### Nonconvex quadratic programming
+## Nonconvex quadratic programming
 The first example is a problem with a concave quadratic constraint (this is the example addressed in the [moment relaxation tutorial](/tutorial/momentrelaxations)). Three different optimization problems are solved during the branching: Upper bounds using a local nonlinear solver **'bmibnb.uppersolver'**, lower bounds with **'bmibnb.lowersolver'** and bound tightening using a linear programming solver **'bmibnb.lpsolver'**. All these solvers are selected automatically, but you can change them of course.
 
 ````matlab
@@ -137,7 +137,7 @@ optimize(F,p,options);
 *         2% spent in upper heuristics (43 candidates tried)
 ````
 
-### Nonconvex polynomial programming
+## Nonconvex polynomial programming
 
 Polynomial programs are transformed to to bilinear programs. As an example, the variable \\(x^3y^2\\) will be replaced with the the variable \\(w\\) and the constraints \\(w = uv\\), \\(u = zx\\), \\(z = x^2\\), \\(v = y^2\\). This is done automatically if the global solver is called with a non-quadratic polynomial problem. With this transformation, standard bilinear envelopes can be used in the creation of the relaxations for computing lower bounds. Note though, the nolinear solver will work with the original polynomial model, so the bilinearization is only used for the lower bound computations.
 
@@ -170,7 +170,7 @@ optimize(F,-x,options)
 
 Remember that spatial branch & bound and envelope approximations rely on bounds on the involved variables, but our model lacks any explicit bound on \\(x\\) and has only a lower bound on \\(y\\), yet [BMIBNB](/solver/bmibnb) does not complain about this. The reason is that [BMIBNB](/solver/bmibnb) continuously tries to extract and improve bounds. Since \\(y\\) is non-negative and \\(x^3 \leq 5-y^3\\) it directly implies \\(x \leq 5^{1/3} \\). Already in the root node, the nonlinear solver finds the solution \\(x=5^{1/3}, y=0\\) (which later is proven optimal). Since this solution defines an upper bound it implies \\(-x \leq -5^{1/3}\\), i.e. \\(5^{1/3}\\) is both an upper and lower bound for \\(x)\\). This propagates through \\(y^5 \leq 5-(5^{1/3})^3\\) which is \\(y^5 \leq 0\\), i.e., \\(y \leq 0\\) and we have effectively solved the problem by bound propagation driven by the first solution seen. Due to numerical tolerances in the nonlinear solver and trickle-flow through all the nonlinear operations, the bounds will not be exactly tight in presolve, but the gap will be small enough for the solver to terminate in the first node after having computed a lower bound.
 
-### General nonconvex programming
+## General nonconvex programming
 
 The solver supports global optimization over almost all operators supported on decision variables in YALMIP, as most operators are equipped with [envelope generators](/tutorial/envelopesinbmibnb). Hence, nothing prevents us from, e.g., nonconvex global trigonometric optimization.
 
@@ -200,7 +200,7 @@ optimize([-1 <= [x y] <= 1],p,sdpsettings('solver','bmibnb'));
 *         1% spent in upper heuristics (2 candidates tried)
 ````
 
-### Nonconvex semidefinite programming
+## Nonconvex semidefinite programming
 
 The following problem is a BMI (bilinear matrix inequality) problem which has been used as a test example in some papers on BMIs
 
