@@ -1,7 +1,7 @@
 ---
 title: "Nonlinear operators - integer models"
 category: tutorial
-level: 4
+level: 6
 tags: [Integer programming representable]
 excerpt: "Mixed-integer representations of nonlinear operators"
 header:

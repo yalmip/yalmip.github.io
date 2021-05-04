@@ -1,7 +1,7 @@
 ---
 title: "Bilevel programming"
 category: tutorial
-level: 4
+level: 3.8
 tags: [Bilevel programming]
 excerpt: "Bilevel programming using the built-in bilevel solver"
 sidebar:

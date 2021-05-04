@@ -1,7 +1,7 @@
 ---
 title: "Nonlinear operators"
 category: tutorial
-level: 4
+level: 6
 excerpt: "Working with nonlinear operators in a structured and efficient fashion"
 header:
 tags: [Linear programming representable, Second-order cone programming representable, Semidefinite programming representable, Integer programming representable, Exponential cone programming representable]

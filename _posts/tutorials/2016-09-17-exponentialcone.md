@@ -1,7 +1,7 @@
 ---
 title: "Exponential cone programming"
 category: tutorial
-level: 4
+level: 3.1
 tags: [Exponential cone programming, Relative entropy programming, Exponential and logarithmic functions, Logistic regression, Classification]
 excerpt: "Convex conic optimization over exponentials and logarithms"
 sidebar:

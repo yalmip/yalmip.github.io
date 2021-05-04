@@ -1,7 +1,7 @@
 ---
 title: "Multiparametric programming"
 category: tutorial
-level: 4
+level: 3.8
 tags: [Multi-parametric programming]
 except: "Solve your optimization problem for once and for all. "
 sidebar:

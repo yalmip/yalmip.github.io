@@ -1,7 +1,7 @@
 ---
 title: "Geometric programming"
 category: tutorial
-level: 4
+level: 3.2
 tags: [Geometric programming]
 excerpt: "Geometric programming. Not about geometry."
 sidebar:

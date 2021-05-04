@@ -1,7 +1,7 @@
 ---
 title: "Logics and integer-programming representations"
 category: tutorial
-level: 4
+level: 3.6
 tags: [Logic programming, Big-M, Integer programming]
 excerpt: "Logic programming in YALMIP means programming with operators such as alldifferent, number of non-zeros, implications and similiar combinatorial objects."
 sidebar:

@@ -1,7 +1,7 @@
 ---
 title: "Power cone programming"
 category: tutorial
-level: 5
+level: 3.1
 tags: [Power cone programming]
 excerpt: "Convex conic optimization over power cones" 
 gist: "https://gist.github.com/johanlofberg/c6d98dcc2516971a320665ec19c5ad46.js"
