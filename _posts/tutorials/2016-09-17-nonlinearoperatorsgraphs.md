@@ -1,13 +1,9 @@
 ---
 title: "Nonlinear operators - graphs and conic models"
-category: tutorial
+category: inside
 level: 6
 tags: [Epigraph, Hypograph, Conic programming representable, Linear programming representable, Second-order cone programming representable, Semidefinite programming representable, Exponential cone programming representable]
 excerpt: "Epi- and hypograph conic representations of nonlinear operators"
-header:
-  teaser:
-sidebar:
-  nav: "tutorials"
 ---
 
 YALMIP supports modeling of nonlinear, often non-differentiable, operators that typically occur in convex programming. Some examples are [min](/command/min), [max](/command/max), [abs](/command/abs), [geomean](/command/geomean), [harmmean](/command/harmmean), [sumabsk](/command/sumabsk), and [sqrt](/command/sqrt), and users can easily add their own (see the end of this page). The operators can be used intuitively, and YALMIP will automatically try to find out if they are used in a way that enables a conic representation or graph representation. If such representation is impossible, YALMIP automatically tries to revert to a [mixed-integer representation](/tutorial/nonlinearoperatorsmixedinteger).
