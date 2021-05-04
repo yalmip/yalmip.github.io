@@ -9,7 +9,9 @@ sidebar:
   nav: "tutorials"
 ---
 
-Let us continue with our regression problem from the linear and quadratic programming tutorials.
+Let us continue with our regression problem from the [quadratic programming tutorial](/tutorials/quadraticprogramming)
+
+### Robust regression
 
 The problem boiled down to solving the problem minimize \\(\left\lVert Ax - y\right\rVert \\) for some suitable norm. Let us select the 2-norm, but this time solve the extension where we minimize the worst-case cost, under the assumption that the matrix \\(A\\) is uncertain, \\(A=A+d\\), where \\(\left\lVert d\right\rVert_2 \leq 1 \\) . This can be shown to be equivalent to minimizing \\(\left\lVert Ax - y\right\rVert_2 \\) + \\(\left\lVert x\right\rVert_2 \\).
 
@@ -51,6 +53,8 @@ optimize([],norm(y-A*xhat,2) + norm(xhat,2));
 ````
 
 YALMIP will automatically model this as a second-order cone problem, and solve it as such if a [second-order cone programming solver](/yalmip/solvers) is installed. If no second-order cone programming solver is found, YALMIP will convert the model to a semidefinite program and solve it using any installed [semidefinite programming solver](/yalmip/solvers).
+
+## Evaluation
 
 Let us plot the solution, and then see what standard least-squares would have obtained. Note that this is the performance on the real regressor. Our regularization has protected us from over-fitting too much to the corrupt data.
 
