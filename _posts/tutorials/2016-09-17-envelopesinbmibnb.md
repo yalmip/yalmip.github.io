@@ -1,7 +1,7 @@
 ---
 title: "Envelope approximations for global optimization"
 category: tutorial
-level: 4
+level: 6
 tags: [Convex hull, Envelope, Global optimization, Nonconvex programming, BMIBNB]
 excerpt: "Outer approximations of function envelopes are the core of the global solver BMIBNB"
 sidebar:
