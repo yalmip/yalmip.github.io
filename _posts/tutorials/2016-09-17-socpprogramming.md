@@ -13,7 +13,7 @@ Let us continue with our regression problem from the [quadratic programming tuto
 
 ### Robust regression
 
-The problem boiled down to solving the problem minimize \\(\left\lVert Ax - y\right\rVert \\) for some suitable norm. Let us select the 2-norm, but this time solve the extension where we minimize the worst-case cost, under the assumption that the matrix \\(A\\) is uncertain, \\(A=A+d\\), where \\(\left\lVert d\right\rVert_2 \leq 1 \\) . This can be shown to be equivalent to minimizing \\(\left\lVert Ax - y\right\rVert_2 \\) + \\(\left\lVert x\right\rVert_2 \\).
+The problem boiled down to solving the problem minimize \\(\left\lVert y - A\hat{x}\right\rVert \\) for some suitable norm. Let us select the 2-norm, but this time solve the extension where we minimize the worst-case cost, under the assumption that the matrix \\(A\\) is uncertain, \\(A=A+d\\), where \\(\left\lVert d\right\rVert_2 \leq 1 \\) . This can be shown to be equivalent to minimizing \\(\left\lVert y - A\hat{x} \right\rVert_2 \\) + \\(\left\lVert y - A\hat{x} \right\rVert_2 \\).
 
 This problem can easily be solved using YALMIP. Begin by defining the data where we not only have noise in the measurements \\(y\\) but also a corrpution in the regressors
 
