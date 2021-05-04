@@ -1,13 +1,8 @@
 ---
 title: "Nonlinear operators - integer models"
-category: tutorial
-level: 6
+category: inside
 tags: [Integer programming representable]
 excerpt: "Mixed-integer representations of nonlinear operators"
-header:
-  teaser:
-sidebar:
-  nav: "tutorials"
 ---
 
 In addition to modeling convex and concave operators and perform automatic analysis and derivation of equivalent conic programs using [graph models](/tutorial/nonlinearoperatorsgraphs), YALMIP uses the nonlinear operator framework for implementing logic and combinatorial expression involving commands such as [or](/command/or), [and](/command/and), [ne](/command/ne), [iff](/command/iff), [implies](/command/implies), [nnz](/command/nnz), [alldifferent](/command/alldifferent), [sort](/command/sort) and [ismember](/command/ismember), and on a higher level, nonconvex piecewise functions in connection with [MPT](/solver/mpt). The common feature among these operators is that they all require binary and integer variables to be represented in a structured way.
