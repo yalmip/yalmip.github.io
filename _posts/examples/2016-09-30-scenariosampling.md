@@ -1,5 +1,6 @@
 ---
 layout: single
+category: example
 excerpt: "Unintended consequences of an improved optimizer framework"
 title: "Sample-based robust optimization"
 tags: [Scenario optimization, Random, Distribution, Optimizer]
