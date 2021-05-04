@@ -116,7 +116,7 @@ optimize([],e'*e + norm(e,1));
 
 ### Large-scale quadratic programs
 
-The 2-norm solution (least-squares estimate) is most classically stated in the described QP formulation, although it in some cases is muh more efficient in YALMIP to express the problem using a 2-norm, which will lead to a [second-order cone problem](/tutorial/secondorderconeprogramming).
+The 2-norm solution (least-squares estimate) is most classically stated in the described QP formulation, although it in some cases is much more efficient in YALMIP to express the problem using a 2-norm, which will lead to a [second-order cone problem](/tutorial/secondorderconeprogramming).
 
 ````matlab
 optimize([],norm(residuals,2));
