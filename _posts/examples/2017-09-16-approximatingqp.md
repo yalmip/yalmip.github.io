@@ -3,7 +3,7 @@ layout: single
 category: example
 excerpt: "Convenient generation of approximations"
 title: "Nonconvex QP via piecewise affine models"
-tags: [Nonconvex quadratic programming, Integer programming, Sos2, Interp1]
+tags: [Quadratic programming, Nonconvex quadratic programming, Integer programming, Sos2, Interp1]
 date: 2017-09-16
 header:
   teaser: "pwaqp.png"
