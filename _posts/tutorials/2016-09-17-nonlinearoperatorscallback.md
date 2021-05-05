@@ -1,5 +1,6 @@
 ---
 title: "Nonlinear operators - callbacks"
+permalink: "/tutorial/nonlinearoperatorscallback"
 category: inside
 tags:
 excerpt: "Callback representations of nonlinear operators"
