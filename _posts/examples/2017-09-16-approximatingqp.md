@@ -52,7 +52,7 @@ What we are doing here is essentially preparing for the following approximation 
 ````matlab
 z = -1:0.25:1;
 mesh(z,z,z.^2-(z').^2)
-``
+````
 
 ![PWA]({{ site.url }}/images/pwaqp.png){: .center-image }
 
@@ -122,6 +122,5 @@ We can keep the convex part of course to see if the convex MIQP performs better 
 Model = [-1 <= [x y] <= 1, sum(x) + sum(y) == 1, f == T*z];
 optimize(Model,z'*S'*S*z - sum(f2) + c'*z + b)
 ````
-
 
 A drawback with the generic approach, compared to the more direct model above, is that some sparse block-structure is lost in the decompositions, which might lead to worse performance in the solver.
