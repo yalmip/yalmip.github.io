@@ -461,16 +461,32 @@ commands:
         url: /command/yalmiptest
         
 inside:
-  - title: Theory 
+  - title: Theory & internals
     children:
-      - title: "CUTSDP"
+      - title: "The CUTSDP solver explained"
         url: /The-cutsdp-solver     
+      - title: "Big-M and convex hulls"
+        url: /inside/bigmandconvexhulls
+      - title: "Envelope approximations for global optimization"
+        url: /inside/envelopesinbmibnb    
+      - title: "Logics and integer programming representability"
+        url: /inside/logicprogramming
+      - title: "Operators - general"
+        url: /inside/nonlinearoperators
+      - title: "Operators - conic graphs"
+        url: /inside/nonlinearoperatorsgraphs
+      - title: "Operators - integer models"
+        url: /inside/nonlinearoperatorsmixedinteger
+      - title: "Operators - callback"
+        url: /inside/nonlinearoperatorscallback        
   - title: Problems
     children:
       - title: "Debugging infeasibility"
         url: /debugginginfeasible              
       - title: "Debugging unboundedness"
-        url: /debuggingunbounded     
+        url: /debuggingunbounded  
+      - title: "NaN in model"
+        url: /naninmodel
   - title: Good to know
     children:
       - title: "Naming constraints"
