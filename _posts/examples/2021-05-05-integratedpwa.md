@@ -75,7 +75,7 @@ Model = [implies(region(1), [R1, f == x^2])
 optimize(Model, -f)
 ````
 
-Important to realize is that this model is hard from two different aspects. To begin with, we have binary variables as we have to represent the disjunctive nature, but we also have quadratic equalities inside these disjunctions. Hence, the final product is a mixed-integer nonlinear non-convex quadratically constrained problem. Hence you need a solver such as [BMIBNB](/solver/bmibnb), [GUROBI](/solver/gurobi) or [BARON](/solver/baron)
+Important to realize is that this model is hard from two different aspects. To begin with, we have binary variables as we have to represent the disjunctive nature, but we also have quadratic equalities inside these disjunctions. Hence, the final product is a mixed-integer nonlinear non-convex quadratically constrained problem. Hence you need a solver such as [BMIBNB](/solver/bmibnb), [GUROBI](/solver/gurobi) or [BARON](/solver/baron).
 
 ### The even harder but hopefully better way
 
