@@ -2,7 +2,7 @@
 category: example
 excerpt: "Sort of convex but not quite"
 title: Star-convex polygons
-tags: [Star-convexity, Geometry, interp1, sos2, Special ordered set]
+tags: [Star-convexity, Geometry, interp1, sos2, Special ordered set, Polytopes]
 date: '2021-04-28'
 gist: "https://gist.github.com/johanlofberg/1fa43402d071790d8a622f542a5bdb27.js"
 header:
