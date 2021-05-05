@@ -39,7 +39,7 @@ ti = 0:0.001:10;
 fi = min(min(2*ti,4),16-3*ti);
 l = plot(ti,fi);
 grid on;hold on
-l = plot(t,0.001*cumsum(fi))
+l = plot(ti,0.001*cumsum(fi))
 ````
 
 ![Integrated PWA]({{ site.url }}/images/integralpwa.png){: .center-image }
