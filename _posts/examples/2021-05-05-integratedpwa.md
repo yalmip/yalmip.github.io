@@ -101,7 +101,7 @@ The reaon we use YALMIP is because we are lazy, so the models above are too much
 
 First, note that the integral is \\( \int_0^x f(z)dz  = \int_0^u_1 f_1(z)dz + \int_u_1^u_2 f_2(z)dz + \ldots \\). 
 
-Now we sum up these functions and we have our piecewise quadratic functions in the three regions. 
+Sum up these parts and we have our piecewise quadratic functions in the three regions. 
 
 ````matlab
 sdpvar z
