@@ -154,7 +154,7 @@ Too much work?
 
 ### Crazy lazy
 
-Well then (if you are ok with an approximation).
+Well then (if you are ok with an [approximation](/command/interp1)).
 
 ````matlab
 f = interp1(ti,0.001*cumsum(min(min(2*ti,4),16-3*ti)),x,'sos2');
