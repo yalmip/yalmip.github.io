@@ -470,7 +470,7 @@ inside:
       - title: "Debugging infeasibility"
         url: /debugginginfeasible              
       - title: "Debugging unboundedness"
-        url: /debuggingunbounded/       
+        url: /debuggingunbounded     
   - title: Good to know
     children:
       - title: "Naming constraints"
