@@ -461,10 +461,12 @@ commands:
         url: /command/yalmiptest
         
 inside:
-  - title: Theory
+  - title: Theory 
     children:
       - title: "CUTSDP"
-        url: /inside/The-cutsdp-solver
+        url: /The-cutsdp-solver
+      - title: "CUTSDP"
+        url: /The-cutsdp-solver        
   - title: Problems
     children:
       - title: "Debugging infeasibility"
