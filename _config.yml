@@ -270,7 +270,7 @@ defaults:
       read_time: false
       comments: false
       share: false
-      related: true
+      related: false
   # _examples
   - scope:
       path: "_posts/examples"
