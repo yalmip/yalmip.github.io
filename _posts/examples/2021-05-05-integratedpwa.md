@@ -57,7 +57,7 @@ $$
                      \end{cases}
 $$
 
-Having these expression, we are ready to implement the model. What we have to do is to represent that the objective is defined differently in different regions, which effectively means we have to implement [if-else statements](/modellingif). Proceeding exactly as we learn there, we end up with our finished productafter having simplified our integrals.
+Having these expression, we are ready to implement the model. What we have to do is to represent that the objective is defined differently in different regions, which effectively means we have to implement [if-else statements](/example/modellingif). Proceeding exactly as we learn there, we end up with our finished product after having simplified our integrals.
 
 ````matlab
 sdpvar x
@@ -80,7 +80,7 @@ Important to realize is that this model is hard from two different aspects. To b
 
 ### The even harder but hopefully better way
 
-As we learn in [if-else statements](/modellingif), models where a piecewise quadratic function is used in the objective can be improved upon by slightly by removing the quadratic equalities from the equalitities and lift them into the objective. The trick to do so is to assign a local copy of the decision variable to each region. Using this strategy here leads to
+As we learn in [if-else statements](/example/modellingif), models where a piecewise quadratic function is used in the objective can be improved upon by slightly by removing the quadratic equalities from the equalitities and lift them into the objective. The trick to do so is to assign a local copy of the decision variable to each region. Using this strategy here leads to
 
 ````matlab
 sdpvar x1 x2 x3
@@ -115,7 +115,7 @@ q2 = int(f1,z,0,2) + int(f2,z,2,x);
 q3 = int(f1,z,0,2) + int(f2,z,2,4) + int(f3,z,4,x);
 ````
 
-THe integrals seem to be correct
+The integrals we derived manually seem to be correct
 
 ````matlab
 sdisplay(q1)
