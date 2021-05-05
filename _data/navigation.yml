@@ -479,6 +479,8 @@ inside:
         url: /inside/nonlinearoperatorsmixedinteger
       - title: "Operators - callback"
         url: /inside/nonlinearoperatorscallback        
+      - title: "Automatic dualization"
+        url: /inside/automaticdualization           
   - title: Problems
     children:
       - title: "Debugging infeasibility"
@@ -487,7 +489,13 @@ inside:
         url: /debuggingunbounded  
       - title: "NaN in model"
         url: /naninmodel
+      - title: "Slow MILP"
+        url: /slowmilp        
   - title: Good to know
     children:
       - title: "Naming constraints"
         url: /taggingconstraints
+      - title: "Warmstarting with initial guess"
+        url: /warmstart
+      - title: "Extracting low-level solver data"
+        url: /Extracting        
