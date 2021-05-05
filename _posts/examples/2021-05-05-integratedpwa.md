@@ -51,7 +51,7 @@ Due to the negative slope in the third region, the piecewise quadratic function 
 As a first approach, we do it the hard way by pen-and-paper computations to explicitly compute the integral to obtain our piecewise quadratic function
 
 $$
-\int_{0}^x f(z) = \begin{cases} x^2 , & \text{for } 0\geq z \leq 2\\
+\int_{0}^x f(z) = \begin{cases} x^2 , & \text{for } 0\leq z \leq 2\\
                      (2)^2 + (4x-8), & \text{for } 2 \leq z\leq 4\\
                      (2^2)+(4\cdot 4 - 8) + (16x-\frac{3}{2}x^2)-(16\cdot 4-\frac{3}{2}4^2) , & \text{for } 4 \leq z 
                      \end{cases}
@@ -66,7 +66,7 @@ region = binvar(3,1);
 
 R1 = [0 <= x <= 2];
 R2 = [2 <= x <= 4];
-R3 = [0 <= x];
+R3 = [4 <= x <= 10];
 Model = [implies(region(1), [R1, f == x^2])
          implies(region(2), [R2, f == -4 + 4*x])
          implies(region(3), [R3, f == -28 + 16*x - 1.5*x^2])
