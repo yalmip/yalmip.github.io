@@ -1,10 +1,8 @@
 ---
-layout: single
+category: inside
 excerpt: "Slice'n dice your problems"
 title: "Extensions on the optimizer"
-tags: 
-comments: true
-featured: false
+tags: [Optimizer]
 date: 2016-09-28
 ---
 

@@ -1,10 +1,8 @@
 ---
-layout: single
-permalink: /Initials
+category: inside
 excerpt: "Give your solver a hint"
 title: "Supplying initial guesses to warm-start solvers"
 tags: [Warm-start, Assign, Initial]
-comments: true
 date: 2017-08-25
 ---
 

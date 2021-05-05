@@ -3,7 +3,6 @@ category: inside
 excerpt: "Uncertainty descriptions can only involve uncertain variables, so how can they be parameterized?"
 title: "Parameterizing the uncertainty set in robust optimization"
 tags: [Robust optimization, Uncertainty]
-published: true
 date: 2018-04-25
 ---
 
