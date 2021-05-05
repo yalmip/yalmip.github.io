@@ -26,7 +26,7 @@ And don't forget, most likely you have to [install additional solvers](/allsolve
 
 ## Development branch (only use if you have a specific resaon to...)
 
-[Current development version](https://github.com/yalmip/YALMIP/archive/development.zip){: .btn .btn--warning}
+[Current development version](https://github.com/yalmip/YALMIP/archive/refs/heads/develop.zip){: .btn .btn--warning}
 
 ## Old releases
 

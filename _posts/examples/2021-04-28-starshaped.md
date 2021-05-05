@@ -47,7 +47,7 @@ axis equal;
 
 Note that we have generated the coordinates so that they represent a closed curve, i.e. the first and last values are the same. This is important to remember when you create these sets using the methods described here
 
-The feasible set inside the star can be represented as the union of 7 polytopes. Hence, a general approach to representing this set is to describe these polytopes, and then use logic programming and binary variables to represent the union as illustrated in [the big-M tutorial](/tutorial/bigmandconvexhulls/). However, star-convex polygons can be represented much more conveniently using [sos2](/command/sos2) constructs.
+The feasible set inside the star can be represented as the union of 7 polytopes. Hence, a general approach to representing this set is to describe these polytopes, and then use logic programming and binary variables to represent the union as illustrated in [the big-M tutorial](/tutorial/bigmandconvexhulls). However, star-convex polygons can be represented much more conveniently using [sos2](/command/sos2) constructs.
 
 To derive a [sos2](/command/sos2) representation, we first focus on representing the border of the polygon. With given vertices \\(v_i = (x_i,y_i)\\), every point on the border of the star can be written as a linear combination of two adjacent vertices. This can be written as \\(V\lambda\\) where where \\(V\\) are the vertices stacked in columns and \\(\lambda\\) is a non-negative vector with at most two adjacent non-zero elements summing up to \\( 1\\). This is the classical application of [sos2](/command/sos2), and precisely the same model YALMIP uses for linear interpolation in [interp1](/command/interp1) which essentially is what we are doing here.
 

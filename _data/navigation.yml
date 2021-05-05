@@ -54,8 +54,6 @@ solvers:
     children:
       - title: "BARON"
         url: /solver/baron
-      - title: "BINTPROG"
-        url: /solver/bintprog
       - title: "BONMIN"
         url: /solver/bonmin
       - title: "CBC"

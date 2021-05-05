@@ -15,13 +15,13 @@ The computational results reported below are a bit outdated. For more recent num
 
 A common question I get is along the lines *how can I solve a nonconvex QP using SeDuMi*?
 
-The answer to the questions is a bit tricky, since it depends on what the user means with  *solve*, and why [SEDUMI](/command/sedumi) is mentioned. Do you mean that you want to compute an exact solution and just assume that [SEDUMI](/command/sedumi) (or any SDP solver) can do this, or have you stumbled upon the notion of semidefinite relaxations and think semidefinite relaxations always solve the problem, or do you understand that a semidefinite relaxation only some times gives a solution, and primarily are used to compute lower bounds?
+The answer to the questions is a bit tricky, since it depends on what the user means with  *solve*, and why [SEDUMI](/solver/sedumi) is mentioned. Do you mean that you want to compute an exact solution and just assume that [SEDUMI](/solver/sedumi) (or any SDP solver) can do this, or have you stumbled upon the notion of semidefinite relaxations and think semidefinite relaxations always solve the problem, or do you understand that a semidefinite relaxation only some times gives a solution, and primarily are used to compute lower bounds?
 
 Some key-points 
 
-1. Nonconvex QPs can not be solved directly using [SEDUMI](/command/sedumi).
+1. Nonconvex QPs can not be solved directly using [SEDUMI](/solver/sedumi).
 2. Nonconvex QPs are [NP-hard](http://en.wikipedia.org/wiki/NP-hard), and thus intractable (practically impossible to solve) in the general (non-trivially sized) case.
-3. Semidefinite relaxations (and thus [SEDUMI](/command/sedumi)) can be used to compute lower bounds on the achievable objective.
+3. Semidefinite relaxations (and thus [SEDUMI](/solver/sedumi)) can be used to compute lower bounds on the achievable objective.
 4. Sometimes the semidefinite relaxation is tight and a solution can be recovered.
 5. There are stronger semidefinite relaxations than the standard relaxation (based on the so called method of moments).
 6. Adding redundant constraints can improve performance tremendously.
@@ -137,7 +137,7 @@ end
 semilogy(1:10,comptimes)
 ````
 
-As one can see in the figure below, the semidefinite relaxations are extremely slow to compute compared to a vanilla branch & bound solver, already for modest problem sizes (the semidefinite relaxations were solved using [SEDUMI](/command/sedumi) while the global solver used [FMINCON](/solver/fmincon) and [GUROBI](/solver/gurobi))
+As one can see in the figure below, the semidefinite relaxations are extremely slow to compute compared to a vanilla branch & bound solver, already for modest problem sizes (the semidefinite relaxations were solved using [SEDUMI](/solver/sedumi) while the global solver used [FMINCON](/solver/fmincon) and [GUROBI](/solver/gurobi))
 
 ![CPU times]({{ site.url }}/images/nonconvexcomparetimes.png){: .center-image }
 

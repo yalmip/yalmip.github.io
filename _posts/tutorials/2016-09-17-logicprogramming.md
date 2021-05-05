@@ -23,7 +23,7 @@ In other words, a large sparse simple model is much better than a compact comple
 
 Throughout the examples here, **a** and **b** represent scalar binary variables, **z** represents a vector of binary variables, and **x** is just some generic variable (could be anything).
 
-In the models, we make use of [big-M models](/tutorial/bigmandconvexhulls/) with associated constant \\(M\\). We use a notation with the same value everywhere, but in practice you would spend effort on deriving as small constants as possible for every single constraint.
+In the models, we make use of [big-M models](/tutorial/bigmandconvexhulls) with associated constant \\(M\\). We use a notation with the same value everywhere, but in practice you would spend effort on deriving as small constants as possible for every single constraint.
 
 In the models here, we explicitly derive detailed models for implications, but in practice, we would of course implement the low-level implications using [implies](/command/implies).
 
@@ -98,7 +98,7 @@ $$
 
 ### If a then  \\(f(x)\leq 0\\)
 
-To ensure a constraint holds when a binary is true, we model implication using a [big-M strategy](/tutorial/bigmandconvexhulls/).
+To ensure a constraint holds when a binary is true, we model implication using a [big-M strategy](/tutorial/bigmandconvexhulls).
 
 $$
 f(x) \leq M(1-a)

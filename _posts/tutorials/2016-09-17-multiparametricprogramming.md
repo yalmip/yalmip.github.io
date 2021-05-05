@@ -88,7 +88,7 @@ plot(Optimizer(1));
 
 ### Simple MPC example
 
-Define numerical data for a linear system, prediction matrices, and variables for current state \\(x\\) and the future control sequence \\( U(x)\\), for an MPC problem with horizon 5 (**create_CHS** is a cheat function that creates the numerical matrices to describe the linear relation between current state \\( x\\) and future input sequence \\( U\\), to the predicted outputs. See the [standard MPC example](/tutorial/standardmpc) to see how you would do this in a more generic fashion in an actual application)
+Define numerical data for a linear system, prediction matrices, and variables for current state \\(x\\) and the future control sequence \\( U(x)\\), for an MPC problem with horizon 5 (**create_CHS** is a cheat function that creates the numerical matrices to describe the linear relation between current state \\( x\\) and future input sequence \\( U\\), to the predicted outputs. See the [standard MPC example](/example/standardmpc) to see how you would do this in a more generic fashion in an actual application)
 
 ````matlab
 N = 5;
@@ -162,7 +162,7 @@ F = [1 >= U >= -1];
 F = [F, 5 >= x >= -5];
 ````
 
-We will now solve this problem under the additional constraints that the input is quantized in steps of 1/3. This can easily be modelled in YALMIP using [ismember](/command/ismember). Note that this nonconvex operator introduces a lot of binary variables, and the MPC problem is most likely solved more efficiently using a [dynamic programming approach](/tutorial/explicitmpc).
+We will now solve this problem under the additional constraints that the input is quantized in steps of 1/3. This can easily be modelled in YALMIP using [ismember](/command/ismember). Note that this nonconvex operator introduces a lot of binary variables, and the MPC problem is most likely solved more efficiently using a [dynamic programming approach](/example/explicitmpc).
 
 ````matlab
 F = [F, ismember(U,[-1:1/3:1])];

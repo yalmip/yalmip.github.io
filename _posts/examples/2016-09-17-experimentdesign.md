@@ -67,7 +67,7 @@ Hvec = reshape([Hi{:}],12^2,[]);
 H = reshape(Hvec(:,1:Q)*lambda,12,12);
 ````
 
-The problem is solved in a couple of seconds. In case you have alternative SDP solvers on your path, the code explicitly selects [sdpt3](/command/sdpt3) to ensure that the [logdet](/command/logdet) is treated in the most efficient way.
+The problem is solved in a couple of seconds. In case you have alternative SDP solvers on your path, the code explicitly selects [sdpt3](/solver/sdpt3) to ensure that the [logdet](/command/logdet) is treated in the most efficient way.
 
 ````matlab
 constraints = [lambda >= 0, sum(lambda ) == 1];
@@ -76,9 +76,9 @@ options = sdpsettings('solver','sdpt3');
 optimize(constraints, objective, options);
 ````
 
-Although the code is capable of solving medium-sized problems, [sdpt3](/command/sdpt3) (and any other SDP solver) will run into memory problems when \\(Q\\) goes beyond a couple of thousands.
+Although the code is capable of solving medium-sized problems, [sdpt3](/solver/sdpt3) (and any other SDP solver) will run into memory problems when \\(Q\\) goes beyond a couple of thousands.
 
-However, with some knowledge on how SDP problems are solved, this low limit on tractable problems comes as a surprise. The problem, when stated as above, is actually a very small SDP problem, also for large \\(Q\\). However, it is only a small problem when interpreted in a primal sense. Unfortunately, YALMIP always interpret problems in a dual sense. To understand the following section, you are advised to have a look at the [automatic dualization tutorial](/tutorial/tutorial/automaticdualization/)
+However, with some knowledge on how SDP problems are solved, this low limit on tractable problems comes as a surprise. The problem, when stated as above, is actually a very small SDP problem, also for large \\(Q\\). However, it is only a small problem when interpreted in a primal sense. Unfortunately, YALMIP always interpret problems in a dual sense. To understand the following section, you are advised to have a look at the [automatic dualization tutorial](/tutorial/tutorial/automaticdualization)
 
 ### Relaxed problem in dualized form
 
@@ -122,4 +122,4 @@ options = sdpsettings('solver','sdpt3','dualize',1);
 optimize(constraints, objective, options);
 ````
 
-If you study the output displayed by [sdpt3](/command/sdpt3) you will see that the solver reports that there are 79 variables. In the manual model, a scalar term in the objective function was explicitly minimized and removed from the problem. Interestingly, [sdpt3](/command/sdpt3) behaves better numerically on the automatically generated dual problem than the manually derived model.
+If you study the output displayed by [sdpt3](/solver/sdpt3) you will see that the solver reports that there are 79 variables. In the manual model, a scalar term in the objective function was explicitly minimized and removed from the problem. Interestingly, [sdpt3](/solver/sdpt3) behaves better numerically on the automatically generated dual problem than the manually derived model.

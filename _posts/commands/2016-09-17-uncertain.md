@@ -38,7 +38,7 @@ objective = -x;
 optimize([F, W],objective)
 ````
 
-To specify random uncertainties for use in [optimizers](command/optimizer) and [sample](/command/sample), you specify the distribution, and all distribution parameters following the syntax in the RANDOM command in the Statistics Toolbox
+To specify random uncertainties for use in [optimizers](/command/optimizer) and [sample](/command/sample), you specify the distribution, and all distribution parameters following the syntax in the RANDOM command in the Statistics Toolbox
  
  ````matlab
 sdpvar x w

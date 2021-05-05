@@ -57,7 +57,7 @@ Express that the bound variables are larger than the absolute values of the resi
 Constraints = [-bound <= e <= bound];
 ````
 
-Call YALMIP to minimize the sum of the bounds subject to the constraints modelling the abolsute values. YALMIP will automatically detect that this is a linear program, and call any [LP solver](/yalmip/solvers) available on your path.
+Call YALMIP to minimize the sum of the bounds subject to the constraints modelling the abolsute values. YALMIP will automatically detect that this is a linear program, and call any [LP solver](/allsolvers) available on your path.
 
 ````matlab
 optimize(Constraints,sum(bound));
@@ -92,7 +92,7 @@ optimize([],e'*e);
 x_L2 = value(xhat);
 ````
 
-YALMIP automatically detects that the objective is a convex quadratic function, and solves the problem using any installed [QP solver](tags/#quadratic-programming-solver). If no QP solver is found, the problem is converted to an [SOCP](tags/#quadratic-programming-solver), and if no dedicated [SOCP solver](tags/#second-order-cone-programming-solver) exist, the SOCP is converted to an [SDP](/tutorial/semidefiniteprogramming) (although at that point you are better of explicitly telling YALMIP via [sdpsettings](/command/sdpsetting) to use a standard [nonlinear solver](tags/#nonlinear-programming-solver), which will be much better than using an SDP solver).
+YALMIP automatically detects that the objective is a convex quadratic function, and solves the problem using any installed [QP solver](tags/#quadratic-programming-solver). If no QP solver is found, the problem is converted to an [SOCP](tags/#quadratic-programming-solver), and if no dedicated [SOCP solver](tags/#second-order-cone-programming-solver) exist, the SOCP is converted to an [SDP](/tutorial/semidefiniteprogramming) (although at that point you are better of explicitly telling YALMIP via [sdpsettings](/command/sdpsettings) to use a standard [nonlinear solver](tags/#nonlinear-programming-solver), which will be much better than using an SDP solver).
 
 With quadratic programming, we typically mean linear constraints and quadratic objective, so let us solve such a general problem by adding a 1-norm regularization to our least-squares estimate.
 
@@ -111,7 +111,7 @@ plot(t,[y A*x_L1 A*x_L2 A*x_Linf]);
 ![Solution to regression problem]({{ site.url }}/images/regresssolution.png){: .center-image }
 
 
-Note that the low-level manipulations here can be performed much easier by using the [nonlinear operator framework](/tutorial/nonlinearoperator) in YALMIP.
+Note that the low-level manipulations here can be performed much easier by using the [nonlinear operator framework](/tutorial/nonlinearoperators) in YALMIP.
 
 ````matlab
 optimize([],norm(e,1));
@@ -121,7 +121,7 @@ optimize([],e'*e + norm(e,1));
 
 ## Large-scale quadratic programs
 
-The 2-norm solution (least-squares estimate) is most classically stated in the described QP formulation, although it in some cases is much more efficient in YALMIP to express the problem using a 2-norm, which will lead to a [second-order cone problem](/tutorial/secondorderconeprogramming).
+The 2-norm solution (least-squares estimate) is most classically stated in the described QP formulation, although it in some cases is much more efficient in YALMIP to express the problem using a 2-norm, which will lead to a [second-order cone problem](/tutorial/socpprogramming).
 
 ````matlab
 optimize([],norm(residuals,2));

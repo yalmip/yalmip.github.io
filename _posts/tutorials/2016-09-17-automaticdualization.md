@@ -124,7 +124,7 @@ x = sdpvar(n,1);
 F = [cone(x(2:end),x(1))];
 ````
 
-is a second order constraint in standard primal form. If your cone constraint violates this form, slacks will be introduced, except for translated second order cones, just as in the semidefinite case. Note that you need a primal-dual solver that can solve second order cone constraints natively in order to recover the original variables (currently [SEDUMI](/command/sedumi) and [SDPT3](/command/sdpt3) for mixed semidefinite second order cone problems, or [MOSEK](/solver/mosek) for pure second order cone problems).
+is a second order constraint in standard primal form. If your cone constraint violates this form, slacks will be introduced, except for translated second order cones, just as in the semidefinite case. Note that you need a primal-dual solver that can solve second order cone constraints natively in order to recover the original variables (currently [SEDUMI](/solver/sedumi) and [SDPT3](/solver/sdpt3) for mixed semidefinite second order cone problems, or [MOSEK](/solver/mosek) for pure second order cone problems).
 
 ### Comments
 

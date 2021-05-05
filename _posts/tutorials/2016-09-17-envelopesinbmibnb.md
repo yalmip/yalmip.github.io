@@ -97,7 +97,7 @@ A nonlinear scalar term \\(f(x)\\) is replaced with a new variable \\(w\\), and 
 
 For this to work, every operator (exp, sin, coth...) has to be apply to supply the envelope polytope data \\((A,b)\\) given bounds \\(x_L\\) and \\(x_U\\). Indeed, this is supported in the infrastructure in YALMIP which is based on operator overloading. Not only does an operator know what it should evaluate to, but it can be equipped with a lot of extra knowledge. 
 
-The engine in YALMIP allows every operator to announce properties which can be used by, e.g., [BMIBNB](/solver/). The most common important properties and methods are
+The engine in YALMIP allows every operator to announce properties which can be used by, e.g., [BMIBNB](/solver/bmibnb). The most common important properties and methods are
 
 * f(x)  The function value 
 * derivative(x) Derivative at x

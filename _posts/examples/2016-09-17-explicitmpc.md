@@ -42,7 +42,7 @@ u = sdpvar(repmat(nu,1,N),repmat(1,1,N));
 d = binvar(repmat(2,1,N),repmat(1,1,N));
 ````
 
-We now run a loop to add constraints on all states and inputs. For the logic constraints to work well, it is extremely important that all variables are explicitly bounded. Read more about this in the [logic programming](/tutorial/logicprogramming)) and the [big-M](/tutorial/bigmandconvexhull) tutorial. To prepare for the dynamic programming code later on, we setup the constraints back-wards in time.
+We now run a loop to add constraints on all states and inputs. For the logic constraints to work well, it is extremely important that all variables are explicitly bounded. Read more about this in the [logic programming](/tutorial/logicprogramming)) and the [big-M](/tutorial/bigmandconvexhulls) tutorial. To prepare for the dynamic programming code later on, we setup the constraints back-wards in time.
 
 ````matlab
 constraints = [];

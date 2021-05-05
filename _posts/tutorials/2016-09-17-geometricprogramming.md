@@ -60,7 +60,7 @@ optimize(C,-(h*w*d))
 
 Some geometric programs, although not given in standard form, can still be solved using a standard geometric programming solver after some some additional variables and constraints have been introduced. YALMIP has built-in support for some of these conversion.
 
-To begin with, nonlinear operators can be used also in geometric programs, as in any other optimization problems (as long as YALMIP can prove convexity and find a suitable [graph representation](/tutorial/graphrepresentations))
+To begin with, nonlinear operators can be used also in geometric programs, as in any other optimization problems (as long as YALMIP can prove convexity and find a suitable [graph representation](/tutorial/nonlinearoperatorsgraphs))
 
 ````matlab
 sdpvar t1 t2 t3

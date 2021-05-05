@@ -25,7 +25,7 @@ y = randn(n,1);
 Objective = (x-y)'*(x-y);
 ````
 
-To begin with, one has to understand that the constraint is nonconvex (it is a combinatorial constraint), and the end result in YALMIP will be a [mixed-integer representation](/tutorial/nonlinearoperatorsmixedinteger) of the constraint, more precisely a [big-M representation](/tutorial/bigmandconvexhulls/). 
+To begin with, one has to understand that the constraint is nonconvex (it is a combinatorial constraint), and the end result in YALMIP will be a [mixed-integer representation](/tutorial/nonlinearoperatorsmixedinteger) of the constraint, more precisely a [big-M representation](/tutorial/bigmandconvexhulls). 
 
 ### A manual big-M model
 
