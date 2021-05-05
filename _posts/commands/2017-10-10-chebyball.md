@@ -1,7 +1,7 @@
 ---
 category: command
 excerpt: "Computes the largest possible inscribed ball in a polytope"
-title: boundingbox
+title: chebyball
 tags: [Polytopes]
 date: '2016-09-17'
 sidebar:
