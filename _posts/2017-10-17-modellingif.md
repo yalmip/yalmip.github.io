@@ -1,9 +1,7 @@
 ---
 layout: single
-permalink: /modellingif
 excerpt: "Untangle that messy expression"
 title: "Modelling if-else-end statements"
-comments: true
 date: 2017-10-17
 ---
 
