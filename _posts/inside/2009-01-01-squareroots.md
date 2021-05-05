@@ -4,8 +4,6 @@ permalink: /squareroots
 excerpt: "sqrt, sqrtm, power or cpower?"
 title: Working with square roots
 tags: [Second-order cone programming representable, Common mistakes]
-sidebar:
-  nav: "inside"
 date: 2009-08-29
 ---
 
