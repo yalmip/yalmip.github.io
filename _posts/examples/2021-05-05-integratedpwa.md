@@ -2,7 +2,7 @@
 category: example
 excerpt: "From manual labour to a one-liner"
 title: "Integrating piecewise affine functions"
-tags: [Nonconvex quadratic programming, Integer programming, Logic programming, Piecewise affine function]
+tags: [Nonconvex quadratic programming, Integer programming, Logic programming, Piecewise affine function, Interp1]
 date: '2021-05-05'
 published: true
 gist: "https://gist.github.com/johanlofberg/2d113514a9259a30f64042879eb0882c.js"
