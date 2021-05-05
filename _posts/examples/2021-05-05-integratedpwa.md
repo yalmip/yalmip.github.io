@@ -21,21 +21,21 @@ In this example, we will combine methods for expressing [if-statements](/modelli
 
 ## Integrals of piecewise affine functions
 
-Our goal here is to optimize models involving integrals of the form \\(\int_0^x f(z)\dz \\) where \\(x\\) is a decision variable and \\(f\\) is a piecewise affine function. Since an integral of a affine function is quadratic, this means we are going to be faced with optimization of piecewise quadratic functions.
+Our goal here is to optimize models involving integrals of the form \\(\int_0^x f(z)dz \\) where \\(x\\) is a decision variable and \\(f\\) is a piecewise affine function. Since an integral of an affine function is quadratic, this means we are going to be faced with optimization of piecewise quadratic functions.
 
 Let us construct a simple example where our goal is to maximize an integrated piecewise affine function where
 
 $$
-f(z) = \begin{cases} 2z , & \text{for } 0\geq z \leq 2\\
+f(z) = \begin{cases} 2z , & \text{for } 0\leq z \leq 2\\
                      4  , & \text{for } 2 \leq z\leq 4\\
-                     16-3z , & \text{for } 4 \leq z 
+                     16-3z , & \text{for } 4 \leq z \leq 10
                      \end{cases}
 $$
 
 An alternative representation is \\(\min(\min(4,2z),16-3z)\\). To see what we are working with, we plot it and its numerically computed integral.
 
 ````matlab
-t = 0:0.001:8;
+t = 0:0.001:10;
 f = min(min(2*t,4),16-3*t);
 l = plot(t,f);
 grid on;hold on
@@ -48,7 +48,7 @@ Due to the negative slope in the third region, the piecewise quadratic function 
 
 ### The hard way
 
-As a first approach, we do it the hard way by first oing pen and paper computations to explicitly compute the integral to obtain our piecewise quadratic function
+As a first approach, we do it the hard way by pen-and-paper computations to explicitly compute the integral to obtain our piecewise quadratic function
 
 $$
 \int_{0}^x f(z) = \begin{cases} x^2 , & \text{for } 0\geq z \leq 2\\
@@ -114,6 +114,18 @@ q1 = int(f1,z,0,x);
 q2 = int(f1,z,0,2) + int(f2,z,2,x);
 q3 = int(f1,z,0,2) + int(f2,z,2,4) + int(f3,z,4,x);
 ````
+
+THe integrals seem to be correct
+
+````matlab
+sdisplay(q1)
+x^2
+sdisplay(q2)
+-4+4*x
+sdisplay(q3)
+-28+16*x-1.5*x^2
+````
+
 
 We are done and are ready to define the model!
 
