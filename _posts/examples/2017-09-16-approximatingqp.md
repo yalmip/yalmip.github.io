@@ -5,6 +5,14 @@ excerpt: "Convenient generation of approximations"
 title: "Nonconvex QP via piecewise affine models"
 tags: [Nonconvex quadratic programming, Integer programming, Sos2, Interp1]
 date: 2017-09-16
+header:
+  teaser: "pwaqp.png"
+sidebar:
+  nav: "examples"
+image:
+  feature: pwaqp.png
+  teaser: pwaqp.png
+  thumb: pwaqp.png
 sidebar:
   nav: "examples"
 ---
