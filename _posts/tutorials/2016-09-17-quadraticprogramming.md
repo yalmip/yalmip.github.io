@@ -92,7 +92,7 @@ optimize([],e'*e);
 x_L2 = value(xhat);
 ````
 
-YALMIP automatically detects that the objective is a convex quadratic function, and solves the problem using any installed [QP solver](tags/#quadratic-programming-solver). If no QP solver is found, the problem is converted to an [SOCP](tags/#quadratic-programming-solver), and if no dedicated [SOCP solver](tags/#second-order-cone-programming-solver) exist, the SOCP is converted to an [SDP](/tutorial/semidefiniteprogramming) (although at that point you are better of explicitly telling YALMIP via [sdpsettings](/command/sdpsettings) to use a standard [nonlinear solver](tags/#nonlinear-programming-solver), which will be much better than using an SDP solver).
+YALMIP automatically detects that the objective is a convex quadratic function, and solves the problem using any installed [QP solver](tags/#quadratic-programming-solver). If no QP solver is found, the problem is converted to an [SOCP](tags/#second-order-cone-programming-solver), and if no dedicated [SOCP solver](tags/#second-order-cone-programming-solver) exist, the SOCP is converted to an [SDP](/tutorial/semidefiniteprogramming) (although at that point you are better of explicitly telling YALMIP via [sdpsettings](/command/sdpsettings) to use a standard [nonlinear solver](tags/#nonlinear-programming-solver), which will be much better than using an SDP solver).
 
 With quadratic programming, we typically mean linear constraints and quadratic objective, so let us solve such a general problem by adding a 1-norm regularization to our least-squares estimate.
 

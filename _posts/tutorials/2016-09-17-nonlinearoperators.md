@@ -30,6 +30,6 @@ A third way to model operators in YALMIP is by using callbacks. This is the way 
 
 Since they are based on callbacks, they can only be used with general purpose nonlinear solvers, such as [FMINCON](/solver/fmincon), [SNOPT](/solver/snopt) or [IPOPT](/solver/ipopt). 
 
-Most of MATLABs built-in nonlinear functions, such as [erf](/command/erf) and [sin](/command/sin)), are available as callback operators in YALMIP. There are also operators such as [exp](/command/exp) and [kullbackleibler](/command/kullbackleibler) which can be used both with graph representations in [exponentialconeprogramming](/tutorial/exponentialconeprogramming) and as callback operators in general nonlinear solvers.
+Most of MATLABs built-in nonlinear functions, such as [erf](/command/erf) and [sin](/command/sin)), are available as callback operators in YALMIP. There are also operators such as [exp](/command/exp) and [kullbackleibler](/command/kullbackleibler) which can be used both with graph representations in [exponential-cone programming](/tutorial/exponentialconeprogramming) and as callback operators in general nonlinear solvers.
 
 Read more about [callback operators](/tutorial/nonlinearoperatorscallback).

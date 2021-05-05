@@ -51,7 +51,7 @@ for k = 1:N
 end
 ````
 
-Once the constraints and objective function have been generated, we can solve the optimization problem (in this case, a linear programming problem in the decision variable **u** and variables required to [model the norms](/tutorial/nonlinearoperatorsgraph)).
+Once the constraints and objective function have been generated, we can solve the optimization problem (in this case, a linear programming problem in the decision variable **u** and variables required to [model the norms](/tutorial/nonlinearoperatorsgraphs)).
 
 ````matlab
 optimize(constraints,objective);

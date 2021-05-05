@@ -135,7 +135,7 @@ This can be simplified, and we can tell the sampler to draw several samples in o
 model = sample(OneHyperPlaneModel,10);
 ````
 
-Now that we can attach a distribution to a variable, and sample models, let us put this to use. In our first experiment, we will not reproduce the figure above, but create the set  \\(v^Tx \leq 1 ~\forall ~\left\lvert v \right\rvert \leq 1 \\). If you've done your homework, you should already now realize that will create a romb (asymptotically). Note that **rombApproximation** will be an [optimizer](/optimizer) object without any remaining parameters. To execute a solve, we simply give it an empty list of parametric values.
+Now that we can attach a distribution to a variable, and sample models, let us put this to use. In our first experiment, we will not reproduce the figure above, but create the set  \\(v^Tx \leq 1 ~\forall ~\left\lvert v \right\rvert \leq 1 \\). If you've done your homework, you should already now realize that will create a romb (asymptotically). Note that **rombApproximation** will be an [optimizer](/command/optimizer) object without any remaining parameters. To execute a solve, we simply give it an empty list of parametric values.
 
 ````matlab
 x = sdpvar(2,1);
