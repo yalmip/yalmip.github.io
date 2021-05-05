@@ -79,7 +79,7 @@ Important to realize is that this model is hard from two different aspects. To b
 
 ### The even harder but hopefully better way
 
-As we learn in [if-else statements](/example/modellingif), models where a piecewise quadratic function is used in the objective can be improved upon by slightly by removing the quadratic equalities from the equalitities and lift them into the objective. The trick to do so is to assign a local copy of the decision variable to each region. Using this strategy here leads to
+As we learn in [if-else statements](/example/modellingif), models where a piecewise quadratic function is used in the objective can be improved upon by removing the quadratic equalities from the equalitities and lift them into the objective. The trick to do so is to assign a local copy of the decision variable to each region. Using this strategy here leads to
 
 ````matlab
 sdpvar x1 x2 x3
