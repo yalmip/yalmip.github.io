@@ -359,3 +359,31 @@ defaults:
       related: true
       sidebar:
           nav: "inside"
+# _inside
+  - scope:
+      path: "_posts/tutorials"
+      type: posts
+    values:
+      category: inside
+      layout: single
+      author_profile: false
+      read_time: false
+      comments: false
+      share: false
+      related: true
+      sidebar:
+          nav: "inside"
+# _inside
+  - scope:
+      path: ""
+      type: posts
+    values:
+      category: inside
+      layout: single
+      author_profile: false
+      read_time: false
+      comments: false
+      share: false
+      related: true
+      sidebar:
+          nav: "inside"          
