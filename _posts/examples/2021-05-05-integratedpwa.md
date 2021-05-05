@@ -19,7 +19,7 @@ image:
 
 In this example, we will combine methods for expressing [if-else statements](/modellingif) with built-in support for [integrating polynomial functions](/command/int).
 
-## Integrals of piecewise affine functions
+## Optimizing integrals of piecewise affine functions
 
 Our goal here is to optimize models involving integrals of the form \\(\int_0^x f(z)dz \\) where \\(x\\) is a decision variable and \\(f\\) is a piecewise affine function. Since an integral of an affine function is quadratic, this means we are going to be faced with optimization of piecewise quadratic functions.
 
