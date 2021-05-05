@@ -1,5 +1,6 @@
 ---
 category: inside
+permalink: multi-objective-problems
 excerpt: "How do I create a cheap Ferrari?"
 title: "Multi-objective problems in YALMIP"
 tags: [Multiobjective programming, Portfolio optimization]

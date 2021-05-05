@@ -1,5 +1,6 @@
 ---
 category: inside
+permalink: optimizerupdates
 excerpt: "Slice'n dice your problems"
 title: "Extensions on the optimizer"
 tags: [Optimizer]

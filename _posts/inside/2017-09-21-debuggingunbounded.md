@@ -1,8 +1,9 @@
 ---
 category: inside
+permalink: debuggingunbounded
 excerpt: "Where to start?"
 title: Debugging unbounded models
-tags: [Typical problems, Tricks]
+tags: [Common mistakes]
 date: 2017-09-21
 ---
 

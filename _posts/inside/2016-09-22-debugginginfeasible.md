@@ -1,8 +1,9 @@
 ---
 category: inside
+permalink: debugginginfeasible
 excerpt: "Where to start?"
 title: Debugging infeasible models
-tags: [Typical problems, Tricks]
+tags: [Common mistakes]
 date: 2016-09-22
 ---
 

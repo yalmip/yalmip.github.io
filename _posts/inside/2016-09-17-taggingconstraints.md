@@ -1,8 +1,8 @@
 ---
 category: inside
+permalink: taggingconstraints
 excerpt: "Name your constraints for easy reference"
 title: Tagging constraints
-tags: [Tricks]
 date: '2009-08-29'
 ---
 

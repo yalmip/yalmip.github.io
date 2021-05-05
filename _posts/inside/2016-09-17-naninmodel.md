@@ -1,8 +1,9 @@
 ---
 category: inside
+permalink: naninmodel
 excerpt: "Where why how?"
 title: NaN in model
-tags: [Typical problems]
+tags: [Common mistakes]
 date: '2009-08-29'
 ---
 

@@ -1,8 +1,9 @@
 ---
 category: inside
+permalink: fixedconstraints
 excerpt: "Code works for almost all cases, but suddenly fails."
 title: Constraints without any variables
-tags: [Typical problems]
+tags: [Common mistakes]
 date: '2009-08-29'
 ---
 
