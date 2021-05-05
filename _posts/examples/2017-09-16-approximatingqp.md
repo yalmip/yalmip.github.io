@@ -11,7 +11,9 @@ sidebar:
 
 To showcase the generality and convenience of [interp1](/command/interp1), let us answer a common question which addresses the problem of solving (possibly mixed-integer) quadratic programs using linear solvers, and to make matters worse, we study indefinite quadratic objectives.
 
-The simple idea we will use is to approximate the quadratic function as a piecewise affine function. Of course, this is not necessarily a good way to solve indefinite quadratic programs, but it is a common strategy ([see this post](/example/nonconvexquadraticprogramming) for some alternatives). Let us assume we want to minimize the indefinite objective \\(x^TQx - y^TRy\\) over the unit-box intersected with \\(\sum x + \sum y = 1\\).
+## Known indefinite structure
+
+The simple idea we will use is to approximate the quadratic function as a piecewise affine function. Of course, this is not necessarily a good way to solve indefinite quadratic programs, but it is a common strategy ([see this post](/example/nonconvexquadraticprogramming) for some alternatives). Let us assume we want to minimize the indefinite objective \\(x^TQx - y^TRy\\) with positive definite \\(Q\\) and \\(R\\) over the unit-box intersected with \\(\sum x + \sum y = 1\\).
 
 ````matlab
 n = 10;
@@ -22,7 +24,7 @@ R = randn(n);R = R*R';
 Model = [-1 <= [x y] <= 1, sum(x) + sum(y) == 1];
 ````
 
-To begin with, a problem here is that the model is multivariate, but [interp1](/command/interp1) only handles univariate data. To solve this, we factorize the quadratic functions and the objective using univariate functions \\(\sum e_i^2 - \sum f_i^2\\)
+To begin with, a problem here is that the model is multivariate, but [interp1](/command/interp1) only handles univariate data. To solve this, we factorize the quadratic functions and the objective into univariate functions \\(\sum e_i^2 - \sum f_i^2\\)
 ````matlab
 S = chol(Q);
 T = chol(R);
@@ -58,11 +60,13 @@ mesh(z,z,z.^2-(z').^2)
 
 ![PWA]({{ site.url }}/images/pwaqp.png){: .center-image }
 
-With the flag **'lp'**, the way the interpolation is implemented depends on data and convexity propagation. An efficient linear programming based graph representation will be used if possible, while a mixed-integer [sos2](/command/sos2) approach is used otherwise. In our case, the first term is convex and will thus be implemented efficiently, while the second term requires  [sos2](/commandsos2)
+With the flag **'lp'**, the way the interpolation is implemented depends on data and convexity propagation. An efficient linear programming based graph representation will be used if possible, while a mixed-integer [sos2](/command/sos2) approach is used otherwise. In our case, the first term is convex and will thus be implemented efficiently, while the second term requires [sos2](/commandsos2)
 
 ````matlab
 optimize(Model,sum(f1)-sum(f2))
 ````
+
+### Partial convexity exploitation
 
 If we have a convex mixed-integer quadratic programming solver, there is no need to approximate the first convex part of the objective, so we can use a partially quadratic model instead
 ````matlab
@@ -72,7 +76,8 @@ optimize(Model,x'*Q*x-sum(f2))
 
 ## Generic case
 
-If we had been given a general quadatic \\(p(z)\\) we could have factorized it into a difference of convex quadratic functions by performing an eigenvalue factorization
+If we had been given a general quadratic \\(p(z)\\) we could have factorized it into a difference of convex quadratic functions by performing an eigenvalue factorization
+
 ````matlab
 z = sdpvar(5,1);
 p = (sum(z))^2 - sum(z.^2);
