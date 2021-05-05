@@ -470,8 +470,10 @@ inside:
   - title: Problems
     children:
       - title: "Debugging infeasibility"
-        url: /inside/debugginginfeasible/
+        url: /debugginginfeasible/
+      - title: "Debugging unboundedness"
+        url: /debuggingunbounded/        
   - title: Good to know
     children:
       - title: "Naming constraints"
-        url: /inside/taggingconstraints/
+        url: /taggingconstraints/
