@@ -71,7 +71,7 @@ Model = [implies(region(1), [R1, f == x^2])
          implies(region(2), [R2, f == -4 + 4*x])
          implies(region(3), [R3, f == -28 + 16*x - 1.5*x^2])
          sum(region) == 1
-         [0 <= x <= 10]];
+         [0 <= x <= 10, -100 <= f <= 100]];
 
 optimize(Model, -f)
 ````
@@ -88,7 +88,7 @@ Model = [implies(region(1), [R1, x1 == x, x2 == 0, x3 == 0])
          implies(region(2), [R2, x2 == x, x1 == 0, x3 == 0])
          implies(region(3), [R3, x3 == x, x1 == 0, x2 == 0])
          sum(region) == 1
-         [0 <= x <= 10]];
+         [0 <= [x x1 x2 x3] <= 10]];
 f = x1^2 + (-4*region(2)+4*x2) + (-28+16*x3 - 1.5*x3^2);
 optimize(Model, -f)
 ````
@@ -104,6 +104,12 @@ First, note that the integral is \\(\int_0^x f(z)\dz  = \int_0^u_1 f_1(z)\dz + \
 Now we sum up these functions and we have our piecewise quadratic functions in the three regions. 
 
 ````matlab
+sdpvar z
+sdpvar f
+f1 = 2*z; 
+f2 = 4;   
+f3 = 16-3*z;
+
 q1 = int(f1,z,0,x);
 q2 = int(f1,z,0,2) + int(f2,z,2,x);
 q3 = int(f1,z,0,2) + int(f2,z,2,4) + int(f3,z,4,x);
@@ -116,7 +122,7 @@ Model = [implies(region(1), [R1, f == q1])
          implies(region(2), [R2, f == q2])
          implies(region(3), [R3, f == q3])
          sum(region) == 1
-         [0 <= x <= 10]];
+         [0 <= x <= 10, -100 <= f <= 100]];
 
 optimize(Model, -f)
 ````
