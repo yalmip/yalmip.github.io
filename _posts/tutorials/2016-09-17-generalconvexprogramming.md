@@ -40,10 +40,10 @@ y = sdpvar(m,1);
 optimize(exp(y) <= b-A*x,-sum(y));
 ````
 
-A completely equivalent problem with much better properties in a general nonlinear solver. Note that also this model will be solved with a [exponential cone programming solver](/tags/#exponential-cone-programming-solver) if available.
+A completely equivalent problem with much better properties in a general nonlinear solver. Note that also this model will be solved with an [exponential cone programming solver](/tags/#exponential-cone-programming-solver) if available.
 
 
-By default, YALMIP allows nonconvex problems to be formulated. However, if you want to make sure that no nonconvex problems are set up by YALMIP, you can specify this. If we switch the sign on the objective a non-convex model is obtained, and YALMIP detects this.
+By default, YALMIP allows nonconvex problems to be formulated. However, if you want to make sure that no nonconvex problems slips by, you can specify this. If we switch the sign on the objective a non-convex model is obtained, and YALMIP detects this.
 
 ````matlab
 optimize(A*x <= b,sum(log(b-A*x)),sdpsettings('allownonconvex',0))
