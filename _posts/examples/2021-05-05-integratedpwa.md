@@ -157,6 +157,6 @@ Too much work?
 Well then.
 
 ````matlab
-f = interp1(ti,fi,x,'sos2');
+f = interp1(ti,0.001*cumsum(min(min(2*ti,4),16-3*ti)),x,'sos2');
 optimize([0 <= x <= 10],-f)
 ````
