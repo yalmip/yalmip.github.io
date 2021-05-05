@@ -76,7 +76,7 @@ optimize(Model,x'*Q*x-sum(f2))
 
 ## Generic case
 
-If we had been given a general quadratic \\(p(z)\\) we could have factorized it into a difference of convex quadratic functions by performing an eigenvalue factorization
+If we are given a general quadratic \\(p(z)\\) we can factorize it into a difference of convex quadratic functions by performing an eigenvalue factorization.
 
 ````matlab
 z = sdpvar(5,1);
