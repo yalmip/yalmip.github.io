@@ -8,7 +8,7 @@ comments: true
 date: 2020-10-01
 ---
 
-Almost 10 years ago, [a post was published](/example/nonconvexquadraticprogramming/), comparing [semidefinite relaxation strategies](/tutorials/momentrelaxations) with YALMIPs built-in global solvers. Although the main message of the post remains even more valid (understand when, why and how you apply a semidefinite relaxation!), the computational results are perhaps a bit outdated.
+Almost 10 years ago, [a post was published](/example/nonconvexquadraticprogramming/), comparing [semidefinite relaxation strategies](/tutorial/momentrelaxations) with YALMIPs built-in global solvers. Although the main message of the post remains even more valid (understand when, why and how you apply a semidefinite relaxation!), the computational results are perhaps a bit outdated.
 
 We recompute the results to reflect 3 developments over the last decade
 

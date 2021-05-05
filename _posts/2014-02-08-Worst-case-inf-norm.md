@@ -15,7 +15,7 @@ No simple way came to mind, and using a result by [Mangasarian and Shiau 1986] t
 
 Nevertheless, let us write some YALMIP code to compute it, and then generalize the problem formulation. We first note that \\(\infty\\)-norm of a matrix corresponds to the largest 1-norm of the rows. Hence, all we have to do is to loop over all rows, and compute the worst-case 1-norm of each row.
 
-Unfortunately, worst-case 1-norm is one of the hard cases in [Mangasarian 1986](/reference/mangasarian1986). Even worse from our perspective, due to this intractability, adressing uncertain constraints represented using a [graph representations](/tutorial/nonlinearoperatorgraphs) and the [robust optimization framework](/tutorial/robustoptimization) of YALMIP is not supported.
+Unfortunately, worst-case 1-norm is one of the hard cases in [Mangasarian 1986](/reference/mangasarian1986). Even worse from our perspective, due to this intractability, adressing uncertain constraints represented using a [graph representations](/tutorial/nonlinearoperatorsgraphs) and the [robust optimization framework](/tutorial/robustoptimization) of YALMIP is not supported.
 
 For this particular application, the matrix dimension is reasonably small, so we explicitly generate the linear programming formulation of the 1-norm by looking at all combinations of positive and negative terms in the absolute values, i.e. we write \\(\left\lvert x(p)\right\rvert +\left\lvert y(p)\right\rvert \leq t\\) as \\(x(p)+y(p)\leq t\\), \\(-x(p)+y(p) \leq t\\), \\(x(p)-y(p)\leq t\\) and \\(-x(p)-y(p)\leq t\\). Once we have all these constraints for all rows, we use YALMIPs [robust optimization framework](/tutorial/robustoptimization) to compute the worst-case \\(t\\) over the uncertain parameter \\(p\\).
 

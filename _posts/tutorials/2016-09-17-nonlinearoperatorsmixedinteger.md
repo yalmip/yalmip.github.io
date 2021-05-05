@@ -25,7 +25,7 @@ ans =
     3.0000    7.0000
 ````
 
-Since the mixed-integer models are based on big-M reformulations, it is crucial that you have explicit bounds on all variables involved in the nonconvex expressions. Read more about this in the [big-M tutorial](/tutorials/bigmandconvexhulls).
+Since the mixed-integer models are based on big-M reformulations, it is crucial that you have explicit bounds on all variables involved in the nonconvex expressions. Read more about this in the [big-M tutorial](/tutorial/bigmandconvexhulls).
 
 If you not want YALMIP to resort to mixed-integer models in nonconvex cases, you can turn off this feature
 

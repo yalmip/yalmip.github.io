@@ -19,7 +19,7 @@ sol = optimize(Constraints,Objective)
        problem: 2
 ````
 
-Before sending a post to the YALMIP [forum](/https://groups.google.com/forum/#!forum/yalmip) to resolve the issue, you always make some minimal initial investigation.
+Before sending a post to the YALMIP [forum](https://groups.google.com/forum/#!forum/yalmip) to resolve the issue, you always make some minimal initial investigation.
 
 ### 1. Is it really unbounded?
 

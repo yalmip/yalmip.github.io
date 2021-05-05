@@ -20,7 +20,7 @@ F = uncertain(w,distribution)
 
 ### Examples
 
-A simple [robust optimization](/tutorials/robustoptimization) problem can be implemented as
+A simple [robust optimization](/tutorial/robustoptimization) problem can be implemented as
 
 ````matlab
 sdpvar x w
@@ -38,7 +38,7 @@ objective = -x;
 optimize([F, W],objective)
 ````
 
-To specify random uncertainties for use in [optimizers](comand/optimie) and [sample](/command/sample), you specify the distribution, and all distribution parameters following the syntax in the RANDOM command in the Statistics Toolbox
+To specify random uncertainties for use in [optimizers](command/optimizer) and [sample](/command/sample), you specify the distribution, and all distribution parameters following the syntax in the RANDOM command in the Statistics Toolbox
  
  ````matlab
 sdpvar x w

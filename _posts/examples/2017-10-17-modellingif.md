@@ -128,7 +128,7 @@ y = A*x+n;
 plot(t,y);
 ````
 
-Define the residuals and function values (which we do in a non-vectorized fashion here). To obtain a sparse structure in the complicated integer constraints, we define **e** by equalities, instead of making it a dense function of **xhat**. Note that we have to add explicit bounds on all variables involved in the implications as these are modelled using [big-M methods](/tutorial/bigmandconvexhulls/). For the problem to be solved efficiently, you have to have an efficient [mixed-integer second order cone programming solver](tags/#mixed-integer-second-order-cone-programming-solver) installed. For comparison, we also solve a standard linear regression problem.
+Define the residuals and function values (which we do in a non-vectorized fashion here). To obtain a sparse structure in the complicated integer constraints, we define **e** by equalities, instead of making it a dense function of **xhat**. Note that we have to add explicit bounds on all variables involved in the implications as these are modelled using [big-M methods](/tutorial/bigmandconvexhulls/). For the problem to be solved efficiently, you have to have an efficient [mixed-integer second order cone programming solver](/tags/#mixed-integer-second-order-cone-programming-solver) installed. For comparison, we also solve a standard linear regression problem.
 
 ````matlab
 xhat = sdpvar(6,1);

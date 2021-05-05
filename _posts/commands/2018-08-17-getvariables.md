@@ -18,7 +18,7 @@ k = getvariables(x)
 
 ### Examples
 
-[sdpvar](/commad/sdpvar) variables are built-up from internal variable indicies (i.e., the only internal name is a number). 
+[sdpvar](/command/sdpvar) variables are built-up from internal variable indicies (i.e., the only internal name is a number). 
 
 ````matlab
 yalmip('clear')

@@ -9,7 +9,7 @@ sidebar:
   nav: "tutorials"
 ---
 
-Let us continue with our regression problem from the [quadratic programming tutorial](/tutorials/quadraticprogramming)
+Let us continue with our regression problem from the [quadratic programming tutorial](/tutorial/quadraticprogramming)
 
 ## Robust regression
 

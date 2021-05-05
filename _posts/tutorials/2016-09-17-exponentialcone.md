@@ -24,13 +24,13 @@ The code below requires [Mosek 9](/solver/mosek), [SCS](/solver/scs) or [ECOS](/
 
 ### Logistic regression example
 
-As an example, we solve the logistic regression problem. The problem here is to find a classifier \\( \operatorname{sign}(a^Tx + b)\\) for a given dataset \\( x_i\\) with associated labels \\( y_i = \pm 1 \\). In other words, a classifier similiar to the simple separating hyperplane discussed in the [linear programming tutorial](/tutorials/linearprogramming). 
+As an example, we solve the logistic regression problem. The problem here is to find a classifier \\( \operatorname{sign}(a^Tx + b)\\) for a given dataset \\( x_i\\) with associated labels \\( y_i = \pm 1 \\). In other words, a classifier similiar to the simple separating hyperplane discussed in the [linear programming tutorial](/tutorial/linearprogramming). 
 
 A convex relaxation of the problem can be solved by minimizing \\( \sum \log(1 + e^{-y_i(a^Tx_i + b)}) \\). This can be written as a sum of [logsumexp](/command/logsumexp) operators by noting that \\( \log(1 + e^{z})=\log(e^{0} + e^{z}) \\). In YALMIP, you do not have to think further, but can use the [logsumexp](/command/logsumexp) operator directly to solve the problem. However, let us show how this boils down to a simple exponential cone program.
 
 To begin with, the problem can be written as minimizing \\( \sum t_i \\) subject to \\( \log (e^0 + e^{-y_i(a^Tx_i + b)}) \leq t_i \\). The constraint is first rewritten by exponentiating both sides to  \\(e^0 + e^{-y_i(a^Tx_i + b)} \leq e^{t_i} \\), which is equivalent to  \\(e^{-t_i} + e^{-y_i(a^Tx_i + b)-t_i} \leq 1 \\), which can be further normalized to \\(z_i + u_i \leq 1, e^{-t_i}\leq z_i, e^{-y_i(a^Tx_i + b)-t_i} \leq u_i\\), which thus lands us in a standard exponential cone program.
 
-Generate data as in the [linear programming tutorial](/tutorials/linearprogramming) for a classification problem. 
+Generate data as in the [linear programming tutorial](/tutorial/linearprogramming) for a classification problem. 
 
 ````matlab
 N = 50;
