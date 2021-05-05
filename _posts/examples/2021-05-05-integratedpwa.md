@@ -35,11 +35,11 @@ $$
 An alternative representation is \\(\min(\min(4,2z),16-3z)\\). To see what we are working with, we plot it and its numerically computed integral.
 
 ````matlab
-t = 0:0.001:10;
-f = min(min(2*t,4),16-3*t);
-l = plot(t,f);
+ti = 0:0.001:10;
+fi = min(min(2*ti,4),16-3*ti);
+l = plot(ti,fi);
 grid on;hold on
-l = plot(t,0.001*cumsum(f))
+l = plot(t,0.001*cumsum(fi))
 ````
 
 ![Integrated PWA]({{ site.url }}/images/integralpwa.png){: .center-image }
@@ -157,8 +157,6 @@ Too much work?
 Well then.
 
 ````matlab
-t = 0:0.001:10;
-fi = cumsum(min(min(2*t,4),16-3*t));
-f = interp1(t,fi,x,'sos2');
+f = interp1(ti,fi,x,'sos2');
 optimize([0 <= x <= 10],-f)
 ````
