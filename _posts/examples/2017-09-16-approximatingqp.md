@@ -68,7 +68,7 @@ optimize(Model,sum(f1)-sum(f2))
 
 ### Partial convexity exploitation
 
-If we have a convex mixed-integer quadratic programming solver, there is no need to approximate the first convex part of the objective, so we can use a partially quadratic model instead
+If we have a convex mixed-integer quadratic programming solver and our goal only is to avoid the indefinite quadratic, there is no need to approximate the first convex part of the objective, so we can use a partially approximated model instead
 ````matlab
 Model = [-1 <= [x y] <= 1, sum(x) + sum(y) == 1, f == T*y];
 optimize(Model,x'*Q*x-sum(f2))
