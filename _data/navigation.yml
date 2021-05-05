@@ -459,3 +459,17 @@ commands:
         url: /command/savesdpafile
       - title: "yalmiptest"
         url: /command/yalmiptest
+        
+inside:
+  - title: Theory
+    children:
+      - title: "CUTSDP"
+        url: /inside/The-cutsdp-solver
+  - title: Problems
+    children:
+      - title: "Debugging infeasibility"
+        url: /inside/debugginginfeasible/
+  - title: Good to know
+    children:
+      - title: "Naming constraints"
+        url: /inside/taggingconstraints/
