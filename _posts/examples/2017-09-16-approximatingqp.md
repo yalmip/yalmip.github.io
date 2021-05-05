@@ -47,6 +47,15 @@ f1 = interp1(E,E.^2,e,'lp');
 f2 = interp1(F,F.^2,f,'lp');
 ````
 
+What we are doing here is essentially preparing for the following approximation (here in a more coarse sub-division to clearly see the affine structure)
+
+````matlab
+z = -1:0.25:1;
+mesh(z,z,z.^2-(z').^2)
+``
+
+![PWA]({{ site.url }}/images/pwaqp.png){: .center-image }
+
 With the flag **'lp'**, the way the interpolation is implemented depends on data and convexity propagation. An efficient linear programming based graph representation will be used if possible, while a mixed-integer [sos2](/command/sos2) approach is used otherwise. In our case, the first term is convex and will thus be implemented efficiently, while the second term requires  [sos2](/commandsos2)
 
 ````matlab
