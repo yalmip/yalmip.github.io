@@ -495,7 +495,7 @@ inside:
     children:
       - title: "Naming constraints"
         url: /taggingconstraints
-      - title: "Warmstarting with initial guess"
+      - title: "Warmstarting"
         url: /warmstart
-      - title: "Extracting low-level solver data"
+      - title: "Low-level solver data"
         url: /Extracting        
