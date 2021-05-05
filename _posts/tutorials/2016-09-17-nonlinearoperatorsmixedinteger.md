@@ -1,6 +1,6 @@
 ---
 title: "Nonlinear operators - integer models"
-permalink: "/tutorial/nonlinearoperatormixedinteger"
+permalink: "/tutorial/nonlinearoperatorsmixedinteger"
 category: inside
 tags: [Integer programming representable]
 excerpt: "Mixed-integer representations of nonlinear operators"
