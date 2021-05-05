@@ -6,4 +6,4 @@ sidebar:
   nav:
 ---
 
-[Don't use LMILAB!](/solvers/lmilab)
+[Don't use LMILAB!](/solver/lmilab)

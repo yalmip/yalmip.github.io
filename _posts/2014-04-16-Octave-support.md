@@ -11,7 +11,7 @@ I have been asked several times if I would consider an [Octave](http://www.gnu.o
 
 I have only tested Octave 3.8.1 on Win64, and have no idea if it works in other settings.
 
-Besides being slower, the main issue now in Octave from a YALMIP perspective is the lack of solvers. At this point, the only solvers tested with YALMIP are [GLPK](solver/glpk) (shipped with the core of Octave) and [sdpt3](/command/sdpt3) (recently updated by Michael Grant to compile in Octave, (https://github.com/sqlp/sdpt3). Also [sedumi](/command/sedumi) is updated to compile in Octave (https://github.com/sqlp/sedumi), but I have not managed to compile it and test it on my machine.
+Besides being slower, the main issue now in Octave from a YALMIP perspective is the lack of solvers. At this point, the only solvers tested with YALMIP are [GLPK](/solver/glpk) (shipped with the core of Octave) and [sdpt3](/command/sdpt3) (recently updated by Michael Grant to compile in Octave, (https://github.com/sqlp/sdpt3). Also [sedumi](/command/sedumi) is updated to compile in Octave (https://github.com/sqlp/sedumi), but I have not managed to compile it and test it on my machine.
 
 There are most likely many small issues left to be updated. If you experience any problems, please report this.
 

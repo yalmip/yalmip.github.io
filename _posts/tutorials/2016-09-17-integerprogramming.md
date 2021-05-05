@@ -72,7 +72,7 @@ optimize(F,residuals'*residuals);
 x_L2_toep = value(x_hat);
 ````
 
-Note that [BNB](/solver/bnb)  not should be used if you have simple mixed integer linear programs. In that case, you can just as well download a much faster free specialized MILP solver, such as [GLPK](solver/glpk) or academic license version of [GUROBI](/solver/gurobi).
+Note that [BNB](/solver/bnb)  not should be used if you have simple mixed integer linear programs. In that case, you can just as well download a much faster free specialized MILP solver, such as [GLPK](/solver/glpk) or academic license version of [GUROBI](/solver/gurobi).
 
 ### General mixed integer programming
 

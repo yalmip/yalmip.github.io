@@ -41,7 +41,7 @@ f = sdpvar(n,1);
 Model = [-1 <= [x y] <= 1, sum(x) + sum(y) == 1, e == S*x, f == T*y];
 ````
 
-Our next step is to introduce a piecewise affine approximation of every quadratic term \\(e_i\\) and \\(f_i\\) using [interp1](command/interp1). To do this, we have to define the domain over which the functions are approximated, i.e., find lower and upper bounds on the elements in \\(e\\) and \\(f\\). We can conviently do that using [boundingbox](/command/boundingbox)
+Our next step is to introduce a piecewise affine approximation of every quadratic term \\(e_i\\) and \\(f_i\\) using [interp1](/command/interp1). To do this, we have to define the domain over which the functions are approximated, i.e., find lower and upper bounds on the elements in \\(e\\) and \\(f\\). We can conviently do that using [boundingbox](/command/boundingbox)
 
 ````matlab
 [~,Le,Ue] = boundingbox(Model,[],e);

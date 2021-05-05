@@ -30,6 +30,6 @@ Since [complements](/command/complements) is implemented using a [big-M](/tutori
 
 When a general nonlinear solver is used, the model is implemented by simply using the nonlinear form \\(x^Ty=0\\).
 
-When [KNITRO](/solvers/knitro) is used, the complementarity structure is communicated to the solver.
+When [KNITRO](/solver/knitro) is used, the complementarity structure is communicated to the solver.
 
-The built-in global solver [BMIBNB](/solvers/bmibnb) will exploit complementarity structure to improve bound propagation if the complementary is working on simple non-negative variables (i.e., if you have a complementarity constraints on an affine expression  \\(a^Tx + b\geq 0\\), introduce new variables and equality constraint \\(z = a^Tx + b\\) first).
+The built-in global solver [BMIBNB](/solver/bmibnb) will exploit complementarity structure to improve bound propagation if the complementary is working on simple non-negative variables (i.e., if you have a complementarity constraints on an affine expression  \\(a^Tx + b\geq 0\\), introduce new variables and equality constraint \\(z = a^Tx + b\\) first).

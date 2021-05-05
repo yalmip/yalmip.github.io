@@ -193,7 +193,7 @@ plot(replace(H*x,x(1),0.2) <= k)
 
 ### Convex hull
 
-Both [MPT](/solver/mpt) and YALMIP can be used to obtain the convex hull of the union of polytopes. Using [MPT](/solver/mpt), we quickly define two cubes and plot them and their [convex hull](/commands/hull)
+Both [MPT](/solver/mpt) and YALMIP can be used to obtain the convex hull of the union of polytopes. Using [MPT](/solver/mpt), we quickly define two cubes and plot them and their [convex hull](/command/hull)
 
 ````matlab
 P1 = unitbox(2,0.5)+[1;1];
@@ -215,4 +215,4 @@ plot(P1,x,'y');
 plot(P2,x,'b');
 ````
 
-Once again, note that [MPT](/solver/mpt) and YALMIP use different approaches to construct the convex hull. [MPT](/solver/mpt)  is based on a vertex enumeration of the individual polytopes. YALMIP on the other hand is based on a general lifting approach involving additional variables and constraints (this is the reason we explicitly tell YALMIP to plot the convex hull w.r.t. the original variables, since auxiliary variables have been introduced). The benefit of this approach is of course that the method applies to arbitrary conic-representable sets as described in the [convex hull command](/commands/hull)
+Once again, note that [MPT](/solver/mpt) and YALMIP use different approaches to construct the convex hull. [MPT](/solver/mpt)  is based on a vertex enumeration of the individual polytopes. YALMIP on the other hand is based on a general lifting approach involving additional variables and constraints (this is the reason we explicitly tell YALMIP to plot the convex hull w.r.t. the original variables, since auxiliary variables have been introduced). The benefit of this approach is of course that the method applies to arbitrary conic-representable sets as described in the [convex hull command](/command/hull)

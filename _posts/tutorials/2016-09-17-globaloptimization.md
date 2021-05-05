@@ -66,7 +66,7 @@ optimize(F,p,options);
 *         2% spent in upper heuristics (80 candidates tried)
 ````
 
-As you can see, a lot of time is spent in the linear programming based bound propagation. [BMIBNB](solver/bmibnb) applies this on almost all models. If you want to turn it off, you set **'bmibnb.lpreduce'** to **0**, and if you want to enforce it you set it to **1**. Default is **-1** which means [BMIBNB](solver/bmibnb) decides.
+As you can see, a lot of time is spent in the linear programming based bound propagation. [BMIBNB](/solver/bmibnb) applies this on almost all models. If you want to turn it off, you set **'bmibnb.lpreduce'** to **0**, and if you want to enforce it you set it to **1**. Default is **-1** which means [BMIBNB](/solver/bmibnb) decides.
 
 Upper bounds are generated both by calling the nonlinear solver, but also by aggresively checking all kinds of candidates that pop up in the algorithm (solutions to lower bound problems, and points created when performing bound propagation). In the log above, we see that the nonlinear solver was only called 4 times, but 80 other solution candidates were analyzed as candidates for generating an upper bound. Also note that the globally optimal solution was solution was available already in the first node, so all effort was effectively spent on certifying optimality. On some models finding the optmal solution is hard, and on some models the certification is the hard part, and you typically don't know which it is until you have solved the problem.
 

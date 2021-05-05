@@ -27,7 +27,7 @@ A(100:210,:)=.1;
 y = ytrue+randn(length(ytrue),1);
 ````
 
-As a first approach, we will do the modelling by hand, by adding second-order cones using the low-level command [cone](/yalmip/comands/cone).
+As a first approach, we will do the modelling by hand, by adding second-order cones using the low-level command [cone](/command/cone).
 
 ````matlab
 xhat = sdpvar(6,1);

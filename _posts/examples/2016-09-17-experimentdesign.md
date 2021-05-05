@@ -28,7 +28,7 @@ Let \\(Q\\) denote the total number of possible configurations and \\(H_i\\) the
 
 ![Model]({{ site.url }}/images/design1.png){: .center-image }
 
-This problem can be solved using YALMIPs internal mixed integer conic solver [BNB](solvers/bnb). Due to the [logdet](/command/logdet) term, you are advised to solve the problem using [SDPT](/solvers/sdpt3) as the lower bound solver.
+This problem can be solved using YALMIPs internal mixed integer conic solver [BNB](/solvers/bnb). Due to the [logdet](/command/logdet) term, you are advised to solve the problem using [SDPT](/solver/sdpt3) as the lower bound solver.
 
 Load the [covdata.mat] and use straightforward code to define the combined covariance matrix. Since this problem is combinatorial, we have to resort to a small number of candidates, compared to the problems we will solve below. Hence, we let **Q=200** and **M=15**.
 

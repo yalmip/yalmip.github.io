@@ -12,7 +12,7 @@ header:
 
 This example is motivated by one of the most asked question: *How can I do GEVP optimization?*
 
-The short answer is that YALMIP does not have a ready-to-run script for solving generalized eigenvalue problems, such as the [gevp](http://www.mathworks.com/access/helpdesk/help/toolbox/robust/gevp.html) command in [LMILAB](/solver/lmilab).
+The short answer is that YALMIP does not have a ready-to-run script for solving generalized eigenvalue problems, such as the 'gevp' command in [LMILAB](/solver/lmilab).
 
 However, luckily this is not entirely true, and the long answer is given by this example.
 

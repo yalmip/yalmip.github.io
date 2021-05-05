@@ -39,7 +39,7 @@ xhat = sdpvar(6,1);
 
 ### Linear programming regression
 
-By using \\( \hat{x}\\) and the regressors, we can define the residuals \\( e = y - A\hat{x}\\) (which also will be an [sdpvar](/yalmip/commands/sdpvar) object, parametrized in the sought variable \\(\hat{x}\\))
+By using \\( \hat{x}\\) and the regressors, we can define the residuals \\( e = y - A\hat{x}\\) (which also will be an [sdpvar](/command/sdpvar) object, parametrized in the sought variable \\(\hat{x}\\))
 
 ````matlab
 e = y-A*xhat;
@@ -63,7 +63,7 @@ Call YALMIP to minimize the sum of the bounds subject to the constraints modelli
 optimize(Constraints,sum(bound));
 ````  
 
-The optimal value is, as always, extracted using the overloaded [value](/yalmip/commands/value) command.
+The optimal value is, as always, extracted using the overloaded [value](/command/value) command.
 
 ````matlab
 x_L1 = value(xhat);

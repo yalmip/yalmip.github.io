@@ -41,7 +41,7 @@ For arbitrary \\(p\\) this is not a convex problem. This can easily be seen if w
 
 ### MILP sorting
 
-Sorting a vector is in general is a very complex operation to describe in an optimization model. Assuming a descending sort, we can describe a sorted vector \\(s = \text{sort}(x)\\) via the constraints \\(s = Px, s_i \geq s_{i+1} \\) where \\(P\\) is a binary permutation matrix, \\( \sum_i P_{ij} = 1, \sum_j P_{ij}=1\\). To arrive at a MILP representation, a linearization (i.e. [big-M representation](tutorial/logicprogramming/)) of the product \\(Px\\) is needed. Hence, the full model will not only introduce the large binary matrix \\(P\\) but also a large amount of additonal variables and constraints to implement the linearization. This is the model you obtain if you use the command [sort](/command/sort) in YALMIP.
+Sorting a vector is in general is a very complex operation to describe in an optimization model. Assuming a descending sort, we can describe a sorted vector \\(s = \text{sort}(x)\\) via the constraints \\(s = Px, s_i \geq s_{i+1} \\) where \\(P\\) is a binary permutation matrix, \\( \sum_i P_{ij} = 1, \sum_j P_{ij}=1\\). To arrive at a MILP representation, a linearization (i.e. [big-M representation](/tutorial/logicprogramming/)) of the product \\(Px\\) is needed. Hence, the full model will not only introduce the large binary matrix \\(P\\) but also a large amount of additonal variables and constraints to implement the linearization. This is the model you obtain if you use the command [sort](/command/sort) in YALMIP.
 
 In the general case, the problem is non-convex and we have no hope of an LP representation so we start our experiments with the MILP formulation on a small random case.
 
@@ -64,7 +64,7 @@ Increasing the problem size will quickly lead to problems where the solution-tim
 
 The problem here does not require the sorted vector explicitly, but only needs the result from the inner product \\( \text{sort}(Rw)^Tp\\) for a non-negative non-increasing vector \\( p\\). With the sorted vector having length \\(m\\), this can alternatively be stated as the *weighted ordered sum of m largest elements of the vector*, i.e., the limiting case of the operator [weighted ordered sum of k largest elements](/command/sumk) which not only is convex but also linear-programming representable.
 
-Hence, all we have to do is to replace the call to [sort](/command/sort) and the inner product with a call to [sumk](command/operator), and we have converted the model to an LP (after making sure we have a convex problem by generating a \\(p\\) satisfying the assumptions).
+Hence, all we have to do is to replace the call to [sort](/command/sort) and the inner product with a call to [sumk](/command/operator), and we have converted the model to an LP (after making sure we have a convex problem by generating a \\(p\\) satisfying the assumptions).
 
 ````matlab
 p = rand(m,1);p = sort(p,'descending');

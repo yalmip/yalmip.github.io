@@ -11,11 +11,11 @@ When it comes to extracting duals for second-order cone programs or quadraticall
 
 ## CPLEX
 
-The interface YALMIP uses to communicate with [CPLEX](/solvers/cplex) (*cplexqcp.m*) does not support extraction of SOCP duals.
+The interface YALMIP uses to communicate with [CPLEX](/solver/cplex) (*cplexqcp.m*) does not support extraction of SOCP duals.
 
 ## Gurobi
 
-To extract duals from second-order cone constraints using [GUROBI](/solvers/gurobi), the functionality must be activated in the solver first. The solver supports both extraction of the conic vector dual on [CONE](/commands/cone) constraints, and extraction of a dual to a scalarized quadratic constraint.
+To extract duals from second-order cone constraints using [GUROBI](/solver/gurobi), the functionality must be activated in the solver first. The solver supports both extraction of the conic vector dual on [CONE](/command/cone) constraints, and extraction of a dual to a scalarized quadratic constraint.
 
 ````matlab
 x = sdpvar(2,1);
@@ -43,7 +43,7 @@ ans =
 
 ## Mosek
 
-With [MOSEK](/solvers/mosek), only socp duals on [CONE](/commands/cone) constraints are possible.
+With [MOSEK](/solver/mosek), only socp duals on [CONE](/command/cone) constraints are possible.
 
 ````matlab
 x = sdpvar(2,1);

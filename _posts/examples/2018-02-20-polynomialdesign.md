@@ -34,14 +34,14 @@ y2 = 0;
 n = 9;
 ````
 
-To define polynomials, the most convenients commands are [polynomial](/commands/polynomial) or possibly [monolist](/commands/monolist). The command [polynomial](/commands/polynomial) creates a polynomial but also returns the coefficients and the basis
+To define polynomials, the most convenients commands are [polynomial](/command/polynomial) or possibly [monolist](/command/monolist). The command [polynomial](/command/polynomial) creates a polynomial but also returns the coefficients and the basis
 
 ````matlab
 x = sdpvar(1);
 [p,a,v] = polynomial(x,n);
 ````
 
-The vector \\(a\\) holds the coefficients, and \\(v(x)\\) is the corresponding basis in \\(p(x) = a^Tv(x)\\). To handle point-wise constraints on the polynomial, we use the command [replace](/commands/polynomial) for evaluation. Solving the initial problem is thus
+The vector \\(a\\) holds the coefficients, and \\(v(x)\\) is the corresponding basis in \\(p(x) = a^Tv(x)\\). To handle point-wise constraints on the polynomial, we use the command [replace](/command/polynomial) for evaluation. Solving the initial problem is thus
 
 ````matlab
 Model = [replace(p,x,x0)==y0,replace(p,x,x1)>=y1, replace(p,x,x2)==y2];

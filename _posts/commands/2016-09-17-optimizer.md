@@ -124,7 +124,7 @@ Note that assigned values of [sdpvar](/command/sdpvar) objects are not updated a
 
  Sum-of-squares problems can be handled through optimizer also. Note though that parameters in the sum-of-squares problem cannot be explicitly defined in [optimizer](/command/optimizer), but YALMIP has to deduce them from non-sos constraints, the objective, input parameters and output parameters.
  
- Consider the problem of finding a lower bound on a polynomial in a variable \\(x\\) using [sum-of-squares](/commands/solvesos). Here, \\(t\\) is automatically detected as a parameter as it is part of the objective
+ Consider the problem of finding a lower bound on a polynomial in a variable \\(x\\) using [sum-of-squares](/command/solvesos). Here, \\(t\\) is automatically detected as a parameter as it is part of the objective
  
  ````matlab
 sdpvar x t

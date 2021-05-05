@@ -25,7 +25,7 @@ Throughout the examples here, **a** and **b** represent scalar binary variables,
 
 In the models, we make use of [big-M models](/tutorial/bigmandconvexhulls/) with associated constant \\(M\\). We use a notation with the same value everywhere, but in practice you would spend effort on deriving as small constants as possible for every single constraint.
 
-In the models here, we explicitly derive detailed models for implications, but in practice, we would of course implement the low-level implications using [implies](/comand/implies).
+In the models here, we explicitly derive detailed models for implications, but in practice, we would of course implement the low-level implications using [implies](/command/implies).
 
 ## Logical models involving binary variables 
 {: #logics }

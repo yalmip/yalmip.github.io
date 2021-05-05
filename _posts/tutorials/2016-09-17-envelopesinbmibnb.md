@@ -6,7 +6,7 @@ tags: [Convex hull, Envelope, Global optimization, Nonconvex programming, BMIBNB
 excerpt: "Outer approximations of function envelopes are the core of the global solver BMIBNB"
 ---
 
-The global solver [BMIBNB](/solver/bmibnb) is a YALMIP-based implementation of a standard spatial branch-and-bound strategy. If you are unfamiliar with the basic ideas in a branch & bound solver, you should try to find an [introduction](https://en.wikipedia.org/wiki/Branch_and_bound) first and then perhaps check out the article on [global optimization](tutorial/globaloptimization)
+The global solver [BMIBNB](/solver/bmibnb) is a YALMIP-based implementation of a standard spatial branch-and-bound strategy. If you are unfamiliar with the basic ideas in a branch & bound solver, you should try to find an [introduction](https://en.wikipedia.org/wiki/Branch_and_bound) first and then perhaps check out the article on [global optimization](/tutorial/globaloptimization)
 
 ## A branch & bound solver
 
@@ -141,7 +141,7 @@ hold on;plot(t,sqrt(t));
 
 ![Quadratic hull]({{ site.url }}/images/hullsqrtm.png){: .center-image }
 
-Luckily, manual implementation of code like this is not needed in many places inside YALMIP. Instead, [BMIBNB](solver/bmibnb) can check if the operator exports a derivative method, and if the function claims to be convex or concave on the interval automatically generate the outer approximation using tangent planes etc.
+Luckily, manual implementation of code like this is not needed in many places inside YALMIP. Instead, [BMIBNB](/solver/bmibnb) can check if the operator exports a derivative method, and if the function claims to be convex or concave on the interval automatically generate the outer approximation using tangent planes etc.
 
 The operator information is exploited as much as possible. If both a convex hull generator and explicit convexity information is missing, but the operators returns information about inflection points, this can be used to see if the function is convex or concave on the interval and generate a convex hull approximation accordingly. In the case of the quadratic function above, we saw the need of adding a additional cut to avoid the negative region, and this is done automatically using information about the range of the function.
 

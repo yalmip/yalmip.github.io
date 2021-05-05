@@ -15,7 +15,7 @@ With the most recent release, the situation is improved with better support for 
 
 ## Suitable background
 
-To avoid repetition of general concepts, you are adviced to read the post on [CUTSDP](/cutsdpsolver) where cutting planes are used for the linear semidefinite cone in a different context. You are also adviced to read the general posts on [global optimization](tutorial/globaloptimization) and [envelope generation](tutorial/envelopesinbmibnb/) to understand how a spatial branch & bound solver works.
+To avoid repetition of general concepts, you are adviced to read the post on [CUTSDP](/cutsdpsolver) where cutting planes are used for the linear semidefinite cone in a different context. You are also adviced to read the general posts on [global optimization](/tutorial/globaloptimization) and [envelope generation](/tutorial/envelopesinbmibnb/) to understand how a spatial branch & bound solver works.
 
 ## The strategy
 
@@ -226,7 +226,7 @@ sol = optimize(Model,x^2+y^2,sdpsettings('solver','bmibnb','bmibnbuppersdprelax'
 *         1% spent in upper heuristics (36 candidates tried)
 ````
 
-This can be taken to the extreme. By setting the number of rounds to infinity, we force [BMIBNB](solver/bmibnb) to continue adding SDP cuts until the solution either is SDP-feasible, or the nonlinear solver fails to find a solution to the approximation. 
+This can be taken to the extreme. By setting the number of rounds to infinity, we force [BMIBNB](/solver/bmibnb) to continue adding SDP cuts until the solution either is SDP-feasible, or the nonlinear solver fails to find a solution to the approximation. 
 
 Another use of the framework is to use it in combintion with a global solver. By using a global solver as the upper bound solver (!), and then setting the number of rounds to infinity, the solution computed will not only be SDP-feasible, but globally optimal! Since we know the computed solution is the globally optimal solution, we can terminate without bothering about the lower bound, and we can achive this by setting the lower bound target. Since our SDP cuts are quadratic, and the objective is quadratic, we can use [Gurobi](/solver/gurobi) which supports global optimization for quadratic models. There is one tricky caveat here though: The numerical tolerances in [BMIBNB](/solver/bmibnb) vs [Gurobi](/solver/gurobi) for judging feasibility can infer with each other. A solution which [Gurobi](/solver/gurobi) thinks is good enough might still, according to  [BMIBNB](/solver/bmibnb), violate the cut we just added, and then we might keep adding the same cut in an infinite loop. To counteract this, we tighten the feasibility tolerance in [Gurobi](/solver/gurobi) (and in pratice you would not want to set the iteration limit to infinity but something more sensible)
 

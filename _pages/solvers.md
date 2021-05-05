@@ -37,10 +37,10 @@ A simple categorization is as follows (the definitions of free and commercial de
 [CPLEX](/solver/cplex) (free for academia), [GUROBI](/solver/gurobi) (free for academia), [INTLINPROG](/solver/intlinprog), [MOSEK](/solver/mosek) (free for academia), [XPRESS](/solver/xpress)  (generous community trial license available)
 
 ### Quadratic programming (free)
-[OSQP](/solver/osqp), [BPMPD](/solver/bpmpd), [CLP](/solver/clp), [OOQP](/solver/ooqp), [QPC](/solver/qpc), [QPOASES](/solver/qpoases), [QUADPROGBB](/solver/quadprogbb) (nonconvex QP)
+[OSQP](/solver/osqp), [CLP](/solver/clp), [OOQP](/solver/ooqp), [QPC](/solver/qpc), [QPOASES](/solver/qpoases), [QUADPROGBB](/solver/quadprogbb) (nonconvex QP)
 
 ### Quadratic programming (commercial)
-[CPLEX](/solver/cplex) (free for academia), [GUROBI](/solver/gurobi) (free for academia), [MOSEK](/solver/mosek) (free for academia), [NAG](/solver/nag), [QUADPROG](/solver/quadprog), [XPRESS](/solver/xpress) (generous community trial license available)
+[CPLEX](/solver/cplex) (free for academia), [GUROBI](/solver/gurobi) (free for academia), [MOSEK](/solver/mosek) (free for academia), [QUADPROG](/solver/quadprog), [XPRESS](/solver/xpress) (generous community trial license available)
 
 ### Mixed Integer Quadratic programming (commercial)
 [CPLEX](/solver/cplex) (free for academia), [GUROBI](/solver/gurobi) (free for academia), [MOSEK](/solver/mosek) (free for academia), [XPRESS](/solver/xpress) (generous community trial license available)

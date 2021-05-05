@@ -15,7 +15,7 @@ $$
 
 However, in many cases you may want to use a square-root in a nonconvex fashion, and solve the problem using a general-purpose nonlinear solver, such as [FMINCON](/solver/fmincon). In these situations, you do not want YALMIP to fail due to convexity propagation problems. In other cases, it might be the case that your model satisfies all convexity requirements, but you still want to solve the problem using [FMINCON](/solver/fmincon), and in those cases it would be silly to use a second-order cone model for a simple nonlinear function. 
 
-The remedy to these situations is to use the operator [sqrtm](/command/sqrtm) instead. The [sqrtm](/command/sqrtm) operator is implemented as an [callback nonlinear operator](/tutorial/nonlinearoperatorscallback/), and will therefore not generate any second-order cone constraints. Furthermore, the [sqrtm](/command/sqrtm) operator does not require convexity.
+The remedy to these situations is to use the operator [sqrtm](/command/sqrtm) instead. The [sqrtm](/command/sqrtm) operator is implemented as an [callback nonlinear operator](/tutorial/nonlinearoperatorscallback), and will therefore not generate any second-order cone constraints. Furthermore, the [sqrtm](/command/sqrtm) operator does not require convexity.
 
 As an example, consider the following problem. This model will be converted to and solved as a second-order cone program, since [sqrt](/command/sqrt) is used in compliance with convexity rules.
 

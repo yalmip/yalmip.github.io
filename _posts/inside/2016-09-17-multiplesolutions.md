@@ -45,4 +45,4 @@ for i = 1:3
 end
 ````
 
-An alternative approach to compute many solutions with small differences in the setup is to use an [optimizer approach](/commands/optimizer)
+An alternative approach to compute many solutions with small differences in the setup is to use an [optimizer approach](/command/optimizer)

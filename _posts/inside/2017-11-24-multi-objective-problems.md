@@ -75,7 +75,7 @@ for i = 1:length(t)
 end
 ````
 
-An more general approach is to implement the strategy using an [optimizer object](/comands/optimizer). Note that we return the value of the variance computed from the allocation, instead of the simple epigraph variable. The reason is that the epigraph variable is not used when **t = 1** and thus the epigraph variable and the expression it bounds are not the same in that border case. Also note that the solver has to be specified, in this case we pick [MOSEK](/solvers/mosek)
+An more general approach is to implement the strategy using an [optimizer object](/command/optimizer). Note that we return the value of the variance computed from the allocation, instead of the simple epigraph variable. The reason is that the epigraph variable is not used when **t = 1** and thus the epigraph variable and the expression it bounds are not the same in that border case. Also note that the solver has to be specified, in this case we pick [MOSEK](/solver/mosek)
 
 ````matlab
 sdpvar v

@@ -130,7 +130,7 @@ Optimal = Saturation(A(:)',B(:)');
 mesh(A,B,reshape(Optimal,size(A)));
 ````
 
-Remember, [optimizer](/comand/optimizer) is not just for linearly parameterized problems or simple quadratic programs. However, when there are general [callback nonlinearities](/tutorial/nonlinearoperatorscallback) acting on parameters (functions such as [exp](/command/exp), [log](/command/log) etc), they can (currently) only act on simple parametric variables, i.e., not on any kind of compound expression involving parameters. Note that the problem below is a nonlinear program for YALMIP during the compilation phase, and is a quadratic program first when the parameters have been fixed. It is thus a case where it is crucial that we explicitly select a suitable solver for the instantiated problem.
+Remember, [optimizer](/command/optimizer) is not just for linearly parameterized problems or simple quadratic programs. However, when there are general [callback nonlinearities](/tutorial/nonlinearoperatorscallback) acting on parameters (functions such as [exp](/command/exp), [log](/command/log) etc), they can (currently) only act on simple parametric variables, i.e., not on any kind of compound expression involving parameters. Note that the problem below is a nonlinear program for YALMIP during the compilation phase, and is a quadratic program first when the parameters have been fixed. It is thus a case where it is crucial that we explicitly select a suitable solver for the instantiated problem.
 
 ````matlab
 Objective = (x-4*sin(b))^2;

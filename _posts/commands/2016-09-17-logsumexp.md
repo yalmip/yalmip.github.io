@@ -18,7 +18,7 @@ y = logsumexp(x)
 
 ### Comment
 
-The convex [logsumexp](/commands/logsumexp) operator can be used to perform logistic regression, as illustrated in the example in the [exponential cone tutorial](/tutorial/exponentialcone)
+The convex [logsumexp](/command/logsumexp) operator can be used to perform logistic regression, as illustrated in the example in the [exponential cone tutorial](/tutorial/exponentialcone)
 
 
 ### Implementation
