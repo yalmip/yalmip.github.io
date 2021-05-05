@@ -464,16 +464,14 @@ inside:
   - title: Theory 
     children:
       - title: "CUTSDP"
-        url: /The-cutsdp-solver
-      - title: "CUTSDP"
-        url: /The-cutsdp-solver        
+        url: /The-cutsdp-solver     
   - title: Problems
     children:
       - title: "Debugging infeasibility"
-        url: /debugginginfeasible/
+        url: /debugginginfeasible              
       - title: "Debugging unboundedness"
-        url: /debuggingunbounded/        
+        url: /debuggingunbounded/       
   - title: Good to know
     children:
       - title: "Naming constraints"
-        url: /taggingconstraints/
+        url: /taggingconstraints
