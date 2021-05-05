@@ -76,7 +76,7 @@ Model = [implies(region(1), [R1, f == x^2])
 optimize(Model, -f)
 ````
 
-Important to realize is that this model is hard from two different aspects. To begin with, we have binary variables as we have to represent the disjunctive nature, but we also have quadratic equalities inside these disjunctions. Hence, the final product is a mixed-integer nonlinear non-convex quadratically constrained problem.
+Important to realize is that this model is hard from two different aspects. To begin with, we have binary variables as we have to represent the disjunctive nature, but we also have quadratic equalities inside these disjunctions. Hence, the final product is a mixed-integer nonlinear non-convex quadratically constrained problem. Hence you need a solver such as [BMIBNB](/solver/bmibnb), [GUROBI](/solver/gurobi) or [BARON](/solver/baron)
 
 ### The even harder but hopefully better way
 
@@ -93,7 +93,7 @@ f = x1^2 + (-4*region(2)+4*x2) + (-28+16*x3 - 1.5*x3^2);
 optimize(Model, -f)
 ````
 
-Had the piecewise affine functions been non-increasing, the quadratic function would have been concave, and the resulting model here would have had a convex objective, i.e. we would have had a convex MIQP which typically is easier to handle as branching only has to be performed in the combinatorial space, and not in the continuous space. There are more solvers available for this model class too. Note though, if we had this convex case, we should really not have modelled the objective using using disjunctions, but written the convex pieewise quadratic function using a convex epigraph representation, leading us to a convex second-order cone program.
+In this form, we have an MIQP, possibly with nonconvex objective, meaning we are opening up for using [CPLEX](/solver/cplex). Had the piecewise affine functions been non-increasing, the quadratic function would have been concave, and the resulting model here would have had a convex objective, i.e. we would have had a convex MIQP which typically is easier to handle as branching only has to be performed in the combinatorial space, and not in the continuous space. There are more solvers available for this model class too, such as [MOSEK](/solver/mosek). Note though, if we had this convex case, we should really not have modelled the objective using using disjunctions, but written the convex piecewise quadratic function using a convex epigraph representation, leading us to a convex second-order cone program.
 
 ### Getting lazy
 
