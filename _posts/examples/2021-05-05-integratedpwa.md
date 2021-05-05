@@ -150,3 +150,15 @@ f = int(f1,z,0,min(x,2)) + int(f2,z,2,min(x,4)) + int(f3,z,4,x);
 optimize([0 <= x <= 10], -f)
 ````
 
+Too much work?
+
+### Crazy lazy
+
+Well then.
+
+````matlab
+t = 0:0.001:10;
+fi = cumsum(min(min(2*t,4),16-3*t));
+f = interp1(t,fi,x,'sos2');
+optimize([0 <= x <= 10],-f)
+````
