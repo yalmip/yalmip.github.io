@@ -17,7 +17,7 @@ image:
 ---
 
 
-In this example, we will combine methods for expressing [if-statements](/) with built-in support for [integrating polynomial functions symbolically](/command/int).
+In this example, we will combine methods for expressing [if-statements](/modellingif) with built-in support for [integrating polynomial functions](/command/int).
 
 ## Integrals of piecewise affine functions
 
