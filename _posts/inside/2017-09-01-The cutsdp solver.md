@@ -1,5 +1,6 @@
 ---
 category: inside
+permalink: The-cutsdp-solver
 excerpt: "A little known solver"
 title: "The CUTSDP solver explained"
 tags: [Semidefinite programming, Mixed-integer conic programming solver, Integer programming]
