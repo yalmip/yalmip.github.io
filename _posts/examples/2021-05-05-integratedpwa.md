@@ -99,7 +99,7 @@ In this form, we have an MIQP, possibly with nonconvex objective, meaning we are
 
 The reaon we use YALMIP is because we are lazy, so the models above are too much manual labour. Our goal is to do all the integration related manipulations automatically.
 
-First, note that the integral is \\( \int_0^x f(z)dz  = \int_0^u_1 f_1(z)dz + \int_u_1^u_2 f_2(z)dz + \ldots \\). 
+First, note that the integral is \\( \int_0^x f(z)dz  = \int_0^{u_1} f_1(z)dz + \int_{u_1}^{u_2} f_2(z)dz + \ldots \\). 
 
 Sum up these parts and we have our piecewise quadratic functions in the three regions. 
 
