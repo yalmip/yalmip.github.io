@@ -57,7 +57,7 @@ $$
                      \end{cases}
 $$
 
-Having these expression, we are ready to implement the model. What we have to do is to represent that the objective is defined differently in different regions, which effectively means we have to implement [if-else statements](/modellingif). Proceeding exactly as we learn there, we end up with our finished product.
+Having these expression, we are ready to implement the model. What we have to do is to represent that the objective is defined differently in different regions, which effectively means we have to implement [if-else statements](/modellingif). Proceeding exactly as we learn there, we end up with our finished productafter having simplified our integrals.
 
 ````matlab
 sdpvar x
