@@ -3,7 +3,7 @@ title: "General convex programming"
 category: tutorial
 tags:
 level: 3.2
-excerpt: "YALMIP does not care, but for your own good, think about convexity also in general nonlinear programs."
+excerpt: "YALMIP does not care, but for your own good, think about convexity and structure also in general nonlinear programs."
 sidebar:
   nav: "tutorials"
 ---
