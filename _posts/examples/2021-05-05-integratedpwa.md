@@ -154,9 +154,11 @@ Too much work?
 
 ### Crazy lazy
 
-Well then.
+Well then (if you are ok with an approximation).
 
 ````matlab
 f = interp1(ti,0.001*cumsum(min(min(2*ti,4),16-3*ti)),x,'sos2');
 optimize([0 <= x <= 10],-f)
 ````
+
+Leads to a MILP, so no scary nonconvex quadratics.
