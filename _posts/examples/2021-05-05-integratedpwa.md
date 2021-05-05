@@ -5,7 +5,7 @@ title: "Integrating piecewise affine functions"
 tags: [Nonconvex quadratic programming, Integer programming, Logic programming]
 date: '2021-05-05'
 published: true
-gist: ""
+gist: "https://gist.github.com/johanlofberg/2d113514a9259a30f64042879eb0882c.js"
 header:
   teaser: "integralpwa.png"
 sidebar:
@@ -17,7 +17,7 @@ image:
 ---
 
 
-In this example, we will combine methods for expressing [if-statements](/modellingif) with built-in support for [integrating polynomial functions](/command/int).
+In this example, we will combine methods for expressing [if-else statements](/modellingif) with built-in support for [integrating polynomial functions](/command/int).
 
 ## Integrals of piecewise affine functions
 
@@ -78,7 +78,7 @@ optimize(Model, -f)
 
 Important to realize is that this model is hard from two different aspects. To begin with, we have binary variables as we have to represent the disjunctive nature, but we also have quadratic equalities inside these disjunctions. Hence, the final product is a mixed-integer nonlinear non-convex quadratically constraint problem.
 
-### The harder but hopefully better way
+### The even harder but hopefully better way
 
 As we learn in [if-else statements](/modellingif), models where a piecewise quadratic function is used in the objective can be improved upon by slightly by removing the quadratic equalities from the equalitities and lift them into the objective. The trick to do so is to assign a local copy of the decision variable to each region. Using this strategy here leads to
 
