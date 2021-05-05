@@ -345,3 +345,17 @@ defaults:
       related: true
       header:
           teaser: toolbox.jpg
+# _inside
+  - scope:
+      path: "_posts/inside"
+      type: posts
+    values:
+      category: inside
+      layout: single
+      author_profile: false
+      read_time: false
+      comments: false
+      share: false
+      related: true
+      sidebar:
+          nav: "inside"
