@@ -1,11 +1,10 @@
 ---
 category: inside
-layout: single
 excerpt: "sqrt, sqrtm, power or cpower?"
 title: Working with square roots
 tags: [Second-order cone programming representable, Common mistakes]
 sidebar:
-  nav: "examples"
+  nav: "inside"
 date: 2009-08-29
 ---
 
