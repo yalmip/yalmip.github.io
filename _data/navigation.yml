@@ -466,21 +466,21 @@ inside:
       - title: "The CUTSDP solver explained"
         url: /The-cutsdp-solver     
       - title: "Big-M and convex hulls"
-        url: /inside/bigmandconvexhulls
+        url: /tutorial/bigmandconvexhulls
       - title: "Envelope approximations for global optimization"
-        url: /inside/envelopesinbmibnb    
+        url: /tutorial/envelopesinbmibnb    
       - title: "Logics and integer programming representability"
-        url: /inside/logicprogramming
+        url: /tutorial/logicprogramming
       - title: "Operators - general"
-        url: /inside/nonlinearoperators
+        url: /tutorial/nonlinearoperators
       - title: "Operators - conic graphs"
-        url: /inside/nonlinearoperatorsgraphs
+        url: /tutorial/nonlinearoperatorsgraphs
       - title: "Operators - integer models"
-        url: /inside/nonlinearoperatorsmixedinteger
+        url: /tutorial/nonlinearoperatorsmixedinteger
       - title: "Operators - callback"
-        url: /inside/nonlinearoperatorscallback        
+        url: /tutorial/nonlinearoperatorscallback        
       - title: "Automatic dualization"
-        url: /inside/automaticdualization           
+        url: /tutorial/automaticdualization           
   - title: Problems
     children:
       - title: "Debugging infeasibility"
