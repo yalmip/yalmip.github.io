@@ -16,7 +16,7 @@ image:
 ---
 
 
-In this example, we will combine methods for expressing [if-else statements](/example/modellingif) with built-in support for [integrating polynomial functions](/command/int).
+In this example, we will combine methods for expressing [if-else statements](/example/modellingif) with built-in support for [integrating polynomial functions](/command/int) to develop models involving integrated piecewise affine functions.
 
 ## Optimizing integrals of piecewise affine functions
 
