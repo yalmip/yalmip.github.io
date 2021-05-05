@@ -21,7 +21,7 @@ In this example, we will combine methods for expressing [if-else statements](/ex
 
 ## Optimizing integrals of piecewise affine functions
 
-Our goal here is to optimize models involving integrals of the form \\(\int_0^x f(z)dz \\) where \\(x\\) is a decision variable and \\(f\\) is a piecewise affine function. Since an integral of an affine function is quadratic, this means we are going to be faced with optimization of piecewise quadratic functions.
+Our goal here is to optimize models involving integrals of the form \\(\int_0^x f(z)dz \\) where \\(x\\) is a decision variable and \\(f\\) is a piecewise affine function. Since an integral of an affine function is quadratic, this means we are going to be faced with optimization models involving piecewise quadratic functions.
 
 Let us construct a simple example where our goal is to maximize an integrated piecewise affine function where
 
