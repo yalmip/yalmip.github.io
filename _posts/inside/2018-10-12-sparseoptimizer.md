@@ -1,7 +1,8 @@
 ---
-category: example
+category: inside
 sidebar:
-  nav: "examples"
+  nav: "inside"
+subcategory: 3  
 excerpt: "Be careful with unnecessary symbolic overhead"
 title: Sparse parameterizations in optimizer objects
 tags: [Optimizer, Tricks, Common mistakes]
