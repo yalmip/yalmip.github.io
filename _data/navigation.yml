@@ -514,7 +514,9 @@ inside:
       - title: "Naming constraints"
         url: /taggingconstraints    
       - title: "Parameterized uncertainty"
-        url: /parameterizeduncertainty           
+        url: /parameterizeduncertainty 
+      - title: "Sparse parameters in optimizer"
+        url: /inside/sparseoptimizer
       - title: "Square roots"
         url: /squareroots          
       - title: "Warmstarting"
