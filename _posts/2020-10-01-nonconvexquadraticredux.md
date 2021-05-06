@@ -69,7 +69,7 @@ Some general comments on what we see
 
 * The main message remains: A full-fledged naive semidefinite relaxation is the worst you can do for anything but very small problems. A slightly improved model which is compactified using quadratic constraints allows a smaller semidefinite program that is competetive with the global solvers for a larger range of problem sizes.
 
-* A benefit with the moment based methods is that the computational effort is fairly predicatable, compared to the more unpredicatble behaviour of the other global solvers.
+* A benefit with the moment based methods is that the computational effort is fairly predictable, compared to the more unpredictable behaviour of the other global solvers.
 
 * A benefit with the branch & bound based global methods is that they may find a solution very quickly and can be terminated and then also supply a lower bound. For instance, [BMIBNB](/solver/bmibnb) can almost always deliver a solution within 1% optimality gap within a few seconds (and that solution is almost always the global minimizer). In the final model with n=38, although it takes the solver more than 180 seconds to close the gap completely, the solver has found the global solution, with a gap of 0.1%, already after a fraction of a second and then spends the remaining time on trying to close the gap further. This is not possible with the moment based method. If you are lucky, it has computed a tight lower bound when it is finisihed, and from that it might be possible to extrct a solution.
 
