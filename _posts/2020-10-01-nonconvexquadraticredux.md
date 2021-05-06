@@ -77,7 +77,7 @@ Some general comments on what we see
 
 * The time reported for the moment relaxations are the times spent in the SDP solver which solves the relaxation (here [MOSEK](/solver/mosek)). The actual call to the moment framework is larger, and becomes excessive for larger problem sizes. This is not caused by the complexity of the resulting SDP or the theory, but by the quick-n-dirty implementation of setting up the moment relaxation inside YALMIP. However, for problems of sizes where this becomes problematic, the solution time in the solver will be massive anyway so you would probably never want to solve those problems to begin with.
 
-* [BMIBNB](/solver/bmibnb), [Gurobi](/solver/gurobi), [Cplex](/solver/cplex), [SCIP](/solver/scip) and [BARON](/solver/baron) attack the nonconvex QP using the same strategy (spatial branch & bound). The fact that [BMIBNB](/solver/bmibnb) performs extremely well here is not a general conclusion, but the result of some very effient cut or bound propagator which just happens to perform well on this model class.
+* [BMIBNB](/solver/bmibnb), [GUROBI](/solver/gurobi), [CPLEX](/solver/cplex), [SCIP](/solver/scip) and [BARON](/solver/baron) attack the nonconvex QP using the same strategy (spatial branch & bound). The fact that [BMIBNB](/solver/bmibnb) performs extremely well here is not a general conclusion, but the result of some very effient cut or bound propagator which just happens to perform well on this model class.
 
 * Since we only allow 180 seconds, the reported times which are just above 180 seconds are most likely not solved to optimality, but the solver simply had to abort as it ran out of time.
 
