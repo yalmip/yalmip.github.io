@@ -465,9 +465,9 @@ inside:
         url: /The-cutsdp-solver     
       - title: "Big-M and convex hulls"
         url: /tutorial/bigmandconvexhulls
-      - title: "Envelope approximations for global optimization"
+      - title: "Envelopes in global optimization"
         url: /tutorial/envelopesinbmibnb    
-      - title: "Logics and integer programming representability"
+      - title: "Integer programming representability"
         url: /tutorial/logicprogramming
       - title: "Operators - general"
         url: /tutorial/nonlinearoperators
@@ -485,15 +485,26 @@ inside:
         url: /debugginginfeasible              
       - title: "Debugging unboundedness"
         url: /debuggingunbounded  
+      - title: "Equality with uncertainty"
+        url: /equalitywithuncertainty 
       - title: "NaN in model"
         url: /naninmodel
       - title: "Slow MILP"
-        url: /slowmilp        
+        url: /slowmilp  
+      - title: "Empty constraints"
+        url: /fixedconstraints
   - title: Good to know
-    children:
+    children: 
+      - title: "Complex-valued problems"
+        url: /inside/complexproblems  
+      - title: "Low-level solver data"
+        url: /Extracting          
+      - title: "Multiple solutions"
+        url: /multiplesolutions  
       - title: "Naming constraints"
-        url: /taggingconstraints
+        url: /taggingconstraints        
+      - title: "Square roots"
+        url: /squareroots          
       - title: "Warmstarting"
         url: /warmstart
-      - title: "Low-level solver data"
-        url: /Extracting        
+      
