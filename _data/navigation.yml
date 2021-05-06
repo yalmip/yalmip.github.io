@@ -509,8 +509,12 @@ inside:
         url: /Extracting          
       - title: "Multiple solutions"
         url: /multiplesolutions  
+      - title: "Multi-objective programming"
+        url: /multi-objective-problems          
       - title: "Naming constraints"
-        url: /taggingconstraints        
+        url: /taggingconstraints    
+      - title: "Parameterized uncertainty"
+        url: /parameterizeduncertainty           
       - title: "Square roots"
         url: /squareroots          
       - title: "Warmstarting"
