@@ -1,5 +1,6 @@
 ---
 category: inside
+subcategory: 3
 permalink: optimizerupdates
 excerpt: "Slice'n dice your problems"
 title: "Extensions on the optimizer"

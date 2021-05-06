@@ -1,5 +1,6 @@
 ---
 category: inside
+subcategory: 3
 permalink: taggingconstraints
 excerpt: "Name your constraints for easy reference"
 title: Tagging constraints

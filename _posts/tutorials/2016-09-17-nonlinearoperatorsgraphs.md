@@ -2,6 +2,7 @@
 title: "Nonlinear operators - graphs and conic models"
 permalink: "/tutorial/nonlinearoperatorsgraphs"
 category: inside
+subcategory: 1
 level: 6
 tags: [Epigraph, Hypograph, Conic programming representable, Linear programming representable, Second-order cone programming representable, Semidefinite programming representable, Exponential cone programming representable]
 excerpt: "Epi- and hypograph conic representations of nonlinear operators"

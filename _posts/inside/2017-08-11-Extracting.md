@@ -1,5 +1,6 @@
 ---
 category: inside
+subcategory: 3
 permalink: Extracting
 excerpt: "Extracting inputs and outputs from solvers"
 title: "Extracting low-level data from solvers"

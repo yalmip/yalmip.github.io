@@ -2,6 +2,7 @@
 title: "Nonlinear operators"
 permalink: "/tutorial/nonlinearoperators"
 category: inside
+subcategory: 1
 excerpt: "Working with nonlinear operators in a structured and efficient fashion"
 tags: [Linear programming representable, Second-order cone programming representable, Semidefinite programming representable, Integer programming representable, Exponential cone programming representable]
 ---

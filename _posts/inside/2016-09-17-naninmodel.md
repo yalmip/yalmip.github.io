@@ -1,5 +1,6 @@
 ---
 category: inside
+subcategory: 2
 permalink: naninmodel
 excerpt: "Where why how?"
 title: NaN in model

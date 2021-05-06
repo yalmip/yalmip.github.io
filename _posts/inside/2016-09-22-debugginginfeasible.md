@@ -1,5 +1,6 @@
 ---
 category: inside
+subcategory: 2
 permalink: debugginginfeasible
 excerpt: "Where to start?"
 title: Debugging infeasible models

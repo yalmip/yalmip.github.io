@@ -1,5 +1,6 @@
 ---
 category: inside
+subcategory: 3
 permalink: warmstart
 excerpt: "Give your solver a hint"
 title: "Supplying initial guesses to warm-start solvers"

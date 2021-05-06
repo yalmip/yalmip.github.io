@@ -2,6 +2,7 @@
 title: "Nonlinear operators - integer models"
 permalink: "/tutorial/nonlinearoperatorsmixedinteger"
 category: inside
+subcategory: 1
 tags: [Integer programming representable]
 excerpt: "Mixed-integer representations of nonlinear operators"
 ---

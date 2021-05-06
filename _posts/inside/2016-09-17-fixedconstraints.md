@@ -1,5 +1,6 @@
 ---
 category: inside
+subcategory: 2
 permalink: fixedconstraints
 excerpt: "Code works for almost all cases, but suddenly fails."
 title: Constraints without any variables

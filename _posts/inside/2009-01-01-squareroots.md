@@ -1,5 +1,6 @@
 ---
 category: inside
+subcategory: 3
 permalink: /squareroots
 excerpt: "sqrt, sqrtm, power or cpower?"
 title: Working with square roots

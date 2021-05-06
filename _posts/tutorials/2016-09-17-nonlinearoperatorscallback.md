@@ -2,6 +2,7 @@
 title: "Nonlinear operators - callbacks"
 permalink: "/tutorial/nonlinearoperatorscallback"
 category: inside
+subcategory: 1
 tags:
 excerpt: "Callback representations of nonlinear operators"
 ---

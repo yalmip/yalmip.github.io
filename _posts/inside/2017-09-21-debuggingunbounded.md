@@ -1,5 +1,6 @@
 ---
 category: inside
+subcategory: 2
 permalink: debuggingunbounded
 excerpt: "Where to start?"
 title: Debugging unbounded models

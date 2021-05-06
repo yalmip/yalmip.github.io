@@ -1,5 +1,6 @@
 ---
 category: inside
+subcategory: 1
 permalink: The-cutsdp-solver
 excerpt: "A little known solver"
 title: "The CUTSDP solver explained"

@@ -1,5 +1,6 @@
 ---
 category: inside
+subcategory: 2
 permalink: equalityinuncertainty
 excerpt: "= ≠ ==. Horse and sheep purchases and warehouse logistics"
 title: "Equalities with uncertainty"

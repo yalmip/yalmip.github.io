@@ -1,6 +1,7 @@
 ---
 title: "Complex-valued problems"
 category: inside
+subcategory: 3
 tags: [Complex data]
 excerpt: "Complex data in optimization models. No problem in reality."
 ---
