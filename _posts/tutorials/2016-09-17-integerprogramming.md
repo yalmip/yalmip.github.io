@@ -2,7 +2,7 @@
 title: "Integer programming"
 category: tutorial
 level: 3.6
-tags: [Integer programming]
+tags: [Integer programming, Logic progrmming]
 excerpt: "Undisciplined programming often leads to integer models, but in some cases you have no option."
 sidebar:
   nav: "tutorials"
@@ -10,6 +10,8 @@ sidebar:
 
 
 YALMIP supports several [mixed integer programming solvers](/#mixed-integer-conic-programming-solver), and also comes with a two built-in solvers for mixed-integer programming called [BNB](/solver/bnb) and [CUTSDP](/solver/cutsdp) (decribed in detail in [this post](/The-cutsdp-solver)).
+
+Besides explicit definition of integer (and binary) variables by the user, YALMIP implements a large amount of automatic modelling constructs which end up as [mixed-integer representations](/tutorial/nonlinearoperatorsmixedinteger).
 
 ### Integer and binary variables
 
@@ -37,7 +39,7 @@ F = [z >= 0, x <= 0, integer(x), binary(y)];
 ````
 
 
-### Mixed integer conic programming
+### Mixed-integer conic programming
 
 The global integer solver can be applied to any kind of conic program that can be defined within the YALMIP framework, and defining integer programs is as simple as defining standard problems. In addition to the external supported mixed integer solvers, YALMIP comes with an internal branch-and-bound solver, called [BNB], to be used together with any continuous solver. Hence, it is possible to solve mixed integer linear/quadratic/second order cone/semidefinite/geometric programs in YALMIP. Note that the internal branch-and-bound algorithm is rudimentary and useful only for small problems.
 
@@ -74,7 +76,7 @@ x_L2_toep = value(x_hat);
 
 Note that [BNB](/solver/bnb)  not should be used if you have simple mixed integer linear programs. In that case, you can just as well download a much faster free specialized MILP solver, such as [GLPK](/solver/glpk) or academic license version of [GUROBI](/solver/gurobi).
 
-### General mixed integer programming
+### General mixed-integer programming
 
 The mixed integer programming solvers discussed above are all guaranteed to find a globally optimal solution, if one exists. The built-in branch-and-bound module can be applied also to general nonlinear programs with discrete data. The difference is that there is no guarantee on global optimality for these problems. It can however be a useful strategy for finding reasonably good feasible solutions to mixed integer nonlinear programs.
 
@@ -152,3 +154,4 @@ optimize([A*x <= b, integer(x)],obj,ops)
 ````
 
 For an additional example, check out the [mixed integer geometric programming example](/tutorial/geometricprogramming).
+
