@@ -171,4 +171,4 @@ f = blackbox(@(U)(integral(@(z)(min(min(2*z,4),16-3*z)),0,U)),x);
 optimize([0 <= x <= 10],-f);
 ````
 
-The use of [blackbox](/command/blackbox) means we moved into the territory of completely unstructured nonlinear progrmming. Not recommended unless the model calls for this due to other complicated parts.
+The use of [blackbox](/command/blackbox) means we moved into the territory of completely unstructured nonlinear programming. Not recommended unless the model calls for this due to other complicated parts.
