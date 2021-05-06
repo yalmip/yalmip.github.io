@@ -161,3 +161,14 @@ optimize([0 <= x <= 10],-f)
 ````
 
 Leads to a MILP, so no scary nonconvex quadratics.
+
+### Just bad
+
+A nonlinear programming representation is obtained with the following.
+
+````matlab
+f = blackbox(@(U)(integral(@(z)(min(min(2*z,4),16-3*z)),0,U)),x);
+optimize([0 <= x <= 10],-f);
+````
+
+The use of [blackbox](/command/blackbox) means we moved into the territory of completely unstructured nonlinear progrmming. Not recommended unless the model calls for this due to other complicated parts.
