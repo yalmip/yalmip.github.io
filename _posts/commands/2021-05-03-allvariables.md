@@ -28,5 +28,15 @@ Obj = sum(x) + y^2;
 
 % No, I want to solve with a regularization on all variables
 Obj = Obj + 0.01*norm(allvariables(Model,Obj))
-
 ````
+
+### Comments
+
+The command is a utility replacing repated application of [depends](/command/depends) followed by [recover](/command/recover), i.e. it simplifies patterns of the type
+
+````matlab
+x1 = depends(A);x2 = depends(B);
+y = recover(unique([x1(:);x2(:)]));
+````
+
+
