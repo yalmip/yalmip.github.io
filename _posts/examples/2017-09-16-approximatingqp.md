@@ -5,6 +5,7 @@ excerpt: "Convenient generation of approximations"
 title: "Nonconvex QP via piecewise affine models"
 tags: [Quadratic programming, Nonconvex quadratic programming, Integer programming, Sos2, Interp1]
 date: 2017-09-16
+gist: "https://gist.github.com/johanlofberg/847f478e7e9340b73a597fffef33a0d9.js"
 header:
   teaser: "pwaqp.png"
 sidebar:
