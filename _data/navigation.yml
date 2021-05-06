@@ -187,10 +187,18 @@ examples:
         url: /example/starshaped          
   - title: Other
     children:
+      - title: "Approximating QPs"
+        url: /example/approximatingqp    
       - title: "Bilevel programming"
         url: /example/bilevelprogrammingalternatives
+      - title: "Designing polynomials"
+        url: /example/polynomialdesign        
       - title: "Experiment design"
         url: /example/experimentdesign
+      - title: "Integrating PWAs"
+        url: /example/integratedpwa  
+      - title: "Modelling if-else"
+        url: /example/modellingif          
       - title: "Nonlinear linear programming"
         url: /example/weightedsort        
       - title: "Polytopic geometry"
