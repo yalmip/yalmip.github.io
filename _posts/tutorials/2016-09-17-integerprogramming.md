@@ -9,7 +9,7 @@ sidebar:
 ---
 
 
-YALMIP supports several [mixed integer programming solvers], but also comes with a very simple [built-in solver for mixed integer programming (BNB)](/solver/bnb) (which you shouldn't use unless you absolutely have to), based on a simple standard branch-and-bound algorithm.
+YALMIP supports several [mixed integer programming solvers](/#mixed-integer-conic-programming-solver), and also comes with a two built-in solvers for mixed-integer programming called [BNB](/solver/bnb) and [CUTSDP](/solver/cutsdp) (decribed in detail in [this post](/The-cutsdp-solver)).
 
 ### Integer and binary variables
 
