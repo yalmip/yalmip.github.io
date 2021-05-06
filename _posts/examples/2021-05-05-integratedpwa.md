@@ -164,7 +164,7 @@ Leads to a MILP, so no scary nonconvex quadratics.
 
 ### Just bad
 
-A nonlinear programming representation is obtained with the following.
+A nonlinear programming representation where the integral is computed on-the-fly during the solution process is obtained with the following.
 
 ````matlab
 f = blackbox(@(U)(integral(@(z)(min(min(2*z,4),16-3*z)),0,U)),x);
