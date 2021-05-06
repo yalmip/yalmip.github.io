@@ -83,7 +83,7 @@ Model = [-1 <= [x y] <= 1, implies(d,x>=0.5),implies(1-d,x <= -0.5)];
 for i = 1:10
     plot(Model,[x;y],'yellow',200,ops)
     optimize(Model,-x-y,ops);
-    plot(value(x),value(y),'k*');
+    plot(value(x),value(y),'k*');drawnow
     [V,D] = eig(value(X))
     v = V(:,1);
     Model = [Model, v'*X*v >= 0];
@@ -93,7 +93,7 @@ end
 ![Approximated half-moon union]({{ site.url }}/images/cutsdp2.png){: .center-image }
 
 
-A direct YALMIP implementation to solve this problem would be (here, YALMIP will derive a mixed-integer second-order cone program, so in practice, you would use a solver such as [MOSEK](/solver/mosek), [GUROBI](/solver/gurobi) or [CPLEX](/solver/cplex)
+A direct implementation with [CUTSDP](/solver/cutsdp) to solve this problem would be 
 
 ````matlab
 Model = [x^2 + y^2 <= 1,
@@ -101,9 +101,6 @@ Model = [x^2 + y^2 <= 1,
         implies(d,x>=0.5),implies(1-d,x <= -0.5)];
 optimize(Model, Objective, sdpsettings('solver','cutsdp'));        
 ````
-
-Through some additional initial preprocessing, the optimal solution is found already in the first mixed-integer linear program, i.e, the first mixed-integer linear program returns a solution which is feasible in the original mixed-integer semidefinite program, and is thus an optimal solution to the original problem.
-
 
 ## Should I use [bnb](/solver/bnb) or [cutsdp](/solver/cutsdp)
 
