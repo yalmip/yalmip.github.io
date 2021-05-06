@@ -12,7 +12,7 @@ YALMIP supports modeling of nonlinear, often non-differentiable, operators that 
 
 Although the automatic support for these operators can simplify the modeling phase significantly in some cases, it is recommended to use these operators only when you know how to model them your self using epigraphs and composition rules of convex and concave functions, why and when it can be done etc. The text-book [Boyd and Vandenberghe 2004](/reference/boyd2004) should be a suitable introduction for the beginner, and is consistent with the notation used here.
 
-### Convexity analysis
+## Convexity analysis
 
 Without going into theoretical details, the convexity analysis is based on epi- and hypograph formulations, and composition rules. For the composite expression \\(f = h(g(x))\\), it holds that (For simplicity, we write increasing, decreasing, convex and concave, but the correct notation would be nondecreasing, nonincreasing, convex or affine and concave or affine. This notation is used throughout this manual and inside YALMIP)
 
@@ -29,7 +29,7 @@ Based on this information, it is possible to recursively analyze convexity of a 
 
 Of course, in order for this to be useful, the epigraph representation has to be possible to simplify, preferably with a conic constraint, otherwise nothing is gained. As an example, given the model \\( \left\lvert x \right\rvert \leq 1\\), this passes convexity analysis, and a (redundantly large) equivalent model is  \\(\left\lvert x\right\rvert \leq t, t\leq 1\\), which can be represented using the linear constraints \\(-t \leq  x \leq t, t\leq 1\\). Of course, the variable \\(t\\) can be eliminated from the model, but for more complex models it is preferable to keep the intermediate graph variables to simplify manipulations. 
 
-### Standard use
+## Standard use
 
 Consider once again the linear regression problem.
 
@@ -96,7 +96,7 @@ F = [max(1,x)+max(y^2,z) <= 3, max(1,-min(x,y)) <= 5, norm([x;y],2) <= z];
 sol = optimize(F,max(x,z)-min(y,z)-z);
 ````
 
-### Polynomial and sigmonial expressions
+## Polynomial and sigmonial expressions
 
 By default, polynomial expressions (except quadratics) are not analyzed with respect to convexity and conversion to a conic model is not performed. Hence, if you add a constraint such as \\(x^4 + y^8-x^{0.5} \leq 10\\), YALMIP may complain about convexity, even though we can see that the expression is convex and can be represented using conic constraints. More importantly, YALMIP will not try to derive an equivalent conic model. However, by using the command [cpower](/command/cpower) instead, (rational) powers can be used.
 
@@ -122,7 +122,7 @@ Note that when you plot sets with constraints involving nonlinear operators and 
 
 Do not use these operators unless you really need them. The conic representation of rational powers easily grow large.
 
-### A look behind the scene
+## A look behind the scene
 
 If you want to look at the model that YALMIP generates, you can use the two commands **model** and **expandmodel**. Please note that these expanded models never should be used manually. The commands described below should only be used for illustrating the process that goes on behind the scenes.
 
@@ -143,17 +143,26 @@ ans =
 
 operator =
 
-       convexity: 'convex'
-    monotonicity: 'increasing'
-    definiteness: 'none'
-            name: 'max'
-          models: 1313
-      convexhull: []
-          bounds: []
-           range: [-Inf Inf]
-          domain: [-Inf Inf]
-      derivative: []
-           model: 'graph'
+        convexity: 'convex'
+     monotonicity: 'increasing'
+     definiteness: 'none'
+             name: 'max_internal'
+       smoothness: Inf
+         symmetry: 'none'
+            shape: 'none'
+       derivative: []
+          inverse: []
+       convexhull: []
+           bounds: []
+    inversebounds: []
+           domain: [-Inf Inf]
+       stationary: []
+       inflection: []
+      singularity: []
+          replace: []
+            range: [-Inf Inf]
+            model: 'unspecified'
+           models: 5239
 ````
 
 For more advanced models with recursively used nonlinear operators, the function model will not generate the complete model since this low-level function does not expand the arguments. For this case, use the command **expandmodel**. This command takes two arguments, a set of constraints and an objective function. To expand an expression, just let the expression take the position as the objective function. Note that the command assumes that the expansion is performed in order to prove a convex function, hence if you expression is meant to be concave, you need to negate it. To illustrate this, let us expand the objective function in an extension of the geometric mean example above.
@@ -210,7 +219,7 @@ switch class(varargin{1})
             properties.convexity    = 'convex';   % convex | none | concave
             properties.monotonicity = 'none';     % increasing | none | decreasing
             properties.definiteness = 'positive'; % negative | none | positive  
-            properties.model        = 'graph';    % Redundnant here...
+            properties.model        = 'graph';    % Redundant here...
 
             % Return epigraph model, properties, and input arguments
             varargout{1} = F;            
@@ -236,5 +245,3 @@ end
 ````
 
 Additional properties of the operator can be assigned to guide YALMIP in various scenarios. However, most those additional properties are not of interest for graph-based implementations, but are meant for [mixed-integer](/tutorial/nonlinearoperatorsmixedinteger) and [callback-based](/tutorial/nonlinearoperatorscallback) representations.
-
-The function **sumk** in YALMIP is implemented using this framework and might serve as a good start for your own experiments.
