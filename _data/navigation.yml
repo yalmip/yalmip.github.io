@@ -467,7 +467,7 @@ inside:
         url: /tutorial/bigmandconvexhulls
       - title: "Envelopes in global optimization"
         url: /tutorial/envelopesinbmibnb    
-      - title: "Integer programming representability"
+      - title: "Logics modelling"
         url: /tutorial/logicprogramming
       - title: "Operators - general"
         url: /tutorial/nonlinearoperators
