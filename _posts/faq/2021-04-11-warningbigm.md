@@ -7,7 +7,7 @@ sidebar:
   nav:
 ---
 
-You are setting up a model which YALMIP will model using a [big-M model](/tutorial/bigmandconvexhulls) (logical models involving implications, or nonconvex use of MILP-representable operators etc), and you see warnings about unbounded variables leading to lousy big-M models. in your mind, everything is bounded though, so what's up?
+You are setting up a model which YALMIP will model using a [big-M model](/tutorial/bigmandconvexhulls) ([logical models](/tutorial/logicprogramming) involving implications, or nonconvex use of [MILP-representable operators](/tutorial/nonlinearoperatorsmixedinteger) etc), and you see warnings about unbounded variables leading to lousy big-M models. In your mind, everything is bounded though, so what's up?
 
 ## Explicit variable bounds vs implicit variable bounds
 
@@ -27,7 +27,7 @@ optimize(Model)
 
 When we look at the model, we immediately derive bounds on all variables. The variables **u**, **d** and **y** are **explicitly** bounded in the model through variable bounds or variable equalities. The variable **x** is not explicitly bounded, but **implicitly** we trivially see its bound as it is equal to the bounded variable **y**. 
 
-The problem though is that YALMIP does not perform any bound propagation (i.e. deriving implicit bounds) when extracting the bounds in the model which are used to create the big-M model of the implication. This means the variable **x** has no detected bounds. The big-M model of the implication is \\( -M(1-d) \leq u-x \leq M(1-d) \\) where \\(M\\) is an upper bound on \\(u-x\\). Since YALMIP has no bound available on **x**, it cannot derive a bound on \\(u-x\\), and will simply use the default value \\(M=10^4\\). When the reformulation engine sees this value it will warn since it indicates lack of (explicit) bounds and large big-M constants like this easily leads to poor models.
+The problem though is that YALMIP does not perform any deep bound propagation (i.e. deriving implicit bounds) when extracting the bounds in the model which are used to create the big-M model of the implication. This means the variable **x** has no detected bounds. The big-M model of the implication is \\( -M(1-d) \leq u-x \leq M(1-d) \\) where \\(M\\) is an upper bound on \\(u-x\\). Since YALMIP has no bound available on **x**, it cannot derive a bound on \\(u-x\\), and will simply use the default value \\(M=10^4\\). When the reformulation engine sees this value it will warn since it indicates lack of (explicit) bounds and large big-M constants like this easily leads to poor models.
 
 Add a bound and everything works
 
@@ -36,7 +36,7 @@ optimize([Model, -10 <= x <= 10])
 ````
 
 ## Poor explicit bounds
-If you add a huge bound though, nothing improves and you will still see the warning since your model once again will have huge bounds on terms in big-M representations (remember:big-M should really be called *as small as possible but sufficiently large-M*)
+If you add a huge bound though, nothing improves and you might still see the warning since your model once again will have huge bounds on terms in big-M representations (remember:big-M should really be called *as small as possible but sufficiently large-M*)
 
 ````matlab
 optimize([Model, -10^5 <= x <= 10^5])
