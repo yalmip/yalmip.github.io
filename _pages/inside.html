@@ -8,7 +8,7 @@ sidebar:
 
 {% include base_path %}
 <!-- <h3 class="archive__subtitle">Examples from various domains</h3>		This destroys lists -->
-{% assign items = site.posts | sort: 'date' | reverse %}
+{% assign items = site.posts | sort: 'subcategory' %}
 {% for post in items %}
 {% if post.category == "inside" %}
   {% include archive-single.html type="grid" %}      
