@@ -1,5 +1,5 @@
 ---
-title: "General convex programming"
+title: "General nonlinear programming"
 category: tutorial
 tags:
 level: 3.2
@@ -8,11 +8,16 @@ sidebar:
   nav: "tutorials"
 ---
 
-YALMIP really does not care if your general nonlinear program is convex or not. In the general case it will just be a nonlinear model and any nonlinear solver is used. If it happens to be convex, the solver might perform better, but that is not something YALMIP can influence.
+YALMIP really does not care if your general nonlinear program is convex or not. In the general case it will just be a nonlinear model and any [nonlinear solver](/tafs#nonlinear-programming-solver) is used. If it happens to be convex, the solver might perform better, but that is not something YALMIP can influence. 
 
-However, all nonconvex models are not created equal. There are nice convex models, and nasty nonconvex models, from YALMIPs perspective.
+However, general nonlinear  models are not all the same in practice. There are nice convex models, and nasty nonconvex models, and everything in between from YALMIPs perspective.
 
-## Analytic center of polytope - bad vs good forms
+
+## Considerations in nonlinear models
+
+A sure bet to see numerical issues in nonlinear solvers is model with singularities.
+
+### Analytic center of polytope - bad vs good forms
 
 As an example, we will find the analytic center of a polytope \\(Ax \leq b\\). The analytic center is defined as the point which maximizes the expression \\( \sum \log(b-Ax)\\)
 
@@ -42,6 +47,11 @@ optimize(exp(y) <= b-A*x,-sum(y));
 
 A completely equivalent problem with much better properties in a general nonlinear solver. Note that also this model will be solved with an [exponential cone programming solver](/tags/#exponential-cone-programming-solver) if available.
 
+### Hidden nonlinear equalities
+
+
+
+## Afraid of nnoconvex models?
 
 By default, YALMIP allows nonconvex problems to be formulated. However, if you want to make sure that no nonconvex problems slips by, you can specify this. If we switch the sign on the objective a non-convex model is obtained, and YALMIP detects this.
 
