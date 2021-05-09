@@ -20,7 +20,7 @@ If you intend to solve large or generally challenging problemss, you should inst
 
 And finally, there are no free lunches and you get what you pay for (unless you're in academia!).
 
-### Available solvers by problem class
+## External solvers
 
 A simple categorization is as follows (the definitions of free and commercial depends slightly on the solver, please see the specific comments in the solver description)
 
