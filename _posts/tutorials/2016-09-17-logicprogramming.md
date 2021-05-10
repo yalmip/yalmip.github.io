@@ -538,7 +538,7 @@ $$
 
 ### y = f(x), x scalar integer
 
-For an arbitrary function defined over a bounded integer set (here for simple notation assumed to be \\(1\\leq x \\ M\\), we simply see it as as the disjoint logic model
+For an arbitrary function defined over a bounded integer set (here for simple notation assumed to be \\(1\\leq x \leq M\\), we simply see it as as the disjoint logic model
 
 $$
 \begin{align}
@@ -566,7 +566,7 @@ z_i = 1 & \rightarrow  \{A_i x \leq b_i, y = c^T_ix + d_i\}\\
 \end{align}
 $$
 
-Standard implication...
+Standard implication again. 
 
 $$
 \begin{align}
@@ -576,6 +576,7 @@ $$
 \end{align}
 $$
 
+Note that [sos2](/command/sos2) constructions are more efficient though.
 
 ### y = piecewise quadratic function
 
@@ -590,7 +591,7 @@ z_i = 1 & \rightarrow  \{x = p_i, A_i x \leq b_i\}\\
 \end{align}
 $$
 
-Standard implication...
+Standard implication.
 
 $$
 \begin{align}
