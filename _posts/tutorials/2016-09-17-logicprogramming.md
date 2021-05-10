@@ -514,7 +514,7 @@ $$
 
 ### y = nnz(x)
 
-To count elements let \\(y = \sum_{i=1}^n \z_i\\). Introduce additional binary vectors \\(v,u\\) and the logical model
+Introduce additional binary vectors \\(v,u,z\\) and let \\(y = \sum_{i=1}^n v_i+u_i\\) and the logical model
 
 $$
 \begin{align}
