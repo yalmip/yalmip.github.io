@@ -109,7 +109,7 @@ A very common scenario is models where the theory uses strict inequalities, but 
 A typical example is in control theory where we search for a positive definite \\(P\succ 0\\) proving stability of a matrix \\(A\\) via \\(A^TP+PA \prec 0\\).
 
 
-`````matlab
+````matlab
 A = eye(2);
 P = sdpvar(2);
 optimize([A'*P+P*A <= 0, P>=0])
