@@ -14,24 +14,40 @@ As a sister post to [debugging infeasible models](/debugginginfeasible), let us 
 
 sol = optimize(Constraints,Objective)
 
-    yalmiptime: 0.2192
-    solvertime: 0.2498
-          info: 'Unbounded problem (MOSEK)'
-       problem: 2
+
+    yalmipversion: '20210331'
+    matlabversion: '9.9.0.1524771 (R2020b) Update 2'
+       yalmiptime: 2.220583525175668e-01
+       solvertime: 7.194164748243008e-02
+             info: 'Unbounded objective function (learn to debug)(GUROBI-GUROBI)'
+          problem: 2
 ````
+
+or perhaps even worse, the solver cannot understand if it is unbounded, infeasible, or perhaps even both
+
+````matlab
+    yalmipversion: '20210331'
+    matlabversion: '9.9.0.1524771 (R2020b) Update 2'
+       yalmiptime: 2.220583525175668e-01
+       solvertime: 7.194164748243008e-02
+             info: 'Either infeasible or unbounded (learn to debug)(GUROBI-GUROBI)'
+          problem: 12
+````          
+
 
 Before sending a post to the YALMIP [forum](https://groups.google.com/forum/#!forum/yalmip) to resolve the issue, you always make some minimal initial investigation.
 
 ### 1. Is it really unbounded?
 
-To begin with, get rid of the objective function. Unboundedness can only arise due to an objective, but solvers can sometimes get confused due to various primal-dual presolve strategies etc. Hence, solve the problem without an objective. If it shows infeasibility, unboundedness is perhaps not the case (or you have a completely flawed model which is both infeasible and unbounded (without the infeasible constraints), and then you have to sort out the infeasibility first)
+To begin with, get rid of the objective function. Unboundedness can only arise due to an objective, but solvers can sometimes get confused due to various primal-dual presolve strategies etc. Hence, solve the problem without an objective. If it shows infeasibility, unboundedness is perhaps not the case (or you have a completely flawed model which is both infeasible and unbounded (without the infeasible constraints). If infeasibility is detected, you have to [sort out the infeasibility first](/debugginginfeasible).
 
 ````matlab
-optimize(Constraints)
-    yalmiptime: 0.1859
-    solvertime: 0.2381
-          info: 'Successfully solved (MOSEK)'
-       problem: 0
+    yalmipversion: '20210331'
+    matlabversion: '9.9.0.1524771 (R2020b) Update 2'
+       yalmiptime: 7.407308661948966e-02
+       solvertime: 1.926913380510843e-03
+             info: 'Successfully solved (GUROBI-GUROBI)'
+          problem: 0
 ````
 
 Nope, not that simple...
@@ -49,20 +65,24 @@ Model = [-1 <= [x y] <= 1, z <= 0]
 Objective = x^2 + y + z;
 optimize(Model,Objective)
 ans = 
-
-    yalmiptime: 0.1815
-    solvertime: 0.0405
-          info: 'Unbounded objective function (QUADPROG)'
-       problem: 2
+    yalmipversion: '20210331'
+    matlabversion: '9.9.0.1524771 (R2020b) Update 2'
+       yalmiptime: 2.157324445228372e-01
+       solvertime: 1.302675554771629e-01
+             info: 'Either infeasible or unbounded (learn to debug)(GUROBI-GUROBI)'
+          problem: 12
        
 
 optimize([Model,-1000 <= [x y z] <= 1000],Objective)
 ans = 
 
-    yalmiptime: 0.1346
-    solvertime: 0.0064
-          info: 'Successfully solved (QUADPROG)'
-       problem: 0
+
+    yalmipversion: '20210331'
+    matlabversion: '9.9.0.1524771 (R2020b) Update 2'
+       yalmiptime: 2.437561346474919e-01
+       solvertime: 1.402438653525084e-01
+             info: 'Successfully solved (GUROBI-GUROBI)'
+          problem: 0
 
 >> value([x y z])
 
