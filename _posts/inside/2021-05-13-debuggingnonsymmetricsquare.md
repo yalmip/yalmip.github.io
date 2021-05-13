@@ -45,7 +45,7 @@ Model = [A'*P + P*A <= 0, P >= eye(2)]
 
 ## Mistakes in definition of constraints
 
-The most common reason is some minor mistake with a misplaced transpose or similiar in the construction of a constraint. Consider once again a control problem where we want to find a positive definite \\(P \succeq I\\) with \\( \begin{pmatrix} A^TP + PA & PB\\B^TP & 1-\gamma \end{pmatrix} \preceq 0\\).
+The most common reason is some minor mistake with a misplaced transpose or similiar in the construction of a constraint. Consider once again a control problem where we want to find a positive definite \\(P \succeq I\\) with \\( \left( \begin{array} A^TP + PA & PB\\B^TP & 1-\gamma \end{array} \right) \preceq 0\\).
 
 Since we are prone to make mistakes, we display the constraint object which correctly gives us a warning when we define it. The code below contains a mistake which turns the intended semidefinite constraint into 9 elementwise constraints. Trying to solve this model leads to infeasibility.
 
