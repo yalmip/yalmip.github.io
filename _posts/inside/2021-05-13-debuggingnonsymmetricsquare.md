@@ -7,8 +7,7 @@ tags: [Common mistakes]
 date: 2017-09-21
 ---
 
-One of the most common mistakes 
-A very common problem is complaints in the solver about numerical problems, or other diagnostic codes which indicate issues solving the problem. There are many possible causes for this, from benign issues causing minor warnings in the solver, to completely disastrous problems in the model.
+One of the most common mistakes found when users face infeasibility or unexpected solutions is unintended definition of linear inequalities instead of semidefinite constraints. This is so common that YALMP now tries to detect these errors and warns about them.
 
 ## Incorrect definition of variables
 
@@ -78,5 +77,33 @@ To circumvent this, you should treat the root-cause which is bad data which most
 Z = (Z + Z');
 ````
 
+## It is not a mistake!
+
+Sometimes you want to add elementwise constraints on a square full matrix. To avoid this warning you have to make it into a vector constraint such as
+
+````matlab
+Model = [A(:) >= B(:)]
+````
+
+or 
+
+````matlab
+Z = A-B;
+Model = [Z(:)]
+````
+
+Alternatively, if you think YALMIP is too clever for you, and you want to keep your code as it is, you can turn off the warning (not recommended)
+
+
+````matlab
+warning('off','YALMIP:SuspectNonSymmetry');
+````
+
+
+
+
+
+
+vector
 
 
