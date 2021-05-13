@@ -90,7 +90,7 @@ The upper left block is not symmetric, and we can hone in on \\( A^TP + PA\\) to
 
 Sometimes the model is correctly constructed, the variables are correctly defined, but YALMIP still thinks the obviously symmetric matrix is non-symmetric and issues a warning about a full matrix being used in a square constraint.
 
-The typical cause then is numerical issues where floating-point limitations are causing small errors in computations causing a theoretically symmetric matrix to become non-symmetric in practice. For this to happen, you model has to involve very bad data, and this is an issue you should adress first.
+The typical cause then is numerical issues where floating-point limitations are causing small errors in computations causing a theoretically symmetric matrix to become non-symmetric in practice. For this to happen, you model has to involve very bad data, and [this is an issue you should adress first](/inside/debuggingnumerics)
 
 We might have something like this
 
@@ -100,7 +100,7 @@ Linear matrix variable 20x20 (full, real, 210 variables)
 Coeffiecient range: 1.7462e-10 to 2763983.0299
 ````
 
-If we try to use this matrix in a constraint \\(Z\succeq 0\\) warnings about a full matrix in a square constraint will rightfully appear. To see that there are small terms causing the non-symmetry, we can look at the distance to symmetry
+If we try to use this matrix in a constraint \\(Z\succeq 0\\) warnings about a full matrix in a square constraint will rightfully appear. To see the small terms causing the non-symmetry, we can look at the distance to symmetry
 
 ````matlab
 Z-Z'
@@ -114,7 +114,7 @@ Just as above, we can look at the pattern of \\(Z-Z^T\\) which in theory should 
 spy(Z-Z')
 ````
 
-To circumvent this, you should treat the root-cause which is bad data which most likely will cause issues in the solver too, but a quick fix for the small noise terms is to symmetrize the matrix which hopefully will cancel the small terms
+To circumvent this, you should treat the root-cause with bad data which most likely will cause issues in the solver too, but a quick fix for the noise terms is to symmetrize the matrix which hopefully will cancel the small terms
 
 ````matlab
 Z = (Z + Z');
@@ -122,7 +122,7 @@ Z = (Z + Z');
 
 ## It is not a mistake!
 
-Sometimes you want to add elementwise constraints on a square full matrix. To avoid this warning you have to make it into a vector constraint such as
+Sometimes you want to add elementwise constraints on a square full matrix. To avoid this warning you have to make it into a non-square constraint such as
 
 ````matlab
 Model = [A(:) >= B(:)]
