@@ -22,7 +22,7 @@ $$
 \end{aligned}
 $$
 
-There is no minimizer to this problem due to the open feasible set coming from the strict inequality. No matter what solution I, you, or some solver returns, we can always complain and say that it is sub-optimal.
+There is no minimizer to this problem due to the open feasible set coming from the strict inequality. No matter what solution some solver, you or I compute, we can always complain and say that it is sub-optimal.
 
 If you think in floating-point numbers you might be cheeky and say that the solution in MATLAB should be \\( 2.2251\cdot 10^{-308}\\) which is the smallest real number MATLAB can generate. But then you no longer solved the strict problem but solved the problem with \\( x\geq 2.2251\cdot 10^{-308}\\) which makes no sense to state in practice as discussed below.
 
