@@ -4,7 +4,7 @@ subcategory: 2
 excerpt: "Crap in crap out"
 title: Debugging numerical problems
 tags: []
-date: 2017-09-21
+date: 2021-05-13
 ---
 
 A very common problem is complaints in the solver about numerical problems, or other diagnostic codes which indicate issues solving the problem. There are many possible causes for this, from benign issues causing minor warnings in the solver, to completely disastrous problems in the model.
