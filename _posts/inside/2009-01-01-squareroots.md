@@ -18,6 +18,8 @@ However, in many cases you may want to use a square-root in a nonconvex fashion,
 
 The remedy to these situations is to use the operator [sqrtm](/command/sqrtm) instead. The [sqrtm](/command/sqrtm) operator is implemented as an [callback nonlinear operator](/tutorial/nonlinearoperatorscallback), and will therefore not generate any second-order cone constraints. Furthermore, the [sqrtm](/command/sqrtm) operator does not require convexity.
 
+An alternative which often is even better is to square the constraint as this in many cases turns a general nonlinear non-smooth nonconvex constraint into a nonconvex quadratic constraint which there are more alternatives for if you are aiming for a globally optimal solution.
+
 As an example, consider the following problem. This model will be converted to and solved as a second-order cone program, since [sqrt](/command/sqrt) is used in compliance with convexity rules.
 
 ````matlab
