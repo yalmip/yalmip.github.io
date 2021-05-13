@@ -52,4 +52,4 @@ A (maybe not so) clever reformulation might be to introduce a new variable \\(t\
 
 ## But it is an integer variable!
 
-Writing \\x > 0\\) for an integer variable \\x\\) is just a very bad way of saying \\(x \geq 1\\).
+Writing \\(x > 0\\) for an integer variable \\x\\) is just an awkvard way of saying \\(x \geq 1\\).
