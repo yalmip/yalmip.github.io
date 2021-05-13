@@ -355,6 +355,8 @@ commands:
     children:
       - title: "abs"
         url: /command/abs
+      - title: "blackbox"
+        url: /command/blackbox
       - title: "cpower"
         url: /command/cpower
       - title: "crossentropy"
@@ -395,8 +397,6 @@ commands:
         url: /command/pnorm
       - title: "nnz"
         url: /command/nnz
-      - title: "sdpfun"
-        url: /command/sdpfun
       - title: "sort"
         url: /command/sort
       - title: "sqrt"
@@ -487,18 +487,18 @@ inside:
         url: /tutorial/nonlinearoperatorscallback        
       - title: "Automatic dualization"
         url: /tutorial/automaticdualization           
-  - title: Problems
+  - title: Problems & solutions
     children:
       - title: "Debugging infeasibility"
         url: /debugginginfeasible              
       - title: "Debugging unboundedness"
         url: /debuggingunbounded  
-      - title: "Debugging unknown error"
-        url: /inside/debug        
       - title: "Debugging numerical problems"
         url: /inside/debuggingnumerics   
       - title: "Debugging non-symmetry"
         url: /inside/debuggingnonsymmetricsquare         
+      - title: "Debugging unknown error"
+        url: /inside/debug                
       - title: "Equality with uncertainty"
         url: /equalitywithuncertainty 
       - title: "NaN in model"
