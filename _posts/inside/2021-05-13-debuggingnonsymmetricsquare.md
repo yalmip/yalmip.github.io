@@ -7,16 +7,16 @@ tags: [Common mistakes]
 date: 2017-09-21
 ---
 
-One of the most common mistakes found when users face infeasibility or unexpected solutions is unintended definition of linear inequalities instead of semidefinite constraints. This is so common that YALMP now tries to detect these errors and warns about them.
+One of the most common mistakes found when users face infeasibility or unexpected solutions is unintended definition of linear inequalities instead of semidefinite constraints. This is so common that YALMP now tries to detect this mistake to warn about it.
 
 ## Incorrect definition of variables
 
-Although it is much more common to define inteded full matrices as symmetric by mistake, sometimes users misunderstand the meaning of full vs symmetric in [sdpvar](/command/sdpvar). Hence a typical mistake might be to try to find a positive definite matrix \\(P\\) proving stability of a linear system by finding a feasible solution to the [semidefinite programming problem](/tutorial/semidefiniteprogramming) \\(A^TP + PA\preceq 0, P\\succeq I, P = P^T\\).
+Although it is much more common to define intended full matrices as symmetric by mistake, sometimes users misunderstand the meaning of *full* vs *symmetric* in [sdpvar](/command/sdpvar). A typical mistake could be to try to find a positive definite matrix \\(P\\) proving stability of a linear system by finding a feasible solution to the [semidefinite programming problem](/tutorial/semidefiniteprogramming) \\(A^TP + PA\preceq 0, P\\succeq I, P = P^T\\).
 
-Here we look at the constraint and see that we do not have 2 semidefinite constraints but two sets of elementwise constraints of dimension 4. A warning will be issued for both constraints. In the end, the solver will fail as this linear program is infeasible.
+We create this model incorrectly, and note when we look at the constraint (always do that in the initial phase of your model development!) and see that we do not have 2 semidefinite constraints but two sets of elementwise constraints of dimension 4. A warning will be issued for both constraints. In the end, the solver will fail as this *linear program* is infeasible.
 
-````
-A = [-1 2;3 -4];
+````matlab
+A = [-4 2;3 -4];
 P = sdpvar(2,2,'full') %WRONG
 Model = [A'*P + P*A <= 0, P >= eye(2), P == P']
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -30,8 +30,9 @@ Model = [A'*P + P*A <= 0, P >= eye(2), P == P']
 optimize(Model)
 ````
 
-The correct approach is to define a structurally symmetric matrix \\(P\\)
-````
+The [correct approach](/tutorial/basics) is to define a structurally symmetric matrix \\(P\\). Since we know have semidefinite constraints a semidefinite programming solver will be called and easily solve the problem.
+
+````matlab
 P = sdpvar(2,2)
 Model = [A'*P + P*A <= 0, P >= eye(2)]
 +++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -44,9 +45,46 @@ Model = [A'*P + P*A <= 0, P >= eye(2)]
 
 ## Mistakes in definition of constraints
 
-The most common mistake is some minor mistake with a misplaed transpose or smiliar in the generation of a constraint. Consider once again a control problem where we want to find a positive definite \\(P\\) with \\( \begin{pmatrix} A^TP + PA & PB\\B^TP & -\gamma I \end{pmatrix} \preceq 0\\)
+The most common mistake is some minor mistake with a misplaced transpose or similiar in the generation of a constraint. Consider once again a control problem where we want to find a positive definite \\(P \succeq I\\) with \\( \begin{pmatrix} A^TP + PA & PB\\B^TP & 1-\gamma \end{pmatrix} \preceq 0\\).
 
 
+Since we are prone to make mistakes, we display the constraint object which correctly gives us a warning when we define it. The code below contains a mistake which turns the intended semidefinite constraint into 9 elementwise constraints. Trying to solve this model leads to infeasibility.
+
+````matlab
+A = [-4 2;3 -4];B = [1;1];
+P = sdpvar(2,2);
+sdpvar gamma
+
+M = [A*P + P*A P*B;B'*P 1-gamma];
+Model = [P >= 0, M <= 0]
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+|   ID|                    Constraint|   Coefficient range|
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+|   #1|         Matrix inequality 2x2|              1 to 1|
+|   #2|   Element-wise inequality 9x1|              1 to 8|
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+optimize(Model)
+````
+
+Although it is easy to spot the mistake here (right!) we need a strategy in the general case. The warning will be issued when we create the Model object, so it is not obvious which of the constraints YALMIP deems suspcious. Define them separately to see this, or look at the generated constraint which lists the second constraint as an elementwise constraint instead of the intended semidefinite constraints. 
+
+We thus know the matrix \\(M\\) accidentally has beome non-symmetric. To hone in on the mistake in this matrix, it is convenient to use [spy](/command/spy) which shows non-zero elements in a matrix. Without any output, it gives a graphical view, alternatively catch the output and display it. \\(M\\) is supposed to be symmetric, so let is check this
+
+````matlab
+s = full(spy(M - M'))
+
+s =
+
+  3×3 logical array
+
+   0   1   0
+   1   0   0
+   0   0   0
+
+````
+
+The upper left block is not symmetric, and now we can hone in on \\( A^TP + PA\\) find the missing tranpose on \\A\\).
 
 
 ## Bad data
@@ -57,7 +95,7 @@ The typical cause then is numerical issues where floating-point limitations are 
 
 We might have something like this
 
-````
+````matlab
 Z = A'*P+P*A
 Linear matrix variable 20x20 (full, real, 210 variables)
 Coeffiecient range: 1.7462e-10 to 2763983.0299
@@ -65,11 +103,18 @@ Coeffiecient range: 1.7462e-10 to 2763983.0299
 
 If we try to use this matrix in a constraint \\(Z\succeq 0\\) warnings about a full matrix in a square constraint will appear. To see that there are small terms causing the non-symmetry, we can look at the distance to symmetry
 
-````
+````matlab
 Z-Z'
 Linear matrix variable 20x20 (symmetric, real, 210 variables)
 Coeffiecient range: 1.7462e-10 to 8.6512e-10
 ````
+
+Just as above, we can look at the pattern of \\(Z-Z^T\\) which in theory should be 0
+
+````matlab
+spy(Z-Z')
+````
+
 
 To circumvent this, you should treat the root-cause which is bad data which most likely will cause issues in the solver too, but a quick fix for the small noise terms is to symmetrize the matrix which hopefully will cancel the small terms
 
@@ -92,18 +137,9 @@ Z = A-B;
 Model = [Z(:)]
 ````
 
-Alternatively, if you think YALMIP is too clever for you, and you want to keep your code as it is, you can turn off the warning (not recommended)
+Alternatively, if you think YALMIP is too clever, and you want to keep your code as it is, you can turn off the warning (not recommended)
 
 
 ````matlab
 warning('off','YALMIP:SuspectNonSymmetry');
 ````
-
-
-
-
-
-
-vector
-
-
