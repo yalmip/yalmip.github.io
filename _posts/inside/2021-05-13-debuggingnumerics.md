@@ -99,3 +99,29 @@ ans =
   6.1150e-9
 ````
 The very small optimal value indicates that this problem does not have a stractly optimal solution.
+
+### Homogenuous ill-posed problem
+
+A final case is a variant of earlier issues, but so common that it merits its own section
+
+A very common scenario is models where the theory uses strict inequalities, but since this is impossible in pracice we relax it to non-strict inequaliites, and we obtain various mysterious warnings and diagnostics by the olver. The root ause then can be the the model as a whole only is feasible for the zero solution, i.e. the original strict variant is completely infeasible.
+
+A typical example is in control theory where we search for a positive definite \\(P\succ 0\\) proving stability of a matrix \\(A\\) via \\(A^TP+PA \prec 0\\).
+
+
+`````matlab
+A = eye(2);
+P = sdpvar(2);
+optimize([A'*P+P*A <= 0, P>=0])
+````
+Some solvers will return the feasible solution \\(P=0\\) which naturally solves the non-strict problem (but is completely useless) while sme solvers might struggle since the feasible space is a singleton. 
+
+## Debugging and remedy
+
+Adding any kind of de-homogenizing constraint on \\P\\) to avoid the trivial solution will render the problem infeasible, thus revealing to us that the problem is infeasible, and there is no remedy as the original problem is infeasible.
+
+
+
+
+
+
