@@ -23,7 +23,7 @@ sol = optimize(Constraints,Objective)
           problem: 2
 ````
 
-or perhaps even worse, the solver cannot understand if it is unbounded, infeasible, or perhaps even both
+or even worse, the solver cannot understand if it is unbounded, infeasible, or perhaps even both
 
 ````matlab
     yalmipversion: '20210331'
@@ -33,7 +33,6 @@ or perhaps even worse, the solver cannot understand if it is unbounded, infeasib
              info: 'Either infeasible or unbounded (learn to debug)(GUROBI-GUROBI)'
           problem: 12
 ````          
-
 
 Before sending a post to the YALMIP [forum](https://groups.google.com/forum/#!forum/yalmip) to resolve the issue, you always make some minimal initial investigation.
 
