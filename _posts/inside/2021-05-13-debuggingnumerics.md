@@ -18,7 +18,7 @@ So what is bad data? As the saying goes you know it when you see it. There is no
 There is no simple trick to fix generic bad data. You simply have to understand why your model contains bad data, and try to define a better model. 
 
 
-### Debuging and remedy
+### Debugging and remedy
 
 There is no simple trick to fix generic bad data. You simply have to understand why your model contains bad data, and try to define a better model. 
 
