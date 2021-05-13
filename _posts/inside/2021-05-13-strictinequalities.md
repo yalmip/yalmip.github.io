@@ -30,7 +30,7 @@ You might complain and say that you do not require the optimal solution, but onl
 
 ## Why strict inequalities make no sense - practice
 
-If you somehow managed to tell the solver to only return strict solution, this epsilon-strictness would drown in the general tolerances and margins used in a solver. Already with a non-strict constraints, solvers typically only promise that they returns solutions which are numerically close to feasible, using tolerances of, say, \\(10^{-8}$.
+If you somehow managed to tell the solver to only return strict solution, this epsilon-strictness would drown in the general tolerances and margins used in a solver. Already with a non-strict constraints, solvers typically only promise that they returns solutions which are numerically close to feasible, using tolerances of, say, \\(10^{-8}\\)
 
 Essentially all numerical solvers interfaced in YALMIP work with infeasible methods which approach the optimal solution not necessarily from the feasible region. The term interor-point might fool some to think that the solver definitely works in the interior, but this interior is not necessarily the interior of your model, but can be interior of some lifted/slacked/dual space.
 
