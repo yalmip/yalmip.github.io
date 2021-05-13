@@ -80,7 +80,7 @@ sdpvar x
 y = [zeros(1,4) x];
 ````
 
-Alternatively, define **x** as an [sdpvar](/command/sdpvar) vector and insert zeros, or use the sparse function, etc. A last resort (as it is ugly nonstandard MATLAB code) is to use double2sdpvar
+Alternatively, define **x** as an [sdpvar](/command/sdpvar) vector and insert zeros, or use the sparse function, etc. A last resort (as it is ugly nonstandard MATLAB code) is to use [double2sdpvar](/command/double2sdp). This command most likely will be removed in the future so do not rely on it.
 
 ````matlab
 sdpvar x
@@ -101,7 +101,7 @@ Model = [x <= 1/woops-1/woops^2];
 
 ### The variable was never used in the optimization problem
 
-For a variable to have a value, it must have been visible to the optimization problem. Variables which have not been optimized have the default value NaN. In the following model, although **we** see y in the model, it disappears since it is multiplied with 0, and is thus not part of the model to YALMIP and thus completely unavailable to the solver.
+For a variable to have a value, it must have been visible to the optimization problem. Variables which have not been optimized have the default value NaN. In the following model, although **we** see y in the model, it disappears since it is multiplied with 0, and is thus not part of the model to YALMIP and thus completely unavailable to the solver. The variable will keep the value it has before the call to the solver. Since it never has been assigned any value, it will be NaN.
 
 ````matlab
 sdpvar x y
@@ -115,11 +115,11 @@ value(y)
 
 ### The problem was never solved
 
-Did you check your solution status after solving the problem? If the problem wasn't solved, you will not have any value in any variable.
+Did you check your solution status after solving the problem? If the problem wasn't solved, you cannot be guaranteed that the variables has been assigned.
 
 ````matlab
 sdpvar x
-sol = optimize(x>=0,x,sdpsettings('solver','cpleeks'))
+sol = optimize(x>=0,x,sdpsettings('solver','cplex'))
 if sol.problem == 0
  disp('x should have a value')
  value(x)
