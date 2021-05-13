@@ -493,6 +493,12 @@ inside:
         url: /debugginginfeasible              
       - title: "Debugging unboundedness"
         url: /debuggingunbounded  
+      - title: "Debugging unknown error"
+        url: /inside/debug        
+      - title: "Debugging numerical problems"
+        url: /inside/debuggingnumerics   
+      - title: "Debugging non-symmetry"
+        url: /inside/debuggingnonsymmetricsquare         
       - title: "Equality with uncertainty"
         url: /equalitywithuncertainty 
       - title: "NaN in model"
@@ -505,8 +511,6 @@ inside:
     children: 
       - title: "Complex-valued problems"
         url: /inside/complexproblems  
-      - title: "Debug unknown error"
-        url: /inside/debug
       - title: "Low-level solver data"
         url: /Extracting          
       - title: "Multiple solutions"
