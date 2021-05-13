@@ -94,10 +94,10 @@ ans =
 
 Clearly, the last variable appears unbounded as it ended up at the artificial bound. Increasing the artificial bounds simply leads to a larger value on the variable, which is used in the objective and thus leads to unboundedness.
 
-In many cases your model is complex with loads of variables, and it might be cumbersome to list and constrain all variables. A convenient trick then is to use [recover](/command/recover) and [depends](/command/depends) to collect all relevant variables
+In many cases your model is complex with loads of variables, and it might be cumbersome to list and constrain all variables. A convenient trick then is to use [allvariables](/command/allvariables) to collect all involved variables
 
 ````matlab
-UsedInObjective = recover(depends(Objective));
+UsedInObjective = allvariables(Objective);
 optimize([Model, -1000 <= UsedInObjective <= 1000] ,Objective)
 ans = 
 >> value(UsedInObjective)
