@@ -7,9 +7,9 @@ tags: [Common mistakes]
 date: 2021-05-13
 ---
 
-It finally had to be done. Strict inequalities which was avaiable in the language from the beginning but has raised increasingly more annoying warnings over the last decade, are no longer possible to use.
+It finally had to be done. Strict inequalities which were avaiable in the language initially but have raised increasingly more annoying warnings over the last decade, are no longer possible to use.
 
-Note that being available never has meant that strict inequalities were applied in the solver, it just meant they were (increasingly less) silently changed to non-strict inequalities.
+Note that being available never has meant that strict inequalities were applied in any solver, it just meant they were (increasingly less) silently changed to non-strict inequalities.
 
 ## Why strict inequalities make no sense - theory
 
@@ -18,14 +18,15 @@ If you think strict inequalities are relevant, then write down the solution to t
 $$
 \begin{aligned}
 \text{minimize } & x\\
-\text{subject to } & x > 1\\
+\text{subject to } & x > 0
+\end{align}
 $$
 
-There is no minimizer to this problem. Due to the open feasible set coming from the strict inequality. No matter what solution I, you, or some solver returns, we can alwys complain and say that it is sub-optimal.
+There is no minimizer to this problem due to the open feasible set coming from the strict inequality. No matter what solution I, you, or some solver returns, we can always complain and say that it is sub-optimal.
 
-If you think in floating-point numbers you might be cheeky and say that the solution in MATLAB should be '2.2251e-308' whih is the smallest real number MATLAB can generate. But then you no longer solved the strict problem but solved the problem with \\(x\geq 2.2251\cdot 10^{-308}. Which makes no sense to state either as soon will be discussed.
+If you think in floating-point numbers you might be cheeky and say that the solution in MATLAB should be '2.2251e-308' which is the smallest real number MATLAB can generate. But then you no longer solved the strict problem but solved the problem with \\( x\geq 2.2251\cdot 10^{-308}\\) which makes no sense to state in practice as discussed below.
 
-You might complain then and say that you do not require the optimal solution, but only a good enough solution. Then we have to ask why you bother with the strict inequality to begin with. Simply replace it with some strict inequality bounded away from zero.
+You might complain and say that you do not require the optimal solution, but only a good enough solution. Then we have to ask why you bother with the strict inequality to begin with. Simply replace it with some strict inequality bounded away from zero. You good-enough-tolerance is just another way of expressing a margin to non-strict.
 
 ## Why strict inequalities make no sense - practice
 
@@ -33,19 +34,19 @@ If you somehow managed to tell the solver to only return strict solution, this e
 
 Essentially all numerical solvers interfaced in YALMIP work with infeasible methods which approach the optimal solution not necessarily from the feasible region. The term interor-point might fool some to think that the solver definitely works in the interior, but this interior is not necessarily the interior of your model, but can be interior of some lifted/slacked/dual space.
 
-## Do and dont's
+## What to do then?
 
-So you really want a strict solution, but you only have strict constraints to work with. The first thing you should do is to really confirm that you need strict solutions. If you still need this, a simple approah is to simply skip this in the modelling phase, and just heck that the solution satisfies your strictness condition. If this does not hold, you will have to force the solver to stay away from your forbidden region. What this means is that you have to add margins in your constraints, scalar or semidefinite depening on cone you are working with.
+So you really want a strict solution, but you only have strict constraints to work with. The first thing you should do is to really confirm that you need strict solutions. If you still need this, a simple approah is to simply skip this in the modelling phase, and just check that the solution satisfies your strictness condition. If this does not hold, you will have to force the solver to stay away from your forbidden region. What this means is that you have to add margins in your constraints, scalar or semidefinite depending on the set you are working with.
 
 ````matlab
 X >= my_magic_margin*eye(n)
 ````
 
-This is where it becomes tricky. First you have to remember that solver have their tolerances, so if you use a magic margin of \\(10^{-15}\\) it will problably make absolutely no difference compred to leaving it out, as that drowns in the tolerances used for checking feasibility by the solver.
+This is where it becomes tricky. First you have to remember that solver have their tolerances, so if you use a magic margin of \\(10^{-15}\\) it will problably make absolutely no difference compared to leaving it out, as it drowns in the tolerances used for declaring feasibility by the solver anyway.
 
 On the other hand, if you use a large margin to be on the safe side, you might reduce the feasible set considerably or even render the problem infeasible.
 
-A clever reformulation might be to introduce a new variable \\(t\\) and replace \\(x>0\\) with \\(x \geq e^{-t}\\). Not only do you introduce the risk of numerical issues as the solver sends \\(t\\) to infinity, you still have no idea if the solver approaches this constraints with infeasible methods.
+A (maybe not so) clever reformulation might be to introduce a new variable \\(t\\) and replace \\(x>0\\) with \\(x \geq e^{-t}\\). Not only do you introduce the risk of numerical issues as the solver possibly sends \\(t\\) to infinity, you still have no idea if the solver approaches this constraints with infeasible methods.
 
 ## But it is an integer variable!
 
