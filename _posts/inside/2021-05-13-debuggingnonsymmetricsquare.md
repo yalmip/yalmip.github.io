@@ -11,7 +11,7 @@ One of the most common mistakes found when users face infeasibility or unexpecte
 
 ## Incorrect definition of variables
 
-Although it is much more common to define intended full matrices as symmetric by mistake, sometimes users misunderstand the meaning of *full* vs *symmetric* in [sdpvar](/command/sdpvar). A typical mistake could be to try to find a positive definite matrix \\(P\\) proving stability of a linear system by finding a feasible solution to the [semidefinite programming problem](/tutorial/semidefiniteprogramming) \\(A^TP + PA\preceq 0, P\\succeq I, P = P^T\\).
+Although it is much more common to define intended full matrices as symmetric by mistake, sometimes users misunderstand the meaning of *full* vs *symmetric* in [sdpvar](/command/sdpvar). A typical mistake could be to try to prove stability of a linear system by finding a solution to the [semidefinite programming problem](/tutorial/semidefiniteprogramming) \\(A^TP + PA\preceq 0,~P\\succeq I,~P = P^T\\).
 
 We create this model incorrectly, and note when displaying the constraint (always do that in the initial phase of your model development!) that we do not have 2 semidefinite constraints but two sets of elementwise constraints of dimension 4. A warning will be issued for both constraints. In the end, the solver will fail as this *linear program* is infeasible.
 
