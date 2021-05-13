@@ -24,7 +24,7 @@ $$
 
 There is no minimizer to this problem due to the open feasible set coming from the strict inequality. No matter what solution I, you, or some solver returns, we can always complain and say that it is sub-optimal.
 
-If you think in floating-point numbers you might be cheeky and say that the solution in MATLAB should be '2.2251e-308' which is the smallest real number MATLAB can generate. But then you no longer solved the strict problem but solved the problem with \\( x\geq 2.2251\cdot 10^{-308}\\) which makes no sense to state in practice as discussed below.
+If you think in floating-point numbers you might be cheeky and say that the solution in MATLAB should be \\( 2.2251\cdot 10^{-308}\\) which is the smallest real number MATLAB can generate. But then you no longer solved the strict problem but solved the problem with \\( x\geq 2.2251\cdot 10^{-308}\\) which makes no sense to state in practice as discussed below.
 
 You might complain and say that you do not require the optimal solution, but only a good enough solution. Then we have to ask why you bother with the strict inequality to begin with. Simply replace it with some strict inequality bounded away from zero. You good-enough-tolerance is just another way of expressing a margin to non-strict.
 
