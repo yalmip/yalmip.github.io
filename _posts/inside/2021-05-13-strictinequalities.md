@@ -19,7 +19,7 @@ $$
 \begin{aligned}
 \text{minimize } & x\\
 \text{subject to } & x > 0
-\end{align}
+\end{aligned}
 $$
 
 There is no minimizer to this problem due to the open feasible set coming from the strict inequality. No matter what solution I, you, or some solver returns, we can always complain and say that it is sub-optimal.
