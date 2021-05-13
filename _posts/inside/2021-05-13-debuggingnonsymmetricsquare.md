@@ -68,7 +68,7 @@ optimize(Model)
 
 Although it is easy to spot the mistake here (right!) we need a strategy in the general case. The warning will be issued when we create the Model object, so it is not obvious which of the two constraints YALMIP deems suspcious. Define them separately to see this, or look at the generated constraint which lists the second constraint as an elementwise constraint instead of the intended semidefinite constraints. 
 
-We thus know the matrix \\(M\\) accidentally has beome non-symmetric. To find mistake in this matrix, it is convenient to use [spy](/command/spy) which shows non-zero elements in a matrix. Without any output, it gives a graphical view. Alternatively catch the output and display it. \\(M\\) is supposed to be symmetric, so check this
+We thus know the matrix \\(M\\) accidentally has beome non-symmetric. To find the mistake in this matrix, it is convenient to use [spy](/command/spy) which shows non-zero elements in a matrix. Without any output, it gives a graphical view. Alternatively catch the output and display it. \\(M\\) is supposed to be symmetric, so check this
 
 ````matlab
 s = full(spy(M - M'))
