@@ -36,13 +36,15 @@ Essentially all numerical solvers interfaced in YALMIP work with infeasible meth
 
 ## What to do then?
 
-So you really want a strict solution, but you only have strict constraints to work with. The first thing you should do is to really confirm that you need strict solutions. If you still need this, a simple approah is to simply skip this in the modelling phase, and just check that the solution satisfies your strictness condition. If this does not hold, you will have to force the solver to stay away from your forbidden region. What this means is that you have to add margins in your constraints, scalar or semidefinite depending on the set you are working with.
+So you really want a strict solution, but you only have strict constraints to work with. The first thing you should do is to really confirm that you need strict solutions. If you still need this, a simple approah is to simply skip this in the modelling phase, and just check that the solution satisfies your strictness condition. 
+
+If this does not hold, you have to force the solver to stay away from your forbidden region. What this means is that you add margins in your constraints, scalar or semidefinite depending on the set you are working with.
 
 ````matlab
 X >= my_magic_margin*eye(n)
 ````
 
-This is where it becomes tricky. First you have to remember that solver have their tolerances, so if you use a magic margin of \\(10^{-15}\\) it will problably make absolutely no difference compared to leaving it out, as it drowns in the tolerances used for declaring feasibility by the solver anyway.
+This is where it becomes tricky. First you have to remember that solver have their tolerances, so if you use a magic margin of \\(10^{-15}\\) it will make absolutely no difference compared to leaving it out, as it drowns in the tolerances used for declaring feasibility by the solver anyway.
 
 On the other hand, if you use a large margin to be on the safe side, you might reduce the feasible set considerably or even render the problem infeasible.
 
