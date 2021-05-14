@@ -1,7 +1,7 @@
 ---
 layout: single
 permalink: /discussions
-excerpt: "Deeper integration"
+excerpt: "Alternative to Google groups"
 title: "New Github discussion board"
 published: true
 date: 2021-05-14
