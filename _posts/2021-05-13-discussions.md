@@ -4,8 +4,8 @@ permalink: /discussions
 excerpt: "Alternative to Google groups"
 title: "New Github discussion board"
 published: true
-image:
-  teaser: discussions.PNG
+header:
+  teaser: toolbox.jpg
 date: 2021-05-14
 ---
 
