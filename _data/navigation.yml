@@ -437,6 +437,8 @@ commands:
     children:
       - title: "boundingbox"
         url: /command/boundingbox
+      - title: "chebyball"
+        url: /command/chebyball        
       - title: "check"
         url: /command/check
       - title: "dilate"
@@ -451,6 +453,8 @@ commands:
         url: /command/ismember
       - title: "sosd"
         url: /command/sosd
+      - title: "vertex"
+        url: /command/vertex         
   - title: Auxilliary
     children:
       - title: "loadsdpafile"
