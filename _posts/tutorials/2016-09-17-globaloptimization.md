@@ -4,6 +4,7 @@ category: tutorial
 level: 3.5
 tags: [BMIBNB, Nonconvex programming, Global optimization,Polynomial programming, Nonconvex quadratic programming, Nonlinear semidefinite programming, BMI, Bilinear matrix inequality]
 excerpt: "The holy grail! 60% of the time it works every time."
+gist: "https://gist.github.com/johanlofberg/03277cf8b75a8124f4b2ff82dd60fbf2.js"
 sidebar:
   nav: "tutorials"
 ---
