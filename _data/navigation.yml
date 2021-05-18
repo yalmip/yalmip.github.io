@@ -504,7 +504,7 @@ inside:
       - title: "Debugging unknown error"
         url: /inside/debug                
       - title: "Equality with uncertainty"
-        url: /equalitywithuncertainty 
+        url: /equalityinuncertainty 
       - title: "NaN in model"
         url: /naninmodel
       - title: "Slow MILP"
