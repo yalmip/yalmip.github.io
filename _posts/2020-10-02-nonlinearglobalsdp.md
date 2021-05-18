@@ -4,8 +4,6 @@ permalink: /nonlinearsdpcuts
 excerpt: "The first cut is not the deepest"
 title: "SDP cones in BMIBNB"
 tags: [Global optimization, Semidefinite programming]
-comments: true
-published: false
 date: 2020-10-02
 ---
 

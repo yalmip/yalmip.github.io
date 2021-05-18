@@ -3,7 +3,6 @@ layout: single
 excerpt: "A question on the YALMIP forum essentially boiled down to *how can I generate sum-of-squares solutions which really are feasible, i.e. true certificates?*"
 title: Strictly feasible sum-of-squares solutions
 tags: [Sum-of-squares programming]
-comments: true
 date: '2011-02-09'
 ---
 

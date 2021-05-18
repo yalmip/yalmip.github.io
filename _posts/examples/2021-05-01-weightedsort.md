@@ -4,16 +4,11 @@ excerpt: "Doing the forbidden"
 title: Sorting with linear programming, or?
 tags: [Sort, Linear programming, Black-box, Nonlinear programming]
 date: '2021-05-01'
-published: true
 gist: "https://gist.github.com/johanlofberg/3af68b7e5688caf4a679047636fea764.js"
 header:
   teaser: "weightedsumnonconvex.png"
 sidebar:
   nav: "examples"
-image:
-  feature: weightedsumnonconvex.png
-  teaser: weightedsumnonconvex.png
-  thumb: weightedsumnonconvex.png
 ---
 
 

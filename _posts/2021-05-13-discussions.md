@@ -3,7 +3,6 @@ layout: single
 permalink: /discussions
 excerpt: "Alternative to Google groups"
 title: "Github discussion"
-published: true
 header:
   teaser: discussions.PNG
 date: 2021-05-14

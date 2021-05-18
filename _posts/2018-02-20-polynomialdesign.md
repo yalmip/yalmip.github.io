@@ -3,7 +3,6 @@ layout: single
 permalink: /polynomialdesign
 excerpt: "Working with polynomials, function values, derivatives, integrals and their properties"
 title: "Designing polynomials"
-comments: true
 header:
   teaser: "designingpolynomials.png"
 date: 2018-02-16

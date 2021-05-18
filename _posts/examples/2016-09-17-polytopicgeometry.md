@@ -3,16 +3,11 @@ category: example
 excerpt: "Ever wondered how the L1 Chebyshev ball can be computed?"
 title: Polytopic geometry using YALMIP and MPT
 tags: [Polytopes, MPT, Convex hull, Geometry]
-published: true
 date: '2016-09-16'
 header:
   teaser: "mptyalmip9.png"
 sidebar:
   nav: "examples"
-image:
-  feature: lofberg.jpg
-  teaser: lofberg.jpg
-  thumb: lofberg.jpg
 ---
 
 The toolboxes YALMIP and [MPT](/solver/mpt) were initially developed independently, but have over the years seen more and more integration. Several functionalities in [MPT](/solver/mpt) require YALMIP, and several functionalities in YALMIP require [MPT](/solver/mpt).

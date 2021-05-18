@@ -3,7 +3,6 @@ layout: single
 permalink: /announcepwaintegral
 excerpt: "From hard to a one-liner"
 title: "Optimizing integrated piecewise affine functions"
-published: true
 header:
   teaser: "integralpwa.png"
 date: 2021-05-05
