@@ -3,7 +3,6 @@ layout: single
 excerpt: "Hard? Let's try anyway."
 title: Worst-case norms of matrices
 tags: [Robust optimization]
-comments: true
 date: 2014-02-08
 ---
 
