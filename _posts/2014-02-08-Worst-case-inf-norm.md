@@ -3,6 +3,8 @@ layout: single
 excerpt: "Hard? Let's try anyway."
 title: Worst-case norms of matrices
 tags: [Robust optimization]
+header:
+ teaser: worstcaseshowvertex.png
 date: 2014-02-08
 ---
 
@@ -61,7 +63,20 @@ Finally minimize the worst-case upper bound
 optimize([P, Constraints],t)
 ````
 
-The way YALMIP eliminates the uncertainty depends on the structure of the uncertainty set. For the polytopic model above, enumeration will be used, which might be problematic if you have many uncertain variables. As an alternative, we can try duality
+The way YALMIP eliminates the uncertainty depends on the structure of the uncertainty set. For the polytopic model above, enumeration will be used, which might be problematic if you have many uncertain variables. In this case it is of no concern though as the uncertainty polytope only has 5 vertices
+
+````matlab
+clf
+plot([1 <= p <= 3, sum(p) <= 5]);
+v = extreme([1 <= p <= 3, sum(p) <= 5]);
+hold on
+m = plot(v(1,:),v(2,:),'o');
+````
+
+![Vertices]({{ site.url }}/images/worstcaseshowvertex.png){: .center-image }
+
+
+As an alternative though, we can use the duality filter
 
 ````matlab
 ops = sdpsettings('robust.lplp','duality');
