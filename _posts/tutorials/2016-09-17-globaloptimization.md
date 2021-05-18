@@ -139,7 +139,7 @@ optimize(F,p,options);
 
 ## Nonconvex polynomial programming
 
-Polynomial programs are transformed to to bilinear programs. As an example, the variable \\(x^3y^2\\) will be replaced with the the variable \\(w\\) and the constraints \\(w = uv\\), \\(u = zx\\), \\(z = x^2\\), \\(v = y^2\\). This is done automatically if the global solver is called with a non-quadratic polynomial problem. With this transformation, standard bilinear envelopes can be used in the creation of the relaxations for computing lower bounds. Note though, the nolinear solver will work with the original polynomial model, so the bilinearization is only used for the lower bound computations.
+Polynomial programs are transformed to to bilinear programs. As an example, the variable \\(x^3y^2\\) will be replaced with the the variable \\(w\\) and the constraints \\(w = uv\\), \\(u = zx\\), \\(z = x^2\\), \\(v = y^2\\). This is done automatically if the global solver is called with a non-quadratic polynomial problem. With this transformation, standard bilinear envelopes can be used in the creation of the relaxations for computing lower bounds. Note though, the nolinear solver will work with the original polynomial model, so the bilinearization is only used for the lower bound computations. The polynomial model is not disregarded in the relaxations either, but is used in bound propagation and envelope generation.
 
 ````matlab
 sdpvar x y
@@ -243,7 +243,7 @@ optimize(F,t,options);
 *         2% spent in upper heuristics (40 candidates tried)
 ````
 
-The default behaviour to attack BMIs in [BMIBNB](/solver/bmibnb) is by employing a [nonconvex cutting plane strategy for the upper bound generation](/nonlinearglobalsdp). Hence we see the use of a standard nonlinear solver [FMINCON](/solver/bmibnb) for the upper bounds in the log above, despite the fact that the problem involves a semidefinite cone. A linear semidefinite programming solver is required for the lower bounds.
+The default behaviour to attack BMIs in [BMIBNB](/solver/bmibnb) is by employing a [nonconvex cutting plane strategy for the upper bound generation](/nonlinearsdp). Hence we see the use of a standard nonlinear solver [FMINCON](/solver/fmincon) for the upper bounds in the log above, despite the fact that the problem involves a semidefinite cone. A linear semidefinite programming solver is required for the lower bounds.
 
 As a second BMI problem, we will solve an linear quadratic (LQ) control problem where we want to find a state-feedback matrix with bounded elements. For the global code to work, global lower and upper and bound on all complicating variables (involved in nonlinear terms) should be supplied, either explicitly or implicitly in the linear constraints. In this example, the variable \\(K\\) is already bounded in the original problem formulation (i.e. the problem we want to solve is LQR with a bounded feedback matrix), but the elements in \\(P\\) are not, hence the warning about unbounded variables. 
 
