@@ -3,7 +3,8 @@ layout: single
 excerpt: "MATLAB no longer required! Recommended though."
 title: Octave support in YALMIP
 tags: [Octave]
-comments: true
+header:
+  teaser: octavelogo.png
 date: '2014-04-16'
 ---
 
