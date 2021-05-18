@@ -3,7 +3,8 @@ layout: single
 excerpt: "Using YALMIP objects and code in Simulink models, easy or fast, your choice."
 title: YALMIP and Simulink
 tags: [Simulink, Simulation]
-comments: true
+header:
+  teaser: "simulinkmodel.png"
 date: '2013-06-27'
 ---
 
