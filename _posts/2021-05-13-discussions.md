@@ -2,7 +2,7 @@
 layout: single
 permalink: /discussions
 excerpt: "Alternative to Google groups"
-title: "New Github discussion board"
+title: "Github discussion"
 published: true
 header:
   teaser: discussions.PNG
