@@ -130,7 +130,7 @@ for i = 1:100
 end
 ````
 
-![Limit approximation]({{ site.url }}/images/nonlinearsdpcut7png){: .center-image }
+![Limit approximation]({{ site.url }}/images/nonlinearsdpcut7.png){: .center-image }
 
 ## Running the solver
 
