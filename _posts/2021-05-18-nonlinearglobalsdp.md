@@ -50,7 +50,7 @@ G(x,y) = \left( \begin{array} y^2-1 & x+y\\x+y & 1\end{array}\right) \succeq 0
 \end{align}
 $$. 
 
-The semidefinite constraint can alternatively be written as \\(y^2-1\geq 0\\) and \\( y^2-1 - (x+y)^2 \geq 0\\) by studying conditions for the matrix to be positive semidefinite (the first condition is redundant as it is implied by the second)
+The semidefinite constraint can also be written as \\(y^2-1\geq 0\\) and \\( y^2-1 - (x+y)^2 \geq 0\\) by studying conditions for the matrix to be positive semidefinite (the first condition is redundant as it is implied by the second)
 
 The feasible set is two disjoint regions top left and bottom right with borders outlined in red in the figure below.
 
