@@ -2,6 +2,8 @@
 layout: single
 excerpt: "Untangle that messy expression"
 title: "Modelling if-else-end statements"
+header:
+  teaser: "nonconvexpenalty.png"
 date: 2017-10-17
 ---
 
