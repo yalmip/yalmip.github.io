@@ -46,7 +46,7 @@ Consider a small example where we want to minimize \\(x^2+y^2\\) over \\(-3 \leq
 
 $$
 \begin{align}
-G(x,y) & = \left( \begin{array} y^2-1 & x+y\\x+y & 1\end{array}\right) \succeq 0
+G(x,y) & = \left( \begin{matrix} y^2-1 & x+y \\ x+y & 1\end{matrix}\right) \succeq 0
 \end{align}
 $$. 
 
