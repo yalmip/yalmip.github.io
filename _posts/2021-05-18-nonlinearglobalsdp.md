@@ -30,9 +30,9 @@ The upper bound is the issue. While there are many solvers available for standar
 
 Hence, the obvious algorithm is
 
-1. Create some initial approximation \\( \mathcal{A} = \{ \hat{G}(x) \geq 0 \} \\) of the semidefinite conconstraints (e.g. add the constraint that the diagonal is non-negative)
+1. In the root node,  create some initial approximation \\( \mathcal{A} \\) of the semidefinite constraints \\( G(x) \succeq 0 \\)  (e.g., add the constraint that the diagonal is non-negative)
 
-2. In the node, try to solve the nonlinear program using the approximation \\(\mathcal{A}\\). If a solution is found, and \\(G(x) \succeq 0\\) is satisfied, a valid upper bound has been computed. If \\(G(x) \succeq 0\\) is violated, we do not have a feasible solution and thus no upper bound, but we can compute an eigenvector \\(v\\) associated to a negative eigenvalue and add the (possibly nonlinear) cut \\( v^TG(x)v \geq 0 \\) to the approximation \\(\mathcal{A}\\).
+2. In a node, solve the nonlinear program using the approximation \\(\mathcal{A}\\). If a solution is found, and \\(G(x) \succeq 0\\) is satisfied, a valid upper bound has been computed. If \\(G(x) \succeq 0\\) is violated, we do not have a feasible solution and thus no upper bound, but we can compute an eigenvector \\(v\\) associated to a negative eigenvalue and append the (possibly nonlinear) cut \\( v^TG(x)v \geq 0 \\) to the approximation \\(\mathcal{A}\\).
 
 3. Either repeat (2) several times in the node, or proceed with the branching process and use the new approximation in future nodes.
 
@@ -40,7 +40,13 @@ Everything else is exactly as before in the branch & bound algorithm.
 
 ## Illustrating the steps manually
 
-Consider a small example where we want to minimize \\(x^2+y^2\\) over \\(-3 \leq (x,y) \leq 3\\) and \\( G(x,y) = \left( \begin{array} y^2-1 & x+y\\x+y & 1\end{array}\right) \succeq 0\\). The semidefinite constraint can alternatively be written as \\(y^2-1\geq 0\\) and \\( y^2-1 - (x+y)^2 \geq 0\\) by studying conditions for the matrix to be positive semidefinite (the first condition is redundant as it is implied by the second)
+Consider a small example where we want to minimize \\(x^2+y^2\\) over \\(-3 \leq (x,y) \leq 3\\) and 
+
+$$
+G(x,y) = \left( \begin{array} y^2-1 & x+y\\x+y & 1\end{array}\right) \succeq 0
+$$. 
+
+The semidefinite constraint can alternatively be written as \\(y^2-1\geq 0\\) and \\( y^2-1 - (x+y)^2 \geq 0\\) by studying conditions for the matrix to be positive semidefinite (the first condition is redundant as it is implied by the second)
 
 The feasible set is two disjoint regions top left and bottom right with borders outlined in red in the figure below.
 
