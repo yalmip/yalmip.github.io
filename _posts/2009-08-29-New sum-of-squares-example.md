@@ -2,7 +2,8 @@
 layout: single
 excerpt: "Added a sum-of-squares example focusing on pre- and post-processing capabilities."
 title: New sum-of-squares example
-tags:
+header:
+  teaser: newtonpolytope.png
 date: '2009-08-29'
 ---
 
