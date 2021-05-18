@@ -12,21 +12,25 @@ A question on the [YALMIP forum](http://sedumi.ie.lehigh.edu/index.php?option=co
 
 This is partially answered and discussed in one of the [sum-of-squares examples](/example/moresos) and the referenced paper [Löfberg 2009](/reference/lofberg2009). The problem boils down to the fact that semidefinite solvers typically work with infeasible methods. Hence, the optimal solution you obtain in the end is very often slightly infeasible.
 
-When YALMIP sets up a sum-of-squares problem, there are two alternative approaches. The first approach, which is used by default, is the kernel representation, sometimes called primal form in YALMIP. You can explicitly tell YALMIP to use this form by setting `'sos.model'` to 1 in [sdpsettings](/command/sdpsettings) when calling [solvesos](/command/solvesos).
+## The semidefinite programs
+
+When YALMIP sets up a sum-of-squares problem, there are two alternative approaches. The first approach, which is used by default, is the kernel representation, sometimes called primal form in YALMIP. You can explicitly tell YALMIP to use this form by setting sos.model to 1 in [sdpsettings](/command/sdpsettings) when calling [solvesos](/command/solvesos).
 
 ![Primal form]({{ site.url }}/images/primalform.gif){: .center-image }
 
-An alternative approach, which typically is the approach using pen and paper, is the image representation, also called dual form. This form is typically less efficient computationally, but is easier to understand, and is the only applicable method when parametric variables have advanced constraints, such as integer constraints or additional nonconvex constraints. YALMIP use this form by setting `'sos.model'` to 2. Of course, the data (**C**,**A**,**b**,**F**,**f**) is different in the two models, otherwise it would make no difference since most solvers solve the primal and the dual problem simultaneously.
+An alternative approach, which typically is the approach seen when using pen and paper, is the image representation, also called dual form. This form is typically less efficient computationally, but is easier to understand, and is the only applicable method when parametric variables have advanced constraints, such as integer constraints or additional nonconvex constraints. YALMIP use this form by setting the option sos.model to 2. Of course, the data (**C**,**A**,**b**,**F**,**f**) is different in the two models, otherwise it would make no difference since most solvers solve the primal and the dual problem simultaneously.
 
 ![Dual form]({{ site.url }}/images/dualform.gif){: .center-image }
 
-The default value of the `'sos.model'` option is 0, which means that YALMIP makes the decision (almost always primal form).
+The default value of the sos.model option is 0, which means that YALMIP makes the decision (almost always primal form).
 
-As mentioned earlier, most [SDP solvers] work with infeasible methods. In practice, this means the equality constraints in the primal form typically are violated in the final solution, and the semidefinite constraint in the dual form is not satisfied. If the optimization problem originates from a sum-of-squares problem, this means the SDP solution has failed to create a true certificate of positivity, all it has done is shown that it is very close to being a sum-of-squares.
+As mentioned earlier, most [SDP solvers](/tags/#semidefinite-programming-solver) work with infeasible methods. In practice, this means the equality constraints in the primal form typically are violated in the final solution, and the semidefinite constraint in the dual form is not satisfied. If the optimization problem originates from a sum-of-squares problem, this means the SDP solution has failed to create a true certificate of positivity, all it has done is shown that it is very close to being a sum-of-squares.
 
-In the dual form, the sum-of-squares certificate is really useless when the semidefinite constraint is violated. In primal form, it can be shown that it is possible to prove sum-of-squareness holds despite violation of constraints, by relating the smallest eigenvalue of \\(X\\) to the largest violation of the equality constraints, see [Löfberg 2009].
+In the dual form, the sum-of-squares certificate is theoretically useless when the semidefinite constraint is violated. In primal form, it can be shown that it is possible to prove sum-of-squareness holds despite violation of constraints, by relating the smallest eigenvalue of \\(X\\) to the largest violation of the equality constraints, see [Löfberg 2009].
 
 Hence, we would like to force the SDP solver to return a feasible solution, or even better, a significantly strictly feasible solution (assuming you have created a model for which such a solution really exists).
+
+### An example
 
 As an example, consider the problem of finding a lower bound on \\(p(x,y) = (1+xy)^2-xy+(1-y)^2\\) over the box \\(-5\leq (x,y)\leq 5 \\) and \\(-5 \leq y\leq 5 \\)
 
