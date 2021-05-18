@@ -45,7 +45,9 @@ Everything else is exactly as before in the branch & bound algorithm.
 Consider a small example where we want to minimize \\(x^2+y^2\\) over \\(-3 \leq (x,y) \leq 3\\) and 
 
 $$
+\begin{align}
 G(x,y) = \left( \begin{array} y^2-1 & x+y\\x+y & 1\end{array}\right) \succeq 0
+\end{align}
 $$. 
 
 The semidefinite constraint can alternatively be written as \\(y^2-1\geq 0\\) and \\( y^2-1 - (x+y)^2 \geq 0\\) by studying conditions for the matrix to be positive semidefinite (the first condition is redundant as it is implied by the second)
