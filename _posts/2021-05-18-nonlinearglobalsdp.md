@@ -30,7 +30,7 @@ The upper bound is the issue. While there are many solvers available for standar
 
 Hence, the obvious algorithm is
 
-1. Create some initial approximation \\( \mathcal{A} = \left{\hat{G}(x) \geq 0 \right} \\) of the semidefinite conconstraints (e.g. add the constraint that the diagonal is non-negative)
+1. Create some initial approximation \\( \mathcal{A} = \{ \hat{G}(x) \geq 0 \} \\) of the semidefinite conconstraints (e.g. add the constraint that the diagonal is non-negative)
 
 2. In the node, try to solve the nonlinear program using the approximation \\(\mathcal{A}\\). If a solution is found, and \\(G(x) \succeq 0\\) is satisfied, a valid upper bound has been computed. If \\(G(x) \succeq 0\\) is violated, we do not have a feasible solution and thus no upper bound, but we can compute an eigenvector \\(v\\) associated to a negative eigenvalue and add the (possibly nonlinear) cut \\( v^TG(x)v \geq 0 \\) to the approximation \\(\mathcal{A}\\).
 
