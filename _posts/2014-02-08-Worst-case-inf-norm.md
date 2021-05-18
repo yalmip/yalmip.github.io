@@ -11,7 +11,7 @@ date: 2014-02-08
 
 I was asked by a colleague today on how to compute the worst-case \\(\infty\\)-norm of a matrix \\(A(p)\\) linearly parameterized in an uncertainty \\(p\\) constrained to a polytope.
 
-No simple way came to mind, and using a result by [Mangasarian and Shiau 1986] that maximizing the norm of a vector over a polytope is NP-complete for most cases, I guess there should not be any. 
+No simple way came to mind, and using a result by [Mangasarian and Shiau 1986](/reference/mangasarian1986) that maximizing the norm of a vector over a polytope is NP-complete for most cases, I guess there should not be any. 
 
 Nevertheless, let us write some YALMIP code to compute it, and then generalize the problem formulation. We first note that \\(\infty\\)-norm of a matrix corresponds to the largest 1-norm of the rows. Hence, all we have to do is to loop over all rows, and compute the worst-case 1-norm of each row.
 
