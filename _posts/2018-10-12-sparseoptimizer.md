@@ -3,6 +3,8 @@ layout: single
 permalink: /sparseoptimizer
 excerpt: "Be careful with unnecessary symbolic overhead"
 title: "Working with sparse parameterizations in optimizer"
+header:
+  teaser: sparseA.png
 date: 2018-10-12
 ---
 
