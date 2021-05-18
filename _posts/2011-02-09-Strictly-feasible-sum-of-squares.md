@@ -3,6 +3,8 @@ layout: single
 excerpt: "A question on the YALMIP forum essentially boiled down to *how can I generate sum-of-squares solutions which really are feasible, i.e. true certificates?*"
 title: Strictly feasible sum-of-squares solutions
 tags: [Sum-of-squares programming]
+header:
+  teaser: sospositive.png
 date: '2011-02-09'
 ---
 
@@ -26,14 +28,16 @@ In the dual form, the sum-of-squares certificate is really useless when the semi
 
 Hence, we would like to force the SDP solver to return a feasible solution, or even better, a significantly strictly feasible solution (assuming you have created a model for which such a solution really exists).
 
-As an example, consider the problem of finding a lower bound on \\(p(x,y) = (1+xy)^2-xy+(1-y)^2\\) over the box \\(-1\leq x\leq 1 \\) and \\(-1 \leq y\leq 1 \\)
+As an example, consider the problem of finding a lower bound on \\(p(x,y) = (1+xy)^2-xy+(1-y)^2\\) over the box \\(-5\leq (x,y)\leq 5 \\) and \\(-5 \leq y\leq 5 \\)
+
+![polynomial]({{ site.url }}/images/sospositive.png){: .center-image }
 
 Define the polynomial \\(p(x,y)\\) and the constraints \\(g(x,y)\geq 0\\) defining the box
 
 ````matlab
 sdpvar x y
 p = (1+x*y)^2-x*y+(1-y)^2;
-g = [1-x;1+x;1-y;1+y]
+g = [5-x;5+x;5-y;5+y]
 ````
 
 To solve the problem, we will apply the postivstellensatz using quadratic multipliers. Hence, we define 4 parameterized multiplier polynomials
@@ -66,12 +70,12 @@ ans =
    -9.634448808807465e-009
 ````
 
-Hence, the optimal value of the lower bound is probably correct (within reasonable tolerances), but we really do not have true certificate.
+Close to 0 and the optimal value of the lower bound is probably correct (within reasonable tolerances), but we really do not have a true certificate.
 
-To overcome this, the trick is to use the fact that semidefinite solvers typically return solutions in the analytic center of the feasible region, when a feasibility problem is solved, i.e., if a strict interior exists, we will obtain a strictly feasible solution. A feasibility problem will however not return an optimal solution. To overcome this, we add a new constraint, to force the solver to return a feasible solution which is very close to optimal value. Hence, we resolve the problem with the requirement that we should be within 1/10000 from the previously computed optimal objective value.
+To overcome this, one trick is to use the fact that semidefinite solvers typically return solutions in the analytic center of the feasible region, when a feasibility problem is solved, i.e., if a strict interior exists, we will obtain a strictly feasible solution. A feasibility problem will however not return an optimal solution, of course. To circumvent this, we add a new constraint forcing the solver to return a feasible solution which is very close to optimal value. Hence, we resolve the problem with the requirement that we should be within 1/10000 from the previously computed optimal objective value.
 
 ````matlab
-FeasibilityConstraints = [Constraints, lower > 0.99999*value(lower)];
+FeasibilityConstraints = [Constraints, lower >= 0.99999*value(lower)];
 [sol,v,Q] = solvesos(FeasibilityConstraints,[],ops,Params);
 ````
 
