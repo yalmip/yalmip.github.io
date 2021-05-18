@@ -8,7 +8,8 @@ header:
 date: 2014-02-08
 ---
 
-(*The robust optimization framework was improved significantly (graph models supported) right after this post was written and simplifies the code below significantly... A new version of this article might be posted later*) 
+*The robust optimization framework was improved significantly (graph models supported) right after this post was written and simplifies the code below significantly thus making it close to obsolete in practice*
+{: .notice--info}
 
 I was asked by a colleague today on how to compute the worst-case \\(\infty\\)-norm of a matrix \\(A(p)\\) linearly parameterized in an uncertainty \\(p\\) constrained to a polytope.
 
