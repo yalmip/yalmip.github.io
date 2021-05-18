@@ -32,11 +32,11 @@ Instead, we use the idea iteratively and build an approximation of the semidefin
 
 Hence, the obvious algorithm is
 
-1. In the root node,  create some initial approximation \\( \mathcal{A} \\) of the semidefinite constraints \\( G(x) \succeq 0 \\)  (e.g., add the constraint that the diagonal is non-negative)
+**1**. In the root node,  create some initial approximation \\( \mathcal{A} \\) of the semidefinite constraints \\( G(x) \succeq 0 \\)  (e.g., add the constraint that the diagonal is non-negative)
 
-2. In a node, solve the nonlinear program using the approximation \\(\mathcal{A}\\). If a solution is found, and \\(G(x) \succeq 0\\) is satisfied, a valid upper bound has been computed. If \\(G(x) \succeq 0\\) is violated, we do not have a feasible solution and thus no upper bound, but we can compute an eigenvector \\(v\\) associated to a negative eigenvalue and append the (possibly nonlinear) cut \\( v^TG(x)v \geq 0 \\) to the approximation \\(\mathcal{A}\\).
+**2**. In a node, solve the nonlinear program using the approximation \\(\mathcal{A}\\). If a solution is found, and \\(G(x) \succeq 0\\) is satisfied, a valid upper bound has been computed. If \\(G(x) \succeq 0\\) is violated, we do not have a feasible solution and thus no upper bound, but we can compute an eigenvector \\(v\\) associated to a negative eigenvalue and append the (possibly nonlinear) cut \\( v^TG(x)v \geq 0 \\) to the approximation \\(\mathcal{A}\\).
 
-3. Either repeat (2) several times in the node, or proceed with the branching process and use the new approximation in future nodes.
+**3**. Either repeat (**2**) several times in the node, or proceed with the branching process and use the new approximation in future nodes.
 
 Everything else is exactly as before in the branch & bound algorithm.
 
