@@ -5,7 +5,7 @@ excerpt: "The first cut is not the deepest"
 title: "SDP cones in BMIBNB"
 tags: [Global optimization, Semidefinite programming, BMI]
 header:
-  image: nonlinearsdpcut7png
+  image: nonlinearsdpcut7.png
 date: 2021-05-18
 ---
 
