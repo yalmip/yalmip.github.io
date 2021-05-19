@@ -293,6 +293,7 @@ defaults:
       read_time: false
       comments: false
       share: false
+      classes: wide
       related: true 
   # _references
   - scope:
@@ -359,13 +360,14 @@ defaults:
       related: true
       sidebar:
           nav: "inside"
-# _inside
+# _inside (stored in tutorials, listed category inside)
   - scope:
       path: "_posts/tutorials"
       type: posts
     values:
       category: inside
       layout: single
+      toc: true
       author_profile: false
       read_time: false
       comments: false
