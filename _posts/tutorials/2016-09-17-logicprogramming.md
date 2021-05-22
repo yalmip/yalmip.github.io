@@ -109,7 +109,14 @@ This is the model construct which is used for almost all cases below. Make sure 
 
 ### If logical(z) then  \\(f(x)= 0\\)
 
-Introduce a new binary variable \\(s\\) to represent the logical condition using the methods above, and then use the standard implication. Note that you do not have to model the logical condition exactly (both directions), all you need is \\(\mathop{logical}(z) \rightarrow s\\).
+Introduce a new binary variable \\(s\\) to represent the logical condition using the methods above, and then use the standard implication on double-sided inequality.
+
+
+$$
+-M(1-a) \leq f(x) \leq M(1-s)
+$$
+
+Note that you do not have to model the logical condition exactly (both directions), all you need is \\(\mathop{logical}(z) \rightarrow s\\).
 
 This is a general strategy throughout. If you enter complex expressions, introduce new variables for simple sub-parts and build the complete model by combining simple standard models.
 
