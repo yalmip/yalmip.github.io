@@ -109,11 +109,10 @@ This is the model construct which is used for almost all cases below. Make sure 
 
 ### If logical(z) then  \\(f(x)= 0\\)
 
-Introduce a new binary variable \\(s\\) to represent the logical condition using the methods above, and then use the standard implication on double-sided inequality.
-
+Introduce a new binary variable \\(s\\) to represent the logical condition using the methods above, and then use the standard implication.
 
 $$
--M(1-a) \leq f(x) \leq M(1-s)
+ f(x) \leq M(1-s)
 $$
 
 Note that you do not have to model the logical condition exactly (both directions), all you need is \\(\mathop{logical}(z) \rightarrow s\\).
@@ -197,12 +196,12 @@ $$
 f(x)\geq -Ma
 $$
 
-Note that we use a non-strict inequality. If behaviour around \\(f(x)\\) is important, a margin will have to be used as discussed before.
+Note that we use a non-strict inequality. If behaviour around 0 is important, a margin will have to be used as discussed before, ant is up to you and your goal to decide if the margin is positive or negative,i.e. towards whih side you prefer incorrect activations to happen.
 
 
 ### If \\( f(x) = 0\\) then a
 
-First, this is extremely ill-posed in practice as solvers work with floating-point numbers so it might consider, e.g., \\(10^{-7}\\) to be 0. It is also often ill-posed from a practical point of view. If your model says **if waterlevel is 0** is it really absolutely crucial that it behaves differently compared to the case when the waterlevel is \\(10^{-11}\\), i.e. the thickness of one atom? If yes,  how do you plan to implement that solution in practice?
+First, this is extremely ill-posed in practice as solvers work with floating-point numbers so it might consider, e.g., \\(10^{-7}\\) to be 0. It is also often ill-posed from a practical point of view. If your model says **if waterlevel is 1** is it really absolutely crucial that it behaves differently compared to the case when the waterlevel is \\(1+10^{-11}\\), i.e. the thickness of one atom? If yes,  how do you plan to use that solution in practice?
 
 The disjoint logical model is
 
