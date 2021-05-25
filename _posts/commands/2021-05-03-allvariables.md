@@ -10,13 +10,13 @@ sidebar:
 
 [allvariables](/command/allvariables) creates a vector with variables used in a set of objects
 
-### Syntax  
+## Syntax  
 
 ````matlab
 y = allvariables(A,B,...)
 ````
 
-### Examples
+## Examples
 
 Create a set of constraints and an objective, and then create an new objective function which adds a penalty on all involved variables
 
@@ -30,7 +30,7 @@ Obj = sum(x) + y^2;
 Obj = Obj + 0.01*norm(allvariables(Model,Obj))
 ````
 
-### Comments
+## Comments
 
 The command is a utility replacing repated application of [depends](/command/depends) followed by [recover](/command/recover), i.e. it simplifies patterns of the type
 

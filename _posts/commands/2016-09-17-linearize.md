@@ -10,13 +10,13 @@ sidebar:
 
 [linearize](/command/linearize) returns the linearization of the polynomial \\(p(x)\\) at the point **value(x)**.
 
-### Syntax
+## Syntax
 
 ````matlab
 h = linearize(p)
 ````
 
-### Examples
+## Examples
 
 The linearization is performed at the current value of **x**
 

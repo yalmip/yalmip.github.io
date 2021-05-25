@@ -12,13 +12,13 @@ sidebar:
 
 The code assumes the constraints are quasi-convex in \\(x\\) and the scalar \\(t\\), bilinear in \\(t\\) and \\(x\\), \\(t=0\\) is feasible, and the objective function is \\(t\\) or \\(-t\\).
 
-### Syntax
+## Syntax
 
 ````matlab
 diagnostics = bisection(Constraints,Objective,options)
 ````
 
-### Example
+## Example
 
 Bisection can either be called as a command (note that node solver has to be specified)
 

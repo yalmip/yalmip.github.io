@@ -10,13 +10,13 @@ sidebar:
 
 [relaxvalue](/command/relaxvalue) is used to extract the relaxed numerical value of an expression after solving a relaxation.
 
-### Syntax
+## Syntax
 
 ````matlab
 Y = relaxvalue(X)
 ````
 
-### Examples
+## Examples
 
 Consider the following trivial relaxed problem
 

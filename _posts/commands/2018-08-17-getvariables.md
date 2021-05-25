@@ -10,13 +10,13 @@ sidebar:
 
 [getvariables](/command/getvariables) returns the internal index associated with an [sdpvar](/command/sdpvar) variable
 
-### Syntax
+## Syntax
 
 ````matlab
 k = getvariables(x)
 ````
 
-### Examples
+## Examples
 
 [sdpvar](/command/sdpvar) variables are built-up from internal variable indicies (i.e., the only internal name and reference is an integer). 
 

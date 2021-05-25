@@ -10,13 +10,13 @@ sidebar:
 
 [solvemoment](/command/solvemoment)  computes lower bounds to polynomial programs using [Lasserre's moment-method](/reference/), i.e., semidefinite relaxations.
 
-### Syntax
+## Syntax
 
 ````matlab
 [sol,xoptimal,momentdata,sos] = solvemoment(F,h,options,order)
 ````
 
-### Examples
+## Examples
 
 The command is used for finding lower bounds on a polynomial \\(h(x)\\), subject to constraints \\(F(x)\succeq 0\\), where \\(F(x)\\) is a collection of polynomial scalar or matrix inequalities (and equalities).
 

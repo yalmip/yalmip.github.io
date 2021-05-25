@@ -10,13 +10,13 @@ sidebar:
 
 [quaddecomp](/command/quaddecomp) is used to extract the numerical representation of a quadratic expression
 
-### Syntax
+## Syntax
 
 ````matlab
 [Q,c,f,z,info] = quaddecomp(p)
 ````
 
-### Examples
+## Examples
 
 Define a quadratic function and extract data generating the quadratic function, and check that the data is correct. Note that the order of the variables might be completely different compared to your natural ordering, hence the 4th output collects variables in the used order.
 

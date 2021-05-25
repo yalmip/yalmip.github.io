@@ -10,7 +10,7 @@ sidebar:
 
 [loadsdpafile](/command/loadsdpafile) imports a YALMIP model from an SDPA ASCII format file.
 
-### Syntax
+## Syntax
 
 ````matlab
 [Constraints, Objective] = loadsdpafile(filename)

@@ -10,14 +10,14 @@ sidebar:
 
 [coefficients](/command/coefficients) is used to extract coefficients in a polynomial.
 
-### Syntax
+## Syntax
 
 
 ````matlab
 [c,v] = coefficients(p,x)
 ````
 
-### Examples
+## Examples
 
 Define a polynomial in variables **x** and **y**, with coefficients parameterized by **s** and **t**.
 

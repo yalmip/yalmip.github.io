@@ -12,13 +12,13 @@ sidebar:
 
 See the post [updated optimizer](/optimizerupdates) for recent extensions and improvements.
 
-### Syntax
+## Syntax
 
 ````matlab
 P = optimizer(Con,Obj,Options,Parameters,WantedVariables)
 ````
 
-### Examples
+## Examples
 
 First a word of warning: Never start your model development using optimizer constructs. Always start with a standard model based on calls to [optimize](/command/optimize), and then when everything works as expected, adjust you model to use [optimizer](/command/optimizer) instead, if you think this will improve simulation performance. Debugging models in the [optimizer](/command/optimizer) world is much harder and not recommended.
 
@@ -118,7 +118,7 @@ P = optimizer(Constraints,Objective,options,{a,b},{x,Objective})
 
 See more examples in the [MPC example](/example/standardmpc) and  [unit commitment example](/example/unitcommitment).
 
-### Comments
+## Comments
 
 Note that assigned values of [sdpvar](/command/sdpvar) objects are not updated after the optimization problem is solved.
 

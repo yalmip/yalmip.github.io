@@ -10,13 +10,13 @@ sidebar:
 
 [robustmodel](/command/robustmodel) is used to derive a robust counterpart of an uncertain optimization problem without solving it.
 
-### Syntax
+## Syntax
 
 ````matlab
  [Frobust,robustobjective] = robustify(F,objective,options)
 ````
 
-### Examples
+## Examples
 
 Consider the following uncertain problem (**w** is the uncertain variable)
 

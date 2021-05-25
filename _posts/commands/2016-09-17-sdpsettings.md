@@ -10,7 +10,7 @@ sidebar:
 
 [sdpsettings](/command/sdpsettings) is used to communicate options to YALMIP and solvers. It is used as the third argument in commands such [optimize](/command/optimize), [optimizer](/command/optimizer), [solvesos](/command/solvesos), [solvemoment](/command/solvemoment) and [solvemp](/command/solvemp). 
 
-### Syntax
+## Syntax
 
 
 ````matlab
@@ -18,7 +18,7 @@ options = sdpsettings('field',value,'field',value,...)
 optimize(Constraints, Objective, options)
 ```` 
 
-### Examples
+## Examples
 
 Creating an options structure with specified values is easily done.
 

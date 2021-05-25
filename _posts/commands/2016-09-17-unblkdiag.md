@@ -10,13 +10,13 @@ sidebar:
 
 [unblkdiag](/command/unblkdiag) is used to detect and extract block-diagonal terms (typically used to reduce size of a semidefinite program)
 
-### Syntax
+## Syntax
 
 ````matlab
 Y = unblkdiag(X)
 ````
 
-### Examples
+## Examples
 
 Create a block-diagonal matrix
 

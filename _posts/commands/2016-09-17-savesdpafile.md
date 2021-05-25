@@ -10,13 +10,13 @@ sidebar:
 
 [savesdpafile](/command/savesdpafile) exports a YALMIP model to SDPA ASCII format
 
-### Syntax
+## Syntax
 
 ````matlab
 savesdpafile(F,h,filename)
 ````
 
-### Examples
+## Examples
 
 Export SDP problem to ASCII file
 
@@ -27,7 +27,7 @@ F = [P>=0, A'*P+P*A <= -eye(3)];
 savesdpafile(F,trace(P),'mysdpamodel');
 ````
 
-### Comments
+## Comments
 
 The SDPA ASCII format is limited (equalities and second order cones are not supported), hence many YALMIP models will fail to be saved.
 

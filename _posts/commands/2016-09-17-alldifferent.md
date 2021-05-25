@@ -9,13 +9,13 @@ sidebar:
 
 [alldifferent](/command/alldifferent) implements the constraint that all elements are different
 
-### Syntax
+## Syntax
 
 ````matlab
 F = alldifferent(X)
 ````
 
-### Examples
+## Examples
 
 The following example finds an integer vector with all numbers between  1 and 5.
 
@@ -26,7 +26,7 @@ optimize(F)
 value(x)
 ````
 
-### Comments
+## Comments
 
 Since [alldifferent](/command/alldifferent) is implemented using a [big-M](/tutorial/bigmandconvexhulls) approach, it is crucial that all involved variables have explicit bound constraints. Additionally, it only makes numerical sense to apply the operator on integer valued variables.
 

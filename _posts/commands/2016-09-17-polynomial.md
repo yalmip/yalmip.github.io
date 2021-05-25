@@ -10,13 +10,13 @@ sidebar:
 
 [polynomial](/command/polynomial) is used to generate a parameterized polynomial.
 
-### Syntax  
+## Syntax  
 
 ````matlab
 [p,c,v] = polynomial(x,degreemax,degreemin)
 ````
 
-### Examples
+## Examples
 [polynomial](/command/polynomial) is a convenient way to define parametrized polynomials in one command. The following example defines a quartic in 2 variables.
 ````matlabb
 x = sdpvar(2,1);

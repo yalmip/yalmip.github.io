@@ -10,13 +10,13 @@ sidebar:
 
 [solvebilevel](/command/solvebilevel) is a built-in bilevel solver for problems with inner convex quadratic programs.
 
-### Syntax
+## Syntax
 
 ````matlab
 [sol,info] = solvebilevel(OConstr,OObj,IConstr,IObj,IVar,options)
 ````
 
-### Examples
+## Examples
 
 By default, the solver is based on a simple branching strategy, where branching is performed on complementarity of duals and slacks in the KKT conditions. Hence, the solver is only applicable to small academic examples. It has however been shown in experiments, that the solver performs fairly well in some cases compared to a [big-M reformulation](/example/bilevelprogrammingalternatives) followed by a solution using a mixed-integer solver such as [CPLEX](/solver/cplex) or [GUROBI](/solver/gurobi). Since no [big-M](/tutorial/bigmandconvexhulls) numbers are used, it is much more numerically robust in some cases where no reasonable bounds can be derived on dual variables.
 

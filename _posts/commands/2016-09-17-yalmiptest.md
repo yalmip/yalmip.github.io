@@ -11,14 +11,14 @@ sidebar:
 
 [yalmiptest](/command/yalmiptest) runs a set of test examples to test the installation.
 
-### Syntax
+## Syntax
 
 ````matlab
 yalmiptest
 yalmiptest(ops)
 ````
 
-### Examples
+## Examples
 Run the command without any input to test the default installation.
 ````matlabb
 yalmiptest

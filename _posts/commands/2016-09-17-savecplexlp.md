@@ -10,13 +10,13 @@ sidebar:
 
 [savecplexlp](/command/savecplexlp) exports a YALMIP model to a cplex lp format file
 
-### Syntax
+## Syntax
 
 ````matlab
 saveampl(F,h,filename)
 ````
 
-### Examples
+## Examples
 
 The command enables export of simple YALMIP models to CPLEX LP data files
 
@@ -29,6 +29,6 @@ F = [A*x <= b, integer(x(2:3))];
 saveampl(F,c'*x,'mymodel');
 ````
 
-### Comments
+## Comments
 
 This function has not been tested to any extent and is probably severely limited.

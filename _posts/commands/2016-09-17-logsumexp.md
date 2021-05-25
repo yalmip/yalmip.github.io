@@ -10,7 +10,7 @@ sidebar:
 
 [logsumexp](/command/logsumexp) is a convexity aware implementation of \\(\log(\sum_i e^{x_i})\\)
 
-### Syntax
+## Syntax
 
 ````matlab
 y = logsumexp(x)

@@ -10,13 +10,13 @@ sidebar:
 
 [chebyball](/command/chebyball) computes the largest possible ball inscribed in a polytope.
 
-### Syntax
+## Syntax
 
 ````matlab
 [xc,r] = chebyball(Constraint,options)
 ````
 
-### Example
+## Example
 The typical use is as follows
 
 ````matlab

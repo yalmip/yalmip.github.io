@@ -10,13 +10,13 @@ sidebar:
 
 [momentmodel](/command/momentmodel) derives the semidefinite relaxation model of a polynomial program without solving it.
 
-### Syntax
+## Syntax
 
 ````matlab
 [ConRelaxed, ObjRelaxed] = momentmodel(Con,Obj,RelaxationOrder)
 ````
 
-### Example
+## Example
 
 Consider the following polynomial program
 

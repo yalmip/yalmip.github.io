@@ -10,7 +10,7 @@ sidebar:
 
 [uncertain](/command/uncertain) is used to declare a set of variables as uncertain, or to simultaneously add a set of constraints to the uncertainty set, and declare all involved variables as uncertain. It can also be used for attaching random distributions and samplers to a variable
 
-### Syntax
+## Syntax
 
 ````matlab
 F = uncertain(w) % w variable
@@ -18,7 +18,7 @@ F = uncertain(W) % w constraint
 F = uncertain(w,distribution)
 ````
 
-### Examples
+## Examples
 
 A simple [robust optimization](/tutorial/robustoptimization) problem can be implemented as
 

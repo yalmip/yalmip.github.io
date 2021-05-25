@@ -10,13 +10,13 @@ sidebar:
 
 [yalmiperror](/command/yalmiperror) returns a description of the error codes used in [optimize](/command/optimize) etc.
 
-### Syntax
+## Syntax
 
 ````matlab
 string = yalmiperror(n)
 ````
 
-### Examples
+## Examples
 To se all available error codes, simply issue the command without any input.
 ````matlabb
 yalmiperror

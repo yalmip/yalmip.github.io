@@ -10,13 +10,13 @@ sidebar:
 
 [getbase](/command/getbasematrix) returns the full basis for a particular variable index in an [sdpvar](/command/sdpvar) expression.
 
-### Syntax
+## Syntax
 
 ````matlab
 B = getbasematrix(x,index)
 ````
 
-### Examples
+## Examples
 
 Expressions are are built-up from internal variable indicies ([getvariables](/command/getvariables)) and a basis. We can extract the full basis with respect to a particular variable index
 

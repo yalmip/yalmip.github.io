@@ -10,7 +10,7 @@ sidebar:
 
 [loadsedumidata](/command/loadsedumidata) imports [SEDUMI](/solver/sedumi) data from a **.mat** file to a YALMIP model.
 
-### Syntax
+## Syntax
 
 ````matlab
 [Constraints, Objective] = loadsedumidata(filename)
