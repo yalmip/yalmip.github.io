@@ -44,11 +44,11 @@ If this does not hold, you have to force the solver to stay away from your forbi
 X >= my_magic_margin*eye(n)
 ````
 
-This is where it becomes tricky. First you have to remember that solver have their tolerances, so if you use a magic margin of \\(10^{-15}\\) it will make absolutely no difference compared to leaving it out, as it drowns in the tolerances used for declaring feasibility by the solver anyway.
+This is where it becomes tricky. First you have to remember that solvers have their tolerances, so if you use a magic margin of, say, \\(10^{-15}\\) it will make absolutely no difference compared to leaving it out, as it drowns in the tolerances used for declaring feasibility by the solver anyway.
 
-On the other hand, if you use a large margin to be on the safe side, you might reduce the feasible set considerably or even render the problem infeasible.
+On the other hand, if you use a too large margin to be on the safe side, you might reduce the feasible set considerably or even render the problem infeasible.
 
-A (maybe not so) clever reformulation might be to introduce a new variable \\(t\\) and replace \\(x>0\\) with \\(x \geq e^{-t}\\). Not only do you introduce the risk of numerical issues as the solver possibly sends \\(t\\) to infinity, you still have no idea if the solver approaches this constraints with infeasible methods.
+A (maybe not so) clever reformulation might be to introduce a new variable \\(t\\) and replace \\(x>0\\) with \\(x \geq e^{-t}\\). Not only do you introduce the risk of numerical issues as the solver possibly sends \\(t\\) to infinity, you still have no idea if the solver approaches also this constraint with infeasible methods.
 
 ## But it is an integer variable!
 
