@@ -126,7 +126,7 @@ The 2-norm solution (least-squares estimate) is most classically stated in the d
 ````matlab
 optimize([],norm(residuals,2));
 ````
-The reason is that a quadratic function with \\(n\\) variables can be composed of up to \\(n(n+1)/2\\) monomials, which YALMIP has to work with symbolically. If you absolutely need to solve a large-scale quadratic program with YALMIP using a QP solver, introduce an auxiliary variable and equality constraints. This will make the quadratic term sparse and move any dense data to the linear equality constrnaints (not only YALMIP but many QP solvers will be significantly faster after this transformation)
+The reason is that a quadratic function with \\(n\\) variables can be composed of up to \\(n(n+1)/2\\) monomials, which YALMIP has to work with symbolically. If you absolutely need to solve a large-scale quadratic program with YALMIP using a QP solver, introduce an auxiliary variable and equality constraints. This will make the quadratic term sparse and move any dense data to the linear equality constraints (not only YALMIP but many QP solvers will be significantly faster after this transformation)
 
 ````matlab
 s = sdpvar(length(e),1);
