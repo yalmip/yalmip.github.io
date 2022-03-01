@@ -68,7 +68,7 @@ x = sdpvar(repmat(nx,1,N),repmat(1,1,N));
 % Inputs u(k), ..., u(k+N) (last one not used)
 u = sdpvar(repmat(nu*ndyn,1,N),repmat(1,1,N));
 % Scheduling parameter
-th = binvar(repmat(ndyn,1,N),repmat(1,1,N));
+th = sdpvar(repmat(ndyn,1,N),repmat(1,1,N));
 % Epigraph variable
 sdpvar w;
 ````
