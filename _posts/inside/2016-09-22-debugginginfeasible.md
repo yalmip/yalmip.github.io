@@ -218,11 +218,11 @@ Infeasible
 There we have it. Constraint 5 and 11 are inconsistent. Figure out why!
 
 
-### Debugging more omplex models
+### Debugging more complex models
 
-In more complex models with interacting constraints, you might need more advanced strategies. One such idea is to try to re-order group constraints to detect problems. 
+In more complex models with interacting constraints, you might need more advanced strategies. One such idea is to try to re-order group constraints to detect problems and then solve after each added category. Simply speaking, throw in a bunch of calls to optimizer in the code and see where it fails. No reason to debug any code below that point. With the reaning block, start commenting out various parts to see if they are irrelevant w.r.t the infeasibility.
 
-Begin by structuring your model into logical sets of constraints (clean up your messy code!), so your initial problematic model looks something like this (remember, we only want to detect the reason for infeasibility so we only solve the feasibility problem)
+More structure, divide your model into logical sets of constraints (clean up your messy code!), so your initial problematic model looks something like this (remember, we only want to detect the reason for infeasibility so we only solve the feasibility problem)
 
 
 ````matlab
