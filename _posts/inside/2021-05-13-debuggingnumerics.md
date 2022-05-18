@@ -13,7 +13,7 @@ A very common problem is complaints in the solver about numerical problems, or o
 
 Solvers work in finite precision in floating-point numerics, and this means most computations all the way down to addition and substraction, only are approximations. As the solver works, these small errors add up, and in some models with bad data this can lead to failure.
 
-So what is bad data? As the saying goes you know it when you see it. There is no distinct definition of bad data in a model. Large numbers and very small numbers are typically the root cause, in particular when the model contains both, as a scaling strategy then can be hard to apply for the solver. This leads to the question what are small and large numbers? One again, there is no strict definition. Roughly speaking, the larger spread in the order of magnitudes among coefficients the worse. In other words, for non-zero numbers, the further away from 0, in an absolute logarithmic measure, the worse. You can typically start to expect issues when you go below \\(10^{-6}\\) or above \\(10^6\\) or so. Once again though, this is not a certain fact. In a lucky situation your solver might work very well with data in the order of \\(10^12\\) but then another day it fails on data with seemingly better coefficients. It is an intricate interplay between the solver algorithms, the data, the numerical libraries, floating-point magic, and finally properties of the feasible set and optimal solutions.
+So what is bad data? As the saying goes you know it when you see it. There is no distinct definition of bad data in a model. Large numbers and very small numbers are typically the root cause, in particular when the model contains both, as a scaling strategy then can be hard to apply for the solver. This leads to the question what are small and large numbers? Once again, there is no strict definition. Roughly speaking, the larger spread in the order of magnitudes among coefficients the worse. In other words, for non-zero numbers, the further away from 0, in an absolute logarithmic measure, the worse. You can typically start to expect issues when you go below \\(10^{-6}\\) or above \\(10^6\\) or so. Once again though, this is not a certain fact. In a lucky situation your solver might work very well with data in the order of \\(10^{12}\\) but then another day it fails on data with seemingly better coefficients. It is an intricate interplay between the solver algorithms, the data, the numerical libraries, floating-point magic, and finally properties of the feasible set and optimal solutions.
 
 ### Debugging and remedy
 
@@ -39,7 +39,7 @@ Model = [E == 5e12]
 
 ## Ill-posed problems
 
-A second category of issues arise in ill-posed problems. A simple example could be minimizing \\(x^{-1}\\) on \\(x\geq 0\\). A solver might run into troubles as the iterates of \\(x\\) will diverge to infinity. This is a very common situation in control theory where optimal state-feedback solutions can involve controllers which force some poles to \\(-\infty\\), which requires some decision variables to grow arbitrarily large.
+A second category of issues arise in ill-posed problems. A simple example could be minimizing \\(x^{-1}\\) on \\(x\geq 0\\). A solver might run into trouble as the iterates of \\(x\\) will diverge to infinity. This is a very common situation in control theory where optimal state-feedback solutions can involve controllers which force some poles to \\(-\infty\\), which requires some decision variables to grow arbitrarily large.
 
 ### Debugging and remedy
 
@@ -73,11 +73,11 @@ optimize(Model,Objective + 0.1*norm(allvariables(Model,Objective)))
 ````
 
 
-### Non-strictly feasible solutions but strict infeasibility
+## Non-strictly feasible solutions but strict infeasibility
 
 A common scenario is that you define a problem and then replace a non-strict onstraint with strict constraint by adding some small margin to a constraint. If the problem lacks a strict solution, and you have added a margin which is so small that it drowns in the general tolerances of the solver, the solver can easily run into numerical problems as it thinks it is very close to solve the problem, but struggles on the last bit (naturally, as the problem is infeasible).
 
-## Debugging and remedy
+### Debugging and remedy
 
 If you suspect you are experiencing an issue with a non-strictly feasible solution space, you can solve the problem with the strictness margin as a decision variable, and then try to maximize this. If it ends up at 0 (up to expected solver tolerances) you have probably identified the issue.
 
@@ -97,7 +97,7 @@ ans =
 ````
 The very small optimal value indicates that this problem does not have a strictly optimal solution. The positivity is just a consequence of feasibility tolerances in the solver.
 
-### Homogenuous ill-posed problem
+## Homogenuous ill-posed problem
 
 A final case is a variant of earlier issues, but so common that it merits its own section
 
@@ -113,7 +113,7 @@ optimize([A'*P+P*A <= 0, P>=0])
 
 Some solvers will return the feasible solution \\(P=0\\) which naturally solves the non-strict problem (but is completely useless) while sme solvers might struggle since the feasible space is a singleton. 
 
-## Debugging and remedy
+### Debugging and remedy
 
 Adding any kind of de-homogenizing constraint on \\P\\) to avoid the trivial solution will render the problem infeasible, thus revealing to us that the problem is infeasible, and there is no remedy as the original problem is infeasible.
 
