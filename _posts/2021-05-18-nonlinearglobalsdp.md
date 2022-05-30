@@ -18,7 +18,7 @@ In [release 20200930](/R20200930), the situation is improved with better support
 
 ## Suitable background
 
-To avoid repetition of general concepts, you are recommended to read the post on [CUTSDP](//The-cutsdp-solver) where cutting planes are used for the linear semidefinite cone in a different context. You are also adviced to read the general posts on [global optimization](/tutorial/globaloptimization) and [envelope generation](/tutorial/envelopesinbmibnb/) to understand how a spatial branch & bound solver works.
+To avoid repetition of general concepts, you are recommended to read the post on [CUTSDP](/The-cutsdp-solver) where cutting planes are used for the linear semidefinite cone in a different context. You are also adviced to read the general posts on [global optimization](/tutorial/globaloptimization) and [envelope generation](/tutorial/envelopesinbmibnb/) to understand how a spatial branch & bound solver works.
 
 ## The strategy
 
