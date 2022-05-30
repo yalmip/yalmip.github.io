@@ -122,7 +122,7 @@ set(l,'color','yellow');
 set(l,'linewidth',2);
 ````
 
-Just for fun, let us see what happens in the limit by generating cuts from a bunch of random points. Note that the choice of points is arbitrary. Here we draw it from the box, but we could just as well have drawn them on the unit circle, as the cut is scale invariant.
+Just for fun, let us see what happens in the limit by generating cuts from a bunch of random points. Note that the choice of points is arbitrary. Here we draw them from the feasible box, but we could just as well have drawn them on the unit circle, as the cut is scale invariant.
 
 ````matlab
 clf;
