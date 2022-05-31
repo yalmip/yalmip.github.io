@@ -18,7 +18,7 @@ In [release 20200930](/R20200930), the situation is improved with better support
 
 ## Suitable background
 
-To avoid repetition of general concepts, you are recommended to read the post on [CUTSDP](/The-cutsdp-solver) where cutting planes are used for the linear semidefinite cone in a different context. You are also adviced to read the general posts on [global optimization](/tutorial/globaloptimization) and [envelope generation](/tutorial/envelopesinbmibnb/) to understand how a spatial branch & bound solver works.
+To avoid repetition of general concepts, you are recommended to read the post on [CUTSDP](/The-cutsdp-solver) where cutting planes are used for the linear semidefinite cone in a different context. You are also adviced to read the general posts on [global optimization](/tutorial/globaloptimization) and [envelope generation](/tutorial/envelopesinbmibnb) to understand how a spatial branch & bound solver works.
 
 ## The strategy
 
@@ -36,7 +36,7 @@ Hence, the obvious algorithm is
 
 **2**. In a node, solve a nonlinear program using the outer approximation \\(\mathcal{A}\\). If a solution is found, and \\(G(x) \succeq 0\\) is satisfied, a valid upper bound has been computed. If \\(G(x) \succeq 0\\) is violated, we do not have a feasible solution and thus no upper bound, but we can compute an eigenvector \\(v\\) associated to a negative eigenvalue and append the (possibly nonlinear) cut \\( v^TG(x)v \geq 0 \\) to the outer approximation \\(\mathcal{A}\\).
 
-**3**. Either repeat (**2**) several times in the node, or proceed with the branching process and use the new approximation in future nodes.
+**3**. Either repeat (**2**) several times in the node, or proceed with the standard branching process and use the new approximation in future nodes.
 
 Everything else is exactly as before in the branch & bound algorithm.
 
@@ -77,7 +77,7 @@ l=ezplot('y^2-1-0*x',[-3 3 -3 3]);
 set(l,'color','black');set(l,'linewidth',2);
 ````
 
-Now assume we use this initial model for upper bound generation. A nonlinear solver might find the solution \\(x=0, y=1\\) marked with a black star in the figure below. Plugging in this solution into \\(G(x,y)\\) and computing eigenvalues shows that the matrix is indefinite (it is obviously not positive definite since the solution is outside the feasible region) meaning we failed to find a feasible solution to the original problem and thus generated no upper bound. By computing the associated eigenvector and forming the cut, we obtain a feasible region whose border is shown in blue. The feasible region to this cut is the area *to the left of the blue curve*. Note that it is tangent to the true feasible set at two points. Our nonlinear model is now the intersection of the two regions defined by the black lines, and the new region to the left of the blue line.
+Now assume we use this initial model for upper bound generation. A nonlinear solver might find the solution \\(x=0, y=1\\) marked with a black dot in the figure below. Plugging in this solution into \\(G(x,y)\\) and computing eigenvalues shows that the matrix is indefinite (it is obviously not positive semidefinite since the solution is outside the feasible region) meaning we failed to find a feasible solution to the original problem and thus generated no upper bound. By computing the associated eigenvector and forming the cut, we obtain a feasible region whose border is shown in blue. The feasible region to this cut is the area *to the left of the blue curve* (i.e., a nonconvex set). Note that it is tangent to the true feasible set at two points. Our nonlinear model is now the intersection of disjoint regions defined by the black lines, and the new region to the left of the blue line.
 
 ![Approximation 2]({{ site.url }}/images/nonlinearsdpcut3.png){: .center-image }
 
@@ -96,7 +96,7 @@ l = ezplot(s{1},[-3 3 -3 3]);
 set(l,'color','blue');set(l,'linewidth',2);
 ````
 
-Once again, either in the same node or later on, the new model is used by the nonlinear solver, and this time we might obtain \\(x=0, y=-1\\) marked with a blue star. We are still infeasible in the original model and analyzing eigenvalues and generating a new cut leads to the region *to the right of the green curve*. Iterating again using the intersection of the three constraints leads to, say, (-0.7,1) and a cut illustrated by *the yellow line which we should be to the left of*.
+Once again, either in the same node or later on, the new model is used by the nonlinear solver, and this time we might obtain \\(x=0, y=-1\\) marked with a blue dot. We are still infeasible in the original model and analyzing eigenvalues and generating a new cut leads to the region *to the right of the green curve*. Iterating again using the intersection of the three constraints leads to, say, the green dot (-0.7,1) and a cut illustrated by *the yellow line which we should be to the left of*.
 
 ![Approximation 3]({{ site.url }}/images/nonlinearsdpcut5.png){: .center-image }
 
