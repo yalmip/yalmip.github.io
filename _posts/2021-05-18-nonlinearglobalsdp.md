@@ -3,7 +3,7 @@ layout: single
 permalink: /nonlinearsdpcuts
 excerpt: "The first cut is not the deepest"
 title: "SDP cones in BMIBNB"
-tags: [Global optimization, Semidefinite programming, BMI]
+tags: [Global optimization, Semidefinite programming, BMI, BMIBNB, Nonlinear semidefinite programming]
 header:
   teaser: nonlinearsdpcut7.png
 date: 2021-05-18
