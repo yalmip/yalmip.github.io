@@ -57,7 +57,7 @@ hold on;plot(t,t.^2);
 
 ![Quadratic hull]({{ site.url }}/images/hullsqr.png){: .center-image }
 
-The horizontal axis is the original variable \\(x\\) and the vertical is the relaxed variable representing \\(x^2\\), and the polytope shows the feasible region for the relaxed variable. The approximation is tight at the bounds, but fairly poor in the middle. Non-negativity on variables representing quadratic terms automatically are appended in the envelope implementation, thus cutting off the lower negative portion of the polytope (see below)
+The horizontal axis is the original variable \\(x\\) and the vertical is the relaxed variable representing \\(x^2\\), and the polytope shows the feasible region for the relaxed variable. The approximation is tight at the bounds, but fairly poor in the middle. Non-negativity on variables representing quadratic terms are automatically  appended in the envelope implementation, thus cutting off the lower negative portion of the polytope (see below)
 
 By tightening the bounds during the branching process, the linear relaxation will become increasingly better in nodes down the tree. As an example, if the solver branches on  \\(x\\) at 0.5, two new nodes would be created with stronger relaxations.
 
