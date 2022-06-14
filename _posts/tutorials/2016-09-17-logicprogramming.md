@@ -13,6 +13,7 @@ YALMIP does a lot of modelling for you behind the scenes, but sometimes it is im
 1. [Logical models involving implications with binary variables and constraints](#constraints)
 1. [Multiplications of variables and functions](#products)
 1. [Representations of functions](#functions)
+1. [Other](#other)
 
 Some simple rules and strategies when deriving models for complex logic and combinatorials models:
 1. Try to represent things with disjoint events of the kind "exactly one of these things occur" with a binary variable associated to each event.
@@ -606,3 +607,47 @@ $$
  \sum_{i=1}^n z_i &= 1
 \end{align}
 $$
+
+## Other modeling strategies
+{: #other }
+
+As you should have seen by know, the approach to model is almost always the same. Use the basic building blocks of implications, with auxilliary variables, and try to flatten the logic as much as possible
+
+### Counters and loops
+
+A very common mistake is to see code of the following pattern
+
+````matlab
+x = binvar(n,1)
+y = 0
+for i = 1:n
+ if x(i) 
+  y = y + z(i)
+ end
+end
+````
+
+or
+
+````matlab
+x = binvar(n,1)
+y = 0
+for i = 1:n
+ if x(i) 
+  Model = [Model, y == y + z(i)]
+ end
+end
+````
+Neither will work, as you cannot use if-operators, and the second cases simply says z=0.
+
+To model the counter, or accumulated value, you introduce an auxiiliary variable for each case and model its logic.
+
+$$
+\begin{align}
+x_i  &=1 \rightarrow q_i = z_i\\
+x_i  &=0 \rightarrow q_i = 0\\
+y = \sum q_i
+\end{align}
+$$
+
+These are standard building-block implications, either manually modelled using big-M as above, or most easily implemented using the implies operator.
