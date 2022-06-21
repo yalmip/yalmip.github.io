@@ -9,7 +9,7 @@ sidebar:
 
 [warmstart](/command/warmstart) is used to explicitly assign the value obtained when applying the command [value](/command/value) on an [sdpvar](/command/sdpvar) object. YALMIP typically assigns values after solving problem, but a manual use of the command is to define initial guesses for [warm-starting](/tags#warm-start) when solvers support these.
 
-Note, warmstart does not replace [replace](/command/replace) or constrain the variable with a particular value. It is only used for initial values in nonlinear solvers. Hence, only used when the option **warmstart** in [sdpsettings](/command/sdpsettings) is activated.
+Note, warmstart does not replace [replace](/command/replace) or constrain the variable with a particular value. It is only used for initial values in nonlinear solvers. Hence, typically only used when the option **warmstart** in [sdpsettings](/command/sdpsettings) is activated, or when you want to test if a choice of decision variables is feasible using [check](/command/check), or evaluate an objective for a that solution candidate.
 
 ## Syntax
 
