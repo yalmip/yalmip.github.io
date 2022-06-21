@@ -8,7 +8,7 @@ sidebar:
   nav: "commands"
 ---
 
-[isoutside](/command/isoutside) create a [big-M](/tutorial/bigmandconvexhulls) model to avoid a region specified by linear inequalities.
+[isoutside](/command/isoutside) creates a [big-M](/tutorial/bigmandconvexhulls) model to avoid a region specified by linear inequalities.
 
 ## Syntax
 
