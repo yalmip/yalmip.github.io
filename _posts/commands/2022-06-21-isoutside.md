@@ -2,7 +2,7 @@
 category: command
 excerpt: "Create linear avoidanc constraint"
 title: isoutside
-tags: [Polytopes, big-M]
+tags: [Logic programming, Polytopes, big-M]
 date: '2022-06-21'
 sidebar:
   nav: "commands"
@@ -31,4 +31,8 @@ optimize([Model, -100 <= x <= 100],x'*x)
 plot(A*x <= b);hold on
 plot(value(x(1)),value(x(2)),'*')
 ````
+
+## Comments
+
+Note that [isoutside](/command/isoutside) will introduce binary variables.
 
