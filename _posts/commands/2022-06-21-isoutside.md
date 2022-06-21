@@ -2,7 +2,7 @@
 category: command
 excerpt: "Create linear avoidanc constraint"
 title: isoutside
-tags: [Logic programming, Polytopes, big-M]
+tags: [Logic programming, Polytopes, big-M, Avoidance constraints]
 date: '2022-06-21'
 sidebar:
   nav: "commands"
