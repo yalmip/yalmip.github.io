@@ -68,6 +68,8 @@ solvers:
         url: /solver/cplex
       - title: "CSDP"
         url: /solver/csdp
+      - title: "DAQP"
+        url: /solver/daqp
       - title: "DSDP"
         url: /solver/dsdp
       - title: "ECOS"
