@@ -59,22 +59,20 @@ ans =
 By using more outputs from [solvemp](/command/solvemp), it is possible to simplify things considerably.
 
 ````matlab
-[sol,diagnostics,aux,Valuefunction,Optimal_z] = solvemp(F,obj,[],x);
+[sol,diagnostics,aux,Valuefunction,OptimalSolution] = solvemp(F,obj,[],x);
 ````
 
 The function now returns solutions using YALMIPs [nonlinear operator framework](/tutorial/nonlinearoperators). To retrieve the numerical solution for a particular parameter value, simply use [assign](/command/assign) and [value](/command/value) in standard fashion.
 
 ````matlab
 assign(x,[0.1;0.2]);
-value(Optimal_z)
+value(OptimalSolution)
 ````
 
 Some of the plotting capabilities of [MPT](/solver/mpt) are overloaded for the piecewise functions. Hence, we can plot the piecewise quadratic value function
 
 ````matlab
 plot(Valuefunction);
-figure
-plot(Optimizer);
 ````
 ![Value function]({{ site.url }}/images/valuefunction1.png){: .center-image }
 
@@ -82,7 +80,7 @@ and plot the piecewise affine optimizer
 
 ````matlab
 figure
-plot(Optimizer(1));
+plot(OptimalSolution(1));
 ````
 ![PWA solution]({{ site.url }}/images/pwasolution1.png){: .center-image }
 
@@ -127,7 +125,7 @@ F = [F, 5 >= x >= -5];
 The explicit solution \\( U(x)\\) is obtained by calling [solvemp](/command/solvemp) with the parametric variable \\( x \\) as the fourth argument. Additionally, since we only are interested in the first element of the solution \\( U(x)\\), we use a fifth input to communicate this.
 
 ````matlab
-[sol,diagnostics,aux,Valuefunction,Optimizer] = solvemp(F,objective,[],x,U(1));
+[sol,diagnostics,aux,Valuefunction,OptimalSolution] = solvemp(F,objective,[],x,U(1));
 ````
 
 We can plot the overloaded solutions directly
@@ -136,7 +134,7 @@ We can plot the overloaded solutions directly
 figure
 plot(Valuefunction)
 figure
-plot(Optimizer)
+plot(OptimalSolution)
 ````
 
 
@@ -171,8 +169,8 @@ F = [F, ismember(U,[-1:1/3:1])];
 Same commands as before to solve the problem and plot the optimal solution
 
 ````matlab
-[sol,diagnostics,aux,Valuefunction,Optimizer] = solvemp(F,objective,[],x,U(1));
-plot(Optimizer);
+[sol,diagnostics,aux,Valuefunction,OptimalSolution] = solvemp(F,objective,[],x,U(1));
+plot(OptimalSolution);
 ````
 
 ![Quantized PWA solution]({{ site.url }}/images/pwaquantsolution1.png){: .center-image }
