@@ -26,7 +26,7 @@ permalink: /allcommands
 [alldifferent](/command/alldifferent), [binary](/command/binary),  [complements](/command/complements), [cone](/command/cone), [cut](/command/cut), [expcone](/command/expcone), [iff](/command/iff), [implies](/command/implies), [integer](/command/integer), [ismember](/command/ismember), [isoutside](/command/isoutside),  [pcone](/command/pcone), [rank](/command/rank), [rcone](/command/rcone), [sos](/command/sos), [uncertain](/command/uncertain)
 
 ### Constraints (manipulating)
-[boundingbox](/command/boundingbox), [chebyball](/command/chebyball), [check](/command/check), [dilate](/command/dilate), [dual](/command/dual), [hull](/command/hull), [is](/command/is), [sosd](/command/sosd),[vertex](/command/vertex)
+[boundingbox](/command/boundingbox), [chebyball](/command/chebyball), [check](/command/check),  [compilesos](/command/compilesos),[dilate](/command/dilate), [dual](/command/dual), [hull](/command/hull), [is](/command/is), [sosd](/command/sosd),[vertex](/command/vertex)
 
 ### Auxilliary
 [loadsdpafile](/command/loadsdpafile), [loadsedumidata](/command/loadsedumidata),[saveampl](/command/saveampl), [savecplexlp](/command/savecplexlp), [savesdpafile](/command/savesdpafile), [yalmiperror](/command/yalmiperror), [yalmiptest](/command/yalmiptest)
