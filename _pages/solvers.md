@@ -31,19 +31,19 @@ A simple categorization is as follows (the definitions of free and commercial de
 [CBC](/solver/cbc), [GLPK](/solver/glpk), [LPSOLVE](/solver/lpsolve), [SCIP](/solver/scip)
 
 ### Linear programming (commercial)
-[CPLEX](/solver/cplex) (free for academia), [GUROBI](/solver/gurobi) (free for academia), [LINPROG](/solver/linprog), [MOSEK](/solver/mosek) (free for academia), [XPRESS](/solver/xpress)  (generous community trial license available)
+[CPLEX](/solver/cplex) (free for academia), [GUROBI](/solver/gurobi) (free for academia), [LINPROG](/solver/linprog), [MOSEK](/solver/mosek) (free for academia), [XPRESS](/solver/xpress) (free for academia)
 
 ### Mixed Integer Linear programming (commercial)
-[CPLEX](/solver/cplex) (free for academia), [GUROBI](/solver/gurobi) (free for academia), [INTLINPROG](/solver/intlinprog), [MOSEK](/solver/mosek) (free for academia), [XPRESS](/solver/xpress)  (generous community trial license available)
+[CPLEX](/solver/cplex) (free for academia), [GUROBI](/solver/gurobi) (free for academia), [INTLINPROG](/solver/intlinprog), [MOSEK](/solver/mosek) (free for academia), [XPRESS](/solver/xpress) (free for academia)
 
 ### Quadratic programming (free)
 [OSQP](/solver/osqp), [CLP](/solver/clp), [DAQP](/solver/daqp) (mixed-binary), [OOQP](/solver/ooqp), [QPC](/solver/qpc), [QPOASES](/solver/qpoases), [QUADPROGBB](/solver/quadprogbb) (nonconvex QP)
 
 ### Quadratic programming (commercial)
-[CPLEX](/solver/cplex) (free for academia), [GUROBI](/solver/gurobi) (free for academia), [MOSEK](/solver/mosek) (free for academia), [QUADPROG](/solver/quadprog), [XPRESS](/solver/xpress) (generous community trial license available)
+[CPLEX](/solver/cplex) (free for academia), [GUROBI](/solver/gurobi) (free for academia), [MOSEK](/solver/mosek) (free for academia), [QUADPROG](/solver/quadprog), [XPRESS](/solver/xpress) (free for academia)
 
 ### Mixed Integer Quadratic programming (commercial)
-[CPLEX](/solver/cplex) (free for academia), [GUROBI](/solver/gurobi) (free for academia), [MOSEK](/solver/mosek) (free for academia), [XPRESS](/solver/xpress) (generous community trial license available)
+[CPLEX](/solver/cplex) (free for academia), [GUROBI](/solver/gurobi) (free for academia), [MOSEK](/solver/mosek) (free for academia), [XPRESS](/solver/xpress) (free for academia)
 
 ### Second-order cone programming (free)
 
@@ -51,11 +51,11 @@ A simple categorization is as follows (the definitions of free and commercial de
 
 ### Second-order cone programming (commercial)
 
-[CPLEX](/solver/cplex) (free for academia), [CONEPROG](/solver/coneprog), [GUROBI](/solver/gurobi) (free for academia), [MOSEK](/solver/mosek) (free for academia), [XPRESS](/solver/xpress) (generous community trial license available)
+[CPLEX](/solver/cplex) (free for academia), [CONEPROG](/solver/coneprog), [GUROBI](/solver/gurobi) (free for academia), [MOSEK](/solver/mosek) (free for academia), [XPRESS](/solver/xpress) (free for academia)
 
 ### Mixed Integer Second-order cone programming (commercial)
 
-[CPLEX](/solver/cplex) (free for academia), [GUROBI](/solver/gurobi) (free for academia), [MOSEK](/solver/mosek) (free for academia),  [XPRESS](/solver/xpress) (generous community trial license available)
+[CPLEX](/solver/cplex) (free for academia), [GUROBI](/solver/gurobi) (free for academia), [MOSEK](/solver/mosek) (free for academia),  [XPRESS](/solver/xpress) (free for academia)
 
 ### Semidefinite programming (free)
 
