@@ -11,7 +11,7 @@ sidebar:
 
 Global solutions! Well, don't expect too much from global solvers. The problem we attack here is intractable in theory almost always, and practice is not far from theory unfortunately.
 
-The focus here is on the built-in solver [BMIBNB](/solver/bmibnb). The solver is fairly robust on small problems and is probably the most general nonlinear global solver available, albeit not the fastest. External global solvers interfaced can be found [here](/tags/#global-solver)
+The focus here is on the built-in solver [BMIBNB](/solver/bmibnb). The solver is fairly robust on small problems and is probably one of the most general nonlinear global solver available, albeit not the fastest. External global solvers interfaced can be found [here](/tags/#global-solver).
 
 The [BMIBNB](/solver/bmibnb) solver is based on a spatial branch & bound strategy using convex envelope approximations for nonlinear operators. A vast array of bound tightening is (optionally) applied iteratively to improve variable bounds, exploiting complementary constraints, quadratic concavity, quadratic constraints and objective bounds, inverse functions, strengthening using semidefinite relaxations etc. See the tutorial [envelope approximation](/tutorial/envelopesinbmibnb) for some of the details.
 
@@ -33,7 +33,7 @@ F = [x1*(4*x1-4*x2+4*x3-20)+x2*(2*x2-2*x3+9)+x3*(2*x3-13)+24>=0,
              2-x1>=0,
                x2>=0,
                x3>=0,
-             3-x3>=0]
+             3-x3>=0];
 
 options = sdpsettings('solver','bmibnb');
 optimize(F,p,options);
@@ -43,32 +43,32 @@ optimize(F,p,options);
 * LP solver        : GUROBI
 * -Extracting bounds from model
 * -Perfoming root-node bound propagation
-* -Feasible solution found by heuristics
-* -Calling upper solver (found a solution!)
+* -Trivial solution constructed (objective -2.5)
+* -Calling upper solver (found a solution, objective -4)
 * -Branch-variables : 3
 * -More root-node bound-propagation
 * -Performing LP-based bound-propagation 
 * -And some more root-node bound-propagation
 * Starting the b&b process
  Node       Upper       Gap(%)       Lower     Open   Time
-    1 :  -4.00000E+00    33.33   -6.00000E+00    2     0s    
-    2 :  -4.00000E+00    33.33   -6.00000E+00    3     0s    
-    3 :  -4.00000E+00    28.01   -5.62857E+00    4     0s    
-    4 :  -4.00000E+00    28.01   -5.62857E+00    3     0s  Poor bound in lower, killing node  
-    5 :  -4.00000E+00    13.56   -4.72758E+00    2     0s  Infeasible in node bound-propagation  
-    6 :  -4.00000E+00    13.56   -4.72758E+00    1     0s  Infeasible in node bound-propagation  
-    7 :  -4.00000E+00     0.00   -4.00000E+00    0     0s  Poor bound in lower, killing node  
+    1 :  -4.00000E+00    33.33   -6.00000E+00    2     3s  Improved solution found by upper solver  
+    2 :  -4.00000E+00    33.33   -6.00000E+00    3     4s    
+    3 :  -4.00000E+00    28.01   -5.62857E+00    4     4s    
+    4 :  -4.00000E+00    28.01   -5.62857E+00    3     4s  Poor lower bound  
+    5 :  -4.00000E+00    13.56   -4.72757E+00    2     4s  Terminated in bound propagation  
+    6 :  -4.00000E+00    13.56   -4.72757E+00    1     5s  Terminated in bound propagation  
+    7 :  -4.00000E+00     0.00   -4.00000E+00    0     5s  Poor lower bound  
 * Finished.  Cost: -4 (lower bound: -4, relative gap 0%)
 * Termination with all nodes pruned 
-* Timing: 26% spent in upper solver (4 problems solved)
-*         3% spent in lower solver (5 problems solved)
-*         39% spent in LP-based domain reduction (112 problems solved)
-*         2% spent in upper heuristics (80 candidates tried)
+* Timing: 32% spent in upper solver (4 problems solved)
+*         1% spent in lower solver (5 problems solved)
+*         51% spent in LP-based domain reduction (112 problems solved)
+*         1% spent in upper heuristics (101 candidates tried)
 ````
 
 As you can see, a lot of time is spent in the linear programming based bound propagation. [BMIBNB](/solver/bmibnb) applies this on almost all models. If you want to turn it off, you set **'bmibnb.lpreduce'** to **0**, and if you want to enforce it you set it to **1**. Default is **-1** which means [BMIBNB](/solver/bmibnb) decides.
 
-Upper bounds are generated both by calling the nonlinear solver, but also by aggresively checking all kinds of candidates that pop up in the algorithm (solutions to lower bound problems, and points created when performing bound propagation). In the log above, we see that the nonlinear solver was only called 4 times, but 80 other solution candidates were analyzed as candidates for generating an upper bound. Also note that the globally optimal solution is available already in the first node, so all effort was effectively spent on certifying optimality. On some models finding the optimal solution is hard, and on some models the certification is the hard part, and you typically don't know which it is until you have solved the problem.
+Upper bounds are generated both by calling the nonlinear solver, but also by aggresively checking all kinds of candidates that pop up in the algorithm (solutions to lower bound problems, and points created when performing bound propagation). In the log above, we see that the nonlinear solver was only called 4 times, but 101 other solution candidates were analyzed as candidates for generating an upper bound. Also note that the globally optimal solution is found already in the root node, so all effort was effectively spent on certifying optimality. On some models finding the optimal solution is hard, and on some models the certification is the hard part, and you typically don't know which it is until you have solved the problem.
 
 The second example is a slightly larger nonconvex quadratic programming problem. The problem is immediately solved to a gap of less than 1%.
 
@@ -92,20 +92,20 @@ optimize(F,p,options);
 * LP solver        : GUROBI
 * -Extracting bounds from model
 * -Perfoming root-node bound propagation
-* -Calling upper solver (found a solution!)
+* -Calling upper solver (found a solution, objective -164)
 * -Branch-variables : 6
 * -More root-node bound-propagation
 * -Performing LP-based bound-propagation 
 * -And some more root-node bound-propagation
 * Starting the b&b process
  Node       Upper       Gap(%)       Lower     Open   Time
-    1 :  -3.10000E+02     0.96   -3.13000E+02    2     1s  Improved solution found by heuristics  
+    1 :  -3.10000E+02     0.96   -3.13000E+02    2     2s  Improved solution found by heuristics  
 * Finished.  Cost: -310 (lower bound: -313, relative gap 0.96%)
 * Termination with relative gap satisfied 
-* Timing: 42% spent in upper solver (2 problems solved)
-*         2% spent in lower solver (1 problems solved)
-*         18% spent in LP-based domain reduction (24 problems solved)
-*         2% spent in upper heuristics (9 candidates tried)
+* Timing: 30% spent in upper solver (2 problems solved)
+*         1% spent in lower solver (1 problems solved)
+*         60% spent in LP-based domain reduction (24 problems solved)
+*         1% spent in upper heuristics (11 candidates tried)
 ````
 
 However, there is a gap here which we might want to close. The solution has an objective -310 while the lower bound is at -313 (which is within the default tolerance for terminating). Tightening the tolerances allows us to proceed further, and this reveals that the solution found in the root node indeed was the global solution and the culprit for the gap was the lower bound.
@@ -119,27 +119,27 @@ optimize(F,p,options);
 * LP solver        : GUROBI
 * -Extracting bounds from model
 * -Perfoming root-node bound propagation
-* -Calling upper solver (found a solution!)
+* -Calling upper solver (found a solution, objective -164)
 * -Branch-variables : 6
 * -More root-node bound-propagation
 * -Performing LP-based bound-propagation 
 * -And some more root-node bound-propagation
 * Starting the b&b process
  Node       Upper       Gap(%)       Lower     Open   Time
-    1 :  -3.10000E+02     0.96   -3.13000E+02    2     0s  Improved solution found by heuristics  
-    2 :  -3.10000E+02     0.96   -3.13000E+02    1     0s  Infeasible in node bound-propagation  
-    3 :  -3.10000E+02     0.00   -3.10000E+02    2     0s    
-* Finished.  Cost: -310 (lower bound: -310.0001, relative gap 4.5229e-05%)
+    1 :  -3.10000E+02     0.96   -3.13000E+02    2     3s  Improved solution found by heuristics  
+    2 :  -3.10000E+02     0.96   -3.13000E+02    1     3s  Terminated in bound propagation  
+    3 :  -3.10000E+02     0.00   -3.10000E+02    2     4s    
+* Finished.  Cost: -310 (lower bound: -310.0001, relative gap 4.5708e-05%)
 * Termination with relative gap satisfied 
-* Timing: 43% spent in upper solver (3 problems solved)
-*         2% spent in lower solver (2 problems solved)
-*         34% spent in LP-based domain reduction (69 problems solved)
-*         2% spent in upper heuristics (43 candidates tried)
+* Timing: 30% spent in upper solver (3 problems solved)
+*         1% spent in lower solver (2 problems solved)
+*         55% spent in LP-based domain reduction (69 problems solved)
+*         2% spent in upper heuristics (53 candidates tried)
 ````
 
 ## Nonconvex polynomial programming
 
-Polynomial programs are transformed to to bilinear programs. As an example, the variable \\(x^3y^2\\) will be replaced with the the variable \\(w\\) and the constraints \\(w = uv\\), \\(u = zx\\), \\(z = x^2\\), \\(v = y^2\\). This is done automatically if the global solver is called with a non-quadratic polynomial problem. With this transformation, standard bilinear envelopes can be used in the creation of the relaxations for computing lower bounds. Note though, the nolinear solver will work with the original polynomial model, so the bilinearization is only used for the lower bound computations. The polynomial model is not disregarded in the relaxations either, but is used in bound propagation and envelope generation.
+Polynomial programs are transformed to to bilinear programs. As an example, the variable \\(x^3y^2\\) will be replaced with the the variable \\(w\\) and the constraints \\(w = uv\\), \\(u = zx\\), \\(z = x^2\\), \\(v = y^2\\). This is done automatically if the global solver is called with a non-quadratic polynomial problem. With this transformation, standard bilinear envelopes can be used in the creation of the relaxations for computing lower bounds. Note though, the nonlinear solver will work with the original polynomial model, so the bilinearization is only used for the lower bound computations. The polynomial model is not disregarded in the relaxations either, but is exploited in bound propagation and envelope generation.
 
 ````matlab
 sdpvar x y
@@ -152,19 +152,20 @@ optimize(F,-x,options)
 * LP solver        : GUROBI
 * -Extracting bounds from model
 * -Perfoming root-node bound propagation
-* -Calling upper solver (found a solution!)
+* -Trivial solution constructed (objective 0)
+* -Calling upper solver (found a solution, objective -1.71)
 * -Branch-variables : 2
 * -More root-node bound-propagation
 * -Performing LP-based bound-propagation 
 * -And some more root-node bound-propagation
 * Starting the b&b process
  Node       Upper       Gap(%)       Lower     Open   Time
-    1 :  -1.70998E+00     0.00   -1.70998E+00    0     0s  Poor bound in lower, killing node  
+    1 :  -1.70998E+00     0.00   -1.70998E+00    0     0s  Poor lower bound  
 * Finished.  Cost: -1.71 (lower bound: -1.71, relative gap 0%)
 * Termination with all nodes pruned 
-* Timing: 47% spent in upper solver (1 problems solved)
+* Timing: 26% spent in upper solver (1 problems solved)
 *         2% spent in lower solver (1 problems solved)
-*         13% spent in LP-based domain reduction (6 problems solved)
+*         26% spent in LP-based domain reduction (6 problems solved)
 *         1% spent in upper heuristics (2 candidates tried)
 ````
 
@@ -184,19 +185,19 @@ optimize([-1 <= [x y] <= 1],p,sdpsettings('solver','bmibnb'));
 * LP solver        : GUROBI
 * -Extracting bounds from model
 * -Perfoming root-node bound propagation
-* -Calling upper solver (found a solution!)
+* -Calling upper solver (found a solution, objective 1.7081)
 * -Branch-variables : 3
 * -More root-node bound-propagation
 * -Performing LP-based bound-propagation 
 * -And some more root-node bound-propagation
 * Starting the b&b process
  Node       Upper       Gap(%)       Lower     Open   Time
-    1 :   5.40302E-01     0.00    5.40302E-01    0     0s  Poor bound in lower, killing node  
+    1 :   5.40302E-01     0.00    5.40302E-01    0     1s  Poor lower bound  
 * Finished.  Cost: 0.5403 (lower bound: 0.5403, relative gap 0%)
 * Termination with all nodes pruned 
-* Timing: 14% spent in upper solver (1 problems solved)
-*         3% spent in lower solver (1 problems solved)
-*         39% spent in LP-based domain reduction (10 problems solved)
+* Timing: 28% spent in upper solver (1 problems solved)
+*         29% spent in lower solver (1 problems solved)
+*         22% spent in LP-based domain reduction (10 problems solved)
 *         1% spent in upper heuristics (2 candidates tried)
 ````
 
