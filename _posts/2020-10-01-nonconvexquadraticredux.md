@@ -15,7 +15,7 @@ We recompute the results to reflect 3 developments over the last decade
 
 1. We now have [MOSEK](/solver/mosek) available for solving semidefinite programs more efficiently.
 2. The built-in global solver [BMIBNB](/solver/bmibnb) has been improved.
-3. There are now several easily accessible external solvers for [global nonconvex quadratic programming](tags/#nonconvex-quadratic-programming-solver)
+3. There are now several easily accessible external solvers for [global nonconvex quadratic programming](tags/#nonconvex-quadratic-programming-solver).
 
 Hence, without further ado, we run the example again, but this time with many more solvers, and on larger problems. If you want to run this code, you will have to adjust it to the set of solvers you have available.
 
@@ -82,7 +82,7 @@ Some general comments on what we see
 
 * Since we only allow 180 seconds, the reported times which are just above 180 seconds are most likely not solved to optimality, but the solver simply had to abort as it ran out of time.
 
-* We have made no changes to default settings. Hence most solver can most likely be adjusted to perform better, and the comparison might be unfair as they use different tolerances for checking feasibility and optimality (well we actually tightened the termination criteria for  [BMIBNB](/solver/bmibnb), it looked to good with the default setting as it almost always finished in only two nodes with the default relative gap tolerance of 0.01%, and we cranked up the maximum numbers of allowed nodes in [BMIBNB](/solver/bmibnb) and [SCIP](/solver/scip) since these have very low default limits)
+* We have made no changes to default settings. Hence most solver can most likely be adjusted to perform better, and the comparison might be unfair as they use different tolerances for checking feasibility and optimality (well we actually tightened the termination criteria for [BMIBNB](/solver/bmibnb), it looked too good with the default setting as it almost always finished in only two nodes with the default relative gap tolerance of 0.01%, and we cranked up the maximum numbers of allowed nodes in [BMIBNB](/solver/bmibnb) and [SCIP](/solver/scip) since these have very low default limits)
 
 * The problem appears to be very easy for both [BMIBNB](/solver/bmibnb) and [CPLEX](/solver/cplex) when \\(n\\) is a multiple of 4 (these models lead to a quadratic indefinite objective with many zero eigenvalues)
 
