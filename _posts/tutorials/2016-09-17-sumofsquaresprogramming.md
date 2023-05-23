@@ -4,6 +4,7 @@ category: tutorial
 level: 4
 tags: [Sum-of-squares programming, Semidefinite programming, Polynomials, Polynomial programming]
 excerpt: "Almost nothing is a sum-of-squares, but let's hope yours is."
+gist: "https://gist.github.com/johanlofberg/c23bf7d200acc1be1678acdc08ea3863.js"
 sidebar:
   nav: "tutorials"
 ---
