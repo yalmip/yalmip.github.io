@@ -16,7 +16,7 @@ YALMIP has a built-in module for sum-of-squares calculations. In its most basic 
 
 In addition to standard SOS decompositions which we discuss below, YALMIP also supports linearly and nonlinearly parameterized problems, decomposition of matrix valued polynomials, [symmetry reduction and pre- and post-processing](/example/moresos/) and computation of low-rank decompositions. These extension are described in [Löfberg 2009](/reference/lofberg2009).
 
-**Tip:** Users sometimes try to use the sum-of-squares framework to compute solutions to polynomial programs (as opposed to computing bounds and verifying non-negativity). For this, the dual approach of [moment relaxations](/momentrelaxations/) is better suited, although in practice a much better approach is typically to simply solve the problem using a [global solver](/tutorial/globaloptimization/)
+**Tip:** Users sometimes try to use the sum-of-squares framework to compute solutions to polynomial programs (as opposed to computing bounds and verifying non-negativity). For this, the dual approach of [moment relaxations](/momentrelaxations/) is better suited, although in practice a much better approach is typically to simply solve the problem using a [global solver](/tutorial/globaloptimization/).
 {: .notice--info}
 
 ### Doing it your self the hard way
