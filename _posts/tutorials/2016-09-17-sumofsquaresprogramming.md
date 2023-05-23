@@ -36,7 +36,7 @@ Q = sdpvar(length(v));
 p_sos = v'*Q*v;
 ````
 
-The polynomials have to match, hence all coefficient in the polynomial describing the difference of the two polynomials have to be zero.
+The polynomials have to match, hence all coefficient in the polynomial describing the difference of the two polynomials have to be zero. With that and the crcual constraint that the matrix used in the decomposition is positive semi-definite, we have defined the full sos-problem and can solve it.
 
 ````matlab
 F = [coefficients(p-p_sos,[x y]) == 0, Q >= 0];
@@ -50,7 +50,7 @@ F = [coefficients(p-p_sos,[x y]) == 0, Q >= 0];
 optimize(F,[],sdpsettings('dualize',1))
 ````
 
-Adding parametrizations does not change the code significantly. Here is the code to find a lower bound on the polynomial
+Adding parameters does not change the code significantly. Here is the code to find a lower bound on the polynomial
 
 ````matlab
 sdpvar t
@@ -72,7 +72,7 @@ optimize([Q >= 0, s==0]);
 sdisplay(clean(kron(eye(m),v)'*value(Q)*kron(eye(m),v),1e-6))
 ````
 
-Once again, this is the basic idea behind the SOS module in YALMIP. However, the implementation is far more efficient and uses various approaches to reduce complexity, hence the approaches above should never be used in practice.
+Once again, this is the basic idea behind the SOS module in YALMIP. However, the implementation is far more efficient and uses various approaches to reduce complexity, hence the approaches above would never be used in practice.
 
 ### Sum-of-squares optimization
 
