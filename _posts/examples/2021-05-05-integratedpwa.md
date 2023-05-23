@@ -88,7 +88,7 @@ Model = [implies(region(1), [R1, x1 == x, x2 == 0, x3 == 0])
          implies(region(3), [R3, x3 == x, x1 == 0, x2 == 0])
          sum(region) == 1
          [0 <= [x x1 x2 x3] <= 10]];
-f = x1^2 + (-4*region(2)+4*x2) + (-28+16*x3 - 1.5*x3^2);
+f = x1^2 + (-4*region(2)+4*x2) + (-28*region(3)+16*x3 - 1.5*x3^2);
 optimize(Model, -f)
 ````
 
