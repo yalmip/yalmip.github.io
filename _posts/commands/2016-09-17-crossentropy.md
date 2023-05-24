@@ -16,6 +16,6 @@ sidebar:
 z = crossentropy(x,y)
 ````
 
-### Implementation
+## Implementation
 
 The operator is implemented as a [callback operator](/tutorial/nonlinearoperatorscallback).
