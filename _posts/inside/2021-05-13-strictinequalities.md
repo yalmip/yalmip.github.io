@@ -7,7 +7,7 @@ tags: [Common mistakes]
 date: 2021-05-13
 ---
 
-It finally had to be done. Strict inequalities which were avaiable in the language initially but have raised increasingly more annoying warnings over the last decade, are no longer possible to use.
+It finally had to be done. Strict inequalities which were available in the language initially but have raised increasingly more annoying warnings over the last decade, are no longer possible to use.
 
 Note that being available never has meant that strict inequalities were applied in any solver, it just meant they were (increasingly less) silently changed to non-strict inequalities.
 
