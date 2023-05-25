@@ -19,7 +19,7 @@ permalink: /allcommands
 ### Variable manipulations
 [allvariables](/command/allvariables), [assign](/command/assign), [binmodel](/command/binmodel), [coefficients](/command/coefficients), [degree](/command/degree), [dissect](/command/dissect), [hessian](/command/hessian), [int](/command/int), [is](/command/is), [jacobian](/command/jacobian), [linearize](/command/linearize), [monolist](/command/monolist), [polynomial](/command/polynomial), [replace](/command/replace), [sdisplay](/command/sdisplay), [unblkdiag](/command/unblkdiag), [value](/command/value)
 
-### Variable operators (selected)
+### Variable operators (selected, almost all MATLAB built-in operators are supported)
 [abs](/command/abs), [blackbox](/command/blackbox), [crossentropy](/command/crossentropy), [det](/command/det), [entropy](/command/entropy), [erf](/command/erf), [exp](/command/exp), [floor](/command/floor), [geomean](/command/geomean), [harmmean](/command/harmmean),[hinge](/command/hinge), [huber](/command/huber), [interp1](/command/interp1),[interp2](/command/interp2), [invpos](/command/invpos), [kullbackleibler](/command/kullbackleibler), [log](/command/log), [logdet](/command/logdet), [logistic](/command/logistic), [logsumexp](/command/logsumexp), [min](/command/min), [max](/command/max), [median](/command/median), [nnz](/command/nnz), [norm](/command/norm), [pnorm](/command/pnorm), [sdpfun](/command/sdpfun), [sumk](/command/sumk), [sumabsk](/command/sumabsk), [sort](/command/sort)
 
 ### Constraints (defining)
