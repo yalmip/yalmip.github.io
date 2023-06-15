@@ -8,7 +8,7 @@ sidebar:
   nav: "tutorials"
 ---
 
-The exponential cone is defined as the set \\(  (ye^{x/y}\leq z, y>0) \\), see, e.g. [Chandrasekara and Shah 2016](/reference/chandrasekaran2016) for a primer on exponential cone programming and the equivalent framework of relative entropy programming. YALMIP is capable of detecting and calling specialized solvers for a variety of exponential cone representable function. 
+The exponential cone is defined as the set \\(  (ye^{x/y}\leq z, y>0) \\), see, e.g. [Chandrasekara and Shah 2016](/reference/chandrasekaran2016) for a primer on exponential cone programming and the equivalent framework of relative entropy programming. YALMIP is capable of detecting and calling specialized solvers for a variety of exponential cone representable functions. 
 
 By simple variable transformations, the following functions are automatically detected as exponential cone representable and suitably rewritten before calling an exponential cone capable solver
 
@@ -16,15 +16,15 @@ By simple variable transformations, the following functions are automatically de
 2. [log](/command/log), [log2](/command/log), [log10](/command/log), [slog](/command/log), [plog](/command/plog)
 3. [entropy](/command/entropy), [logsumexp](/command/logsumexp), [kullbackleibler](/command/kullbackleibler)
 
-Note that YALMIP does not necessarily detect exponential cones when written in the canonical form \\( ye^{x/y}\leq z \\), but instead you can use the perspective exponential, [pexp](/command/pexp), which implements  \\( ye^{x/y} \\).
+Note that YALMIP does not necessarily automatically detect exponential cones when written in the canonical form \\( ye^{x/y}\leq z \\), but instead you can use the perspective exponential, [pexp](/command/pexp), which implements  \\( ye^{x/y} \\).
 
 A low-level approach to define exponential cones is the command [expcone](/command/expcone).
 
-The code below requires [Mosek 9](/solver/mosek), [SCS](/solver/scs) or [ECOS](/solver/ecos) to be relevant. If none of those solvers are installed, YALMIP will work with the nonlinear functions as written and treat the problem as a general nonlinear program.
+The code below is primarily intended for solvers with dedicated exponential cone support which currently is [Mosek 9](/solver/mosek), [SCS](/solver/scs) or [ECOS](/solver/ecos). However, YALMIP also supports the exponential cone operator [expcone](/command/expcone) and exponential cone representable functions such as [logsumexp](/command/logsumexp) which is used below in general nonlinear solvers such as [fmincon](/solver/fmincon). When a general nonlinear solver is used, exponential cone representable functions are used in their native form and not converted to an exponential cone representations.
 
 ### Logistic regression example
 
-As an example, we solve the logistic regression problem. The problem here is to find a classifier \\( \operatorname{sign}(a^Tx + b)\\) for a given dataset \\( x_i\\) with associated labels \\( y_i = \pm 1 \\). In other words, a classifier similiar to the simple separating hyperplane discussed in the [linear programming tutorial](/tutorial/linearprogramming). 
+As an example, we solve a logistic regression problem. The problem here is to find a classifier \\( \operatorname{sign}(a^Tx + b)\\) for a given dataset \\( x_i\\) with associated labels \\( y_i = \pm 1 \\). In other words, a classifier similiar to the simple separating hyperplane discussed in the [linear programming tutorial](/tutorial/linearprogramming). 
 
 A convex relaxation of the problem can be solved by minimizing \\( \sum \log(1 + e^{-y_i(a^Tx_i + b)}) \\). This can be written as a sum of [logsumexp](/command/logsumexp) operators by noting that \\( \log(1 + e^{z})=\log(e^{0} + e^{z}) \\). In YALMIP, you do not have to think further, but can use the [logsumexp](/command/logsumexp) operator directly to solve the problem. However, let us show how this boils down to a simple exponential cone program.
 
@@ -41,7 +41,7 @@ plot(reds(1,:),reds(2,:),'r*');hold on
 plot(blues(1,:),blues(2,:),'b*')
 ````
 
-Solve the problem using the built-in  [logsumexp](/command/logsumexp) operator which automatically models the problem as an exponential cone program if an exponential cone program solver is specified. Note that [logsumexp](/command/logsumexp) applied to a matrix will return a vector with  [logsumexp](/command/logsumexp) applied to every row. If you have an exponential cone programming solver installed, it will automatically be selected.
+Solve the problem using the built-in [logsumexp](/command/logsumexp) operator which automatically models the problem as an exponential cone program if an exponential cone program solver is specified. Note that [logsumexp](/command/logsumexp) applied to a matrix will return a vector with  [logsumexp](/command/logsumexp) applied to every row. If you have an exponential cone programming solver installed, it will automatically be selected.
 
 ````matlab
 % blue = 1, red = -1
