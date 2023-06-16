@@ -83,7 +83,7 @@ s =
 
 ````
 
-The upper left block is not symmetric, and we can hone in on \\( A^TP + PA\\) to find the missing tranpose on \\A\\).
+The upper left block is not symmetric, and we can hone in on \\( A^TP + PA\\) to find the missing tranpose on \\( A\\).
 
 
 ## Bad data
