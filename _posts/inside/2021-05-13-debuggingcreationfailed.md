@@ -3,7 +3,7 @@ category: inside
 subcategory: 2
 excerpt: "...but I won't do that."
 title: Debugging model creation failed
-tags: [Common mistakes]
+tags: [Debugging, Common mistakes]
 date: 2017-09-21
 ---
 
