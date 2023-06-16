@@ -499,6 +499,8 @@ inside:
         url: /debugginginfeasible              
       - title: "Debugging unboundedness"
         url: /debuggingunbounded  
+      - title: "Infeasible or unbounded"
+        url: /infeasibleorunbounded          
       - title: "Debugging numerical problems"
         url: /inside/debuggingnumerics   
       - title: "Debugging non-symmetry"
