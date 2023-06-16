@@ -3,7 +3,7 @@ category: inside
 subcategory: 2
 excerpt: "Crap in crap out"
 title: Debugging numerical problems
-tags: []
+tags: [Debugging]
 date: 2021-05-13
 ---
 
