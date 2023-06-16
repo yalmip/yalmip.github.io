@@ -3,7 +3,7 @@ category: inside
 subcategory: 2
 excerpt: "Extremely common"
 title: Debugging nonsymmetric square warning
-tags: [Common mistakes]
+tags: [Debugging, Common mistakes]
 date: 2017-09-21
 ---
 
