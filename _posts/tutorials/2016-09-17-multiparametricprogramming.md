@@ -86,46 +86,38 @@ plot(OptimalSolution(1));
 
 ### Simple MPC example
 
-Define numerical data for a linear system, prediction matrices, and variables for current state \\(x\\) and the future control sequence \\( U(x)\\), for an MPC problem with horizon 5 (**create_CHS** is a cheat function that creates the numerical matrices to describe the linear relation between current state \\( x\\) and future input sequence \\( U\\), to the predicted outputs. See the [standard MPC example](/example/standardmpc) to see how you would do this in a more generic fashion in an actual application)
+Define numerical data for a linear system \\(x_{k+1} = Ax_k + Bu_k, y_k = Cx_k\\), and variables for state \\(x\\), and control sequence \\( u)\\), for an MPC problem with horizon 5.
 
 ````matlab
-N = 5;
 A = [2 -1;1 0];
 B = [1;0];
 C = [0.5 0.5];
-[H,S] = create_CHS(A,B,C,N);
-x = sdpvar(2,1);
-U = sdpvar(N,1);
+x = sdpvar(2,N+1,'full');
+u = sdpvar(1,N);
 ````  
 
-The future output predictions are linear in the current state and the control sequence.
+Define the MPC predictions, with input and state constraints, and a cost quadratic in the output and input.
 
 ````matlab
-Y = H*x+S*U;
-````  
-
-We wish to minimize a quadratic cost, compromising between small input and outputs.
-
-````matlab
-objective = Y'*Y+U'*U;
-````  
-
-The input variable has a hard constraint, and so does the output at the terminal state.
-
-````matlab
-F = [1 >= U >= -1, 1 >= Y(N) >= -1];
-````  
-
-We seek the explicit solution \\( U(x)\\) over the exploration set \\( \left \lvert x\right \rvert \leq 5\\)
-
-````matlab
-F = [F, 5 >= x >= -5];
+Objective = 0;
+Model = [];
+for i = 1:N
+    Objective = Objective + x(:,i+1)'*C'*C*x(:,i+1) + u(i)^2;
+    Model = [Model, x(:,i+1) == A*x(:,i) + B*u(i)];
+    Model = [Model, -1 <= u(i) <= 1, -5 <= x(:,i+1) <= 5];
+end
 ````
 
-The explicit solution \\( U(x)\\) is obtained by calling [solvemp](/command/solvemp) with the parametric variable \\( x \\) as the fourth argument. Additionally, since we only are interested in the first element of the solution \\( U(x)\\), we use a fifth input to communicate this.
+Add a constraint on the initial state which will serve as a definition of the exploration set for the parametric program.
 
 ````matlab
-[sol,diagnostics,aux,Valuefunction,OptimalSolution] = solvemp(F,objective,[],x,U(1));
+Model = [Model, -5 <= x(:,1) <= 5];
+````
+
+We are ready to use  [solvemp](/command/solvemp)  to solve the multi-parametric program in the initial state, and we ask for the parametric solution for the first input.
+
+````matlab
+[sol,diagnostics,aux,Valuefunction,OptimalSolution] = solvemp(F,objective,[],x(:,1),u(1));
 ````
 
 We can plot the overloaded solutions directly
@@ -142,34 +134,22 @@ plot(OptimalSolution)
 
 YALMIP extends the multiparametric solvers in [MPT](/solver/mpt) by adding support for binary variables in the parametric problems.
 
-Let us solve an extension of the MPC problem from the previous section. To begin with, we formulate a similar problem (shorter horizon and linear cost)
+We will now solve this problem under the additional constraints that the input is quantized in steps of 1/3. This can easily be modelled in YALMIP using [ismember](/command/ismember). Note that this nonconvex operator introduces a lot of binary variables, and the MPC problem is most likely solved more efficiently using a [dynamic programming approach](/example/explicitmpc). Since the input at every time instant can take 7 different values, it means a brute-force approach to computing the multi-parametric solution will in the worst-case require solution of \\(7^N\\) multi-parametric programs. Unfortunately, that is lmost what happens here, so we reduce the horizon to 3.
 
 ````matlab
-N = 3;
-A = [2 -1;1 0];
-B = [1;0];
-C = [0.5 0.5];
-[H,S] = create_CHS(A,B,C,N);
-x = sdpvar(2,1);
-U = sdpvar(N,1);
-Y = H*x+S*U;
-
-objective = norm(Y,1) + norm(U,1);
-
-F = [1 >= U >= -1];
-F = [F, 5 >= x >= -5];
+Model = [-5 <= x(:,1) <= 5];
+Objective = 0;
+for i = 1:N
+    Objective = Objective + x(:,i+1)'*C'*C*x(:,i+1) + u(i)^2;    
+    Model = [Model, x(:,i+1) == A*x(:,i) + B*u(i)];
+    Model = [Model, -1 <= u(i) <= 1, -5 <= x(:,i+1) <= 5];
+    Model = [Model, ismember(u(i),[-1:1/3:1])];
+end
 ````
-
-We will now solve this problem under the additional constraints that the input is quantized in steps of 1/3. This can easily be modelled in YALMIP using [ismember](/command/ismember). Note that this nonconvex operator introduces a lot of binary variables, and the MPC problem is most likely solved more efficiently using a [dynamic programming approach](/example/explicitmpc).
-
-````matlab
-F = [F, ismember(U,[-1:1/3:1])];
-````
-
 Same commands as before to solve the problem and plot the optimal solution
 
 ````matlab
-[sol,diagnostics,aux,Valuefunction,OptimalSolution] = solvemp(F,objective,[],x,U(1));
+[sol,diagnostics,aux,Valuefunction,OptimalSolution] = solvemp(F,objective,[],x(:,1),u(1));
 plot(OptimalSolution);
 ````
 
