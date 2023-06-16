@@ -4,7 +4,7 @@ subcategory: 2
 permalink: naninmodel
 excerpt: "Where why how?"
 title: NaN in model
-tags: [Common mistakes]
+tags: [Debugging, Common mistakes]
 date: '2009-08-29'
 ---
 
