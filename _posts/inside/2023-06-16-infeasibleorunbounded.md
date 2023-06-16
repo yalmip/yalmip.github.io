@@ -14,4 +14,4 @@ Untangling this from YALMIP is simple. Unboundedness can only come from the obje
 
 How to analyze a model for infeasibility is explained in the post  [debugging infeasible models](/debugginginfeasible). In short, remove constraints systematically until it becomes infeasible and you know where the peroblem lies, or add slacks to model and see which are activated.
 
-How to analyze a model for unboundedness is explained in the post [debugging unbounded models](/debuggingunbounded). In short, add large bounds on all variables (or small penalities) to make the model bounded, and see which variables become large when that problem is solved.
+How to analyze a model for unboundedness is explained in the post [debugging unbounded models](/debuggingunbounded). In short, add large bounds on all variables (or small penalties) to make the model bounded, and see which variables become large when that problem is solved.
