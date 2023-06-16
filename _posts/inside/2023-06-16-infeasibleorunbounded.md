@@ -1,14 +1,14 @@
 ---
 category: inside
 subcategory: 2
-permalink: debuggingunbounded
+permalink: infeasibleorunbounded
 excerpt: "...or both?"
 title: Infeasible or unbounded
 tags: [Debugging]
 date: 2023-06-16
 ---
 
-Some solvers are using intricate primal-dual presolve routines and reformulations which can cause them to lose track of what a detected inconsistency in the model is caused by, infeasibility or unboundedness. As a result, they simply return the diagnostic *Infeasible or unbounded*.
+Some solvers are use intricate primal-dual presolve routines and reformulations which can cause them to lose track of what a detected inconsistency in the model is caused by, infeasibility or unboundedness. As a result, they simply return the diagnostic *Infeasible or unbounded*.
 
 Untangling this is simple. Unboundedness can only come from the objective, hence remove the objective from the model and try again. If the message changes to *Infeasible* you know the model is infeasible and should start addressing that. If the solver instead solves the problem when the objective was removed, you know the model is unbounded, and should address that problem.
 
