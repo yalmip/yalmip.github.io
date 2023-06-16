@@ -87,7 +87,7 @@ plot(OptimalSolution(1));
 
 ### Simple MPC example
 
-Define numerical data for a linear system \\(x_{k+1} = Ax_k + Bu_k, y_k = Cx_k\\), and variables for state \\(x\\), and control sequence \\( u)\\), for an MPC problem with horizon 5.
+Define numerical data for a linear system \\(x_{k+1} = Ax_k + Bu_k, y_k = Cx_k\\), and variables for state \\(x\\), and control sequence \\( u\\), for an MPC problem with horizon 5.
 
 ````matlab
 A = [2 -1;1 0];
@@ -97,7 +97,7 @@ x = sdpvar(2,N+1,'full');
 u = sdpvar(1,N);
 ````  
 
-Define the MPC predictions, with input and state constraints, and a cost quadratic in the output and input.
+Create the MPC predictions, with input and state constraints, in a so called explicit form where we optimize over both inputs and states, with a cost quadratic in the output and input.
 
 ````matlab
 Objective = 0;
@@ -115,7 +115,7 @@ Add a constraint on the initial state which will serve as a definition of the ex
 Model = [Model, -5 <= x(:,1) <= 5];
 ````
 
-We are ready to use  [solvemp](/command/solvemp)  to solve the multi-parametric program in the initial state, and we ask for the parametric solution for the first input.
+We are ready to use [solvemp](/command/solvemp)  to solve the multi-parametric program in the initial state, and we ask for the parametric solution for the first input.
 
 ````matlab
 [sol,diagnostics,aux,Valuefunction,OptimalSolution] = solvemp(F,objective,[],x(:,1),u(1));
@@ -138,7 +138,10 @@ YALMIP extends the multiparametric solvers in [MPT](/solver/mpt) by adding suppo
 We will now solve this problem under the additional constraints that the input is quantized in steps of 1/3. This can easily be modelled in YALMIP using [ismember](/command/ismember). Note that this nonconvex operator introduces a lot of binary variables, and the MPC problem is most likely solved more efficiently using a [dynamic programming approach](/example/explicitmpc). Since the input at every time instant can take 7 different values, it means a brute-force approach to computing the multi-parametric solution will in the worst-case require solution of \\(7^N\\) multi-parametric programs. Unfortunately, that is lmost what happens here, so we reduce the horizon to 3.
 
 ````matlab
-Model = [-5 <= x(:,1) <= 5];
+N = 3;
+x = sdpvar(2,N+1,'full');
+u = sdpvar(1,N);
+Model = [];
 Objective = 0;
 for i = 1:N
     Objective = Objective + x(:,i+1)'*C'*C*x(:,i+1) + u(i)^2;    
@@ -146,6 +149,7 @@ for i = 1:N
     Model = [Model, -1 <= u(i) <= 1, -5 <= x(:,i+1) <= 5];
     Model = [Model, ismember(u(i),[-1:1/3:1])];
 end
+Model = [Model, -5 <= x(:,1) <= 5];
 ````
 Same commands as before to solve the problem and plot the optimal solution
 
