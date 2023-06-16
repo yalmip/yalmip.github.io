@@ -4,6 +4,7 @@ category: tutorial
 level: 3.8
 tags: [Multi-parametric programming]
 except: "Solve your optimization problem for once and for all. "
+gist: "https://gist.github.com/johanlofberg/00a3a7b4ebd9a259a6ad428ad87fd8c9.js.js"
 sidebar:
   nav: "tutorials"
 ---
