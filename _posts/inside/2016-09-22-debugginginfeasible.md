@@ -4,7 +4,7 @@ subcategory: 2
 permalink: debugginginfeasible
 excerpt: "Where to start?"
 title: Debugging infeasible models
-tags: [Common mistakes]
+tags: [Debugging, Common mistakes]
 date: 2016-09-22
 ---
 
