@@ -8,7 +8,7 @@ sidebar:
   nav: "commands"
 ---
 
-[linearize](/command/linearize) returns the linearization of the polynomial \\(p(x)\\) at the point **value(x)**.
+[linearize](/command/linearize) returns the linearization of the polynomial \\(p(x)\\) at the point **value(x)**. It is based on the command [jacobian](/command/jacobian)
 
 ## Syntax
 
@@ -30,6 +30,14 @@ ans =
 
 assign(x,3);
 sdisplay(linearize(f))
+ans =
+    '-9+6*x'
+````
+
+The command is short for
+
+````matlab
+sdisplay(value(f)+value(jacobian(f,x))*(x-value(x)))
 ans =
     '-9+6*x'
 ````
