@@ -49,8 +49,6 @@ The most common reason is some minor mistake with a misplaced transpose or simil
 
 \\[ \begin{pmatrix} A^T P + PA & PB \\\ B^T P & 1-\gamma \end{pmatrix} \preceq 0\\].
 
-\\[ \begin{pmatrix} A^T P + PA & PB \\\ B^T P & 1-\gamma \end{pmatrix} \preceq 0\\].
-
 Since we are prone to make mistakes, we display the constraint object which correctly gives us a warning when we define it. The code below contains a mistake which turns the intended semidefinite constraint into 9 elementwise constraints. Trying to solve this model leads to infeasibility.
 
 ````matlab
