@@ -208,7 +208,7 @@ obj_outer = 0.5*x'*Q*x + c'*x + d'*z;
 solvebilevel(con_outer,obj_outer,con_inner,obj_inner,z)
 ````
 
-By default, it solves the problem by explicitly branching on the complementarity, but we can tell it to define the [kkt](/command/kkt) model and solve the problem using integer solver such as [/solver/mosek](MOSKEK) or a global nonlinear solver such as [/solver/bmibnb](BMIBNB)
+By default, it solves the problem by explicitly branching on the complementarity, but we can tell it to define the [kkt](/command/kkt) model and solve the problem using integer solver such as [MOSEK](/solver/mosek) or a global nonlinear solver such as [BMIBNB](/solver/bmibnb)
 
 ````matlab
 solvebilevel(con_outer,obj_outer,con_inner,obj_inner,z,sdpsettings('bilevel.algorithm','external','solver','mosek'))
