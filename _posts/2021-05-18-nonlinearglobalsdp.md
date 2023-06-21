@@ -9,7 +9,7 @@ header:
 date: 2021-05-18
 ---
 
-**Note:** The support for nonlinear semidefinite programming is about to be significantly improved in an upcoming release. Forgot to post this article when the feature was added in 2020. Stay tuned!
+**Note:** The support for nonlinear semidefinite programming was later improved so some discussion here might be a bit outdated
 {: .notice--info}
 
 YALMIP has an internal very general global solver [BMIBNB](/solver/bmibnb). Since inception some 15 years ago, it has supported nonlinear semidefinite constraints (this is actually why it initially was developed as a quick experiement and 10 lines of code to test the internal infrastructure of YALMIP, hence the somewhat odd name) but this feature has essentially been useless as it required a nonlinear SDP solver for the upper bound and solution generation. Although [PENSDP](/solver/pensdp) and [PENBMI](/solver/penbmi) are such solvers (albeit limited in scope), they are not robust enough to be used in the branch & bound framework, and the development of these solvers appear to have stalled.
