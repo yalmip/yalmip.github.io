@@ -238,7 +238,7 @@ Another use of the framework is to use it in combintion with an external global 
 
 ````matlab
 sdpvar x y
-G = [y^2-1 x+y;x+y 1]
+G = [y^2-1 x+y;x+y 1];
 Model = [-3 <= [x y] <= 3, G >= 0];
 ops = sdpsettings('solver','bmibnb','bmibnb.uppersdprelax',inf,'bmibnb.lowertarget',-inf);
 ops = sdpsettings(ops,'bmibnb.uppersolver','gurobi','gurobi.FeasibilityTol',1e-8);
