@@ -1,7 +1,7 @@
 ---
 category: inside
 subcategory: 2
-permalink: triviallyfalse
+permalink: trivialfalse
 excerpt: "Asking for the impossible"
 title: Constraints evaluates to trivially false
 tags: [Common mistakes]
