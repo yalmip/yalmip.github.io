@@ -510,7 +510,7 @@ inside:
       - title: "Debugging unknown error"
         url: /inside/debug                
       - title: "Debugging trivial false"
-        url: /inside/trivialfalse                  
+        url: /trivialfalse                  
       - title: "Equality with uncertainty"
         url: /equalityinuncertainty 
       - title: "NaN in model"
