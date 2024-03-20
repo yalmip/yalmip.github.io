@@ -99,8 +99,7 @@ i =
 Error using  <=  (line 7)
 Error using constraint (line 57)
 Inequality constraint evaluated to trivial false (no decision variable in constraint)
-
-```
+````
 
 Ok, so something bad happens when i equals 5, which is pretty easy to see. Confirm
 
