@@ -509,6 +509,8 @@ inside:
         url: /inside/debuggingnonsymmetricsquare         
       - title: "Debugging unknown error"
         url: /inside/debug                
+      - title: "Debugging trivial false"
+        url: /inside/trivialfalse                  
       - title: "Equality with uncertainty"
         url: /equalityinuncertainty 
       - title: "NaN in model"
