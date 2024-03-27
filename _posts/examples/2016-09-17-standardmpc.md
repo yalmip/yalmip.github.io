@@ -158,7 +158,7 @@ stairs(implementedU,'b')
 ![Input trajectory]({{ site.url }}/images/mpcinputtrajectory.png){: .center-image }
 
 
-The models are easily extended to more complicated scenarios. Here we simulate the case with a reference trajectory preview, and a known, assumed constant, disturbance. We also want to plot the optimal predicted output with the reference. Inputs are not allowed to make changes larger than 0.15 and we switch to a quadratic objective function. To make matters worse, we do not now the value of the **B** matrix at compile time, as it can change. Hence, we make it a parameter. Since we now have a nonlinear parameterization, we explicitly select a QP solver, to communicate to YALMIP that we know the problem will be a convex QP for fixed value of the parameters (the bilinearities between **B** and **u** will turn linear once **B** is fixed)
+The models are easily extended to more complicated scenarios. Here we simulate the case with a reference trajectory preview, and a known, assumed constant, disturbance. We also want to plot the optimal predicted output with the reference. Inputs are not allowed to make changes larger than 0.15 and we switch to a quadratic objective function. To make matters worse, we do not know the value of the **B** matrix at compile time, as it can change. Hence, we make it a parameter. Since we now have a nonlinear parameterization, we explicitly select a QP solver, to communicate to YALMIP that we know the problem will be a convex QP for fixed value of the parameters (the bilinearities between **B** and **u** will turn linear once **B** is fixed)
 
 ````matlab
 
