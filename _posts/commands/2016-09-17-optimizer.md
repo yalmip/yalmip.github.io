@@ -11,7 +11,6 @@ sidebar:
 [optimizer](/command/optimizer) creates an object with a pre-compiled low-level numerical format which can be used to efficiently solve a series of similar problems (reduces YALMP analysis and compilation overhead)
 
 **Warning:** Never start your model development using optimizer constructs. Always start with a standard model based on calls to [optimize](/command/optimize), and then when everything works as expected, adjust you model to use [optimizer](/command/optimizer) instead, if you think this will improve simulation performance. Debugging models in the [optimizer](/command/optimizer) world is much harder, and [optimizer](/command/optimizer) skips many sanity checks and simply assumes you know what you are doing and the the model can be solved, once parameters are fixed, by the selected solver.
-
 {: .notice--info}
 
 
