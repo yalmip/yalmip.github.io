@@ -1,4 +1,3 @@
-
 ---
 title: "Stochastic programming"
 category: tutorial
