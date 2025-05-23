@@ -16,7 +16,7 @@ Stochastic programming, a little known feature available in development branches
 
 ## Defining variables
 
-The two driving principles in the setup of stochastic programming models is that random variables are introduced and manipulated like any other variables in YALMIP, and notational consistency with the Statistics toolbox. Communicating properties of the variables are done via the [uncertain](/command/uncertain) command, thus making it easy to switch between stochastic and worst-case models (and combinations of these).
+The two driving principles in the setup of stochastic programming models is that random variables are introduced and manipulated like any other variables in YALMIP, and and a strive for notational consistency with the Statistics toolbox. Communicating properties of the variables are done via the [uncertain](/command/uncertain) command, thus making stochastic and deterministic worst-case models very similiar.
 
 ### Scalar Gaussian variables
 
@@ -43,15 +43,6 @@ Multivariate Gaussian variables can be defined in several ways. For the case whe
 ````matlab
 w = sdpvar(2,1)
 w_mean = [2;2];
-w_std = [1;5];
-Model = [uncertain(w,'normal', w_mean, w_std)];
-````
-
-If one of the arguments is a scalar, a singleton expansion will automatically be applied. Hence, the model above could just as well have been declared using
-
-````matlab
-w = sdpvar(2,1);
-w_mean = [2];
 w_std = [1;5];
 Model = [uncertain(w,'normal', w_mean, w_std)];
 ````
