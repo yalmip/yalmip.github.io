@@ -24,7 +24,7 @@ Starting from the most basic example, we can define a scalar variable, with zero
 
 ````matlab
 sdpvar w
-Model = [uncertain(w,'normal', 0,1)];
+Model = [uncertain(w,'normal',0,1)];
 ````
 
 Defining a model with non-zero mean and non-unit standard deviation is done accordingly.
@@ -61,8 +61,21 @@ To support the general Gaussian case, the distribution name is **'mvnrnd'**. Imp
 w = sdpvar(2,1);
 w_mean = [2;2];
 w_std = [1;5];
-Model = [uncertain(w,'normal', w_mean, diag(w_std.^2))];
+Model = [uncertain(w,'mvnrnd', w_mean, diag(w_std.^2))];
 ````
+
+A special purpose distibution is **'mvnrndfactor'** which is defined through a square-root of the covariance instead. Hence, the following two models are equivalent
+
+````matlab
+w = sdpvar(2,1);
+w_mean = [2;2];
+R = [1 2;3 4];
+S = R'*R;
+Model1 = [uncertain(w,'mvnrnd', w_mean, S)];
+Model2 = [uncertain(w,'mvnrndfactor', w_mean, R)];
+````
+
+In the examples so far, both the mean and the standard deviations, covariances and covariance factors have been constant. This is however not necessary, but we will later see models where some of these are decision variables, or uncertain variables, and the factor model turns out to be useful in those cases as it can lead to tractable models. 
 
 ### Other standard distributions
 
@@ -76,6 +89,8 @@ Model = [uncertain(w,'exponential', mu, shape)];
 ````
 
 ### Data driven distributions
+
+### Mixtures
 
 # Setting up probabilistic constraints
 
