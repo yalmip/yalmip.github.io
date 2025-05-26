@@ -53,7 +53,7 @@ To solve the problem, we will apply the postivstellensatz using quadratic multip
 [s4,c4] = polynomial([x y],2);
 ````
 
-We apply stand sum-of-squares arguments and solve the following problem, for simplicity using the image representation.
+We apply standard sum-of-squares arguments and solve the following problem, for simplicity using the image representation.
 
 ````matlab
 sdpvar lower
