@@ -16,7 +16,7 @@ YALMIP has a built-in module for sum-of-squares calculations. In its most basic 
 
 In addition to standard SOS decompositions which we discuss below, YALMIP also supports linearly and nonlinearly parameterized problems, decomposition of matrix valued polynomials, [symmetry reduction and pre- and post-processing](/example/moresos/) and computation of low-rank decompositions. These extension are described in [Löfberg 2009](/reference/lofberg2009).
 
-**Tip:** Users sometimes try to use the sum-of-squares framework to compute solutions to polynomial programs (as opposed to computing bounds and verifying non-negativity). For this, the dual approach of [moment relaxations](/momentrelaxations/) is better suited, although in practice a much better approach is typically to simply solve the problem using a [global solver](/tutorial/globaloptimization/).
+**Tip:** Users sometimes try to use the sum-of-squares framework to compute solutions to polynomial programs (as opposed to computing bounds and verifying non-negativity). For this, the dual approach of [moment relaxations](/tutorial/momentrelaxations/) is better suited, although in practice a much better approach is typically to simply solve the problem using a [global solver](/tutorial/globaloptimization/).
 {: .notice--info}
 
 ### Doing it your self the hard way
@@ -36,7 +36,7 @@ Q = sdpvar(length(v));
 p_sos = v'*Q*v;
 ````
 
-The polynomials have to match, hence all coefficient in the polynomial describing the difference of the two polynomials have to be zero. With that and the crcual constraint that the matrix used in the decomposition is positive semi-definite, we have defined the full sos-problem and can solve it.
+The polynomials have to match, hence all coefficient in the polynomial describing the difference of the two polynomials have to be zero. With that and the crucial constraint that the matrix used in the decomposition is positive semi-definite, we have defined the full sos-problem and can solve it.
 
 ````matlab
 F = [coefficients(p-p_sos,[x y]) == 0, Q >= 0];
@@ -120,7 +120,7 @@ clean(p-v{1}'*Q{1}*v{1},1e-6)
      0
 ````
 
-Note: Even though \\(h^T(x)h(x)\\)  and \\(v^T(x)Qv(x)\\)  should be the same in theory, they are typically not. The reason is partly numerical issues with floating point numbers, but more importantly due to the way YALMIP treats the case when \\(Q\\) not is positive definite (sometimes the case due to numerical issues in the SDP solver). The decomposition is in theory typically defined as \\(h(x)=\text{chol}(Q)v(x)\\). YALMIP however uses a decomposition based on a singular value decomposition to avoid problems in the singular and numerically indefinite case. If \\(Q\\) is positive definite the two expressions coincide.
+Note: Even though \\(h^T(x)h(x)\\)  and \\(v^T(x)Qv(x)\\)  should be the same in theory, they are typically not. The reason is partly numerical issues with floating point numbers, but more importantly due to the way YALMIP treats the case when \\(Q\\) is not positive definite (sometimes the case due to numerical issues in the SDP solver). The decomposition is in theory typically defined as \\(h(x)=\text{chol}(Q)v(x)\\). YALMIP however uses a decomposition based on a singular value decomposition to avoid problems in the singular and numerically indefinite case. If \\(Q\\) is positive definite the two expressions coincide.
 
 The quality of the decomposition can alternatively be evaluated using [check](/command/check). The value reported is the largest coefficient in the polynomial  \\(p(x)-v^T(x)Qv(x)\\)
 
