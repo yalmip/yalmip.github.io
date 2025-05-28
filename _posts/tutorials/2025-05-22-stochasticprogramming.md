@@ -55,7 +55,7 @@ w2 = sdpvar(1,1);
 Model = [uncertain(w1,'normal', 2, 1), uncertain(w2,'normal',2,5)];
 ````
 
-To support the general Gaussian case, the distribution name is **'mvnrnd'**. Important to remember is that this distribution is parameterized in the mean and **covariance**. Consequently, the variable defined in the previous example would be
+To support the general multivariate Gaussian case, the distribution name is **'mvnrnd'**. Important to remember is that this distribution is parameterized in the mean and **covariance**. Consequently, the variable defined in the previous example would be
 
 ````matlab
 w = sdpvar(2,1);
@@ -75,20 +75,49 @@ Model1 = [uncertain(w,'mvnrnd', w_mean, S)];
 Model2 = [uncertain(w,'mvnrndfactor', w_mean, R)];
 ````
 
-In the examples so far, both the mean and the standard deviations, covariances and covariance factors have been constant. This is however not necessary, but we will later see models where some of these are decision variables, or uncertain variables, and the factor model turns out to be useful in those cases as it can lead to tractable models. 
+In the examples so far, both the mean and the standard deviations, covariances and covariance factors have been constant. This is however not necessary, and we will later see models where some of these are decision variables, or uncertain variables, and the factor model turns out to be particularily useful in those cases motivating this special purpose parameterization. 
 
 ### Other standard distributions
 
 Distributions supported in the Statistics toolbox are available (under development, very limited at the time). Hence, knowing the logic of parameters we can define, e.g., 
 
 ````matlab
-w = sdpvar(1);
+w = sdpvar(2,1);
+
+mu = [2;3];
+Model = [uncertain(w,'exponential', mu)];
+
 mu = [2;3];
 shape = [4;5];
-Model = [uncertain(w,'exponential', mu, shape)];
+Model = [uncertain(w,'logistic', mu, shape)];
+
+mu = [2;3];
+theta = [4;5];
+Model = [uncertain(w,'cauchy', mu, theta)];
+
+L = [2;3];
+U = [4;5];
+Model = [uncertain(w,'uniform', L, U)];
+
+L = [2;3];
+U = [4;5];
+Model = [uncertain(w,'t', L, U)];
 ````
 
 ### Data driven distributions
+
+### Summary
+
+| Distribution Name | Example Notation                                   | Parameter 1        | Parameter 2        | Parameter 3        | Description / Notes                                                         |
+|-------------------|----------------------------------------------------|--------------------|--------------------|--------------------|-----------------------------------------------------------------------------|
+| normal            | uncertain(w, 'normal', mean, std)                  | mean               | std                | —                  | Scalar or vector Gaussian                                                   |
+| mvnrnd            | uncertain(w, 'mvnrnd', mean, covariance)           | mean               | covariance         | —                  | Multivariate Gaussian. Covariance is a matrix.                              |
+| mvnrndfactor      | uncertain(w, 'mvnrndfactor', mean, R)              | mean               | R (covariance root)| —                  | Multivariate Gaussian via covariance root (R so that covariance = R'*R).    |
+| exponential       | uncertain(w, 'exponential', mu)                    | mu                 |                    | —                  | Exponential distribution. Parameters follow MATLAB conventions.             |
+| logistic          | uncertain(w, 'logistic', mu, s)                    | mu (location)      | s (scale)          | —                  | Logistic distribution. Location and scale.                                  |
+| cauchy            | uncertain(w, 'cauchy', x0, gamma)                  | x0 (location)      | gamma (scale)      | —                  | Cauchy distribution. Location and scale.                                    |
+| uniform           | uncertain(w, 'uniform', a, b)                      | a (lower)          | b (upper)          | —                  | Uniform distribution on [a, b].                                             |
+| t                 | uncertain(w, 't', nu, mu, sigma)                   | nu (degrees)       | mu (location)      | sigma (scale)      | Student's t-distribution. Degrees of freedom, location, scale.              |
 
 ### Mixtures
 
