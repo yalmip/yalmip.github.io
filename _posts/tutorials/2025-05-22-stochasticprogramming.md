@@ -107,24 +107,27 @@ U = [4;5];
 Model = [uncertain(w,'t', L, U)];
 ````
 
-### Data driven distributions
+### Mixture models
+
+### Data-driven models
+
+### Ambiguous models
 
 ### Summary
 
-| Distribution Name | Example Notation                                   | Parameter 1        | Parameter 2        | Parameter 3        | Description / Notes                                                         |
-|-------------------|----------------------------------------------------|--------------------|--------------------|--------------------|-----------------------------------------------------------------------------|
-| normal            | uncertain(w, 'normal', mean, std)                  | mean               | std                | —                  | Scalar or vector Gaussian                                                   |
-| mvnrnd            | uncertain(w, 'mvnrnd', mean, covariance)           | mean               | covariance         | —                  | Multivariate Gaussian. Covariance is a matrix.                              |
-| mvnrndfactor      | uncertain(w, 'mvnrndfactor', mean, R)              | mean               | R (covariance root)| —                  | Multivariate Gaussian via covariance root (R so that covariance = R'*R).    |
-| exponential       | uncertain(w, 'exponential', mu)                    | mu                 |                    | —                  | Exponential distribution. Parameters follow MATLAB conventions.             |
-| logistic          | uncertain(w, 'logistic', mu, s)                    | mu (location)      | s (scale)          | —                  | Logistic distribution. Location and scale.                                  |
-| cauchy            | uncertain(w, 'cauchy', x0, gamma)                  | x0 (location)      | gamma (scale)      | —                  | Cauchy distribution. Location and scale.                                    |
-| uniform           | uncertain(w, 'uniform', a, b)                      | a (lower)          | b (upper)          | —                  | Uniform distribution on [a, b].                                             |
-| t                 | uncertain(w, 't', nu, mu, sigma)                   | nu (degrees)       | mu (location)      | sigma (scale)      | Student's t-distribution. Degrees of freedom, location, scale.              |
+| Distribution Name | Example Notation                                   | Parameter 1     | Parameter 2        | Parameter 3        | Description / Notes                                                         |
+|-------------------|----------------------------------------------------|-----------------|--------------------|--------------------|-----------------------------------------------------------------------------|
+| **normal**            | uncertain(w, 'normal', mean, std)                  | mean            | std. dev           | —                  | Scalar Gaussian                                                         |
+| **mvnrnd**            | uncertain(w, 'mvnrnd', mean, covariance)           | mean            | covariance         | —                  | Multivariate Gaussian. Covariance can be a non-diagonal matrix.         |
+| **mvnrndfactor**      | uncertain(w, 'mvnrndfactor', mean, R)              | mean            | R (covariance root)| —                  | Multivariate Gaussian via covariance root (R so that covariance = R'*R).|
+| **laplace**           | uncertain(w, 'laplace', mu,sigma)                  | mu              | sigma              | —                  | Double-sided exponential distribution.                                  |
+| **exponential**       | uncertain(w, 'exponential', mu)                    | mu              |                    | —                  | Exponential distribution. Parameters follow MATLAB conventions.         |
+| **logistic**          | uncertain(w, 'logistic', mu, s)                    | mu              | s                  | —                  | Logistic distribution. Parameters follow MATLAB conventions.            |
+| **cauchy**            | uncertain(w, 'cauchy', x0, gamma)                  | x0              | gamma              | —                  | Cauchy distribution. Parameters follow MATLAB conventions.              |
+| **uniform**           | uncertain(w, 'uniform', a, b)                      | a               | b                  | —                  | Uniform distribution. Parameters follow MATLAB conventions.             |
+| **t**                 | uncertain(w, 't', nu, mu, sigma)                   | nu              | mu                 | sigma              | Student's t-distribution. Parameters follow MATLAB conventions.         |
 
-### Mixtures
-
-# Setting up probabilistic constraints
+# Setting up chance constraints
 
 ## The classical Gaussian
 
