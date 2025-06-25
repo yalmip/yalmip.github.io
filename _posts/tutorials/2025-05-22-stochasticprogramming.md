@@ -15,11 +15,11 @@ published: false
 
 Stochastic programming, a little known feature available in development branches for over a decade. Almost getting ready to actually release.
 
-The framework is currently focused on chance constraints, i.e., constraints of the type \\( \text{Probability}(f(x) + g^T(x)w \leq 0) \geq 1-\gamma \\). In this constraints, \\(x\\) represent decision variables, \\(w\\) are uncertain varaibles with an associated statistical model, and \\(gamma\\) is called the risk parameter. Depending on the structure on \\(f(x)\\), \\(g(x)\\), the statistical model, and whether \\(gamma\\) is fixed or not, the complexity and derivation of the deterministic representation of the chance constraint ranges from trivial to completely intractable.
+The framework is currently focused on chance constraints, i.e., constraints of the type \\( \text{Probability}(f(x) + g^T(x)w \leq 0) \geq 1-\gamma \\). In this constraint, \\(x\\) represent decision variables, \\(w\\) are uncertain varaibles with an associated statistical model, and \\(gamma\\) is called the risk parameter. Depending on the structure on \\(f(x)\\), \\(g(x)\\), the statistical model, and whether \\(gamma\\) is fixed or not, the complexity and derivation of the deterministic representation of the chance constraint ranges from trivial to completely intractable.
 
 ## Defining variables
 
-The two driving principles in the setup of stochastic programming models is that random variables are introduced and manipulated like any other variables in YALMIP, and and a strive for notational consistency with the Statistics toolbox. Communicating properties of the variables are done via the [uncertain](/command/uncertain) command, thus making stochastic and deterministic worst-case models very similiar.
+The two driving principles in the setup of stochastic models is that random variables are introduced and manipulated like any other variables in YALMIP, and a strive for notational consistency with the Statistics and Machine learning Toolbox. Communicating properties of the variables are done via the [uncertain](/command/uncertain) command, thus making stochastic and deterministic worst-case models very similiar.
 
 ### Scalar Gaussian variables
 
