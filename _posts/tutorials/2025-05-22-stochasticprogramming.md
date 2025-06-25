@@ -11,9 +11,11 @@ published: false
 
 > This page is under development and is currently mainly used for internal development. 
 
-## Background
+## Introduction
 
 Stochastic programming, a little known feature available in development branches for over a decade. Almost getting ready to actually release.
+
+The framework is currently focused on chance constraints, i.e., constraints of the type \\( \text{Probability}(f(x) + g^T(x)w \leq 0) \geq 1-\gamma \\). In this constraints, \\(x\\) represent decision variables, \\(w\\) are uncertain varaibles with an associated statistical model, and $\\(gamma\\) is called the risk parameter. Depending on the structure on \\(f(x)\\), \\(g(x)\\), the statistical model, and whether \\(gamma\\) is fixed or not, the complexity and derivation of the deterministic representation of the chance constraint ranges from trivial to intractable and essentially impossible to derive.
 
 ## Defining variables
 
