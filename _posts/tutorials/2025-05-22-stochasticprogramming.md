@@ -115,17 +115,17 @@ Model = [uncertain(w,'t', L, U)];
 
 ### Summary
 
-| Distribution Name | Example Notation                                   | Parameter 1     | Parameter 2        | Parameter 3        | Description / Notes                                                         |
-|-------------------|----------------------------------------------------|-----------------|--------------------|--------------------|-----------------------------------------------------------------------------|
-| **normal**            | uncertain(w, 'normal', mean, std)                  | mean            | std. dev           | —                  | Scalar Gaussian                                                         |
-| **mvnrnd**            | uncertain(w, 'mvnrnd', mean, covariance)           | mean            | covariance         | —                  | Multivariate Gaussian. Covariance can be a non-diagonal matrix.         |
-| **mvnrndfactor**      | uncertain(w, 'mvnrndfactor', mean, R)              | mean            | R (covariance root)| —                  | Multivariate Gaussian via covariance root (R so that covariance = R'*R).|
-| **laplace**           | uncertain(w, 'laplace', mu,sigma)                  | mu              | sigma              | —                  | Double-sided exponential distribution.                                  |
-| **exponential**       | uncertain(w, 'exponential', mu)                    | mu              |                    | —                  | Exponential distribution. Parameters follow MATLAB conventions.         |
-| **logistic**          | uncertain(w, 'logistic', mu, s)                    | mu              | s                  | —                  | Logistic distribution. Parameters follow MATLAB conventions.            |
-| **cauchy**            | uncertain(w, 'cauchy', x0, gamma)                  | x0              | gamma              | —                  | Cauchy distribution. Parameters follow MATLAB conventions.              |
-| **uniform**           | uncertain(w, 'uniform', a, b)                      | a               | b                  | —                  | Uniform distribution. Parameters follow MATLAB conventions.             |
-| **t**                 | uncertain(w, 't', nu, mu, sigma)                   | nu              | mu                 | sigma              | Student's t-distribution. Parameters follow MATLAB conventions.         |
+| Distribution Name | Example Notation                                   | Parameter 1       | Parameter 2        | Parameter 3          | Description / Notes                                                         |
+|-------------------|----------------------------------------------------|-------------------|--------------------|----------------------|-----------------------------------------------------------------------------|
+| **normal**            | uncertain(w, 'normal', mean, std)                  | mean              | std. dev           | —                    | Scalar Gaussian                                                         |
+| **mvnrnd**            | uncertain(w, 'mvnrnd', mean, covariance)           | mean              | covariance         | —                    | Multivariate Gaussian. Covariance can be a non-diagonal matrix.         |
+| **mvnrndfactor**      | uncertain(w, 'mvnrndfactor', mean, R)              | mean              | R (covariance root)| —                    | Multivariate Gaussian via covariance root (R so that covariance = R'*R).|
+| **laplace**           | uncertain(w, 'laplace', mu,sigma)                  | mu                | sigma              | —                    | Double-sided exponential distribution.                                  |
+| **exponential**       | uncertain(w, 'exponential', mu)                    | mu                |                    | —                    | Exponential distribution. Parameters follow MATLAB conventions.         |
+| **logistic**          | uncertain(w, 'logistic', mu, s)                    | mu                | s                  | —                    | Logistic distribution. Parameters follow MATLAB conventions.            |
+| **cauchy**            | uncertain(w, 'cauchy', x0, gamma)                  | x0                | gamma              | —                    | Cauchy distribution. Parameters follow MATLAB conventions.              |
+| **uniform**           | uncertain(w, 'uniform', a, b)                      | a                 | b                  | —                    | Uniform distribution. Parameters follow MATLAB conventions.             |
+| **t**                 | uncertain(w, 't', nu, mu, sigma)                   | nu                | mu                 | sigma                | Student's t-distribution. Parameters follow MATLAB conventions.         |
 
 # Setting up chance constraints
 
