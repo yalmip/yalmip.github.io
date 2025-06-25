@@ -21,7 +21,7 @@ The two driving principles in the setup of stochastic programming models is that
 
 ### Scalar Gaussian variables
 
-Starting from the most basic example, we can define a scalar variable, with zero mean and unit standard deviation (thus unit variance). There is no change in the way we define a variable, and when we construct a model we communicate properties through trailing arguments in [uncertain](/command/uncertain). The arguments typically follow the parameters used in the command **random** in the Statistics toolbox. For a normal distribution, there are two properties, mean and standard deviation.
+Starting from the most basic example, we can define a scalar variable, with zero mean and unit standard deviation (thus unit variance). There is no change in the way we define a variable, and when we construct a model we communicate properties through trailing arguments in [uncertain](/command/uncertain). The arguments typically follow the parameters used in the command **random** in the Statistics toolbox. For a normal distribution, there are two properties, **mean** and **standard deviation**.
 
 ````matlab
 sdpvar w
@@ -71,12 +71,12 @@ A special purpose distibution is **'mvnrndfactor'** which is defined through a s
 w = sdpvar(2,1);
 w_mean = [2;2];
 R = [1 2;3 4];
-S = R'*R;
-Model1 = [uncertain(w,'mvnrnd', w_mean, S)];
+Covariance = R'*R;
+Model1 = [uncertain(w,'mvnrnd', w_mean, Covariance)];
 Model2 = [uncertain(w,'mvnrndfactor', w_mean, R)];
 ````
 
-In the examples so far, both the mean and the standard deviations, covariances and covariance factors have been constant. This is however not necessary, and we will later see models where some of these are decision variables, or uncertain variables, and the factor model turns out to be particularily useful in those cases motivating this special purpose parameterization. 
+In the examples so far, the mean, standard deviations, covariances and covariance factors have been constant. This is however not necessary, and we will later see models where some of these are decision variables, or uncertain variables, and the factor model turns out to be particularily useful in those cases motivating this special purpose parameterization. 
 
 ### Other standard distributions
 
