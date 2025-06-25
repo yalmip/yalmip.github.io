@@ -117,8 +117,8 @@ Model = [uncertain(w,'t', L, U)];
 
 | Distribution Name | Example Notation                                   | Parameter 1       | Parameter 2        | Parameter 3          | Description / Notes                                                         |
 |-------------------|----------------------------------------------------|-------------------|--------------------|----------------------|-----------------------------------------------------------------------------|
-| **normal**            | uncertain(w, 'normal', mean, std)                  | mean              | std. dev           | —                    | Scalar Gaussian                                                         |
-| **mvnrnd**            | uncertain(w, 'mvnrnd', mean, covariance)           | mean              | covariance         | —                    | Multivariate Gaussian. Covariance can be a non-diagonal matrix.         |
+| **normal**            | uncertain(w, 'normal', mean, std)                  | mean              | sigma              | —                    | Scalar Gaussian (note, standard deviation parameter, not variance)      |
+| **mvnrnd**            | uncertain(w, 'mvnrnd', mean, covariance)           | mean              | covariance         | —                    | Multivariate Gaussian (i.e. matrix covariance)                          |
 | **mvnrndfactor**      | uncertain(w, 'mvnrndfactor', mean, R)              | mean              | R (covariance root)| —                    | Multivariate Gaussian via covariance root (R so that covariance = R'*R).|
 | **laplace**           | uncertain(w, 'laplace', mu,sigma)                  | mu                | sigma              | —                    | Double-sided exponential distribution.                                  |
 | **exponential**       | uncertain(w, 'exponential', mu)                    | mu                |                    | —                    | Exponential distribution. Parameters follow MATLAB conventions.         |
