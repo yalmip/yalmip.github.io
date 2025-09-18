@@ -42,7 +42,7 @@ It should be pretty obvious that this is a nonsense problem. It is completely im
 
 Let us untangle what has gone wrong. The first issue is that the setup simply doesn't make sense in real-life, which translates to the incorrect use of an equality ==. So what could the manager have meant that they should do, and how does that translate to the model.
 
-It could be that the manager meant that Alice first should load her truck with **a** sheep (make a fixed decision), go to the market and check the price, and then call Bob and have him bring the remaining sheep. This is a causal structure where Bobs decision **b** really isn't a decision, but a simple function of Alice decision and the uncertainty, **b = p-d**. An **incorrect** model of this would be
+It could be that the manager meant that Alice first should load her truck with **a** sheep (make a fixed decision), go to the market and check the price, and then call Bob and have him bring the remaining sheep. This is a causal structure where Bobs decision **b** really isn't a decision, but a simple function of Alice decision and the uncertainty, **b = p-a**. An **incorrect** model of this would be
 
 ````matlab
 sdpvar a b p
